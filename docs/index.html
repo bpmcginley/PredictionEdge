@@ -21,16 +21,25 @@
   button{background:var(--panel2);color:var(--txt);border:1px solid var(--line);
     border-radius:8px;padding:7px 12px;cursor:pointer;font-size:13px}
   button:hover{border-color:var(--accent2)}
+  input[type=number]{background:var(--bg);color:var(--txt);border:1px solid var(--line);
+    border-radius:8px;padding:7px 10px;font-size:15px;width:150px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  input[type=number]:focus{outline:none;border-color:var(--accent2)}
   .banner{background:#1a1508;border:1px solid #3a2f10;color:#f5d98b;border-radius:12px;
     padding:12px 14px;margin-bottom:14px;font-size:13px}
   .banner b{color:var(--warn)}
-  .stale{background:#241111;border:1px solid #4a1f1f;color:#f8b4b4;border-radius:12px;
-    padding:10px 14px;margin-bottom:14px;font-size:13px;display:none}
+  .stale,.danger{background:#241111;border:1px solid #4a1f1f;color:#f8b4b4;
+    border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:13px;display:none}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;
     padding:16px;margin-bottom:14px}
+  .cap{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;
+    padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--line)}
+  .cap label{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;
+    letter-spacing:.5px;margin-bottom:5px}
   .stats{display:flex;gap:24px;flex-wrap:wrap}
   .stat b{font-size:19px;display:block}.stat span{color:var(--muted);font-size:11px;
     text-transform:uppercase;letter-spacing:.5px}
+  .pos{color:var(--accent)}.neg{color:var(--bad)}
   .ticket{background:var(--panel);border:1px solid var(--line);border-radius:14px;
     padding:16px;margin-bottom:12px}
   .ticket.done{opacity:.5}
@@ -64,6 +73,8 @@
   a.mkt{color:var(--accent2);text-decoration:none;font-size:12px}
   a.mkt:hover{text-decoration:underline}
   footer{color:var(--muted);font-size:12px;margin-top:26px;line-height:1.7}
+  .openrow{font-size:12px;color:var(--muted);margin-top:10px}
+  .openrow b{color:var(--txt)}
 </style>
 </head>
 <body>
@@ -82,30 +93,57 @@
   </div>
 
   <div class="stale" id="stale"></div>
+  <div class="danger" id="danger"></div>
 
   <div class="card">
+    <div class="cap">
+      <div>
+        <label for="cap">Starting capital</label>
+        <input type="number" id="cap" min="0" step="100" oninput="setCapital(this.value)" />
+      </div>
+      <div class="stat"><b id="v-account">—</b><span>account value</span></div>
+      <div class="stat"><b id="v-realized">—</b><span>realized p&amp;l</span></div>
+      <div class="stat"><b id="v-open">—</b><span>open exposure</span></div>
+      <div class="stat"><b id="v-power">—</b><span>buying power</span></div>
+      <div class="grow"></div>
+      <button onclick="resetCapital()">Reset to $<span id="defcap"></span></button>
+    </div>
     <div class="stats" id="stats"></div>
     <div class="filters" id="filters"></div>
+    <div class="openrow" id="openrow"></div>
   </div>
 
   <div id="tickets"></div>
 
   <footer>
-    Your journal is stored only in this browser (localStorage) — it is never uploaded or
-    published. Clearing site data erases it.
+    Capital and journal are stored only in this browser (localStorage) — never uploaded or
+    published. Account value = starting capital + realized p&amp;l, and it re-sizes every
+    ticket below against Omen's contract caps.
     <button onclick="exportJournal()" style="margin-left:8px">Export journal</button>
   </footer>
 </div>
 
 <script>
 const $=id=>document.getElementById(id);
-const KEY='pe_journal_v1';
+const KEY='pe_journal_v1', CAPKEY='pe_capital_v1';
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const money=n=>'$'+Number(n||0).toLocaleString(undefined,{maximumFractionDigits:0});
+const signed=n=>(n>=0?'+':'−')+'$'+Math.abs(Number(n||0)).toLocaleString(undefined,{maximumFractionDigits:0});
 let DATA={tickets:[]};
 
 const jread =()=>{ try{ return JSON.parse(localStorage.getItem(KEY))||{}; }catch(e){ return {}; } };
 const jwrite=o=>localStorage.setItem(KEY,JSON.stringify(o));
+const defaultCap=()=>Number(DATA.account_size)||100000;
+function capital(){
+  const v=parseFloat(localStorage.getItem(CAPKEY));
+  return (isFinite(v)&&v>0)?v:defaultCap();
+}
+function setCapital(v){
+  const n=parseFloat(v);
+  if(isFinite(n)&&n>0) localStorage.setItem(CAPKEY,String(n));
+  render(true);
+}
+function resetCapital(){ localStorage.removeItem(CAPKEY); render(); }
 
 function fmtDur(h){
   if(h==null||isNaN(h)) return '—';
@@ -113,22 +151,52 @@ function fmtDur(h){
   if(h<48) return h.toFixed(0)+'h';
   return (h/24).toFixed(1)+'d';
 }
-// Recomputed at view time: a published snapshot must not freeze its own countdown.
 const hoursLeft=t=>{ if(!t.end_iso) return null;
   const ms=Date.parse(t.end_iso); if(isNaN(ms)) return null;
   return (ms-Date.now())/3600000; };
 const ageMin=t=>t.signal_ts?(Date.now()/1000-t.signal_ts)/60:null;
 
-function journalSummary(){
+/* Mirrors omen.size_position - constants come from board.json so the two stay in step.
+   A winning contract pays $1, so contracts == max payout. */
+function sizeFor(price, account, conviction){
+  const o=DATA.omen||{min_contract_price:0.01, contracts_per_market_per_1k:19,
+                      per_trade_fraction:0.01};
+  if(!(price>=o.min_contract_price && price<1) || !(account>0)) return null;
+  const c=Math.max(0,Math.min(1,conviction||0));
+  if(c<=0) return null;
+  const want=Math.floor(account*o.per_trade_fraction*c/price);
+  if(want<1) return null;
+  const cap=Math.floor(account/1000*o.contracts_per_market_per_1k);
+  const contracts=Math.min(want,cap);
+  if(contracts<1) return null;
+  return {contracts, cost:contracts*price, max_payout:contracts,
+          capped: want>cap ? 'omen-market-limit' : 'risk-budget'};
+}
+
+/* Money derived from what you logged. Buying a contract moves cash out; a winner
+   returns $1 per contract, a loser returns nothing. */
+function ledger(){
   const rows=Object.values(jread());
-  const taken=rows.filter(r=>['taken','won','lost'].includes(r.status));
   const won=rows.filter(r=>r.status==='won'), lost=rows.filter(r=>r.status==='lost');
+  const open=rows.filter(r=>r.status==='taken');
+  const settledCost=[...won,...lost].reduce((a,r)=>a+(+r.cost||0),0);
+  const returned=won.reduce((a,r)=>a+(+r.contracts||0),0);
+  const realized=returned-settledCost;
+  const openExposure=open.reduce((a,r)=>a+(+r.cost||0),0);
+  const start=capital();
   const settled=won.length+lost.length;
-  const staked=[...won,...lost].reduce((a,r)=>a+(+r.cost||0),0);
-  const back=won.reduce((a,r)=>a+(+r.contracts||0),0);
-  return {taken:taken.length, won:won.length, lost:lost.length,
-          hit: settled? won.length/settled : null,
-          pnl: settled? back-staked : 0};
+
+  const dayAgo=Date.now()/1000-86400;
+  const today=[...won,...lost].filter(r=>(+r.ts||0)>=dayAgo);
+  const todayPnl=today.filter(r=>r.status==='won').reduce((a,r)=>a+(+r.contracts||0),0)
+                -today.reduce((a,r)=>a+(+r.cost||0),0);
+
+  return {start, realized, openExposure, account:start+realized,
+          power:start+realized-openExposure,
+          taken:rows.filter(r=>['taken','won','lost'].includes(r.status)).length,
+          openCount:open.length, won:won.length, lost:lost.length,
+          hit: settled? won.length/settled : null, todayPnl,
+          skipped: rows.filter(r=>r.status==='skipped').length};
 }
 
 async function load(){
@@ -144,10 +212,12 @@ async function load(){
   render();
 }
 
-function render(){
+function render(keepFocus){
   const gen=DATA.generated_at?new Date(DATA.generated_at*1000):null;
   const ageM=gen?(Date.now()-gen.getTime())/60000:null;
   $('updated').textContent=gen?('data from '+fmtDur(ageM/60)+' ago'):'';
+  $('defcap').textContent=Number(defaultCap()).toLocaleString();
+  if(!keepFocus || document.activeElement!==$('cap')) $('cap').value=capital();
 
   const s=$('stale');
   if(ageM!=null && ageM>90){
@@ -156,6 +226,25 @@ function render(){
       +` smart-money flow move faster than that — re-check each market before placing.`;
   } else { s.style.display='none'; }
 
+  const L=ledger();
+  $('v-account').textContent=money(L.account);
+  $('v-realized').textContent=signed(L.realized);
+  $('v-realized').className=L.realized>=0?'pos':'neg';
+  $('v-open').textContent=money(L.openExposure);
+  $('v-power').textContent=money(L.power);
+  $('v-power').className=L.power<0?'neg':'';
+
+  // Omen's 5% daily loss limit, estimated from what you logged in the last 24h.
+  const lim=L.start*((DATA.omen&&DATA.omen.daily_loss_fraction)||0.05);
+  const d=$('danger');
+  if(L.todayPnl<0 && Math.abs(L.todayPnl)>=lim*0.6){
+    d.style.display='block';
+    const breached=Math.abs(L.todayPnl)>=lim;
+    d.innerHTML=breached
+      ? `<b>Daily loss limit reached.</b> Logged losses in the last 24h are ${money(Math.abs(L.todayPnl))} against Omen's ${money(lim)} (5%) limit. Stop for the day.`
+      : `Logged losses in the last 24h are ${money(Math.abs(L.todayPnl))} of Omen's ${money(lim)} (5%) daily limit — ${money(lim-Math.abs(L.todayPnl))} of room left.`;
+  } else { d.style.display='none'; }
+
   const minH=(DATA.filters&&DATA.filters.min_hours)||0;
   const live=[], expired=[];
   (DATA.tickets||[]).forEach(t=>{
@@ -163,14 +252,18 @@ function render(){
     (h!=null && h<minH ? expired : live).push(t);
   });
 
-  const j=journalSummary();
   $('stats').innerHTML=
     stat(live.length,'tickets')+
     stat(DATA.considered||0,'signals scanned')+
-    stat(money(DATA.account_size),'omen account')+
-    stat(j.taken,'taken')+
-    stat(j.hit==null?'—':(j.hit*100).toFixed(0)+'%','hit rate')+
-    stat((j.pnl>=0?'+':'')+'$'+Number(j.pnl).toFixed(0),'journal p&l');
+    stat(L.taken,'taken')+
+    stat(L.hit==null?'—':(L.hit*100).toFixed(0)+'%','hit rate')+
+    stat(L.won+'/'+L.lost,'won / lost')+
+    stat(L.skipped,'skipped');
+
+  $('openrow').innerHTML = L.openCount
+    ? `<b>${L.openCount}</b> position${L.openCount!==1?'s':''} still open, `
+      +`${money(L.openExposure)} at risk — mark them Won or Lost as they resolve to keep capital accurate.`
+    : '';
 
   const chips=Object.entries(DATA.rejected||{}).map(([k,v])=>`<span class="chip">${v} × ${esc(k)}</span>`);
   if(expired.length) chips.unshift(`<span class="chip">${expired.length} × expired since generated</span>`);
@@ -178,18 +271,21 @@ function render(){
   $('filters').innerHTML=chips.join('');
 
   $('tickets').innerHTML = live.length
-    ? live.map((t,i)=>ticket(t,i+1)).join('')
+    ? live.map((t,i)=>ticket(t,i+1,L)).join('')
     : `<div class="card empty">No tickets right now. ${esc((DATA.notes||[])[0]||'An empty board is a normal, and usually correct, outcome.')}</div>`;
 }
 function stat(v,l){ return `<div class="stat"><b>${v}</b><span>${l}</span></div>`; }
 
-function ticket(t,rank){
+function ticket(t,rank,L){
   const id=t.market_id+':'+t.outcome;
   const st=(jread()[id]||{}).status||'';
   const done=['taken','skipped','won','lost'].includes(st);
   const h=hoursLeft(t), a=ageMin(t);
+  const z=sizeFor(t.entry_price, L.account, t.conviction);
+  const warnings=(t.warnings||[]).filter(w=>!/size capped by Omen/.test(w));
+  if(z && z.capped==='omen-market-limit') warnings.push("size capped by Omen's per-market contract limit");
+  if(z && z.cost>L.power) warnings.push('costs more than your buying power');
   const why=(t.why||[]).map(w=>
-    // These two are relative to generation time, so recompute them for the reader.
     /latest buy .* min ago/.test(w) && a!=null ? `latest buy ${a.toFixed(0)} min ago` :
     /until it resolves/.test(w) && h!=null ? `${h.toFixed(0)}h until it resolves` : w);
   return `<div class="ticket ${done?'done':''}">
@@ -204,14 +300,14 @@ function ticket(t,rank){
     <div class="bar"><i style="width:${(t.conviction*100).toFixed(0)}%"></i></div>
     <div class="grid">
       <div class="f"><b>${t.entry_price.toFixed(2)}</b><span>buy at (when generated)</span></div>
-      <div class="f"><b>${t.contracts}</b><span>contracts</span></div>
-      <div class="f"><b>$${t.cost.toFixed(2)}</b><span>cost</span></div>
-      <div class="f"><b>$${t.max_payout.toFixed(0)}</b><span>if it wins</span></div>
+      <div class="f"><b>${z?z.contracts:'—'}</b><span>contracts</span></div>
+      <div class="f"><b>${z?'$'+z.cost.toFixed(2):'—'}</b><span>cost</span></div>
+      <div class="f"><b>${z?'$'+z.max_payout.toFixed(0):'—'}</b><span>if it wins</span></div>
       <div class="f"><b>${fmtDur(h)}</b><span>to resolve</span></div>
       <div class="f"><b>${t.whale_price.toFixed(2)}</b><span>whale paid</span></div>
     </div>
     <ul class="why">${why.map(w=>`<li>${esc(w)}</li>`).join('')}</ul>
-    ${(t.warnings||[]).length?`<div class="warn">⚠ ${t.warnings.map(esc).join(' · ')}</div>`:''}
+    ${warnings.length?`<div class="warn">⚠ ${warnings.map(esc).join(' · ')}</div>`:''}
     <div class="acts">
       ${done
         ? `<span class="status">logged: ${esc(st)}</span>
@@ -229,15 +325,20 @@ function mark(id,status){
   if(!status){ delete j[id]; }
   else{
     const t=(DATA.tickets||[]).find(x=>x.market_id+':'+x.outcome===id)||{};
-    j[id]=Object.assign({}, j[id], {status, ts:Date.now()/1000,
-      title:t.title, side_label:t.side_label, entry_price:t.entry_price,
-      contracts:t.contracts, cost:t.cost, conviction:t.conviction});
+    const prior=j[id]||{};
+    // Freeze the size at the moment you place it: later capital changes must not
+    // rewrite the cost of a trade you already made.
+    const z=(prior.contracts!=null)?null:sizeFor(t.entry_price, ledger().account, t.conviction);
+    j[id]=Object.assign({}, prior, {status, ts:Date.now()/1000,
+      title:t.title, side_label:t.side_label, entry_price:t.entry_price},
+      z?{contracts:z.contracts, cost:z.cost, conviction:t.conviction}:{});
   }
   jwrite(j); render();
 }
 
 function exportJournal(){
-  const blob=new Blob([JSON.stringify(jread(),null,2)],{type:'application/json'});
+  const payload={capital:capital(), ledger:ledger(), journal:jread()};
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
   const a=document.createElement('a');
   a.href=URL.createObjectURL(blob); a.download='predictionedge-journal.json'; a.click();
 }

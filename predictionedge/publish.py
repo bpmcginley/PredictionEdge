@@ -20,6 +20,7 @@ import json
 import time
 from pathlib import Path
 
+from . import omen
 from .config import Config
 
 
@@ -30,6 +31,16 @@ def build_payload(cfg: Config) -> dict:
     # The journal is personal and browser-local; never publish it.
     payload.pop("journal", None)
     payload.pop("journal_state", None)
+    # The page re-sizes every ticket against your *current* capital, so it needs the
+    # same rules the Python sizer uses. Publish them instead of hardcoding a second
+    # copy in JavaScript that can silently drift out of step with omen.py.
+    payload["omen"] = {
+        "min_contract_price": omen.MIN_CONTRACT_PRICE,
+        "contracts_per_market_per_1k": omen.CONTRACTS_PER_MARKET_PER_1K,
+        "contracts_per_event_per_1k": omen.CONTRACTS_PER_EVENT_PER_1K,
+        "per_trade_fraction": cfg.omen_per_trade_fraction,
+        "daily_loss_fraction": 0.05,
+    }
     payload["filters"] = {
         "min_hours": cfg.board_min_hours,
         "max_days": cfg.board_max_days,

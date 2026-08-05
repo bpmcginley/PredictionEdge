@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-05 15:27:01",
-  "generated_at": 1785943621.9147983,
+  "generated": "2026-08-05 11:35:49",
+  "generated_at": 1785944149.5835717,
   "account_size": 100000.0,
   "tickets": [
     {
@@ -15,21 +15,21 @@
       "cost": 451.29,
       "max_payout": 614.0,
       "conviction": 0.452,
-      "hours_to_resolve": 190.5,
+      "hours_to_resolve": 190.4,
       "n_wallets": 1,
       "whale_usd": 15236,
-      "minutes_ago": 513,
-      "liquidity": 277756,
+      "minutes_ago": 522,
+      "liquidity": 278624,
       "url": "https://polymarket.com/event/atp-jodar-moutet-2026-08-06",
       "end_iso": "2026-08-13T14:00:00Z",
       "signal_ts": 1785912818.0,
       "why": [
         "1 profitable wallet on this side",
         "$15,236 of smart money behind it",
-        "latest buy 513 min ago",
+        "latest buy 522 min ago",
         "still near their entry price",
-        "191h until it resolves",
-        "$277,756 liquidity"
+        "190h until it resolves",
+        "$278,624 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -42,6 +42,13 @@
     "signal too old for this market's horizon": 4
   },
   "notes": [],
+  "omen": {
+    "min_contract_price": 0.01,
+    "contracts_per_market_per_1k": 19,
+    "contracts_per_event_per_1k": 38,
+    "per_trade_fraction": 0.01,
+    "daily_loss_fraction": 0.05
+  },
   "filters": {
     "min_hours": 24.0,
     "max_days": 30.0,
