@@ -4,345 +4,113 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex, nofollow" />
-<title>PredictionEdge — trade board</title>
-<style>
-  :root{
-    --bg:#0b0e14; --panel:#131823; --panel2:#1a2130; --line:#222b3d;
-    --txt:#e6edf3; --muted:#8b97a8; --accent:#36d399; --accent2:#5aa9ff;
-    --warn:#fbbf24; --bad:#f87171;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--txt);
-    font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-  .wrap{max-width:1080px;margin:0 auto;padding:20px 16px 60px}
-  header{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
-  .logo{font-weight:700;font-size:20px}.logo span{color:var(--accent)}
-  .grow{flex:1}.muted{color:var(--muted)}
-  button{background:var(--panel2);color:var(--txt);border:1px solid var(--line);
-    border-radius:8px;padding:7px 12px;cursor:pointer;font-size:13px}
-  button:hover{border-color:var(--accent2)}
-  input[type=number]{background:var(--bg);color:var(--txt);border:1px solid var(--line);
-    border-radius:8px;padding:7px 10px;font-size:15px;width:150px;
-    font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
-  input[type=number]:focus{outline:none;border-color:var(--accent2)}
-  .banner{background:#1a1508;border:1px solid #3a2f10;color:#f5d98b;border-radius:12px;
-    padding:12px 14px;margin-bottom:14px;font-size:13px}
-  .banner b{color:var(--warn)}
-  .stale,.danger{background:#241111;border:1px solid #4a1f1f;color:#f8b4b4;
-    border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:13px;display:none}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;
-    padding:16px;margin-bottom:14px}
-  .cap{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;
-    padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--line)}
-  .cap label{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;
-    letter-spacing:.5px;margin-bottom:5px}
-  .stats{display:flex;gap:24px;flex-wrap:wrap}
-  .stat b{font-size:19px;display:block}.stat span{color:var(--muted);font-size:11px;
-    text-transform:uppercase;letter-spacing:.5px}
-  .pos{color:var(--accent)}.neg{color:var(--bad)}
-  .ticket{background:var(--panel);border:1px solid var(--line);border-radius:14px;
-    padding:16px;margin-bottom:12px}
-  .ticket.done{opacity:.5}
-  .thead{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
-  .rank{background:var(--panel2);border:1px solid var(--line);border-radius:8px;
-    width:30px;height:30px;display:flex;align-items:center;justify-content:center;
-    font-weight:700;color:var(--muted);flex:none}
-  .side{font-size:16px;font-weight:650;line-height:1.35}
-  .conv{flex:none;text-align:right}
-  .conv b{font-size:18px;color:var(--accent)}
-  .conv span{display:block;color:var(--muted);font-size:10px;text-transform:uppercase}
-  .bar{height:4px;background:var(--panel2);border-radius:99px;overflow:hidden;margin:10px 0 12px}
-  .bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--accent2),var(--accent))}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:12px;
-    margin-bottom:12px}
-  .f b{font-size:15px;display:block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
-  .f span{color:var(--muted);font-size:11px}
-  ul.why{margin:0 0 10px;padding-left:18px;color:var(--muted);font-size:13px}
-  ul.why li{margin:2px 0}
-  .warn{background:#241a08;border:1px solid #3d2c0c;color:var(--warn);
-    border-radius:8px;padding:7px 10px;font-size:12px;margin-bottom:10px}
-  .acts{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-  .take{border-color:#1f6f4a;color:var(--accent)}
-  .skip{border-color:#5a2a2a;color:var(--bad)}
-  .status{font-size:12px;padding:3px 9px;border-radius:99px;border:1px solid var(--line);
-    color:var(--muted)}
-  .filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-  .chip{background:var(--panel2);border:1px solid var(--line);border-radius:99px;
-    padding:4px 11px;font-size:12px;color:var(--muted)}
-  .empty{color:var(--muted);font-style:italic;padding:16px 2px}
-  a.mkt{color:var(--accent2);text-decoration:none;font-size:12px}
-  a.mkt:hover{text-decoration:underline}
-  footer{color:var(--muted);font-size:12px;margin-top:26px;line-height:1.7}
-  .openrow{font-size:12px;color:var(--muted);margin-top:10px}
-  .openrow b{color:var(--txt)}
-</style>
+<meta name="description" content="Prediction-market research board: ranks smart-money signals for manual placement on Omen." />
+<title>PredictionEdge — overview</title>
+<link rel="stylesheet" href="assets/app.css" />
 </head>
 <body>
 <div class="wrap">
-  <header>
-    <div class="logo">Prediction<span>Edge</span> · trade board</div>
-    <div class="grow"></div>
-    <span class="muted" id="updated"></span>
-    <button onclick="load()">↻ Refresh</button>
-  </header>
 
-  <div class="banner">
-    <b>Manual placement only.</b> Omen prohibits API access, bots, browser automation and
-    signal-following services — all trading must be placed by you in the Omen app.
-    This board is research: it ranks ideas and shows its reasoning. You decide and you place.
-  </div>
-
-  <div class="stale" id="stale"></div>
-  <div class="danger" id="danger"></div>
+  <section class="hero">
+    <div class="pill"><span class="dot" id="statusdot"></span><span id="statustext">loading…</span></div>
+    <h1>Smart money, filtered down<br />to what's worth placing.</h1>
+    <p class="lede">
+      PredictionEdge watches profitable Polymarket wallets, throws out everything that
+      can't plausibly still hold an edge, and ranks the handful that survive — with its
+      reasoning attached. You read it, you decide, you place the trade yourself on Omen.
+    </p>
+  </section>
 
   <div class="card">
-    <div class="cap">
-      <div>
-        <label for="cap">Starting capital</label>
-        <input type="number" id="cap" min="0" step="100" oninput="setCapital(this.value)" />
-      </div>
-      <div class="stat"><b id="v-account">—</b><span>account value</span></div>
-      <div class="stat"><b id="v-realized">—</b><span>realized p&amp;l</span></div>
-      <div class="stat"><b id="v-open">—</b><span>open exposure</span></div>
-      <div class="stat"><b id="v-power">—</b><span>buying power</span></div>
-      <div class="grow"></div>
-      <button onclick="resetCapital()">Reset to $<span id="defcap"></span></button>
-    </div>
     <div class="stats" id="stats"></div>
-    <div class="filters" id="filters"></div>
-    <div class="openrow" id="openrow"></div>
   </div>
 
-  <div id="tickets"></div>
+  <div class="cards">
+    <a class="tile" href="board.html">
+      <div class="th" id="tile-board-h"></div>
+      <span id="tile-board-d">Ranked trade tickets with entry price, size, and why.</span>
+    </a>
+    <a class="tile" href="journal.html">
+      <div class="th" id="tile-journal-h"></div>
+      <span id="tile-journal-d">What you placed, how it ended, and whether the board is any good.</span>
+    </a>
+    <a class="tile" href="method.html">
+      <div class="th" id="tile-method-h"></div>
+      <span>Where signals come from, every filter they pass, and how conviction is scored.</span>
+    </a>
+  </div>
+
+  <h2>How it works</h2>
+  <div class="card prose">
+    <div class="step"><div class="n">1</div><div>
+      <strong>Watch proven wallets.</strong> Polymarket's public leaderboards across
+      all-time, monthly and weekly windows define who counts as smart money. Their large
+      buys come off the public trade feed.
+    </div></div>
+    <div class="step"><div class="n">2</div><div>
+      <strong>Throw most of it away.</strong> Twelve filters reject in-play markets,
+      anything resolving too soon or too far out, stale signals, prices that already ran
+      past the whale's entry, and duplicate bets on one event.
+    </div></div>
+    <div class="step"><div class="n">3</div><div>
+      <strong>Rank and size what's left.</strong> Conviction blends wallet agreement,
+      size, freshness, price drift and time remaining. Position size respects Omen's
+      contract caps against your current capital.
+    </div></div>
+    <div class="step"><div class="n">4</div><div>
+      <strong>You place it.</strong> Omen forbids automation, so nothing here executes.
+      The board's only job is to bring you a short, honest list.
+    </div></div>
+  </div>
+
+  <div class="banner">
+    <b>Advisory only.</b> Omen prohibits API access, bots, browser automation and
+    signal-following services — every trade must be placed by you in the Omen app.
+    This project has no execution path; the code that once placed orders is disabled at
+    the constructor.
+  </div>
 
   <footer>
-    Capital and journal are stored only in this browser (localStorage) — never uploaded or
-    published. Account value = starting capital + realized p&amp;l, and it re-sizes every
-    ticket below against Omen's contract caps.
-    <button onclick="exportJournal()" style="margin-left:8px">Export journal</button>
+    An empty board is a normal and usually correct outcome — most days nothing clears the
+    filters. Capital and journal are stored only in this browser and are never published.
   </footer>
 </div>
 
+<script src="assets/app.js"></script>
 <script>
-const $=id=>document.getElementById(id);
-const KEY='pe_journal_v1', CAPKEY='pe_capital_v1';
-const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const money=n=>'$'+Number(n||0).toLocaleString(undefined,{maximumFractionDigits:0});
-const signed=n=>(n>=0?'+':'−')+'$'+Math.abs(Number(n||0)).toLocaleString(undefined,{maximumFractionDigits:0});
-let DATA={tickets:[]};
+mountNav('index.html');
+$('tile-board-h').innerHTML   = ICON.board   + '<b>Board</b>';
+$('tile-journal-h').innerHTML = ICON.journal + '<b>Journal</b>';
+$('tile-method-h').innerHTML  = ICON.method  + '<b>Method</b>';
 
-const jread =()=>{ try{ return JSON.parse(localStorage.getItem(KEY))||{}; }catch(e){ return {}; } };
-const jwrite=o=>localStorage.setItem(KEY,JSON.stringify(o));
-const defaultCap=()=>Number(DATA.account_size)||100000;
-function capital(){
-  const v=parseFloat(localStorage.getItem(CAPKEY));
-  return (isFinite(v)&&v>0)?v:defaultCap();
-}
-function setCapital(v){
-  const n=parseFloat(v);
-  if(isFinite(n)&&n>0) localStorage.setItem(CAPKEY,String(n));
-  render(true);
-}
-function resetCapital(){ localStorage.removeItem(CAPKEY); render(); }
+function render(){
+  stampUpdated();
+  const {live} = splitTickets();
+  const L = ledger();
+  const age = dataAgeMin();
 
-function fmtDur(h){
-  if(h==null||isNaN(h)) return '—';
-  if(h<1) return Math.max(0,Math.round(h*60))+'m';
-  if(h<48) return h.toFixed(0)+'h';
-  return (h/24).toFixed(1)+'d';
-}
-const hoursLeft=t=>{ if(!t.end_iso) return null;
-  const ms=Date.parse(t.end_iso); if(isNaN(ms)) return null;
-  return (ms-Date.now())/3600000; };
-const ageMin=t=>t.signal_ts?(Date.now()/1000-t.signal_ts)/60:null;
+  const dot = $('statusdot'), txt = $('statustext');
+  if (age == null){ dot.className='dot bad'; txt.textContent='no data'; }
+  else if (age > 90){ dot.className='dot warn'; txt.textContent='data '+fmtDur(age/60)+' old — re-check before placing'; }
+  else { dot.className='dot'; txt.textContent='live · scanning every 15 min'; }
 
-/* Mirrors omen.size_position - constants come from board.json so the two stay in step.
-   A winning contract pays $1, so contracts == max payout. */
-function sizeFor(price, account, conviction){
-  const o=DATA.omen||{min_contract_price:0.01, contracts_per_market_per_1k:19,
-                      per_trade_fraction:0.01};
-  if(!(price>=o.min_contract_price && price<1) || !(account>0)) return null;
-  const c=Math.max(0,Math.min(1,conviction||0));
-  if(c<=0) return null;
-  const want=Math.floor(account*o.per_trade_fraction*c/price);
-  if(want<1) return null;
-  const cap=Math.floor(account/1000*o.contracts_per_market_per_1k);
-  const contracts=Math.min(want,cap);
-  if(contracts<1) return null;
-  return {contracts, cost:contracts*price, max_payout:contracts,
-          capped: want>cap ? 'omen-market-limit' : 'risk-budget'};
-}
-
-/* Money derived from what you logged. Buying a contract moves cash out; a winner
-   returns $1 per contract, a loser returns nothing. */
-function ledger(){
-  const rows=Object.values(jread());
-  const won=rows.filter(r=>r.status==='won'), lost=rows.filter(r=>r.status==='lost');
-  const open=rows.filter(r=>r.status==='taken');
-  const settledCost=[...won,...lost].reduce((a,r)=>a+(+r.cost||0),0);
-  const returned=won.reduce((a,r)=>a+(+r.contracts||0),0);
-  const realized=returned-settledCost;
-  const openExposure=open.reduce((a,r)=>a+(+r.cost||0),0);
-  const start=capital();
-  const settled=won.length+lost.length;
-
-  const dayAgo=Date.now()/1000-86400;
-  const today=[...won,...lost].filter(r=>(+r.ts||0)>=dayAgo);
-  const todayPnl=today.filter(r=>r.status==='won').reduce((a,r)=>a+(+r.contracts||0),0)
-                -today.reduce((a,r)=>a+(+r.cost||0),0);
-
-  return {start, realized, openExposure, account:start+realized,
-          power:start+realized-openExposure,
-          taken:rows.filter(r=>['taken','won','lost'].includes(r.status)).length,
-          openCount:open.length, won:won.length, lost:lost.length,
-          hit: settled? won.length/settled : null, todayPnl,
-          skipped: rows.filter(r=>r.status==='skipped').length};
-}
-
-async function load(){
-  try{
-    const r=await fetch('board.json?t='+Date.now());
-    if(!r.ok) throw new Error('board.json '+r.status);
-    DATA=await r.json();
-  }catch(e){
-    $('updated').textContent='error: '+e.message;
-    $('tickets').innerHTML='<div class="card empty">Could not load board.json.</div>';
-    return;
-  }
-  render();
-}
-
-function render(keepFocus){
-  const gen=DATA.generated_at?new Date(DATA.generated_at*1000):null;
-  const ageM=gen?(Date.now()-gen.getTime())/60000:null;
-  $('updated').textContent=gen?('data from '+fmtDur(ageM/60)+' ago'):'';
-  $('defcap').textContent=Number(defaultCap()).toLocaleString();
-  if(!keepFocus || document.activeElement!==$('cap')) $('cap').value=capital();
-
-  const s=$('stale');
-  if(ageM!=null && ageM>90){
-    s.style.display='block';
-    s.innerHTML=`This board was generated <b>${fmtDur(ageM/60)}</b> ago. Prices and`
-      +` smart-money flow move faster than that — re-check each market before placing.`;
-  } else { s.style.display='none'; }
-
-  const L=ledger();
-  $('v-account').textContent=money(L.account);
-  $('v-realized').textContent=signed(L.realized);
-  $('v-realized').className=L.realized>=0?'pos':'neg';
-  $('v-open').textContent=money(L.openExposure);
-  $('v-power').textContent=money(L.power);
-  $('v-power').className=L.power<0?'neg':'';
-
-  // Omen's 5% daily loss limit, estimated from what you logged in the last 24h.
-  const lim=L.start*((DATA.omen&&DATA.omen.daily_loss_fraction)||0.05);
-  const d=$('danger');
-  if(L.todayPnl<0 && Math.abs(L.todayPnl)>=lim*0.6){
-    d.style.display='block';
-    const breached=Math.abs(L.todayPnl)>=lim;
-    d.innerHTML=breached
-      ? `<b>Daily loss limit reached.</b> Logged losses in the last 24h are ${money(Math.abs(L.todayPnl))} against Omen's ${money(lim)} (5%) limit. Stop for the day.`
-      : `Logged losses in the last 24h are ${money(Math.abs(L.todayPnl))} of Omen's ${money(lim)} (5%) daily limit — ${money(lim-Math.abs(L.todayPnl))} of room left.`;
-  } else { d.style.display='none'; }
-
-  const minH=(DATA.filters&&DATA.filters.min_hours)||0;
-  const live=[], expired=[];
-  (DATA.tickets||[]).forEach(t=>{
-    const h=hoursLeft(t);
-    (h!=null && h<minH ? expired : live).push(t);
-  });
-
-  $('stats').innerHTML=
-    stat(live.length,'tickets')+
+  $('stats').innerHTML =
+    stat(live.length,'tickets now')+
     stat(DATA.considered||0,'signals scanned')+
-    stat(L.taken,'taken')+
+    stat(money(L.account),'account value')+
+    stat(signed(L.realized),'realized p&l', L.realized>=0?'pos':'neg')+
     stat(L.hit==null?'—':(L.hit*100).toFixed(0)+'%','hit rate')+
-    stat(L.won+'/'+L.lost,'won / lost')+
-    stat(L.skipped,'skipped');
+    stat(L.openCount,'open positions');
 
-  $('openrow').innerHTML = L.openCount
-    ? `<b>${L.openCount}</b> position${L.openCount!==1?'s':''} still open, `
-      +`${money(L.openExposure)} at risk — mark them Won or Lost as they resolve to keep capital accurate.`
-    : '';
-
-  const chips=Object.entries(DATA.rejected||{}).map(([k,v])=>`<span class="chip">${v} × ${esc(k)}</span>`);
-  if(expired.length) chips.unshift(`<span class="chip">${expired.length} × expired since generated</span>`);
-  (DATA.notes||[]).forEach(n=>chips.unshift(`<span class="chip">${esc(n)}</span>`));
-  $('filters').innerHTML=chips.join('');
-
-  $('tickets').innerHTML = live.length
-    ? live.map((t,i)=>ticket(t,i+1,L)).join('')
-    : `<div class="card empty">No tickets right now. ${esc((DATA.notes||[])[0]||'An empty board is a normal, and usually correct, outcome.')}</div>`;
+  $('tile-board-d').textContent = live.length
+    ? `${live.length} ticket${live.length!==1?'s':''} ranked and sized right now.`
+    : 'Nothing clears the filters right now — which is normal.';
+  $('tile-journal-d').textContent = L.taken
+    ? `${L.taken} placed · ${L.won}W/${L.lost}L · ${signed(L.realized)} realized.`
+    : 'Nothing logged yet. Mark tickets as placed to build a record.';
 }
-function stat(v,l){ return `<div class="stat"><b>${v}</b><span>${l}</span></div>`; }
-
-function ticket(t,rank,L){
-  const id=t.market_id+':'+t.outcome;
-  const st=(jread()[id]||{}).status||'';
-  const done=['taken','skipped','won','lost'].includes(st);
-  const h=hoursLeft(t), a=ageMin(t);
-  const z=sizeFor(t.entry_price, L.account, t.conviction);
-  const warnings=(t.warnings||[]).filter(w=>!/size capped by Omen/.test(w));
-  if(z && z.capped==='omen-market-limit') warnings.push("size capped by Omen's per-market contract limit");
-  if(z && z.cost>L.power) warnings.push('costs more than your buying power');
-  const why=(t.why||[]).map(w=>
-    /latest buy .* min ago/.test(w) && a!=null ? `latest buy ${a.toFixed(0)} min ago` :
-    /until it resolves/.test(w) && h!=null ? `${h.toFixed(0)}h until it resolves` : w);
-  return `<div class="ticket ${done?'done':''}">
-    <div class="thead">
-      <div class="rank">${rank}</div>
-      <div style="flex:1">
-        <div class="side">${esc(t.side_label)}</div>
-        ${t.url?`<a class="mkt" href="${esc(t.url)}" target="_blank" rel="noopener">verify on Polymarket ↗</a>`:''}
-      </div>
-      <div class="conv"><b>${(t.conviction*100).toFixed(0)}</b><span>conviction</span></div>
-    </div>
-    <div class="bar"><i style="width:${(t.conviction*100).toFixed(0)}%"></i></div>
-    <div class="grid">
-      <div class="f"><b>${t.entry_price.toFixed(2)}</b><span>buy at (when generated)</span></div>
-      <div class="f"><b>${z?z.contracts:'—'}</b><span>contracts</span></div>
-      <div class="f"><b>${z?'$'+z.cost.toFixed(2):'—'}</b><span>cost</span></div>
-      <div class="f"><b>${z?'$'+z.max_payout.toFixed(0):'—'}</b><span>if it wins</span></div>
-      <div class="f"><b>${fmtDur(h)}</b><span>to resolve</span></div>
-      <div class="f"><b>${t.whale_price.toFixed(2)}</b><span>whale paid</span></div>
-    </div>
-    <ul class="why">${why.map(w=>`<li>${esc(w)}</li>`).join('')}</ul>
-    ${warnings.length?`<div class="warn">⚠ ${warnings.map(esc).join(' · ')}</div>`:''}
-    <div class="acts">
-      ${done
-        ? `<span class="status">logged: ${esc(st)}</span>
-           <button onclick="mark('${esc(id)}','won')">Won</button>
-           <button onclick="mark('${esc(id)}','lost')">Lost</button>
-           <button onclick="mark('${esc(id)}','')">Undo</button>`
-        : `<button class="take" onclick="mark('${esc(id)}','taken')">I placed this</button>
-           <button class="skip" onclick="mark('${esc(id)}','skipped')">Skip</button>`}
-    </div>
-  </div>`;
-}
-
-function mark(id,status){
-  const j=jread();
-  if(!status){ delete j[id]; }
-  else{
-    const t=(DATA.tickets||[]).find(x=>x.market_id+':'+x.outcome===id)||{};
-    const prior=j[id]||{};
-    // Freeze the size at the moment you place it: later capital changes must not
-    // rewrite the cost of a trade you already made.
-    const z=(prior.contracts!=null)?null:sizeFor(t.entry_price, ledger().account, t.conviction);
-    j[id]=Object.assign({}, prior, {status, ts:Date.now()/1000,
-      title:t.title, side_label:t.side_label, entry_price:t.entry_price},
-      z?{contracts:z.contracts, cost:z.cost, conviction:t.conviction}:{});
-  }
-  jwrite(j); render();
-}
-
-function exportJournal(){
-  const payload={capital:capital(), ledger:ledger(), journal:jread()};
-  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob); a.download='predictionedge-journal.json'; a.click();
-}
-
+function stat(v,l,cls){ return `<div class="stat"><b class="${cls||''}">${v}</b><span>${l}</span></div>`; }
+function onLoadError(){ $('statusdot').className='dot bad'; $('statustext').textContent='board.json unavailable'; }
 load(); setInterval(load, 300000);
 </script>
 </body>
