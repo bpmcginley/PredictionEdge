@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>PredictionEdge — trade board</title>
+<style>
+  :root{
+    --bg:#0b0e14; --panel:#131823; --panel2:#1a2130; --line:#222b3d;
+    --txt:#e6edf3; --muted:#8b97a8; --accent:#36d399; --accent2:#5aa9ff;
+    --warn:#fbbf24; --bad:#f87171;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:20px 16px 60px}
+  header{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+  .logo{font-weight:700;font-size:20px}.logo span{color:var(--accent)}
+  .grow{flex:1}.muted{color:var(--muted)}
+  button{background:var(--panel2);color:var(--txt);border:1px solid var(--line);
+    border-radius:8px;padding:7px 12px;cursor:pointer;font-size:13px}
+  button:hover{border-color:var(--accent2)}
+  .banner{background:#1a1508;border:1px solid #3a2f10;color:#f5d98b;border-radius:12px;
+    padding:12px 14px;margin-bottom:14px;font-size:13px}
+  .banner b{color:var(--warn)}
+  .stale{background:#241111;border:1px solid #4a1f1f;color:#f8b4b4;border-radius:12px;
+    padding:10px 14px;margin-bottom:14px;font-size:13px;display:none}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:16px;margin-bottom:14px}
+  .stats{display:flex;gap:24px;flex-wrap:wrap}
+  .stat b{font-size:19px;display:block}.stat span{color:var(--muted);font-size:11px;
+    text-transform:uppercase;letter-spacing:.5px}
+  .ticket{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:16px;margin-bottom:12px}
+  .ticket.done{opacity:.5}
+  .thead{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+  .rank{background:var(--panel2);border:1px solid var(--line);border-radius:8px;
+    width:30px;height:30px;display:flex;align-items:center;justify-content:center;
+    font-weight:700;color:var(--muted);flex:none}
+  .side{font-size:16px;font-weight:650;line-height:1.35}
+  .conv{flex:none;text-align:right}
+  .conv b{font-size:18px;color:var(--accent)}
+  .conv span{display:block;color:var(--muted);font-size:10px;text-transform:uppercase}
+  .bar{height:4px;background:var(--panel2);border-radius:99px;overflow:hidden;margin:10px 0 12px}
+  .bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--accent2),var(--accent))}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:12px;
+    margin-bottom:12px}
+  .f b{font-size:15px;display:block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .f span{color:var(--muted);font-size:11px}
+  ul.why{margin:0 0 10px;padding-left:18px;color:var(--muted);font-size:13px}
+  ul.why li{margin:2px 0}
+  .warn{background:#241a08;border:1px solid #3d2c0c;color:var(--warn);
+    border-radius:8px;padding:7px 10px;font-size:12px;margin-bottom:10px}
+  .acts{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .take{border-color:#1f6f4a;color:var(--accent)}
+  .skip{border-color:#5a2a2a;color:var(--bad)}
+  .status{font-size:12px;padding:3px 9px;border-radius:99px;border:1px solid var(--line);
+    color:var(--muted)}
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .chip{background:var(--panel2);border:1px solid var(--line);border-radius:99px;
+    padding:4px 11px;font-size:12px;color:var(--muted)}
+  .empty{color:var(--muted);font-style:italic;padding:16px 2px}
+  a.mkt{color:var(--accent2);text-decoration:none;font-size:12px}
+  a.mkt:hover{text-decoration:underline}
+  footer{color:var(--muted);font-size:12px;margin-top:26px;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">Prediction<span>Edge</span> · trade board</div>
+    <div class="grow"></div>
+    <span class="muted" id="updated"></span>
+    <button onclick="load()">↻ Refresh</button>
+  </header>
+
+  <div class="banner">
+    <b>Manual placement only.</b> Omen prohibits API access, bots, browser automation and
+    signal-following services — all trading must be placed by you in the Omen app.
+    This board is research: it ranks ideas and shows its reasoning. You decide and you place.
+  </div>
+
+  <div class="stale" id="stale"></div>
+
+  <div class="card">
+    <div class="stats" id="stats"></div>
+    <div class="filters" id="filters"></div>
+  </div>
+
+  <div id="tickets"></div>
+
+  <footer>
+    Your journal is stored only in this browser (localStorage) — it is never uploaded or
+    published. Clearing site data erases it.
+    <button onclick="exportJournal()" style="margin-left:8px">Export journal</button>
+  </footer>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const KEY='pe_journal_v1';
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=n=>'$'+Number(n||0).toLocaleString(undefined,{maximumFractionDigits:0});
+let DATA={tickets:[]};
+
+const jread =()=>{ try{ return JSON.parse(localStorage.getItem(KEY))||{}; }catch(e){ return {}; } };
+const jwrite=o=>localStorage.setItem(KEY,JSON.stringify(o));
+
+function fmtDur(h){
+  if(h==null||isNaN(h)) return '—';
+  if(h<1) return Math.max(0,Math.round(h*60))+'m';
+  if(h<48) return h.toFixed(0)+'h';
+  return (h/24).toFixed(1)+'d';
+}
+// Recomputed at view time: a published snapshot must not freeze its own countdown.
+const hoursLeft=t=>{ if(!t.end_iso) return null;
+  const ms=Date.parse(t.end_iso); if(isNaN(ms)) return null;
+  return (ms-Date.now())/3600000; };
+const ageMin=t=>t.signal_ts?(Date.now()/1000-t.signal_ts)/60:null;
+
+function journalSummary(){
+  const rows=Object.values(jread());
+  const taken=rows.filter(r=>['taken','won','lost'].includes(r.status));
+  const won=rows.filter(r=>r.status==='won'), lost=rows.filter(r=>r.status==='lost');
+  const settled=won.length+lost.length;
+  const staked=[...won,...lost].reduce((a,r)=>a+(+r.cost||0),0);
+  const back=won.reduce((a,r)=>a+(+r.contracts||0),0);
+  return {taken:taken.length, won:won.length, lost:lost.length,
+          hit: settled? won.length/settled : null,
+          pnl: settled? back-staked : 0};
+}
+
+async function load(){
+  try{
+    const r=await fetch('board.json?t='+Date.now());
+    if(!r.ok) throw new Error('board.json '+r.status);
+    DATA=await r.json();
+  }catch(e){
+    $('updated').textContent='error: '+e.message;
+    $('tickets').innerHTML='<div class="card empty">Could not load board.json.</div>';
+    return;
+  }
+  render();
+}
+
+function render(){
+  const gen=DATA.generated_at?new Date(DATA.generated_at*1000):null;
+  const ageM=gen?(Date.now()-gen.getTime())/60000:null;
+  $('updated').textContent=gen?('data from '+fmtDur(ageM/60)+' ago'):'';
+
+  const s=$('stale');
+  if(ageM!=null && ageM>90){
+    s.style.display='block';
+    s.innerHTML=`This board was generated <b>${fmtDur(ageM/60)}</b> ago. Prices and`
+      +` smart-money flow move faster than that — re-check each market before placing.`;
+  } else { s.style.display='none'; }
+
+  const minH=(DATA.filters&&DATA.filters.min_hours)||0;
+  const live=[], expired=[];
+  (DATA.tickets||[]).forEach(t=>{
+    const h=hoursLeft(t);
+    (h!=null && h<minH ? expired : live).push(t);
+  });
+
+  const j=journalSummary();
+  $('stats').innerHTML=
+    stat(live.length,'tickets')+
+    stat(DATA.considered||0,'signals scanned')+
+    stat(money(DATA.account_size),'omen account')+
+    stat(j.taken,'taken')+
+    stat(j.hit==null?'—':(j.hit*100).toFixed(0)+'%','hit rate')+
+    stat((j.pnl>=0?'+':'')+'$'+Number(j.pnl).toFixed(0),'journal p&l');
+
+  const chips=Object.entries(DATA.rejected||{}).map(([k,v])=>`<span class="chip">${v} × ${esc(k)}</span>`);
+  if(expired.length) chips.unshift(`<span class="chip">${expired.length} × expired since generated</span>`);
+  (DATA.notes||[]).forEach(n=>chips.unshift(`<span class="chip">${esc(n)}</span>`));
+  $('filters').innerHTML=chips.join('');
+
+  $('tickets').innerHTML = live.length
+    ? live.map((t,i)=>ticket(t,i+1)).join('')
+    : `<div class="card empty">No tickets right now. ${esc((DATA.notes||[])[0]||'An empty board is a normal, and usually correct, outcome.')}</div>`;
+}
+function stat(v,l){ return `<div class="stat"><b>${v}</b><span>${l}</span></div>`; }
+
+function ticket(t,rank){
+  const id=t.market_id+':'+t.outcome;
+  const st=(jread()[id]||{}).status||'';
+  const done=['taken','skipped','won','lost'].includes(st);
+  const h=hoursLeft(t), a=ageMin(t);
+  const why=(t.why||[]).map(w=>
+    // These two are relative to generation time, so recompute them for the reader.
+    /latest buy .* min ago/.test(w) && a!=null ? `latest buy ${a.toFixed(0)} min ago` :
+    /until it resolves/.test(w) && h!=null ? `${h.toFixed(0)}h until it resolves` : w);
+  return `<div class="ticket ${done?'done':''}">
+    <div class="thead">
+      <div class="rank">${rank}</div>
+      <div style="flex:1">
+        <div class="side">${esc(t.side_label)}</div>
+        ${t.url?`<a class="mkt" href="${esc(t.url)}" target="_blank" rel="noopener">verify on Polymarket ↗</a>`:''}
+      </div>
+      <div class="conv"><b>${(t.conviction*100).toFixed(0)}</b><span>conviction</span></div>
+    </div>
+    <div class="bar"><i style="width:${(t.conviction*100).toFixed(0)}%"></i></div>
+    <div class="grid">
+      <div class="f"><b>${t.entry_price.toFixed(2)}</b><span>buy at (when generated)</span></div>
+      <div class="f"><b>${t.contracts}</b><span>contracts</span></div>
+      <div class="f"><b>$${t.cost.toFixed(2)}</b><span>cost</span></div>
+      <div class="f"><b>$${t.max_payout.toFixed(0)}</b><span>if it wins</span></div>
+      <div class="f"><b>${fmtDur(h)}</b><span>to resolve</span></div>
+      <div class="f"><b>${t.whale_price.toFixed(2)}</b><span>whale paid</span></div>
+    </div>
+    <ul class="why">${why.map(w=>`<li>${esc(w)}</li>`).join('')}</ul>
+    ${(t.warnings||[]).length?`<div class="warn">⚠ ${t.warnings.map(esc).join(' · ')}</div>`:''}
+    <div class="acts">
+      ${done
+        ? `<span class="status">logged: ${esc(st)}</span>
+           <button onclick="mark('${esc(id)}','won')">Won</button>
+           <button onclick="mark('${esc(id)}','lost')">Lost</button>
+           <button onclick="mark('${esc(id)}','')">Undo</button>`
+        : `<button class="take" onclick="mark('${esc(id)}','taken')">I placed this</button>
+           <button class="skip" onclick="mark('${esc(id)}','skipped')">Skip</button>`}
+    </div>
+  </div>`;
+}
+
+function mark(id,status){
+  const j=jread();
+  if(!status){ delete j[id]; }
+  else{
+    const t=(DATA.tickets||[]).find(x=>x.market_id+':'+x.outcome===id)||{};
+    j[id]=Object.assign({}, j[id], {status, ts:Date.now()/1000,
+      title:t.title, side_label:t.side_label, entry_price:t.entry_price,
+      contracts:t.contracts, cost:t.cost, conviction:t.conviction});
+  }
+  jwrite(j); render();
+}
+
+function exportJournal(){
+  const blob=new Blob([JSON.stringify(jread(),null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob); a.download='predictionedge-journal.json'; a.click();
+}
+
+load(); setInterval(load, 300000);
+</script>
+</body>
+</html>

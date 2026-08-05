@@ -62,10 +62,12 @@ def build_board_payload(cfg: Config, force_mock: bool = False) -> dict:
             "hours_to_resolve": t.hours_to_resolve, "n_wallets": t.n_wallets,
             "whale_usd": t.whale_usd, "minutes_ago": t.minutes_ago,
             "liquidity": t.liquidity, "url": t.url,
+            "end_iso": t.end_iso, "signal_ts": t.signal_ts,
             "why": t.why, "warnings": t.warnings,
         })
     return {
         "generated": time.strftime("%Y-%m-%d %H:%M:%S"),
+        "generated_at": time.time(),
         "account_size": cfg.omen_account_size,
         "tickets": tickets,
         "considered": report.considered if report else 0,

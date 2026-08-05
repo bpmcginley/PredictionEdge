@@ -1,0 +1,62 @@
+name: Publish trade board
+
+# Regenerates docs/board.json so GitHub Pages can serve a static board.
+# Reads only public, unauthenticated Polymarket data - this workflow needs NO secrets,
+# and never touches an Omen, Kalshi or Polymarket US account.
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"    # GitHub often runs these late; treat it as "about every 15m"
+  workflow_dispatch:           # lets you refresh on demand from the Actions tab
+  push:
+    branches: [main]
+    paths: [predictionedge/**, .github/workflows/board.yml]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-board
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install runtime deps
+        run: pip install --quiet requests cryptography
+
+      - name: Build the board
+        env:
+          # No .env exists in CI, so the board's settings are declared here.
+          # whale_source MUST be polymarket or the provider is a neutral stub
+          # and the board comes out silently empty.
+          PE_WHALE_SOURCE: polymarket
+          PE_RESEARCH_ONLY: "1"
+          PE_LIVE_TRADING: "0"
+          PE_PMUS_ENABLED: "0"
+          PE_OMEN_ACCOUNT_SIZE: "100000"
+          PE_OMEN_PER_TRADE_FRACTION: "0.01"
+          PE_BOARD_MIN_HOURS: "24"
+          PE_BOARD_MAX_DAYS: "30"
+          PE_BOARD_MAX_DRIFT_C: "4"
+          PE_BOARD_MIN_CONVICTION: "0.35"
+        run: python -m predictionedge.publish --out docs/board.json
+
+      - name: Commit if the board changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/board.json
+          if git diff --staged --quiet; then
+            echo "board unchanged - nothing to commit"
+          else
+            git commit -m "board: refresh $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push
+          fi

@@ -50,6 +50,10 @@ class TradeTicket:
     minutes_ago: float
     liquidity: float
     url: str
+    # Absolutes, so a published snapshot can recompute "resolves in" at view time
+    # rather than freezing the countdown at the moment it was generated.
+    end_iso: str = ""
+    signal_ts: float = 0.0
     why: list[str] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
 
@@ -275,6 +279,8 @@ def build_board(cfg, client, scorer, account: OmenAccount, *,
             minutes_ago=round(s.minutes_ago),
             liquidity=round(float(m.get("liquidity") or 0.0)),
             url=event_url(s.event_slug) or event_url(m.get("slug", "")),
+            end_iso=m.get("end_date", ""),
+            signal_ts=now - s.minutes_ago * 60.0,
             why=why,
             warnings=warnings,
         ))

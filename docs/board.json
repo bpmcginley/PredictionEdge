@@ -1,0 +1,52 @@
+{
+  "generated": "2026-08-05 11:19:17",
+  "generated_at": 1785943157.1030126,
+  "account_size": 100000.0,
+  "tickets": [
+    {
+      "market_id": "0x99599019ce3bd193926cd5f0c786f614283b6c358719c7c4e5581c6421d259d6",
+      "title": "National Bank Open: Rafael Jodar vs Corentin Moutet",
+      "side_label": "Rafael Jodar \u2014 National Bank Open: Rafael Jodar vs Corentin Moutet",
+      "outcome": "Rafael Jodar",
+      "entry_price": 0.735,
+      "whale_price": 0.73,
+      "drift_c": 0.5,
+      "contracts": 614,
+      "cost": 451.29,
+      "max_payout": 614.0,
+      "conviction": 0.452,
+      "hours_to_resolve": 190.7,
+      "n_wallets": 1,
+      "whale_usd": 15236,
+      "minutes_ago": 506,
+      "liquidity": 282213,
+      "url": "https://polymarket.com/event/atp-jodar-moutet-2026-08-06",
+      "end_iso": "2026-08-13T14:00:00Z",
+      "signal_ts": 1785912818.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$15,236 of smart money behind it",
+        "latest buy 506 min ago",
+        "still near their entry price",
+        "191h until it resolves",
+        "$282,213 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    }
+  ],
+  "considered": 9,
+  "rejected": {
+    "in-play (event already started)": 4,
+    "signal too old for this market's horizon": 4
+  },
+  "notes": [],
+  "filters": {
+    "min_hours": 24.0,
+    "max_days": 30.0,
+    "max_drift_c": 4.0,
+    "min_conviction": 0.35,
+    "min_whale_usd": 10000.0
+  }
+}
