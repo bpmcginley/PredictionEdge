@@ -1,16 +1,273 @@
 {
-  "generated": "2026-08-05 20:36:40",
-  "generated_at": 1785962200.2391922,
+  "generated": "2026-08-05 16:57:14",
+  "generated_at": 1785963434.9237108,
   "account_size": 100000.0,
-  "tickets": [],
-  "considered": 113,
-  "rejected": {
-    "could not price this outcome": 55,
-    "signal too old for this market's horizon": 58
-  },
-  "notes": [
-    "Signals came in but none cleared the filters \u2014 that is a normal, and usually correct, outcome."
+  "tickets": [
+    {
+      "market_id": "0xfadb4ce0f2ff95054d2e58c5425bbf2c9c348a6ef588dceeb44ea40f183ed50f",
+      "title": "National Bank Open: Titouan Droguet vs Felix Auger-Aliassime",
+      "side_label": "Felix Auger-Aliassime \u2014 National Bank Open: Titouan Droguet vs Felix Auger-Aliassime",
+      "outcome": "Felix Auger-Aliassime",
+      "entry_price": 0.505,
+      "whale_price": 0.529,
+      "drift_c": -2.45,
+      "contracts": 1772,
+      "cost": 894.86,
+      "max_payout": 1772.0,
+      "conviction": 0.895,
+      "hours_to_resolve": 185.0,
+      "n_wallets": 2,
+      "whale_usd": 473077,
+      "minutes_ago": 6,
+      "liquidity": 798881,
+      "url": "https://polymarket.com/event/atp-droguet-augeral-2026-08-06",
+      "end_iso": "2026-08-13T14:00:00Z",
+      "signal_ts": 1785963069.0,
+      "why": [
+        "2 profitable wallets on this side",
+        "$473,077 of smart money behind it",
+        "latest buy 6 min ago",
+        "price 2.5c cheaper than they paid",
+        "185h until it resolves",
+        "$798,881 liquidity"
+      ],
+      "warnings": []
+    },
+    {
+      "market_id": "0xb4786d7bf58ec9e49caa2bda28871575a9d73db5dfe87d56b5fc764e15dd5692",
+      "title": "National Bank Open: Alex Michelsen vs Francisco Cerundolo",
+      "side_label": "Alex Michelsen \u2014 National Bank Open: Alex Michelsen vs Francisco Cerundolo",
+      "outcome": "Alex Michelsen",
+      "entry_price": 0.585,
+      "whale_price": 0.59,
+      "drift_c": -0.5,
+      "contracts": 1201,
+      "cost": 702.58,
+      "max_payout": 1201.0,
+      "conviction": 0.703,
+      "hours_to_resolve": 185.0,
+      "n_wallets": 2,
+      "whale_usd": 19500,
+      "minutes_ago": 30,
+      "liquidity": 340208,
+      "url": "https://polymarket.com/event/atp-michels-cerundo-2026-08-06",
+      "end_iso": "2026-08-13T14:00:00Z",
+      "signal_ts": 1785961601.0,
+      "why": [
+        "2 profitable wallets on this side",
+        "$19,500 of smart money behind it",
+        "latest buy 30 min ago",
+        "still near their entry price",
+        "185h until it resolves",
+        "$340,208 liquidity"
+      ],
+      "warnings": []
+    },
+    {
+      "market_id": "0xfa7715db801d85d5f0909d56c4cf912b3412d5b4f043880f042293a3f29e3b3c",
+      "title": "St. Louis Cardinals vs. New York Yankees",
+      "side_label": "St. Louis Cardinals \u2014 St. Louis Cardinals vs. New York Yankees",
+      "outcome": "St. Louis Cardinals",
+      "entry_price": 0.415,
+      "whale_price": 0.41,
+      "drift_c": 0.5,
+      "contracts": 1624,
+      "cost": 673.96,
+      "max_payout": 1624.0,
+      "conviction": 0.674,
+      "hours_to_resolve": 170.1,
+      "n_wallets": 1,
+      "whale_usd": 75637,
+      "minutes_ago": 16,
+      "liquidity": 519795,
+      "url": "https://polymarket.com/event/mlb-stl-nyy-2026-08-05",
+      "end_iso": "2026-08-12T23:05:00Z",
+      "signal_ts": 1785962487.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$75,637 of smart money behind it",
+        "latest buy 16 min ago",
+        "still near their entry price",
+        "170h until it resolves",
+        "$519,795 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0xcd889a0463f374ff80b78b21cc3b7df5deb765adb1da4d408230fdb77a527ffa",
+      "title": "National Bank Open: Panna Udvardy vs Naomi Osaka",
+      "side_label": "Panna Udvardy \u2014 National Bank Open: Panna Udvardy vs Naomi Osaka",
+      "outcome": "Panna Udvardy",
+      "entry_price": 0.085,
+      "whale_price": 0.101,
+      "drift_c": -1.58,
+      "contracts": 1900,
+      "cost": 161.5,
+      "max_payout": 1900.0,
+      "conviction": 0.616,
+      "hours_to_resolve": 185.0,
+      "n_wallets": 1,
+      "whale_usd": 19833,
+      "minutes_ago": 15,
+      "liquidity": 224629,
+      "url": "https://polymarket.com/event/wta-udvardy-osaka-2026-08-06",
+      "end_iso": "2026-08-13T14:00:00Z",
+      "signal_ts": 1785962526.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$19,833 of smart money behind it",
+        "latest buy 15 min ago",
+        "price 1.6c cheaper than they paid",
+        "185h until it resolves",
+        "$224,629 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion",
+        "size capped by Omen's per-market contract limit"
+      ]
+    },
+    {
+      "market_id": "0x7e80d3794e50e7fb8626efb9a7826fd6deedd621f48e609a04f453235d6b7e60",
+      "title": "Detroit Tigers vs. Seattle Mariners",
+      "side_label": "Detroit Tigers \u2014 Detroit Tigers vs. Seattle Mariners",
+      "outcome": "Detroit Tigers",
+      "entry_price": 0.405,
+      "whale_price": 0.41,
+      "drift_c": -0.5,
+      "contracts": 1481,
+      "cost": 599.81,
+      "max_payout": 1481.0,
+      "conviction": 0.6,
+      "hours_to_resolve": 172.7,
+      "n_wallets": 1,
+      "whale_usd": 9439,
+      "minutes_ago": 6,
+      "liquidity": 586767,
+      "url": "https://polymarket.com/event/mlb-det-sea-2026-08-05",
+      "end_iso": "2026-08-13T01:40:00Z",
+      "signal_ts": 1785963087.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$9,439 of smart money behind it",
+        "latest buy 6 min ago",
+        "still near their entry price",
+        "173h until it resolves",
+        "$586,767 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0xc90f7c73fe8d576e32eaf242248b4943e31eea49d9af15267398903c04db4e21",
+      "title": "National Bank Open: Alycia Parks vs Alexandra Eala",
+      "side_label": "Alexandra Eala \u2014 National Bank Open: Alycia Parks vs Alexandra Eala",
+      "outcome": "Alexandra Eala",
+      "entry_price": 0.825,
+      "whale_price": 0.83,
+      "drift_c": -0.5,
+      "contracts": 649,
+      "cost": 535.42,
+      "max_payout": 649.0,
+      "conviction": 0.536,
+      "hours_to_resolve": 185.0,
+      "n_wallets": 1,
+      "whale_usd": 4000,
+      "minutes_ago": 59,
+      "liquidity": 230102,
+      "url": "https://polymarket.com/event/wta-parks-eala-2026-08-06",
+      "end_iso": "2026-08-13T14:00:00Z",
+      "signal_ts": 1785959906.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$4,000 of smart money behind it",
+        "latest buy 59 min ago",
+        "still near their entry price",
+        "185h until it resolves",
+        "$230,102 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x6ce279f3ee7b7f23579f7095451d62bb1974d0e994d654b5fc401c3a5fc2af85",
+      "title": "National Bank Open: Renata Zarazua vs Leylah Fernandez",
+      "side_label": "Leylah Fernandez \u2014 National Bank Open: Renata Zarazua vs Leylah Fernandez",
+      "outcome": "Leylah Fernandez",
+      "entry_price": 0.745,
+      "whale_price": 0.75,
+      "drift_c": -0.5,
+      "contracts": 695,
+      "cost": 517.77,
+      "max_payout": 695.0,
+      "conviction": 0.518,
+      "hours_to_resolve": 185.0,
+      "n_wallets": 1,
+      "whale_usd": 6000,
+      "minutes_ago": 91,
+      "liquidity": 247866,
+      "url": "https://polymarket.com/event/wta-zarazua-fernand-2026-08-06",
+      "end_iso": "2026-08-13T14:00:00Z",
+      "signal_ts": 1785957978.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$6,000 of smart money behind it",
+        "latest buy 91 min ago",
+        "still near their entry price",
+        "185h until it resolves",
+        "$247,866 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x10a3732cba02a69e466314f3a114684571613c1b4f36c3f3b7e9681ef5e87196",
+      "title": "Miami Marlins vs. Atlanta Braves",
+      "side_label": "Atlanta Braves \u2014 Miami Marlins vs. Atlanta Braves",
+      "outcome": "Atlanta Braves",
+      "entry_price": 0.535,
+      "whale_price": 0.54,
+      "drift_c": -0.5,
+      "contracts": 968,
+      "cost": 517.88,
+      "max_payout": 968.0,
+      "conviction": 0.518,
+      "hours_to_resolve": 170.3,
+      "n_wallets": 1,
+      "whale_usd": 5000,
+      "minutes_ago": 86,
+      "liquidity": 487608,
+      "url": "https://polymarket.com/event/mlb-mia-atl-2026-08-05",
+      "end_iso": "2026-08-12T23:15:00Z",
+      "signal_ts": 1785958247.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$5,000 of smart money behind it",
+        "latest buy 86 min ago",
+        "still near their entry price",
+        "170h until it resolves",
+        "$487,608 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    }
   ],
+  "considered": 119,
+  "rejected": {
+    "in-play (event already started)": 37,
+    "no market metadata": 35,
+    "signal too old for this market's horizon": 1,
+    "already resolved": 21,
+    "price ran away from the whale's entry": 1,
+    "resolves in under 3h": 6,
+    "duplicate event (kept the stronger side)": 2
+  },
+  "notes": [],
   "omen": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
@@ -19,7 +276,7 @@
     "daily_loss_fraction": 0.05
   },
   "filters": {
-    "min_hours": 24.0,
+    "min_hours": 3.0,
     "max_days": 30.0,
     "max_drift_c": 4.0,
     "min_conviction": 0.35,

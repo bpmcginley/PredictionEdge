@@ -15,6 +15,9 @@ import json
 from pathlib import Path
 
 GAMMA = "https://gamma-api.polymarket.com"
+# Max condition_ids per metadata request. Gamma rejects the call outright past roughly
+# this many repeated params, so keep it well clear of the edge.
+_META_CHUNK = 20
 
 
 def _default_fetch(url: str, params: dict):
@@ -70,12 +73,19 @@ def market_meta(condition_ids: list[str], *, base: str = GAMMA, fetch=None) -> d
     ids = [c for c in condition_ids if c]
     if not ids:
         return {}
-    params = [("condition_ids", c) for c in ids] + [("limit", len(ids) + 5)]
-    try:
-        data = (fetch or _default_fetch)(f"{base}/markets", params)
-    except Exception:  # noqa: BLE001
-        return {}
-    rows = data if isinstance(data, list) else (data.get("data") or data.get("markets") or [])
+    # One repeated param per id, so a large batch overruns what Gamma will accept and
+    # the whole call fails - which is silent and catastrophic here, because a market
+    # with no metadata skips every date check and then dies as "unpriceable". Chunk it.
+    rows: list = []
+    getter = fetch or _default_fetch
+    for i in range(0, len(ids), _META_CHUNK):
+        chunk = ids[i:i + _META_CHUNK]
+        params = [("condition_ids", c) for c in chunk] + [("limit", len(chunk) + 5)]
+        try:
+            data = getter(f"{base}/markets", params)
+        except Exception:  # noqa: BLE001 - one bad chunk must not lose the rest
+            continue
+        rows += data if isinstance(data, list) else (data.get("data") or data.get("markets") or [])
     out: dict[str, dict] = {}
     for m in rows:
         cid = m.get("conditionId") or m.get("condition_id")

@@ -66,9 +66,26 @@ def test_in_play_market_is_rejected():
 
 def test_market_resolving_too_soon_is_rejected():
     trades = [_trade("0xSHARP1", "A", "Yes", 60_000, 0.40)]
-    r = _board(trades, {"A": _meta(end_date=_iso(hours=3))})
+    r = _board(trades, {"A": _meta(end_date=_iso(hours=1))})
     assert r.tickets == []
     assert any("under" in k for k in r.rejected)
+
+
+def test_same_day_pregame_market_is_allowed():
+    """Informed money on sports arrives late; 4h out is a normal, wanted ticket."""
+    trades = [_trade("0xSHARP1", "A", "Yes", 60_000, 0.40)]
+    r = _board(trades, {"A": _meta(end_date=_iso(hours=4),
+                                   game_start=_iso(hours=1))})
+    assert len(r.tickets) == 1
+
+
+def test_same_day_but_already_started_is_still_rejected():
+    """Loosening the horizon must not reopen the in-play trap."""
+    trades = [_trade("0xSHARP1", "A", "Yes", 60_000, 0.40)]
+    r = _board(trades, {"A": _meta(end_date=_iso(hours=4),
+                                   game_start=_iso(minutes=-20))})
+    assert r.tickets == []
+    assert any("in-play" in k for k in r.rejected)
 
 
 def test_price_that_ran_away_is_rejected():
@@ -174,6 +191,14 @@ def test_report_counts_everything_considered():
 def test_no_signals_yields_a_note_not_a_crash():
     r = _board([], {})
     assert r.tickets == [] and r.notes
+
+
+def test_missing_metadata_fails_closed():
+    """No metadata means no date checks are possible, so it must reject, not pass."""
+    trades = [_trade("0xSHARP1", "A", "Yes", 60_000, 0.40)]
+    r = _board(trades, {})          # metadata lookup returned nothing for this market
+    assert r.tickets == []
+    assert any("no market metadata" in k for k in r.rejected)
 
 
 def test_thin_liquidity_raises_a_warning():

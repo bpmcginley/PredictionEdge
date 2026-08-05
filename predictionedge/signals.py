@@ -190,7 +190,15 @@ def build_board(cfg, client, scorer, account: OmenAccount, *,
 
     candidates: list[TradeTicket] = []
     for s in signals:
-        m = metas.get(s.market_id, {})
+        m = metas.get(s.market_id)
+
+        # Fail CLOSED on missing metadata. Without it there is no end date and no game
+        # start, so every date filter below would silently pass - "we know nothing" must
+        # never read as "nothing is wrong". A dropped metadata batch once let the whole
+        # board through unchecked before dying at the pricing step.
+        if not m:
+            report.reject("no market metadata")
+            continue
 
         if m.get("closed") or not m.get("active", True):
             report.reject("market closed")

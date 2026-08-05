@@ -117,7 +117,11 @@ class Config:
     research_only: bool = True
     omen_account_size: float = 100_000.0    # simulated capital of the Omen account
     omen_per_trade_fraction: float = 0.01   # our risk budget per idea (not an Omen rule)
-    board_min_hours: float = 24.0           # skip anything resolving sooner (in-play trap)
+    # Skip anything resolving sooner than this. Deliberately short: for same-day sports
+    # the informed money arrives LATE (lineups, injuries, weather), so a whale betting
+    # 3h out knows more than one betting 3 days out. The June-26 disaster was in-play
+    # copying, which the separate game_start filter blocks - this one never did that job.
+    board_min_hours: float = 3.0
     board_max_days: float = 30.0            # and skip the far future - no edge a year out
     # Staleness scales with the market's own horizon: a 9h-old position on something
     # resolving in two days is still information; the same age on a match in progress
