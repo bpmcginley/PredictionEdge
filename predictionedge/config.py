@@ -79,11 +79,22 @@ class Config:
 
     # Copy-trading: mirror profitable Polymarket wallets (execute on Polymarket US):
     copytrade_enabled: bool = True
-    copytrade_min_usd: float = 10000.0   # min trade size to count as a whale buy
+    # Min trade size to count as a whale buy. Tuned WITH copytrade_feed_limit: the two
+    # interact through the time window. A $10k floor over 1500 trades reaches ~45h back,
+    # so nearly everything fails staleness; $2k fills the same window with fresher flow.
+    # Measured 2026-08-05: $10k -> 0 tickets, $2k -> 8, same filters.
+    copytrade_min_usd: float = 2000.0
     copytrade_min_wallets: int = 1       # how many profitable wallets must agree
     copytrade_max_price: float = 0.90    # skip near-resolved markets (no upside)
     copytrade_size_usd: float = 5.0      # $ per copy order (small; scale after validation)
     copytrade_categories: tuple[str, ...] = ("OVERALL", "SPORTS", "POLITICS", "CRYPTO")
+    # How far back the trade feed reaches. This - not min_usd - is what caps how many
+    # signals exist: 500 trades is only ~20h, while staleness downstream allows 48h.
+    copytrade_feed_limit: int = 1500
+    # ALL-time boards are dominated by wallets that got rich years ago; MONTH/WEEK
+    # surface who is informed right now. Union of both is a deeper, fresher universe.
+    copytrade_time_periods: tuple[str, ...] = ("ALL", "MONTH", "WEEK")
+    copytrade_leaderboard_limit: int = 100
 
     # --- Whale (supporting) signal ---
     whale_weight: float = 0.0              # 0 until validated on real on-chain data
@@ -201,6 +212,12 @@ class Config:
             copytrade_categories=tuple(s.strip() for s in
                                        e.get("PE_COPYTRADE_CATEGORIES", "").split(",")
                                        if s.strip()) or cls.copytrade_categories,
+            copytrade_feed_limit=int(f("PE_COPYTRADE_FEED_LIMIT", cls.copytrade_feed_limit)),
+            copytrade_time_periods=tuple(s.strip() for s in
+                                         e.get("PE_COPYTRADE_TIME_PERIODS", "").split(",")
+                                         if s.strip()) or cls.copytrade_time_periods,
+            copytrade_leaderboard_limit=int(f("PE_COPYTRADE_LEADERBOARD_LIMIT",
+                                              cls.copytrade_leaderboard_limit)),
             whale_weight=f("PE_WHALE_WEIGHT", cls.whale_weight),
             whale_source=e.get("PE_WHALE_SOURCE", cls.whale_source),
             whale_map_path=e.get("PE_WHALE_MAP", cls.whale_map_path),

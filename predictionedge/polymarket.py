@@ -116,12 +116,16 @@ class LivePolymarketDataClient:
     def __init__(self, data_base: str = "https://data-api.polymarket.com"):
         self.data_base = data_base.rstrip("/")
 
-    def leaderboard(self, category: str = "OVERALL") -> list[WalletStat]:
+    def leaderboard(self, category: str = "OVERALL", time_period: str = "ALL",
+                    limit: int = 50) -> list[WalletStat]:
+        """Top wallets by PnL. ``time_period`` ALL captures career track record;
+        shorter windows (MONTH/WEEK) surface who is hot *now*, which all-time PnL
+        hides behind whales who made their money years ago."""
         import requests
         try:
             resp = requests.get(f"{self.data_base}/v1/leaderboard",
-                                params={"orderBy": "PNL", "timePeriod": "ALL",
-                                        "category": category, "limit": 50},
+                                params={"orderBy": "PNL", "timePeriod": time_period,
+                                        "category": category, "limit": limit},
                                 timeout=15)
             resp.raise_for_status()
             rows = resp.json()

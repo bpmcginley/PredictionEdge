@@ -168,6 +168,9 @@ def build_board(cfg, client, scorer, account: OmenAccount, *,
             min_usd=cfg.copytrade_min_usd,
             min_wallets=cfg.copytrade_min_wallets,
             max_price=cfg.copytrade_max_price,
+            limit=cfg.copytrade_feed_limit,
+            time_periods=cfg.copytrade_time_periods,
+            leaderboard_limit=cfg.copytrade_leaderboard_limit,
             now_ts=now,
         )
     except Exception as exc:  # noqa: BLE001

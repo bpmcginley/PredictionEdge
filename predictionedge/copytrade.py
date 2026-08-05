@@ -31,25 +31,45 @@ class CopySignal:
     event_slug: str = ""
 
 
-def smart_universe(client, scorer: SmartWalletScorer, categories) -> set[str]:
-    """Union of profitable wallets across the given leaderboard categories."""
+def smart_universe(client, scorer: SmartWalletScorer, categories,
+                   time_periods=("ALL",), limit: int = 50) -> set[str]:
+    """Union of profitable wallets across leaderboard categories and time windows.
+
+    Sweeping several windows matters: an ALL-time board is dominated by wallets that
+    made their money long ago, while a MONTH board surfaces who is informed right now.
+    A wallet only needs to clear the quality bar on one of them to be worth following.
+    """
     smart: set[str] = set()
     for cat in categories:
-        try:
-            smart |= scorer.smart_set(client.leaderboard(cat))
-        except Exception:  # noqa: BLE001
-            continue
+        for period in time_periods:
+            try:
+                rows = client.leaderboard(cat, period, limit)
+            except TypeError:      # older/mock clients take category only
+                try:
+                    rows = client.leaderboard(cat)
+                except Exception:  # noqa: BLE001
+                    continue
+            except Exception:      # noqa: BLE001
+                continue
+            smart |= scorer.smart_set(rows)
     return smart
 
 
 def find_copy_signals(client, scorer: SmartWalletScorer, *,
                       categories=("OVERALL", "SPORTS", "POLITICS", "CRYPTO"),
-                      min_usd: float = 10000, limit: int = 500,
+                      min_usd: float = 10000, limit: int = 1500,
                       max_price: float = 0.90, min_wallets: int = 1,
+                      time_periods=("ALL",), leaderboard_limit: int = 50,
                       now_ts: float | None = None) -> list[CopySignal]:
-    """Recent large BUYS by profitable wallets, grouped into copy signals."""
+    """Recent large BUYS by profitable wallets, grouped into copy signals.
+
+    ``limit`` is how far back the trade feed reaches, and it - not ``min_usd`` - is
+    the real constraint on how much signal exists: 500 trades covers only ~20h, while
+    the staleness rule downstream accepts up to 48h. Lowering ``min_usd`` instead
+    *shrinks* the window, since the same 500 slots fill with smaller trades.
+    """
     now = time.time() if now_ts is None else now_ts
-    smart = smart_universe(client, scorer, categories)
+    smart = smart_universe(client, scorer, categories, time_periods, leaderboard_limit)
     if not smart:
         return []
 
