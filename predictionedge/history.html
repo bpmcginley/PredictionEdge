@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PredictionEdge — Order history</title>
+<style>
+  :root{
+    --bg:#0b0e14; --panel:#131823; --panel2:#1a2130; --line:#222b3d;
+    --txt:#e6edf3; --muted:#8b97a8; --accent:#36d399; --accent2:#5aa9ff; --bad:#f87171;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:1100px;margin:0 auto;padding:22px}
+  header{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+  .logo{font-weight:700;font-size:20px}.logo span{color:var(--accent)}
+  .grow{flex:1}.muted{color:var(--muted)}
+  a.nav{color:var(--accent2);text-decoration:none;border:1px solid var(--line);
+    border-radius:8px;padding:7px 12px;font-size:13px}
+  a.nav:hover{border-color:var(--accent2)}
+  button{background:var(--panel2);color:var(--txt);border:1px solid var(--line);
+    border-radius:8px;padding:7px 12px;cursor:pointer;font-size:13px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .stats{display:flex;gap:22px;margin-bottom:14px;flex-wrap:wrap}
+  .stat b{font-size:20px}.stat span{color:var(--muted);font-size:12px;display:block}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{text-align:left;color:var(--muted);font-weight:600;font-size:11px;text-transform:uppercase;
+    letter-spacing:.5px;padding:8px 10px;border-bottom:1px solid var(--line)}
+  td{padding:9px 10px;border-bottom:1px solid #161d2b}
+  tr:last-child td{border-bottom:none}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .side-yes{color:var(--accent)}.side-no{color:var(--accent2)}
+  .pill{padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;border:1px solid var(--line)}
+  .st-paper{color:var(--muted)} .st-open,.st-placed{color:var(--accent2)}
+  .st-filled,.st-settled{color:var(--accent)} .st-cancelled,.st-rejected{color:var(--bad)}
+  .venue{font-size:11px;padding:2px 7px;border-radius:6px;background:var(--panel2);border:1px solid var(--line)}
+  .empty{color:var(--muted);font-style:italic;padding:14px 10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">Prediction<span>Edge</span> · order history</div>
+    <div class="grow"></div>
+    <span class="muted" id="updated"></span>
+    <button onclick="load()">↻ Refresh</button>
+    <a class="nav" href="/">← Dashboard</a>
+  </header>
+
+  <div class="card">
+    <div class="stats" id="stats"></div>
+    <table><thead><tr>
+      <th>Time</th><th>Venue</th><th>Market</th><th>Side</th><th>Price</th>
+      <th>Qty</th><th>Stake</th><th>Status</th><th>Source</th>
+    </tr></thead><tbody id="rows"></tbody></table>
+  </div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const shortTime=ts=>{ if(!ts) return '—'; const d=new Date(ts);
+  return isNaN(d)?ts:d.toLocaleString(undefined,{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}); };
+function venue(t){ return (t||'').startsWith('PMUS:') ? 'Polymarket US' : 'Kalshi'; }
+function mkt(t){ return (t||'').replace(/^PMUS:/,''); }
+
+async function load(){
+  try{
+    const r=await fetch('/api/orders'); const d=await r.json();
+    const o=d.orders||[];
+    $('updated').textContent='updated '+new Date().toLocaleTimeString();
+    // summary
+    const live=o.filter(x=>x.status!=='paper');
+    const paper=o.filter(x=>x.status==='paper');
+    const stake=live.reduce((a,x)=>a+(x.stake||0),0);
+    $('stats').innerHTML=
+      stat(o.length,'orders')+stat(live.length,'live')+stat(paper.length,'paper')+
+      stat('$'+stake.toFixed(2),'live stake');
+    $('rows').innerHTML = o.length ? o.map(x=>`<tr>
+      <td class="muted">${shortTime(x.ts)}</td>
+      <td><span class="venue">${venue(x.ticker)}</span></td>
+      <td class="mono">${mkt(x.ticker)}</td>
+      <td class="side-${(x.side||'').toLowerCase()}">${(x.side||'').toUpperCase()}</td>
+      <td class="mono">${x.price}</td>
+      <td class="mono">${x.contracts}</td>
+      <td class="mono">$${(x.stake||0).toFixed(2)}</td>
+      <td><span class="pill st-${x.status}">${x.status}</span></td>
+      <td class="muted">${x.kind}${x.note? ' · '+x.note : ''}</td>
+    </tr>`).join('') : '<tr><td colspan="9" class="empty">No orders yet. Arm the bot on the dashboard to start.</td></tr>';
+  }catch(e){ $('updated').textContent='error: '+e; }
+}
+function stat(v,l){ return `<div class="stat"><b>${v}</b><span>${l}</span></div>`; }
+load(); setInterval(load, 15000);
+</script>
+</body>
+</html>

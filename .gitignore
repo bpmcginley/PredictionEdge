@@ -1,0 +1,23 @@
+# Secrets
+.env
+*.pem
+*.key
+
+# Paper-trade output / local data
+data/
+*.jsonl
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/

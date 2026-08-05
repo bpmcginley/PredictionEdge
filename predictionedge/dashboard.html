@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PredictionEdge</title>
+<style>
+  :root{
+    --bg:#0b0e14; --panel:#131823; --panel2:#1a2130; --line:#222b3d;
+    --txt:#e6edf3; --muted:#8b97a8; --accent:#36d399; --accent2:#5aa9ff;
+    --warn:#fbbf24; --bad:#f87171; --chip:#202a3d;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(1200px 600px at 70% -10%,#16203200,#0b0e14),var(--bg);
+    color:var(--txt);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:1100px;margin:0 auto;padding:22px}
+  header{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+  .logo{font-weight:700;font-size:20px;letter-spacing:.3px}
+  .logo span{color:var(--accent)}
+  .badge{padding:3px 10px;border-radius:999px;background:var(--chip);color:var(--accent);
+    font-size:12px;font-weight:600;border:1px solid var(--line)}
+  .badge.live{color:var(--bad)}
+  .grow{flex:1}
+  .muted{color:var(--muted)}
+  button{background:var(--panel2);color:var(--txt);border:1px solid var(--line);
+    border-radius:8px;padding:7px 12px;cursor:pointer;font-size:13px}
+  button:hover{border-color:var(--accent)}
+  button.armable{border-color:var(--accent);color:var(--accent)}
+  button.armed{background:var(--bad);color:#0b0e14;border-color:var(--bad);font-weight:700}
+  .grid{display:grid;gap:14px}
+  .stats{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .card h3{margin:0 0 4px;font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);font-weight:600}
+  .big{font-size:26px;font-weight:700;margin-top:2px}
+  .pos{color:var(--accent)} .neg{color:var(--bad)}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;background:#3a455c}
+  .dot.on{background:var(--accent);box-shadow:0 0 8px var(--accent)}
+  .src{display:flex;flex-direction:column;gap:6px;font-size:13px}
+  .panel{margin-top:16px}
+  .panel .head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .panel .head h2{font-size:15px;margin:0}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{ text-align:left;color:var(--muted);font-weight:600;font-size:11px;text-transform:uppercase;
+    letter-spacing:.5px;padding:8px 10px;border-bottom:1px solid var(--line)}
+  td{padding:10px;border-bottom:1px solid #161d2b}
+  tr:last-child td{border-bottom:none}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  a.mlink{color:var(--accent2);text-decoration:none;font-weight:600}
+  a.mlink:hover{text-decoration:underline}
+  .pill{padding:2px 9px;border-radius:999px;font-size:12px;font-weight:600;border:1px solid var(--line)}
+  .pill.act{background:rgba(54,211,153,.12);color:var(--accent);border-color:rgba(54,211,153,.4)}
+  .pill.skip{background:rgba(139,151,168,.1);color:var(--muted)}
+  .pill.demo{background:rgba(90,169,255,.12);color:var(--accent2);border-color:rgba(90,169,255,.4)}
+  .side-yes{color:var(--accent)} .side-no{color:var(--accent2)}
+  .empty{color:var(--muted);padding:14px 10px;font-style:italic}
+  .bar{height:6px;border-radius:4px;background:var(--panel2);overflow:hidden;min-width:70px}
+  .bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--accent2),var(--accent))}
+  footer{margin-top:22px;color:var(--muted);font-size:12px;display:flex;gap:14px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">Prediction<span>Edge</span></div>
+    <span id="mode" class="badge">—</span>
+    <div class="grow"></div>
+    <span class="muted" id="updated">loading…</span>
+    <button id="armbtn" onclick="toggleArm()" style="display:none">—</button>
+    <button onclick="load()">↻ Refresh</button>
+    <a href="/history" class="mlink" style="align-self:center">Order history →</a>
+  </header>
+
+  <div class="grid stats">
+    <div class="card"><h3>Kalshi account</h3><div class="big" id="balance">—</div><div class="muted" id="acct">—</div></div>
+    <div class="card"><h3>Today P&amp;L</h3><div class="big" id="pnl">—</div><div class="muted" id="exposure">—</div></div>
+    <div class="card"><h3>Caps</h3><div class="big" id="bankroll">—</div><div class="muted" id="caps">—</div></div>
+    <div class="card"><h3>Data sources</h3><div class="src" id="sources"></div></div>
+  </div>
+
+  <div class="panel card">
+    <div class="head"><h2>📈 Smart-money copy signals <span class="muted">profitable wallets buying now</span></h2>
+      <div class="grow"></div><span class="muted" id="copycount"></span></div>
+    <table><thead><tr><th>When</th><th>Market</th><th>Buying</th><th>Wallets</th><th>Size</th><th>Avg px</th></tr></thead>
+      <tbody id="copysignals"></tbody></table>
+  </div>
+
+  <div class="panel card">
+    <div class="head"><h2>🐋 Whale trade spikes <span class="muted">live ≥ $25k</span></h2>
+      <div class="grow"></div><span class="muted" id="spikecount"></span></div>
+    <table><thead><tr><th>When</th><th>Market</th><th>Bet</th><th>Size</th><th>Trader</th><th>Closes</th></tr></thead>
+      <tbody id="spikes"></tbody></table>
+  </div>
+
+  <div class="panel card">
+    <div class="head"><h2>What it likes &amp; wants to do</h2><span id="likesdemo"></span>
+      <div class="grow"></div><span class="muted" id="likescount"></span></div>
+    <table><thead><tr><th>Market</th><th>Pick</th><th>Fair</th><th>Price</th><th>Edge ¢/ct</th><th>EV</th><th>Action</th></tr></thead>
+      <tbody id="likes"></tbody></table>
+  </div>
+
+  <div class="panel card">
+    <div class="head"><h2>Whale-driven edges — politics / econ</h2>
+      <div class="grow"></div><span class="muted" id="wecount"></span></div>
+    <table><thead><tr><th>Market</th><th>Pick</th><th>Smart fair</th><th>Price</th><th>Edge ¢/ct</th><th>Conf</th><th>Action</th></tr></thead>
+      <tbody id="wedges"></tbody></table>
+  </div>
+
+  <div class="panel card">
+    <div class="head"><h2 id="whaletitle">Whale spikes — smart money</h2>
+      <div class="grow"></div><span class="muted" id="whalenote"></span></div>
+    <table><thead><tr><th>Wallet</th><th>All-time PnL</th><th>Volume</th><th>Relative</th></tr></thead>
+      <tbody id="whales"></tbody></table>
+  </div>
+
+  <footer>
+    <span>● Read-only preview — never places orders</span>
+    <span id="ks">● kill switch: data/STOP</span>
+    <span>● auto-refresh 30s</span>
+  </footer>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const money=v=>v==null?'—':'$'+Number(v).toLocaleString(undefined,{maximumFractionDigits:2});
+const shortAddr=a=>a&&a.length>12?a.slice(0,6)+'…'+a.slice(-4):a;
+const mlink=o=>o.url?`<a href="${o.url}" target="_blank" rel="noopener" class="mlink">${o.ticker}</a>`:o.ticker;
+
+async function load(){
+  try{
+    const r=await fetch('/api/snapshot'); const d=await r.json();
+    const m=$('mode'); m.textContent=d.mode; m.className='badge'+(d.live_trading?' live':'');
+    $('updated').textContent='updated '+d.generated;
+    renderArm(d);
+    $('balance').textContent=d.account.connected?money(d.account.balance):'not connected';
+    $('acct').textContent=d.account.detail;
+    const pnl=$('pnl'); pnl.textContent=(d.today_pnl>=0?'+':'')+money(d.today_pnl); pnl.className='big '+(d.today_pnl>=0?'pos':'neg');
+    $('exposure').textContent='exposure '+money(d.exposure)+' · '+d.open_positions+' open';
+    $('bankroll').textContent=money(d.caps.bankroll);
+    $('caps').textContent='≤'+money(d.caps.max_total_exposure)+' total · '+d.caps.max_open_positions+' pos · '+money(d.caps.max_daily_loss)+'/day · min '+d.caps.min_edge_c+'¢';
+    const s=d.sources; $('sources').innerHTML=
+      row('Kalshi',s.kalshi)+row('Sportsbook odds',s.odds)+row('Polymarket whales',s.polymarket);
+
+    $('likesdemo').innerHTML=d.odds_offline?'<span class="pill demo">sports odds offline — crypto edges shown</span>':'';
+    $('likescount').textContent=d.likes.length+' found';
+    $('likes').innerHTML=d.likes.length?d.likes.map(o=>`<tr>
+      <td>${mlink(o)}<div class="muted">${o.label}</div></td>
+      <td class="side-${o.side.toLowerCase()}">${o.pick}</td>
+      <td class="mono">${o.fair}</td><td class="mono">${o.price}</td>
+      <td class="mono pos">+${o.edge_c}</td><td class="mono">$${o.ev}</td>
+      <td>${o.would_act?'<span class="pill act">WOULD ACT ×'+o.contracts+'</span>':'<span class="pill skip">skip: '+o.reason+'</span>'}</td>
+    </tr>`).join(''):'<tr><td colspan="7" class="empty">No edges clear the threshold right now.</td></tr>';
+
+    const cs=d.copy_signals||[];
+    $('copycount').textContent=cs.length+' signals';
+    $('copysignals').innerHTML=cs.length?cs.map(s=>`<tr>
+      <td class="muted">${s.minutes_ago}m ago</td>
+      <td>${s.url?`<a href="${s.url}" target="_blank" rel="noopener" class="mlink">${s.title}</a>`:s.title}</td>
+      <td class="side-yes">${s.outcome}</td>
+      <td class="mono">${s.n_wallets}</td>
+      <td class="mono">$${Number(s.usd).toLocaleString()}</td>
+      <td class="mono">${s.avg_price}</td>
+    </tr>`).join(''):'<tr><td colspan="6" class="empty">No profitable-wallet buys in the recent feed.</td></tr>';
+
+    const sp=d.spikes||[];
+    $('spikecount').textContent=sp.length+' large bets';
+    $('spikes').innerHTML=sp.length?sp.map(s=>`<tr>
+      <td class="muted">${s.minutes_ago}m ago</td>
+      <td>${s.url?`<a href="${s.url}" target="_blank" rel="noopener" class="mlink">${s.title}</a>`:s.title} <span class="pill ${s.category==='event'?'demo':'skip'}">${s.category}</span></td>
+      <td class="side-${s.side==='BUY'?'yes':'no'}">${s.side} ${s.outcome} @ ${s.price}</td>
+      <td class="mono">$${Number(s.size).toLocaleString()}</td>
+      <td class="muted">${s.trader}</td>
+      <td class="${s.closes_in_days!=null && s.closes_in_days<=7?'neg':'muted'}">${s.closes_in_days==null?'—':(s.closes_in_days<=0?'closing':s.closes_in_days+'d')}</td>
+    </tr>`).join(''):'<tr><td colspan="6" class="empty">No large event-market trades in the recent feed.</td></tr>';
+
+    const we=d.whale_edges||[];
+    $('wecount').textContent=we.length+' found';
+    $('wedges').innerHTML=we.length?we.map(o=>`<tr>
+      <td>${mlink(o)}<div class="muted">${o.label}</div></td>
+      <td class="side-${o.side.toLowerCase()}">${o.pick}</td>
+      <td class="mono">${o.fair}</td><td class="mono">${o.price}</td>
+      <td class="mono pos">+${o.edge_c}</td><td class="mono">${o.confidence}</td>
+      <td>${o.would_act?'<span class="pill act">WOULD ACT ×'+o.contracts+'</span>':'<span class="pill skip">skip: '+o.reason+'</span>'}</td>
+    </tr>`).join(''):'<tr><td colspan="7" class="empty">No mapped politics/econ markets yet — add Kalshi→Polymarket condition_ids to data/whale_map.json.</td></tr>';
+
+    const top=d.whale_top||[]; const max=Math.max(1,...top.map(w=>w.pnl));
+    $('whaletitle').textContent='Whale spikes — smart money ('+(d.whale_category||'live')+')';
+    $('whalenote').textContent=top.length?'top '+top.length+' by all-time PnL (live, public)':'';
+    $('whales').innerHTML=top.length?top.map(w=>`<tr>
+      <td class="mono">${shortAddr(w.address)}</td>
+      <td class="mono pos">${money(w.pnl)}</td>
+      <td class="mono muted">${money(w.volume)}</td>
+      <td><div class="bar"><i style="width:${Math.round(100*w.pnl/max)}%"></i></div></td>
+    </tr>`).join(''):'<tr><td colspan="4" class="empty">Set PE_WHALE_SOURCE=polymarket to load live smart-money.</td></tr>';
+  }catch(e){ $('updated').textContent='error: '+e; }
+}
+function row(label,on){return `<div><span class="dot ${on?'on':''}"></span>${label} <span class="muted">${on?'live':'off'}</span></div>`;}
+function renderArm(d){
+  const b=$('armbtn');
+  if(!d.live_capable){ b.style.display='none'; return; }   // capability off -> hide
+  b.style.display='';
+  if(d.armed){ b.textContent='● LIVE — click to STOP'; b.className='armed'; }
+  else { b.textContent='○ Arm live trading'; b.className='armable'; }
+}
+async function toggleArm(){
+  const r=await fetch('/api/snapshot'); const d=await r.json();
+  const next=!d.armed;
+  if(next && !confirm('Arm LIVE trading?\\n\\nThe scheduled bot will place REAL orders on your Kalshi account (within the configured caps) on its next run. Continue?')) return;
+  await fetch('/api/trading',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({armed:next})});
+  load();
+}
+load(); setInterval(load,30000);
+</script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PredictionEdge — trade board</title>
+<style>
+  :root{
+    --bg:#0b0e14; --panel:#131823; --panel2:#1a2130; --line:#222b3d;
+    --txt:#e6edf3; --muted:#8b97a8; --accent:#36d399; --accent2:#5aa9ff;
+    --warn:#fbbf24; --bad:#f87171;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:22px}
+  header{display:flex;align-items:center;gap:14px;margin-bottom:14px;flex-wrap:wrap}
+  .logo{font-weight:700;font-size:20px}.logo span{color:var(--accent)}
+  .grow{flex:1}.muted{color:var(--muted)}
+  a.nav{color:var(--accent2);text-decoration:none;border:1px solid var(--line);
+    border-radius:8px;padding:7px 12px;font-size:13px}
+  a.nav:hover{border-color:var(--accent2)}
+  button{background:var(--panel2);color:var(--txt);border:1px solid var(--line);
+    border-radius:8px;padding:7px 12px;cursor:pointer;font-size:13px}
+  button:hover{border-color:var(--accent2)}
+  .banner{background:#1a1508;border:1px solid #3a2f10;color:#f5d98b;border-radius:12px;
+    padding:12px 14px;margin-bottom:16px;font-size:13px}
+  .banner b{color:var(--warn)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:16px;margin-bottom:14px}
+  .stats{display:flex;gap:26px;flex-wrap:wrap;margin-bottom:4px}
+  .stat b{font-size:19px;display:block}.stat span{color:var(--muted);font-size:11px;
+    text-transform:uppercase;letter-spacing:.5px}
+  .ticket{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:16px;margin-bottom:12px}
+  .ticket.done{opacity:.5}
+  .thead{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+  .rank{background:var(--panel2);border:1px solid var(--line);border-radius:8px;
+    width:30px;height:30px;display:flex;align-items:center;justify-content:center;
+    font-weight:700;color:var(--muted);flex:none}
+  .side{font-size:16px;font-weight:650;line-height:1.35}
+  .conv{flex:none;text-align:right}
+  .conv b{font-size:18px;color:var(--accent)}
+  .conv span{display:block;color:var(--muted);font-size:10px;text-transform:uppercase}
+  .bar{height:4px;background:var(--panel2);border-radius:99px;overflow:hidden;margin:10px 0 12px}
+  .bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--accent2),var(--accent))}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;
+    margin-bottom:12px}
+  .f b{font-size:15px;display:block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .f span{color:var(--muted);font-size:11px}
+  ul.why{margin:0 0 10px;padding-left:18px;color:var(--muted);font-size:13px}
+  ul.why li{margin:2px 0}
+  .warn{background:#241a08;border:1px solid #3d2c0c;color:var(--warn);
+    border-radius:8px;padding:7px 10px;font-size:12px;margin-bottom:10px}
+  .acts{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .take{border-color:#1f6f4a;color:var(--accent)}
+  .skip{border-color:#5a2a2a;color:var(--bad)}
+  .won{border-color:#1f6f4a}
+  .status{font-size:12px;padding:3px 9px;border-radius:99px;border:1px solid var(--line);
+    color:var(--muted)}
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .chip{background:var(--panel2);border:1px solid var(--line);border-radius:99px;
+    padding:4px 11px;font-size:12px;color:var(--muted)}
+  .empty{color:var(--muted);font-style:italic;padding:18px 2px}
+  a.mkt{color:var(--accent2);text-decoration:none;font-size:12px}
+  a.mkt:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">Prediction<span>Edge</span> · trade board</div>
+    <div class="grow"></div>
+    <span class="muted" id="updated"></span>
+    <button onclick="load()">↻ Refresh</button>
+    <a class="nav" href="/">Dashboard</a>
+    <a class="nav" href="/history">History</a>
+  </header>
+
+  <div class="banner">
+    <b>Manual placement only.</b> Omen prohibits API access, bots, browser automation and
+    signal-following services — all trading must be placed by you in the Omen app.
+    This board is research: it ranks ideas and shows its reasoning. You decide and you place.
+  </div>
+
+  <div class="card">
+    <div class="stats" id="stats"></div>
+    <div class="filters" id="filters"></div>
+  </div>
+
+  <div id="tickets"></div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const money=n=>'$'+Number(n||0).toLocaleString(undefined,{maximumFractionDigits:0});
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let STATE={};
+
+function hours(h){
+  if(h==null) return '—';
+  if(h<48) return h.toFixed(0)+'h';
+  return (h/24).toFixed(1)+'d';
+}
+
+async function load(){
+  try{
+    const r=await fetch('/api/board'); const d=await r.json();
+    STATE=d.journal_state||{};
+    $('updated').textContent='updated '+new Date().toLocaleTimeString();
+
+    const j=d.journal||{};
+    $('stats').innerHTML=
+      stat(d.tickets.length,'tickets')+
+      stat(d.considered,'signals scanned')+
+      stat(money(d.account_size),'omen account')+
+      stat(j.taken||0,'taken')+
+      stat(j.hit_rate==null?'—':(j.hit_rate*100).toFixed(0)+'%','hit rate')+
+      stat((j.pnl>=0?'+':'')+'$'+Number(j.pnl||0).toFixed(0),'journal p&l');
+
+    const f=d.rejected||{};
+    const chips=Object.keys(f).map(k=>`<span class="chip">${f[k]} × ${esc(k)}</span>`);
+    (d.notes||[]).forEach(n=>chips.unshift(`<span class="chip">${esc(n)}</span>`));
+    $('filters').innerHTML=chips.join('')||'';
+
+    $('tickets').innerHTML = d.tickets.length
+      ? d.tickets.map((t,i)=>ticket(t,i+1)).join('')
+      : `<div class="card empty">No tickets right now. ${esc((d.notes||[])[0]||'')}</div>`;
+  }catch(e){ $('updated').textContent='error: '+e; }
+}
+function stat(v,l){ return `<div class="stat"><b>${v}</b><span>${l}</span></div>`; }
+
+function ticket(t,rank){
+  const id=t.market_id+':'+t.outcome;
+  const st=(STATE[id]||{}).status||'';
+  const done=st==='taken'||st==='skipped'||st==='won'||st==='lost';
+  return `<div class="ticket ${done?'done':''}">
+    <div class="thead">
+      <div class="rank">${rank}</div>
+      <div style="flex:1">
+        <div class="side">${esc(t.side_label)}</div>
+        ${t.url?`<a class="mkt" href="${esc(t.url)}" target="_blank" rel="noopener">verify on Polymarket ↗</a>`:''}
+      </div>
+      <div class="conv"><b>${(t.conviction*100).toFixed(0)}</b><span>conviction</span></div>
+    </div>
+    <div class="bar"><i style="width:${(t.conviction*100).toFixed(0)}%"></i></div>
+    <div class="grid">
+      <div class="f"><b>${t.entry_price.toFixed(2)}</b><span>buy at</span></div>
+      <div class="f"><b>${t.contracts}</b><span>contracts</span></div>
+      <div class="f"><b>$${t.cost.toFixed(2)}</b><span>cost</span></div>
+      <div class="f"><b>$${t.max_payout.toFixed(0)}</b><span>if it wins</span></div>
+      <div class="f"><b>${hours(t.hours_to_resolve)}</b><span>to resolve</span></div>
+      <div class="f"><b>${t.whale_price.toFixed(2)}</b><span>whale paid</span></div>
+    </div>
+    <ul class="why">${(t.why||[]).map(w=>`<li>${esc(w)}</li>`).join('')}</ul>
+    ${(t.warnings||[]).length?`<div class="warn">⚠ ${t.warnings.map(esc).join(' · ')}</div>`:''}
+    <div class="acts">
+      ${done
+        ? `<span class="status">logged: ${esc(st)}</span>
+           <button onclick="mark('${esc(id)}','won',${rank-1})" class="won">Won</button>
+           <button onclick="mark('${esc(id)}','lost',${rank-1})">Lost</button>`
+        : `<button class="take" onclick="mark('${esc(id)}','taken',${rank-1})">I placed this</button>
+           <button class="skip" onclick="mark('${esc(id)}','skipped',${rank-1})">Skip</button>`}
+    </div>
+  </div>`;
+}
+
+async function mark(id,status,idx){
+  await fetch('/api/journal',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({id,status,index:idx})});
+  load();
+}
+load(); setInterval(load, 120000);
+</script>
+</body>
+</html>

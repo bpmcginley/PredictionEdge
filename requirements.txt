@@ -1,0 +1,11 @@
+# Core runtime is stdlib-only (mock mode and tests need nothing below).
+# These are required for LIVE read-only mode:
+requests>=2.31        # HTTP to Kalshi + The Odds API
+cryptography>=42.0    # RSA-PSS request signing for Kalshi auth
+
+# Optional convenience:
+python-dotenv>=1.0    # auto-load .env (config.py also has a stdlib fallback)
+flask>=3.0            # local dashboard (python -m predictionedge.dashboard)
+
+# Dev:
+pytest>=8.0
