@@ -1,48 +1,17 @@
 {
-  "generated": "2026-08-06 06:39:36",
-  "generated_at": 1785998376.9387374,
+  "generated": "2026-08-06 09:31:34",
+  "generated_at": 1786008694.0932672,
   "account_size": 100000.0,
-  "tickets": [
-    {
-      "market_id": "0x21f7bd0f524ba1639ff2ac1b0d2859188642e5585e46b755ed38d5bc0f81bfef",
-      "title": "Valorant: Natus Vincere vs Joblife (BO3) - VCT EMEA Play-Ins",
-      "side_label": "Natus Vincere \u2014 Valorant: Natus Vincere vs Joblife (BO3) - VCT EMEA Play-Ins",
-      "outcome": "Natus Vincere",
-      "entry_price": 0.655,
-      "whale_price": 0.681,
-      "drift_c": -2.57,
-      "contracts": 743,
-      "cost": 486.67,
-      "max_payout": 743.0,
-      "conviction": 0.487,
-      "hours_to_resolve": 17.3,
-      "n_wallets": 1,
-      "whale_usd": 41843,
-      "minutes_ago": 121,
-      "liquidity": 31592,
-      "url": "https://polymarket.com/event/val-navi1-jl-2026-08-06",
-      "end_iso": "2026-08-07T00:00:00Z",
-      "signal_ts": 1785991097.0,
-      "why": [
-        "1 profitable wallet on this side",
-        "$41,843 of smart money behind it",
-        "latest buy 121 min ago",
-        "price 2.6c cheaper than they paid",
-        "17h until it resolves"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    }
-  ],
-  "considered": 165,
+  "tickets": [],
+  "considered": 131,
   "rejected": {
-    "no market metadata": 152,
-    "in-play (event already started)": 10,
-    "already resolved": 2
+    "no market metadata": 109,
+    "in-play (event already started)": 21,
+    "signal too old for this market's horizon": 1
   },
-  "notes": [],
+  "notes": [
+    "Signals came in but none cleared the filters \u2014 that is a normal, and usually correct, outcome."
+  ],
   "omen": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
