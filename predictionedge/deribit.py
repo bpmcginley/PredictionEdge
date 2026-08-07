@@ -514,6 +514,34 @@ class DeribitPricer:
         return interpolate_variance(before[-1], after[0], target, now_ts,
                                     self.cfg.deribit_min_strikes)
 
+    def coverage(self, asset: str, expiry: datetime,
+                 now_ts: float | None = None) -> str:
+        """Why this date can or cannot be priced, as a short reportable reason.
+
+        `smile_for` returning None is correct but silent, and the silence hides a
+        STRUCTURAL fact from whoever reads an empty scan: Kalshi's BTC/ETH threshold
+        series are intraday (measured 2026-08-07: every open market expired in 0.03 or
+        0.20 days) while Deribit's front expiry sits ~0.66 days out. Every one of those
+        markets therefore falls before the front, where interpolation has no lower
+        bracket and extrapolating would be inventing a number. That is not a tuning
+        problem and no window setting fixes it, so it has to be visible rather than
+        read as "nothing found today".
+        """
+        if not self.supports(asset):
+            return "asset not covered by Deribit"
+        now_ts = now_ts if now_ts is not None else time.time()
+        smiles = self.smiles(asset, now_ts)
+        if not smiles:
+            return "no usable Deribit smile (chain down or too few strikes)"
+        target = expiry.timestamp()
+        if any(abs(s.expiry_ts - target) < 60.0 for s in smiles):
+            return "ok"
+        if target < min(s.expiry_ts for s in smiles):
+            return "expires before Deribit's front expiry"
+        if target > max(s.expiry_ts for s in smiles):
+            return "expires after Deribit's last expiry"
+        return "strike off the quoted ladder"
+
     def prob_above(self, asset: str, strike: float, expiry: datetime,
                    now_ts: float | None = None) -> float | None:
         s = self.smile_for(asset, expiry, now_ts)

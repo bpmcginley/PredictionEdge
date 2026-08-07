@@ -340,3 +340,41 @@ def test_disabled_config_prices_nothing():
     p = DeribitPricer(cfg, fetch=_CannedFetch(_payload()))
     exp = datetime.fromtimestamp(_EXPIRY, timezone.utc)
     assert p.prob_above("BTC", 110_000.0, exp, now_ts=0.0) is None
+
+
+# ------------------------------------------------------- coverage (why a miss missed)
+
+def test_coverage_names_the_before_front_case():
+    """The structural mismatch with Kalshi's crypto complex, pinned.
+
+    Measured 2026-08-07: every open KXBTCD/KXETHD market expired in 0.03 or 0.20 days
+    while Deribit's front expiry sat 0.66 days out, so all 12 in-window markets fell
+    before the front. No window setting fixes that, and an empty scan must say so
+    rather than read as "priced everything, found nothing".
+    """
+    from datetime import datetime, timezone
+    p = _pricer()
+    early = datetime.fromtimestamp(_EXPIRY / 2, timezone.utc)
+    assert p.prob_above("BTC", 110_000.0, early, now_ts=0.0) is None
+    assert p.coverage("BTC", early, now_ts=0.0) == "expires before Deribit's front expiry"
+
+
+def test_coverage_ok_when_the_expiry_is_priceable():
+    from datetime import datetime, timezone
+    p = _pricer()
+    exp = datetime.fromtimestamp(_EXPIRY, timezone.utc)
+    assert p.coverage("BTC", exp, now_ts=0.0) == "ok"
+
+
+def test_coverage_distinguishes_past_the_last_expiry():
+    from datetime import datetime, timezone
+    p = _pricer()
+    beyond = datetime.fromtimestamp(_EXPIRY * 3, timezone.utc)
+    assert p.coverage("BTC", beyond, now_ts=0.0) == "expires after Deribit's last expiry"
+
+
+def test_coverage_names_an_unsupported_asset():
+    from datetime import datetime, timezone
+    p = _pricer()
+    exp = datetime.fromtimestamp(_EXPIRY, timezone.utc)
+    assert p.coverage("SOL", exp, now_ts=0.0) == "asset not covered by Deribit"

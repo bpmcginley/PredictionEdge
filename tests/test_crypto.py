@@ -171,3 +171,36 @@ def test_non_deribit_asset_stays_on_the_lognormal_and_says_so():
     assert len(edges) == 1
     assert edges[0].method == METHOD_LOGNORMAL
     assert edges[0].label == "SOL (lognormal-realized-vol)"
+
+
+# ------------------------------------------------------------- rejection reporting
+
+def test_report_explains_an_empty_result():
+    """An empty edge list must be readable: no number, or a number with no edge."""
+    long_dated = KalshiMarket("KXBTCD-26JUL01-T60000", "BTC price", 0.28, 0.30, 0.70, 0.72,
+                              strike_type="greater", floor_strike=60000,
+                              close_time="2026-07-01T00:00:00Z")
+    rep = {}
+    assert find_crypto_edges(_CFG, _FakeKalshi([long_dated]), _FakeData(60000, 0.6),
+                             now=_NOW, report=rep) == []
+    assert rep == {"resolves beyond 10d": 1}
+
+
+def test_report_separates_priced_no_edge_from_could_not_price():
+    # Priced fine, but the market agrees with the model -> no edge, not a failure.
+    agreed = KalshiMarket("KXBTCD-26JAN06-T60000", "BTC price", 0.48, 0.50, 0.50, 0.52,
+                          strike_type="greater", floor_strike=60000,
+                          close_time="2026-01-06T00:00:00Z")
+    rep = {}
+    find_crypto_edges(_CFG, _FakeKalshi([agreed]), _FakeData(60000, 0.6),
+                      now=_NOW, report=rep)
+    assert rep.get("priced, no edge over the market") == 1
+
+
+def test_report_is_optional_and_absent_by_default():
+    m = KalshiMarket("KXBTCD-26JAN06-T60000", "BTC price", 0.28, 0.30, 0.70, 0.72,
+                     strike_type="greater", floor_strike=60000,
+                     close_time="2026-01-06T00:00:00Z")
+    # No report kwarg: must not raise, must still return the edge.
+    assert len(find_crypto_edges(_CFG, _FakeKalshi([m]), _FakeData(60000, 0.6),
+                                 now=_NOW)) == 1

@@ -74,6 +74,19 @@ class Config:
     crypto_live: bool = False
     # SHORT-TERM daily point-price series (not the year-out EOY markets):
     crypto_series: tuple[str, ...] = ("KXBTCD", "KXETHD", "KXSOLD", "KXXRPD")
+    # MEASURED 2026-08-07, so nobody widens this again expecting it to help: every open
+    # market in all four series resolved in 0.03 or 0.20 DAYS - there were exactly two
+    # expiries and nothing beyond a day. The 10-day cap is not binding and raising it
+    # admits zero extra markets (`resolves beyond 10d` counts 0 in the scan report).
+    # The binding filter is crypto_min_hours below, which drops the 43-minute cycle.
+    # Two consequences worth knowing before touching either number:
+    #  - Deribit's FRONT expiry is ~0.66 days out, so these markets all fall before it.
+    #    deribit.py refuses to extrapolate in time, which is correct, so BTC/ETH here
+    #    are structurally unpriceable by that route no matter what the window says.
+    #  - Kalshi's longer-dated crypto series (KXBTCMAXM, BTCMINMAXY, KXETHMINMON, ...)
+    #    are MAX/MIN/one-touch markets. Those are path-dependent barriers; a terminal
+    #    risk-neutral density is the wrong object for them. Do not add them here just
+    #    because their horizon suits Deribit.
     crypto_max_days: float = 10.0    # skip long-dated markets (no edge a week+ out)
     crypto_min_hours: float = 1.0    # skip near-instant markets (model unreliable/scalpy)
 

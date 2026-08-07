@@ -163,15 +163,24 @@ def _tau_years(market, now: datetime) -> float | None:
 
 
 def find_crypto_edges(cfg: Config, kalshi, data: CryptoData,
-                      now: datetime | None = None, pricer=None) -> list[CryptoEdge]:
+                      now: datetime | None = None, pricer=None,
+                      report: dict | None = None) -> list[CryptoEdge]:
     """Model-vs-market edges across the configured Kalshi crypto series.
 
     BTC/ETH price off Deribit's implied distribution; anything else falls back to the
     realized-vol lognormal and is labelled as such. `pricer` is injectable so tests
     (and mock runs) never touch the network.
+
+    Pass `report` (a dict) to receive a tally of why markets were dropped. Without it
+    an empty result is indistinguishable from "the model priced everything and found
+    no edge", and those two have opposite meanings.
     """
     if not cfg.crypto_enabled or not cfg.crypto_series:
         return []
+
+    def _drop(reason: str) -> None:
+        if report is not None:
+            report[reason] = report.get(reason, 0) + 1
     now = now or datetime.now(timezone.utc)
     now_ts = now.timestamp()
     max_tau = cfg.crypto_max_days / 365.25
@@ -200,16 +209,27 @@ def find_crypto_edges(cfg: Config, kalshi, data: CryptoData,
             continue
         for m in markets:
             tau = _tau_years(m, now)
-            if tau is None or not (min_tau <= tau <= max_tau):
-                continue  # short-term only: skip year-out and near-instant markets
+            if tau is None:
+                _drop("no readable close time")
+                continue
+            if tau < min_tau:
+                _drop(f"resolves inside {cfg.crypto_min_hours:g}h (model unreliable)")
+                continue
+            if tau > max_tau:
+                _drop(f"resolves beyond {cfg.crypto_max_days:g}d")
+                continue
             if use_deribit:
                 exp = event_time(m)
                 fair = (deribit_prob_yes(m, pricer, asset, exp, now_ts)
                         if exp is not None else None)
                 method = METHOD_DERIBIT
+                if fair is None and exp is not None and report is not None:
+                    _drop(f"deribit: {pricer.coverage(asset, exp, now_ts)}")
             else:
                 fair = model_prob_yes(m, spot, vol, tau)
                 method = METHOD_LOGNORMAL
+                if fair is None:
+                    _drop("lognormal: unrecognised strike type")
             if fair is None:
                 continue    # BTC/ETH fails closed here rather than dropping back to
                             # the lognormal - mixing the two under one number is worse
@@ -217,6 +237,11 @@ def find_crypto_edges(cfg: Config, kalshi, data: CryptoData,
             opp = find_edge(m.ticker, fair, m.quote(), cfg)
             if opp is not None:
                 out.append(CryptoEdge(opp, asset, fair, spot or 0.0, m, method))
+            else:
+                # Priced fine, just no edge worth taking. Counted separately because
+                # "we had a number and passed" is the healthy outcome, and lumping it
+                # in with the failures above would hide whether the model ran at all.
+                _drop("priced, no edge over the market")
     out.sort(key=lambda c: c.opp.expected_value, reverse=True)
     return out
 

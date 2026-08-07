@@ -145,6 +145,30 @@ have reason to believe is misspecified.
 probability beside the market price and the old lognormal number, and a fixture-based test
 proves the digital extraction against a hand-computed chain.
 
+**Outcome, measured 2026-08-07 — Deribit cannot price Kalshi's crypto complex.** The
+module is correct; the venues do not overlap in time. Every open market across
+`KXBTCD`/`KXETHD`/`KXBTC`/`KXETH` resolves in **0.03 or 0.20 days** — two intraday
+expiries, nothing beyond a day — while Deribit's **front** expiry sits ~0.66 days out.
+So every Kalshi crypto market falls *before* the front, where there is no lower bracket
+to interpolate from and extrapolating would be inventing a number, which `deribit.py`
+rightly refuses.
+
+Two corrections this forces:
+
+- The earlier suggestion that Deribit "earns its keep at weekly-plus tenors excluded by
+  `crypto_max_days=10`" was **wrong in both halves**. The cap is not binding —
+  `resolves beyond 10d` counts **zero** — so widening it admits no markets at all. The
+  binding filter is `crypto_min_hours=1`, at the *short* end (663 drops).
+- Kalshi's genuinely longer-dated crypto series (`KXBTCMAXM`, `BTCMINMAXY`,
+  `KXETHMINMON`) are **max/min/one-touch** markets. Those are path-dependent barriers,
+  and a terminal risk-neutral density is the wrong object for them. They are not a way
+  to reach the tenor Deribit covers.
+
+What shipped instead is **visibility**: `DeribitPricer.coverage()` names why a date
+cannot be priced, and `find_crypto_edges(..., report=)` tallies every drop, so an empty
+crypto scan distinguishes "could not price" from "priced and found no edge". Live now:
+663 inside the 1h floor, 50 priced with no edge, 12 before Deribit's front expiry.
+
 ### E3 — Macro: Fed funds futures + Cleveland Fed nowcast
 
 **New module: `macrofv.py`.**
