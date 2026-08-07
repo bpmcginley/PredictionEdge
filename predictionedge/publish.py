@@ -64,7 +64,14 @@ def main(argv: list[str] | None = None) -> int:
         payload = {"generated": time.strftime("%Y-%m-%d %H:%M:%S"),
                    "generated_at": time.time(), "tickets": [], "considered": 0,
                    "rejected": {}, "notes": [f"board generation failed: {exc}"],
-                   "account_size": cfg.omen_account_size}
+                   "account_size": cfg.omen_account_size,
+                   # ok=False, not an empty list: a failed run must not render as a
+                   # clean book on the page.
+                   "consistency": {"ok": False, "enabled": True, "violations": [],
+                                   "rejected": {}, "events_scanned": 0,
+                                   "notes": ["board generation failed"]},
+                   "macro": {"ok": False, "enabled": True, "cpi": [],
+                             "notes": ["board generation failed"]}}
 
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)

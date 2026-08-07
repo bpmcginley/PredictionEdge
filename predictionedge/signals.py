@@ -27,7 +27,7 @@ import time
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 
-from .copytrade import find_copy_signals
+from .copytrade import scan_smart_flow
 from .omen import OmenAccount, Sizing, event_url, size_position
 
 
@@ -108,8 +108,66 @@ def _side_label(outcome: str, title: str) -> str:
     return f"{o} — {title}"
 
 
+# A position worth a fifth of everything a wallet has open is a concentrated bet by any
+# standard, so that is where "fully committed" is pinned. The sqrt curve matches the
+# dollar term's shape: most of the credit arrives early, the tail flattens.
+_FULL_COMMITMENT_FRACTION = 0.20
+
+# What a profitable record in some OTHER category is worth on this market. Not zero -
+# the wallet has genuinely made money and the leaderboard is only a top-N slice, so a
+# real specialist can be missing from their own board. Not one either: general skill is
+# weaker evidence than skill at the question actually being asked.
+_OFF_CATEGORY_CREDIT = 0.5
+
+# Below this share, the flow is genuinely spread across wallets and reads as agreement.
+# Above it, one trader IS the signal - and in an election market that is the documented
+# failure mode rather than the evidence. Pinned high on purpose: this rule is meant to
+# fire on the lopsided cases, not to quietly tax every politics ticket.
+_ELECTION_CONCENTRATION_FLOOR = 0.60
+# What a fully one-wallet election signal keeps. Not zero - a large informed bet is still
+# information, and the wallet did earn its leaderboard place. Halved, because we cannot
+# tell that information apart from someone simply moving a thin market.
+_CONCENTRATED_ELECTION_CREDIT = 0.5
+
+
+def _concentration(wallet_usd) -> float | None:
+    """Largest single wallet's share of this signal's notional, or None if unknowable.
+
+    None, not 1.0, when there is nothing to measure: an unreadable breakdown must not
+    read as "one wallet did all of it", which would apply the harshest penalty on the
+    least evidence.
+    """
+    sizes = [usd for _addr, usd in wallet_usd or () if usd > 0]
+    total = sum(sizes)
+    return (max(sizes) / total) if total > 0 else None
+
+
+def _bankroll_fraction(wallet_usd, bankrolls: dict[str, float]) -> float | None:
+    """How much of themselves these wallets put on this side, notional-weighted.
+
+    Per wallet, not pooled: pooling lets one $10M wallet's rounding error drown out the
+    $100k wallet that went all in, which is the exact confusion this is here to fix.
+    Wallets whose bankroll we could not read contribute nothing at all - a missing
+    denominator is not a small denominator.
+    """
+    num = den = 0.0
+    for addr, usd in wallet_usd or ():
+        bankroll = bankrolls.get(addr)
+        if not bankroll or bankroll <= 0 or usd <= 0:
+            continue
+        # Capped at 1: a fill can exceed the book we can see (they may have since sold),
+        # and "more than everything they have" is not a stronger statement than "all of it".
+        num += usd * min(1.0, usd / bankroll)
+        den += usd
+    return (num / den) if den > 0 else None
+
+
 def _conviction(*, n_wallets: int, usd: float, minutes_ago: float, drift_c: float,
-                hours_to_resolve: float | None, liquidity: float) -> tuple[float, list[str]]:
+                hours_to_resolve: float | None, liquidity: float,
+                bankroll_fraction: float | None = None,
+                fresh: bool = False, category: str = "",
+                n_category_matched: int = 0, is_election: bool = False,
+                concentration: float | None = None) -> tuple[float, list[str]]:
     """Blend the signal's components into 0..1, and explain the blend in words.
 
     Deliberately simple and legible: every term is something you could check by hand.
@@ -118,17 +176,73 @@ def _conviction(*, n_wallets: int, usd: float, minutes_ago: float, drift_c: floa
     why: list[str] = []
     score = 0.0
 
-    agree = min(1.0, n_wallets / 3.0)
+    # "Who is behind this" has to mean who is behind it *at this question*. A wallet
+    # that got rich on soccer is not an authority on a Senate race, and pooling the
+    # leaderboards scored them identically. Off-category wallets still count, at a
+    # discount. An unknown category (no `category`) applies no rule at all - guessing
+    # a market's domain and then judging expertise against the guess is two errors.
+    if category and not fresh:
+        off = max(0, n_wallets - n_category_matched)
+        effective = n_category_matched + _OFF_CATEGORY_CREDIT * off
+    else:
+        effective = float(n_wallets)
+    agree = min(1.0, effective / 3.0)
+
+    # Elections inverse the usual reading of concentration. Everywhere else, size from
+    # few wallets is strong evidence. Here it is evidence the PRICE may be distorted:
+    # a single trader held 2024 pricing away from the polls for weeks, and copying that
+    # buys the distortion, not the information. Same input, opposite sign, one category.
+    #
+    # One-directional by construction - it can only cut ``agree``, never raise it - so a
+    # market we merely failed to classify as an election is scored exactly as before.
+    if (is_election and concentration is not None
+            and concentration > _ELECTION_CONCENTRATION_FLOOR):
+        over = ((concentration - _ELECTION_CONCENTRATION_FLOOR)
+                / (1.0 - _ELECTION_CONCENTRATION_FLOOR))
+        agree *= 1.0 - over * (1.0 - _CONCENTRATED_ELECTION_CREDIT)
+        why.append(f"election market and {concentration * 100:.0f}% of this is one "
+                   "wallet — concentration here can move the price rather than confirm it")
+
     score += 0.30 * agree
-    why.append(f"{n_wallets} profitable wallet{'s' if n_wallets != 1 else ''} on this side")
+    if fresh:
+        # Say what it actually is. Calling an unranked wallet "profitable" would be a
+        # plain lie in the one line a human reads before risking money, and the whole
+        # point of this signal is that we know nothing about who placed it.
+        why.append("new wallet with no track record — pattern signal, not a copy")
+    else:
+        why.append(
+            f"{n_wallets} profitable wallet{'s' if n_wallets != 1 else ''} on this side")
 
     # $10k is the floor to count at all; $200k+ is as convincing as size gets.
     size = min(1.0, (usd / 200_000.0) ** 0.5)
+    # ...but dollars alone can't tell a real opinion from a rounding error: $50k is half
+    # of a $100k wallet and 0.5% of a $10M one. So the term carries two independent
+    # pieces of evidence - the bet is big, AND it is big *to them* - and needs both.
+    # They multiply: a trade that is a rounding error to the wallet that placed it is
+    # not made convincing by having lots of zeroes.
+    #
+    # Deliberately one-directional. ``commitment`` tops out at 1.0, so this can only cut
+    # the size term, never raise it. That matters because the free API cannot see idle
+    # USDC: a wallet sitting in cash looks smaller than it is and its positions look
+    # proportionally bigger, and that blind spot must never manufacture conviction.
+    # Unknown bankroll lands in the same place - commitment 1.0, score unchanged.
+    if bankroll_fraction is not None:
+        commitment = min(1.0, (bankroll_fraction / _FULL_COMMITMENT_FRACTION) ** 0.5)
+        if commitment < 1.0:
+            why.append(f"${usd:,.0f} — but only {bankroll_fraction * 100:.1f}% of their book")
+        else:
+            why.append(f"${usd:,.0f}, {bankroll_fraction * 100:.0f}% of their own book")
+        size *= commitment
+    else:
+        why.append(f"${usd:,.0f} of smart money behind it")
     score += 0.25 * size
-    why.append(f"${usd:,.0f} of smart money behind it")
 
-    fresh = max(0.0, 1.0 - minutes_ago / 180.0)
-    score += 0.15 * fresh
+    # NOT named ``fresh``: that is the new-wallet flag, a bool, and this is a recency
+    # score. Rebinding the parameter worked only because every bool read happened to sit
+    # above this line - a booby trap for the next edit, which would silently get 0.83
+    # where it asked "is this an unproven wallet".
+    recency = max(0.0, 1.0 - minutes_ago / 180.0)
+    score += 0.15 * recency
     why.append(f"latest buy {minutes_ago:.0f} min ago")
 
     # Drift is what killed the June batch: paying up for someone else's information.
@@ -152,17 +266,75 @@ def _conviction(*, n_wallets: int, usd: float, minutes_ago: float, drift_c: floa
     return round(min(1.0, score), 3), why
 
 
+def _fresh_verdicts(cfg, signals, metas, prof, now) -> dict[tuple, str]:
+    """Vet fresh-wallet candidates, cheap gates first. {key: rejection reason}.
+
+    The claim being tested is specific - a NEW wallet taking a LARGE ONE-SIDED position
+    in an ILLIQUID market - and each clause has to hold on its own. Size and one-
+    sidedness were settled upstream; liquidity and age are settled here, in that order,
+    because age is the only one that costs an HTTP call and there is no reason to spend
+    it on a market that was never thin enough to qualify.
+    """
+    fresh = [s for s in signals if s.fresh]
+    if not fresh:
+        return {}
+    verdict: dict[tuple, str] = {}
+    todo = []
+    for s in fresh:
+        m = metas.get(s.market_id)
+        if not m:
+            continue          # the main loop's own metadata check owns this rejection
+        liq = float(m.get("liquidity") or 0.0)
+        # Unknown liquidity is not thin liquidity. The pattern is specifically about
+        # informed money moving a market too small to absorb it; without the depth
+        # number that claim is unverifiable, so it fails rather than passes.
+        if liq <= 0:
+            verdict[_key(s)] = "fresh wallet: market depth unknown"
+        elif liq > cfg.whale_fresh_max_liquidity:
+            verdict[_key(s)] = "fresh wallet: market too liquid for the pattern"
+        else:
+            todo.append(s)
+    if not todo:
+        return verdict
+    if prof is None:
+        for s in todo:
+            verdict[_key(s)] = "fresh wallet: age unavailable"
+        return verdict
+    try:
+        firsts = prof.first_seen([s.wallet_usd[0][0] for s in todo if s.wallet_usd])
+    except Exception:  # noqa: BLE001
+        firsts = {}
+    for s in todo:
+        addr = s.wallet_usd[0][0] if s.wallet_usd else ""
+        first = firsts.get(addr)
+        if not first:
+            # Fail closed. "We could not read this wallet's history" must never be
+            # allowed to mean "this wallet has no history", which is the single
+            # assumption that would turn every unreadable address into a buy signal.
+            verdict[_key(s)] = "fresh wallet: age unavailable"
+            continue
+        if (now - first) / 86400.0 > cfg.whale_fresh_max_age_days:
+            verdict[_key(s)] = "wallet not new (no track record either)"
+    return verdict
+
+
+def _key(s) -> tuple:
+    return (s.market_id, s.outcome, s.wallet_usd[0][0] if s.wallet_usd else "")
+
+
 def build_board(cfg, client, scorer, account: OmenAccount, *,
-                now_ts: float | None = None, meta_fetch=None) -> BoardReport:
+                now_ts: float | None = None, meta_fetch=None,
+                profiler=None) -> BoardReport:
     """Whale flow -> filtered, ranked, human-placeable tickets."""
     from .gamma import market_meta, outcome_price
+    from .whales import build_wallet_profiler
 
     report = BoardReport()
     now = time.time() if now_ts is None else now_ts
     now_dt = datetime.fromtimestamp(now, tz=timezone.utc)
 
     try:
-        signals = find_copy_signals(
+        signals, exits = scan_smart_flow(
             client, scorer,
             categories=cfg.copytrade_categories,
             min_usd=cfg.copytrade_min_usd,
@@ -171,11 +343,20 @@ def build_board(cfg, client, scorer, account: OmenAccount, *,
             limit=cfg.copytrade_feed_limit,
             time_periods=cfg.copytrade_time_periods,
             leaderboard_limit=cfg.copytrade_leaderboard_limit,
+            track_exits=getattr(cfg, "whale_track_exits", False),
+            fresh_min_usd=(cfg.whale_fresh_min_usd
+                           if getattr(cfg, "whale_fresh_enabled", False) else None),
             now_ts=now,
         )
     except Exception as exc:  # noqa: BLE001
         report.notes.append(f"whale feed unavailable: {exc}")
         return report
+
+    # Keyed by the exact (market, outcome) a ticket would buy. Deliberately not matched
+    # across outcomes: on a two-way market a sell of the other leg looks like support
+    # for this one, but on a multi-outcome market it means nothing at all, and inventing
+    # a signal from that ambiguity is worse than staying quiet.
+    exit_by_leg = {(x.market_id, x.outcome.strip().lower()): x for x in exits}
 
     report.considered = len(signals)
     if not signals:
@@ -187,6 +368,21 @@ def build_board(cfg, client, scorer, account: OmenAccount, *,
         metas = fetcher([s.market_id for s in signals])
     except Exception:  # noqa: BLE001
         metas = {}
+
+    # One batched, cached sweep for every wallet in the feed - not one call per ticket.
+    # An outage here costs the bankroll refinement, not the board: an empty map means
+    # every signal falls back to flat dollar sizing, which is what it did before.
+    bankrolls: dict[str, float] = {}
+    prof = profiler if profiler is not None else build_wallet_profiler(cfg, client)
+    if prof is not None and getattr(cfg, "whale_bankroll_weighting", False):
+        try:
+            bankrolls = prof.bankrolls(
+                [addr for s in signals for addr, _usd in s.wallet_usd])
+        except Exception as exc:  # noqa: BLE001
+            report.notes.append(f"bankroll data unavailable ({exc}) — flat dollar sizing")
+            bankrolls = {}
+
+    fresh_verdict = _fresh_verdicts(cfg, signals, metas, prof, now)
 
     candidates: list[TradeTicket] = []
     for s in signals:
@@ -203,6 +399,12 @@ def build_board(cfg, client, scorer, account: OmenAccount, *,
         if m.get("closed") or not m.get("active", True):
             report.reject("market closed")
             continue
+
+        if s.fresh:
+            reason = fresh_verdict.get(_key(s))
+            if reason:
+                report.reject(reason)
+                continue
 
         hours = _hours_until(m.get("end_date", ""), now_dt)
         if hours is not None and hours <= 0:
@@ -254,6 +456,16 @@ def build_board(cfg, client, scorer, account: OmenAccount, *,
             n_wallets=s.n_wallets, usd=s.total_usd, minutes_ago=s.minutes_ago,
             drift_c=drift_c, hours_to_resolve=hours,
             liquidity=float(m.get("liquidity") or 0.0),
+            bankroll_fraction=_bankroll_fraction(s.wallet_usd, bankrolls),
+            fresh=s.fresh,
+            # Passing "" turns the category rule off entirely, which is what both the
+            # flag and an unclassifiable title have to do: no category means no basis
+            # for judging whether the record behind this trade is the relevant one.
+            category=(s.category if getattr(cfg, "whale_category_match", False) else ""),
+            n_category_matched=s.n_category_matched,
+            is_election=(s.is_election and getattr(
+                cfg, "whale_election_concentration_penalty", False)),
+            concentration=_concentration(s.wallet_usd),
         )
         if conviction < cfg.board_min_conviction:
             report.reject("conviction below threshold")
@@ -269,8 +481,37 @@ def build_board(cfg, client, scorer, account: OmenAccount, *,
             warnings.append("thin liquidity — expect slippage")
         if hours is not None and hours < 48:
             warnings.append("resolves within 2 days")
-        if s.n_wallets == 1:
+        if s.fresh:
+            warnings.append("unproven wallet — this is a pattern, not a track record")
+        elif s.n_wallets == 1:
             warnings.append("only one wallet — single opinion")
+
+        # The record exists, but not at this question. Worth saying out loud rather than
+        # only burying it in the score: "profitable wallet" reads as authority, and on a
+        # tennis market a crypto specialist's is borrowed authority.
+        if (getattr(cfg, "whale_category_match", False) and s.category
+                and not s.fresh and s.n_category_matched == 0):
+            warnings.append(
+                f"no {s.category.lower()} track record — these wallets earned their "
+                "record elsewhere")
+
+        conc = _concentration(s.wallet_usd)
+        if (getattr(cfg, "whale_election_concentration_penalty", False) and s.is_election
+                and conc is not None and conc > _ELECTION_CONCENTRATION_FLOOR):
+            warnings.append(
+                f"{conc * 100:.0f}% of this signal is a single wallet on an election "
+                "market — that is the shape that distorted 2024 pricing")
+
+        # Smart money leaving the exact side we are about to recommend. Only flagged
+        # when the sell is MORE RECENT than their latest buy: a wallet that trimmed
+        # before adding is scaling in, and calling that an exit would cry wolf on every
+        # position that was ever partly sold.
+        ex = exit_by_leg.get((s.market_id, s.outcome.strip().lower()))
+        if ex is not None and ex.minutes_ago < s.minutes_ago:
+            warnings.append(
+                f"smart money sold ${ex.total_usd:,.0f} of this side "
+                f"{ex.minutes_ago:.0f} min ago ({ex.n_wallets} wallet"
+                f"{'s' if ex.n_wallets != 1 else ''}) — after the buys above")
         if sizing.capped_by == "omen-market-limit":
             warnings.append("size capped by Omen's per-market contract limit")
 

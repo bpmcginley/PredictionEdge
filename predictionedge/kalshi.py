@@ -36,7 +36,12 @@ class KalshiMarket:
     strike_type: str = ""    # "greater" | "less" | "between"
     floor_strike: float | None = None
     cap_strike: float | None = None
-    expiration_time: str = ""  # ISO; for time-to-expiry in the crypto model
+    expiration_time: str = ""  # ISO; the LATEST settlement deadline, not the event
+    # When the market's outcome is actually determined. For Kalshi crypto markets
+    # these differ by a WEEK - a KXBTCD market closing 2026-08-06T23:00Z carries
+    # expiration_time 2026-08-13T23:00Z - so any time-to-expiry model must use this
+    # one. Reading expiration_time instead priced hours-out markets as 7-day options.
+    close_time: str = ""
 
     def quote(self) -> Quote:
         return Quote(yes_ask=self.yes_ask, no_ask=self.no_ask)
@@ -143,6 +148,8 @@ class LiveKalshiReadOnlyClient:
             floor_strike=m.get("floor_strike"),
             cap_strike=m.get("cap_strike"),
             expiration_time=m.get("expiration_time", ""),
+            close_time=(m.get("expected_expiration_time")
+                        or m.get("close_time") or ""),
         )
 
     def market(self, ticker: str) -> KalshiMarket | None:

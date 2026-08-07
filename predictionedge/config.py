@@ -136,6 +136,52 @@ class Config:
     board_max_tickets: int = 8
     journal_path: str = "data/manual_journal.jsonl"
 
+    # --- EDGE EXPANSION (see EDGE_PLAN.md) -----------------------------------
+    # E1 - logical-consistency scanner. Ladder monotonicity, bracket sums and
+    # dominance violations are edges that need no forecast to be right. A violation
+    # smaller than the round-trip spread is not an edge, hence the cents floor.
+    consistency_enabled: bool = True
+    consistency_min_edge_c: float = 2.0     # min net-of-spread violation to report
+    consistency_max_events: int = 400       # bound the Gamma crawl per scan
+    consistency_min_liquidity: float = 5_000.0   # both legs must be actually fillable
+
+    # E2 - crypto risk-neutral density from Deribit's option chain. The realized-vol
+    # lognormal model disagrees with liquid markets by ~7c, which is model error, not
+    # edge: realized vol is not the risk-neutral distribution. BTC/ETH only - Deribit
+    # has no meaningful SOL/XRP chain, and those must stay labelled as lognormal.
+    deribit_enabled: bool = True
+    deribit_base_url: str = "https://www.deribit.com/api/v2"
+    deribit_assets: tuple[str, ...] = ("BTC", "ETH")
+    deribit_max_spread_frac: float = 0.25   # discard option quotes wider than this
+    deribit_min_strikes: int = 8            # too few strikes = fail closed, don't guess
+
+    # E3 - macro fair value. Fed funds futures are the reference for Fed markets; the
+    # Cleveland Fed nowcast is the reference for CPI. Both free, both better than retail.
+    macro_enabled: bool = True
+    # A nowcast is a point estimate; turning it into bracket probabilities needs an
+    # explicit uncertainty. Named constant, not a magic number inside a formula.
+    # MEASURED, not guessed: the Cleveland Fed's own final-nowcast-vs-actual error across
+    # all 154 printed vintages is rmse 0.150 (CPI MoM) to 0.162 (Core YoY), essentially
+    # unbiased. The initial 0.12 guess was too tight, and a too-tight sigma INVENTS edge -
+    # it makes our distribution narrower than reality, so every centre bracket reads
+    # "overpriced". macrofv floors this at 0.16 and says so when it widens.
+    macro_cpi_nowcast_sigma: float = 0.16   # pp std-dev of nowcast vs printed CPI
+    macro_max_gap_c: float = 25.0           # gaps beyond this smell like a mismatch, not edge
+
+    # E4 - whale depth. Position size as a share of the wallet's own bankroll beats raw
+    # dollars: $50k from a $10M wallet is noise, from a $100k wallet it is an opinion.
+    whale_bankroll_weighting: bool = True
+    whale_track_exits: bool = True          # a smart wallet selling is information too
+    whale_fresh_enabled: bool = True        # new wallet + big one-sided bet = informed flow
+    whale_fresh_max_age_days: float = 30.0
+    whale_fresh_min_usd: float = 5_000.0
+    whale_fresh_max_liquidity: float = 250_000.0  # the pattern lives in thin markets
+    whale_category_match: bool = True       # a politics whale is not a soccer whale
+    # Election markets have a documented single-whale distortion problem. There,
+    # concentration is a reason for LESS confidence in the price - the inverse of how
+    # concentrated smart money is scored everywhere else.
+    whale_election_concentration_penalty: bool = True
+
     # --- AUTONOMOUS OPERATION / SAFETY ---------------------------------------
     # Master switch. Real orders are placed ONLY when this is explicitly true.
     live_trading: bool = False
@@ -247,6 +293,35 @@ class Config:
             board_min_conviction=f("PE_BOARD_MIN_CONVICTION", cls.board_min_conviction),
             board_max_tickets=int(f("PE_BOARD_MAX_TICKETS", cls.board_max_tickets)),
             journal_path=e.get("PE_JOURNAL_PATH", cls.journal_path),
+            consistency_enabled=_truthy(e.get("PE_CONSISTENCY_ENABLED"), cls.consistency_enabled),
+            consistency_min_edge_c=f("PE_CONSISTENCY_MIN_EDGE_C", cls.consistency_min_edge_c),
+            consistency_max_events=int(f("PE_CONSISTENCY_MAX_EVENTS", cls.consistency_max_events)),
+            consistency_min_liquidity=f("PE_CONSISTENCY_MIN_LIQUIDITY",
+                                        cls.consistency_min_liquidity),
+            deribit_enabled=_truthy(e.get("PE_DERIBIT_ENABLED"), cls.deribit_enabled),
+            deribit_base_url=e.get("PE_DERIBIT_BASE_URL", cls.deribit_base_url),
+            deribit_assets=tuple(s.strip().upper() for s in
+                                 e.get("PE_DERIBIT_ASSETS", "").split(",")
+                                 if s.strip()) or cls.deribit_assets,
+            deribit_max_spread_frac=f("PE_DERIBIT_MAX_SPREAD_FRAC", cls.deribit_max_spread_frac),
+            deribit_min_strikes=int(f("PE_DERIBIT_MIN_STRIKES", cls.deribit_min_strikes)),
+            macro_enabled=_truthy(e.get("PE_MACRO_ENABLED"), cls.macro_enabled),
+            macro_cpi_nowcast_sigma=f("PE_MACRO_CPI_NOWCAST_SIGMA", cls.macro_cpi_nowcast_sigma),
+            macro_max_gap_c=f("PE_MACRO_MAX_GAP_C", cls.macro_max_gap_c),
+            whale_bankroll_weighting=_truthy(e.get("PE_WHALE_BANKROLL_WEIGHTING"),
+                                             cls.whale_bankroll_weighting),
+            whale_track_exits=_truthy(e.get("PE_WHALE_TRACK_EXITS"), cls.whale_track_exits),
+            whale_fresh_enabled=_truthy(e.get("PE_WHALE_FRESH_ENABLED"), cls.whale_fresh_enabled),
+            whale_fresh_max_age_days=f("PE_WHALE_FRESH_MAX_AGE_DAYS",
+                                       cls.whale_fresh_max_age_days),
+            whale_fresh_min_usd=f("PE_WHALE_FRESH_MIN_USD", cls.whale_fresh_min_usd),
+            whale_fresh_max_liquidity=f("PE_WHALE_FRESH_MAX_LIQUIDITY",
+                                        cls.whale_fresh_max_liquidity),
+            whale_category_match=_truthy(e.get("PE_WHALE_CATEGORY_MATCH"),
+                                         cls.whale_category_match),
+            whale_election_concentration_penalty=_truthy(
+                e.get("PE_WHALE_ELECTION_CONCENTRATION_PENALTY"),
+                cls.whale_election_concentration_penalty),
             live_trading=_truthy(e.get("PE_LIVE_TRADING"), cls.live_trading),
             use_demo=_truthy(e.get("PE_USE_DEMO"), cls.use_demo),
             max_daily_loss=f("PE_MAX_DAILY_LOSS", cls.max_daily_loss),

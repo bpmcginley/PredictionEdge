@@ -4,7 +4,23 @@ from predictionedge.whales import (
     PolymarketWhaleProvider,
     SmartMoneyConfig,
     SmartWalletScorer,
+    WalletProfiler,
 )
+
+
+class _Fetch:
+    """Records every call so the tests can prove the cache is actually saving them."""
+
+    def __init__(self, values=None, boom=False):
+        self.values = values or {}
+        self.boom = boom
+        self.calls = []
+
+    def __call__(self, url, params):
+        self.calls.append(params.get("user"))
+        if self.boom:
+            raise RuntimeError("data api down")
+        return [{"user": params["user"], "value": self.values[params["user"]]}]
 
 
 def test_scorer_excludes_small_sample_and_churn():
@@ -58,6 +74,114 @@ def test_enrichment_fills_sample_and_qualifies_wallet():
     client = MockPolymarketDataClient(leaderboard=lb, closed=closed)
     prov = PolymarketWhaleProvider(client, SmartWalletScorer(), {}, enrich=True)
     assert "0xW" in prov._smart_addresses()
+
+
+# --- E4.1 wallet bankroll lookups --------------------------------------------
+# /value is one HTTP round trip per wallet and does not batch (verified 2026-08-06:
+# repeated ?user= params return only the last, comma-joined 400s). Across a full feed
+# that is the difference between a cron that finishes and one that doesn't.
+
+def _profiler(fetch, **kw):
+    return WalletProfiler(fetch=fetch, cache_path=None, **kw)
+
+
+def test_profiler_reads_wallet_value():
+    f = _Fetch({"0xA": 250_000.0})
+    assert _profiler(f).bankrolls(["0xA"]) == {"0xA": 250_000.0}
+
+
+def test_profiler_asks_once_per_wallet_per_run():
+    """A per-signal round trip across ~120 signals will not fit a 15-minute cron."""
+    f = _Fetch({"0xA": 1.0, "0xB": 2.0})
+    p = _profiler(f)
+    p.bankrolls(["0xA", "0xB", "0xA"])
+    p.bankrolls(["0xA", "0xB"])           # second sweep is served from memory
+    assert sorted(f.calls) == ["0xA", "0xB"]
+
+
+def test_profiler_refetches_after_the_ttl():
+    clock = {"t": 1000.0}
+    f = _Fetch({"0xA": 1.0})
+    p = _profiler(f, ttl_s=100.0, now_fn=lambda: clock["t"])
+    p.bankrolls(["0xA"])
+    clock["t"] += 101.0
+    p.bankrolls(["0xA"])
+    assert f.calls == ["0xA", "0xA"]
+
+
+def test_profiler_returns_unknown_not_zero_on_failure():
+    """Fail closed: a dead endpoint must not read as 'this wallet holds nothing'."""
+    assert _profiler(_Fetch(boom=True)).bankrolls(["0xA"]) == {}
+
+
+def test_profiler_treats_an_empty_book_as_unknown():
+    """Zero open value is no evidence of wallet size, and it is a division by zero."""
+    assert _profiler(_Fetch({"0xA": 0.0})).bankrolls(["0xA"]) == {}
+
+
+def test_profiler_bounds_its_fan_out():
+    f = _Fetch({f"0x{i}": 1.0 for i in range(10)})
+    p = _profiler(f, max_wallets=3)
+    p.bankrolls([f"0x{i}" for i in range(10)])
+    assert len(f.calls) == 3
+
+
+class _Activity:
+    """/activity?sortDirection=ASC - the oldest event, in one call instead of paging."""
+
+    def __init__(self, rows_by_user):
+        self.rows = rows_by_user
+        self.calls = []
+
+    def __call__(self, url, params):
+        self.calls.append(params)
+        return self.rows.get(params["user"], [])
+
+
+def test_first_seen_reads_the_oldest_activity():
+    f = _Activity({"0xA": [{"timestamp": 1_700_000_000}]})
+    assert WalletProfiler(fetch=f, cache_path=None).first_seen(["0xA"]) == {"0xA": 1_700_000_000}
+    assert f.calls[0]["sortDirection"] == "ASC"   # DESC would date the wallet to today
+
+
+def test_empty_history_is_unknown_not_brand_new():
+    """The trap: 'no rows' reading as age zero would make every unreadable wallet a buy."""
+    assert WalletProfiler(fetch=_Activity({}), cache_path=None).first_seen(["0xA"]) == {}
+
+
+def test_first_seen_is_not_refetched_within_the_run():
+    f = _Activity({"0xA": [{"timestamp": 1_700_000_000}]})
+    p = WalletProfiler(fetch=f, cache_path=None)
+    p.first_seen(["0xA"])
+    p.first_seen(["0xA"])
+    assert len(f.calls) == 1
+
+
+def test_bankroll_and_age_do_not_share_a_cache_slot():
+    """Two different questions about one wallet; answering one is not answering both."""
+    seen = []
+
+    def fetch(url, params):
+        seen.append(url)
+        if url.endswith("/value"):
+            return [{"user": params["user"], "value": 500.0}]
+        return [{"timestamp": 1_700_000_000}]
+
+    p = WalletProfiler(fetch=fetch, cache_path=None)
+    assert p.bankrolls(["0xA"]) == {"0xA": 500.0}
+    assert p.first_seen(["0xA"]) == {"0xA": 1_700_000_000}
+    assert sum(1 for u in seen if u.endswith("/value")) == 1
+    assert sum(1 for u in seen if u.endswith("/activity")) == 1
+
+
+def test_profiler_cache_survives_a_restart(tmp_path):
+    """The smart-wallet set barely moves run to run, so a cold start should be rare."""
+    path = str(tmp_path / "profiles.json")
+    f1 = _Fetch({"0xA": 500.0})
+    WalletProfiler(fetch=f1, cache_path=path).bankrolls(["0xA"])
+    f2 = _Fetch({"0xA": 500.0})
+    assert WalletProfiler(fetch=f2, cache_path=path).bankrolls(["0xA"]) == {"0xA": 500.0}
+    assert f2.calls == []
 
 
 def test_enrichment_excludes_small_sample():

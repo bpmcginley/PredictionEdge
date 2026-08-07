@@ -16,11 +16,13 @@ from typing import Protocol
 from .devig import devig, implied_from_decimal
 
 # Process-wide odds cache so the dashboard and the trading engine SHARE one fetch.
-# The Odds API free tier is only 500 credits/month (1 credit per sport per call), so
-# polling every cycle exhausts it in hours - this is the difference between viable and
-# dead. Default 30 min; sports lines don't move enough at our edge threshold to matter.
+# The Odds API free tier is 500 credits/month (cost = sports x regions per call) and it
+# RESETS MONTHLY - it was never a one-time allowance. A 30-min TTL burns 48/day on a
+# single sport, which is what drained it before: ~16/day is the whole budget. At 2h one
+# sport fits (~360/month); at 4h, two. For closing lines you do not need polling at all -
+# one call near event start is both cheaper and the actual signal.
 _ODDS_CACHE: dict = {}
-_ODDS_TTL = 1800.0
+_ODDS_TTL = 7200.0
 
 
 def _parse_ts(value: str | None) -> datetime | None:
@@ -104,7 +106,12 @@ class TheOddsApiProvider:
 
     BASE = "https://api.the-odds-api.com/v4"
 
-    def __init__(self, api_key: str, sports=("basketball_nba",), regions: str = "us",
+    # "eu", NOT "us". Pinnacle - the sharpest public book and the whole point of a
+    # de-vig reference - is an EU-region book on the free tier, so the old "us" default
+    # silently excluded the one line worth reading. Measured live: Pinnacle quoted a
+    # 1.89% two-way overround against soft books' 4-6%, de-vigging to 0.6457 where the
+    # 22-book consensus sat at 0.6411.
+    def __init__(self, api_key: str, sports=("basketball_nba",), regions: str = "eu",
                  ttl: float = _ODDS_TTL):
         self.api_key = api_key
         self.sports = (sports,) if isinstance(sports, str) else tuple(sports)
