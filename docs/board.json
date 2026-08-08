@@ -1,82 +1,18 @@
 {
-  "generated": "2026-08-08 02:45:15",
-  "generated_at": 1786157115.1954637,
+  "generated": "2026-08-08 03:59:50",
+  "generated_at": 1786161590.8518429,
   "account_size": 100000.0,
-  "tickets": [
-    {
-      "market_id": "0xc0d4b45343bc78ae8da917972e18cfbe455e3db50fb3019f85477949bfd1b8e0",
-      "title": "National Bank Open: Marta Kostyuk vs Iga Swiatek",
-      "side_label": "Marta Kostyuk \u2014 National Bank Open: Marta Kostyuk vs Iga Swiatek",
-      "outcome": "Marta Kostyuk",
-      "entry_price": 0.425,
-      "whale_price": 0.41,
-      "drift_c": 1.5,
-      "contracts": 927,
-      "cost": 393.97,
-      "max_payout": 927.0,
-      "conviction": 0.394,
-      "hours_to_resolve": 203.2,
-      "n_wallets": 1,
-      "whale_usd": 6157,
-      "minutes_ago": 469,
-      "liquidity": 113667,
-      "url": "https://polymarket.com/event/wta-kostyuk-swiatek-2026-08-09",
-      "end_iso": "2026-08-16T14:00:00Z",
-      "signal_ts": 1786128960.0,
-      "why": [
-        "1 profitable wallet on this side",
-        "$6,157 of smart money behind it",
-        "latest buy 469 min ago",
-        "price up 1.5c since they bought",
-        "203h until it resolves",
-        "$113,667 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0xe52d445614186f0bde10bbbf68b91523fe55e120e17e0bf1d0f41ad70022153f",
-      "title": "Will Inter Miami CF win on 2026-08-08?",
-      "side_label": "YES on: Will Inter Miami CF win on 2026-08-08?",
-      "outcome": "Yes",
-      "entry_price": 0.58,
-      "whale_price": 0.59,
-      "drift_c": -1.0,
-      "contracts": 632,
-      "cost": 366.56,
-      "max_payout": 632.0,
-      "conviction": 0.367,
-      "hours_to_resolve": 21.2,
-      "n_wallets": 1,
-      "whale_usd": 4491,
-      "minutes_ago": 209,
-      "liquidity": 29386,
-      "url": "https://polymarket.com/event/lec-mia-mon-2026-08-08",
-      "end_iso": "2026-08-09T00:00:00Z",
-      "signal_ts": 1786144549.0,
-      "why": [
-        "1 profitable wallet on this side",
-        "$4,491 of smart money behind it",
-        "latest buy 209 min ago",
-        "price 1.0c cheaper than they paid",
-        "21h until it resolves"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    }
-  ],
-  "considered": 137,
+  "tickets": [],
+  "considered": 138,
   "rejected": {
-    "in-play (event already started)": 33,
-    "no market metadata": 67,
-    "already resolved": 29,
-    "signal too old for this market's horizon": 5,
-    "could not price this outcome": 1
+    "in-play (event already started)": 27,
+    "no market metadata": 76,
+    "already resolved": 30,
+    "signal too old for this market's horizon": 5
   },
-  "notes": [],
+  "notes": [
+    "Signals came in but none cleared the filters \u2014 that is a normal, and usually correct, outcome."
+  ],
   "omen": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
