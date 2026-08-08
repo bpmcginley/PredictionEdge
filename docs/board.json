@@ -1,14 +1,14 @@
 {
-  "generated": "2026-08-08 09:03:17",
-  "generated_at": 1786179797.694075,
+  "generated": "2026-08-08 09:56:20",
+  "generated_at": 1786182980.2842736,
   "account_size": 100000.0,
   "tickets": [],
-  "considered": 129,
+  "considered": 117,
   "rejected": {
-    "in-play (event already started)": 37,
-    "no market metadata": 82,
-    "signal too old for this market's horizon": 7,
-    "resolves in under 3h": 3
+    "in-play (event already started)": 38,
+    "no market metadata": 67,
+    "resolves in under 3h": 8,
+    "signal too old for this market's horizon": 4
   },
   "notes": [
     "Signals came in but none cleared the filters \u2014 that is a normal, and usually correct, outcome."
