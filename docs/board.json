@@ -1,18 +1,278 @@
 {
-  "generated": "2026-08-08 11:48:20",
-  "generated_at": 1786189700.2727904,
+  "generated": "2026-08-08 13:04:55",
+  "generated_at": 1786194295.4860518,
   "account_size": 100000.0,
-  "tickets": [],
-  "considered": 99,
-  "rejected": {
-    "in-play (event already started)": 39,
-    "no market metadata": 45,
-    "already resolved": 13,
-    "resolves in under 3h": 2
-  },
-  "notes": [
-    "Signals came in but none cleared the filters \u2014 that is a normal, and usually correct, outcome."
+  "tickets": [
+    {
+      "market_id": "0xafcb70bc6f11db4dc7600d1d4347e9cf7df2b080e6ea278b2afc6a282daf882f",
+      "title": "Cleveland Guardians vs. Chicago White Sox: O/U 7.5",
+      "side_label": "Under \u2014 Cleveland Guardians vs. Chicago White Sox: O/U 7.5",
+      "outcome": "Under",
+      "entry_price": 0.525,
+      "whale_price": 0.509,
+      "drift_c": 1.64,
+      "contracts": 1310,
+      "cost": 687.75,
+      "max_payout": 1310.0,
+      "conviction": 0.688,
+      "hours_to_resolve": 10.2,
+      "n_wallets": 3,
+      "whale_usd": 35294,
+      "minutes_ago": 32,
+      "liquidity": 227231,
+      "url": "https://polymarket.com/event/mlb-cle-cws-2026-08-08",
+      "end_iso": "2026-08-08T23:15:00Z",
+      "signal_ts": 1786192366.0,
+      "why": [
+        "3 profitable wallets on this side",
+        "$35,294 of smart money behind it",
+        "latest buy 32 min ago",
+        "price up 1.6c since they bought",
+        "10h until it resolves",
+        "$227,231 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days"
+      ]
+    },
+    {
+      "market_id": "0x3185306e52ae2a23e424014e4c29b82288c6c4f6682058562a3c4c2a0756ef1d",
+      "title": "Houston Astros vs. San Diego Padres",
+      "side_label": "Houston Astros \u2014 Houston Astros vs. San Diego Padres",
+      "outcome": "Houston Astros",
+      "entry_price": 0.475,
+      "whale_price": 0.47,
+      "drift_c": 0.5,
+      "contracts": 1170,
+      "cost": 555.75,
+      "max_payout": 1170.0,
+      "conviction": 0.556,
+      "hours_to_resolve": 178.2,
+      "n_wallets": 1,
+      "whale_usd": 15110,
+      "minutes_ago": 55,
+      "liquidity": 199203,
+      "url": "https://polymarket.com/event/mlb-hou-sd-2026-08-08",
+      "end_iso": "2026-08-15T23:15:00Z",
+      "signal_ts": 1786190964.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$15,110 of smart money behind it",
+        "latest buy 55 min ago",
+        "still near their entry price",
+        "178h until it resolves",
+        "$199,203 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0xfd565e38c1412ce29ec36e32945ee581c06d0bbcbddf55eecfbd8a0fd622ca73",
+      "title": "Toronto Blue Jays vs. Philadelphia Phillies",
+      "side_label": "Philadelphia Phillies \u2014 Toronto Blue Jays vs. Philadelphia Phillies",
+      "outcome": "Philadelphia Phillies",
+      "entry_price": 0.605,
+      "whale_price": 0.591,
+      "drift_c": 1.37,
+      "contracts": 907,
+      "cost": 548.74,
+      "max_payout": 907.0,
+      "conviction": 0.549,
+      "hours_to_resolve": 177.0,
+      "n_wallets": 1,
+      "whale_usd": 27147,
+      "minutes_ago": 57,
+      "liquidity": 237565,
+      "url": "https://polymarket.com/event/mlb-tor-phi-2026-08-08",
+      "end_iso": "2026-08-15T22:05:00Z",
+      "signal_ts": 1786190893.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$27,147 of smart money behind it",
+        "latest buy 57 min ago",
+        "price up 1.4c since they bought",
+        "177h until it resolves",
+        "$237,565 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x1666a06fabd1b680d628b9109967cbf3bb4b15514726a9e0e912e74a0f044054",
+      "title": "New York Mets vs. Pittsburgh Pirates: O/U 8.5",
+      "side_label": "Over \u2014 New York Mets vs. Pittsburgh Pirates: O/U 8.5",
+      "outcome": "Over",
+      "entry_price": 0.535,
+      "whale_price": 0.512,
+      "drift_c": 2.28,
+      "contracts": 985,
+      "cost": 526.98,
+      "max_payout": 985.0,
+      "conviction": 0.527,
+      "hours_to_resolve": 9.6,
+      "n_wallets": 2,
+      "whale_usd": 8516,
+      "minutes_ago": 14,
+      "liquidity": 113780,
+      "url": "https://polymarket.com/event/mlb-nym-pit-2026-08-08",
+      "end_iso": "2026-08-08T22:40:00Z",
+      "signal_ts": 1786193437.0,
+      "why": [
+        "2 profitable wallets on this side",
+        "$8,516 of smart money behind it",
+        "latest buy 14 min ago",
+        "price up 2.3c since they bought",
+        "10h until it resolves",
+        "$113,780 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days"
+      ]
+    },
+    {
+      "market_id": "0xbbeedbb81fed14a00091f0aae6cb7e2a154d983e3bbea67cf6deb36a682fff13",
+      "title": "Los Angeles Angels vs. Miami Marlins: O/U 8.5",
+      "side_label": "Under \u2014 Los Angeles Angels vs. Miami Marlins: O/U 8.5",
+      "outcome": "Under",
+      "entry_price": 0.595,
+      "whale_price": 0.6,
+      "drift_c": -0.5,
+      "contracts": 845,
+      "cost": 502.77,
+      "max_payout": 845.0,
+      "conviction": 0.503,
+      "hours_to_resolve": 7.1,
+      "n_wallets": 1,
+      "whale_usd": 14317,
+      "minutes_ago": 28,
+      "liquidity": 104982,
+      "url": "https://polymarket.com/event/mlb-laa-mia-2026-08-08",
+      "end_iso": "2026-08-08T20:10:00Z",
+      "signal_ts": 1786192599.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$14,317 of smart money behind it",
+        "latest buy 28 min ago",
+        "still near their entry price",
+        "7h until it resolves",
+        "$104,982 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0xfde6ceda72c9511033088b6e93e7a7298a8f12b015dbb12967504d03a0d6b5bd",
+      "title": "Tampa Bay Rays vs. Seattle Mariners: O/U 7.5",
+      "side_label": "Under \u2014 Tampa Bay Rays vs. Seattle Mariners: O/U 7.5",
+      "outcome": "Under",
+      "entry_price": 0.555,
+      "whale_price": 0.56,
+      "drift_c": -0.5,
+      "contracts": 886,
+      "cost": 491.73,
+      "max_payout": 886.0,
+      "conviction": 0.492,
+      "hours_to_resolve": 12.8,
+      "n_wallets": 1,
+      "whale_usd": 9691,
+      "minutes_ago": 37,
+      "liquidity": 65426,
+      "url": "https://polymarket.com/event/mlb-tb-sea-2026-08-08",
+      "end_iso": "2026-08-09T01:50:00Z",
+      "signal_ts": 1786192047.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$9,691 of smart money behind it",
+        "latest buy 37 min ago",
+        "still near their entry price",
+        "13h until it resolves",
+        "$65,426 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x1c5ee4e0fb7c557e0e7fd1f03c82adac4d97926b3d8734cd40908458cee45862",
+      "title": "Spread: Boston Red Sox (-2.5)",
+      "side_label": "Boston Red Sox \u2014 Spread: Boston Red Sox (-2.5)",
+      "outcome": "Boston Red Sox",
+      "entry_price": 0.435,
+      "whale_price": 0.44,
+      "drift_c": -0.5,
+      "contracts": 1055,
+      "cost": 458.93,
+      "max_payout": 1055.0,
+      "conviction": 0.459,
+      "hours_to_resolve": 7.1,
+      "n_wallets": 1,
+      "whale_usd": 4992,
+      "minutes_ago": 48,
+      "liquidity": 112226,
+      "url": "https://polymarket.com/event/mlb-oak-bos-2026-08-08",
+      "end_iso": "2026-08-08T20:10:00Z",
+      "signal_ts": 1786191409.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$4,992 of smart money behind it",
+        "latest buy 48 min ago",
+        "still near their entry price",
+        "7h until it resolves",
+        "$112,226 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x1335bee5151dc5529fb35eda4f577ddd341b02fbda02e43fa7efec0395217fa9",
+      "title": "Los Angeles Dodgers vs. Arizona Diamondbacks: O/U 8.5",
+      "side_label": "Over \u2014 Los Angeles Dodgers vs. Arizona Diamondbacks: O/U 8.5",
+      "outcome": "Over",
+      "entry_price": 0.495,
+      "whale_price": 0.48,
+      "drift_c": 1.5,
+      "contracts": 888,
+      "cost": 439.56,
+      "max_payout": 888.0,
+      "conviction": 0.44,
+      "hours_to_resolve": 11.1,
+      "n_wallets": 1,
+      "whale_usd": 14521,
+      "minutes_ago": 51,
+      "liquidity": 92825,
+      "url": "https://polymarket.com/event/mlb-lad-ari-2026-08-08",
+      "end_iso": "2026-08-09T00:10:00Z",
+      "signal_ts": 1786191223.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$14,521 of smart money behind it",
+        "latest buy 51 min ago",
+        "price up 1.5c since they bought",
+        "11h until it resolves",
+        "$92,825 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    }
   ],
+  "considered": 110,
+  "rejected": {
+    "in-play (event already started)": 38,
+    "no market metadata": 41,
+    "already resolved": 18,
+    "resolves in under 3h": 2,
+    "duplicate event (kept the stronger side)": 3
+  },
+  "notes": [],
   "omen": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
