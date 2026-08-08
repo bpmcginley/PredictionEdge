@@ -1,50 +1,18 @@
 {
-  "generated": "2026-08-08 08:01:30",
-  "generated_at": 1786176090.2716427,
+  "generated": "2026-08-08 09:03:17",
+  "generated_at": 1786179797.694075,
   "account_size": 100000.0,
-  "tickets": [
-    {
-      "market_id": "0xc975f54ce967c109897b3b8ad3b5e8b3d4282fcd5925c649b9b94bb515ec09a0",
-      "title": "Counter-Strike: K27 vs Sinners (BO3) - Esports World Cup Open Qualifier Group 15",
-      "side_label": "K27 \u2014 Counter-Strike: K27 vs Sinners (BO3) - Esports World Cup Open Qualifier Group 15",
-      "outcome": "K27",
-      "entry_price": 0.485,
-      "whale_price": 0.48,
-      "drift_c": 0.5,
-      "contracts": 989,
-      "cost": 479.66,
-      "max_payout": 989.0,
-      "conviction": 0.48,
-      "hours_to_resolve": 7.0,
-      "n_wallets": 1,
-      "whale_usd": 10645,
-      "minutes_ago": 25,
-      "liquidity": 154334,
-      "url": "https://polymarket.com/event/cs2-k271-sin2-2026-08-08",
-      "end_iso": "2026-08-08T15:00:00Z",
-      "signal_ts": 1786174566.0,
-      "why": [
-        "1 profitable wallet on this side",
-        "$10,645 of smart money behind it",
-        "latest buy 25 min ago",
-        "still near their entry price",
-        "7h until it resolves",
-        "$154,334 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    }
-  ],
-  "considered": 134,
+  "tickets": [],
+  "considered": 129,
   "rejected": {
-    "no market metadata": 95,
-    "in-play (event already started)": 28,
-    "signal too old for this market's horizon": 8,
-    "resolves in under 3h": 2
+    "in-play (event already started)": 37,
+    "no market metadata": 82,
+    "signal too old for this market's horizon": 7,
+    "resolves in under 3h": 3
   },
-  "notes": [],
+  "notes": [
+    "Signals came in but none cleared the filters \u2014 that is a normal, and usually correct, outcome."
+  ],
   "omen": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
