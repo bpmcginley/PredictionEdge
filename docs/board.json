@@ -1,18 +1,183 @@
 {
-  "generated": "2026-08-08 03:59:50",
-  "generated_at": 1786161590.8518429,
+  "generated": "2026-08-08 05:07:14",
+  "generated_at": 1786165634.27081,
   "account_size": 100000.0,
-  "tickets": [],
-  "considered": 138,
-  "rejected": {
-    "in-play (event already started)": 27,
-    "no market metadata": 76,
-    "already resolved": 30,
-    "signal too old for this market's horizon": 5
-  },
-  "notes": [
-    "Signals came in but none cleared the filters \u2014 that is a normal, and usually correct, outcome."
+  "tickets": [
+    {
+      "market_id": "0xa8f31e3649cb520dda64ba73d669a94d8c97f168c15ed5ab9016bc78597fc336",
+      "title": "Game Handicap: NS (-1.5) vs DN SOOPers (+1.5)",
+      "side_label": "DN SOOPers \u2014 Game Handicap: NS (-1.5) vs DN SOOPers (+1.5)",
+      "outcome": "DN SOOPers",
+      "entry_price": 0.505,
+      "whale_price": 0.51,
+      "drift_c": -0.5,
+      "contracts": 970,
+      "cost": 489.85,
+      "max_payout": 970.0,
+      "conviction": 0.49,
+      "hours_to_resolve": 10.9,
+      "n_wallets": 1,
+      "whale_usd": 10000,
+      "minutes_ago": 38,
+      "liquidity": 193608,
+      "url": "https://polymarket.com/event/lol-ns-dnf-2026-08-08",
+      "end_iso": "2026-08-08T16:00:00Z",
+      "signal_ts": 1786163370.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$10,000 of smart money behind it",
+        "latest buy 38 min ago",
+        "still near their entry price",
+        "11h until it resolves",
+        "$193,608 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x377d771fbb92cb291fefa615427826f82e66adbf27dd9b2f9142331ea8a6e087",
+      "title": "LoL: T1 vs Hanwha Life Esports (BO3) - LCK Round 3-4 Legend Group",
+      "side_label": "T1 \u2014 LoL: T1 vs Hanwha Life Esports (BO3) - LCK Round 3-4 Legend Group",
+      "outcome": "T1",
+      "entry_price": 0.525,
+      "whale_price": 0.53,
+      "drift_c": -0.5,
+      "contracts": 927,
+      "cost": 486.68,
+      "max_payout": 927.0,
+      "conviction": 0.487,
+      "hours_to_resolve": 8.9,
+      "n_wallets": 1,
+      "whale_usd": 10500,
+      "minutes_ago": 39,
+      "liquidity": 352121,
+      "url": "https://polymarket.com/event/lol-t1-hle1-2026-08-08",
+      "end_iso": "2026-08-08T14:00:00Z",
+      "signal_ts": 1786163274.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$10,500 of smart money behind it",
+        "latest buy 39 min ago",
+        "still near their entry price",
+        "9h until it resolves",
+        "$352,121 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x21f66a1467717a39612dfe12a962083e3f47cfddade7a6d7e784dd0207a6bb0a",
+      "title": "LoL: Weibo Gaming vs LNG Esports (BO3) - LPL Group Nirvana",
+      "side_label": "LNG Esports \u2014 LoL: Weibo Gaming vs LNG Esports (BO3) - LPL Group Nirvana",
+      "outcome": "LNG Esports",
+      "entry_price": 0.305,
+      "whale_price": 0.31,
+      "drift_c": -0.5,
+      "contracts": 1583,
+      "cost": 482.81,
+      "max_payout": 1583.0,
+      "conviction": 0.483,
+      "hours_to_resolve": 7.9,
+      "n_wallets": 1,
+      "whale_usd": 8814,
+      "minutes_ago": 36,
+      "liquidity": 233286,
+      "url": "https://polymarket.com/event/lol-wb-lng-2026-08-08",
+      "end_iso": "2026-08-08T13:00:00Z",
+      "signal_ts": 1786163473.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$8,814 of smart money behind it",
+        "latest buy 36 min ago",
+        "still near their entry price",
+        "8h until it resolves",
+        "$233,286 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x9829e6816101035d2d759dc9be3d5263e8fe54616076bb970cafbe181ad6b490",
+      "title": "LoL: Bilibili Gaming vs EDward Gaming (BO3) - LPL Group Ascend",
+      "side_label": "Bilibili Gaming \u2014 LoL: Bilibili Gaming vs EDward Gaming (BO3) - LPL Group Ascend",
+      "outcome": "Bilibili Gaming",
+      "entry_price": 0.895,
+      "whale_price": 0.89,
+      "drift_c": 0.5,
+      "contracts": 524,
+      "cost": 468.98,
+      "max_payout": 524.0,
+      "conviction": 0.469,
+      "hours_to_resolve": 11.9,
+      "n_wallets": 1,
+      "whale_usd": 2752,
+      "minutes_ago": 13,
+      "liquidity": 205778,
+      "url": "https://polymarket.com/event/lol-blg-edg-2026-08-08",
+      "end_iso": "2026-08-08T17:00:00Z",
+      "signal_ts": 1786164880.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,752 of smart money behind it",
+        "latest buy 13 min ago",
+        "still near their entry price",
+        "12h until it resolves",
+        "$205,778 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0xe0177b14f1d390a9b5fc38b6cb717bc19218b612d0329c8e45ab3920d61a61d0",
+      "title": "Will Vissel K\u014dbe win on 2026-08-08?",
+      "side_label": "NO on: Will Vissel K\u014dbe win on 2026-08-08?",
+      "outcome": "No",
+      "entry_price": 0.54,
+      "whale_price": 0.529,
+      "drift_c": 1.07,
+      "contracts": 833,
+      "cost": 449.82,
+      "max_payout": 833.0,
+      "conviction": 0.45,
+      "hours_to_resolve": 4.9,
+      "n_wallets": 1,
+      "whale_usd": 6414,
+      "minutes_ago": 19,
+      "liquidity": 145476,
+      "url": "https://polymarket.com/event/jap-avi-vis-2026-08-08",
+      "end_iso": "2026-08-08T10:00:00Z",
+      "signal_ts": 1786164504.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$6,414 of smart money behind it",
+        "latest buy 19 min ago",
+        "price up 1.1c since they bought",
+        "5h until it resolves",
+        "$145,476 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    }
   ],
+  "considered": 153,
+  "rejected": {
+    "no market metadata": 122,
+    "in-play (event already started)": 15,
+    "already resolved": 6,
+    "could not price this outcome": 1,
+    "signal too old for this market's horizon": 4
+  },
+  "notes": [],
   "omen": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
