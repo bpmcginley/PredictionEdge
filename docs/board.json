@@ -1,8 +1,41 @@
 {
-  "generated": "2026-08-09 20:42:38",
-  "generated_at": 1786308158.5149102,
+  "generated": "2026-08-09 21:16:16",
+  "generated_at": 1786310176.4857385,
   "account_size": 100000.0,
   "tickets": [
+    {
+      "market_id": "0x3a2fb015f5b71d4f1e48e3683e3c775798381ab54b7e77b160ca223c1c468b20",
+      "title": "Houston Astros vs. San Diego Padres: O/U 9.5",
+      "side_label": "Under \u2014 Houston Astros vs. San Diego Padres: O/U 9.5",
+      "outcome": "Under",
+      "entry_price": 0.555,
+      "whale_price": 0.56,
+      "drift_c": -0.5,
+      "contracts": 909,
+      "cost": 504.5,
+      "max_payout": 909.0,
+      "conviction": 0.505,
+      "hours_to_resolve": 3.1,
+      "n_wallets": 1,
+      "whale_usd": 9802,
+      "minutes_ago": 5,
+      "liquidity": 116792,
+      "url": "https://polymarket.com/event/mlb-hou-sd-2026-08-09",
+      "end_iso": "2026-08-10T00:20:00Z",
+      "signal_ts": 1786309842.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$9,802 of smart money behind it",
+        "latest buy 5 min ago",
+        "still near their entry price",
+        "3h until it resolves",
+        "$116,792 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
     {
       "market_id": "0x41e06a878d9fc4f05a79b517475613e0dba81cc9f7128c6b3f252b0c8b6b4369",
       "title": "National Bank Open: Alexandra Eala vs Belinda Bencic",
@@ -11,25 +44,25 @@
       "entry_price": 0.465,
       "whale_price": 0.46,
       "drift_c": 0.5,
-      "contracts": 1012,
-      "cost": 470.58,
-      "max_payout": 1012.0,
-      "conviction": 0.471,
-      "hours_to_resolve": 161.3,
+      "contracts": 952,
+      "cost": 442.68,
+      "max_payout": 952.0,
+      "conviction": 0.443,
+      "hours_to_resolve": 160.7,
       "n_wallets": 1,
       "whale_usd": 7191,
-      "minutes_ago": 132,
-      "liquidity": 269457,
+      "minutes_ago": 166,
+      "liquidity": 272575,
       "url": "https://polymarket.com/event/wta-eala-bencic-2026-08-09",
       "end_iso": "2026-08-16T14:00:00Z",
       "signal_ts": 1786300234.0,
       "why": [
         "1 profitable wallet on this side",
         "$7,191 of smart money behind it",
-        "latest buy 132 min ago",
+        "latest buy 166 min ago",
         "still near their entry price",
         "161h until it resolves",
-        "$269,457 liquidity"
+        "$272,575 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -47,33 +80,33 @@
       "cost": 355.76,
       "max_payout": 641.0,
       "conviction": 0.356,
-      "hours_to_resolve": 185.3,
+      "hours_to_resolve": 184.7,
       "n_wallets": 1,
       "whale_usd": 5000,
-      "minutes_ago": 235,
-      "liquidity": 409465,
+      "minutes_ago": 268,
+      "liquidity": 380237,
       "url": "https://polymarket.com/event/atp-fonseca-shelton-2026-08-10",
       "end_iso": "2026-08-17T14:00:00Z",
       "signal_ts": 1786294083.0,
       "why": [
         "1 profitable wallet on this side",
         "$5,000 of smart money behind it",
-        "latest buy 235 min ago",
+        "latest buy 268 min ago",
         "price up 2.5c since they bought",
         "185h until it resolves",
-        "$409,465 liquidity"
+        "$380,237 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 182,
+  "considered": 177,
   "rejected": {
-    "in-play (event already started)": 34,
-    "no market metadata": 80,
-    "already resolved": 54,
-    "resolves in under 3h": 11,
+    "in-play (event already started)": 32,
+    "no market metadata": 63,
+    "already resolved": 73,
+    "resolves in under 3h": 5,
     "signal too old for this market's horizon": 1
   },
   "notes": [],
