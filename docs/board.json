@@ -1,47 +1,48 @@
 {
-  "generated": "2026-08-10 00:36:58",
-  "generated_at": 1786322218.082908,
+  "generated": "2026-08-10 03:00:50",
+  "generated_at": 1786330850.3881953,
   "account_size": 100000.0,
   "tickets": [
     {
-      "market_id": "0x41e06a878d9fc4f05a79b517475613e0dba81cc9f7128c6b3f252b0c8b6b4369",
-      "title": "National Bank Open: Alexandra Eala vs Belinda Bencic",
-      "side_label": "Alexandra Eala \u2014 National Bank Open: Alexandra Eala vs Belinda Bencic",
-      "outcome": "Alexandra Eala",
-      "entry_price": 0.485,
-      "whale_price": 0.484,
-      "drift_c": 0.13,
-      "contracts": 1900,
-      "cost": 921.5,
-      "max_payout": 1900.0,
-      "conviction": 0.992,
-      "hours_to_resolve": 157.4,
-      "n_wallets": 4,
-      "whale_usd": 271381,
-      "minutes_ago": 4,
-      "liquidity": 489064,
-      "url": "https://polymarket.com/event/wta-eala-bencic-2026-08-09",
-      "end_iso": "2026-08-16T14:00:00Z",
-      "signal_ts": 1786321960.0,
+      "market_id": "0x5ab81751e1511a260f8a26d80687d8d2e0bdc05fe480e48fbb504fc2585bf0b4",
+      "title": "LoL: Hanwha Life Esports vs Gen.G (BO3) - KeSPA Cup Last Chance Qualifier",
+      "side_label": "Gen.G \u2014 LoL: Hanwha Life Esports vs Gen.G (BO3) - KeSPA Cup Last Chance Qualifier",
+      "outcome": "Gen.G",
+      "entry_price": 0.595,
+      "whale_price": 0.602,
+      "drift_c": -0.73,
+      "contracts": 1166,
+      "cost": 693.77,
+      "max_payout": 1166.0,
+      "conviction": 0.694,
+      "hours_to_resolve": 9.0,
+      "n_wallets": 1,
+      "whale_usd": 379812,
+      "minutes_ago": 22,
+      "liquidity": 154672,
+      "url": "https://polymarket.com/event/lol-hle1-gen-2026-08-10",
+      "end_iso": "2026-08-10T12:00:00Z",
+      "signal_ts": 1786329532.0,
       "why": [
-        "4 profitable wallets on this side",
-        "$271,381 of smart money behind it",
-        "latest buy 4 min ago",
-        "still near their entry price",
-        "157h until it resolves",
-        "$489,064 liquidity"
+        "1 profitable wallet on this side",
+        "$379,812 of smart money behind it",
+        "latest buy 22 min ago",
+        "price 0.7c cheaper than they paid",
+        "9h until it resolves",
+        "$154,672 liquidity"
       ],
       "warnings": [
-        "size capped by Omen's per-market contract limit"
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 173,
+  "considered": 155,
   "rejected": {
-    "no market metadata": 113,
-    "already resolved": 36,
-    "in-play (event already started)": 21,
-    "resolves in under 3h": 2
+    "no market metadata": 121,
+    "already resolved": 23,
+    "in-play (event already started)": 9,
+    "duplicate event (kept the stronger side)": 1
   },
   "notes": [],
   "omen": {
