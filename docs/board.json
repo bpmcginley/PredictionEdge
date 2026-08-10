@@ -1,17 +1,108 @@
 {
-  "generated": "2026-08-10 06:17:35",
-  "generated_at": 1786342655.3958313,
+  "generated": "2026-08-10 08:15:13",
+  "generated_at": 1786349713.523254,
   "account_size": 100000.0,
-  "tickets": [],
-  "considered": 145,
-  "rejected": {
-    "in-play (event already started)": 14,
-    "no market metadata": 124,
-    "already resolved": 7
-  },
-  "notes": [
-    "Signals came in but none cleared the filters \u2014 that is a normal, and usually correct, outcome."
+  "tickets": [
+    {
+      "market_id": "0x8fb8c5b5e504f8b1bbf18ac9aa85aefc65bba1ffc5075c91910d0dd9767c7486",
+      "title": "National Bank Open: Rafael Jodar vs Arthur Fils",
+      "side_label": "Rafael Jodar \u2014 National Bank Open: Rafael Jodar vs Arthur Fils",
+      "outcome": "Rafael Jodar",
+      "entry_price": 0.535,
+      "whale_price": 0.526,
+      "drift_c": 0.95,
+      "contracts": 1162,
+      "cost": 621.67,
+      "max_payout": 1162.0,
+      "conviction": 0.622,
+      "hours_to_resolve": 197.7,
+      "n_wallets": 2,
+      "whale_usd": 16583,
+      "minutes_ago": 82,
+      "liquidity": 174484,
+      "url": "https://polymarket.com/event/atp-jodar-fils-2026-08-11",
+      "end_iso": "2026-08-18T14:00:00Z",
+      "signal_ts": 1786344798.0,
+      "why": [
+        "2 profitable wallets on this side",
+        "$16,583 of smart money behind it",
+        "latest buy 82 min ago",
+        "price up 0.9c since they bought",
+        "198h until it resolves",
+        "$174,484 liquidity"
+      ],
+      "warnings": []
+    },
+    {
+      "market_id": "0x77601218f89d0166a46923aa9a410fec4b75b40c971cfee68af05956fbf7e10a",
+      "title": "LoL: KT Rolster vs Dplus KIA (BO3) - LCK Round 3-4 Legend Group",
+      "side_label": "KT Rolster \u2014 LoL: KT Rolster vs Dplus KIA (BO3) - LCK Round 3-4 Legend Group",
+      "outcome": "KT Rolster",
+      "entry_price": 0.375,
+      "whale_price": 0.38,
+      "drift_c": -0.5,
+      "contracts": 1637,
+      "cost": 613.88,
+      "max_payout": 1637.0,
+      "conviction": 0.614,
+      "hours_to_resolve": 55.7,
+      "n_wallets": 1,
+      "whale_usd": 39633,
+      "minutes_ago": 30,
+      "liquidity": 31316,
+      "url": "https://polymarket.com/event/lol-kt-dk-2026-08-12",
+      "end_iso": "2026-08-12T16:00:00Z",
+      "signal_ts": 1786347912.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$39,633 of smart money behind it",
+        "latest buy 30 min ago",
+        "still near their entry price",
+        "56h until it resolves"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0xd24a14ca602677dd9ef0c4948f003321b05de375e9da6a355447a8eeae8b1fd6",
+      "title": "Astana: Semen Pankin vs Dominik Palan",
+      "side_label": "Semen Pankin \u2014 Astana: Semen Pankin vs Dominik Palan",
+      "outcome": "Semen Pankin",
+      "entry_price": 0.615,
+      "whale_price": 0.61,
+      "drift_c": 0.5,
+      "contracts": 933,
+      "cost": 573.79,
+      "max_payout": 933.0,
+      "conviction": 0.574,
+      "hours_to_resolve": 164.7,
+      "n_wallets": 1,
+      "whale_usd": 10546,
+      "minutes_ago": 20,
+      "liquidity": 215923,
+      "url": "https://polymarket.com/event/atp-pankin-palan-2026-08-10",
+      "end_iso": "2026-08-17T05:00:00Z",
+      "signal_ts": 1786348486.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$10,546 of smart money behind it",
+        "latest buy 20 min ago",
+        "still near their entry price",
+        "165h until it resolves",
+        "$215,923 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    }
   ],
+  "considered": 118,
+  "rejected": {
+    "in-play (event already started)": 17,
+    "no market metadata": 98
+  },
+  "notes": [],
   "omen": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
