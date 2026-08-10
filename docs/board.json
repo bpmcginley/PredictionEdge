@@ -1,50 +1,17 @@
 {
-  "generated": "2026-08-10 04:57:01",
-  "generated_at": 1786337821.363212,
+  "generated": "2026-08-10 06:17:35",
+  "generated_at": 1786342655.3958313,
   "account_size": 100000.0,
-  "tickets": [
-    {
-      "market_id": "0x5ab81751e1511a260f8a26d80687d8d2e0bdc05fe480e48fbb504fc2585bf0b4",
-      "title": "LoL: Hanwha Life Esports vs Gen.G (BO3) - KeSPA Cup Last Chance Qualifier",
-      "side_label": "Gen.G \u2014 LoL: Hanwha Life Esports vs Gen.G (BO3) - KeSPA Cup Last Chance Qualifier",
-      "outcome": "Gen.G",
-      "entry_price": 0.595,
-      "whale_price": 0.604,
-      "drift_c": -0.92,
-      "contracts": 1063,
-      "cost": 632.49,
-      "max_payout": 1063.0,
-      "conviction": 0.633,
-      "hours_to_resolve": 7.1,
-      "n_wallets": 1,
-      "whale_usd": 455460,
-      "minutes_ago": 92,
-      "liquidity": 200849,
-      "url": "https://polymarket.com/event/lol-hle1-gen-2026-08-10",
-      "end_iso": "2026-08-10T12:00:00Z",
-      "signal_ts": 1786332291.0,
-      "why": [
-        "1 profitable wallet on this side",
-        "$455,460 of smart money behind it",
-        "latest buy 92 min ago",
-        "price 0.9c cheaper than they paid",
-        "7h until it resolves",
-        "$200,849 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    }
-  ],
+  "tickets": [],
   "considered": 145,
   "rejected": {
+    "in-play (event already started)": 14,
     "no market metadata": 124,
-    "already resolved": 11,
-    "in-play (event already started)": 8,
-    "signal too old for this market's horizon": 1
+    "already resolved": 7
   },
-  "notes": [],
+  "notes": [
+    "Signals came in but none cleared the filters \u2014 that is a normal, and usually correct, outcome."
+  ],
   "omen": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
