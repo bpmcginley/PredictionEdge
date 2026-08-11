@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>PredictionEdge — research</title>
+<link rel="stylesheet" href="assets/app.css" />
+</head>
+<body>
+<div class="wrap">
+  <h1>Research</h1>
+  <p class="lede">Signal sources that are not yet trusted enough to become tickets. They
+    print here so their numbers can be checked against live markets over time. Nothing on
+    this page is sized, ranked against your capital, or loggable.</p>
+
+  <div class="banner">
+    <b>Not tickets.</b> The board earns its place from a signal with a track record. These
+    two sources have none yet — they are shown so you can judge whether their numbers are
+    sane before anything here is promoted.
+  </div>
+
+  <div class="alert" id="stale"></div>
+
+  <h2 style="margin-top:28px">Logical consistency</h2>
+  <p class="muted" style="font-size:13px;max-width:72ch;margin-bottom:12px">
+    Constraints the book must satisfy regardless of who is right about the world:
+    a higher threshold cannot cost more than a lower one, an exclusive set cannot sum
+    away from 1.00, and a harder event cannot beat its own prerequisite. Every gap below
+    is already net of the round-trip spread.</p>
+  <div class="filters" id="c-chips"></div>
+  <div id="consistency"></div>
+
+  <h2 style="margin-top:34px">CPI vs the Cleveland Fed nowcast</h2>
+  <p class="muted" style="font-size:13px;max-width:72ch;margin-bottom:12px">
+    Bracket prices beside a normal distribution centred on the Cleveland Fed's daily
+    nowcast. The width of that distribution is an assumption, not a measurement — read
+    the sigma note on each card before reading the gaps.</p>
+  <div id="macro"></div>
+
+  <footer>
+    Fed-funds futures are deliberately absent: no free, terms-compliant source for the
+    strip was found, so that leg fails closed rather than ship a scraped approximation.
+  </footer>
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+mountNav('research.html');
+
+/* A failed scan must never render as a clean book — that is the market_meta lesson,
+   restated in the UI layer. Absent data says "unknown", not "nothing found". */
+function unknown(msg){
+  return `<div class="card"><div class="warn">${esc(msg)}</div></div>`;
+}
+
+/* Polymarket quotes below a cent, and a bracket sum can hinge on those legs. Two
+   decimals renders a real 0.004 ask as "0.00", which reads as free money and
+   contradicts the BUY action printed directly above it. */
+const px = v => {
+  const n = Number(v);
+  return Math.abs(n * 100 - Math.round(n * 100)) > 1e-9 ? n.toFixed(3) : n.toFixed(2);
+};
+
+function render(){
+  stampUpdated();
+
+  const age = dataAgeMin(), s = $('stale');
+  if(age != null && age > 90){
+    s.style.display='block';
+    s.innerHTML = `Generated <b>${fmtDur(age/60)}</b> ago. Consistency gaps are the first
+      thing other people arbitrage away — re-check both legs before believing any of them.`;
+  } else s.style.display='none';
+
+  renderConsistency(DATA.consistency);
+  renderMacro(DATA.macro);
+}
+
+function renderConsistency(c){
+  c = c || {};
+  const chips = [];
+  if(c.events_scanned) chips.push(`<span class="chip">${c.events_scanned} events scanned</span>`);
+  Object.entries(c.rejected||{}).forEach(([k,v])=>chips.push(`<span class="chip">${v} × ${esc(k)}</span>`));
+  (c.notes||[]).forEach(n=>chips.unshift(`<span class="chip">${esc(n)}</span>`));
+  $('c-chips').innerHTML = chips.join('');
+
+  if(c.ok === false){ $('consistency').innerHTML = unknown(
+    'Scan failed — this is not a clean book, it is an unknown one. ' + ((c.notes||[])[0]||'')); return; }
+  if(c.enabled === false){ $('consistency').innerHTML =
+    '<div class="card empty">Scanner disabled.</div>'; return; }
+
+  const v = c.violations||[];
+  $('consistency').innerHTML = v.length
+    ? v.map(violation).join('')
+    : `<div class="card empty">No violations above the spread. This is the normal result —
+        the book is usually coherent.</div>`;
+}
+
+function violation(v){
+  return `<article class="ticket">
+    <div class="thead">
+      <div class="rank">${esc(v.family)}</div>
+      <div style="flex:1">
+        <div class="side">${esc(v.constraint)}</div>
+        ${v.url?`<a class="mkt" href="${esc(v.url)}" target="_blank" rel="noopener">verify on Polymarket ${ICON.ext}</a>`:''}
+      </div>
+      <div class="conv"><b>${Number(v.edge_c).toFixed(1)}¢</b><span>net of spread</span></div>
+    </div>
+    <ul class="why">${(v.actions||[]).map(a=>`<li>${esc(a)}</li>`).join('')}</ul>
+    <div class="scroll"><table>
+      <thead><tr><th>Leg</th><th>Bid</th><th>Ask</th><th>Liquidity</th><th>Resolves</th></tr></thead>
+      <tbody>${(v.legs||[]).map(l=>`<tr>
+        <td>${esc(l.question||l.name)}</td>
+        <td class="num">${px(l.bid)}</td>
+        <td class="num">${px(l.ask)}</td>
+        <td class="num">${money(l.liquidity)}</td>
+        <td class="num">${esc((l.end_iso||'').slice(0,10))}</td></tr>`).join('')}</tbody>
+    </table></div>
+    ${(v.warnings||[]).length?`<div class="warn">${v.warnings.map(esc).join(' · ')}</div>`:''}
+  </article>`;
+}
+
+function renderMacro(m){
+  m = m || {};
+  if(m.ok === false){ $('macro').innerHTML = unknown(
+    'Macro fair value failed — unknown, not clean. ' + ((m.notes||[])[0]||'')); return; }
+  if(m.enabled === false){ $('macro').innerHTML =
+    '<div class="card empty">Macro fair value disabled.</div>'; return; }
+
+  const rows = m.cpi||[];
+  $('macro').innerHTML = rows.length
+    ? rows.map(cpi).join('')
+    : `<div class="card empty">No live CPI bracket set could be matched to a nowcast
+        vintage that has not already printed.</div>`;
+}
+
+function cpi(c){
+  return `<article class="ticket">
+    <div class="thead">
+      <div style="flex:1">
+        <div class="side">${esc(c.title)}</div>
+        <a class="mkt" href="${esc(c.url)}" target="_blank" rel="noopener">verify on Polymarket ${ICON.ext}</a>
+      </div>
+      <div class="conv"><b>${Number(c.nowcast_pp).toFixed(2)}</b><span>nowcast pp</span></div>
+    </div>
+    <div class="grid">
+      <div class="f"><b>${esc(c.series)}</b><span>series</span></div>
+      <div class="f"><b>${esc(c.basis)}</b><span>basis</span></div>
+      <div class="f"><b>${esc(c.ref_month)}</b><span>reference month</span></div>
+      <div class="f"><b>${Number(c.sigma).toFixed(3)}</b><span>sigma (pp)</span></div>
+      <div class="f"><b>${esc((c.nowcast_as_of||'').slice(0,10))}</b><span>nowcast as of</span></div>
+    </div>
+    ${c.model_sigma_note?`<div class="warn">${esc(c.model_sigma_note)}</div>`:''}
+    <div class="scroll"><table>
+      <thead><tr><th>Bracket</th><th>Market</th><th>Model</th><th>Gap</th></tr></thead>
+      <tbody>${(c.rows||[]).map(r=>`<tr>
+        <td>${esc(r.label)}${r.suspect?' <span class="chip">suspect</span>':''}</td>
+        <td class="num">${(r.market_prob*100).toFixed(1)}¢</td>
+        <td class="num">${(r.model_prob*100).toFixed(1)}¢</td>
+        <td class="num ${r.gap_c>=0?'pos':'neg'}">${r.gap_c>=0?'+':'−'}${Math.abs(r.gap_c).toFixed(1)}¢</td>
+      </tr>`).join('')}</tbody>
+    </table></div>
+  </article>`;
+}
+
+function onLoadError(){
+  $('consistency').innerHTML = unknown('Could not load board.json.');
+  $('macro').innerHTML = '';
+}
+load(); setInterval(load, 300000);
+</script>
+</body>
+</html>

@@ -32,6 +32,79 @@ _HISTORY = Path(__file__).with_name("history.html")
 _BOARD = Path(__file__).with_name("board.html")
 
 
+def _consistency_section(cfg: Config) -> dict:
+    """Live logical-consistency violations, as an ADVISORY section - never tickets.
+
+    Deliberately not merged into ``tickets``: a mechanical violation has no whale, so
+    drift_c/n_wallets/whale_price would all be fiction, and EDGE_PLAN step 4 gates any
+    new source out of the acted-on list until it has printed sane live numbers under
+    review. This surfaces the numbers so that review can happen.
+    """
+    if not cfg.consistency_enabled:
+        return {"ok": True, "enabled": False, "violations": [], "notes": [],
+                "rejected": {}, "events_scanned": 0}
+    try:
+        from .consistency import scan
+        rep = scan(cfg)
+    except Exception as exc:  # noqa: BLE001
+        # An outage must read as "we do not know", never as "the book is clean".
+        return {"ok": False, "enabled": True, "violations": [], "rejected": {},
+                "events_scanned": 0,
+                "notes": [f"consistency scan failed, result unknown: {exc}"]}
+    return {
+        "ok": True,
+        "enabled": True,
+        "events_scanned": rep.events_scanned,
+        "rejected": rep.rejected,
+        "notes": rep.notes,
+        "violations": [{
+            "family": v.family, "event_slug": v.event_slug,
+            "constraint": v.constraint, "edge_c": round(v.edge_c, 2),
+            "actions": list(v.actions), "warnings": list(v.warnings),
+            "url": v.legs[0].url if v.legs else "",
+            "legs": [{"question": lg.question, "name": lg.name, "bid": lg.bid,
+                      "ask": lg.ask, "liquidity": lg.liquidity,
+                      "end_iso": lg.end_iso, "url": lg.url} for lg in v.legs],
+        } for v in rep.violations],
+    }
+
+
+def _macro_section(cfg: Config) -> dict:
+    """CPI brackets priced against the Cleveland Fed nowcast. Advisory, same as above.
+
+    The Fed-futures leg is deliberately absent: no free terms-compliant source for the
+    strip was found, and macrofv fails closed rather than substitute a scrape.
+    """
+    if not cfg.macro_enabled:
+        return {"ok": True, "enabled": False, "cpi": [], "notes": []}
+    try:
+        from .macrofv import run_cpi
+        comparisons = run_cpi(cfg)
+    except Exception as exc:  # noqa: BLE001
+        return {"ok": False, "enabled": True, "cpi": [],
+                "notes": [f"macro fair-value failed, result unknown: {exc}"]}
+    return {
+        "ok": True,
+        "enabled": True,
+        "notes": [],
+        "cpi": [{
+            "slug": c.match.slug, "title": c.match.title,
+            "series": c.match.series, "basis": c.match.basis,
+            "ref_month": c.match.ref_month,
+            "url": f"https://polymarket.com/event/{c.match.slug}",
+            "nowcast_pp": c.nowcast.value_pp, "nowcast_as_of": c.nowcast.as_of,
+            "sigma": c.sigma,
+            # Carried verbatim so the page cannot quietly drop the one caveat that
+            # explains away a whole column of apparent edges.
+            "model_sigma_note": c.model_sigma_note,
+            "rows": [{"label": r.bracket.label, "market_prob": r.bracket.market_prob,
+                      "model_prob": round(r.model_prob, 4),
+                      "gap_c": round(r.gap_c, 2), "suspect": r.suspect}
+                     for r in c.rows],
+        } for c in comparisons],
+    }
+
+
 def build_board_payload(cfg: Config, force_mock: bool = False) -> dict:
     """The manual trade board: ranked suggestions + what we filtered out + the journal."""
     from .journal import Journal
@@ -51,9 +124,9 @@ def build_board_payload(cfg: Config, force_mock: bool = False) -> dict:
         report = build_board(cfg, client, scorer, account)
 
     journal = Journal(cfg.journal_path)
-    tickets = []
-    for t in (report.tickets if report else []):
-        tickets.append({
+
+    def _row(t):
+        return {
             "market_id": t.market_id, "title": t.title, "side_label": t.side_label,
             "outcome": t.outcome, "entry_price": t.entry_price,
             "whale_price": t.whale_price, "drift_c": t.drift_c,
@@ -62,19 +135,36 @@ def build_board_payload(cfg: Config, force_mock: bool = False) -> dict:
             "hours_to_resolve": t.hours_to_resolve, "n_wallets": t.n_wallets,
             "whale_usd": t.whale_usd, "minutes_ago": t.minutes_ago,
             "liquidity": t.liquidity, "url": t.url,
-            "end_iso": t.end_iso, "signal_ts": t.signal_ts,
+            "end_iso": t.end_iso, "event_iso": t.event_iso,
+            "signal_ts": t.signal_ts,
             "why": t.why, "warnings": t.warnings,
-        })
+        }
+
+    tickets = [_row(t) for t in (report.tickets if report else [])]
+    # Cleared every hard filter, sits below the buy bar. Published so the paper trial can
+    # observe the rejected region - the only way the bar itself ever becomes checkable.
+    # Kept out of `tickets` because these are measurements, not recommendations.
+    probe = [_row(t) for t in (report.probe if report else [])]
+
     return {
         "generated": time.strftime("%Y-%m-%d %H:%M:%S"),
         "generated_at": time.time(),
         "account_size": cfg.omen_account_size,
         "tickets": tickets,
+        "probe": probe,
         "considered": report.considered if report else 0,
         "rejected": report.rejected if report else {},
         "notes": (report.notes if report else ["whale data source unavailable"]),
         "journal": journal.summary(),
         "journal_state": journal.latest(),
+        # Advisory-only sources (EDGE_PLAN E1/E3). Skipped under force_mock: both do a
+        # live crawl, and a mock run must stay offline.
+        "consistency": ({"ok": True, "enabled": False, "violations": [], "notes":
+                         ["skipped in mock mode"], "rejected": {}, "events_scanned": 0}
+                        if force_mock else _consistency_section(cfg)),
+        "macro": ({"ok": True, "enabled": False, "cpi": [],
+                   "notes": ["skipped in mock mode"]}
+                  if force_mock else _macro_section(cfg)),
     }
 
 

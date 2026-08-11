@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="description" content="Auto-recorded paper trial: every published ticket, held to settlement, scored by the same gate as a live strategy." />
+<title>PredictionEdge — paper trial</title>
+<link rel="stylesheet" href="assets/app.css" />
+</head>
+<body>
+<div class="wrap">
+
+  <section class="hero">
+    <div class="pill"><span class="dot" id="statusdot"></span><span id="statustext">loading…</span></div>
+    <h1>Is the edge real?</h1>
+    <p class="lede">
+      Every ticket the board publishes is opened here as a paper position at the price
+      shown, held to settlement, and labelled from the venue's own resolution — no hand
+      entry, no discretion, no deleting the bad ones. Positions are all the same size on
+      purpose, so this measures the signal rather than the sizing rule.
+    </p>
+  </section>
+
+  <div class="card">
+    <div class="stats" id="stats"></div>
+  </div>
+
+  <div class="card prose" id="verdict"></div>
+
+  <h2>Settled</h2>
+  <div id="settled"></div>
+
+  <h2>Still open</h2>
+  <div id="open"></div>
+
+  <div class="banner">
+    <b>Paper, not placed.</b> Nothing on this page was traded. Fees are charged at the
+    Kalshi maker schedule because the point of the trial is to decide whether this is
+    worth trading there — a record that ignores fees flatters itself.
+  </div>
+
+  <footer>
+    Each position is committed to the public repository the moment it is opened, so the
+    entry price and timestamp cannot be revised afterwards. The verdict above comes from
+    the same deploy gate the backtester applies to any other strategy in this project.
+  </footer>
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+mountNav('trial.html');
+
+let TRIAL = null;
+
+const pct  = x => (x == null ? '—' : (x * 100).toFixed(1) + '%');
+const spct = x => (x == null ? '—' : (x >= 0 ? '+' : '−') + Math.abs(x * 100).toFixed(1) + '%');
+const when = ts => ts ? new Date(ts * 1000).toISOString().slice(0, 10) : '—';
+
+function statb(v, l, cls) {
+  return `<div class="stat"><b class="${cls || ''}">${v}</b><span>${l}</span></div>`;
+}
+
+function row(r, settled) {
+  const cls = !settled ? '' : (r.won ? 'pos' : 'neg');
+  let res;
+  if (settled) {
+    res = `<b class="${cls}">${r.won ? 'WON' : 'LOST'} ${signed(r.realized)}</b>`;
+  } else {
+    // Held-for, not time-left. An open paper position whose deadline has passed is the
+    // one thing that can quietly bias this record - unresolved markets skew toward
+    // disputes and voids - so it gets named rather than shown as a countdown.
+    const held = (Date.now() / 1000 - r.opened_at) / 3600;
+    const late = hoursLeft({event_iso: r.end_iso}) < 0;
+    res = `<span class="muted">held ${fmtDur(held)}</span>` +
+          (late ? ' <span class="warn">awaiting resolution</span>' : '');
+  }
+  return `<div class="ticket"><div class="grid">
+      <div><b>${esc(r.outcome)}</b><br /><span class="muted">${esc(r.title)}</span></div>
+      <div class="mono">${(r.price * 100).toFixed(0)}c</div>
+      <div class="mono muted">${when(r.opened_at)}</div>
+      <div>${res}</div>
+    </div></div>`;
+}
+
+function render() {
+  stampUpdated();
+  const dot = $('statusdot'), txt = $('statustext');
+
+  if (!TRIAL) {
+    dot.className = 'dot bad';
+    txt.textContent = 'trial.json unavailable';
+    return;
+  }
+  const s = TRIAL.stats || {}, open = TRIAL.open || [], done = TRIAL.settled || [];
+  const n = s.n || 0;
+  dot.className = n ? 'dot' : 'dot warn';
+  txt.textContent = n ? `${n} settled · ${open.length} open`
+                      : `${open.length} open · nothing has settled yet`;
+
+  // calibration_gap is avg entry price minus win rate, so realised edge is its
+  // negative: we beat the price we paid exactly when we win more often than it implied.
+  const edge = (s.calibration_gap == null) ? null : -s.calibration_gap;
+
+  $('stats').innerHTML =
+    statb(n, 'settled') +
+    statb(open.length, 'open') +
+    statb(n ? pct(s.win_rate) : '—', 'win rate') +
+    statb(n ? pct(s.avg_predicted) : '—', 'avg entry price') +
+    statb(n ? spct(edge) : '—', 'realised edge', edge == null ? '' : (edge > 0 ? 'pos' : 'neg')) +
+    statb(n ? signed(s.total_pnl) : '—', 'paper p&l', (s.total_pnl || 0) >= 0 ? 'pos' : 'neg');
+
+  const need = Math.max(0, 30 - n);
+  let v;
+  if (!n) {
+    v = `<p><strong>No verdict yet, and that is the honest answer.</strong> Nothing has
+         reached settlement, so there is no evidence here in either direction. The gate
+         needs 30 settled positions before it will even score the record, and roughly
+         750 before a 3-point edge is distinguishable from luck at all.</p>`;
+  } else if (!s.deploy) {
+    v = `<p><strong>Not proven.</strong> ${need ? `${need} more settled position${need !== 1 ? 's' : ''} before the
+         gate will score this at all. ` : ''}The record so far fails on:</p>
+         <ul>${(s.reasons || []).map(r => `<li class="prose">${esc(r)}</li>`).join('')}</ul>
+         <p class="muted">Mean return per position ${spct(s.mean_return)} · Sharpe per
+         position ${s.sharpe_per_bet} · deflated Sharpe ${s.dsr} · bootstrap 5–95% CI
+         [${(s.bootstrap_ci || []).map(x => spct(x)).join(', ')}] · Brier ${s.brier}.</p>`;
+  } else {
+    v = `<p><strong>The gate passes on ${n} settled positions.</strong> Mean return
+         ${spct(s.mean_return)} per position, deflated Sharpe ${s.dsr}, bootstrap 5%
+         bound ${spct((s.bootstrap_ci || [])[0])} above zero. That is evidence, not a
+         guarantee — the same gate has been wrong before on smaller samples.</p>`;
+  }
+  $('verdict').innerHTML = v;
+
+  $('settled').innerHTML = done.length
+    ? done.slice().sort((a, b) => b.settled_at - a.settled_at).map(r => row(r, true)).join('')
+    : '<div class="card empty">Nothing has settled yet.</div>';
+  $('open').innerHTML = open.length
+    ? open.slice().sort((a, b) => b.opened_at - a.opened_at).map(r => row(r, false)).join('')
+    : '<div class="card empty">No open paper positions.</div>';
+}
+
+async function loadTrial() {
+  try {
+    const r = await fetch('trial.json?t=' + Date.now());
+    if (!r.ok) throw new Error('trial.json ' + r.status);
+    TRIAL = await r.json();
+  } catch (e) {
+    TRIAL = null;
+  }
+  render();
+}
+loadTrial(); setInterval(loadTrial, 300000);
+</script>
+</body>
+</html>

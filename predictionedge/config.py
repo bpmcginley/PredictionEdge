@@ -74,6 +74,19 @@ class Config:
     crypto_live: bool = False
     # SHORT-TERM daily point-price series (not the year-out EOY markets):
     crypto_series: tuple[str, ...] = ("KXBTCD", "KXETHD", "KXSOLD", "KXXRPD")
+    # MEASURED 2026-08-07, so nobody widens this again expecting it to help: every open
+    # market in all four series resolved in 0.03 or 0.20 DAYS - there were exactly two
+    # expiries and nothing beyond a day. The 10-day cap is not binding and raising it
+    # admits zero extra markets (`resolves beyond 10d` counts 0 in the scan report).
+    # The binding filter is crypto_min_hours below, which drops the 43-minute cycle.
+    # Two consequences worth knowing before touching either number:
+    #  - Deribit's FRONT expiry is ~0.66 days out, so these markets all fall before it.
+    #    deribit.py refuses to extrapolate in time, which is correct, so BTC/ETH here
+    #    are structurally unpriceable by that route no matter what the window says.
+    #  - Kalshi's longer-dated crypto series (KXBTCMAXM, BTCMINMAXY, KXETHMINMON, ...)
+    #    are MAX/MIN/one-touch markets. Those are path-dependent barriers; a terminal
+    #    risk-neutral density is the wrong object for them. Do not add them here just
+    #    because their horizon suits Deribit.
     crypto_max_days: float = 10.0    # skip long-dated markets (no edge a week+ out)
     crypto_min_hours: float = 1.0    # skip near-instant markets (model unreliable/scalpy)
 
@@ -132,9 +145,74 @@ class Config:
     board_min_price: float = 0.05
     board_max_price: float = 0.90
     board_max_drift_c: float = 4.0          # max cents price may run past the whale's entry
-    board_min_conviction: float = 0.35
-    board_max_tickets: int = 8
+    # THE BUY BAR. A ticket is bought because it is good enough, not because it placed
+    # in the day's top N - a quota buys the ninth-best ticket on a quiet day and skips a
+    # better one on a busy day, which is backwards.
+    #
+    # READ THIS BEFORE MOVING IT. Conviction is a hand-weighted blend (agreement .30,
+    # size .25, drift .20, recency .15, time-to-resolve .10) that sums to 1.0 because
+    # the weights were chosen to, not because anything was fitted to an outcome. It is
+    # NOT a probability and 0.45 does not mean 45% anything. No number here is defensible
+    # from evidence yet; this one is a placeholder held at roughly the old top-8 cutline
+    # (the 2026-08-07 board ran 0.486-0.603 for its published eight) so behaviour is
+    # about what it was, and it should be REPLACED by whatever the paper trial's settled
+    # rows say once there are enough of them to say anything.
+    board_min_conviction: float = 0.45
+    # Everything from here up to the buy bar is recorded by the paper trial but never
+    # recommended. Without observing the rejected region the bar can never be checked -
+    # you would only ever see outcomes above your own cutoff, which is the textbook way
+    # to hold a threshold forever on no evidence.
+    board_probe_min_conviction: float = 0.25
+    # 0 = no cap. An opt-in valve for capping exposure on an unusually loud day, not the
+    # gate: it used to truncate the ranked list silently and hide half the flow.
+    board_max_tickets: int = 0
     journal_path: str = "data/manual_journal.jsonl"
+
+    # --- EDGE EXPANSION (see EDGE_PLAN.md) -----------------------------------
+    # E1 - logical-consistency scanner. Ladder monotonicity, bracket sums and
+    # dominance violations are edges that need no forecast to be right. A violation
+    # smaller than the round-trip spread is not an edge, hence the cents floor.
+    consistency_enabled: bool = True
+    consistency_min_edge_c: float = 2.0     # min net-of-spread violation to report
+    consistency_max_events: int = 400       # bound the Gamma crawl per scan
+    consistency_min_liquidity: float = 5_000.0   # both legs must be actually fillable
+
+    # E2 - crypto risk-neutral density from Deribit's option chain. The realized-vol
+    # lognormal model disagrees with liquid markets by ~7c, which is model error, not
+    # edge: realized vol is not the risk-neutral distribution. BTC/ETH only - Deribit
+    # has no meaningful SOL/XRP chain, and those must stay labelled as lognormal.
+    deribit_enabled: bool = True
+    deribit_base_url: str = "https://www.deribit.com/api/v2"
+    deribit_assets: tuple[str, ...] = ("BTC", "ETH")
+    deribit_max_spread_frac: float = 0.25   # discard option quotes wider than this
+    deribit_min_strikes: int = 8            # too few strikes = fail closed, don't guess
+
+    # E3 - macro fair value. Fed funds futures are the reference for Fed markets; the
+    # Cleveland Fed nowcast is the reference for CPI. Both free, both better than retail.
+    macro_enabled: bool = True
+    # A nowcast is a point estimate; turning it into bracket probabilities needs an
+    # explicit uncertainty. Named constant, not a magic number inside a formula.
+    # MEASURED, not guessed: the Cleveland Fed's own final-nowcast-vs-actual error across
+    # all 154 printed vintages is rmse 0.150 (CPI MoM) to 0.162 (Core YoY), essentially
+    # unbiased. The initial 0.12 guess was too tight, and a too-tight sigma INVENTS edge -
+    # it makes our distribution narrower than reality, so every centre bracket reads
+    # "overpriced". macrofv floors this at 0.16 and says so when it widens.
+    macro_cpi_nowcast_sigma: float = 0.16   # pp std-dev of nowcast vs printed CPI
+    macro_max_gap_c: float = 25.0           # gaps beyond this smell like a mismatch, not edge
+
+    # E4 - whale depth. Position size as a share of the wallet's own bankroll beats raw
+    # dollars: $50k from a $10M wallet is noise, from a $100k wallet it is an opinion.
+    whale_bankroll_weighting: bool = True
+    whale_track_exits: bool = True          # a smart wallet selling is information too
+    whale_fresh_enabled: bool = True        # new wallet + big one-sided bet = informed flow
+    whale_fresh_max_age_days: float = 30.0
+    whale_fresh_min_usd: float = 5_000.0
+    whale_fresh_max_liquidity: float = 250_000.0  # the pattern lives in thin markets
+    whale_category_match: bool = True       # a politics whale is not a soccer whale
+    # Election markets have a documented single-whale distortion problem. There,
+    # concentration is a reason for LESS confidence in the price - the inverse of how
+    # concentrated smart money is scored everywhere else.
+    whale_election_concentration_penalty: bool = True
 
     # --- AUTONOMOUS OPERATION / SAFETY ---------------------------------------
     # Master switch. Real orders are placed ONLY when this is explicitly true.
@@ -245,8 +323,39 @@ class Config:
             board_max_price=f("PE_BOARD_MAX_PRICE", cls.board_max_price),
             board_max_drift_c=f("PE_BOARD_MAX_DRIFT_C", cls.board_max_drift_c),
             board_min_conviction=f("PE_BOARD_MIN_CONVICTION", cls.board_min_conviction),
+            board_probe_min_conviction=f("PE_BOARD_PROBE_MIN_CONVICTION",
+                                         cls.board_probe_min_conviction),
             board_max_tickets=int(f("PE_BOARD_MAX_TICKETS", cls.board_max_tickets)),
             journal_path=e.get("PE_JOURNAL_PATH", cls.journal_path),
+            consistency_enabled=_truthy(e.get("PE_CONSISTENCY_ENABLED"), cls.consistency_enabled),
+            consistency_min_edge_c=f("PE_CONSISTENCY_MIN_EDGE_C", cls.consistency_min_edge_c),
+            consistency_max_events=int(f("PE_CONSISTENCY_MAX_EVENTS", cls.consistency_max_events)),
+            consistency_min_liquidity=f("PE_CONSISTENCY_MIN_LIQUIDITY",
+                                        cls.consistency_min_liquidity),
+            deribit_enabled=_truthy(e.get("PE_DERIBIT_ENABLED"), cls.deribit_enabled),
+            deribit_base_url=e.get("PE_DERIBIT_BASE_URL", cls.deribit_base_url),
+            deribit_assets=tuple(s.strip().upper() for s in
+                                 e.get("PE_DERIBIT_ASSETS", "").split(",")
+                                 if s.strip()) or cls.deribit_assets,
+            deribit_max_spread_frac=f("PE_DERIBIT_MAX_SPREAD_FRAC", cls.deribit_max_spread_frac),
+            deribit_min_strikes=int(f("PE_DERIBIT_MIN_STRIKES", cls.deribit_min_strikes)),
+            macro_enabled=_truthy(e.get("PE_MACRO_ENABLED"), cls.macro_enabled),
+            macro_cpi_nowcast_sigma=f("PE_MACRO_CPI_NOWCAST_SIGMA", cls.macro_cpi_nowcast_sigma),
+            macro_max_gap_c=f("PE_MACRO_MAX_GAP_C", cls.macro_max_gap_c),
+            whale_bankroll_weighting=_truthy(e.get("PE_WHALE_BANKROLL_WEIGHTING"),
+                                             cls.whale_bankroll_weighting),
+            whale_track_exits=_truthy(e.get("PE_WHALE_TRACK_EXITS"), cls.whale_track_exits),
+            whale_fresh_enabled=_truthy(e.get("PE_WHALE_FRESH_ENABLED"), cls.whale_fresh_enabled),
+            whale_fresh_max_age_days=f("PE_WHALE_FRESH_MAX_AGE_DAYS",
+                                       cls.whale_fresh_max_age_days),
+            whale_fresh_min_usd=f("PE_WHALE_FRESH_MIN_USD", cls.whale_fresh_min_usd),
+            whale_fresh_max_liquidity=f("PE_WHALE_FRESH_MAX_LIQUIDITY",
+                                        cls.whale_fresh_max_liquidity),
+            whale_category_match=_truthy(e.get("PE_WHALE_CATEGORY_MATCH"),
+                                         cls.whale_category_match),
+            whale_election_concentration_penalty=_truthy(
+                e.get("PE_WHALE_ELECTION_CONCENTRATION_PENALTY"),
+                cls.whale_election_concentration_penalty),
             live_trading=_truthy(e.get("PE_LIVE_TRADING"), cls.live_trading),
             use_demo=_truthy(e.get("PE_USE_DEMO"), cls.use_demo),
             max_daily_loss=f("PE_MAX_DAILY_LOSS", cls.max_daily_loss),

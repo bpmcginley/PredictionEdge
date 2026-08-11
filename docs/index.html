@@ -30,6 +30,10 @@
       <div class="th" id="tile-board-h"></div>
       <span id="tile-board-d">Ranked trade tickets with entry price, size, and why.</span>
     </a>
+    <a class="tile" href="trial.html">
+      <div class="th" id="tile-trial-h"></div>
+      <span id="tile-trial-d">Every published ticket, held to settlement automatically.</span>
+    </a>
     <a class="tile" href="journal.html">
       <div class="th" id="tile-journal-h"></div>
       <span id="tile-journal-d">What you placed, how it ended, and whether the board is any good.</span>
@@ -80,6 +84,7 @@
 <script>
 mountNav('index.html');
 $('tile-board-h').innerHTML   = ICON.board   + '<b>Board</b>';
+$('tile-trial-h').innerHTML   = ICON.trial   + '<b>Trial</b>';
 $('tile-journal-h').innerHTML = ICON.journal + '<b>Journal</b>';
 $('tile-method-h').innerHTML  = ICON.method  + '<b>Method</b>';
 
@@ -111,7 +116,19 @@ function render(){
 }
 function stat(v,l,cls){ return `<div class="stat"><b class="${cls||''}">${v}</b><span>${l}</span></div>`; }
 function onLoadError(){ $('statusdot').className='dot bad'; $('statustext').textContent='board.json unavailable'; }
-load(); setInterval(load, 300000);
+
+/* The trial is its own file so a board refresh can never rewrite a recorded position.
+   Failing quietly is right here: a missing trial must not blank the overview. */
+function loadTrial(){
+  fetch('trial.json?t='+Date.now()).then(r=>r.ok?r.json():null).then(t=>{
+    if(!t) return;
+    const s=t.stats||{}, n=s.n||0, o=(t.open||[]).length;
+    $('tile-trial-d').textContent = n
+      ? `${n} settled · ${(s.win_rate*100).toFixed(0)}% win rate · ${o} still open.`
+      : `${o} paper position${o!==1?'s':''} open. Nothing settled yet, so no verdict yet.`;
+  }).catch(()=>{});
+}
+load(); loadTrial(); setInterval(load, 300000); setInterval(loadTrial, 300000);
 </script>
 </body>
 </html>

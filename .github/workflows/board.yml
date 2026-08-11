@@ -32,6 +32,19 @@ jobs:
       - name: Install runtime deps
         run: pip install --quiet requests cryptography
 
+      # WalletProfiler caches to data/, which is gitignored and therefore gone on every
+      # fresh checkout - so a cache built to make a wallet's FIRST TRADE (an immutable
+      # fact, TTL 30 days) a one-time lookup was instead paying a cold fan-out of up to
+      # 300 wallets every 15 minutes, and any timeout in it reads downstream as
+      # "fresh wallet: age unavailable". Persisting it between runs is what makes the
+      # code's own TTL mean anything. Never committed: it is a cache, not a result.
+      - name: Restore wallet profile cache
+        uses: actions/cache@v4
+        with:
+          path: data/wallet_profiles.json
+          key: wallet-profiles-${{ github.run_id }}
+          restore-keys: wallet-profiles-
+
       - name: Build the board
         env:
           # No .env exists in CI, so the board's settings are declared here.
@@ -46,17 +59,38 @@ jobs:
           PE_BOARD_MIN_HOURS: "3"
           PE_BOARD_MAX_DAYS: "30"
           PE_BOARD_MAX_DRIFT_C: "4"
-          PE_BOARD_MIN_CONVICTION: "0.35"
+          # The buy bar, and the floor of the probe band recorded below it. This pin used
+          # to read 0.35, which was safe only because board_max_tickets=8 truncated behind
+          # it. With the cap off, 0.35 IS the board, so it moves up to the real bar.
+          PE_BOARD_MIN_CONVICTION: "0.45"
+          PE_BOARD_PROBE_MIN_CONVICTION: "0.25"
         run: python -m predictionedge.publish --out docs/board.json
 
-      - name: Commit if the board changed
+      # The trial lives in docs/ because this job checks out fresh every 15 minutes and
+      # .gitignore excludes data/ and *.jsonl - anywhere else and the record would be
+      # erased between runs. Committing it here also means each position enters the
+      # public log at the moment it was opened, which is the cheapest possible answer to
+      # "you could have written that afterwards".
+      - name: Record and settle the paper trial
+        env:
+          PE_FEE_MULTIPLIER: "0.07"
+        run: python -m predictionedge.papertrial --board docs/board.json --trial docs/trial.json
+
+      - name: Commit if anything changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/board.json
+          git add docs/board.json docs/trial.json
           if git diff --staged --quiet; then
-            echo "board unchanged - nothing to commit"
-          else
-            git commit -m "board: refresh $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git push
+            echo "nothing to commit"
+            exit 0
           fi
+          git commit -m "board: refresh $(date -u +'%Y-%m-%d %H:%M UTC')"
+          # A dropped push used to cost one stale board; it now costs paper positions
+          # that can never be re-opened at the price we saw. Rebase and retry.
+          for i in 1 2 3; do
+            git pull --rebase --autostash && git push && exit 0
+            echo "push attempt $i failed; retrying"
+            sleep 5
+          done
+          exit 1

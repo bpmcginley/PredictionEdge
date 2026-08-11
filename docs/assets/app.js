@@ -20,14 +20,18 @@ const ICON = {
   board: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>',
   journal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>',
   method: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 015.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>',
+  research: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>',
   refresh: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>',
   ext: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6M10 14L21 3"/></svg>',
+  trial: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.2L5.6 17A2 2 0 007.3 20h9.4a2 2 0 001.7-3L14 9.2V3"/><path d="M7 15h10"/></svg>',
   down: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg>',
 };
 
 const PAGES = [
   ['index.html', 'Overview', 'home'],
   ['board.html', 'Board', 'board'],
+  ['research.html', 'Research', 'research'],
+  ['trial.html', 'Trial', 'trial'],
   ['journal.html', 'Journal', 'journal'],
   ['method.html', 'Method', 'method'],
 ];
@@ -67,10 +71,16 @@ function fmtDur(h) {
   if (h < 48) return h.toFixed(0) + 'h';
   return (h / 24).toFixed(1) + 'd';
 }
+/* event_iso (kickoff) FIRST. end_iso is a settlement deadline and Polymarket pads it
+   to a tournament-wide date, so recomputing from it printed "7d" on a game being
+   played tonight. Fall back to the deadline only where there is no kickoff. */
 const hoursLeft = t => {
-  if (!t.end_iso) return null;
-  const ms = Date.parse(t.end_iso);
-  return isNaN(ms) ? null : (ms - Date.now()) / 3600000;
+  for (const iso of [t.event_iso, t.end_iso]) {
+    if (!iso) continue;
+    const ms = Date.parse(iso);
+    if (!isNaN(ms)) return (ms - Date.now()) / 3600000;
+  }
+  return null;
 };
 const ageMin = t => t.signal_ts ? (Date.now() / 1000 - t.signal_ts) / 60 : null;
 

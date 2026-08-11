@@ -33,16 +33,49 @@ def overround(implied: list[float]) -> float:
     return sum(implied) - 1.0
 
 
-def devig_multiplicative(implied: list[float]) -> list[float]:
-    """Proportional normalisation: divide each by the total. The standard default."""
+def require_complete_market(implied: list[float]) -> None:
+    """Reject a leg set that cannot be a whole market.
+
+    A single book's own implied probabilities must sum to MORE than 1 - that excess is
+    the vig, and it is how the book makes money. A sum below 1 is therefore never a
+    "tight book": it means legs are missing from the list we were handed.
+
+    This is the guard the de-vig path was missing. `odds.py` reads only `home_team` and
+    `away_team` from each h2h market, so on a three-way sport the Draw was silently
+    dropped and the remaining two summed to less than 1; `devig_multiplicative` checked
+    only `total <= 0`, so it happily divided by that total and scaled BOTH survivors up.
+    Measured on a real Pinnacle line, 1/1.16 + 1/15.42 = 0.9269 renormalised P(home) to
+    0.930 against a correct three-way 0.8174 - **+11 points, always toward the
+    favourite**, which is four times `min_edge`. It also sat UNDER `sane_edge_ceiling`,
+    so the circuit breaker would not have caught it; only this check does.
+
+    Raises ValueError so `consensus_fair_prob` drops the offending book and, if no book
+    survives, returns None - no fair value, hence no edge. Failing closed, not loudly.
+    """
     total = sum(implied)
     if total <= 0:
         raise ValueError("implied probabilities must sum to a positive number")
+    if total < 1.0:
+        raise ValueError(
+            f"implied probabilities sum to {total:.4f} < 1: this market is missing legs "
+            "(e.g. the Draw on a three-way), so de-vigging it would inflate the "
+            "survivors rather than remove vig"
+        )
+
+
+def devig_multiplicative(implied: list[float]) -> list[float]:
+    """Proportional normalisation: divide each by the total. The standard default."""
+    require_complete_market(implied)
+    total = sum(implied)
     return [p / total for p in implied]
 
 
 def devig_additive(implied: list[float]) -> list[float]:
     """Subtract an equal share of the overround from each outcome."""
+    # Needs its own guard, not just the multiplicative fallback's: on an incomplete set
+    # the overround is NEGATIVE, so every leg gets scaled up, stays positive, and the
+    # fallback never fires. The inflated result would look perfectly well-formed.
+    require_complete_market(implied)
     share = overround(implied) / len(implied)
     fair = [p - share for p in implied]
     if any(p <= 0 for p in fair):
@@ -53,6 +86,9 @@ def devig_additive(implied: list[float]) -> list[float]:
 
 def devig_power(implied: list[float], *, tol: float = 1e-10, max_iter: int = 200) -> list[float]:
     """Find exponent k with sum(p_i ** k) == 1, via bisection on k."""
+    # Also guarded: with legs missing the bisection still converges (sum(p^0) = n > 1),
+    # so it would return a confident, wrong answer instead of failing.
+    require_complete_market(implied)
     lo, hi = 0.0, 10.0
     for _ in range(max_iter):
         k = 0.5 * (lo + hi)

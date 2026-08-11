@@ -11,11 +11,61 @@ wallet bought is taken in the same direction, sized small under the caps).
 
 from __future__ import annotations
 
+import re
 import time
 from dataclasses import dataclass
 
 from .polymarket_us import BUY_NO, BUY_YES
 from .whales import SmartWalletScorer
+
+# Which leaderboard a market's expertise would come from. Deliberately narrow: these
+# match the Polymarket leaderboard categories exactly, because a category we cannot
+# name a leaderboard for is a category we cannot check competence in.
+_CRYPTO_RE = re.compile(
+    r"\b(bitcoin|btc|ethereum|eth|solana|sol|xrp|ripple|dogecoin|doge|cardano|ada|"
+    r"crypto|altcoin|stablecoin|satoshi|blockchain|binance|coinbase)\b", re.I)
+_SPORTS_RE = re.compile(
+    r"(\bvs\.?\b|\bat\b.*\bgame\b|\bhandicap\b|\bspread\b|\bo/u\b|\bover/under\b|"
+    r"\bmoneyline\b|\bto win the\b|\bnba\b|\bnfl\b|\bmlb\b|\bnhl\b|\bepl\b|\bufc\b|"
+    r"\batp\b|\bwta\b|\bfifa\b|\buefa\b|\blaliga\b|\bserie a\b|\bbundesliga\b|"
+    r"\bopen:|\bmatch\b|\bplayoff|\bchampionship\b|\bcup\b|\bleague\b|\bseason\b)", re.I)
+_POLITICS_RE = re.compile(
+    r"\b(election|elected|president|presidential|senate|senator|congress|house seat|"
+    r"governor|primary|nominee|nomination|parliament|prime minister|chancellor|"
+    r"cabinet|impeach|referendum|ballot|vote[sd]?|voter|candidate|mayor|"
+    r"secretary of|supreme court|confirmed as|resign|coalition|party leader)\b", re.I)
+# The distortion case is narrower than politics: a contest with a winner, where a single
+# whale's size moves the quoted odds. "Will the Fed cut" is political, but nobody's
+# position in it is a claim about who wins an election.
+_ELECTION_RE = re.compile(
+    r"\b(election|elected|presidential race|president in \d{4}|senate race|"
+    r"house race|governor|gubernatorial|primary|nominee|nomination|ballot|"
+    r"referendum|mayoral|parliamentary|electoral)\b", re.I)
+
+
+def classify_market(title: str, slug: str = "") -> str:
+    """Which leaderboard's track record is relevant here: SPORTS/POLITICS/CRYPTO or "".
+
+    Empty string means "we could not tell", and every caller must treat that as a
+    reason to skip the category rule entirely rather than guess a category. Crypto is
+    tested first because "Bitcoin above $120k" is not a sporting event no matter how
+    many league-sounding words a slug contains.
+    """
+    text = f"{title or ''} {(slug or '').replace('-', ' ')}"
+    if not text.strip():
+        return ""
+    if _CRYPTO_RE.search(text):
+        return "CRYPTO"
+    if _POLITICS_RE.search(text):
+        return "POLITICS"
+    if _SPORTS_RE.search(text):
+        return "SPORTS"
+    return ""
+
+
+def is_election_market(title: str, slug: str = "") -> bool:
+    """A contested race whose price a single large wallet is known to be able to move."""
+    return bool(_ELECTION_RE.search(f"{title or ''} {(slug or '').replace('-', ' ')}"))
 
 
 @dataclass(frozen=True)
@@ -29,18 +79,52 @@ class CopySignal:
     minutes_ago: float     # recency of the latest such buy
     slug: str = ""         # market slug = the Polymarket US order key (marketSlug)
     event_slug: str = ""
+    # Who put in what. The aggregate hides the thing that matters most - whether this
+    # is one wallet's whole conviction or petty change from several - and bankroll
+    # weighting downstream is per-wallet, so it cannot work off the total alone.
+    wallet_usd: tuple[tuple[str, float], ...] = ()
+    # True when this came from the fresh-wallet pattern rather than the leaderboard.
+    # These wallets have NO track record - that is the whole point, and it means their
+    # credibility rests on the shape of the bet, never on who placed it.
+    fresh: bool = False
+    category: str = ""             # "" = could not be determined, so do not judge on it
+    n_category_matched: int = 0    # wallets proven on THIS category's leaderboard
+    is_election: bool = False
 
 
-def smart_universe(client, scorer: SmartWalletScorer, categories,
-                   time_periods=("ALL",), limit: int = 50) -> set[str]:
-    """Union of profitable wallets across leaderboard categories and time windows.
+@dataclass(frozen=True)
+class CopyExit:
+    """Smart money going the OTHER way - a sell of a specific market outcome.
+
+    Only BUYs were ever read, which quietly assumed informed wallets only express
+    themselves by entering. A wallet unwinding a position it already holds is the same
+    trader with the same information, and on a market we are about to recommend it is
+    the single most relevant thing on the feed.
+    """
+    market_id: str
+    outcome: str
+    n_wallets: int
+    total_usd: float
+    avg_price: float
+    minutes_ago: float     # recency of the latest such sell
+
+
+def smart_by_category(client, scorer: SmartWalletScorer, categories,
+                      time_periods=("ALL",), limit: int = 50) -> dict[str, set[str]]:
+    """Profitable wallets per leaderboard category, not flattened into one pile.
 
     Sweeping several windows matters: an ALL-time board is dominated by wallets that
     made their money long ago, while a MONTH board surfaces who is informed right now.
     A wallet only needs to clear the quality bar on one of them to be worth following.
+
+    Keeping the categories APART is what makes "is this wallet any good at *this*"
+    answerable at all - flattening them is how a soccer specialist ends up scored as an
+    authority on a Senate race. No extra API calls: these are the same requests the
+    union was already making, just not thrown together at the end.
     """
-    smart: set[str] = set()
+    out: dict[str, set[str]] = {}
     for cat in categories:
+        found: set[str] = set()
         for period in time_periods:
             try:
                 rows = client.leaderboard(cat, period, limit)
@@ -51,17 +135,32 @@ def smart_universe(client, scorer: SmartWalletScorer, categories,
                     continue
             except Exception:      # noqa: BLE001
                 continue
-            smart |= scorer.smart_set(rows)
+            found |= scorer.smart_set(rows)
+        out[cat] = found
+    return out
+
+
+def smart_universe(client, scorer: SmartWalletScorer, categories,
+                   time_periods=("ALL",), limit: int = 50) -> set[str]:
+    """Every profitable wallet, regardless of what they are good at."""
+    smart: set[str] = set()
+    for found in smart_by_category(client, scorer, categories, time_periods, limit).values():
+        smart |= found
     return smart
 
 
-def find_copy_signals(client, scorer: SmartWalletScorer, *,
-                      categories=("OVERALL", "SPORTS", "POLITICS", "CRYPTO"),
-                      min_usd: float = 10000, limit: int = 1500,
-                      max_price: float = 0.90, min_wallets: int = 1,
-                      time_periods=("ALL",), leaderboard_limit: int = 50,
-                      now_ts: float | None = None) -> list[CopySignal]:
-    """Recent large BUYS by profitable wallets, grouped into copy signals.
+def scan_smart_flow(client, scorer: SmartWalletScorer, *,
+                    categories=("OVERALL", "SPORTS", "POLITICS", "CRYPTO"),
+                    min_usd: float = 10000, limit: int = 1500,
+                    max_price: float = 0.90, min_wallets: int = 1,
+                    time_periods=("ALL",), leaderboard_limit: int = 50,
+                    track_exits: bool = False, fresh_min_usd: float | None = None,
+                    now_ts: float | None = None) -> tuple[list[CopySignal], list[CopyExit]]:
+    """Both directions of smart-money flow off ONE read of the trade feed.
+
+    Buys and sells come from the same request deliberately: fetching them separately
+    would compare two different snapshots of a feed that turns over in minutes, and
+    "did they sell after they bought" is a question about ordering.
 
     ``limit`` is how far back the trade feed reaches, and it - not ``min_usd`` - is
     the real constraint on how much signal exists: 500 trades covers only ~20h, while
@@ -69,19 +168,49 @@ def find_copy_signals(client, scorer: SmartWalletScorer, *,
     *shrinks* the window, since the same 500 slots fill with smaller trades.
     """
     now = time.time() if now_ts is None else now_ts
-    smart = smart_universe(client, scorer, categories, time_periods, leaderboard_limit)
+    by_cat = smart_by_category(client, scorer, categories, time_periods, leaderboard_limit)
+    smart: set[str] = set()
+    for found in by_cat.values():
+        smart |= found
     if not smart:
-        return []
+        return [], []
 
     groups: dict[tuple[str, str], dict] = {}
+    exits: dict[tuple[str, str], dict] = {}
+    unknown: dict[tuple[str, str, str], dict] = {}   # (wallet, market, outcome)
+    seen_sides: dict[tuple[str, str], set[str]] = {}  # (wallet, market) -> outcomes
     for t in client.recent_trades(min_usd=min_usd, limit=limit):
-        if t.side != "BUY" or t.wallet not in smart:
+        if t.wallet not in smart:
+            # No leaderboard history is the normal case and usually means nothing. It
+            # is also the ONLY state a genuinely new, funded-up wallet can be in, so
+            # this branch is the only place the fresh-wallet pattern could ever appear.
+            if fresh_min_usd is not None and t.side == "BUY" and t.wallet:
+                seen_sides.setdefault((t.wallet, t.condition_id), set()).add(t.outcome)
+                u = unknown.setdefault((t.wallet, t.condition_id, t.outcome), {
+                    "title": t.title, "event_slug": t.event_slug, "slug": t.slug,
+                    "usd": 0.0, "pxusd": 0.0, "latest": 0,
+                })
+                u["usd"] += t.size
+                u["pxusd"] += t.size * t.price
+                u["latest"] = max(u["latest"], t.ts)
+            continue
+        if t.side == "SELL":
+            if not track_exits:
+                continue
+            e = exits.setdefault((t.condition_id, t.outcome),
+                                 {"wallets": set(), "usd": 0.0, "pxusd": 0.0, "latest": 0})
+            e["wallets"].add(t.wallet)
+            e["usd"] += t.size
+            e["pxusd"] += t.size * t.price
+            e["latest"] = max(e["latest"], t.ts)
+            continue
+        if t.side != "BUY":
             continue
         g = groups.setdefault((t.condition_id, t.outcome), {
             "title": t.title, "event_slug": t.event_slug, "slug": t.slug,
-            "wallets": set(), "usd": 0.0, "pxusd": 0.0, "latest": 0,
+            "wallets": {}, "usd": 0.0, "pxusd": 0.0, "latest": 0,
         })
-        g["wallets"].add(t.wallet)
+        g["wallets"][t.wallet] = g["wallets"].get(t.wallet, 0.0) + t.size
         g["usd"] += t.size
         g["pxusd"] += t.size * t.price
         g["latest"] = max(g["latest"], t.ts)
@@ -93,11 +222,58 @@ def find_copy_signals(client, scorer: SmartWalletScorer, *,
         avg = g["pxusd"] / g["usd"] if g["usd"] > 0 else 0.0
         if avg <= 0 or avg > max_price:
             continue  # no upside left if they're already near resolution
+        cat = classify_market(g["title"], g["slug"])
+        matched = len(g["wallets"].keys() & by_cat.get(cat, set())) if cat else 0
         out.append(CopySignal(cid, g["title"], outcome, len(g["wallets"]), g["usd"],
                               avg, max(0.0, (now - g["latest"]) / 60.0),
-                              g["slug"], g["event_slug"]))
+                              g["slug"], g["event_slug"],
+                              tuple(sorted(g["wallets"].items(),
+                                           key=lambda kv: kv[1], reverse=True)),
+                              False, cat, matched,
+                              is_election_market(g["title"], g["slug"])))
+    # Fresh-wallet candidates: one wallet, one side, big. The leaderboard cannot rank a
+    # wallet with no history, so this pattern is structurally invisible to everything
+    # above - it is found by shape, not by reputation. Age is NOT checked here: it costs
+    # an API call per wallet, so it is the last gate applied, after the board's cheap
+    # filters have already thrown most candidates out.
+    for (wallet, cid, outcome), u in unknown.items():
+        if u["usd"] < (fresh_min_usd or 0.0):
+            continue
+        # Both sides of the same market is a hedge or a market-maker, not a directional
+        # opinion - and "one-sided" is half the claim this signal is making.
+        if len(seen_sides.get((wallet, cid), ())) != 1:
+            continue
+        avg = u["pxusd"] / u["usd"] if u["usd"] > 0 else 0.0
+        if avg <= 0 or avg > max_price:
+            continue
+        # No track record anywhere, so no category credit is possible - only the
+        # election flag, which is a property of the market rather than the trader.
+        out.append(CopySignal(cid, u["title"], outcome, 1, u["usd"], avg,
+                              max(0.0, (now - u["latest"]) / 60.0),
+                              u["slug"], u["event_slug"],
+                              ((wallet, u["usd"]),), True,
+                              classify_market(u["title"], u["slug"]), 0,
+                              is_election_market(u["title"], u["slug"])))
+
     out.sort(key=lambda s: s.total_usd, reverse=True)
-    return out
+
+    # Exits carry no min_wallets / max_price gate: those exist to judge whether a BUY
+    # is worth copying. One smart wallet heading for the door is worth saying out loud
+    # regardless, because it is a caveat on advice, not advice of its own.
+    exit_out = [
+        CopyExit(cid, outcome, len(e["wallets"]), e["usd"],
+                 e["pxusd"] / e["usd"] if e["usd"] > 0 else 0.0,
+                 max(0.0, (now - e["latest"]) / 60.0))
+        for (cid, outcome), e in exits.items()
+    ]
+    exit_out.sort(key=lambda x: x.total_usd, reverse=True)
+    return out, exit_out
+
+
+def find_copy_signals(client, scorer: SmartWalletScorer, **kw) -> list[CopySignal]:
+    """Just the buy side. Kept because callers and tests speak in copy signals."""
+    kw.pop("track_exits", None)
+    return scan_smart_flow(client, scorer, **kw)[0]
 
 
 def copy_order_params(signal: CopySignal, market, *, min_price: float = 0.05,

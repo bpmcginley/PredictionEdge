@@ -12,7 +12,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 from pathlib import Path
+
+log = logging.getLogger(__name__)
 
 GAMMA = "https://gamma-api.polymarket.com"
 # Max condition_ids per metadata request. Gamma rejects the call outright past roughly
@@ -62,8 +65,13 @@ def end_dates(condition_ids: list[str], *, base: str = GAMMA, fetch=None) -> dic
     return out
 
 
-def market_meta(condition_ids: list[str], *, base: str = GAMMA, fetch=None) -> dict[str, dict]:
+def market_meta(condition_ids: list[str], *, base: str = GAMMA, fetch=None,
+                failures: set[str] | None = None) -> dict[str, dict]:
     """Batch market metadata keyed by condition_id.
+
+    Pass ``failures`` to learn which ids could not be READ, as opposed to the ones
+    Gamma answered about and does not have. Both are missing from the result and the
+    difference matters: one is a network fault to fix, the other is a market to skip.
 
     Beyond the end date this carries the two fields that decide whether a signal is
     *tradeable advice* rather than noise: ``game_start`` (a sports market whose kickoff
@@ -78,14 +86,41 @@ def market_meta(condition_ids: list[str], *, base: str = GAMMA, fetch=None) -> d
     # with no metadata skips every date check and then dies as "unpriceable". Chunk it.
     rows: list = []
     getter = fetch or _default_fetch
-    for i in range(0, len(ids), _META_CHUNK):
-        chunk = ids[i:i + _META_CHUNK]
-        params = [("condition_ids", c) for c in chunk] + [("limit", len(chunk) + 5)]
+
+    def _chunk(cids: list[str]) -> None:
+        """Fetch one batch, halving on failure, and record ids that never resolved.
+
+        The bare `continue` this replaces made a DROPPED BATCH indistinguishable from
+        "these markets do not exist" - 20 signals at a time vanished under a rejection
+        reason that was false. Two different failures hide in one call: a batch too
+        large for Gamma (which a bisect fixes) and a genuine outage (which it cannot),
+        so a chunk that fails alone is reported as unread rather than assumed absent.
+        """
+        params = [("condition_ids", c) for c in cids] + [("limit", len(cids) + 5)]
         try:
             data = getter(f"{base}/markets", params)
-        except Exception:  # noqa: BLE001 - one bad chunk must not lose the rest
-            continue
-        rows += data if isinstance(data, list) else (data.get("data") or data.get("markets") or [])
+        except Exception:  # noqa: BLE001
+            if len(cids) > 1:
+                mid = len(cids) // 2
+                _chunk(cids[:mid])
+                _chunk(cids[mid:])
+            else:
+                unread.add(cids[0])
+            return
+        rows.extend(data if isinstance(data, list)
+                    else (data.get("data") or data.get("markets") or []))
+
+    unread: set[str] = set()
+    for i in range(0, len(ids), _META_CHUNK):
+        _chunk(ids[i:i + _META_CHUNK])
+    if unread:
+        # Loud on purpose. Silence here is the failure mode: the signal is still gone
+        # either way, but only a logged count tells you whether the funnel is filtering
+        # or leaking. If this is a large share of a run, the board is under-fed by a
+        # network problem and not by a shortage of ideas.
+        log.warning("gamma metadata unread for %d/%d markets", len(unread), len(ids))
+    if failures is not None:
+        failures.update(unread)
     out: dict[str, dict] = {}
     for m in rows:
         cid = m.get("conditionId") or m.get("condition_id")
@@ -107,7 +142,18 @@ def market_meta(condition_ids: list[str], *, base: str = GAMMA, fetch=None) -> d
             "question": m.get("question") or m.get("title") or "",
             "slug": m.get("slug") or "",
             "end_date": m.get("endDate") or m.get("endDateIso") or "",
-            "game_start": m.get("gameStartTime") or m.get("startDate") or "",
+            # `gameStartTime` ONLY. `startDate` is when the market was CREATED, and it
+            # is therefore always in the past - falling back to it made every market
+            # without a kickoff (politics, crypto, econ, world events: everything that
+            # is not a scheduled fixture) read as "in-play (event already started)".
+            # That single `or` clause structurally deleted those categories from the
+            # board, which is why every live ticket was baseball or tennis while the
+            # leaderboard scan was spending its calls on POLITICS and CRYPTO. Worse,
+            # the rejection ledger - the board's whole honesty claim - then printed a
+            # reason that was false, and a ledger that misattributes retires the wrong
+            # hypothesis. Absent is absent; the caller decides what that means.
+            "game_start": m.get("gameStartTime") or "",
+            "created_at": m.get("startDate") or "",
             "closed": bool(m.get("closed")),
             "active": bool(m.get("active", True)),
             "volume": float(m.get("volume") or 0.0),
