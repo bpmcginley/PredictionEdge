@@ -49,14 +49,31 @@ jobs:
           PE_BOARD_MIN_CONVICTION: "0.35"
         run: python -m predictionedge.publish --out docs/board.json
 
-      - name: Commit if the board changed
+      # The trial lives in docs/ because this job checks out fresh every 15 minutes and
+      # .gitignore excludes data/ and *.jsonl - anywhere else and the record would be
+      # erased between runs. Committing it here also means each position enters the
+      # public log at the moment it was opened, which is the cheapest possible answer to
+      # "you could have written that afterwards".
+      - name: Record and settle the paper trial
+        env:
+          PE_FEE_MULTIPLIER: "0.07"
+        run: python -m predictionedge.papertrial --board docs/board.json --trial docs/trial.json
+
+      - name: Commit if anything changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/board.json
+          git add docs/board.json docs/trial.json
           if git diff --staged --quiet; then
-            echo "board unchanged - nothing to commit"
-          else
-            git commit -m "board: refresh $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git push
+            echo "nothing to commit"
+            exit 0
           fi
+          git commit -m "board: refresh $(date -u +'%Y-%m-%d %H:%M UTC')"
+          # A dropped push used to cost one stale board; it now costs paper positions
+          # that can never be re-opened at the price we saw. Rebase and retry.
+          for i in 1 2 3; do
+            git pull --rebase --autostash && git push && exit 0
+            echo "push attempt $i failed; retrying"
+            sleep 5
+          done
+          exit 1
