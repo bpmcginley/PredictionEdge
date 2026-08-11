@@ -819,6 +819,50 @@
       "end_iso": "2026-08-11T22:45:00Z",
       "event_iso": "2026-08-11 22:45:00+00",
       "fee": 0.89
+    },
+    {
+      "key": "0xee4ffc044f04ea2fa9e87e985cb616ac7eade2368edefe97cbebeb47a4d2cf69:quentin halys",
+      "opened_at": 1786471849.6671486,
+      "market_id": "0xee4ffc044f04ea2fa9e87e985cb616ac7eade2368edefe97cbebeb47a4d2cf69",
+      "venue": "polymarket",
+      "outcome": "Quentin Halys",
+      "title": "Cincinnati Open, Qualification: Quentin Halys vs Soon-Woo Kwon",
+      "url": "https://polymarket.com/event/atp-halys-kwon-2026-08-11",
+      "price": 0.585,
+      "stake": 100.0,
+      "contracts": 170.9402,
+      "shown": true,
+      "conviction": 0.56,
+      "n_wallets": 1,
+      "whale_usd": 55882,
+      "drift_c": -1.32,
+      "hours_to_resolve": 0.3,
+      "liquidity": 359873,
+      "end_iso": "2026-08-18T16:00:00Z",
+      "event_iso": "2026-08-11 18:30:00+00",
+      "fee": 0.73
+    },
+    {
+      "key": "0x47ec761ae98d7c28b20c0222f1507e3af0f198a904f86b4a264b2e987f0b80c7:yes",
+      "opened_at": 1786471849.6671486,
+      "market_id": "0x47ec761ae98d7c28b20c0222f1507e3af0f198a904f86b4a264b2e987f0b80c7",
+      "venue": "polymarket",
+      "outcome": "Yes",
+      "title": "US announces end of Iranian blockade by August 31, 2026?",
+      "url": "https://polymarket.com/event/us-announces-end-of-iranian-blockade-byptptpt-20260713152715080",
+      "price": 0.38,
+      "stake": 100.0,
+      "contracts": 263.1579,
+      "shown": false,
+      "conviction": 0.412,
+      "n_wallets": 1,
+      "whale_usd": 10000,
+      "drift_c": 0.19,
+      "hours_to_resolve": 485.8,
+      "liquidity": 88741,
+      "end_iso": "2026-08-31T23:59:00Z",
+      "event_iso": "",
+      "fee": 1.09
     }
   ],
   "settled": [
@@ -1047,9 +1091,9 @@
       "DSR 0.612 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 39,
+    "open_positions": 41,
     "trial_days": 4.0
   },
-  "generated": "2026-08-11 17:40:11",
+  "generated": "2026-08-11 18:10:53",
   "voided": []
 }
