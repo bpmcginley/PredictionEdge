@@ -797,6 +797,28 @@
       "end_iso": "2026-08-11T23:30:00Z",
       "event_iso": "2026-08-11 23:30:00+00",
       "fee": 0.85
+    },
+    {
+      "key": "0x7f74c9bd2400c11422c5c69f5f33e64dd4f5d4ab27ee1c7edec54da857615701:chicago cubs",
+      "opened_at": 1786470006.4728012,
+      "market_id": "0x7f74c9bd2400c11422c5c69f5f33e64dd4f5d4ab27ee1c7edec54da857615701",
+      "venue": "polymarket",
+      "outcome": "Chicago Cubs",
+      "title": "Spread: Chicago Cubs (-1.5)",
+      "url": "https://polymarket.com/event/mlb-chc-wsh-2026-08-11",
+      "price": 0.495,
+      "stake": 100.0,
+      "contracts": 202.0202,
+      "shown": true,
+      "conviction": 0.453,
+      "n_wallets": 1,
+      "whale_usd": 5786,
+      "drift_c": 0.37,
+      "hours_to_resolve": 5.1,
+      "liquidity": 190590,
+      "end_iso": "2026-08-11T22:45:00Z",
+      "event_iso": "2026-08-11 22:45:00+00",
+      "fee": 0.89
     }
   ],
   "settled": [
@@ -1025,8 +1047,9 @@
       "DSR 0.612 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 38,
+    "open_positions": 39,
     "trial_days": 4.0
   },
-  "generated": "2026-08-11 17:14:35"
+  "generated": "2026-08-11 17:40:11",
+  "voided": []
 }
