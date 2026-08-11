@@ -101,9 +101,9 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
             "stake": round(stake, 4),
             "contracts": round(contracts, 4),
             # Everything below is for slicing the result later, not for scoring it.
-            # Was this on the board a human reads, or did it qualify and lose to the
-            # display cap? Both are evidence about the filters; only the first is
-            # evidence about the board as published. Recorded, never scored on.
+            # True = cleared the buy bar and was recommended. False = cleared every hard
+            # filter but sat below it. Only the first is evidence about the board as
+            # published; both are evidence about where the bar belongs.
             "shown": bool(t.get("_shown", True)),
             "conviction": t.get("conviction"),
             "n_wallets": t.get("n_wallets"),
@@ -198,11 +198,11 @@ def main(argv: list[str] | None = None) -> int:
     # They differ whenever a scheduled run is skipped or the board is replayed, and the
     # hold time is what the whole trial measures - dating an entry to the replay would
     # quietly shorten every holding period in the record.
-    # `trimmed` passed every filter and lost only to `board_max_tickets`, which is a
-    # shelf-space limit on a page a human reads, not a judgement about the trade. Leaving
-    # them out would throw away half the sample - and time-to-an-answer scales with n.
+    # `probe` sits below the buy bar. Recording it is the whole point: a threshold can
+    # only be validated against outcomes on BOTH sides of it. Observe above the cutoff
+    # alone and 0.45 stays unfalsifiable forever, however much data accumulates.
     flow = [{**t, "_shown": True} for t in (board.get("tickets") or [])] + \
-           [{**t, "_shown": False} for t in (board.get("trimmed") or [])]
+           [{**t, "_shown": False} for t in (board.get("probe") or [])]
     added = record(trial, flow, stake=args.stake,
                    fee_multiplier=cfg.fee_multiplier, maker=cfg.assume_maker,
                    now=board.get("generated_at") or None)

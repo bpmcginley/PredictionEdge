@@ -145,8 +145,27 @@ class Config:
     board_min_price: float = 0.05
     board_max_price: float = 0.90
     board_max_drift_c: float = 4.0          # max cents price may run past the whale's entry
-    board_min_conviction: float = 0.35
-    board_max_tickets: int = 8
+    # THE BUY BAR. A ticket is bought because it is good enough, not because it placed
+    # in the day's top N - a quota buys the ninth-best ticket on a quiet day and skips a
+    # better one on a busy day, which is backwards.
+    #
+    # READ THIS BEFORE MOVING IT. Conviction is a hand-weighted blend (agreement .30,
+    # size .25, drift .20, recency .15, time-to-resolve .10) that sums to 1.0 because
+    # the weights were chosen to, not because anything was fitted to an outcome. It is
+    # NOT a probability and 0.45 does not mean 45% anything. No number here is defensible
+    # from evidence yet; this one is a placeholder held at roughly the old top-8 cutline
+    # (the 2026-08-07 board ran 0.486-0.603 for its published eight) so behaviour is
+    # about what it was, and it should be REPLACED by whatever the paper trial's settled
+    # rows say once there are enough of them to say anything.
+    board_min_conviction: float = 0.45
+    # Everything from here up to the buy bar is recorded by the paper trial but never
+    # recommended. Without observing the rejected region the bar can never be checked -
+    # you would only ever see outcomes above your own cutoff, which is the textbook way
+    # to hold a threshold forever on no evidence.
+    board_probe_min_conviction: float = 0.25
+    # 0 = no cap. An opt-in valve for capping exposure on an unusually loud day, not the
+    # gate: it used to truncate the ranked list silently and hide half the flow.
+    board_max_tickets: int = 0
     journal_path: str = "data/manual_journal.jsonl"
 
     # --- EDGE EXPANSION (see EDGE_PLAN.md) -----------------------------------
@@ -304,6 +323,8 @@ class Config:
             board_max_price=f("PE_BOARD_MAX_PRICE", cls.board_max_price),
             board_max_drift_c=f("PE_BOARD_MAX_DRIFT_C", cls.board_max_drift_c),
             board_min_conviction=f("PE_BOARD_MIN_CONVICTION", cls.board_min_conviction),
+            board_probe_min_conviction=f("PE_BOARD_PROBE_MIN_CONVICTION",
+                                         cls.board_probe_min_conviction),
             board_max_tickets=int(f("PE_BOARD_MAX_TICKETS", cls.board_max_tickets)),
             journal_path=e.get("PE_JOURNAL_PATH", cls.journal_path),
             consistency_enabled=_truthy(e.get("PE_CONSISTENCY_ENABLED"), cls.consistency_enabled),

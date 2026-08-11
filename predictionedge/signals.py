@@ -76,11 +76,13 @@ class BoardReport:
     """Tickets plus an honest account of everything that was thrown away."""
 
     tickets: list[TradeTicket] = field(default_factory=list)
-    # Passed every filter, lost only to the display cap. Kept separately because these
-    # are evidence about the strategy even though they are not advice to the reader:
-    # the paper trial should measure everything that qualified, not just the top slice
-    # a human has room to read.
-    trimmed: list[TradeTicket] = field(default_factory=list)
+    # Cleared every hard filter but sits below the buy bar. Recorded, never recommended.
+    # This is the only way the bar can ever be validated: if we observe outcomes only
+    # above the threshold, the rejected region stays invisible forever and "0.45 is the
+    # right cutoff" can never be checked against anything. The trial takes these, tagged
+    # `shown: false`, so the bar can eventually be derived from settled results instead
+    # of guessed from a hand-tuned score.
+    probe: list[TradeTicket] = field(default_factory=list)
     considered: int = 0
     rejected: dict[str, int] = field(default_factory=dict)
     notes: list[str] = field(default_factory=list)
@@ -510,7 +512,10 @@ def build_board(cfg, client, scorer, account: OmenAccount, *,
                 cfg, "whale_election_concentration_penalty", False)),
             concentration=_concentration(s.wallet_usd),
         )
-        if conviction < cfg.board_min_conviction:
+        # Below the probe floor is genuinely not worth carrying. Between the probe floor
+        # and the buy bar the ticket is RECORDED but not recommended - see the split
+        # below `best`, and the note on `board_probe_min_conviction` in config.py.
+        if conviction < cfg.board_probe_min_conviction:
             report.reject("conviction below threshold")
             continue
 
@@ -591,16 +596,26 @@ def build_board(cfg, client, scorer, account: OmenAccount, *,
         best[key] = t
 
     ranked = sorted(best.values(), key=lambda c: c.conviction, reverse=True)
-    report.tickets = ranked[: cfg.board_max_tickets]
-    report.trimmed = ranked[cfg.board_max_tickets:]
-    # The cap used to truncate silently, so `considered` minus the rejection ledger did
-    # not equal the number of published tickets and nothing said why. On 2026-08-07 that
-    # gap was 9 against 8 published: the board found more than twice what it showed, and
-    # the ledger - which is this project's entire honesty claim - accounted for none of
-    # it. A ticket cut for shelf space is a different fact from a ticket that failed a
-    # filter, and both have to be countable.
-    for _ in report.trimmed:
-        report.reject(f"qualified but outside the top {cfg.board_max_tickets}")
+
+    # WHAT TO BUY IS A BAR, NOT A QUOTA. A count cap answers "how many will fit on the
+    # page", which has nothing to do with whether the ninth ticket is worth money: on a
+    # busy day it silently dropped tickets stronger than the ones published on a quiet
+    # one. The bar is `board_min_conviction`; `board_max_tickets` survives only as an
+    # opt-in safety valve (0 = off) for capping exposure on an unusually loud day.
+    report.tickets = [t for t in ranked if t.conviction >= cfg.board_min_conviction]
+    report.probe = [t for t in ranked if t.conviction < cfg.board_min_conviction]
+    for _ in report.probe:
+        report.reject(f"below the {cfg.board_min_conviction:.2f} buy bar (recorded, not bought)")
+
+    if cfg.board_max_tickets > 0 and len(report.tickets) > cfg.board_max_tickets:
+        # Counted, never silent. Truncating without a ledger entry is what made
+        # `considered` minus the rejections fail to equal the published count on the
+        # 2026-08-07 board - 17 qualified, 8 shipped, and nothing said where 9 went.
+        overflow = report.tickets[cfg.board_max_tickets:]
+        report.tickets = report.tickets[: cfg.board_max_tickets]
+        report.probe = overflow + report.probe
+        for _ in overflow:
+            report.reject(f"over the {cfg.board_max_tickets}-ticket cap")
     if not report.tickets and not report.notes:
         report.notes.append(
             "Signals came in but none cleared the filters — that is a normal, and "

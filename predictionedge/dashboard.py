@@ -141,18 +141,17 @@ def build_board_payload(cfg: Config, force_mock: bool = False) -> dict:
         }
 
     tickets = [_row(t) for t in (report.tickets if report else [])]
-    # Published separately from `tickets` so the page still shows a short, readable list
-    # while the paper trial can measure everything that actually qualified. Folding them
-    # into `tickets` would silently change what the board recommends; dropping them
-    # discards half the evidence for a layout decision.
-    trimmed = [_row(t) for t in (report.trimmed if report else [])]
+    # Cleared every hard filter, sits below the buy bar. Published so the paper trial can
+    # observe the rejected region - the only way the bar itself ever becomes checkable.
+    # Kept out of `tickets` because these are measurements, not recommendations.
+    probe = [_row(t) for t in (report.probe if report else [])]
 
     return {
         "generated": time.strftime("%Y-%m-%d %H:%M:%S"),
         "generated_at": time.time(),
         "account_size": cfg.omen_account_size,
         "tickets": tickets,
-        "trimmed": trimmed,
+        "probe": probe,
         "considered": report.considered if report else 0,
         "rejected": report.rejected if report else {},
         "notes": (report.notes if report else ["whale data source unavailable"]),

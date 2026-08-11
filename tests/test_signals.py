@@ -271,11 +271,22 @@ def test_yes_no_label_includes_the_question():
     assert r.tickets[0].side_label == "YES on: Will X happen?"
 
 
-def test_conviction_threshold_filters_weak_ideas():
+def test_the_buy_bar_keeps_weak_ideas_off_the_board():
     trades = [_trade("0xSHARP1", "A", "Yes", 10_000, 0.40, minutes_ago=110)]
     r = _board(trades, {"A": _meta()}, cfg=_cfg(board_min_conviction=0.95))
     assert r.tickets == []
-    assert any("conviction" in k for k in r.rejected)
+    # Not bought - but still recorded, because a threshold that only ever observes
+    # outcomes above itself can never be shown to be in the wrong place.
+    assert len(r.probe) == 1
+    assert any("buy bar" in k for k in r.rejected)
+
+
+def test_below_the_probe_floor_is_dropped_outright():
+    trades = [_trade("0xSHARP1", "A", "Yes", 10_000, 0.40, minutes_ago=110)]
+    r = _board(trades, {"A": _meta()},
+               cfg=_cfg(board_min_conviction=0.95, board_probe_min_conviction=0.95))
+    assert r.tickets == [] and r.probe == []
+    assert r.rejected["conviction below threshold"] == 1
 
 
 def test_report_counts_everything_considered():
@@ -619,37 +630,42 @@ def _many(n_markets, size=60_000):
         metas[cid] = _meta()
     return trades, metas
 
-
-def test_the_display_cap_is_counted_not_swallowed():
-    # The real 2026-08-07 board showed 8 tickets out of 17 that passed every filter, and
-    # `considered` minus the rejection ledger did not reconcile with what was published.
-    # A ticket cut for shelf space is a different fact from a ticket that failed a gate.
+def test_a_quota_no_longer_decides_what_gets_bought():
+    # The cap is off by default. Five equally strong tickets are five tickets, not the
+    # top three of five - "how many fit on the page" was never a fact about the trade.
     trades, metas = _many(5)
-    r = _board(trades, metas, cfg=_cfg(board_max_tickets=3))
-
-    assert len(r.tickets) == 3
-    assert len(r.trimmed) == 2
-    assert r.rejected["qualified but outside the top 3"] == 2
-    # The ledger now reconciles: nothing vanishes between considered and published.
+    r = _board(trades, metas, cfg=_cfg(board_min_conviction=0.0))
+    assert len(r.tickets) == 5
+    assert r.probe == []
     assert r.considered - sum(r.rejected.values()) == len(r.tickets)
 
 
-def test_nothing_is_trimmed_when_everything_fits():
-    trades, metas = _many(3)
-    r = _board(trades, metas, cfg=_cfg(board_max_tickets=8))
+def test_the_optional_cap_is_counted_not_swallowed():
+    # The valve still exists for capping exposure on a loud day - but every ticket it
+    # cuts gets a ledger entry. Silent truncation is what made `considered` minus the
+    # rejections fail to equal the published count on the 2026-08-07 board.
+    trades, metas = _many(5)
+    r = _board(trades, metas, cfg=_cfg(board_min_conviction=0.0, board_max_tickets=3))
+
     assert len(r.tickets) == 3
-    assert r.trimmed == []
-    assert not any("outside the top" in k for k in r.rejected)
+    assert len(r.probe) == 2
+    assert r.rejected["over the 3-ticket cap"] == 2
+    assert r.considered - sum(r.rejected.values()) == len(r.tickets)
 
 
-def test_trimmed_tickets_are_the_weaker_ones():
+def test_the_bar_splits_bought_from_merely_recorded():
     trades, metas = [], {}
     for i, size in enumerate((120_000, 60_000, 30_000)):
         cid = f"M{i}"
         trades.append(_trade("0xSHARP1", cid, "Yes", size, 0.40))
         trades.append(_trade("0xSHARP2", cid, "Yes", size, 0.40))
         metas[cid] = _meta()
-    r = _board(trades, metas, cfg=_cfg(board_max_tickets=1))
+    ranked = sorted((t.conviction for t in
+                     _board(trades, metas, cfg=_cfg(board_min_conviction=0.0)).tickets),
+                    reverse=True)
+    bar = (ranked[0] + ranked[1]) / 2       # cut between the strongest two
+
+    r = _board(trades, metas, cfg=_cfg(board_min_conviction=bar))
     assert len(r.tickets) == 1
-    assert len(r.trimmed) == 2
-    assert r.tickets[0].conviction >= max(t.conviction for t in r.trimmed)
+    assert len(r.probe) == 2
+    assert min(t.conviction for t in r.tickets) > max(t.conviction for t in r.probe)
