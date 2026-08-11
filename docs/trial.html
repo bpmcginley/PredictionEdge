@@ -57,30 +57,67 @@ const pct  = x => (x == null ? '—' : (x * 100).toFixed(1) + '%');
 const spct = x => (x == null ? '—' : (x >= 0 ? '+' : '−') + Math.abs(x * 100).toFixed(1) + '%');
 const when = ts => ts ? new Date(ts * 1000).toISOString().slice(0, 10) : '—';
 
+/* When the venue expects to pay this out. event_iso is when the thing actually
+   happens; end_iso is the settlement deadline, which Polymarket pads to a
+   tournament-wide date - so prefer the event and fall back to the deadline. Rows
+   carrying neither return null, and an estimate is never invented for them: the
+   whole claim of this page is that nothing on it is hand-entered. */
+const resolvesAt = r => {
+  for (const iso of [r.event_iso, r.end_iso]) {
+    const ms = parseIso(iso);
+    if (ms != null) return ms;
+  }
+  return null;
+};
+/* Local time, because the reader is the only person this date is for. The year is
+   shown only when it is not the current one, so a next-day temperature does not
+   carry the same clutter as a market resolving in two years. */
+const day = ms => {
+  const d = new Date(ms);
+  return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) +
+    (d.getFullYear() === new Date().getFullYear() ? '' : ' ' + d.getFullYear());
+};
+const clock = ms => new Date(ms)
+  .toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
+
 function statb(v, l, cls) {
   return `<div class="stat"><b class="${cls || ''}">${v}</b><span>${l}</span></div>`;
 }
 
+function fld(v, l, cls) {
+  return `<div class="f"><b class="${cls || ''}">${v}</b><span>${l}</span></div>`;
+}
+
 function row(r, settled) {
-  const cls = !settled ? '' : (r.won ? 'pos' : 'neg');
-  let res;
+  let res, deadline;
   if (settled) {
-    res = `<b class="${cls}">${r.won ? 'WON' : 'LOST'} ${signed(r.realized)}</b>`;
+    res = fld(`${r.won ? 'WON' : 'LOST'} ${signed(r.realized)}`, 'result',
+              r.won ? 'pos' : 'neg');
+    // An actual settlement date beats an estimate of one, so the cell changes meaning
+    // rather than going stale the moment the position closes.
+    deadline = fld(when(r.settled_at), 'settled');
   } else {
     // Held-for, not time-left. An open paper position whose deadline has passed is the
     // one thing that can quietly bias this record - unresolved markets skew toward
     // disputes and voids - so it gets named rather than shown as a countdown.
     const held = (Date.now() / 1000 - r.opened_at) / 3600;
     const late = hoursLeft({event_iso: r.end_iso}) < 0;
-    res = `<span class="muted">held ${fmtDur(held)}</span>` +
-          (late ? ' <span class="warn">awaiting resolution</span>' : '');
+    res = fld(`held ${fmtDur(held)}`,
+              late ? '<span class="warn">awaiting resolution</span>' : 'open', 'muted');
+    const at = resolvesAt(r);
+    deadline = at == null ? fld('unknown', 'est. resolution', 'muted')
+                          : fld(day(at), `est. resolution, ${clock(at)}`);
   }
-  return `<div class="ticket"><div class="grid">
-      <div><b>${esc(r.outcome)}</b><br /><span class="muted">${esc(r.title)}</span></div>
-      <div class="mono">${(r.price * 100).toFixed(0)}c</div>
-      <div class="mono muted">${when(r.opened_at)}</div>
-      <div>${res}</div>
-    </div></div>`;
+  return `<div class="ticket">
+      <div class="thead"><div><b>${esc(r.outcome)}</b><br />
+        <span class="muted">${esc(r.title)}</span></div></div>
+      <div class="grid">
+        ${fld((r.price * 100).toFixed(0) + 'c', 'entry price')}
+        ${fld(money(r.stake), 'paper stake')}
+        ${fld(when(r.opened_at), 'opened')}
+        ${deadline}
+        ${res}
+      </div></div>`;
 }
 
 function render() {

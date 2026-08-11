@@ -71,14 +71,22 @@ function fmtDur(h) {
   if (h < 48) return h.toFixed(0) + 'h';
   return (h / 24).toFixed(1) + 'd';
 }
+/* Polymarket rows write "2026-08-11 23:15:00+00" - a space separator and a two-digit
+   offset. V8 accepts both; the spec requires neither, so other engines can return NaN
+   and every countdown silently reads "—". Kalshi rows are already proper ISO, where
+   both replacements are no-ops. */
+const parseIso = s => {
+  if (!s) return null;
+  const ms = Date.parse(String(s).replace(' ', 'T').replace(/([+-]\d{2})$/, '$1:00'));
+  return isNaN(ms) ? null : ms;
+};
 /* event_iso (kickoff) FIRST. end_iso is a settlement deadline and Polymarket pads it
    to a tournament-wide date, so recomputing from it printed "7d" on a game being
    played tonight. Fall back to the deadline only where there is no kickoff. */
 const hoursLeft = t => {
   for (const iso of [t.event_iso, t.end_iso]) {
-    if (!iso) continue;
-    const ms = Date.parse(iso);
-    if (!isNaN(ms)) return (ms - Date.now()) / 3600000;
+    const ms = parseIso(iso);
+    if (ms != null) return (ms - Date.now()) / 3600000;
   }
   return null;
 };
