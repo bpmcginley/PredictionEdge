@@ -1018,6 +1018,98 @@
       "end_iso": "2026-08-17T04:00:00Z",
       "event_iso": "",
       "fee": 0.34
+    },
+    {
+      "key": "0x268e64674742a086ed32225039060c5683dc06417689c90d0c04a9614d1073c9:myktybek orolbai",
+      "opened_at": 1786477248.987066,
+      "market_id": "0x268e64674742a086ed32225039060c5683dc06417689c90d0c04a9614d1073c9",
+      "venue": "polymarket",
+      "outcome": "Myktybek Orolbai",
+      "title": "UFC 330: Jeremiah Wells vs. Myktybek Orolbai (Welterweight, Prelims)",
+      "url": "https://polymarket.com/event/ufc-jer4-myk-2026-08-15",
+      "price": 0.865,
+      "stake": 100.0,
+      "contracts": 115.6069,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.579,
+      "n_wallets": 1,
+      "whale_usd": 4615,
+      "drift_c": -0.5,
+      "hours_to_resolve": 97.3,
+      "liquidity": 22277,
+      "end_iso": "2026-08-16T03:59:59.999Z",
+      "event_iso": "2026-08-15 21:00:00+00",
+      "fee": 0.24
+    },
+    {
+      "key": "0x0a061d09daa5ac4221fa7ea0d7abf84ab2ac42af0817a001d4c0dd3262be2cd8:no",
+      "opened_at": 1786477248.987066,
+      "market_id": "0x0a061d09daa5ac4221fa7ea0d7abf84ab2ac42af0817a001d4c0dd3262be2cd8",
+      "venue": "polymarket",
+      "outcome": "No",
+      "title": "Will Bitcoin reach $67,500 in August?",
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
+      "price": 0.63,
+      "stake": 100.0,
+      "contracts": 158.7302,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.516,
+      "n_wallets": 1,
+      "whale_usd": 6268,
+      "drift_c": 1.0,
+      "hours_to_resolve": 488.3,
+      "liquidity": 47515,
+      "end_iso": "2026-09-01T04:00:00Z",
+      "event_iso": "",
+      "fee": 0.65
+    },
+    {
+      "key": "0x91744aa73185cebb0557748945eb35e57f40b5ccb943676dc4b175e66259ce9f:pittsburgh pirates",
+      "opened_at": 1786477248.987066,
+      "market_id": "0x91744aa73185cebb0557748945eb35e57f40b5ccb943676dc4b175e66259ce9f",
+      "venue": "polymarket",
+      "outcome": "Pittsburgh Pirates",
+      "title": "Pittsburgh Pirates vs. Miami Marlins",
+      "url": "https://polymarket.com/event/mlb-pit-mia-2026-08-11",
+      "price": 0.505,
+      "stake": 100.0,
+      "contracts": 198.0198,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.429,
+      "n_wallets": 1,
+      "whale_usd": 7250,
+      "drift_c": -0.5,
+      "hours_to_resolve": 3.0,
+      "liquidity": 449367,
+      "end_iso": "2026-08-18T22:40:00Z",
+      "event_iso": "2026-08-11 22:40:00+00",
+      "fee": 0.87
+    },
+    {
+      "key": "KXHIGHNY-26AUG12-B87.5:yes",
+      "opened_at": 1786477248.987066,
+      "market_id": "KXHIGHNY-26AUG12-B87.5",
+      "venue": "kalshi",
+      "outcome": "Yes",
+      "title": "Will the **high temp in NYC** be 87-88\u00b0 on Aug 12, 2026?",
+      "url": "https://kalshi.com/markets/KXHIGHNY-26AUG12",
+      "price": 0.08,
+      "stake": 100.0,
+      "contracts": 1250.0,
+      "shown": true,
+      "source": "weather",
+      "conviction": null,
+      "n_wallets": null,
+      "whale_usd": null,
+      "drift_c": null,
+      "hours_to_resolve": null,
+      "liquidity": null,
+      "end_iso": "2026-08-13T00:00:00+00:00",
+      "event_iso": "2026-08-13T00:00:00+00:00",
+      "fee": 1.61
     }
   ],
   "settled": [
@@ -1272,9 +1364,45 @@
       "DSR 0.666 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 48,
-    "trial_days": 4.1
+    "open_positions": 52,
+    "trial_days": 4.1,
+    "by_source": {
+      "weather": {
+        "n": 0,
+        "deploy": false,
+        "reasons": [
+          "no settled bets"
+        ],
+        "open_positions": 1
+      },
+      "whale": {
+        "n": 9,
+        "win_rate": 0.6667,
+        "avg_predicted": 0.5206,
+        "calibration_gap": -0.1461,
+        "brier": 0.1573,
+        "total_pnl": 128.42,
+        "roi_on_stake": 0.1427,
+        "mean_return": 0.1427,
+        "sharpe_per_bet": 0.1553,
+        "psr_vs_zero": 0.666,
+        "dsr": 0.666,
+        "implied_sr0": 0.0,
+        "bootstrap_ci": [
+          -0.1346,
+          0.3334
+        ],
+        "p_mean_le_0": 0.1585,
+        "deploy": false,
+        "reasons": [
+          "n=9 < min_n=30",
+          "DSR 0.666 < 0.95",
+          "bootstrap 5% CI of mean return <= 0"
+        ],
+        "open_positions": 51
+      }
+    }
   },
-  "generated": "2026-08-11 19:28:30",
+  "generated": "2026-08-11 19:40:55",
   "voided": []
 }
