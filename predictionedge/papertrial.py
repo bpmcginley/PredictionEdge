@@ -101,6 +101,10 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
             "stake": round(stake, 4),
             "contracts": round(contracts, 4),
             # Everything below is for slicing the result later, not for scoring it.
+            # Was this on the board a human reads, or did it qualify and lose to the
+            # display cap? Both are evidence about the filters; only the first is
+            # evidence about the board as published. Recorded, never scored on.
+            "shown": bool(t.get("_shown", True)),
             "conviction": t.get("conviction"),
             "n_wallets": t.get("n_wallets"),
             "whale_usd": t.get("whale_usd"),
@@ -194,7 +198,12 @@ def main(argv: list[str] | None = None) -> int:
     # They differ whenever a scheduled run is skipped or the board is replayed, and the
     # hold time is what the whole trial measures - dating an entry to the replay would
     # quietly shorten every holding period in the record.
-    added = record(trial, board.get("tickets") or [], stake=args.stake,
+    # `trimmed` passed every filter and lost only to `board_max_tickets`, which is a
+    # shelf-space limit on a page a human reads, not a judgement about the trade. Leaving
+    # them out would throw away half the sample - and time-to-an-answer scales with n.
+    flow = [{**t, "_shown": True} for t in (board.get("tickets") or [])] + \
+           [{**t, "_shown": False} for t in (board.get("trimmed") or [])]
+    added = record(trial, flow, stake=args.stake,
                    fee_multiplier=cfg.fee_multiplier, maker=cfg.assume_maker,
                    now=board.get("generated_at") or None)
 

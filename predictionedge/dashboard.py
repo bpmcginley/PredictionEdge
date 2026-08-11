@@ -124,9 +124,9 @@ def build_board_payload(cfg: Config, force_mock: bool = False) -> dict:
         report = build_board(cfg, client, scorer, account)
 
     journal = Journal(cfg.journal_path)
-    tickets = []
-    for t in (report.tickets if report else []):
-        tickets.append({
+
+    def _row(t):
+        return {
             "market_id": t.market_id, "title": t.title, "side_label": t.side_label,
             "outcome": t.outcome, "entry_price": t.entry_price,
             "whale_price": t.whale_price, "drift_c": t.drift_c,
@@ -138,12 +138,21 @@ def build_board_payload(cfg: Config, force_mock: bool = False) -> dict:
             "end_iso": t.end_iso, "event_iso": t.event_iso,
             "signal_ts": t.signal_ts,
             "why": t.why, "warnings": t.warnings,
-        })
+        }
+
+    tickets = [_row(t) for t in (report.tickets if report else [])]
+    # Published separately from `tickets` so the page still shows a short, readable list
+    # while the paper trial can measure everything that actually qualified. Folding them
+    # into `tickets` would silently change what the board recommends; dropping them
+    # discards half the evidence for a layout decision.
+    trimmed = [_row(t) for t in (report.trimmed if report else [])]
+
     return {
         "generated": time.strftime("%Y-%m-%d %H:%M:%S"),
         "generated_at": time.time(),
         "account_size": cfg.omen_account_size,
         "tickets": tickets,
+        "trimmed": trimmed,
         "considered": report.considered if report else 0,
         "rejected": report.rejected if report else {},
         "notes": (report.notes if report else ["whale data source unavailable"]),

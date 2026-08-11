@@ -76,6 +76,11 @@ class BoardReport:
     """Tickets plus an honest account of everything that was thrown away."""
 
     tickets: list[TradeTicket] = field(default_factory=list)
+    # Passed every filter, lost only to the display cap. Kept separately because these
+    # are evidence about the strategy even though they are not advice to the reader:
+    # the paper trial should measure everything that qualified, not just the top slice
+    # a human has room to read.
+    trimmed: list[TradeTicket] = field(default_factory=list)
     considered: int = 0
     rejected: dict[str, int] = field(default_factory=dict)
     notes: list[str] = field(default_factory=list)
@@ -585,9 +590,17 @@ def build_board(cfg, client, scorer, account: OmenAccount, *,
             continue
         best[key] = t
 
-    report.tickets = sorted(best.values(), key=lambda c: c.conviction, reverse=True)[
-        : cfg.board_max_tickets
-    ]
+    ranked = sorted(best.values(), key=lambda c: c.conviction, reverse=True)
+    report.tickets = ranked[: cfg.board_max_tickets]
+    report.trimmed = ranked[cfg.board_max_tickets:]
+    # The cap used to truncate silently, so `considered` minus the rejection ledger did
+    # not equal the number of published tickets and nothing said why. On 2026-08-07 that
+    # gap was 9 against 8 published: the board found more than twice what it showed, and
+    # the ledger - which is this project's entire honesty claim - accounted for none of
+    # it. A ticket cut for shelf space is a different fact from a ticket that failed a
+    # filter, and both have to be countable.
+    for _ in report.trimmed:
+        report.reject(f"qualified but outside the top {cfg.board_max_tickets}")
     if not report.tickets and not report.notes:
         report.notes.append(
             "Signals came in but none cleared the filters — that is a normal, and "

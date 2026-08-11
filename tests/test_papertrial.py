@@ -167,6 +167,18 @@ def test_the_trial_survives_a_round_trip_through_disk():
     assert json.loads(open(p, encoding="utf-8").read())["settled"] == []
 
 
+def test_whether_a_ticket_was_actually_shown_is_recorded():
+    trial = _blank()
+    record(trial, [_ticket(mid="0x1", _shown=True), _ticket(mid="0x2", _shown=False)])
+    assert [r["shown"] for r in trial["open"]] == [True, False]
+
+
+def test_a_ticket_with_no_shown_flag_counts_as_shown():
+    trial = _blank()
+    record(trial, [_ticket()])
+    assert trial["open"][0]["shown"] is True
+
+
 def test_a_position_is_dated_when_the_price_was_seen():
     trial = _blank()
     record(trial, [_ticket()], stake=100.0, now=1_700_000_000.0)

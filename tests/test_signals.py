@@ -606,3 +606,50 @@ def test_unreadable_wallet_breakdown_applies_no_penalty():
     from predictionedge.signals import _concentration
     assert _concentration(()) is None
     assert _concentration((("0xA", 0.0),)) is None
+
+
+# Only 0xSHARP1/0xSHARP2 are on the mock leaderboard; anyone else reads as an unknown
+# wallet and lands in the fresh-wallet branch, which is a different hypothesis entirely.
+def _many(n_markets, size=60_000):
+    trades, metas = [], {}
+    for i in range(n_markets):
+        cid = f"M{i}"
+        trades.append(_trade("0xSHARP1", cid, "Yes", size, 0.40))
+        trades.append(_trade("0xSHARP2", cid, "Yes", size, 0.40))
+        metas[cid] = _meta()
+    return trades, metas
+
+
+def test_the_display_cap_is_counted_not_swallowed():
+    # The real 2026-08-07 board showed 8 tickets out of 17 that passed every filter, and
+    # `considered` minus the rejection ledger did not reconcile with what was published.
+    # A ticket cut for shelf space is a different fact from a ticket that failed a gate.
+    trades, metas = _many(5)
+    r = _board(trades, metas, cfg=_cfg(board_max_tickets=3))
+
+    assert len(r.tickets) == 3
+    assert len(r.trimmed) == 2
+    assert r.rejected["qualified but outside the top 3"] == 2
+    # The ledger now reconciles: nothing vanishes between considered and published.
+    assert r.considered - sum(r.rejected.values()) == len(r.tickets)
+
+
+def test_nothing_is_trimmed_when_everything_fits():
+    trades, metas = _many(3)
+    r = _board(trades, metas, cfg=_cfg(board_max_tickets=8))
+    assert len(r.tickets) == 3
+    assert r.trimmed == []
+    assert not any("outside the top" in k for k in r.rejected)
+
+
+def test_trimmed_tickets_are_the_weaker_ones():
+    trades, metas = [], {}
+    for i, size in enumerate((120_000, 60_000, 30_000)):
+        cid = f"M{i}"
+        trades.append(_trade("0xSHARP1", cid, "Yes", size, 0.40))
+        trades.append(_trade("0xSHARP2", cid, "Yes", size, 0.40))
+        metas[cid] = _meta()
+    r = _board(trades, metas, cfg=_cfg(board_max_tickets=1))
+    assert len(r.tickets) == 1
+    assert len(r.trimmed) == 2
+    assert r.tickets[0].conviction >= max(t.conviction for t in r.trimmed)
