@@ -23,12 +23,16 @@ tickets out, and here is where the other 20 went" instead of quietly showing thr
 
 from __future__ import annotations
 
+import re
 import time
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 
 from .copytrade import scan_smart_flow
 from .omen import OmenAccount, Sizing, event_url, size_position
+
+# A real Polymarket market key is 0x + 64 hex. Combo tickets fake one at 62, zero-padded.
+_CONDITION_ID = re.compile(r"0x[0-9a-fA-F]{64}")
 
 
 @dataclass(frozen=True)
@@ -403,6 +407,22 @@ def build_board(cfg, client, scorer, account: OmenAccount, *,
 
     candidates: list[TradeTicket] = []
     for s in signals:
+        # A parlay, not a market. Polymarket sells multi-leg combos through the same
+        # trade feed, carrying a SYNTHETIC id (0x + 62 hex, zero-padded), no slug, and a
+        # title that is several questions joined by " AND ". Gamma has no such market
+        # because there is no such market, so these arrived as "no market metadata" and
+        # read as a lookup problem. They are not one, and copying them would be wrong
+        # even if they resolved cleanly: a combo's legs are correlated, its price is not
+        # the product of its parts, and none of the drift or resolution filters below
+        # mean anything applied to a basket.
+        # Judge only ids that CLAIM to be on-chain keys. Anything else falls through to
+        # the metadata check below, which already fails closed - this rule exists to
+        # name a specific malformation, not to become a second gate on market naming.
+        mid = s.market_id or ""
+        if mid.startswith("0x") and not _CONDITION_ID.fullmatch(mid):
+            report.reject("parlay / combo ticket, not a single market")
+            continue
+
         m = metas.get(s.market_id)
 
         # Fail CLOSED on missing metadata. Without it there is no end date and no game

@@ -87,7 +87,7 @@ def market_meta(condition_ids: list[str], *, base: str = GAMMA, fetch=None,
     rows: list = []
     getter = fetch or _default_fetch
 
-    def _chunk(cids: list[str]) -> None:
+    def _chunk(cids: list[str], *, closed: bool = False) -> None:
         """Fetch one batch, halving on failure, and record ids that never resolved.
 
         The bare `continue` this replaces made a DROPPED BATCH indistinguishable from
@@ -97,13 +97,15 @@ def market_meta(condition_ids: list[str], *, base: str = GAMMA, fetch=None,
         so a chunk that fails alone is reported as unread rather than assumed absent.
         """
         params = [("condition_ids", c) for c in cids] + [("limit", len(cids) + 5)]
+        if closed:
+            params.append(("closed", "true"))
         try:
             data = getter(f"{base}/markets", params)
         except Exception:  # noqa: BLE001
             if len(cids) > 1:
                 mid = len(cids) // 2
-                _chunk(cids[:mid])
-                _chunk(cids[mid:])
+                _chunk(cids[:mid], closed=closed)
+                _chunk(cids[mid:], closed=closed)
             else:
                 unread.add(cids[0])
             return
@@ -113,6 +115,22 @@ def market_meta(condition_ids: list[str], *, base: str = GAMMA, fetch=None,
     unread: set[str] = set()
     for i in range(0, len(ids), _META_CHUNK):
         _chunk(ids[i:i + _META_CHUNK])
+
+    # SECOND PASS, and it is not an optimisation - it is the difference between this
+    # function working and not. `/markets` defaults to closed=false, so a RESOLVED
+    # market is not "missing metadata", it is deliberately withheld unless asked for.
+    # Measured 2026-08-11: 146 of 461 ids off the live trade feed came back empty, and
+    # all 146 returned instantly under `closed=true`. Two things were broken by that:
+    # the board filed them as "no market metadata" when the truth was "already
+    # resolved", and papertrial.settle - which asks for exactly the markets that have
+    # dropped off the board because they RESOLVED - could never have settled anything,
+    # because _winner() requires meta["closed"] and this call could never return it.
+    # Only the ids the open pass did not answer are re-asked, so the cost is bounded by
+    # how many have actually closed rather than doubling every run.
+    seen = {m.get("conditionId") or m.get("condition_id") for m in rows}
+    retry = [c for c in ids if c not in seen and c not in unread]
+    for i in range(0, len(retry), _META_CHUNK):
+        _chunk(retry[i:i + _META_CHUNK], closed=True)
     if unread:
         # Loud on purpose. Silence here is the failure mode: the signal is still gone
         # either way, but only a logged count tells you whether the funnel is filtering

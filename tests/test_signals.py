@@ -310,6 +310,21 @@ def test_missing_metadata_fails_closed():
     assert any("no market metadata" in k for k in r.rejected)
 
 
+def test_parlay_tickets_are_named_not_filed_as_missing_metadata():
+    """Combo tickets ride the same feed with a synthetic id and no market behind them.
+
+    Gamma has no such market because there is no such market, so these read as a
+    lookup problem. Copying one would be wrong regardless: the legs are correlated,
+    and no drift or resolution filter here means anything applied to a basket.
+    """
+    combo = "0x" + "ab" * 31          # 62 hex, the shape the feed actually emits
+    trades = [_trade("0xSHARP1", combo, "Yes", 60_000, 0.40)]
+    r = _board(trades, {combo: _meta()})
+    assert r.tickets == []
+    assert any("parlay" in k for k in r.rejected)
+    assert not any("metadata" in k for k in r.rejected)
+
+
 def test_unread_metadata_is_distinguished_from_absent_metadata():
     """A market we could not READ about is not a market that does not exist.
 

@@ -99,3 +99,42 @@ def test_absent_market_is_not_reported_as_a_failure():
     failures: set[str] = set()
     meta = market_meta(["0xGONE"], fetch=_fake([]), failures=failures)
     assert meta == {} and failures == set()
+
+
+def _gamma_like(closed_ids):
+    """Stand-in for /markets, which hides closed markets unless asked for them."""
+    calls = []
+
+    def fetch(url, params):
+        cids = [v for k, v in params if k == "condition_ids"]
+        want_closed = any(k == "closed" and v == "true" for k, v in params)
+        calls.append((tuple(cids), want_closed))
+        return [{"conditionId": c, "question": c, "closed": c in closed_ids,
+                 "endDate": "2026-08-11T00:00:00Z"}
+                for c in cids if (c in closed_ids) == want_closed]
+
+    return fetch, calls
+
+
+def test_resolved_markets_are_fetched_not_reported_missing():
+    """`/markets` defaults to closed=false, so a RESOLVED market is withheld, not absent.
+
+    Measured against the live feed on 2026-08-11: 146 of 461 ids came back empty and
+    every one of them returned under `closed=true`. Without the second pass the board
+    calls that "no market metadata" - and papertrial can never settle at all, because
+    the only markets it asks about are the ones that resolved.
+    """
+    fetch, calls = _gamma_like({"0xB"})
+    failures: set[str] = set()
+    meta = market_meta(["0xA", "0xB"], fetch=fetch, failures=failures)
+    assert set(meta) == {"0xA", "0xB"}
+    assert meta["0xB"]["closed"] is True
+    assert failures == set()
+    # Only the unanswered id is re-asked; the open pass is not paid for twice.
+    assert calls[-1] == (("0xB",), True)
+
+
+def test_no_second_pass_when_the_open_pass_answered_everything():
+    fetch, calls = _gamma_like(set())
+    market_meta(["0xA", "0xB"], fetch=fetch)
+    assert len(calls) == 1 and calls[0][1] is False
