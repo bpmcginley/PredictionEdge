@@ -188,3 +188,43 @@ def test_a_position_is_dated_when_the_price_was_seen():
 def test_a_missing_trial_file_starts_empty_instead_of_exploding():
     t = load(os.path.join(tempfile.mkdtemp(), "nope.json"))
     assert t == {"open": [], "settled": [], "stats": {}}
+
+
+# --- venue routing -------------------------------------------------------------
+
+def test_legacy_rows_without_a_venue_are_still_polymarket():
+    """`docs/trial.json` has live rows written before Kalshi existed in the trial.
+
+    Relabelling them would rewrite history; routing them to the wrong exchange would
+    park them open forever, because Gamma answers a Kalshi ticker with silence rather
+    than an error.
+    """
+    from predictionedge.papertrial import venue_of
+    assert venue_of({"market_id": "0x" + "ab" * 32}) == "polymarket"
+    assert venue_of({"market_id": "KXHIGHNY-26AUG10-T89"}) == "kalshi"
+    assert venue_of({"market_id": "KXHIGHNY-26AUG10-T89",
+                     "venue": "polymarket"}) == "polymarket"   # explicit wins
+    assert venue_of({"market_id": ""}) == "polymarket"          # corrupt keeps old path
+
+
+def test_a_recorded_kalshi_ticket_carries_its_venue():
+    trial = _blank()
+    record(trial, [_ticket(mid="KXHIGHNY-26AUG12-B85.5", outcome="Yes", price=0.45)])
+    assert trial["open"][0]["venue"] == "kalshi"
+
+
+def test_a_voided_market_leaves_the_trial_instead_of_hanging_open():
+    trial = _blank()
+    record(trial, [_ticket(mid="KXHIGHNY-26AUG10-T89", outcome="Yes", price=0.45)])
+    assert settle(trial, {"KXHIGHNY-26AUG10-T89": {"voided": True}}) == 0
+    assert trial["open"] == []                 # not held forever
+    assert len(trial["voided"]) == 1           # and not silently deleted either
+    assert trial["voided"][0]["outcome"] == "Yes"
+
+
+def test_a_void_is_not_counted_as_a_settled_bet():
+    trial = _blank()
+    record(trial, [_ticket(mid="KXHIGHNY-26AUG10-T89", outcome="Yes", price=0.45)])
+    settle(trial, {"KXHIGHNY-26AUG10-T89": {"voided": True}})
+    assert trial["settled"] == []
+    assert stats(trial).get("n", 0) == 0

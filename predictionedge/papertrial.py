@@ -47,6 +47,25 @@ LOST_AT = 0.01
 DEFAULT_STAKE = 100.0
 
 
+def venue_of(row: dict) -> str:
+    """Which exchange a position lives on, inferred when the row predates the field.
+
+    Rows written before Kalshi existed in the trial carry no ``venue``, and there are
+    live ones in `docs/trial.json` - so this must keep working rather than relabel
+    history. The id shape is unambiguous: Polymarket keys are `0x` + 64 hex, Kalshi
+    tickers are uppercase series-and-strike. Defaulting to polymarket also means a
+    corrupt or empty id keeps its old behaviour instead of being routed somewhere new.
+    """
+    v = (row.get("venue") or "").strip().lower()
+    if v:
+        return v
+    mid = (row.get("market_id") or "").strip()
+    # Note the shape of the test: an id must be PRESENT and non-Polymarket to route to
+    # Kalshi. Asking only "does it lack an 0x prefix" sends an empty or corrupt id to
+    # the new venue, which is the one case that should keep its old behaviour.
+    return "kalshi" if mid and not mid.startswith("0x") else "polymarket"
+
+
 def _key(market_id: str, outcome: str) -> str:
     """One position per market leg, ever. First sighting wins.
 
@@ -65,6 +84,7 @@ def load(path: str | Path) -> dict:
     data = json.loads(p.read_text(encoding="utf-8"))
     data.setdefault("open", [])
     data.setdefault("settled", [])
+    data.setdefault("voided", [])
     data.setdefault("stats", {})
     return data
 
@@ -94,6 +114,7 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
             "key": key,
             "opened_at": now,
             "market_id": t.get("market_id", ""),
+            "venue": venue_of(t),
             "outcome": t.get("outcome", ""),
             "title": t.get("title", ""),
             "url": t.get("url", ""),
@@ -144,7 +165,15 @@ def settle(trial: dict, metas: dict[str, dict], *, now: float | None = None) -> 
     now = time.time() if now is None else now
     still_open, settled = [], 0
     for row in trial["open"]:
-        winner = _winner(metas.get(row["market_id"]) or {})
+        meta = metas.get(row["market_id"]) or {}
+        # A voided market never resolves. Holding it would leave a position open
+        # forever, quietly inflating the open count with something that can never
+        # become evidence - so it leaves the trial and is recorded as withdrawn
+        # rather than deleted, because a vanishing row looks like a hidden loss.
+        if meta.get("voided"):
+            trial.setdefault("voided", []).append({**row, "voided_at": now})
+            continue
+        winner = _winner(meta)
         if winner is None:
             still_open.append(row)
             continue
@@ -209,11 +238,25 @@ def main(argv: list[str] | None = None) -> int:
 
     settled = 0
     if not args.no_settle and trial["open"]:
-        from .gamma import market_meta
         # Only open positions need a lookup, and they are the markets that have
         # dropped OFF the board - a resolved market is exactly the one the board
         # stopped showing, so this cannot be answered from board.json.
-        metas = market_meta([r["market_id"] for r in trial["open"]])
+        #
+        # Routed by venue because the two exchanges answer different questions with
+        # different keys. Sending a Kalshi ticker to Gamma does not error, it returns
+        # NOTHING - which reads as "not resolved yet" and would park every Kalshi row
+        # open forever. Merging into one dict is safe: a Polymarket key is `0x`+64 hex
+        # and a Kalshi ticker is not, so the two id spaces cannot collide.
+        ids: dict[str, list[str]] = {}
+        for r in trial["open"]:
+            ids.setdefault(venue_of(r), []).append(r["market_id"])
+        metas: dict[str, dict] = {}
+        if ids.get("polymarket"):
+            from .gamma import market_meta as pm_meta
+            metas.update(pm_meta(ids["polymarket"]))
+        if ids.get("kalshi"):
+            from .kalshi import market_meta as kx_meta
+            metas.update(kx_meta(ids["kalshi"]))
         settled = settle(trial, metas)
 
     trial["stats"] = stats(trial)

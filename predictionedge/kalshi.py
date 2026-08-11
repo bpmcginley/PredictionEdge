@@ -12,11 +12,21 @@ Always confirm the base URL against https://docs.kalshi.com.
 from __future__ import annotations
 
 import base64
+import logging
 import time
 from dataclasses import dataclass
 from typing import Protocol
 
 from .edge import Quote
+
+log = logging.getLogger(__name__)
+
+
+def _default_fetch(url: str, params: dict) -> dict:
+    import requests
+    r = requests.get(url, params=params, timeout=15)
+    r.raise_for_status()
+    return r.json()
 
 
 @dataclass(frozen=True)
@@ -53,6 +63,103 @@ class KalshiMarket:
 def market_url(event_ticker: str) -> str:
     """Public Kalshi web page for an event/market."""
     return f"https://kalshi.com/markets/{event_ticker}"
+
+
+# Public read endpoint. Market data needs no signing, which is what lets the paper
+# trial settle Kalshi rows from CI with no secrets - the same property the Polymarket
+# half relies on.
+KALSHI_API = "https://api.elections.kalshi.com/trade-api/v2"
+
+# Terminal statuses, duplicated from `settle._TERMINAL_STATUSES` rather than imported:
+# `settle` owns the LIVE order ledger and importing it here would drag state/config
+# into a pure read path. If Kalshi renames one, both lists need it.
+_SETTLED_STATUSES = frozenset({"finalized", "settled", "determined"})
+# A market can end without a yes/no answer. Those must be REMOVED from the trial, not
+# held: a voided market never resolves, so treating it as "still open" is how a
+# position sits in the record forever quietly inflating the open count.
+_VOID_RESULTS = frozenset({"void", "voided", "canceled", "cancelled", "invalid"})
+
+
+def _event_of(ticker: str) -> str:
+    """`KXHIGHNY-26AUG10-B91.5` -> `KXHIGHNY-26AUG10`."""
+    return ticker.rsplit("-", 1)[0] if "-" in ticker else ticker
+
+
+def market_meta(tickers: list[str], *, base: str = KALSHI_API, fetch=None,
+                failures: set[str] | None = None) -> dict[str, dict]:
+    """Kalshi settlement metadata in the SHAPE ``gamma.market_meta`` returns.
+
+    Deliberately mirrors the Polymarket adapter field for field - ``closed`` plus
+    parallel ``outcomes``/``prices`` - so `papertrial._winner` settles either venue
+    without knowing which one it is looking at. A resolved Kalshi binary is expressed
+    as the winning leg at 1.0 and the other at 0.0, which is exactly what a resolved
+    Polymarket market quotes, so the existing "one leg at 1, the rest at 0" test does
+    the right thing on both without a special case.
+
+    QUERIES BY EVENT, NOT BY TICKER, and that is not a style choice. The `tickers=`
+    filter returns an EMPTY array rather than an error (measured 2026-08-11), and
+    `list_markets` defaults to `status="open"`, which hides exactly the finalized
+    markets settlement needs - the same shape of bug as Gamma's `closed=false` default.
+    An `event_ticker` query with no status param returns the whole ladder including
+    finalized rows, and one call covers every strike of that day's event.
+    """
+    ids = [t for t in tickers if t]
+    if not ids:
+        return {}
+    getter = fetch or _default_fetch
+    by_event: dict[str, list[str]] = {}
+    for t in ids:
+        by_event.setdefault(_event_of(t), []).append(t)
+
+    unread: set[str] = set()
+    rows: list[dict] = []
+    for event, members in by_event.items():
+        try:
+            data = getter(f"{base}/markets", {"event_ticker": event, "limit": 200})
+        except Exception:  # noqa: BLE001
+            # One event failing must not cost the others, and must not be mistaken for
+            # "these markets did not resolve" - that reads as a clean open position.
+            unread.update(members)
+            continue
+        rows.extend(data.get("markets") or [])
+
+    if unread:
+        log.warning("kalshi settlement unread for %d/%d markets", len(unread), len(ids))
+    if failures is not None:
+        failures.update(unread)
+
+    wanted = set(ids)
+    out: dict[str, dict] = {}
+    for m in rows:
+        ticker = m.get("ticker", "")
+        if ticker not in wanted:
+            continue          # the rest of the ladder came along for free; ignore it
+        status, result = m.get("status", ""), (m.get("result") or "").lower()
+        settled = status in _SETTLED_STATUSES and result in ("yes", "no")
+        out[ticker] = {
+            "question": m.get("title", ""),
+            "slug": ticker,
+            "end_date": m.get("expiration_time", ""),
+            "event_iso": m.get("expected_expiration_time") or m.get("close_time") or "",
+            "closed": settled,
+            "voided": status in _SETTLED_STATUSES and result in _VOID_RESULTS,
+            "outcomes": ["Yes", "No"],
+            "prices": ([1.0, 0.0] if result == "yes" else [0.0, 1.0]) if settled else [],
+            "yes_price": _price_to_dollars(m, "last_price"),
+            "best_bid": _price_to_dollars(m, "yes_bid"),
+            "best_ask": _price_to_dollars(m, "yes_ask"),
+            "volume": float(m.get("volume") or 0.0),
+            # `liquidity` reads $0.00 on every weather market measured 2026-08-11 while
+            # the order book showed 1,510 contracts resting - the field is unpopulated,
+            # so never gate on it. The book is the only honest depth signal here.
+            "liquidity": float(m.get("liquidity") or 0.0),
+        }
+        if status in _SETTLED_STATUSES and not settled and not out[ticker]["voided"]:
+            # Decided-looking but wearing an unrecognised result. Same defensive stance
+            # `settle.py` takes: skip loudly rather than guess a winner.
+            log.warning("kalshi %s status %r has unrecognised result %r - not settling",
+                        ticker, status, result)
+    return out
 
 
 def _price_to_dollars(d: dict, key: str) -> float:
