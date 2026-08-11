@@ -157,6 +157,14 @@ def _parse_odds_event(ev: dict) -> SportEvent | None:
         price = {o["name"]: o["price"]
                  for m in bk.get("markets", []) if m["key"] == "h2h"
                  for o in m["outcomes"]}
+        # A three-way market (soccer: home/draw/away) cannot be carried by SportEvent's
+        # two-outcome shape. Taking the two named teams and discarding the Draw is what
+        # produced the +11pt favourite bias - the survivors sum to less than 1 and the
+        # de-vig then inflates them. `devig.require_complete_market` is the backstop;
+        # this is the cause. Skip the book rather than refactor to three-way: the whole
+        # EPL family is 18 markets on ~12.9k lifetime contracts, not worth the surface.
+        if len(price) > 2:
+            continue
         if names[0] in price and names[1] in price:
             books.append(BookOdds(bk["key"], (price[names[0]], price[names[1]])))
     if not books:

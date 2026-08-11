@@ -135,7 +135,8 @@ def build_board_payload(cfg: Config, force_mock: bool = False) -> dict:
             "hours_to_resolve": t.hours_to_resolve, "n_wallets": t.n_wallets,
             "whale_usd": t.whale_usd, "minutes_ago": t.minutes_ago,
             "liquidity": t.liquidity, "url": t.url,
-            "end_iso": t.end_iso, "signal_ts": t.signal_ts,
+            "end_iso": t.end_iso, "event_iso": t.event_iso,
+            "signal_ts": t.signal_ts,
             "why": t.why, "warnings": t.warnings,
         })
     return {

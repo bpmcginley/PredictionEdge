@@ -44,6 +44,10 @@ class TradeTicket:
     drift_c: float             # cents the price has moved since they filled (+ = worse)
     sizing: Sizing
     conviction: float          # 0..1
+    # Hours until the EVENT decides, not until the settlement deadline. On sports the
+    # two differ by days - Polymarket pads `endDate` out to a tournament-wide date, so
+    # a same-night ball game published as "174.6h to resolve". Deadline still ships as
+    # `end_iso` for anyone who needs it.
     hours_to_resolve: float | None
     n_wallets: int
     whale_usd: float
@@ -53,6 +57,7 @@ class TradeTicket:
     # Absolutes, so a published snapshot can recompute "resolves in" at view time
     # rather than freezing the countdown at the moment it was generated.
     end_iso: str = ""
+    event_iso: str = ""   # kickoff, when the venue gives us one; "" otherwise
     signal_ts: float = 0.0
     why: list[str] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
@@ -415,7 +420,36 @@ def build_board(cfg, client, scorer, account: OmenAccount, *,
         if start_h is not None and start_h <= 0:
             report.reject("in-play (event already started)")
             continue
+        if start_h is None and s.category == "SPORTS":
+            # We could not tell whether the ball is already in the air. For a scheduled
+            # fixture that is a refusal, not a pass - in-play is the exact shape the
+            # June-26 post-mortem was written about. Counted separately so the ledger
+            # never again reports "in-play" for markets that simply have no kickoff.
+            report.reject("sports market with no event start time")
+            continue
 
+        # `end_date` is a SETTLEMENT deadline and on sports it is padded hard: a
+        # same-night Mets-Pirates game carried an end_date seven days out, and three
+        # tennis tickets all reported an identical 165.9h. Time-until-the-event is the
+        # honest horizon for anything about whether a signal is still fresh or still
+        # actionable, so derive one and use it for those gates. `hours` keeps its
+        # end_date meaning for "already resolved" and the max-days capital check.
+        event_h = hours if start_h is None else (
+            start_h if hours is None else min(start_h, hours))
+        if event_h is None:
+            # No end date and no kickoff. Every gate below is horizon-scaled, so this
+            # market would sail past all of them on the strength of a missing field -
+            # and `_max_signal_age(None)` hands it the floor allowance, i.e. the least
+            # scrutiny for the case we know the least about. Not knowing when something
+            # resolves is a reason to pass on it.
+            report.reject("no resolution or start time")
+            continue
+
+        # Deliberately `hours`, not `event_h`. This gate is about time to RESOLUTION,
+        # and the config comment on `board_min_hours` says so: in-play is the separate
+        # `game_start` check above, and folding the two together is what that comment
+        # warns against. A game kicking off in 1h but settling in 4h is a normal
+        # pre-game ticket and must stay one.
         if hours is not None and hours < cfg.board_min_hours:
             report.reject(f"resolves in under {cfg.board_min_hours:.0f}h")
             continue
@@ -424,7 +458,11 @@ def build_board(cfg, client, scorer, account: OmenAccount, *,
             report.reject(f"resolves more than {cfg.board_max_days:.0f} days out")
             continue
 
-        if s.minutes_ago > _max_signal_age(cfg, hours):
+        # Staleness scales with the horizon, so feeding it the padded deadline is what
+        # disabled it where it mattered most: at 165.9h the allowance became 1,991
+        # minutes, i.e. the board would accept a 33-hour-old whale fill on a match
+        # starting today. Anchored to the event, that same ticket gets minutes.
+        if s.minutes_ago > _max_signal_age(cfg, event_h):
             report.reject("signal too old for this market's horizon")
             continue
 
@@ -454,7 +492,7 @@ def build_board(cfg, client, scorer, account: OmenAccount, *,
 
         conviction, why = _conviction(
             n_wallets=s.n_wallets, usd=s.total_usd, minutes_ago=s.minutes_ago,
-            drift_c=drift_c, hours_to_resolve=hours,
+            drift_c=drift_c, hours_to_resolve=event_h,
             liquidity=float(m.get("liquidity") or 0.0),
             bankroll_fraction=_bankroll_fraction(s.wallet_usd, bankrolls),
             fresh=s.fresh,
@@ -525,13 +563,14 @@ def build_board(cfg, client, scorer, account: OmenAccount, *,
             drift_c=drift_c,
             sizing=sizing,
             conviction=conviction,
-            hours_to_resolve=None if hours is None else round(hours, 1),
+            hours_to_resolve=None if event_h is None else round(event_h, 1),
             n_wallets=s.n_wallets,
             whale_usd=round(s.total_usd),
             minutes_ago=round(s.minutes_ago),
             liquidity=round(float(m.get("liquidity") or 0.0)),
             url=event_url(s.event_slug) or event_url(m.get("slug", "")),
             end_iso=m.get("end_date", ""),
+            event_iso=m.get("game_start", ""),
             signal_ts=now - s.minutes_ago * 60.0,
             why=why,
             warnings=warnings,

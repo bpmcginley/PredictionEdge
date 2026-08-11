@@ -103,6 +103,77 @@ def test_same_day_pregame_market_is_allowed():
     assert len(r.tickets) == 1
 
 
+def test_sports_market_with_no_kickoff_is_rejected():
+    """We cannot tell whether the ball is already in the air, so we pass.
+
+    Counted under its own reason: the old code reached this state by falling back to
+    `startDate` (market CREATION, always past) and reported it as "in-play", which is
+    both false and the wrong hypothesis to retire.
+    """
+    trades = [_trade("0xSHARP1", "A", "Yes", 60_000, 0.40, title="Alcaraz vs Sinner")]
+    r = _board(trades, {"A": _meta(question="Alcaraz vs Sinner", game_start="")})
+    assert r.tickets == []
+    assert any("no event start time" in k for k in r.rejected)
+    assert not any("in-play" in k for k in r.rejected)
+
+
+def test_non_sports_market_with_no_kickoff_is_fine():
+    """Politics, crypto, econ: nothing kicks off, so a missing time means nothing.
+
+    This is the half the old `or startDate` fallback deleted from the board entirely -
+    every such market read as already started.
+    """
+    trades = [_trade("0xSHARP1", "A", "Yes", 60_000, 0.40,
+                     title="Fed cuts rates in September")]
+    r = _board(trades, {"A": _meta(question="Fed cuts rates in September",
+                                   game_start="")})
+    assert len(r.tickets) == 1
+
+
+def test_no_dates_at_all_is_rejected():
+    """Not knowing when something resolves is a reason to pass, not to proceed."""
+    trades = [_trade("0xSHARP1", "A", "Yes", 60_000, 0.40)]
+    r = _board(trades, {"A": _meta(end_date="", game_start="")})
+    assert r.tickets == []
+    assert any("no resolution or start time" in k for k in r.rejected)
+
+
+def test_staleness_is_measured_against_kickoff_not_the_padded_deadline():
+    """The measured failure: a 7-day `endDate` on a game being played tonight.
+
+    At 165.9h the allowance became 1,991 minutes, so a 33h-old whale fill passed. The
+    same ticket judged against kickoff gets minutes.
+    """
+    old = [_trade("0xSHARP1", "A", "Yes", 60_000, 0.40, minutes_ago=1_980,
+                  title="Mets vs Pirates")]
+    padded = {"A": _meta(question="Mets vs Pirates",
+                         end_date=_iso(days=7), game_start=_iso(hours=4))}
+    r = _board(old, padded)
+    assert r.tickets == []
+    assert any("too old" in k for k in r.rejected)
+
+
+def test_published_horizon_is_the_event_not_the_deadline():
+    """174.6h on a same-night ball game is the number that has to stop appearing."""
+    trades = [_trade("0xSHARP1", "A", "Yes", 60_000, 0.40, title="Mets vs Pirates")]
+    r = _board(trades, {"A": _meta(question="Mets vs Pirates",
+                                   end_date=_iso(days=7), game_start=_iso(hours=4))})
+    t = r.tickets[0]
+    assert abs(t.hours_to_resolve - 4.0) < 0.1
+    assert t.event_iso and t.end_iso and t.event_iso != t.end_iso
+
+
+def test_min_hours_still_measures_time_to_resolution():
+    """`board_min_hours` is not the in-play gate - conflating them is the old bug.
+
+    A game kicking off in 1h that settles in 4h is a normal pre-game ticket.
+    """
+    trades = [_trade("0xSHARP1", "A", "Yes", 60_000, 0.40, title="Mets vs Pirates")]
+    r = _board(trades, {"A": _meta(question="Mets vs Pirates",
+                                   end_date=_iso(hours=4), game_start=_iso(hours=1))})
+    assert len(r.tickets) == 1
+
+
 def test_same_day_but_already_started_is_still_rejected():
     """Loosening the horizon must not reopen the in-play trap."""
     trades = [_trade("0xSHARP1", "A", "Yes", 60_000, 0.40)]
@@ -157,7 +228,9 @@ def test_one_ticket_per_event_keeps_the_stronger_side():
     weak = Trade(wallet="0xSHARP1", name="", side="BUY", size=20_000, price=0.40,
                  ts=int(NOW - 120), title="Türkiye vs USA", outcome="Yes",
                  condition_id="B", event_slug="evt-A", slug="mkt-B")
-    metas = {"A": _meta(question="Türkiye vs USA"), "B": _meta(question="Türkiye vs USA")}
+    kick = _iso(hours=6)
+    metas = {"A": _meta(question="Türkiye vs USA", game_start=kick),
+             "B": _meta(question="Türkiye vs USA", game_start=kick)}
     r = _board([*strong, weak], metas)
     assert len(r.tickets) == 1
     assert r.tickets[0].n_wallets == 2          # kept the two-wallet side
@@ -166,7 +239,7 @@ def test_one_ticket_per_event_keeps_the_stronger_side():
 
 def test_side_label_spells_out_the_team():
     trades = [_trade("0xSHARP1", "A", "Türkiye", 60_000, 0.40, title="Türkiye vs USA")]
-    r = _board(trades, {"A": _meta(question="Türkiye vs USA",
+    r = _board(trades, {"A": _meta(question="Türkiye vs USA", game_start=_iso(hours=6),
                                    outcomes=["Türkiye", "USA"], prices=[0.41, 0.59])})
     assert r.tickets[0].side_label.startswith("Türkiye")
     assert r.tickets[0].entry_price == 0.41      # the team's price, not the YES book
@@ -176,6 +249,7 @@ def test_named_outcome_is_priced_from_its_own_leg():
     """A team's price is not the YES price - quoting the wrong leg invents fake drift."""
     trades = [_trade("0xSHARP1", "A", "Man City", 60_000, 0.70, title="EPL winner")]
     meta = _meta(question="EPL winner", best_bid=0.28, best_ask=0.29,
+                 game_start=_iso(hours=6),
                  outcomes=["Man City", "Arsenal"], prices=[0.71, 0.29])
     r = _board(trades, {"A": meta})
     assert r.tickets[0].entry_price == 0.71
@@ -496,7 +570,7 @@ def test_the_same_lopsided_signal_is_untouched_outside_elections():
     """The rule is one category wide - a lopsided tennis signal is scored as before."""
     trades = [_trade("0xSHARP1", "A", "Yes", 90_000, 0.40, title="Alcaraz vs Sinner"),
               _trade("0xSHARP2", "A", "Yes", 10_000, 0.40, title="Alcaraz vs Sinner")]
-    metas = {"A": _meta(question="Alcaraz vs Sinner")}
+    metas = {"A": _meta(question="Alcaraz vs Sinner", game_start=_iso(hours=6))}
     on = _board(trades, metas).tickets[0]
     off = _board(trades, metas,
                  cfg=_cfg(whale_election_concentration_penalty=False)).tickets[0]

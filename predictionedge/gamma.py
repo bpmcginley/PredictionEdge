@@ -107,7 +107,18 @@ def market_meta(condition_ids: list[str], *, base: str = GAMMA, fetch=None) -> d
             "question": m.get("question") or m.get("title") or "",
             "slug": m.get("slug") or "",
             "end_date": m.get("endDate") or m.get("endDateIso") or "",
-            "game_start": m.get("gameStartTime") or m.get("startDate") or "",
+            # `gameStartTime` ONLY. `startDate` is when the market was CREATED, and it
+            # is therefore always in the past - falling back to it made every market
+            # without a kickoff (politics, crypto, econ, world events: everything that
+            # is not a scheduled fixture) read as "in-play (event already started)".
+            # That single `or` clause structurally deleted those categories from the
+            # board, which is why every live ticket was baseball or tennis while the
+            # leaderboard scan was spending its calls on POLITICS and CRYPTO. Worse,
+            # the rejection ledger - the board's whole honesty claim - then printed a
+            # reason that was false, and a ledger that misattributes retires the wrong
+            # hypothesis. Absent is absent; the caller decides what that means.
+            "game_start": m.get("gameStartTime") or "",
+            "created_at": m.get("startDate") or "",
             "closed": bool(m.get("closed")),
             "active": bool(m.get("active", True)),
             "volume": float(m.get("volume") or 0.0),

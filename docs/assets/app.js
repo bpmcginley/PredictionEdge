@@ -69,10 +69,16 @@ function fmtDur(h) {
   if (h < 48) return h.toFixed(0) + 'h';
   return (h / 24).toFixed(1) + 'd';
 }
+/* event_iso (kickoff) FIRST. end_iso is a settlement deadline and Polymarket pads it
+   to a tournament-wide date, so recomputing from it printed "7d" on a game being
+   played tonight. Fall back to the deadline only where there is no kickoff. */
 const hoursLeft = t => {
-  if (!t.end_iso) return null;
-  const ms = Date.parse(t.end_iso);
-  return isNaN(ms) ? null : (ms - Date.now()) / 3600000;
+  for (const iso of [t.event_iso, t.end_iso]) {
+    if (!iso) continue;
+    const ms = Date.parse(iso);
+    if (!isNaN(ms)) return (ms - Date.now()) / 3600000;
+  }
+  return null;
 };
 const ageMin = t => t.signal_ts ? (Date.now() / 1000 - t.signal_ts) / 60 : null;
 
