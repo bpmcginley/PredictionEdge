@@ -376,10 +376,15 @@ def build_board(cfg, client, scorer, account: OmenAccount, *,
         return report
 
     fetcher = meta_fetch or market_meta
+    unread: set[str] = set()
     try:
-        metas = fetcher([s.market_id for s in signals])
+        try:
+            metas = fetcher([s.market_id for s in signals], failures=unread)
+        except TypeError:      # an injected test fetcher need not take the kwarg
+            metas = fetcher([s.market_id for s in signals])
     except Exception:  # noqa: BLE001
         metas = {}
+        unread = {s.market_id for s in signals}
 
     # One batched, cached sweep for every wallet in the feed - not one call per ticket.
     # An outage here costs the bankroll refinement, not the board: an empty map means
@@ -404,8 +409,14 @@ def build_board(cfg, client, scorer, account: OmenAccount, *,
         # start, so every date filter below would silently pass - "we know nothing" must
         # never read as "nothing is wrong". A dropped metadata batch once let the whole
         # board through unchecked before dying at the pricing step.
+        #
+        # But say WHICH kind of missing. "Gamma has no such market" is a signal to drop;
+        # "we could not reach Gamma" is a fault to fix, and filing both under one reason
+        # made a leak look like a filter. Same outcome for the ticket, opposite meaning
+        # for anyone reading the ledger to decide what to work on next.
         if not m:
-            report.reject("no market metadata")
+            report.reject("market lookup failed (not read)" if s.market_id in unread
+                          else "no market metadata")
             continue
 
         if m.get("closed") or not m.get("active", True):

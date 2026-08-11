@@ -310,6 +310,27 @@ def test_missing_metadata_fails_closed():
     assert any("no market metadata" in k for k in r.rejected)
 
 
+def test_unread_metadata_is_distinguished_from_absent_metadata():
+    """A market we could not READ about is not a market that does not exist.
+
+    Both lose the ticket, but only one is a bug to go and fix. Filing them under one
+    rejection reason made a network leak look like the filter working as designed.
+    """
+    trades = [_trade("0xSHARP1", "A", "Yes", 60_000, 0.40)]
+
+    def fetch(ids, failures=None):
+        if failures is not None:
+            failures.update(ids)
+        return {}
+
+    client = MockPolymarketDataClient(trades=trades)
+    r = build_board(_cfg(), client, SmartWalletScorer(), OmenAccount(size=100_000),
+                    now_ts=NOW, meta_fetch=fetch)
+    assert r.tickets == []
+    assert any("lookup failed" in k for k in r.rejected)
+    assert not any(k == "no market metadata" for k in r.rejected)
+
+
 def test_thin_liquidity_raises_a_warning():
     trades = [_trade("0xSHARP1", "A", "Yes", 60_000, 0.40)]
     r = _board(trades, {"A": _meta(liquidity=2_000.0)})

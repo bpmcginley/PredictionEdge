@@ -32,6 +32,19 @@ jobs:
       - name: Install runtime deps
         run: pip install --quiet requests cryptography
 
+      # WalletProfiler caches to data/, which is gitignored and therefore gone on every
+      # fresh checkout - so a cache built to make a wallet's FIRST TRADE (an immutable
+      # fact, TTL 30 days) a one-time lookup was instead paying a cold fan-out of up to
+      # 300 wallets every 15 minutes, and any timeout in it reads downstream as
+      # "fresh wallet: age unavailable". Persisting it between runs is what makes the
+      # code's own TTL mean anything. Never committed: it is a cache, not a result.
+      - name: Restore wallet profile cache
+        uses: actions/cache@v4
+        with:
+          path: data/wallet_profiles.json
+          key: wallet-profiles-${{ github.run_id }}
+          restore-keys: wallet-profiles-
+
       - name: Build the board
         env:
           # No .env exists in CI, so the board's settings are declared here.
@@ -46,7 +59,11 @@ jobs:
           PE_BOARD_MIN_HOURS: "3"
           PE_BOARD_MAX_DAYS: "30"
           PE_BOARD_MAX_DRIFT_C: "4"
-          PE_BOARD_MIN_CONVICTION: "0.35"
+          # The buy bar, and the floor of the probe band recorded below it. This pin used
+          # to read 0.35, which was safe only because board_max_tickets=8 truncated behind
+          # it. With the cap off, 0.35 IS the board, so it moves up to the real bar.
+          PE_BOARD_MIN_CONVICTION: "0.45"
+          PE_BOARD_PROBE_MIN_CONVICTION: "0.25"
         run: python -m predictionedge.publish --out docs/board.json
 
       # The trial lives in docs/ because this job checks out fresh every 15 minutes and
