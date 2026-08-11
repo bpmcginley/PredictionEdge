@@ -24,10 +24,33 @@ from . import omen
 from .config import Config
 
 
+def weather_tickets(cfg: Config) -> list[dict]:
+    """The NWS/Kalshi sleeve, in its OWN array - never merged into `tickets`.
+
+    Two sleeves, two hypotheses. The board's tickets claim "whales pick winners"; these
+    claim "the NWS locates tomorrow's high better than the Kalshi ladder does". Pooling
+    them into one win rate would answer neither question, which is the same mistake
+    `papertrial` avoids by holding conviction flat. They are recorded separately and
+    scored separately.
+
+    Never raises. A weather outage must not take the whale board down with it.
+    """
+    if not cfg.weather_enabled:
+        return []
+    try:
+        from .weather import find_weather_edges
+        return find_weather_edges(min_edge=cfg.weather_min_edge,
+                                  max_days=cfg.weather_max_days)
+    except Exception as exc:  # noqa: BLE001
+        print(f"weather sleeve unavailable: {exc}")
+        return []
+
+
 def build_payload(cfg: Config) -> dict:
     from .dashboard import build_board_payload
 
     payload = build_board_payload(cfg)
+    payload["weather"] = weather_tickets(cfg)
     # The journal is personal and browser-local; never publish it.
     payload.pop("journal", None)
     payload.pop("journal_state", None)
@@ -62,7 +85,8 @@ def main(argv: list[str] | None = None) -> int:
     except Exception as exc:  # noqa: BLE001
         # A data outage must publish an honest empty board, not break the site.
         payload = {"generated": time.strftime("%Y-%m-%d %H:%M:%S"),
-                   "generated_at": time.time(), "tickets": [], "considered": 0,
+                   "generated_at": time.time(), "tickets": [], "weather": [],
+                   "considered": 0,
                    "rejected": {}, "notes": [f"board generation failed: {exc}"],
                    "account_size": cfg.omen_account_size,
                    # ok=False, not an empty list: a failed run must not render as a
@@ -77,7 +101,8 @@ def main(argv: list[str] | None = None) -> int:
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(payload, indent=2), encoding="utf-8")
     print(f"wrote {out} — {len(payload['tickets'])} ticket(s) "
-          f"from {payload['considered']} signal(s)")
+          f"from {payload['considered']} signal(s), "
+          f"{len(payload.get('weather') or [])} weather")
     return 0
 
 

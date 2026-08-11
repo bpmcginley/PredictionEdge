@@ -228,3 +228,49 @@ def test_a_void_is_not_counted_as_a_settled_bet():
     settle(trial, {"KXHIGHNY-26AUG10-T89": {"voided": True}})
     assert trial["settled"] == []
     assert stats(trial).get("n", 0) == 0
+
+
+# --- two sleeves, scored apart ---------------------------------------------------
+
+def test_a_row_without_a_source_is_a_whale_row():
+    """`docs/trial.json` holds live rows written before the weather sleeve existed."""
+    from predictionedge.papertrial import source_of
+    assert source_of({}) == "whale"
+    assert source_of({"source": "weather"}) == "weather"
+    trial = _blank()
+    record(trial, [_ticket()])
+    assert trial["open"][0]["source"] == "whale"
+
+
+def test_a_weather_ticket_keeps_its_source():
+    trial = _blank()
+    record(trial, [_ticket(mid="KXHIGHNY-26AUG12-B87.5", outcome="Yes", price=0.09,
+                           source="weather", venue="kalshi")])
+    row = trial["open"][0]
+    assert row["source"] == "weather" and row["venue"] == "kalshi"
+
+
+def test_the_two_sleeves_are_scored_apart():
+    """Pooling a next-day temperature with a six-month Polymarket resolution produces
+    arithmetic, not evidence. Whichever sleeve reaches n first must be judgeable alone.
+    """
+    trial = _blank()
+    record(trial, [_ticket(mid="0xaaa", outcome="Yes", price=0.5),
+                   _ticket(mid="KXHIGHNY-26AUG12-B87.5", outcome="Yes", price=0.1,
+                           source="weather", venue="kalshi")])
+    settle(trial, {"0xaaa": _meta(["Yes", "No"], [1.0, 0.0]),
+                   "KXHIGHNY-26AUG12-B87.5": _meta(["Yes", "No"], [0.0, 1.0])})
+    by = stats(trial)["by_source"]
+    assert by["whale"]["n"] == 1 and by["whale"]["win_rate"] == 1.0
+    assert by["weather"]["n"] == 1 and by["weather"]["win_rate"] == 0.0
+
+
+def test_open_positions_are_counted_per_sleeve_before_anything_settles():
+    """The first useful number this reports, and it must not need a settlement first."""
+    trial = _blank()
+    record(trial, [_ticket(mid="0xaaa"),
+                   _ticket(mid="KXHIGHNY-26AUG12-B87.5", outcome="Yes", price=0.1,
+                           source="weather")])
+    by = stats(trial)["by_source"]
+    assert by["whale"]["open_positions"] == 1
+    assert by["weather"]["open_positions"] == 1

@@ -252,6 +252,14 @@ class Config:
     pmus_private_key_path: str = ""        # Ed25519 PEM
     pmus_base_url: str = "https://clob.polymarket.us"   # VERIFY
 
+    # --- NWS weather markets on Kalshi (paper-only research sleeve) ---
+    # On by default: everything it reads is public and unauthenticated, and every
+    # ticket it produces is stamped paper-only. It is a flag at all so a bad forecast
+    # season can be switched off without a deploy.
+    weather_enabled: bool = True
+    weather_min_edge: float = 0.07
+    weather_max_days: float = 3.0
+
     # --- Paper trading / backtest dataset ---
     paper_ledger_path: str = "data/paper_ledger.jsonl"
     settled_path: str = "data/settled_bets.jsonl"   # labeled bets for the backtest
@@ -384,6 +392,9 @@ class Config:
             pmus_key_id=e.get("PMUS_API_KEY_ID", ""),
             pmus_private_key_path=e.get("PMUS_PRIVATE_KEY_PATH", ""),
             pmus_base_url=e.get("PMUS_BASE_URL", cls.pmus_base_url),
+            weather_enabled=_truthy(e.get("PE_WEATHER_ENABLED"), cls.weather_enabled),
+            weather_min_edge=f("PE_WEATHER_MIN_EDGE", cls.weather_min_edge),
+            weather_max_days=f("PE_WEATHER_MAX_DAYS", cls.weather_max_days),
             paper_ledger_path=e.get("PE_PAPER_LEDGER", cls.paper_ledger_path),
             settled_path=e.get("PE_SETTLED_PATH", cls.settled_path),
         )

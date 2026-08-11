@@ -126,6 +126,10 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
             # filter but sat below it. Only the first is evidence about the board as
             # published; both are evidence about where the bar belongs.
             "shown": bool(t.get("_shown", True)),
+            # Which hypothesis this row is evidence FOR. The trial now carries two
+            # sleeves that share a settlement path and share nothing else, so a pooled
+            # win rate would answer neither question - see `stats`.
+            "source": t.get("source") or "whale",
             "conviction": t.get("conviction"),
             "n_wallets": t.get("n_wallets"),
             "whale_usd": t.get("whale_usd"),
@@ -196,8 +200,20 @@ def settle(trial: dict, metas: dict[str, dict], *, now: float | None = None) -> 
     return settled
 
 
+def source_of(row: dict) -> str:
+    """Which sleeve a row belongs to, inferred when the row predates the field."""
+    return (row.get("source") or "").strip().lower() or "whale"
+
+
 def stats(trial: dict, *, min_n: int = 30) -> dict:
-    """Score the settled rows with the project's existing gate, plus trial bookkeeping."""
+    """Score the settled rows with the project's existing gate, plus trial bookkeeping.
+
+    The headline numbers stay pooled so the top-line record is one honest number, but
+    `by_source` is where any decision belongs. The sleeves make different claims on
+    different markets with different holding periods; a pooled win rate that mixes a
+    six-month Polymarket resolution with a next-day Kalshi temperature is arithmetic,
+    not evidence. Whichever sleeve reaches `min_n` first gets judged first.
+    """
     from .backtest import evaluate
 
     out = evaluate(trial["settled"], min_n=min_n)
@@ -206,6 +222,19 @@ def stats(trial: dict, *, min_n: int = 30) -> dict:
         span = max(r["settled_at"] for r in trial["settled"]) - \
             min(r["opened_at"] for r in trial["settled"])
         out["trial_days"] = round(span / 86400.0, 1)
+
+    sleeves: dict[str, list[dict]] = {}
+    for row in trial["settled"]:
+        sleeves.setdefault(source_of(row), []).append(row)
+    open_by: dict[str, int] = {}
+    for row in trial["open"]:
+        src = source_of(row)
+        open_by[src] = open_by.get(src, 0) + 1
+    out["by_source"] = {}
+    for src in sorted(set(sleeves) | set(open_by)):
+        sliced = evaluate(sleeves.get(src, []), min_n=min_n)
+        sliced["open_positions"] = open_by.get(src, 0)
+        out["by_source"][src] = sliced
     return out
 
 
@@ -230,8 +259,12 @@ def main(argv: list[str] | None = None) -> int:
     # `probe` sits below the buy bar. Recording it is the whole point: a threshold can
     # only be validated against outcomes on BOTH sides of it. Observe above the cutoff
     # alone and 0.45 stays unfalsifiable forever, however much data accumulates.
+    # The weather sleeve arrives already filtered to what cleared its own edge bar, so
+    # every row is `_shown`; it has no probe tier because its bar is a modelled edge
+    # rather than a hand-set conviction cutoff that needs validating from both sides.
     flow = [{**t, "_shown": True} for t in (board.get("tickets") or [])] + \
-           [{**t, "_shown": False} for t in (board.get("probe") or [])]
+           [{**t, "_shown": False} for t in (board.get("probe") or [])] + \
+           [{**t, "_shown": True} for t in (board.get("weather") or [])]
     added = record(trial, flow, stake=args.stake,
                    fee_multiplier=cfg.fee_multiplier, maker=cfg.assume_maker,
                    now=board.get("generated_at") or None)
@@ -273,6 +306,10 @@ def main(argv: list[str] | None = None) -> int:
               f"mean return {s['mean_return']:+.4f}  deploy={s['deploy']}")
         if s.get("reasons"):
             print("  not deployable: " + "; ".join(s["reasons"]))
+    for src, sliced in sorted((s.get("by_source") or {}).items()):
+        print(f"  [{src}] {sliced.get('n', 0)} settled, "
+              f"{sliced.get('open_positions', 0)} open"
+              + (f", win rate {sliced['win_rate']:.1%}" if sliced.get("n") else ""))
     return 0
 
 
