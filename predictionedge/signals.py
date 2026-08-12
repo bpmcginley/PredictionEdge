@@ -1,4 +1,4 @@
-"""Ranked trade tickets for a human to place manually on Omen.
+"""Ranked trade tickets for a human to place manually.
 
 This is the research half of the bot with the execution half deliberately removed.
 It takes smart-money flow off public Polymarket, applies the filters that the live
@@ -29,7 +29,7 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 
 from .copytrade import scan_smart_flow
-from .omen import OmenAccount, Sizing, event_url, size_position
+from .sizing import Account, Sizing, event_url, size_position
 
 # A real Polymarket market key is 0x + 64 hex. Combo tickets fake one at 62, zero-padded.
 _CONDITION_ID = re.compile(r"0x[0-9a-fA-F]{64}")
@@ -338,7 +338,7 @@ def _key(s) -> tuple:
     return (s.market_id, s.outcome, s.wallet_usd[0][0] if s.wallet_usd else "")
 
 
-def build_board(cfg, client, scorer, account: OmenAccount, *,
+def build_board(cfg, client, scorer, account: Account, *,
                 now_ts: float | None = None, meta_fetch=None,
                 profiler=None) -> BoardReport:
     """Whale flow -> filtered, ranked, human-placeable tickets."""
@@ -591,8 +591,8 @@ def build_board(cfg, client, scorer, account: OmenAccount, *,
                 f"smart money sold ${ex.total_usd:,.0f} of this side "
                 f"{ex.minutes_ago:.0f} min ago ({ex.n_wallets} wallet"
                 f"{'s' if ex.n_wallets != 1 else ''}) — after the buys above")
-        if sizing.capped_by == "omen-market-limit":
-            warnings.append("size capped by Omen's per-market contract limit")
+        if sizing.capped_by == "per-market-limit":
+            warnings.append("size capped by the per-market contract limit")
 
         candidates.append(TradeTicket(
             market_id=s.market_id,

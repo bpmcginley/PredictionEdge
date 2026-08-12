@@ -476,7 +476,7 @@ def test_single_binary_market_is_not_a_group():
 
 
 def test_module_has_no_order_path():
-    """Advisory only. Omen forbids automation; this module reads and prints, full stop."""
+    """Advisory only. This module reads and prints, full stop."""
     from pathlib import Path
 
     import predictionedge.consistency as mod

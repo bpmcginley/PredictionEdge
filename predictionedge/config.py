@@ -122,14 +122,13 @@ class Config:
     whale_primary: bool = True
     whale_primary_min_conf: float = 0.30   # min signal confidence to act on it as fair value
 
-    # --- OMEN SIGNAL BOARD (manual trading) ----------------------------------
-    # Master switch for the pivot: the bot researches and ranks, a human places the
-    # trade on Omen. Omen forbids automation of any kind (no API, no bots, no browser
-    # automation, no signal-following services), so while this is True every execution
-    # path is refused - see executor.py. Default True: advice is the safe default.
+    # --- SIGNAL BOARD (manual trading) ---------------------------------------
+    # Master switch for the pivot: the bot researches and ranks, a human places any
+    # trade. While this is True every execution path is refused - see executor.py.
+    # Default True: advice is the safe default.
     research_only: bool = True
-    omen_account_size: float = 100_000.0    # simulated capital of the Omen account
-    omen_per_trade_fraction: float = 0.01   # our risk budget per idea (not an Omen rule)
+    board_account_size: float = 100_000.0    # capital the board sizes against (paper)
+    board_per_trade_fraction: float = 0.01   # our risk budget per idea
     # Skip anything resolving sooner than this. Deliberately short: for same-day sports
     # the informed money arrives LATE (lineups, injuries, weather), so a whale betting
     # 3h out knows more than one betting 3 days out. The June-26 disaster was in-play
@@ -318,8 +317,13 @@ class Config:
             whale_primary=_truthy(e.get("PE_WHALE_PRIMARY"), cls.whale_primary),
             whale_primary_min_conf=f("PE_WHALE_PRIMARY_MIN_CONF", cls.whale_primary_min_conf),
             research_only=_truthy(e.get("PE_RESEARCH_ONLY"), cls.research_only),
-            omen_account_size=f("PE_OMEN_ACCOUNT_SIZE", cls.omen_account_size),
-            omen_per_trade_fraction=f("PE_OMEN_PER_TRADE_FRACTION", cls.omen_per_trade_fraction),
+            # PE_OMEN_* are the pre-rename env names, honored so an old deployment
+            # keeps its configured sizing after upgrading.
+            board_account_size=f("PE_BOARD_ACCOUNT_SIZE",
+                                 f("PE_OMEN_ACCOUNT_SIZE", cls.board_account_size)),
+            board_per_trade_fraction=f("PE_BOARD_PER_TRADE_FRACTION",
+                                       f("PE_OMEN_PER_TRADE_FRACTION",
+                                         cls.board_per_trade_fraction)),
             board_min_hours=f("PE_BOARD_MIN_HOURS", cls.board_min_hours),
             board_max_days=f("PE_BOARD_MAX_DAYS", cls.board_max_days),
             board_max_signal_age_min=f("PE_BOARD_MAX_SIGNAL_AGE_MIN",

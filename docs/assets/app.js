@@ -92,10 +92,10 @@ const hoursLeft = t => {
 };
 const ageMin = t => t.signal_ts ? (Date.now() / 1000 - t.signal_ts) / 60 : null;
 
-/* --- sizing (mirrors the backend sizing rule; constants come from board.json,
-   still published under its historical "omen" key - a data contract, not a venue) - */
+/* --- sizing (mirrors the backend sizing rule; constants come from board.json's
+   "sizing" key - "omen" is the pre-rename key, read so a cached board keeps sizing) - */
 function sizeFor(price, account, conviction) {
-  const o = DATA.omen || { min_contract_price: 0.01, contracts_per_market_per_1k: 19, per_trade_fraction: 0.01 };
+  const o = DATA.sizing || DATA.omen || { min_contract_price: 0.01, contracts_per_market_per_1k: 19, per_trade_fraction: 0.01 };
   if (!(price >= o.min_contract_price && price < 1) || !(account > 0)) return null;
   const c = Math.max(0, Math.min(1, conviction || 0));
   if (c <= 0) return null;
@@ -105,7 +105,7 @@ function sizeFor(price, account, conviction) {
   const contracts = Math.min(want, cap);
   if (contracts < 1) return null;
   return { contracts, cost: contracts * price, max_payout: contracts,
-           capped: want > cap ? 'omen-market-limit' : 'risk-budget' };
+           capped: want > cap ? 'per-market-limit' : 'risk-budget' };
 }
 
 /* --- money derived from logged outcomes --------------------------------- */

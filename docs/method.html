@@ -142,7 +142,7 @@ mountNav('method.html');
 
 function render(){
   stampUpdated();
-  const f = DATA.filters||{}, o = DATA.omen||{};
+  const f = DATA.filters||{}, o = DATA.sizing||DATA.omen||{};
   const n = (v,d)=> v==null? d : v;
   const rows = [
     ['Market closed or already resolved','No live book, or the outcome is already known.'],

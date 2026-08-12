@@ -2,7 +2,7 @@ name: Publish trade board
 
 # Regenerates docs/board.json so GitHub Pages can serve a static board.
 # Reads only public, unauthenticated Polymarket data - this workflow needs NO secrets,
-# and never touches an Omen, Kalshi or Polymarket US account.
+# and never touches a Kalshi or Polymarket US account.
 
 on:
   schedule:

@@ -4,7 +4,7 @@ from dataclasses import replace
 from datetime import datetime, timedelta, timezone
 
 from predictionedge.config import Config
-from predictionedge.omen import OmenAccount
+from predictionedge.sizing import Account
 from predictionedge.polymarket import MockPolymarketDataClient, Trade
 from predictionedge.signals import build_board
 from predictionedge.whales import SmartWalletScorer
@@ -65,7 +65,7 @@ class _Profiler:
 def _board(trades, metas, cfg=None, account=None, profiler=None):
     client = MockPolymarketDataClient(trades=trades)
     return build_board(cfg or _cfg(), client, SmartWalletScorer(),
-                       account or OmenAccount(size=100_000),
+                       account or Account(size=100_000),
                        now_ts=NOW, meta_fetch=lambda ids: metas, profiler=profiler)
 
 
@@ -339,7 +339,7 @@ def test_unread_metadata_is_distinguished_from_absent_metadata():
         return {}
 
     client = MockPolymarketDataClient(trades=trades)
-    r = build_board(_cfg(), client, SmartWalletScorer(), OmenAccount(size=100_000),
+    r = build_board(_cfg(), client, SmartWalletScorer(), Account(size=100_000),
                     now_ts=NOW, meta_fetch=fetch)
     assert r.tickets == []
     assert any("lookup failed" in k for k in r.rejected)

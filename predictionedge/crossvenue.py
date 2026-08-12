@@ -1,8 +1,8 @@
 """Kalshi vs Polymarket disagreement - a second, non-whale source of ideas.
 
-Omen quotes *global Polymarket*, so Kalshi is not somewhere you trade; it is an
-independent read on the same event by a completely different crowd (CFTC-regulated
-US retail, dollar-funded) than Polymarket's (global, crypto-funded). When those two
+Kalshi and global Polymarket are two independent reads on the same event by
+completely different crowds: Kalshi's (CFTC-regulated US retail, dollar-funded)
+and Polymarket's (global, crypto-funded). When those two
 price the same question far apart, at least one of them is wrong, and that is worth
 a human's attention - especially on politics and economics, where the whale trade
 feed is thin because that flow accumulates quietly instead of arriving as one big
@@ -73,7 +73,7 @@ class Divergence:
 
     @property
     def entry_price(self) -> float:
-        """What you'd pay on Omen for the side Kalshi implies is underpriced."""
+        """What Polymarket charges for the side Kalshi implies is underpriced."""
         return self.poly.yes_price if self.buy_yes else round(1.0 - self.poly.yes_price, 3)
 
 
@@ -180,7 +180,7 @@ def fetch_kalshi(*, pages: int = 4, per_page: int = 200, fetch=None,
 
 def fetch_polymarket(*, limit: int = 500, min_volume: float = 20_000.0,
                      fetch=None) -> list[VenueMarket]:
-    """Active, liquid Polymarket markets - the universe Omen actually quotes."""
+    """Active, liquid Polymarket markets - the universe worth comparing against."""
     import json as _json
     getter = fetch or _requests_get
     out: list[VenueMarket] = []

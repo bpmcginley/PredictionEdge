@@ -108,15 +108,15 @@ def _macro_section(cfg: Config) -> dict:
 def build_board_payload(cfg: Config, force_mock: bool = False) -> dict:
     """The manual trade board: ranked suggestions + what we filtered out + the journal."""
     from .journal import Journal
-    from .omen import OmenAccount
     from .signals import build_board
+    from .sizing import Account
     from .whales import build_whale_provider
 
     whales = build_whale_provider(cfg, mock=force_mock, enrich=False)
     client = getattr(whales, "client", None)
     scorer = getattr(whales, "scorer", None)
-    account = OmenAccount(size=cfg.omen_account_size,
-                          per_trade_fraction=cfg.omen_per_trade_fraction)
+    account = Account(size=cfg.board_account_size,
+                      per_trade_fraction=cfg.board_per_trade_fraction)
 
     if client is None or scorer is None:
         report = None
@@ -149,7 +149,7 @@ def build_board_payload(cfg: Config, force_mock: bool = False) -> dict:
     return {
         "generated": time.strftime("%Y-%m-%d %H:%M:%S"),
         "generated_at": time.time(),
-        "account_size": cfg.omen_account_size,
+        "account_size": cfg.board_account_size,
         "tickets": tickets,
         "probe": probe,
         "considered": report.considered if report else 0,

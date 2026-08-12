@@ -7,7 +7,7 @@ logic therefore has one implementation, not a Python one and a drifting JavaScri
 copy of it.
 
 Everything this reads is public, unauthenticated Polymarket data, so the workflow
-needs no secrets. Nothing about your Omen account, positions or journal is included:
+needs no secrets. Nothing about your capital, positions or journal is included:
 the journal lives in your browser's localStorage and is never published.
 
     python -m predictionedge.publish --out docs/board.json
@@ -20,7 +20,7 @@ import json
 import time
 from pathlib import Path
 
-from . import omen
+from . import sizing
 from .config import Config
 
 
@@ -56,14 +56,16 @@ def build_payload(cfg: Config) -> dict:
     payload.pop("journal_state", None)
     # The page re-sizes every ticket against your *current* capital, so it needs the
     # same rules the Python sizer uses. Publish them instead of hardcoding a second
-    # copy in JavaScript that can silently drift out of step with omen.py.
-    payload["omen"] = {
-        "min_contract_price": omen.MIN_CONTRACT_PRICE,
-        "contracts_per_market_per_1k": omen.CONTRACTS_PER_MARKET_PER_1K,
-        "contracts_per_event_per_1k": omen.CONTRACTS_PER_EVENT_PER_1K,
-        "per_trade_fraction": cfg.omen_per_trade_fraction,
+    # copy in JavaScript that can silently drift out of step with sizing.py.
+    payload["sizing"] = {
+        "min_contract_price": sizing.MIN_CONTRACT_PRICE,
+        "contracts_per_market_per_1k": sizing.CONTRACTS_PER_MARKET_PER_1K,
+        "contracts_per_event_per_1k": sizing.CONTRACTS_PER_EVENT_PER_1K,
+        "per_trade_fraction": cfg.board_per_trade_fraction,
         "daily_loss_fraction": 0.05,
     }
+    # Pre-rename key; kept for one transition so a cached page's JS keeps sizing.
+    payload["omen"] = payload["sizing"]
     payload["filters"] = {
         "min_hours": cfg.board_min_hours,
         "max_days": cfg.board_max_days,
@@ -88,7 +90,7 @@ def main(argv: list[str] | None = None) -> int:
                    "generated_at": time.time(), "tickets": [], "weather": [],
                    "considered": 0,
                    "rejected": {}, "notes": [f"board generation failed: {exc}"],
-                   "account_size": cfg.omen_account_size,
+                   "account_size": cfg.board_account_size,
                    # ok=False, not an empty list: a failed run must not render as a
                    # clean book on the page.
                    "consistency": {"ok": False, "enabled": True, "violations": [],

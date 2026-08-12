@@ -74,7 +74,8 @@ function render(keepFocus){
   $('v-power').className      = L.power<0?'neg':'';
 
   // The house 5% daily-loss guardrail, estimated from outcomes logged in the last 24h.
-  const lim = L.start * ((DATA.omen && DATA.omen.daily_loss_fraction) || 0.05);
+  const sz = DATA.sizing || DATA.omen;
+  const lim = L.start * ((sz && sz.daily_loss_fraction) || 0.05);
   const d = $('danger');
   if(L.todayPnl < 0 && Math.abs(L.todayPnl) >= lim*0.6){
     d.style.display='block';
@@ -116,8 +117,8 @@ function ticket(t,rank,L){
   const z = sizeFor(t.entry_price, L.account, t.conviction);
   // The backend may still phrase this warning in its own words; recompute it client-side
   // so the displayed size and its warning can never disagree.
-  const warnings = (t.warnings||[]).filter(w=>!/size capped by Omen/.test(w));
-  if(z && z.capped==='omen-market-limit') warnings.push('size capped by the per-market contract limit');
+  const warnings = (t.warnings||[]).filter(w=>!/size capped by .*per-market contract limit/.test(w));
+  if(z && z.capped==='per-market-limit') warnings.push('size capped by the per-market contract limit');
   if(z && z.cost > L.power) warnings.push('costs more than your buying power');
   const why = (t.why||[]).map(w =>
     /latest buy .* min ago/.test(w) && a!=null ? `latest buy ${a.toFixed(0)} min ago` :

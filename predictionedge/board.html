@@ -78,8 +78,7 @@
   </header>
 
   <div class="banner">
-    <b>Manual placement only.</b> Omen prohibits API access, bots, browser automation and
-    signal-following services — all trading must be placed by you in the Omen app.
+    <b>Manual placement only.</b> Nothing here executes a trade.
     This board is research: it ranks ideas and shows its reasoning. You decide and you place.
   </div>
 
@@ -113,7 +112,7 @@ async function load(){
     $('stats').innerHTML=
       stat(d.tickets.length,'tickets')+
       stat(d.considered,'signals scanned')+
-      stat(money(d.account_size),'omen account')+
+      stat(money(d.account_size),'account')+
       stat(j.taken||0,'taken')+
       stat(j.hit_rate==null?'—':(j.hit_rate*100).toFixed(0)+'%','hit rate')+
       stat((j.pnl>=0?'+':'')+'$'+Number(j.pnl||0).toFixed(0),'journal p&l');

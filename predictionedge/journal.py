@@ -1,7 +1,7 @@
 """A record of what you actually did with each suggestion.
 
-The board can only earn trust if we can check it later, and since Omen is placed by
-hand there is no fill feed to reconcile against - you are the source of truth. So the
+The board can only earn trust if we can check it later, and since every trade is placed
+by hand there is no fill feed to reconcile against - you are the source of truth. So the
 board asks two questions: did you take this one, and how did it end?
 
 That gives the one number that matters: of the tickets the board rated highly, how

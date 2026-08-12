@@ -77,12 +77,11 @@ class LiveExecutor:
 
     def __init__(self, cfg: Config, state: StateStore, ledger: PaperLedger, logger, client):
         if getattr(cfg, "research_only", False):
-            # The Omen pivot: the bot advises, a human places the trade. Refusing in the
-            # constructor means no code path can reach an order without this being off.
+            # The advisory pivot: the bot advises, a human places the trade. Refusing in
+            # the constructor means no code path can reach an order without this being off.
             raise RuntimeError(
                 "research_only=True: PredictionEdge is in advisory mode and will not "
-                "place orders. Set PE_RESEARCH_ONLY=0 to re-enable execution (note that "
-                "automating Omen is prohibited by its terms)."
+                "place orders. Set PE_RESEARCH_ONLY=0 to re-enable execution."
             )
         self.cfg, self.state, self.ledger, self.log = cfg, state, ledger, logger
         self.client = client  # LiveKalshiTradingClient
