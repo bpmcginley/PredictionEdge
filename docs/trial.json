@@ -727,29 +727,6 @@
       "fee": 0.85
     },
     {
-      "key": "0x8a6c2288c593fe01201db76111d4c4ab131efb8ccb40a368d63e1662bfd57beb:team falcons",
-      "opened_at": 1786510478.473381,
-      "market_id": "0x8a6c2288c593fe01201db76111d4c4ab131efb8ccb40a368d63e1662bfd57beb",
-      "venue": "polymarket",
-      "outcome": "Team Falcons",
-      "title": "Counter-Strike: Team Falcons vs K27 (BO1) - Esports World Cup Group B",
-      "url": "https://polymarket.com/event/cs2-fal2-k271-2026-08-12",
-      "price": 0.805,
-      "stake": 100.0,
-      "contracts": 124.2236,
-      "shown": true,
-      "source": "whale",
-      "conviction": 0.455,
-      "n_wallets": 1,
-      "whale_usd": 5156,
-      "drift_c": 0.5,
-      "hours_to_resolve": 8.6,
-      "liquidity": 137230,
-      "end_iso": "2026-08-12T19:30:00Z",
-      "event_iso": "2026-08-12 13:30:00+00",
-      "fee": 0.35
-    },
-    {
       "key": "0xa010c8e7ab644ca49a8c7d015bd80d6524e2d822fec6077e1f1019327507c65b:yes",
       "opened_at": 1786510478.473381,
       "market_id": "0xa010c8e7ab644ca49a8c7d015bd80d6524e2d822fec6077e1f1019327507c65b",
@@ -1510,6 +1487,54 @@
       "event_iso": "2026-08-12 17:00:00+00",
       "origin_market_id": "0x743f66a6ca70e0a18e98e318836427cf4f74605ee4b5ae333f8b62ca3d28e947",
       "fee": 5.33
+    },
+    {
+      "key": "0xaaec456f71bd562de0283629db72714a61bae72ba0e2f47302d4f337e07001f2:down",
+      "opened_at": 1786552119.8961623,
+      "market_id": "0xaaec456f71bd562de0283629db72714a61bae72ba0e2f47302d4f337e07001f2",
+      "venue": "polymarket",
+      "outcome": "Down",
+      "title": "Bitcoin Up or Down on August 13?",
+      "url": "https://polymarket.com/event/bitcoin-up-or-down-on-august-13-2026",
+      "price": 0.46,
+      "stake": 100.0,
+      "contracts": 217.3913,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.477,
+      "n_wallets": 1,
+      "whale_usd": 15000,
+      "drift_c": 2.0,
+      "hours_to_resolve": 23.5,
+      "liquidity": 25396,
+      "end_iso": "2026-08-13T16:00:00Z",
+      "event_iso": "",
+      "origin_market_id": "",
+      "fee": 0.95
+    },
+    {
+      "key": "0x9295d8b3a7f13a25a94a0ed381c077d42d5e9583e620240be916c3a431f89219:bushido wildcats",
+      "opened_at": 1786552119.8961623,
+      "market_id": "0x9295d8b3a7f13a25a94a0ed381c077d42d5e9583e620240be916c3a431f89219",
+      "venue": "polymarket",
+      "outcome": "Bushido Wildcats",
+      "title": "LoL: Bushido Wildcats vs Dark Passage - Game 2 Winner",
+      "url": "https://polymarket.com/event/lol-bw-dp-2026-08-12",
+      "price": 0.845,
+      "stake": 100.0,
+      "contracts": 118.3432,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.334,
+      "n_wallets": 1,
+      "whale_usd": 2506,
+      "drift_c": 2.09,
+      "hours_to_resolve": 1.0,
+      "liquidity": 187418,
+      "end_iso": "2026-08-12T23:30:00Z",
+      "event_iso": "2026-08-12 17:30:00+00",
+      "origin_market_id": "",
+      "fee": 0.28
     }
   ],
   "settled": [
@@ -3198,32 +3223,60 @@
       "won": true,
       "pred": 0.575,
       "realized": 73.163
+    },
+    {
+      "key": "0x8a6c2288c593fe01201db76111d4c4ab131efb8ccb40a368d63e1662bfd57beb:team falcons",
+      "opened_at": 1786510478.473381,
+      "market_id": "0x8a6c2288c593fe01201db76111d4c4ab131efb8ccb40a368d63e1662bfd57beb",
+      "venue": "polymarket",
+      "outcome": "Team Falcons",
+      "title": "Counter-Strike: Team Falcons vs K27 (BO1) - Esports World Cup Group B",
+      "url": "https://polymarket.com/event/cs2-fal2-k271-2026-08-12",
+      "price": 0.805,
+      "stake": 100.0,
+      "contracts": 124.2236,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.455,
+      "n_wallets": 1,
+      "whale_usd": 5156,
+      "drift_c": 0.5,
+      "hours_to_resolve": 8.6,
+      "liquidity": 137230,
+      "end_iso": "2026-08-12T19:30:00Z",
+      "event_iso": "2026-08-12 13:30:00+00",
+      "fee": 0.35,
+      "settled_at": 1786552150.3625968,
+      "winner": "Team Falcons",
+      "won": true,
+      "pred": 0.805,
+      "realized": 23.8736
     }
   ],
   "stats": {
-    "n": 63,
-    "win_rate": 0.6349,
-    "avg_predicted": 0.5418,
-    "calibration_gap": -0.0931,
-    "brier": 0.2094,
-    "total_pnl": 885.26,
-    "roi_on_stake": 0.1405,
-    "mean_return": 0.1405,
-    "sharpe_per_bet": 0.1508,
-    "psr_vs_zero": 0.8786,
-    "dsr": 0.8786,
+    "n": 64,
+    "win_rate": 0.6406,
+    "avg_predicted": 0.5459,
+    "calibration_gap": -0.0947,
+    "brier": 0.2067,
+    "total_pnl": 909.13,
+    "roi_on_stake": 0.1421,
+    "mean_return": 0.1421,
+    "sharpe_per_bet": 0.1537,
+    "psr_vs_zero": 0.8847,
+    "dsr": 0.8847,
     "implied_sr0": 0.0,
     "bootstrap_ci": [
-      -0.0183,
-      0.2884
+      -0.0189,
+      0.2875
     ],
-    "p_mean_le_0": 0.0725,
+    "p_mean_le_0": 0.0755,
     "deploy": false,
     "reasons": [
-      "DSR 0.879 < 0.95",
+      "DSR 0.885 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 67,
+    "open_positions": 68,
     "trial_days": 5.0,
     "by_source": {
       "weather": {
@@ -3235,29 +3288,29 @@
         "open_positions": 10
       },
       "whale": {
-        "n": 63,
-        "win_rate": 0.6349,
-        "avg_predicted": 0.5418,
-        "calibration_gap": -0.0931,
-        "brier": 0.2094,
-        "total_pnl": 885.26,
-        "roi_on_stake": 0.1405,
-        "mean_return": 0.1405,
-        "sharpe_per_bet": 0.1508,
-        "psr_vs_zero": 0.8786,
-        "dsr": 0.8786,
+        "n": 64,
+        "win_rate": 0.6406,
+        "avg_predicted": 0.5459,
+        "calibration_gap": -0.0947,
+        "brier": 0.2067,
+        "total_pnl": 909.13,
+        "roi_on_stake": 0.1421,
+        "mean_return": 0.1421,
+        "sharpe_per_bet": 0.1537,
+        "psr_vs_zero": 0.8847,
+        "dsr": 0.8847,
         "implied_sr0": 0.0,
         "bootstrap_ci": [
-          -0.0183,
-          0.2884
+          -0.0189,
+          0.2875
         ],
-        "p_mean_le_0": 0.0725,
+        "p_mean_le_0": 0.0755,
         "deploy": false,
         "reasons": [
-          "DSR 0.879 < 0.95",
+          "DSR 0.885 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 56
+        "open_positions": 57
       },
       "whale-pmus": {
         "n": 0,
@@ -3269,13 +3322,13 @@
       }
     }
   },
-  "generated": "2026-08-12 16:09:42",
+  "generated": "2026-08-12 16:29:10",
   "voided": [],
   "bridge": {
     "log": {
       "0xc33f1686421237eb205f827b45d8947e067816c15f67f2c2f22726b04de1d192:over": {
         "polymarket-us": "outcome-unmapped",
-        "ts": 1786550964.7,
+        "ts": 1786552119.9,
         "kalshi": "outcome-not-a-team"
       },
       "0x987f24d77f17d9086dabc50d1d6680121be6279f55522f3c58298fc9e1c14fa5:rafael jodar": {
@@ -3305,12 +3358,17 @@
       },
       "0xaebf14d763675c3588bfebd8355ba428b9d068e3d4facfd76e859ae9d8e1ac92:no": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786550964.7,
+        "ts": 1786552119.9,
         "kalshi": "outcome-not-a-team"
       },
       "0x0a061d09daa5ac4221fa7ea0d7abf84ab2ac42af0817a001d4c0dd3262be2cd8:yes": {
         "polymarket-us": "no-signature",
         "ts": 1786550964.7,
+        "kalshi": "no-signature"
+      },
+      "0xaaec456f71bd562de0283629db72714a61bae72ba0e2f47302d4f337e07001f2:down": {
+        "polymarket-us": "no-signature",
+        "ts": 1786552119.9,
         "kalshi": "no-signature"
       }
     },
@@ -3318,14 +3376,14 @@
       "polymarket-us": {
         "outcome-unmapped": 1,
         "outcome-not-yes-no": 2,
-        "no-signature": 3,
+        "no-signature": 4,
         "matched": 1,
         "no-counterpart": 1
       },
       "kalshi": {
         "outcome-not-a-team": 2,
         "no-series": 3,
-        "no-signature": 3
+        "no-signature": 4
       }
     }
   }
