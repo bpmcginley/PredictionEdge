@@ -1498,30 +1498,6 @@
       "fee": 0.8
     },
     {
-      "key": "0xd6186948bef90b9a69a12fe759f418bcaf113b0308cf27e6bacd70932ed697b1:furia",
-      "opened_at": 1786556999.0756962,
-      "market_id": "0xd6186948bef90b9a69a12fe759f418bcaf113b0308cf27e6bacd70932ed697b1",
-      "venue": "polymarket",
-      "outcome": "FURIA",
-      "title": "Counter-Strike: Wildcard vs FURIA (BO1) - Esports World Cup Group D",
-      "url": "https://polymarket.com/event/cs2-wc1-furia-2026-08-12",
-      "price": 0.785,
-      "stake": 100.0,
-      "contracts": 127.3885,
-      "shown": false,
-      "source": "whale",
-      "conviction": 0.417,
-      "n_wallets": 1,
-      "whale_usd": 3936,
-      "drift_c": -0.5,
-      "hours_to_resolve": 0.2,
-      "liquidity": 233724,
-      "end_iso": "2026-08-13T00:00:00Z",
-      "event_iso": "2026-08-12 18:00:00+00",
-      "origin_market_id": "",
-      "fee": 0.38
-    },
-    {
       "key": "aec-atp-rafjod-branak-2026-08-12:rafael jodar",
       "opened_at": 1786556999.0756962,
       "market_id": "aec-atp-rafjod-branak-2026-08-12",
@@ -1712,6 +1688,30 @@
       "event_iso": "2026-08-12 23:30:00+00",
       "origin_market_id": "",
       "fee": 0.59
+    },
+    {
+      "key": "0xf09f5df94bd7499f5f6d92d4dd4ed7caf650a8a91b4572e298246512f19ff7a4:weibo gaming",
+      "opened_at": 1786568169.4999123,
+      "market_id": "0xf09f5df94bd7499f5f6d92d4dd4ed7caf650a8a91b4572e298246512f19ff7a4",
+      "venue": "polymarket",
+      "outcome": "Weibo Gaming",
+      "title": "LoL: Weibo Gaming vs Ninjas in Pyjamas (BO3) - LPL Group Nirvana",
+      "url": "https://polymarket.com/event/lol-wb-nip-2026-08-13",
+      "price": 0.465,
+      "stake": 100.0,
+      "contracts": 215.0538,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.356,
+      "n_wallets": 1,
+      "whale_usd": 5517,
+      "drift_c": 0.5,
+      "hours_to_resolve": 10.1,
+      "liquidity": 61400,
+      "end_iso": "2026-08-13T13:00:00Z",
+      "event_iso": "2026-08-13 07:00:00+00",
+      "origin_market_id": "",
+      "fee": 0.94
     }
   ],
   "settled": [
@@ -3651,29 +3651,58 @@
       "won": true,
       "pred": 0.55,
       "realized": 81.0282
+    },
+    {
+      "key": "0xd6186948bef90b9a69a12fe759f418bcaf113b0308cf27e6bacd70932ed697b1:furia",
+      "opened_at": 1786556999.0756962,
+      "market_id": "0xd6186948bef90b9a69a12fe759f418bcaf113b0308cf27e6bacd70932ed697b1",
+      "venue": "polymarket",
+      "outcome": "FURIA",
+      "title": "Counter-Strike: Wildcard vs FURIA (BO1) - Esports World Cup Group D",
+      "url": "https://polymarket.com/event/cs2-wc1-furia-2026-08-12",
+      "price": 0.785,
+      "stake": 100.0,
+      "contracts": 127.3885,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.417,
+      "n_wallets": 1,
+      "whale_usd": 3936,
+      "drift_c": -0.5,
+      "hours_to_resolve": 0.2,
+      "liquidity": 233724,
+      "end_iso": "2026-08-13T00:00:00Z",
+      "event_iso": "2026-08-12 18:00:00+00",
+      "origin_market_id": "",
+      "fee": 0.38,
+      "settled_at": 1786568195.3483016,
+      "winner": "FURIA",
+      "won": true,
+      "pred": 0.785,
+      "realized": 27.0085
     }
   ],
   "stats": {
-    "n": 72,
-    "win_rate": 0.625,
-    "avg_predicted": 0.539,
-    "calibration_gap": -0.086,
-    "brier": 0.2081,
-    "total_pnl": 864.77,
-    "roi_on_stake": 0.1201,
-    "mean_return": 0.1201,
-    "sharpe_per_bet": 0.1291,
-    "psr_vs_zero": 0.8586,
-    "dsr": 0.8586,
+    "n": 73,
+    "win_rate": 0.6301,
+    "avg_predicted": 0.5424,
+    "calibration_gap": -0.0878,
+    "brier": 0.2059,
+    "total_pnl": 891.78,
+    "roi_on_stake": 0.1222,
+    "mean_return": 0.1222,
+    "sharpe_per_bet": 0.1322,
+    "psr_vs_zero": 0.8658,
+    "dsr": 0.8658,
     "implied_sr0": 0.0,
     "bootstrap_ci": [
-      -0.0159,
-      0.2561
+      -0.0184,
+      0.2547
     ],
-    "p_mean_le_0": 0.075,
+    "p_mean_le_0": 0.082,
     "deploy": false,
     "reasons": [
-      "DSR 0.859 < 0.95",
+      "DSR 0.866 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
     "open_positions": 75,
@@ -3688,26 +3717,26 @@
         "open_positions": 10
       },
       "whale": {
-        "n": 72,
-        "win_rate": 0.625,
-        "avg_predicted": 0.539,
-        "calibration_gap": -0.086,
-        "brier": 0.2081,
-        "total_pnl": 864.77,
-        "roi_on_stake": 0.1201,
-        "mean_return": 0.1201,
-        "sharpe_per_bet": 0.1291,
-        "psr_vs_zero": 0.8586,
-        "dsr": 0.8586,
+        "n": 73,
+        "win_rate": 0.6301,
+        "avg_predicted": 0.5424,
+        "calibration_gap": -0.0878,
+        "brier": 0.2059,
+        "total_pnl": 891.78,
+        "roi_on_stake": 0.1222,
+        "mean_return": 0.1222,
+        "sharpe_per_bet": 0.1322,
+        "psr_vs_zero": 0.8658,
+        "dsr": 0.8658,
         "implied_sr0": 0.0,
         "bootstrap_ci": [
-          -0.0159,
-          0.2561
+          -0.0184,
+          0.2547
         ],
-        "p_mean_le_0": 0.075,
+        "p_mean_le_0": 0.082,
         "deploy": false,
         "reasons": [
-          "DSR 0.859 < 0.95",
+          "DSR 0.866 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
         "open_positions": 61
@@ -3722,7 +3751,7 @@
       }
     }
   },
-  "generated": "2026-08-12 19:51:17",
+  "generated": "2026-08-12 20:56:35",
   "voided": [],
   "bridge": {
     "log": {
@@ -3773,7 +3802,7 @@
       },
       "0x268e64674742a086ed32225039060c5683dc06417689c90d0c04a9614d1073c9:myktybek orolbai": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786564255.6,
+        "ts": 1786568169.5,
         "kalshi": "no-series"
       },
       "0x9d89a919757fdc9d4df5a6415717c1934844987a49f660ae3f53d9d6b74cbe50:daniel galan": {
@@ -3820,6 +3849,11 @@
         "polymarket-us": "no-signature",
         "ts": 1786564255.6,
         "kalshi": "no-signature"
+      },
+      "0x6e3f356278a605fba0f3097e30b3698d6cbe315fba0ec9b053e901e419e4a207:detroit tigers": {
+        "polymarket-us": "ambiguous",
+        "ts": 1786568169.5,
+        "kalshi": "outcome-not-a-team"
       }
     },
     "summary": {
@@ -3828,10 +3862,11 @@
         "matched": 4,
         "outcome-not-yes-no": 1,
         "no-signature": 8,
-        "no-counterpart": 3
+        "no-counterpart": 3,
+        "ambiguous": 1
       },
       "kalshi": {
-        "outcome-not-a-team": 5,
+        "outcome-not-a-team": 6,
         "no-series": 6,
         "no-signature": 8
       }
