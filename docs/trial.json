@@ -1661,6 +1661,102 @@
       "event_iso": "2026-08-12 19:30:00+00",
       "origin_market_id": "",
       "fee": 0.33
+    },
+    {
+      "key": "0xc906e2ef48bb5d776f07062fc98bc2e71ce35e385a4c0e3a20054d17953564ed:jose ochoa",
+      "opened_at": 1786559970.7183645,
+      "market_id": "0xc906e2ef48bb5d776f07062fc98bc2e71ce35e385a4c0e3a20054d17953564ed",
+      "venue": "polymarket",
+      "outcome": "Jose Ochoa",
+      "title": "UFC 330: Charles Johnson vs. Jose Ochoa (Flyweight, Main Card)",
+      "url": "https://polymarket.com/event/ufc-cha15-jos54-2026-08-15",
+      "price": 0.505,
+      "stake": 100.0,
+      "contracts": 198.0198,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.59,
+      "n_wallets": 1,
+      "whale_usd": 10000,
+      "drift_c": -0.5,
+      "hours_to_resolve": 74.3,
+      "liquidity": 68685,
+      "end_iso": "2026-08-16T03:59:59.999Z",
+      "event_iso": "2026-08-15 21:00:00+00",
+      "origin_market_id": "",
+      "fee": 0.87
+    },
+    {
+      "key": "0xb070077bf16827445a91856027beb8010c6242a24a47aae0af36e83894e81883:elena rybakina",
+      "opened_at": 1786559970.7183645,
+      "market_id": "0xb070077bf16827445a91856027beb8010c6242a24a47aae0af36e83894e81883",
+      "venue": "polymarket",
+      "outcome": "Elena Rybakina",
+      "title": "National Bank Open: Coco Gauff vs Elena Rybakina",
+      "url": "https://polymarket.com/event/wta-gauff-rybakin-2026-08-12",
+      "price": 0.455,
+      "stake": 100.0,
+      "contracts": 219.7802,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.513,
+      "n_wallets": 1,
+      "whale_usd": 36999,
+      "drift_c": -0.5,
+      "hours_to_resolve": 5.8,
+      "liquidity": 160730,
+      "end_iso": "2026-08-20T00:30:00Z",
+      "event_iso": "2026-08-13 00:30:00+00",
+      "origin_market_id": "",
+      "fee": 0.96
+    },
+    {
+      "key": "0x83a110d88c0ed8cbc1eed293743fce378ca604fe31194d512ddbf466fb0c58db:tampa bay rays",
+      "opened_at": 1786559970.7183645,
+      "market_id": "0x83a110d88c0ed8cbc1eed293743fce378ca604fe31194d512ddbf466fb0c58db",
+      "venue": "polymarket",
+      "outcome": "Tampa Bay Rays",
+      "title": "Tampa Bay Rays vs. Athletics",
+      "url": "https://polymarket.com/event/mlb-tb-oak-2026-08-12",
+      "price": 0.675,
+      "stake": 100.0,
+      "contracts": 148.1481,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.453,
+      "n_wallets": 1,
+      "whale_usd": 3313,
+      "drift_c": -0.5,
+      "hours_to_resolve": 0.4,
+      "liquidity": 599013,
+      "end_iso": "2026-08-19T19:05:00Z",
+      "event_iso": "2026-08-12 19:05:00+00",
+      "origin_market_id": "",
+      "fee": 0.57
+    },
+    {
+      "key": "aec-wta-cocgau-eleryb-2026-08-13:elena rybakina",
+      "opened_at": 1786559970.7183645,
+      "market_id": "aec-wta-cocgau-eleryb-2026-08-13",
+      "venue": "polymarket-us",
+      "outcome": "Elena Rybakina",
+      "title": "National Bank Open: Coco Gauff vs Elena Rybakina",
+      "url": "https://polymarket.us/market/aec-wta-cocgau-eleryb-2026-08-13",
+      "price": 0.46,
+      "stake": 100.0,
+      "contracts": 217.3913,
+      "shown": true,
+      "source": "whale-pmus",
+      "conviction": 0.513,
+      "n_wallets": 1,
+      "whale_usd": 36999,
+      "drift_c": -0.5,
+      "hours_to_resolve": 5.8,
+      "liquidity": 160730,
+      "end_iso": "2026-08-20T00:30:00Z",
+      "event_iso": "2026-08-13 00:30:00+00",
+      "origin_market_id": "0xb070077bf16827445a91856027beb8010c6242a24a47aae0af36e83894e81883",
+      "fee": 3.78
     }
   ],
   "settled": [
@@ -3512,7 +3608,7 @@
       "DSR 0.875 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 73,
+    "open_positions": 77,
     "trial_days": 5.1,
     "by_source": {
       "weather": {
@@ -3546,7 +3642,7 @@
           "DSR 0.875 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 60
+        "open_positions": 63
       },
       "whale-pmus": {
         "n": 0,
@@ -3554,11 +3650,11 @@
         "reasons": [
           "no settled bets"
         ],
-        "open_positions": 3
+        "open_positions": 4
       }
     }
   },
-  "generated": "2026-08-12 18:11:47",
+  "generated": "2026-08-12 18:40:03",
   "voided": [],
   "bridge": {
     "log": {
@@ -3609,7 +3705,7 @@
       },
       "0x268e64674742a086ed32225039060c5683dc06417689c90d0c04a9614d1073c9:myktybek orolbai": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786558266.4,
+        "ts": 1786559970.7,
         "kalshi": "no-series"
       },
       "0x9d89a919757fdc9d4df5a6415717c1934844987a49f660ae3f53d9d6b74cbe50:daniel galan": {
@@ -3634,22 +3730,37 @@
       },
       "0x1022b2576bde0c1f0925b42b27067c44ff0e23f445f7349e06e748fddd23c048:over": {
         "polymarket-us": "outcome-unmapped",
-        "ts": 1786558266.4,
+        "ts": 1786559970.7,
+        "kalshi": "outcome-not-a-team"
+      },
+      "0xc906e2ef48bb5d776f07062fc98bc2e71ce35e385a4c0e3a20054d17953564ed:jose ochoa": {
+        "polymarket-us": "no-signature",
+        "ts": 1786559970.7,
+        "kalshi": "no-signature"
+      },
+      "0xb070077bf16827445a91856027beb8010c6242a24a47aae0af36e83894e81883:elena rybakina": {
+        "polymarket-us": "matched",
+        "ts": 1786559970.7,
+        "kalshi": "no-series"
+      },
+      "0x83a110d88c0ed8cbc1eed293743fce378ca604fe31194d512ddbf466fb0c58db:tampa bay rays": {
+        "polymarket-us": "no-counterpart",
+        "ts": 1786559970.7,
         "kalshi": "outcome-not-a-team"
       }
     },
     "summary": {
       "polymarket-us": {
         "outcome-unmapped": 3,
-        "matched": 3,
+        "matched": 4,
         "outcome-not-yes-no": 1,
-        "no-signature": 6,
-        "no-counterpart": 2
+        "no-signature": 7,
+        "no-counterpart": 3
       },
       "kalshi": {
-        "outcome-not-a-team": 4,
-        "no-series": 5,
-        "no-signature": 6
+        "outcome-not-a-team": 5,
+        "no-series": 6,
+        "no-signature": 7
       }
     }
   }
