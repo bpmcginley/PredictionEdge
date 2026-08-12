@@ -62,6 +62,7 @@ class TradeTicket:
     # rather than freezing the countdown at the moment it was generated.
     end_iso: str = ""
     event_iso: str = ""   # kickoff, when the venue gives us one; "" otherwise
+    slug: str = ""        # intl market slug - the key cross-venue matching runs on
     signal_ts: float = 0.0
     why: list[str] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
@@ -612,6 +613,7 @@ def build_board(cfg, client, scorer, account: Account, *,
             url=event_url(s.event_slug) or event_url(m.get("slug", "")),
             end_iso=m.get("end_date", ""),
             event_iso=m.get("game_start", ""),
+            slug=s.slug or m.get("slug", ""),
             signal_ts=now - s.minutes_ago * 60.0,
             why=why,
             warnings=warnings,

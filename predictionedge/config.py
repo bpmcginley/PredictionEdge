@@ -245,6 +245,10 @@ class Config:
     demo_base_url: str = "https://demo-api.kalshi.co/trade-api/v2"
     odds_api_key: str = ""
 
+    # --- Venue bridge (papertrial): re-record whale tickets at PM-US/Kalshi asks ---
+    bridge_enabled: bool = True            # public quote reads only; no keys, no orders
+    bridge_kalshi_series: str = ""         # extra league:series pairs, comma-separated
+
     # --- Polymarket US (QCX) venue (Ed25519 auth) ---
     pmus_enabled: bool = False
     pmus_key_id: str = ""
@@ -392,6 +396,8 @@ class Config:
             kalshi_base_url=e.get("KALSHI_BASE_URL", cls.kalshi_base_url),
             demo_base_url=e.get("KALSHI_DEMO_BASE_URL", cls.demo_base_url),
             odds_api_key=e.get("ODDS_API_KEY", ""),
+            bridge_enabled=_truthy(e.get("PE_BRIDGE_ENABLED"), cls.bridge_enabled),
+            bridge_kalshi_series=e.get("PE_BRIDGE_KALSHI_SERIES", ""),
             pmus_enabled=_truthy(e.get("PE_PMUS_ENABLED"), cls.pmus_enabled),
             pmus_key_id=e.get("PMUS_API_KEY_ID", ""),
             pmus_private_key_path=e.get("PMUS_PRIVATE_KEY_PATH", ""),

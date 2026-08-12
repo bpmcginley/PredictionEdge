@@ -138,8 +138,15 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
             "liquidity": t.get("liquidity"),
             "end_iso": t.get("end_iso", ""),
             "event_iso": t.get("event_iso", ""),
+            # Bridge rows resolve via the market they were copied FROM (see `main`):
+            # a PM-US slug can't be asked Gamma anything, but its origin can.
+            "origin_market_id": t.get("origin_market_id", ""),
+            # `_maker` is a per-ticket override of the trial-wide default. Bridge rows
+            # model taking the ask the moment the board fires, and a taker fill booked
+            # at maker fees would understate the venue cost the sleeve exists to measure.
             "fee": trade_fee(price, max(1, round(contracts)),
-                             multiplier=fee_multiplier, maker=maker),
+                             multiplier=fee_multiplier,
+                             maker=bool(t.get("_maker", maker))),
         })
         seen.add(key)
         added += 1
@@ -269,6 +276,27 @@ def main(argv: list[str] | None = None) -> int:
                    fee_multiplier=cfg.fee_multiplier, maker=cfg.assume_maker,
                    now=board.get("generated_at") or None)
 
+    # The venue bridge: every SHOWN whale ticket is re-recorded at the live ask on
+    # the venues a US person can actually trade. Probe and weather rows are excluded -
+    # probe is below the buy bar, and weather is already a Kalshi position. The whole
+    # sleeve reads public quote endpoints only; a network failure here costs coverage
+    # (and is logged as such), never correctness.
+    if cfg.bridge_enabled and board.get("tickets"):
+        from . import bridge as _bridge
+        from .kalshi import _default_fetch as _kx_fetch
+        from .polymarket_us import PolymarketUSClient
+        b_tickets, attempts = _bridge.build_bridge_tickets(
+            board["tickets"],
+            pmus_client=PolymarketUSClient(),
+            kalshi_fetch=_kx_fetch,
+            series_map=_bridge.parse_series_env(cfg.bridge_kalshi_series),
+            skip=_bridge.permanent_skips(trial))
+        added += record(trial, b_tickets, stake=args.stake,
+                        fee_multiplier=cfg.fee_multiplier, maker=cfg.assume_maker,
+                        now=board.get("generated_at") or None)
+        _bridge.update_log(trial, attempts,
+                           now=board.get("generated_at") or time.time())
+
     settled = 0
     if not args.no_settle and trial["open"]:
         # Only open positions need a lookup, and they are the markets that have
@@ -290,6 +318,19 @@ def main(argv: list[str] | None = None) -> int:
         if ids.get("kalshi"):
             from .kalshi import market_meta as kx_meta
             metas.update(kx_meta(ids["kalshi"]))
+        # Bridge rows on PM-US settle by their ORIGIN market: PM-US has no public
+        # resolution endpoint here, but the row is by construction the same contract
+        # as the intl market it was copied from, so Gamma's answer for the origin IS
+        # the answer - keyed back under the PM-US row's own market_id.
+        pmus_rows = [r for r in trial["open"]
+                     if venue_of(r) == "polymarket-us" and r.get("origin_market_id")]
+        if pmus_rows:
+            from .gamma import market_meta as pm_meta
+            origin = pm_meta(sorted({r["origin_market_id"] for r in pmus_rows}))
+            for r in pmus_rows:
+                meta = origin.get(r["origin_market_id"])
+                if meta:
+                    metas[r["market_id"]] = meta
         settled = settle(trial, metas)
 
     trial["stats"] = stats(trial)
