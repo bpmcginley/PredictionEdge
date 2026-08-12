@@ -74,6 +74,19 @@ h3{font-size:11px;margin:var(--s4) 0 var(--s1);color:var(--muted);font-weight:60
 p{margin:0 0 var(--s2)}
 .lede{font-size:15px;color:var(--muted);max-width:66ch;margin-bottom:var(--s4)}
 
+/* Collapsible position lists. The h2 keeps the document outline; the summary line
+   next to it carries the totals so a closed section still reports itself. */
+details.fold{margin:var(--s4) 0 var(--s2)}
+details.fold summary{display:flex;align-items:baseline;gap:var(--s2);list-style:none;
+  user-select:none}
+details.fold summary::-webkit-details-marker{display:none}
+details.fold summary h2{margin:0;display:inline}
+details.fold summary::before{content:'';border:solid var(--muted);border-width:0 2px 2px 0;
+  padding:3px;align-self:center;transform:rotate(-45deg);transition:transform .15s var(--ease)}
+details.fold[open] summary::before{transform:rotate(45deg)}
+details.fold summary:hover h2{color:var(--accent2)}
+details.fold > div{margin-top:var(--s2)}
+
 .banner{background:#2A1F05;border:1px solid #4A3A0C;color:#FDE68A;
   border-radius:var(--radius);padding:var(--s2) var(--s3);margin-bottom:var(--s2);font-size:13px}
 .banner b{color:var(--warn)}

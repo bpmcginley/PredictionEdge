@@ -28,11 +28,15 @@
 
   <div class="card prose" id="verdict"></div>
 
-  <h2>Settled</h2>
-  <div id="settled"></div>
+  <details class="fold">
+    <summary><h2>Settled</h2><span class="muted" id="settledsum"></span></summary>
+    <div id="settled"></div>
+  </details>
 
-  <h2>Still open</h2>
-  <div id="open"></div>
+  <details class="fold">
+    <summary><h2>Still open</h2><span class="muted" id="opensum"></span></summary>
+    <div id="open"></div>
+  </details>
 
   <div class="banner">
     <b>Paper, not placed.</b> Nothing on this page was traded. Fees are charged at the
@@ -169,6 +173,16 @@ function render() {
   }
   $('verdict').innerHTML = v;
 
+  // The summary line carries the numbers, so the lists earn their default-collapsed
+  // state: nothing is hidden that the reader has not already been told.
+  const wins = done.filter(r => r.won).length;
+  $('settledsum').textContent = done.length
+    ? `${done.length} positions · ${wins}W–${done.length - wins}L · ${signed(
+        done.reduce((a, r) => a + (r.realized || 0), 0))}`
+    : 'nothing yet';
+  $('opensum').textContent = open.length
+    ? `${open.length} positions · ${money(open.reduce((a, r) => a + (r.stake || 0), 0))} staked`
+    : 'none';
   $('settled').innerHTML = done.length
     ? done.slice().sort((a, b) => b.settled_at - a.settled_at).map(r => row(r, true)).join('')
     : '<div class="card empty">Nothing has settled yet.</div>';
