@@ -541,29 +541,6 @@
       "fee": 0.59
     },
     {
-      "key": "0xd068337f25b4203e06e69cece2be321ffc1aadd11a3f910c9b4db66a9e9f0803:no",
-      "opened_at": 1786483482.6062639,
-      "market_id": "0xd068337f25b4203e06e69cece2be321ffc1aadd11a3f910c9b4db66a9e9f0803",
-      "venue": "polymarket",
-      "outcome": "No",
-      "title": "Will Vancouver Whitecaps FC win on 2026-08-11?",
-      "url": "https://polymarket.com/event/lec-tig-vwh-2026-08-11",
-      "price": 0.87,
-      "stake": 100.0,
-      "contracts": 114.9425,
-      "shown": false,
-      "source": "whale",
-      "conviction": 0.398,
-      "n_wallets": 1,
-      "whale_usd": 3168,
-      "drift_c": 1.0,
-      "hours_to_resolve": 4.6,
-      "liquidity": 48012,
-      "end_iso": "2026-08-12T02:00:00Z",
-      "event_iso": "2026-08-12 02:00:00+00",
-      "fee": 0.23
-    },
-    {
       "key": "0xcbeba51f6a51b853d5731792e4c858fdb6bab186a15d3966bbef8fe4751e6a2c:magaza",
       "opened_at": 1786483482.6062639,
       "market_id": "0xcbeba51f6a51b853d5731792e4c858fdb6bab186a15d3966bbef8fe4751e6a2c",
@@ -1252,6 +1229,29 @@
       "end_iso": "2026-08-13T00:00:00+00:00",
       "event_iso": "2026-08-13T00:00:00+00:00",
       "fee": 1.49
+    },
+    {
+      "key": "0x6cc88949be8c79221c2d838e5c7a89ef4515e159c1e748ab9801f904fdd945c0:beibit zhukayev",
+      "opened_at": 1786527231.8714292,
+      "market_id": "0x6cc88949be8c79221c2d838e5c7a89ef4515e159c1e748ab9801f904fdd945c0",
+      "venue": "polymarket",
+      "outcome": "Beibit Zhukayev",
+      "title": "Astana: Beibit Zhukayev vs Mert Alkaya",
+      "url": "https://polymarket.com/event/atp-zhukaye-alkaya-2026-08-12",
+      "price": 0.405,
+      "stake": 100.0,
+      "contracts": 246.9136,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.457,
+      "n_wallets": 1,
+      "whale_usd": 7058,
+      "drift_c": 0.5,
+      "hours_to_resolve": 1.9,
+      "liquidity": 109653,
+      "end_iso": "2026-08-19T05:00:00Z",
+      "event_iso": "2026-08-12 11:30:00+00",
+      "fee": 1.05
     }
   ],
   "settled": [
@@ -2494,33 +2494,60 @@
       "won": true,
       "pred": 0.465,
       "realized": 114.1138
+    },
+    {
+      "key": "0xd068337f25b4203e06e69cece2be321ffc1aadd11a3f910c9b4db66a9e9f0803:no",
+      "opened_at": 1786483482.6062639,
+      "market_id": "0xd068337f25b4203e06e69cece2be321ffc1aadd11a3f910c9b4db66a9e9f0803",
+      "venue": "polymarket",
+      "outcome": "No",
+      "title": "Will Vancouver Whitecaps FC win on 2026-08-11?",
+      "url": "https://polymarket.com/event/lec-tig-vwh-2026-08-11",
+      "price": 0.87,
+      "stake": 100.0,
+      "contracts": 114.9425,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.398,
+      "n_wallets": 1,
+      "whale_usd": 3168,
+      "drift_c": 1.0,
+      "hours_to_resolve": 4.6,
+      "liquidity": 48012,
+      "end_iso": "2026-08-12T02:00:00Z",
+      "event_iso": "2026-08-12 02:00:00+00",
+      "fee": 0.23,
+      "settled_at": 1786527238.9359667,
+      "winner": "No",
+      "won": true,
+      "pred": 0.87,
+      "realized": 14.7125
     }
   ],
   "stats": {
-    "n": 47,
-    "win_rate": 0.6596,
-    "avg_predicted": 0.539,
-    "calibration_gap": -0.1206,
-    "brier": 0.2096,
-    "total_pnl": 907.13,
-    "roi_on_stake": 0.193,
-    "mean_return": 0.193,
-    "sharpe_per_bet": 0.2092,
-    "psr_vs_zero": 0.9143,
-    "dsr": 0.9143,
+    "n": 48,
+    "win_rate": 0.6667,
+    "avg_predicted": 0.5459,
+    "calibration_gap": -0.1208,
+    "brier": 0.2056,
+    "total_pnl": 921.84,
+    "roi_on_stake": 0.1921,
+    "mean_return": 0.1921,
+    "sharpe_per_bet": 0.2104,
+    "psr_vs_zero": 0.9177,
+    "dsr": 0.9177,
     "implied_sr0": 0.0,
     "bootstrap_ci": [
-      -0.0074,
-      0.3483
+      0.0,
+      0.348
     ],
-    "p_mean_le_0": 0.06,
+    "p_mean_le_0": 0.05,
     "deploy": false,
     "reasons": [
-      "DSR 0.914 < 0.95",
-      "bootstrap 5% CI of mean return <= 0"
+      "DSR 0.918 < 0.95"
     ],
     "open_positions": 56,
-    "trial_days": 4.6,
+    "trial_days": 4.7,
     "by_source": {
       "weather": {
         "n": 0,
@@ -2531,32 +2558,31 @@
         "open_positions": 5
       },
       "whale": {
-        "n": 47,
-        "win_rate": 0.6596,
-        "avg_predicted": 0.539,
-        "calibration_gap": -0.1206,
-        "brier": 0.2096,
-        "total_pnl": 907.13,
-        "roi_on_stake": 0.193,
-        "mean_return": 0.193,
-        "sharpe_per_bet": 0.2092,
-        "psr_vs_zero": 0.9143,
-        "dsr": 0.9143,
+        "n": 48,
+        "win_rate": 0.6667,
+        "avg_predicted": 0.5459,
+        "calibration_gap": -0.1208,
+        "brier": 0.2056,
+        "total_pnl": 921.84,
+        "roi_on_stake": 0.1921,
+        "mean_return": 0.1921,
+        "sharpe_per_bet": 0.2104,
+        "psr_vs_zero": 0.9177,
+        "dsr": 0.9177,
         "implied_sr0": 0.0,
         "bootstrap_ci": [
-          -0.0074,
-          0.3483
+          0.0,
+          0.348
         ],
-        "p_mean_le_0": 0.06,
+        "p_mean_le_0": 0.05,
         "deploy": false,
         "reasons": [
-          "DSR 0.914 < 0.95",
-          "bootstrap 5% CI of mean return <= 0"
+          "DSR 0.918 < 0.95"
         ],
         "open_positions": 51
       }
     }
   },
-  "generated": "2026-08-12 08:01:04",
+  "generated": "2026-08-12 09:33:58",
   "voided": []
 }
