@@ -89,6 +89,9 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/board.json docs/trial.json docs/wxlog.json
+          # The NBM cache appears on the first run after its deploy; a bare `git add`
+          # of a missing path would fail the whole commit step.
+          if [ -f docs/nbm.json ]; then git add docs/nbm.json; fi
           if git diff --staged --quiet; then
             echo "nothing to commit"
             exit 0

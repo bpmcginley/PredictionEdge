@@ -24,7 +24,13 @@ from . import sizing
 from .config import Config
 
 
-def weather_tickets(cfg: Config) -> list[dict]:
+# The NBM station-guidance cache lives next to the trial for the same reason the
+# trial does: the workflow checks out fresh every 15 minutes, and committing the file
+# is what lets a run remember which bulletin cycles it has already downloaded.
+NBM_CACHE = "docs/nbm.json"
+
+
+def weather_tickets(cfg: Config, nbm_cache_path: str = NBM_CACHE) -> list[dict]:
     """The NWS/Kalshi sleeve, in its OWN array - never merged into `tickets`.
 
     Two sleeves, two hypotheses. The board's tickets claim "whales pick winners"; these
@@ -37,13 +43,25 @@ def weather_tickets(cfg: Config) -> list[dict]:
     """
     if not cfg.weather_enabled:
         return []
+    cache_file, cache = Path(nbm_cache_path), {}
+    try:
+        cache = json.loads(cache_file.read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        cache = {}                       # absent or corrupt: rebuilt from the bulletins
     try:
         from .weather import find_weather_edges
-        return find_weather_edges(min_edge=cfg.weather_min_edge,
-                                  max_days=cfg.weather_max_days)
+        tickets = find_weather_edges(min_edge=cfg.weather_min_edge,
+                                     max_days=cfg.weather_max_days,
+                                     nbm_cache=cache)
     except Exception as exc:  # noqa: BLE001
         print(f"weather sleeve unavailable: {exc}")
         return []
+    try:
+        cache_file.parent.mkdir(parents=True, exist_ok=True)
+        cache_file.write_text(json.dumps(cache, indent=2), encoding="utf-8")
+    except Exception as exc:  # noqa: BLE001
+        print(f"nbm cache not saved: {exc}")   # next run just re-downloads one cycle
+    return tickets
 
 
 def build_payload(cfg: Config) -> dict:

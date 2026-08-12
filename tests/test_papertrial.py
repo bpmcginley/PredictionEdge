@@ -274,3 +274,71 @@ def test_open_positions_are_counted_per_sleeve_before_anything_settles():
     by = stats(trial)["by_source"]
     assert by["whale"]["open_positions"] == 1
     assert by["weather"]["open_positions"] == 1
+
+
+# --- honest fees on the weather sleeve -------------------------------------------
+
+def _weather_ticket(**over):
+    base = dict(mid="KXHIGHNY-26AUG12-B87.5", outcome="Yes", price=0.08,
+                source="weather", venue="kalshi", model_prob=0.19, edge=0.11,
+                forecast_f=88.4, sigma_f=3.1, market_mu_f=86.2, market_sigma_f=3.1,
+                days_ahead=0.6, market_prob=0.085,
+                model="kalshi-ladder-tilted-by-nws-gridpoint", city="Central Park")
+    base.update(over)
+    return _ticket(**base)
+
+
+def test_a_maker_False_ticket_is_charged_taker_fees_despite_the_default():
+    trial = _blank()
+    record(trial, [_weather_ticket(_maker=False)], stake=100.0,
+           fee_multiplier=0.07, maker=True)
+    row = trial["open"][0]
+    assert row["fee"] == trade_fee(0.08, 1250, multiplier=0.07, maker=False)
+
+
+def test_retag_recharges_legacy_maker_booked_weather_rows():
+    """Rows opened before the fix carry maker fees - 4x too low on a taker cross."""
+    from predictionedge.papertrial import retag_weather_fees
+    trial = _blank()
+    record(trial, [_weather_ticket()], stake=100.0, fee_multiplier=0.07, maker=True)
+    stale = trial["open"][0]["fee"]
+    assert retag_weather_fees(trial) == 1
+    fixed = trial["open"][0]["fee"]
+    assert fixed == trade_fee(0.08, 1250, multiplier=0.07, maker=False)
+    assert fixed > stale * 3            # the understatement was real money
+    assert retag_weather_fees(trial) == 0   # idempotent: taker recomputes to itself
+
+
+def test_retag_leaves_whale_rows_and_settled_rows_alone():
+    """The whale sleeve's maker accounting must not change mid-sample, and settled
+    rows are evidence - a retroactive edit would be worse than the bug it fixes."""
+    from predictionedge.papertrial import retag_weather_fees
+    trial = _blank()
+    record(trial, [_ticket(price=0.4), _weather_ticket()],
+           stake=100.0, fee_multiplier=0.07, maker=True)
+    settle(trial, {"0xabc": _meta(["Mets", "Pirates"], [1.0, 0.0])})
+    whale_settled_fee = trial["settled"][0]["fee"]
+    retag_weather_fees(trial)
+    assert trial["settled"][0]["fee"] == whale_settled_fee
+
+
+# --- the model's inputs ride along ------------------------------------------------
+
+def test_weather_model_fields_are_recorded_on_the_row():
+    """`model_prob` against `won` is the calibration check the sleeve exists to earn;
+    a trial that drops it can validate the picks while the model stays unfalsifiable."""
+    trial = _blank()
+    record(trial, [_weather_ticket()])
+    row = trial["open"][0]
+    assert row["model_prob"] == 0.19
+    assert row["sigma_f"] == 3.1
+    assert row["forecast_f"] == 88.4
+    assert row["market_prob"] == 0.085
+    assert row["model"] == "kalshi-ladder-tilted-by-nws-gridpoint"
+
+
+def test_whale_rows_do_not_grow_null_model_fields():
+    trial = _blank()
+    record(trial, [_ticket()])
+    assert "model_prob" not in trial["open"][0]
+    assert "sigma_f" not in trial["open"][0]

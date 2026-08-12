@@ -41,12 +41,16 @@ tests disproved it within the hour. A too-wide sigma pushes mass into the TAILS 
 makes every tail bracket look cheap, which fabricates trades exactly as reliably. There
 is no safe direction to be wrong about width, which is why the market now supplies it.
 
-GRID IS NOT STATION. The NWS forecast is for a ~2.5km grid cell; settlement is one
-thermometer inside it. Central Park runs cooler than the surrounding grid on calm
-sunny days, Midway differs from O'Hare, and none of that bias is known yet - so it is
-NOT corrected here, it is absorbed into the wide sigma and logged for measurement.
-Silently applying a guessed bias correction would be the same mistake as a guessed
-sigma, wearing a lab coat.
+GRID IS NOT STATION. The NWS gridded forecast is for a ~2.5km grid cell; settlement
+is one thermometer inside it. Central Park runs cooler than the surrounding grid on
+calm sunny days, Midway differs from O'Hare, and no hand-tuned correction is applied
+here - a guessed bias would be the same mistake as a guessed sigma, wearing a lab
+coat. Instead the mean now comes from the NBM STATION bulletin (`nbm.py`) whenever
+one is cached for the target day: the blend is statistically corrected to the exact
+settling thermometer's own history, which removes the grid-versus-station gap at the
+source instead of guessing at it. The gridpoint value remains the fallback and is
+recorded alongside on every station-priced ticket, so the size of the gap this switch
+closed becomes a measured number instead of folklore.
 """
 
 from __future__ import annotations
@@ -73,6 +77,7 @@ class WeatherCity:
     lat: float
     lon: float
     kind: str = "high"   # "high" | "low"
+    station: str = ""    # NBM bulletin station ID; "" means no station guidance
 
     @property
     def cli_url(self) -> str:
@@ -89,13 +94,13 @@ class WeatherCity:
 # events automatically. Add a city only after reading its rules text.
 CITIES: dict[str, WeatherCity] = {
     "KXHIGHNY": WeatherCity("KXHIGHNY", "Central Park, New York", "OKX", "NYC",
-                            40.7789, -73.9692),
+                            40.7789, -73.9692, station="KNYC"),
     "KXHIGHCHI": WeatherCity("KXHIGHCHI", "Chicago Midway, IL", "LOT", "MDW",
-                             41.7868, -87.7522),
+                             41.7868, -87.7522, station="KMDW"),
     "KXHIGHMIA": WeatherCity("KXHIGHMIA", "Miami International Airport", "MFL", "MIA",
-                             25.7932, -80.2906),
+                             25.7932, -80.2906, station="KMIA"),
     "KXHIGHDEN": WeatherCity("KXHIGHDEN", "Denver, CO", "BOU", "DEN",
-                             39.8561, -104.6737),
+                             39.8561, -104.6737, station="KDEN"),
 }
 
 # Prior standard deviation of the NWS max-temperature forecast error, in degrees F,
@@ -391,12 +396,18 @@ def _mid(bid: float | None, ask: float | None) -> float | None:
 
 def find_weather_edges(*, cities: dict[str, WeatherCity] | None = None,
                        kalshi_fetch=None, nws_fetch=None,
+                       nbm_cache: dict | None = None, nbm_fetch=None,
                        max_days: float = 5.0, min_edge: float = 0.07,
                        now: datetime | None = None) -> list[dict]:
     """Every bracket whose model probability beats its ask by `min_edge`.
 
     Paper-only by construction: tickets are stamped `venue="kalshi"` for the trial and
     nothing in the order path consumes this function.
+
+    `nbm_cache` is the persisted station-guidance cache from `nbm.py`, mutated in
+    place (the caller owns saving it). When it holds a value for a city's station and
+    target day, that value is the mean and the gridpoint is only recorded for
+    comparison; with no cache or no value, the gridpoint prices the day as before.
     """
     from .kalshi import KALSHI_API, _default_fetch as kx_fetch, _price_to_dollars
 
@@ -404,14 +415,31 @@ def find_weather_edges(*, cities: dict[str, WeatherCity] | None = None,
     now = now or datetime.now(timezone.utc)
     tickets: list[dict] = []
 
-    for city in (cities or CITIES).values():
+    city_map = cities or CITIES
+    if nbm_cache is not None:
+        from . import nbm
+        stations = [c.station for c in city_map.values() if c.station]
+        try:
+            nbm.update(nbm_cache, stations,
+                       kinds={c.station: c.kind for c in city_map.values()
+                              if c.station},
+                       now=now, fetch=nbm_fetch)
+        except Exception:  # noqa: BLE001
+            # Fail OPEN to the gridpoint: a broken bulletin host must not silence the
+            # sleeve, it just prices the old way. Whatever the cache already holds is
+            # still used - stale station guidance is caught per-day by the cycle merge.
+            log.warning("NBM update failed - gridpoint only this run", exc_info=True)
+
+    for city in city_map.values():
         try:
             highs = forecast_highs(city, fetch=nws_fetch)
         except Exception:  # noqa: BLE001
-            log.warning("NWS forecast unavailable for %s - skipping", city.series)
-            continue                   # fail closed: no forecast is not a free opinion
-        if not highs:
-            continue
+            log.warning("NWS gridpoint unavailable for %s", city.series)
+            highs = {}         # the station guidance, if cached, can still price days
+        station_days = (((nbm_cache or {}).get("stations") or {})
+                        .get(city.station) or {})
+        if not highs and not station_days:
+            continue           # fail closed: no forecast is not a free opinion
         try:
             # No `status` filter, for the reason `kalshi.market_meta` documents at
             # length: pinning it hides markets and the hiding is silent.
@@ -438,14 +466,32 @@ def find_weather_edges(*, cities: dict[str, WeatherCity] | None = None,
 
         for event, ladder in by_event.items():
             day = _event_day(event)
-            if not day or day not in highs:
+            if not day:
+                continue
+            ent = station_days.get(day)
+            if ent is None and day not in highs:
                 continue
             days_ahead = (datetime.strptime(day, "%Y-%m-%d").replace(
                 tzinfo=timezone.utc) - now).total_seconds() / 86400.0
             if days_ahead < -0.5 or days_ahead > max_days:
                 continue
-            for t in price_ladder(ladder, highs[day], days_ahead=max(0.0, days_ahead),
+            mu = float(ent["f"]) if ent is not None else highs[day]
+            for t in price_ladder(ladder, mu, days_ahead=max(0.0, days_ahead),
                                   min_edge=min_edge):
+                if ent is not None:
+                    t["model"] = "kalshi-ladder-tilted-by-nbm-station"
+                    t["forecast_src"] = "nbm-station"
+                    t["nbm_cycle"] = ent.get("cycle", "")
+                    if ent.get("sd") is not None:
+                        # The blend's own width for this value. NOT used to price -
+                        # the market still supplies sigma - recorded for the re-fit.
+                        t["nbm_sd_f"] = float(ent["sd"])
+                    if day in highs:
+                        # The number the grid cell would have said, so the size of
+                        # the grid-vs-station gap becomes measurable from the trial.
+                        t["forecast_grid_f"] = round(highs[day], 2)
+                else:
+                    t["forecast_src"] = "gridpoint"
                 t["city"] = city.name
                 t["settles_by"] = city.cli_url
                 t["end_iso"] = (datetime.strptime(day, "%Y-%m-%d").replace(

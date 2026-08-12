@@ -24,12 +24,17 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import time
+from datetime import datetime, timedelta
 from pathlib import Path
 
-from .weather import CITIES, _event_day, _mid, market_distribution, forecast_highs
+from .weather import (CITIES, USER_AGENT, _event_day, _mid, market_distribution,
+                      forecast_highs)
 
 DEFAULT_PATH = "docs/wxlog.json"
+
+NWS_PRODUCTS = "https://api.weather.gov/products"
 
 
 def _key(series: str, day: str) -> str:
@@ -114,14 +119,110 @@ def observe(log: dict, *, cities=None, kalshi_fetch=None, nws_fetch=None,
     return touched
 
 
-def resolve(log: dict, *, fetch=None, now: float | None = None,
-            today: str | None = None) -> int:
+# --- reading the CLI report itself ------------------------------------------------
+#
+# The settled ladder pins the reported high to a bracket; the CLI text states the
+# number. For an interior bracket the difference is half a degree of precision, but an
+# open-ended winner - exactly the big forecast misses a calibration most needs - pins
+# nothing, and before this existed those days were CENSORED out of the fitted bias
+# (one row proved it: NYC, reported high 85F, logged as null). Truncating the largest
+# errors out of an error estimate does not merely shrink the sample, it biases sigma
+# low, which is the one direction this sleeve cannot afford.
+
+_MONTHS = {m: i for i, m in enumerate(
+    ("JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST",
+     "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"), start=1)}
+# "...THE CENTRAL PARK NY CLIMATE SUMMARY FOR AUGUST 11 2026..." - the report names
+# the day it covers, and matching on that line (never on issuance time alone) is what
+# keeps an evening report for the wrong day from being read as truth.
+_SUMMARY_RE = re.compile(r"CLIMATE SUMMARY FOR\s+([A-Z]+)\s+(\d{1,2})\s+(\d{4})")
+# First column after the label is the observed value; "MM" (not observed) fails the
+# digit match and correctly yields nothing rather than a guess.
+_TEMP_RE = {"high": re.compile(r"^\s*MAXIMUM\s+(-?\d+)\b", re.MULTILINE),
+            "low": re.compile(r"^\s*MINIMUM\s+(-?\d+)\b", re.MULTILINE)}
+
+
+def _cli_json(url: str, params: dict | None = None) -> dict:
+    import requests
+    r = requests.get(url, params=params or {}, timeout=20,
+                     headers={"User-Agent": USER_AGENT, "Accept": "*/*"})
+    r.raise_for_status()
+    return r.json()
+
+
+def _next_day(day: str) -> str:
+    return (datetime.strptime(day, "%Y-%m-%d") + timedelta(days=1)).strftime("%Y-%m-%d")
+
+
+def _summary_day(text: str) -> str | None:
+    m = _SUMMARY_RE.search(text)
+    if not m:
+        return None
+    month = _MONTHS.get(m.group(1))
+    if not month:
+        return None
+    return f"{int(m.group(3)):04d}-{month:02d}-{int(m.group(2)):02d}"
+
+
+def cli_observed(cli_code: str, day: str, *, kind: str = "high",
+                 fetch=None) -> float | None:
+    """The exact temperature the CLI reported for `day`, or None.
+
+    A day's summary is issued twice - preliminary that evening, final the next
+    morning - so only issuances dated `day` or the day after are worth fetching, and
+    they are scanned newest-first so the final (or a correction) wins over the
+    preliminary. Any failure returns None: the bracket fallback in `resolve` is
+    honest, a guessed temperature is not.
+    """
+    getter = fetch or _cli_json
+    try:
+        graph = (getter(f"{NWS_PRODUCTS}/types/CLI/locations/{cli_code}")
+                 or {}).get("@graph") or []
+    except Exception:  # noqa: BLE001
+        return None
+    for item in graph:
+        issued = str(item.get("issuanceTime") or "")[:10]
+        if issued not in (day, _next_day(day)):
+            continue
+        try:
+            text = (getter(f"{NWS_PRODUCTS}/{item.get('id')}")
+                    or {}).get("productText") or ""
+        except Exception:  # noqa: BLE001
+            continue
+        if _summary_day(text) != day:
+            continue
+        m = _TEMP_RE.get(kind, _TEMP_RE["high"]).search(text)
+        if m:
+            return float(m.group(1))
+    return None
+
+
+def _in_bracket(temp: float, floor, cap) -> bool:
+    """Whole-degree bracket semantics, as `weather.bracket_probability` documents:
+    "85-86" is the event {85, 86}, ">90" pays 91 and above, "<83" pays 82 and below."""
+    if floor is not None and cap is not None:
+        return float(floor) <= temp <= float(cap)
+    if cap is not None:
+        return temp < float(cap)
+    if floor is not None:
+        return temp > float(floor)
+    return False
+
+
+def resolve(log: dict, *, fetch=None, cli_fetch=None, cities=None,
+            now: float | None = None, today: str | None = None) -> int:
     """Fill in what the CLI actually reported, via Kalshi's settled ladder.
 
-    The reported high is the bracket that paid. A two-degree bracket pins it to a
-    one-degree midpoint, and an open-ended tail pins it only to a bound - so the bound
-    is recorded and `observed_f` is left null rather than invented, because a fitted
-    bias built on made-up tail values would be worse than a smaller honest sample.
+    The settled ladder is the TRIGGER and the validator; the CLI text is the value.
+    Kalshi deciding the market is what proves the day is truly resolved, then the CLI
+    report supplies the exact temperature. A CLI read that lands OUTSIDE the bracket
+    that paid is a wrong report, a wrong parse, or a wrong day, and is discarded -
+    whichever of the two sources is lying, a number they disagree on must not enter
+    the calibration sample. Without a CLI value an interior bracket falls back to its
+    one-degree midpoint, and an open-ended tail records its bound with `observed_f`
+    left null (see `backfill_tails` for the retry) rather than invented, because a
+    fitted bias built on made-up tail values would be worse than a smaller honest
+    sample.
 
     ONLY PAST DAYS ARE QUERIED. This runs on the board's ~15-minute cadence, and the log
     holds every future day the model has looked at - so querying unresolved rows blindly
@@ -151,9 +252,55 @@ def resolve(log: dict, *, fetch=None, now: float | None = None,
         m = won[0]
         floor, cap = m.get("floor_strike"), m.get("cap_strike")
         row["observed_bracket"] = m.get("yes_sub_title") or m.get("ticker", "")
-        row["observed_f"] = ((float(floor) + float(cap)) / 2.0
-                             if floor is not None and cap is not None else None)
+        # Bounds ride along so `backfill_tails` can validate a late CLI read against
+        # the bracket that paid without re-asking Kalshi.
+        row["bracket_floor"], row["bracket_cap"] = floor, cap
+        city = (cities or CITIES).get(row.get("series", ""))
+        exact = cli_observed(city.cli, row["day"], kind=city.kind,
+                             fetch=cli_fetch) if city else None
+        if exact is not None and _in_bracket(exact, floor, cap):
+            row["observed_f"], row["observed_src"] = exact, "cli"
+        else:
+            mid = ((float(floor) + float(cap)) / 2.0
+                   if floor is not None and cap is not None else None)
+            row["observed_f"] = mid
+            row["observed_src"] = "bracket" if mid is not None else None
         row["resolved_at"] = now
+        filled += 1
+    return filled
+
+
+def backfill_tails(log: dict, *, cli_fetch=None, cities=None,
+                   now: float | None = None, window_days: int = 7) -> int:
+    """Retry the CLI read for resolved rows the bracket could not pin. Returns fills.
+
+    A tail winner resolves the moment Kalshi settles, which can be hours before the
+    final CLI report is issued - so the first attempt in `resolve` may honestly find
+    nothing, and without a retry the day is censored after all. The window is bounded
+    because the products feed only serves recent issuances and a row that old has
+    missed every edition it will ever get.
+    """
+    now = time.time() if now is None else now
+    cutoff = time.strftime("%Y-%m-%d", time.gmtime(now - window_days * 86400))
+    filled = 0
+    for row in log["rows"].values():
+        if not row.get("resolved_at") or row.get("observed_f") is not None:
+            continue
+        if row.get("day", "") < cutoff:
+            continue
+        city = (cities or CITIES).get(row.get("series", ""))
+        if city is None:
+            continue
+        exact = cli_observed(city.cli, row["day"], kind=city.kind, fetch=cli_fetch)
+        if exact is None:
+            continue
+        floor, cap = row.get("bracket_floor"), row.get("bracket_cap")
+        # Rows resolved before bounds were stored cannot be re-checked against the
+        # ladder; the summary-line day match is the remaining validation, and the CLI
+        # is the settlement source itself, so its value stands.
+        if (floor is not None or cap is not None) and not _in_bracket(exact, floor, cap):
+            continue
+        row["observed_f"], row["observed_src"] = exact, "cli"
         filled += 1
     return filled
 
@@ -190,13 +337,17 @@ def main(argv: list[str] | None = None) -> int:
 
     log = load(args.log)
     touched = observe(log)
-    filled = 0 if args.no_resolve else resolve(log)
+    filled = backfilled = 0
+    if not args.no_resolve:
+        filled = resolve(log)
+        backfilled = backfill_tails(log)
     log["summary"] = summarise(log)
     save(args.log, log)
 
     pending = sum(1 for r in log["rows"].values() if r.get("observed_f") is None)
     print(f"wxlog: {touched} city-day(s) observed, {filled} resolved, "
-          f"{len(log['rows'])} total, {pending} pending")
+          f"{backfilled} tail(s) backfilled, {len(log['rows'])} total, "
+          f"{pending} pending")
     for series, d in sorted(log["summary"].items()):
         print(f"  {series:<10} n={d['n']:<4} bias {d['bias_f']:+.2f}F  "
               f"sigma {d['sigma_f']:.2f}F  mae {d['mae_f']:.2f}F")

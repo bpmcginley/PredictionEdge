@@ -46,6 +46,14 @@ LOST_AT = 0.01
 
 DEFAULT_STAKE = 100.0
 
+# The weather model's own inputs, carried verbatim onto the row when the ticket has
+# them. Without these the trial can prove the sleeve wins or loses but never WHY -
+# `model_prob` against `won` is the calibration check the sleeve exists to earn, and
+# a trial that drops it can validate the picks while leaving the model unfalsifiable.
+MODEL_FIELDS = ("model_prob", "edge", "forecast_f", "sigma_f", "market_mu_f",
+                "market_sigma_f", "days_ahead", "market_prob", "model", "city",
+                "forecast_src", "nbm_cycle", "nbm_sd_f", "forecast_grid_f")
+
 
 def venue_of(row: dict) -> str:
     """Which exchange a position lives on, inferred when the row predates the field.
@@ -138,6 +146,7 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
             "liquidity": t.get("liquidity"),
             "end_iso": t.get("end_iso", ""),
             "event_iso": t.get("event_iso", ""),
+            **{k: t[k] for k in MODEL_FIELDS if k in t},
             # Bridge rows resolve via the market they were copied FROM (see `main`):
             # a PM-US slug can't be asked Gamma anything, but its origin can.
             "origin_market_id": t.get("origin_market_id", ""),
@@ -151,6 +160,31 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
         seen.add(key)
         added += 1
     return added
+
+
+def retag_weather_fees(trial: dict, *, multiplier: float = 0.07) -> int:
+    """Recharge still-open weather rows at taker fees. Returns how many changed.
+
+    A weather entry takes the ask the moment the model fires - a taker cross by
+    construction - but the sleeve's first weeks of rows were booked at the trial-wide
+    maker default, 25% of the taker fee. On an 8c bracket that understates cost by
+    ~$4.83 per $100 stake, which is ~5 points of phantom edge on the one sleeve that
+    is actually Kalshi-tradeable; left alone, the DSR gate would be judging fiction.
+    Open rows are positions, not results, so recomputing their fee is a correction
+    rather than a rewrite - and settled rows are never touched, both because none
+    settled before the fix and because editing settled evidence would be worse than
+    the bug. Idempotent: a row already at taker fees recomputes to itself.
+    """
+    changed = 0
+    for row in trial["open"]:
+        if source_of(row) != "weather":
+            continue
+        fee = trade_fee(row["price"], max(1, round(row["contracts"])),
+                        multiplier=multiplier, maker=False)
+        if fee != row.get("fee"):
+            row["fee"] = fee
+            changed += 1
+    return changed
 
 
 def _winner(meta: dict) -> str | None:
@@ -257,6 +291,9 @@ def main(argv: list[str] | None = None) -> int:
     from .config import Config
     cfg = Config.from_env()
     trial = load(args.trial)
+    repriced = retag_weather_fees(trial, multiplier=cfg.fee_multiplier)
+    if repriced:
+        print(f"repriced {repriced} open weather row(s) at taker fees")
 
     board = json.loads(Path(args.board).read_text(encoding="utf-8"))
     # Stamp positions with when the board SAW that price, not when this process ran.
@@ -269,9 +306,11 @@ def main(argv: list[str] | None = None) -> int:
     # The weather sleeve arrives already filtered to what cleared its own edge bar, so
     # every row is `_shown`; it has no probe tier because its bar is a modelled edge
     # rather than a hand-set conviction cutoff that needs validating from both sides.
+    # Weather rows also override the trial-wide maker default: their entry IS the ask,
+    # so the honest fee is the taker fee - see `retag_weather_fees`.
     flow = [{**t, "_shown": True} for t in (board.get("tickets") or [])] + \
            [{**t, "_shown": False} for t in (board.get("probe") or [])] + \
-           [{**t, "_shown": True} for t in (board.get("weather") or [])]
+           [{**t, "_shown": True, "_maker": False} for t in (board.get("weather") or [])]
     added = record(trial, flow, stake=args.stake,
                    fee_multiplier=cfg.fee_multiplier, maker=cfg.assume_maker,
                    now=board.get("generated_at") or None)

@@ -197,3 +197,82 @@ def test_every_registered_city_names_its_settlement_document():
     assert CITIES["KXHIGHCHI"].name == "Chicago Midway, IL"
     for city in CITIES.values():
         assert city.wfo and city.cli and city.cli_url.startswith("https://")
+        assert city.station.startswith("K")   # verified live in the NBM bulletins
+
+
+# --- the NBM station switch --------------------------------------------------
+
+from datetime import datetime, timezone  # noqa: E402
+
+
+def _kalshi_markets():
+    """The full NYC-shaped ladder as the Kalshi API would serve it, for AUG 13."""
+    spec = [(None, 83), (83, 84), (85, 86), (87, 88), (89, 90), (90, None)]
+    asks = [0.05, 0.42, 0.35, 0.10, 0.06, 0.02]
+    markets = [{
+        "ticker": f"KXHIGHNY-26AUG13-{i}", "event_ticker": "KXHIGHNY-26AUG13",
+        "status": "active", "title": f"{f}-{c}", "close_time": "",
+        "floor_strike": f, "cap_strike": c,
+        "yes_bid": round((a - 0.01) * 100), "yes_ask": round(a * 100),
+    } for i, ((f, c), a) in enumerate(zip(spec, asks))]
+    return lambda url, params=None: {"markets": markets}
+
+
+def _grid(high_f):
+    def fetch(url, params=None):
+        if "/points/" in url:
+            return {"properties": {"forecastGridData": "https://grid"}}
+        return {"properties": {"maxTemperature": {"uom": "wmoUnit:degF", "values": [
+            {"validTime": "2026-08-13T12:00:00+00:00/PT13H", "value": high_f}]}}}
+    return fetch
+
+
+_NOW = datetime(2026, 8, 12, 16, 0, tzinfo=timezone.utc)
+_NY = {"KXHIGHNY": CITIES["KXHIGHNY"]}
+_no_nbm = lambda url, peek=False: None  # noqa: E731  (bulletin host offline)
+
+
+def test_the_station_number_outranks_the_grid_cell():
+    """The grid cell agrees with the market; the thermometer's own guidance does not.
+
+    Settlement is the thermometer, so the thermometer's number prices the day - and
+    the grid's number rides along, which is what turns the grid-versus-station gap
+    from folklore into a measured column."""
+    cache = {"stations": {"KNYC": {"2026-08-13": {
+        "f": 89.5, "sd": 2.0, "cycle": "2026-08-12T07Z"}}},
+        "cycles_seen": ["2026-08-12T07Z"]}
+    tickets = find_weather_edges(cities=_NY, kalshi_fetch=_kalshi_markets(),
+                                 nws_fetch=_grid(85.0), nbm_cache=cache,
+                                 nbm_fetch=_no_nbm, min_edge=0.05, now=_NOW)
+    assert tickets, "a 4.5F station-vs-market disagreement should clear 5c"
+    t = tickets[0]
+    assert t["forecast_f"] == 89.5
+    assert t["model"] == "kalshi-ladder-tilted-by-nbm-station"
+    assert t["forecast_src"] == "nbm-station"
+    assert t["nbm_cycle"] == "2026-08-12T07Z" and t["nbm_sd_f"] == 2.0
+    assert t["forecast_grid_f"] == 85.0
+
+
+def test_the_grid_cell_still_prices_a_day_the_bulletin_does_not_cover():
+    cache = {"stations": {}, "cycles_seen": []}
+    tickets = find_weather_edges(cities=_NY, kalshi_fetch=_kalshi_markets(),
+                                 nws_fetch=_grid(89.5), nbm_cache=cache,
+                                 nbm_fetch=_no_nbm, min_edge=0.05, now=_NOW)
+    assert tickets and tickets[0]["forecast_src"] == "gridpoint"
+    assert tickets[0]["model"] == "kalshi-ladder-tilted-by-nws-gridpoint"
+
+
+def test_a_dead_gridpoint_does_not_silence_a_cached_station_number():
+    """The old code failed closed on a gridpoint outage. With station guidance cached
+    the day is still priceable - and still fails closed when BOTH are missing."""
+    def boom(url, params=None):
+        raise RuntimeError("api.weather.gov down")
+
+    cache = {"stations": {"KNYC": {"2026-08-13": {
+        "f": 89.5, "sd": 2.0, "cycle": "2026-08-12T07Z"}}},
+        "cycles_seen": ["2026-08-12T07Z"]}
+    tickets = find_weather_edges(cities=_NY, kalshi_fetch=_kalshi_markets(),
+                                 nws_fetch=boom, nbm_cache=cache,
+                                 nbm_fetch=_no_nbm, min_edge=0.05, now=_NOW)
+    assert tickets and tickets[0]["forecast_src"] == "nbm-station"
+    assert "forecast_grid_f" not in tickets[0]
