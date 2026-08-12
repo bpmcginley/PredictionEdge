@@ -1183,6 +1183,75 @@
       "end_iso": "2026-08-13T23:59:00Z",
       "event_iso": "",
       "fee": 0.4
+    },
+    {
+      "key": "0xa055e1cf533c2fcb1f1c89c20c41c8aa25526dcf27c3ff6be69c230fd8898282:no",
+      "opened_at": 1786521660.9092884,
+      "market_id": "0xa055e1cf533c2fcb1f1c89c20c41c8aa25526dcf27c3ff6be69c230fd8898282",
+      "venue": "polymarket",
+      "outcome": "No",
+      "title": "US announces end of Iranian blockade by August 15, 2026?",
+      "url": "https://polymarket.com/event/us-announces-end-of-iranian-blockade-byptptpt-20260713152715080",
+      "price": 0.9,
+      "stake": 100.0,
+      "contracts": 111.1111,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.653,
+      "n_wallets": 2,
+      "whale_usd": 17300,
+      "drift_c": 0.39,
+      "hours_to_resolve": 88.0,
+      "liquidity": 123447,
+      "end_iso": "2026-08-15T23:59:00Z",
+      "event_iso": "",
+      "fee": 0.18
+    },
+    {
+      "key": "KXHIGHDEN-26AUG12-T94:yes",
+      "opened_at": 1786521660.9092884,
+      "market_id": "KXHIGHDEN-26AUG12-T94",
+      "venue": "kalshi",
+      "outcome": "Yes",
+      "title": "Will the **high temp in Denver** be >94\u00b0 on Aug 12, 2026?",
+      "url": "https://kalshi.com/markets/KXHIGHDEN-26AUG12",
+      "price": 0.57,
+      "stake": 100.0,
+      "contracts": 175.4386,
+      "shown": true,
+      "source": "weather",
+      "conviction": null,
+      "n_wallets": null,
+      "whale_usd": null,
+      "drift_c": null,
+      "hours_to_resolve": null,
+      "liquidity": null,
+      "end_iso": "2026-08-13T00:00:00+00:00",
+      "event_iso": "2026-08-13T00:00:00+00:00",
+      "fee": 0.76
+    },
+    {
+      "key": "KXHIGHMIA-26AUG12-B91.5:yes",
+      "opened_at": 1786521660.9092884,
+      "market_id": "KXHIGHMIA-26AUG12-B91.5",
+      "venue": "kalshi",
+      "outcome": "Yes",
+      "title": "Will the **high temp in Miami** be 91-92\u00b0 on Aug 12, 2026?",
+      "url": "https://kalshi.com/markets/KXHIGHMIA-26AUG12",
+      "price": 0.15,
+      "stake": 100.0,
+      "contracts": 666.6667,
+      "shown": true,
+      "source": "weather",
+      "conviction": null,
+      "n_wallets": null,
+      "whale_usd": null,
+      "drift_c": null,
+      "hours_to_resolve": null,
+      "liquidity": null,
+      "end_iso": "2026-08-13T00:00:00+00:00",
+      "event_iso": "2026-08-13T00:00:00+00:00",
+      "fee": 1.49
     }
   ],
   "settled": [
@@ -2450,7 +2519,7 @@
       "DSR 0.914 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 53,
+    "open_positions": 56,
     "trial_days": 4.6,
     "by_source": {
       "weather": {
@@ -2459,7 +2528,7 @@
         "reasons": [
           "no settled bets"
         ],
-        "open_positions": 3
+        "open_positions": 5
       },
       "whale": {
         "n": 47,
@@ -2484,10 +2553,10 @@
           "DSR 0.914 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 50
+        "open_positions": 51
       }
     }
   },
-  "generated": "2026-08-12 06:20:57",
+  "generated": "2026-08-12 08:01:04",
   "voided": []
 }

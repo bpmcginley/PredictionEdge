@@ -1,8 +1,105 @@
 {
-  "generated": "2026-08-12 06:20:52",
-  "generated_at": 1786515652.9789305,
+  "generated": "2026-08-12 08:01:00",
+  "generated_at": 1786521660.9092884,
   "account_size": 100000.0,
   "tickets": [
+    {
+      "market_id": "0xa055e1cf533c2fcb1f1c89c20c41c8aa25526dcf27c3ff6be69c230fd8898282",
+      "title": "US announces end of Iranian blockade by August 15, 2026?",
+      "side_label": "NO on: US announces end of Iranian blockade by August 15, 2026?",
+      "outcome": "No",
+      "entry_price": 0.9,
+      "whale_price": 0.896,
+      "drift_c": 0.39,
+      "contracts": 725,
+      "cost": 652.5,
+      "max_payout": 725.0,
+      "conviction": 0.653,
+      "hours_to_resolve": 88.0,
+      "n_wallets": 2,
+      "whale_usd": 17300,
+      "minutes_ago": 31,
+      "liquidity": 123447,
+      "url": "https://polymarket.com/event/us-announces-end-of-iranian-blockade-byptptpt-20260713152715080",
+      "end_iso": "2026-08-15T23:59:00Z",
+      "event_iso": "",
+      "signal_ts": 1786519816.0,
+      "why": [
+        "2 profitable wallets on this side",
+        "$17,300 \u2014 but only 6.2% of their book",
+        "latest buy 31 min ago",
+        "still near their entry price",
+        "88h until it resolves",
+        "$123,447 liquidity"
+      ],
+      "warnings": []
+    },
+    {
+      "market_id": "0xa010c8e7ab644ca49a8c7d015bd80d6524e2d822fec6077e1f1019327507c65b",
+      "title": "Will Paris Saint-Germain win on 2026-08-12?",
+      "side_label": "YES on: Will Paris Saint-Germain win on 2026-08-12?",
+      "outcome": "Yes",
+      "entry_price": 0.56,
+      "whale_price": 0.56,
+      "drift_c": 0.0,
+      "contracts": 1148,
+      "cost": 642.88,
+      "max_payout": 1148.0,
+      "conviction": 0.643,
+      "hours_to_resolve": 11.0,
+      "n_wallets": 2,
+      "whale_usd": 30348,
+      "minutes_ago": 23,
+      "liquidity": 131949,
+      "url": "https://polymarket.com/event/usc-psg-av-2026-08-12",
+      "end_iso": "2026-08-12T19:00:00Z",
+      "event_iso": "2026-08-12 19:00:00+00",
+      "signal_ts": 1786520248.0,
+      "why": [
+        "2 profitable wallets on this side",
+        "$30,348, 24% of their own book",
+        "latest buy 23 min ago",
+        "still near their entry price",
+        "11h until it resolves",
+        "$131,949 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days"
+      ]
+    },
+    {
+      "market_id": "0x379b55ba411a942e170cc25dc7ed986f70e8353db98251b3884a412acf2bc5c0",
+      "title": "Counter-Strike: BIG vs Aurora Gaming (BO1) - Esports World Cup Group A",
+      "side_label": "Aurora Gaming \u2014 Counter-Strike: BIG vs Aurora Gaming (BO1) - Esports World Cup Group A",
+      "outcome": "Aurora Gaming",
+      "entry_price": 0.605,
+      "whale_price": 0.618,
+      "drift_c": -1.25,
+      "contracts": 986,
+      "cost": 596.53,
+      "max_payout": 986.0,
+      "conviction": 0.597,
+      "hours_to_resolve": 1.0,
+      "n_wallets": 2,
+      "whale_usd": 66393,
+      "minutes_ago": 58,
+      "liquidity": 284060,
+      "url": "https://polymarket.com/event/cs2-big5-aur1-2026-08-12",
+      "end_iso": "2026-08-12T15:00:00Z",
+      "event_iso": "2026-08-12 09:00:00+00",
+      "signal_ts": 1786518166.0,
+      "why": [
+        "2 profitable wallets on this side",
+        "$66,393, 30% of their own book",
+        "latest buy 58 min ago",
+        "price 1.2c cheaper than they paid",
+        "1h until it resolves",
+        "$284,060 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days"
+      ]
+    },
     {
       "market_id": "0xc04094452b0386a73a9a6e07da0370fffb2722e05c837a5246b88c914e78b79f",
       "title": "UFC 330: Islam Makhachev vs. Ian Machado Garry (Welterweight, Main Card)",
@@ -15,11 +112,11 @@
       "cost": 516.42,
       "max_payout": 684.0,
       "conviction": 0.517,
-      "hours_to_resolve": 86.7,
+      "hours_to_resolve": 85.0,
       "n_wallets": 1,
       "whale_usd": 43461,
-      "minutes_ago": 435,
-      "liquidity": 158545,
+      "minutes_ago": 535,
+      "liquidity": 164624,
       "url": "https://polymarket.com/event/ufc-isl-ian1-2026-08-15",
       "end_iso": "2026-08-16T03:59:59.999Z",
       "event_iso": "2026-08-15 21:00:00+00",
@@ -27,15 +124,17 @@
       "why": [
         "new wallet with no track record \u2014 pattern signal, not a copy",
         "$43,461, 100% of their own book",
-        "latest buy 435 min ago",
+        "latest buy 535 min ago",
         "still near their entry price",
-        "87h until it resolves",
-        "$158,545 liquidity"
+        "85h until it resolves",
+        "$164,624 liquidity"
       ],
       "warnings": [
         "unproven wallet \u2014 this is a pattern, not a track record"
       ]
-    },
+    }
+  ],
+  "probe": [
     {
       "market_id": "0xfd2838c4f9e7f1ce92794f3b5efd17655fcd4ca23ce9154525e2ac811d4b5deb",
       "title": "Counter-Strike: Luminosity vs GamerLegion (BO1) - Esports World Cup Group A",
@@ -44,15 +143,15 @@
       "entry_price": 0.495,
       "whale_price": 0.497,
       "drift_c": -0.23,
-      "contracts": 1008,
-      "cost": 498.96,
-      "max_payout": 1008.0,
-      "conviction": 0.499,
-      "hours_to_resolve": 2.7,
+      "contracts": 834,
+      "cost": 412.83,
+      "max_payout": 834.0,
+      "conviction": 0.413,
+      "hours_to_resolve": 1.0,
       "n_wallets": 1,
       "whale_usd": 30702,
-      "minutes_ago": 4,
-      "liquidity": 350463,
+      "minutes_ago": 104,
+      "liquidity": 320186,
       "url": "https://polymarket.com/event/cs2-lg6-gl1-2026-08-12",
       "end_iso": "2026-08-12T15:00:00Z",
       "event_iso": "2026-08-12 09:00:00+00",
@@ -60,10 +159,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$30,702, 100% of their own book",
-        "latest buy 4 min ago",
+        "latest buy 104 min ago",
         "still near their entry price",
-        "3h until it resolves",
-        "$350,463 liquidity"
+        "1h until it resolves",
+        "$320,186 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
@@ -72,163 +171,21 @@
       ]
     }
   ],
-  "probe": [
-    {
-      "market_id": "0x77601218f89d0166a46923aa9a410fec4b75b40c971cfee68af05956fbf7e10a",
-      "title": "LoL: KT Rolster vs Dplus KIA (BO3) - LCK Round 3-4 Legend Group",
-      "side_label": "Dplus KIA \u2014 LoL: KT Rolster vs Dplus KIA (BO3) - LCK Round 3-4 Legend Group",
-      "outcome": "Dplus KIA",
-      "entry_price": 0.625,
-      "whale_price": 0.63,
-      "drift_c": -0.5,
-      "contracts": 705,
-      "cost": 440.62,
-      "max_payout": 705.0,
-      "conviction": 0.441,
-      "hours_to_resolve": 3.7,
-      "n_wallets": 1,
-      "whale_usd": 4535,
-      "minutes_ago": 33,
-      "liquidity": 286841,
-      "url": "https://polymarket.com/event/lol-kt-dk-2026-08-12",
-      "end_iso": "2026-08-12T16:00:00Z",
-      "event_iso": "2026-08-12 10:00:00+00",
-      "signal_ts": 1786513636.0,
-      "why": [
-        "1 profitable wallet on this side",
-        "$4,535 \u2014 but only 2.6% of their book",
-        "latest buy 33 min ago",
-        "still near their entry price",
-        "4h until it resolves",
-        "$286,841 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0xcb4ff6d7c3c6dda4ddd39d944ad0810e40405d859a4fb94644518eaf0df37596",
-      "title": "Game Handicap: NS (-1.5) vs DN SOOPers (+1.5)",
-      "side_label": "DN SOOPers \u2014 Game Handicap: NS (-1.5) vs DN SOOPers (+1.5)",
-      "outcome": "DN SOOPers",
-      "entry_price": 0.665,
-      "whale_price": 0.67,
-      "drift_c": -0.5,
-      "contracts": 627,
-      "cost": 416.96,
-      "max_payout": 627.0,
-      "conviction": 0.417,
-      "hours_to_resolve": 1.7,
-      "n_wallets": 1,
-      "whale_usd": 15000,
-      "minutes_ago": 65,
-      "liquidity": 174071,
-      "url": "https://polymarket.com/event/lol-dnf-ns-2026-08-12",
-      "end_iso": "2026-08-12T14:00:00Z",
-      "event_iso": "2026-08-12 08:00:00+00",
-      "signal_ts": 1786511767.0,
-      "why": [
-        "1 profitable wallet on this side",
-        "$15,000, 53% of their own book",
-        "latest buy 65 min ago",
-        "still near their entry price",
-        "2h until it resolves",
-        "$174,071 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion",
-        "no sports track record \u2014 these wallets earned their record elsewhere"
-      ]
-    },
-    {
-      "market_id": "0x01045c82b90d77c851604beabfdd3e977d24fec6ec70cb4388fb2a27c5e765c8",
-      "title": "Counter-Strike: Natus Vincere vs 3DMAX (BO1) - Esports World Cup Group D",
-      "side_label": "3DMAX \u2014 Counter-Strike: Natus Vincere vs 3DMAX (BO1) - Esports World Cup Group D",
-      "outcome": "3DMAX",
-      "entry_price": 0.225,
-      "whale_price": 0.22,
-      "drift_c": 0.5,
-      "contracts": 1777,
-      "cost": 399.82,
-      "max_payout": 1777.0,
-      "conviction": 0.4,
-      "hours_to_resolve": 10.2,
-      "n_wallets": 1,
-      "whale_usd": 14109,
-      "minutes_ago": 48,
-      "liquidity": 128235,
-      "url": "https://polymarket.com/event/cs2-navi-3dmax-2026-08-12",
-      "end_iso": "2026-08-12T22:30:00Z",
-      "event_iso": "2026-08-12 16:30:00+00",
-      "signal_ts": 1786512766.0,
-      "why": [
-        "1 profitable wallet on this side",
-        "$14,109 \u2014 but only 8.4% of their book",
-        "latest buy 48 min ago",
-        "still near their entry price",
-        "10h until it resolves",
-        "$128,235 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion",
-        "no sports track record \u2014 these wallets earned their record elsewhere"
-      ]
-    },
-    {
-      "market_id": "0x0fe2b8a08bca75cbcf5eaf6099a74192b4427af4f430c04fbf144587e8e9ec07",
-      "title": "Will David Crowley win the Wisconsin Democratic Governor primary by less than 1%?",
-      "side_label": "YES on: Will David Crowley win the Wisconsin Democratic Governor primary by less than 1%?",
-      "outcome": "Yes",
-      "entry_price": 0.777,
-      "whale_price": 0.743,
-      "drift_c": 3.35,
-      "contracts": 442,
-      "cost": 343.43,
-      "max_payout": 442.0,
-      "conviction": 0.344,
-      "hours_to_resolve": 41.6,
-      "n_wallets": 1,
-      "whale_usd": 2712,
-      "minutes_ago": 7,
-      "liquidity": 8704,
-      "url": "https://polymarket.com/event/wisconsin-governor-democratic-primary-margin-of-victory-small-brackets-20260812015550458",
-      "end_iso": "2026-08-13T23:59:00Z",
-      "event_iso": "",
-      "signal_ts": 1786515237.0,
-      "why": [
-        "election market and 100% of this is one wallet \u2014 concentration here can move the price rather than confirm it",
-        "1 profitable wallet on this side",
-        "$2,712 \u2014 but only 0.4% of their book",
-        "latest buy 7 min ago",
-        "price up 3.4c since they bought",
-        "42h until it resolves"
-      ],
-      "warnings": [
-        "thin liquidity \u2014 expect slippage",
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion",
-        "100% of this signal is a single wallet on an election market \u2014 that is the shape that distorted 2024 pricing"
-      ]
-    }
-  ],
-  "considered": 465,
+  "considered": 446,
   "rejected": {
-    "market closed": 324,
-    "fresh wallet: market too liquid for the pattern": 17,
-    "signal too old for this market's horizon": 18,
-    "already resolved": 24,
-    "wallet not new (no track record either)": 53,
+    "market closed": 313,
+    "fresh wallet: market too liquid for the pattern": 33,
+    "signal too old for this market's horizon": 14,
+    "already resolved": 15,
     "resolves more than 30 days out": 6,
-    "parlay / combo ticket, not a single market": 10,
-    "could not price this outcome": 1,
-    "in-play (event already started)": 3,
-    "no resolution or start time": 1,
+    "wallet not new (no track record either)": 41,
+    "no resolution or start time": 3,
+    "in-play (event already started)": 4,
+    "parlay / combo ticket, not a single market": 9,
     "price ran away from the whale's entry": 1,
+    "price outside tradeable band": 1,
     "duplicate event (kept the stronger side)": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 4
+    "below the 0.45 buy bar (recorded, not bought)": 1
   },
   "notes": [],
   "consistency": {
@@ -237,16 +194,16 @@
     "events_scanned": 345,
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 126,
-      "not a ladder: fewer than two live, quoted legs": 93,
-      "not a ladder: group labels are not thresholds or deadlines": 52,
+      "not a ladder: fewer than two live, quoted legs": 92,
+      "not a ladder: group labels are not thresholds or deadlines": 53,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "bracket has too many legs to place by hand": 2,
-      "ladder pair too illiquid to fill": 108,
+      "ladder pair too illiquid to fill": 105,
       "ladder inversion smaller than the spread": 1,
+      "bracket overround smaller than the spread": 2,
       "not a ladder: numeric group spans different end dates": 2,
       "not a ladder: a live leg carries no group label": 3,
       "bracket leg too illiquid to fill": 4,
-      "bracket overround smaller than the spread": 1,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
@@ -267,20 +224,20 @@
         "nowcast_pp": 2.52318470411008,
         "nowcast_as_of": "2026-08-11 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.094pp (x1.70). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.095pp (x1.69). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
         "rows": [
           {
             "label": "\u22642.2%",
-            "market_prob": 0.039,
+            "market_prob": 0.0655,
             "model_prob": 0.0439,
-            "gap_c": 0.49,
+            "gap_c": -2.16,
             "suspect": false
           },
           {
             "label": "2.3%",
-            "market_prob": 0.147,
+            "market_prob": 0.1425,
             "model_prob": 0.0957,
-            "gap_c": -5.13,
+            "gap_c": -4.68,
             "suspect": false
           },
           {
@@ -292,30 +249,30 @@
           },
           {
             "label": "2.5%",
-            "market_prob": 0.31,
+            "market_prob": 0.36,
             "model_prob": 0.2429,
-            "gap_c": -6.71,
+            "gap_c": -11.71,
             "suspect": false
           },
           {
             "label": "2.6%",
-            "market_prob": 0.0745,
+            "market_prob": 0.0595,
             "model_prob": 0.2194,
-            "gap_c": 14.49,
+            "gap_c": 15.99,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0165,
+            "market_prob": 0.0265,
             "model_prob": 0.1359,
-            "gap_c": 11.94,
+            "gap_c": 10.94,
             "suspect": false
           },
           {
             "label": "2.8%",
-            "market_prob": 0.004,
+            "market_prob": 0.005,
             "model_prob": 0.0576,
-            "gap_c": 5.36,
+            "gap_c": 5.26,
             "suspect": false
           },
           {
@@ -351,41 +308,41 @@
         "nowcast_pp": 0.211432281705678,
         "nowcast_as_of": "2026-08-11 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.073pp (x2.20). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.071pp (x2.25). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
-            "market_prob": 0.059,
+            "market_prob": 0.1005,
             "model_prob": 0.1565,
-            "gap_c": 9.75,
+            "gap_c": 5.6,
             "suspect": false
           },
           {
             "label": "0.1%",
-            "market_prob": 0.296,
+            "market_prob": 0.2795,
             "model_prob": 0.194,
-            "gap_c": -10.2,
+            "gap_c": -8.55,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.545,
+            "market_prob": 0.5365,
             "model_prob": 0.2447,
-            "gap_c": -30.03,
+            "gap_c": -29.18,
             "suspect": true
           },
           {
             "label": "0.3%",
-            "market_prob": 0.1245,
+            "market_prob": 0.121,
             "model_prob": 0.2115,
-            "gap_c": 8.7,
+            "gap_c": 9.05,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.0185,
+            "market_prob": 0.0125,
             "model_prob": 0.1253,
-            "gap_c": 10.68,
+            "gap_c": 11.28,
             "suspect": false
           },
           {
@@ -400,6 +357,104 @@
             "market_prob": 0.0015,
             "model_prob": 0.0172,
             "gap_c": 1.57,
+            "suspect": false
+          }
+        ]
+      },
+      {
+        "slug": "july-inflation-us-annual-20260714150613267",
+        "title": "July Inflation US - Annual",
+        "series": "cpi",
+        "basis": "yoy",
+        "ref_month": "2026-7",
+        "url": "https://polymarket.com/event/july-inflation-us-annual-20260714150613267",
+        "nowcast_pp": 3.41865491219704,
+        "nowcast_as_of": "2026-08-11 00:00",
+        "sigma": 0.16,
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.089pp (x1.81). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
+        "rows": [
+          {
+            "label": "\u22643.1%",
+            "market_prob": 0.025,
+            "model_prob": 0.0466,
+            "gap_c": 2.16,
+            "suspect": false
+          },
+          {
+            "label": "3.2%",
+            "market_prob": 0.0265,
+            "model_prob": 0.0994,
+            "gap_c": 7.29,
+            "suspect": false
+          },
+          {
+            "label": "3.3%",
+            "market_prob": 0.465,
+            "model_prob": 0.188,
+            "gap_c": -27.7,
+            "suspect": true
+          },
+          {
+            "label": "3.4%",
+            "market_prob": 0.395,
+            "model_prob": 0.2437,
+            "gap_c": -15.13,
+            "suspect": false
+          },
+          {
+            "label": "3.5%",
+            "market_prob": 0.115,
+            "model_prob": 0.2165,
+            "gap_c": 10.15,
+            "suspect": false
+          },
+          {
+            "label": "3.6%",
+            "market_prob": 0.0245,
+            "model_prob": 0.1317,
+            "gap_c": 10.72,
+            "suspect": false
+          },
+          {
+            "label": "3.7%",
+            "market_prob": 0.0015,
+            "model_prob": 0.0549,
+            "gap_c": 5.34,
+            "suspect": false
+          },
+          {
+            "label": "3.8%",
+            "market_prob": 0.0015,
+            "model_prob": 0.0157,
+            "gap_c": 1.42,
+            "suspect": false
+          },
+          {
+            "label": "3.9%",
+            "market_prob": 0.002,
+            "model_prob": 0.0031,
+            "gap_c": 0.11,
+            "suspect": false
+          },
+          {
+            "label": "4.0%",
+            "market_prob": 0.0005,
+            "model_prob": 0.0004,
+            "gap_c": -0.01,
+            "suspect": false
+          },
+          {
+            "label": "4.1%",
+            "market_prob": 0.0005,
+            "model_prob": 0.0,
+            "gap_c": -0.05,
+            "suspect": false
+          },
+          {
+            "label": "\u22654.2%",
+            "market_prob": 0.0005,
+            "model_prob": 0.0,
+            "gap_c": -0.05,
             "suspect": false
           }
         ]
@@ -439,9 +494,9 @@
           },
           {
             "label": "-0.4%",
-            "market_prob": 0.0015,
+            "market_prob": 0.0005,
             "model_prob": 0.0028,
-            "gap_c": 0.13,
+            "gap_c": 0.23,
             "suspect": false
           },
           {
@@ -460,121 +515,23 @@
           },
           {
             "label": "-0.1%",
-            "market_prob": 0.0625,
+            "market_prob": 0.0725,
             "model_prob": 0.1271,
-            "gap_c": 6.46,
+            "gap_c": 5.46,
             "suspect": false
           },
           {
             "label": "0.0%",
-            "market_prob": 0.28,
+            "market_prob": 0.295,
             "model_prob": 0.213,
-            "gap_c": -6.7,
+            "gap_c": -8.2,
             "suspect": false
           },
           {
             "label": "\u22650.1%",
-            "market_prob": 0.68,
+            "market_prob": 0.66,
             "model_prob": 0.5903,
-            "gap_c": -8.97,
-            "suspect": false
-          }
-        ]
-      },
-      {
-        "slug": "july-inflation-us-annual-20260714150613267",
-        "title": "July Inflation US - Annual",
-        "series": "cpi",
-        "basis": "yoy",
-        "ref_month": "2026-7",
-        "url": "https://polymarket.com/event/july-inflation-us-annual-20260714150613267",
-        "nowcast_pp": 3.41865491219704,
-        "nowcast_as_of": "2026-08-11 00:00",
-        "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.094pp (x1.71). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
-        "rows": [
-          {
-            "label": "\u22643.1%",
-            "market_prob": 0.0455,
-            "model_prob": 0.0466,
-            "gap_c": 0.11,
-            "suspect": false
-          },
-          {
-            "label": "3.2%",
-            "market_prob": 0.055,
-            "model_prob": 0.0994,
-            "gap_c": 4.44,
-            "suspect": false
-          },
-          {
-            "label": "3.3%",
-            "market_prob": 0.385,
-            "model_prob": 0.188,
-            "gap_c": -19.7,
-            "suspect": false
-          },
-          {
-            "label": "3.4%",
-            "market_prob": 0.395,
-            "model_prob": 0.2437,
-            "gap_c": -15.13,
-            "suspect": false
-          },
-          {
-            "label": "3.5%",
-            "market_prob": 0.135,
-            "model_prob": 0.2165,
-            "gap_c": 8.15,
-            "suspect": false
-          },
-          {
-            "label": "3.6%",
-            "market_prob": 0.0375,
-            "model_prob": 0.1317,
-            "gap_c": 9.42,
-            "suspect": false
-          },
-          {
-            "label": "3.7%",
-            "market_prob": 0.0005,
-            "model_prob": 0.0549,
-            "gap_c": 5.44,
-            "suspect": false
-          },
-          {
-            "label": "3.8%",
-            "market_prob": 0.0005,
-            "model_prob": 0.0157,
-            "gap_c": 1.52,
-            "suspect": false
-          },
-          {
-            "label": "3.9%",
-            "market_prob": 0.0005,
-            "model_prob": 0.0031,
-            "gap_c": 0.26,
-            "suspect": false
-          },
-          {
-            "label": "4.0%",
-            "market_prob": 0.0005,
-            "model_prob": 0.0004,
-            "gap_c": -0.01,
-            "suspect": false
-          },
-          {
-            "label": "4.1%",
-            "market_prob": 0.0005,
-            "model_prob": 0.0,
-            "gap_c": -0.05,
-            "suspect": false
-          },
-          {
-            "label": "\u22654.2%",
-            "market_prob": 0.0005,
-            "model_prob": 0.0,
-            "gap_c": -0.05,
+            "gap_c": -6.97,
             "suspect": false
           }
         ]
@@ -583,25 +540,48 @@
   },
   "weather": [
     {
-      "market_id": "KXHIGHNY-26AUG12-B87.5",
+      "market_id": "KXHIGHDEN-26AUG12-T94",
       "venue": "kalshi",
       "source": "weather",
       "outcome": "Yes",
-      "title": "Will the **high temp in NYC** be 87-88\u00b0 on Aug 12, 2026?",
-      "url": "https://kalshi.com/markets/KXHIGHNY-26AUG12",
-      "entry_price": 0.2,
-      "model_prob": 0.3324,
-      "edge": 0.1324,
-      "forecast_f": 87.0,
-      "sigma_f": 2.0,
-      "market_mu_f": 85.41,
-      "market_sigma_f": 1.69,
+      "title": "Will the **high temp in Denver** be >94\u00b0 on Aug 12, 2026?",
+      "url": "https://kalshi.com/markets/KXHIGHDEN-26AUG12",
+      "entry_price": 0.57,
+      "model_prob": 0.91,
+      "edge": 0.34,
+      "forecast_f": 97.0,
+      "sigma_f": 2.17,
+      "market_mu_f": 94.47,
+      "market_sigma_f": 2.17,
       "days_ahead": 0.0,
-      "market_prob": 0.19,
+      "market_prob": 0.565,
       "model": "kalshi-ladder-tilted-by-nws-gridpoint",
       "validated": false,
-      "city": "Central Park, New York",
-      "settles_by": "https://forecast.weather.gov/product.php?site=OKX&product=CLI&issuedby=NYC",
+      "city": "Denver, CO",
+      "settles_by": "https://forecast.weather.gov/product.php?site=BOU&product=CLI&issuedby=DEN",
+      "end_iso": "2026-08-13T00:00:00+00:00",
+      "event_iso": "2026-08-13T00:00:00+00:00"
+    },
+    {
+      "market_id": "KXHIGHMIA-26AUG12-B91.5",
+      "venue": "kalshi",
+      "source": "weather",
+      "outcome": "Yes",
+      "title": "Will the **high temp in Miami** be 91-92\u00b0 on Aug 12, 2026?",
+      "url": "https://kalshi.com/markets/KXHIGHMIA-26AUG12",
+      "entry_price": 0.15,
+      "model_prob": 0.2519,
+      "edge": 0.1019,
+      "forecast_f": 92.0,
+      "sigma_f": 2.0,
+      "market_mu_f": 93.54,
+      "market_sigma_f": 1.38,
+      "days_ahead": 0.0,
+      "market_prob": 0.14,
+      "model": "kalshi-ladder-tilted-by-nws-gridpoint",
+      "validated": false,
+      "city": "Miami International Airport",
+      "settles_by": "https://forecast.weather.gov/product.php?site=MFL&product=CLI&issuedby=MIA",
       "end_iso": "2026-08-13T00:00:00+00:00",
       "event_iso": "2026-08-13T00:00:00+00:00"
     }
