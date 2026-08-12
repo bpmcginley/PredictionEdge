@@ -6,6 +6,7 @@ and would have shipped as a 25-48c edge that does not exist.
 
 from predictionedge.crossvenue import (
     VenueMarket,
+    fetch_kalshi,
     find_divergences,
     question_conflict,
     similarity,
@@ -98,3 +99,47 @@ def test_extreme_prices_are_skipped():
     k = _k("Will the Fed cut rates in September", 0.99)
     p = _p("Will the Fed cut rates in September?", 0.02)
     assert find_divergences([k], [p], min_similarity=0.6, min_gap=0.08) == []
+
+
+# --- fetch_kalshi field handling --------------------------------------------
+# Kalshi is mid-migration between integer-cents and dollar-string price fields,
+# and `expiration_time` is a padded settlement deadline that can lag the real
+# event by a week. Both traps are documented in kalshi.py; these tests pin that
+# this fetcher actually uses those lessons.
+
+def _kalshi_events(market):
+    def fake_fetch(url, params):
+        return {"events": [{"event_ticker": "KXFED-26DEC",
+                            "title": "Fed decision",
+                            "markets": [market]}]}
+    return fake_fetch
+
+
+def test_cents_only_payload_still_quotes():
+    # No *_dollars fields at all: bare fields are integer cents.
+    m = {"ticker": "KXFED-26DEC-T3", "yes_bid": 40, "yes_ask": 44,
+         "close_time": "2026-12-16T19:00:00Z", "volume": 1234}
+    (vm,) = fetch_kalshi(fetch=_kalshi_events(m))
+    assert vm.yes_price == 0.42
+    assert vm.volume == 1234.0
+
+
+def test_dollar_string_payload_still_quotes():
+    m = {"ticker": "KXFED-26DEC-T3", "yes_bid_dollars": "0.40",
+         "yes_ask_dollars": "0.44", "close_time": "2026-12-16T19:00:00Z"}
+    (vm,) = fetch_kalshi(fetch=_kalshi_events(m))
+    assert vm.yes_price == 0.42
+
+
+def test_end_iso_prefers_event_time_over_settlement_deadline():
+    m = {"ticker": "KXFED-26DEC-T3", "yes_bid": 40, "yes_ask": 44,
+         "expected_expiration_time": "2026-12-16T19:00:00Z",
+         "close_time": "2026-12-16T18:00:00Z",
+         "expiration_time": "2026-12-23T19:00:00Z"}   # a week late - the trap
+    (vm,) = fetch_kalshi(fetch=_kalshi_events(m))
+    assert vm.end_iso == "2026-12-16T19:00:00Z"
+
+
+def test_unquoted_market_is_dropped():
+    m = {"ticker": "KXFED-26DEC-T3", "close_time": "2026-12-16T19:00:00Z"}
+    assert fetch_kalshi(fetch=_kalshi_events(m)) == []

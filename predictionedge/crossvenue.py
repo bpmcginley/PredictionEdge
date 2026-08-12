@@ -23,6 +23,8 @@ import re
 from dataclasses import dataclass
 from datetime import datetime, timezone
 
+from .kalshi import _price_to_dollars
+
 KALSHI_API = "https://api.elections.kalshi.com/trade-api/v2"
 GAMMA = "https://gamma-api.polymarket.com"
 
@@ -158,8 +160,13 @@ def fetch_kalshi(*, pages: int = 4, per_page: int = 200, fetch=None,
             if not include_sports and any(s in tick.upper() for s in _SPORTS):
                 continue
             for m in (ev.get("markets") or []):
-                bid = _f(m.get("yes_bid_dollars"))
-                ask = _f(m.get("yes_ask_dollars"))
+                # Dual cents/dollars schema: a payload may carry integer-cents
+                # `yes_bid` with no `yes_bid_dollars` at all. Reading only the
+                # dollar field made every such market look unquoted, and this
+                # fetch returned zero Kalshi markets - indistinguishable from
+                # "no divergences today".
+                bid = _price_to_dollars(m, "yes_bid")
+                ask = _price_to_dollars(m, "yes_ask")
                 if bid <= 0 and ask <= 0:
                     continue          # no book = no opinion, not a reference price
                 mid = (bid + ask) / 2 if (bid > 0 and ask > 0) else (bid or ask)
@@ -168,8 +175,14 @@ def fetch_kalshi(*, pages: int = 4, per_page: int = 200, fetch=None,
                 out.append(VenueMarket(
                     venue="kalshi", market_id=m.get("ticker") or "",
                     title=f"{title} {sub}".strip(), yes_price=round(mid, 3),
-                    end_iso=m.get("expiration_time") or m.get("close_time") or "",
-                    volume=_f(m.get("volume_fp")),
+                    # `expiration_time` is the padded settlement deadline and can
+                    # lag the real determination by a WEEK on some series; the
+                    # 72-hour matching window in find_divergences needs the event
+                    # date, which lives in expected_expiration/close_time.
+                    end_iso=(m.get("expected_expiration_time")
+                             or m.get("close_time")
+                             or m.get("expiration_time") or ""),
+                    volume=_f(m.get("volume")),
                     url=f"https://kalshi.com/markets/{tick}",
                 ))
         cursor = data.get("cursor")
