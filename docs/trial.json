@@ -1298,6 +1298,52 @@
       "end_iso": "2026-08-13T00:00:00+00:00",
       "event_iso": "2026-08-13T00:00:00+00:00",
       "fee": 1.54
+    },
+    {
+      "key": "0xf1bf0d8f01dd3c5f6c35a8f3c976c92719a9503b5bfb8af486c860ef796e9e13:over",
+      "opened_at": 1786534510.4547546,
+      "market_id": "0xf1bf0d8f01dd3c5f6c35a8f3c976c92719a9503b5bfb8af486c860ef796e9e13",
+      "venue": "polymarket",
+      "outcome": "Over",
+      "title": "SK Rapid Wien vs. Paide Linnameeskond: O/U 3.5",
+      "url": "https://polymarket.com/event/col-rap-pai-2026-08-12-more-markets",
+      "price": 0.505,
+      "stake": 100.0,
+      "contracts": 198.0198,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.489,
+      "n_wallets": 1,
+      "whale_usd": 9625,
+      "drift_c": 0.5,
+      "hours_to_resolve": 4.4,
+      "liquidity": 40515,
+      "end_iso": "2026-08-12T16:00:00Z",
+      "event_iso": "2026-08-12 16:00:00+00",
+      "fee": 0.87
+    },
+    {
+      "key": "0xb238596c48835961e17915ed787cb8a4baf55508fb081924855332f8c4f915ec:under",
+      "opened_at": 1786534510.4547546,
+      "market_id": "0xb238596c48835961e17915ed787cb8a4baf55508fb081924855332f8c4f915ec",
+      "venue": "polymarket",
+      "outcome": "Under",
+      "title": "SE Palmeiras vs. Club Cerro Porte\u00f1o: O/U 1.5",
+      "url": "https://polymarket.com/event/lib-pal-cep-2026-08-12-more-markets",
+      "price": 0.285,
+      "stake": 100.0,
+      "contracts": 350.8772,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.487,
+      "n_wallets": 1,
+      "whale_usd": 18640,
+      "drift_c": -0.5,
+      "hours_to_resolve": 10.4,
+      "liquidity": 45127,
+      "end_iso": "2026-08-12T22:00:00Z",
+      "event_iso": "2026-08-12 22:00:00+00",
+      "fee": 1.26
     }
   ],
   "settled": [
@@ -2620,7 +2666,7 @@
     "reasons": [
       "DSR 0.931 < 0.95"
     ],
-    "open_positions": 58,
+    "open_positions": 60,
     "trial_days": 4.8,
     "by_source": {
       "weather": {
@@ -2653,10 +2699,10 @@
         "reasons": [
           "DSR 0.931 < 0.95"
         ],
-        "open_positions": 52
+        "open_positions": 54
       }
     }
   },
-  "generated": "2026-08-12 10:44:36",
+  "generated": "2026-08-12 11:35:14",
   "voided": []
 }
