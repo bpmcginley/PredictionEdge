@@ -92,7 +92,8 @@ const hoursLeft = t => {
 };
 const ageMin = t => t.signal_ts ? (Date.now() / 1000 - t.signal_ts) / 60 : null;
 
-/* --- sizing (mirrors omen.size_position; constants come from board.json) - */
+/* --- sizing (mirrors the backend sizing rule; constants come from board.json,
+   still published under its historical "omen" key - a data contract, not a venue) - */
 function sizeFor(price, account, conviction) {
   const o = DATA.omen || { min_contract_price: 0.01, contracts_per_market_per_1k: 19, per_trade_fraction: 0.01 };
   if (!(price >= o.min_contract_price && price < 1) || !(account > 0)) return null;

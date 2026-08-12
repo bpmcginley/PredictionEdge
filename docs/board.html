@@ -10,12 +10,12 @@
 <body>
 <div class="wrap">
   <h1>Trade board</h1>
-  <p class="lede">Ranked suggestions, sized against your capital and Omen's contract caps.
-    Place them yourself in the Omen app, then log what you did.</p>
+  <p class="lede">Ranked suggestions, sized against your capital and the house per-market
+    caps. Place them yourself, then log what you did.</p>
 
   <div class="banner">
-    <b>Manual placement only.</b> Omen prohibits API access, bots, browser automation and
-    signal-following services. This board ranks and explains; you decide and you place.
+    <b>Manual placement only.</b> Nothing here executes a trade.
+    This board ranks and explains; you decide and you place.
   </div>
 
   <div class="alert" id="stale"></div>
@@ -73,16 +73,16 @@ function render(keepFocus){
   $('v-power').textContent    = money(L.power);
   $('v-power').className      = L.power<0?'neg':'';
 
-  // Omen's 5% daily loss limit, estimated from outcomes logged in the last 24h.
+  // The house 5% daily-loss guardrail, estimated from outcomes logged in the last 24h.
   const lim = L.start * ((DATA.omen && DATA.omen.daily_loss_fraction) || 0.05);
   const d = $('danger');
   if(L.todayPnl < 0 && Math.abs(L.todayPnl) >= lim*0.6){
     d.style.display='block';
     d.innerHTML = Math.abs(L.todayPnl) >= lim
       ? `<b>Daily loss limit reached.</b> Logged losses in the last 24h are
-         ${money(Math.abs(L.todayPnl))} against Omen's ${money(lim)} (5%) limit. Stop for the day.`
-      : `Logged losses in the last 24h are ${money(Math.abs(L.todayPnl))} of Omen's
-         ${money(lim)} (5%) daily limit — ${money(lim-Math.abs(L.todayPnl))} of room left.`;
+         ${money(Math.abs(L.todayPnl))} against the ${money(lim)} (5%) guardrail. Stop for the day.`
+      : `Logged losses in the last 24h are ${money(Math.abs(L.todayPnl))} of the
+         ${money(lim)} (5%) daily guardrail — ${money(lim-Math.abs(L.todayPnl))} of room left.`;
   } else d.style.display='none';
 
   const {live, expired} = splitTickets();
@@ -114,8 +114,10 @@ function ticket(t,rank,L){
   const done = ['taken','skipped','won','lost'].includes(st);
   const h = hoursLeft(t), a = ageMin(t);
   const z = sizeFor(t.entry_price, L.account, t.conviction);
+  // The backend may still phrase this warning in its own words; recompute it client-side
+  // so the displayed size and its warning can never disagree.
   const warnings = (t.warnings||[]).filter(w=>!/size capped by Omen/.test(w));
-  if(z && z.capped==='omen-market-limit') warnings.push("size capped by Omen's per-market contract limit");
+  if(z && z.capped==='omen-market-limit') warnings.push('size capped by the per-market contract limit');
   if(z && z.cost > L.power) warnings.push('costs more than your buying power');
   const why = (t.why||[]).map(w =>
     /latest buy .* min ago/.test(w) && a!=null ? `latest buy ${a.toFixed(0)} min ago` :
