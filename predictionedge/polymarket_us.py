@@ -30,6 +30,46 @@ class PMUSMarket:
     last_px: float
 
 
+@dataclass(frozen=True)
+class PMUSListing:
+    """One market from the `/v1/markets` listing - metadata, not a quote.
+
+    `sides` carries what the bridge's name matcher needs: each side's full
+    name ("Alexander Shevchenko"), the venue's own abbreviation ("aleshe"),
+    and whether it is the LONG leg - the side the bbo's yes-price refers to
+    (verified live 2026-08-12: bestAsk == the long side's quote).
+    """
+
+    slug: str
+    question: str
+    outcomes: tuple[str, ...]
+    sides: tuple[dict, ...]      # {"name", "abbr", "long"}
+    game_start: str              # ISO; the slug's own date can differ by days
+    market_type: str             # sportsMarketType, e.g. "tennis_match_winner"
+
+
+def _parse_listing(m: dict) -> PMUSListing:
+    outcomes = m.get("outcomes") or "[]"
+    if isinstance(outcomes, str):
+        try:
+            outcomes = _json.loads(outcomes)
+        except ValueError:
+            outcomes = []
+    sides = tuple(
+        {"name": (s.get("team") or {}).get("name") or s.get("description") or "",
+         "abbr": (s.get("team") or {}).get("abbreviation") or "",
+         "long": bool(s.get("long"))}
+        for s in (m.get("marketSides") or []))
+    return PMUSListing(
+        slug=m.get("slug") or "",
+        question=m.get("question") or "",
+        outcomes=tuple(str(o) for o in outcomes),
+        sides=sides,
+        game_start=m.get("gameStartTime") or "",
+        market_type=m.get("sportsMarketType") or m.get("marketType") or "",
+    )
+
+
 def _amt(value: float) -> dict:
     return {"value": f"{value:.2f}", "currency": "USD"}
 
@@ -93,10 +133,23 @@ class PolymarketUSClient:
             return None
 
     def active_slugs(self, limit: int = 1500) -> list[str]:
-        """All active market slugs (public, paginated) - for the intl->PM-US matcher."""
+        """First `limit` active market slugs. Prefer `active_markets`: the listing is
+        20,000+ deep with futures at the front, so a shallow read misses every daily
+        game - measured 2026-08-12, offset 20,000 still hadn't reached tennis."""
+        return [m.slug for m in self.active_markets(max_markets=limit)]
+
+    def active_markets(self, max_markets: int = 40_000) -> list[PMUSListing]:
+        """The FULL active listing with metadata (public, paginated).
+
+        There is no server-side filter worth having - `category`, `tag`, `q` and
+        `sportsMarketType` params are all silently ignored (probed 2026-08-12); only
+        an exact `slug` lookup filters. So the one honest way to see the daily game
+        markets behind 9,000+ futures is to page to the bottom: ~110 requests at 200
+        a page. Callers should fetch once and match locally.
+        """
         import requests
-        out: list[str] = []
-        for off in range(0, limit, 200):
+        out: list[PMUSListing] = []
+        for off in range(0, max_markets, 200):
             try:
                 r = requests.get(f"{self.gateway_base}/v1/markets",
                                  params={"limit": 200, "offset": off, "active": "true",
@@ -108,7 +161,7 @@ class PolymarketUSClient:
                 break
             if not mk:
                 break
-            out += [m.get("slug") for m in mk if m.get("slug")]
+            out += [_parse_listing(m) for m in mk if m.get("slug")]
             if len(mk) < 200:
                 break
         return out
@@ -160,16 +213,26 @@ class PolymarketUSClient:
 
 
 class MockPolymarketUSClient:
-    def __init__(self, markets: dict[str, PMUSMarket] | None = None, balance: float = 0.0):
+    def __init__(self, markets: dict[str, PMUSMarket] | None = None, balance: float = 0.0,
+                 listings: list[PMUSListing] | None = None):
         self._markets = markets or {}
         self._balance = balance
+        self._listings = listings
         self.placed: list[dict] = []
 
     def market(self, slug: str) -> PMUSMarket | None:
         return self._markets.get(slug)
 
     def active_slugs(self, limit: int = 1500) -> list[str]:
-        return list(self._markets.keys())
+        return [m.slug for m in self.active_markets()]
+
+    def active_markets(self, max_markets: int = 40_000) -> list[PMUSListing]:
+        if self._listings is not None:
+            return list(self._listings)
+        # Bare-quote mocks still list: slug-only entries, enough for the slug matcher.
+        return [PMUSListing(slug=s, question="", outcomes=("Yes", "No"), sides=(),
+                            game_start="", market_type="")
+                for s in self._markets]
 
     def balance(self) -> dict:
         return {"buyingPower": {"value": str(self._balance), "currency": "USD"},

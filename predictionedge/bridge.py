@@ -30,7 +30,10 @@ and Kalshi market data). No keys, no orders, no account.
 
 from __future__ import annotations
 
+import datetime as _dt
 import logging
+import re
+import unicodedata
 
 from .pmus_match import PMUSMatcher, slug_signature
 
@@ -54,10 +57,11 @@ _MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN",
            "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
 
 # Statuses that can never improve with retrying: the ticket itself lacks what the
-# adapter needs. Everything else (listings not up yet, a lookup that timed out) is
-# retried on every run until the ticket leaves the board.
-_PERMANENT = frozenset({"matched", "no-signature", "no-series", "outcome-not-a-team",
-                        "outcome-not-yes-no"})
+# adapter needs. Everything else (listings not up yet, a lookup that timed out, a
+# name that didn't map) is retried on every run until the ticket leaves the board.
+# "outcome-not-yes-no" - retired 2026-08-12 when the name matcher landed - is
+# deliberately NOT here, so tickets it froze under the old adapter get re-tried.
+_PERMANENT = frozenset({"matched", "no-signature", "no-series", "outcome-not-a-team"})
 
 
 def parse_series_env(raw: str) -> dict[str, str]:
@@ -129,6 +133,104 @@ def _kalshi_lookup(candidates: list[str], fetch) -> tuple[dict | None, str]:
     return None, ("lookup-failed" if failed else "no-market")
 
 
+# PM-US market types that mean "who wins the whole event" - the only claim an intl
+# moneyline/match ticket makes. The same two sides also hang off spreads, totals,
+# set/inning/quarter winners and "first five" markets, so matching on names alone
+# would happily route a match bet onto a set-1 market; the type gate is what stops it.
+_WINNER_TYPE_SUFFIXES = ("_match_winner", "_fight_winner", "_full_game_winner",
+                         "_team_winner")
+
+_SLUG_DATE = re.compile(r"\d{4}-\d{2}-\d{2}")
+
+
+def _is_winner_type(market_type: str) -> bool:
+    mt = (market_type or "").lower()
+    return mt == "moneyline" or mt.endswith(_WINNER_TYPE_SUFFIXES)
+
+
+def _norm_words(s: str) -> list[str]:
+    """Accent-stripped lowercase words: "Christopher O'Connell" -> [christopher,
+    oconnell]. Apostrophes join rather than split so `oconnel` can prefix-match."""
+    s = unicodedata.normalize("NFKD", s or "")
+    s = "".join(c for c in s if not unicodedata.combining(c)).lower()
+    s = s.replace("'", "").replace("’", "")
+    return [w for w in re.split(r"[^a-z0-9]+", s) if w]
+
+
+def _date_of(iso_or_slug: str) -> _dt.date | None:
+    m = _SLUG_DATE.search(iso_or_slug or "")
+    if not m:
+        return None
+    try:
+        return _dt.date.fromisoformat(m.group(0))
+    except ValueError:
+        return None
+
+
+def _frag_hits(frag: str, side: dict) -> bool:
+    """Does an intl slug fragment ("shevche", "sd") name this PM-US side?
+
+    Two spellings of the same participant: intl truncates names into slug fragments,
+    PM-US carries its own abbreviation plus the full name. Equality with the venue
+    abbreviation catches team codes; prefix-against-a-name-word catches the truncated
+    surnames ("nakashi" -> "nakashima"). At least 2 chars, or everything matches.
+    """
+    if len(frag) < 2:
+        return False
+    if frag == (side.get("abbr") or "").lower():
+        return True
+    return any(w.startswith(frag) for w in _norm_words(side.get("name") or ""))
+
+
+def match_by_name(listings, intl_slug: str, outcome: str):
+    """Match an intl named-outcome ticket to the PM-US market for the same event.
+
+    Returns ((listing, side), "matched") or (None, reason). Used when the intl
+    market's outcomes are participant names (tennis, MLB/NBA/NFL moneylines, UFC):
+    those PM-US markets use the venue's OWN abbreviations in the slug ("aleshe", not
+    "shevche"), so slug-signature equality can never fire and the match has to run
+    on the metadata instead. Requirements, all of them:
+
+    - winner-type market with exactly two sides;
+    - event date within a day of the intl date (time zones straddle midnight);
+    - BOTH intl slug fragments identify DISTINCT sides - one hit is a name-alike,
+      two hits on the same game is the game;
+    - the ticket's outcome equals exactly one side's full name (normalized);
+    - and only one market survives all of the above - two survivors means refuse.
+    """
+    sig = slug_signature(intl_slug)
+    if sig is None:
+        return None, "no-signature"
+    teams, date_s, _ = sig
+    frags = [f.lower() for f in teams]
+    idate = _date_of(date_s)
+    want = _norm_words(outcome)
+    if idate is None or not want:
+        return None, "no-signature"
+
+    matches, saw_candidate = [], False
+    for li in listings:
+        if not _is_winner_type(li.market_type) or len(li.sides) != 2:
+            continue
+        ldate = _date_of(li.game_start) or _date_of(li.slug)
+        if ldate is None or abs((ldate - idate).days) > 1:
+            continue
+        a, b = li.sides
+        pairs = [(x, y) for x, y in ((a, b), (b, a))
+                 if _frag_hits(frags[0], x) and _frag_hits(frags[1], y)]
+        if not pairs:
+            continue
+        saw_candidate = True
+        picked = [s for s in (a, b) if _norm_words(s.get("name") or "") == want]
+        if len(picked) == 1:
+            matches.append((li, picked[0]))
+    if len(matches) == 1:
+        return matches[0], "matched"
+    if len(matches) > 1:
+        return None, "ambiguous"
+    return None, ("outcome-unmapped" if saw_candidate else "no-counterpart")
+
+
 def _carry(t: dict) -> dict:
     """Slice-later context copied from the origin ticket onto its bridge rows."""
     return {k: t.get(k) for k in ("conviction", "n_wallets", "whale_usd", "drift_c",
@@ -154,7 +256,28 @@ def build_bridge_tickets(tickets: list[dict], *, pmus_client=None, kalshi_fetch=
     def note(okey: str, venue: str, status: str):
         attempts.append({"origin_key": okey, "venue": venue, "status": status})
 
-    matcher = None  # built lazily: 8 paginated calls only if a ticket needs them
+    # Built lazily: the full PM-US listing is ~110 paginated calls (21k+ markets with
+    # futures at the front and no server-side filter), paid only when a ticket needs it
+    # and once per run for all tickets together.
+    listings = None
+    matcher = None
+
+    def _load_listings():
+        nonlocal listings, matcher
+        if listings is None:
+            listings = pmus_client.active_markets()
+            matcher = PMUSMatcher([li.slug for li in listings])
+        return listings
+
+    def _pmus_ask(slug_: str, want_long: bool) -> float:
+        """The price to take now: the long ask, or 1 - long bid for the short leg
+        (verified equal to the venue's own shortQuote, 2026-08-12)."""
+        q = pmus_client.market(slug_)
+        if q is None:
+            return 0.0
+        if want_long:
+            return q.yes_ask
+        return (1.0 - q.yes_bid) if q.yes_bid > 0 else 0.0
 
     for t in tickets:
         slug = (t.get("slug") or "").strip().lower()
@@ -167,43 +290,49 @@ def build_bridge_tickets(tickets: list[dict], *, pmus_client=None, kalshi_fetch=
         if pmus_client is not None and f"{okey}:polymarket-us" not in skip:
             sig = slug_signature(slug)
             outcome = (t.get("outcome") or "").strip().lower()
+            counterpart, ask, status = "", 0.0, ""
             if sig is None:
-                note(okey, "polymarket-us", "no-signature")
-            elif outcome not in ("yes", "no"):
-                # bbo prices the Yes leg; an outcome named anything else (a team, a
-                # bracket) has no stated side on a binary quote. Refuse, don't guess.
-                note(okey, "polymarket-us", "outcome-not-yes-no")
-            else:
-                if matcher is None:
-                    matcher = PMUSMatcher(pmus_client.active_slugs())
+                status = "no-signature"
+            elif outcome in ("yes", "no"):
+                # Per-outcome markets (soccer's `...-ger`, `...-draw`): same slug
+                # shape both venues, so the exact signature matcher applies.
+                _load_listings()
                 counterpart = matcher.match(slug)
                 if counterpart is None:
-                    note(okey, "polymarket-us",
-                         "ambiguous" if sig in matcher.ambiguous else "no-counterpart")
+                    status = ("ambiguous" if sig in matcher.ambiguous
+                              else "no-counterpart")
                 else:
-                    q = pmus_client.market(counterpart)
-                    ask = 0.0
-                    if q is not None:
-                        # Buying NO takes the other side of the Yes book: pay 1 - bid.
-                        ask = q.yes_ask if outcome == "yes" else (
-                            (1.0 - q.yes_bid) if q.yes_bid > 0 else 0.0)
-                    if not 0.0 < ask < 1.0:
-                        note(okey, "polymarket-us", "no-ask")
-                    else:
-                        note(okey, "polymarket-us", "matched")
-                        out.append({
-                            "market_id": counterpart,
-                            "venue": "polymarket-us",
-                            "origin_market_id": t.get("market_id", ""),
-                            "outcome": t.get("outcome", ""),
-                            "title": t.get("title", ""),
-                            "url": f"https://polymarket.us/market/{counterpart}",
-                            "entry_price": round(ask, 4),
-                            "source": "whale-pmus",
-                            "_shown": True,
-                            "_maker": False,
-                            **_carry(t),
-                        })
+                    ask = _pmus_ask(counterpart, want_long=(outcome == "yes"))
+            else:
+                # Named outcomes (tennis, MLB/UFC moneylines): PM-US slugs use the
+                # venue's own abbreviations, so the match runs on side metadata.
+                hit, status = match_by_name(_load_listings(), slug,
+                                            t.get("outcome", ""))
+                if hit is not None:
+                    li, side = hit
+                    counterpart, status = li.slug, ""
+                    ask = _pmus_ask(li.slug, want_long=side["long"])
+            if not status and not 0.0 < ask < 1.0:
+                status = "no-ask"
+            if status:
+                note(okey, "polymarket-us", status)
+            else:
+                note(okey, "polymarket-us", "matched")
+                out.append({
+                    "market_id": counterpart,
+                    "venue": "polymarket-us",
+                    "origin_market_id": t.get("market_id", ""),
+                    # The INTL outcome name, verbatim: settlement compares it to the
+                    # origin market's winner, never to PM-US's own labels.
+                    "outcome": t.get("outcome", ""),
+                    "title": t.get("title", ""),
+                    "url": f"https://polymarket.us/market/{counterpart}",
+                    "entry_price": round(ask, 4),
+                    "source": "whale-pmus",
+                    "_shown": True,
+                    "_maker": False,
+                    **_carry(t),
+                })
 
         # --- Kalshi --------------------------------------------------------
         if kalshi_fetch is not None and f"{okey}:kalshi" not in skip:

@@ -15,9 +15,15 @@ from predictionedge.bridge import (
     permanent_skips,
     update_log,
 )
+import dataclasses
+
 from predictionedge.fees import trade_fee
 from predictionedge.papertrial import record, settle
-from predictionedge.polymarket_us import MockPolymarketUSClient, PMUSMarket
+from predictionedge.polymarket_us import (
+    MockPolymarketUSClient,
+    PMUSListing,
+    PMUSMarket,
+)
 
 
 def _ticket(**over):
@@ -121,11 +127,11 @@ def test_pmus_refusals_are_logged_not_guessed():
     okey = "0x" + "ab" * 32
     _, attempts = build_bridge_tickets(
         [_ticket(),
-         _ticket(outcome="Germany"),                 # not a yes/no leg
+         _ticket(outcome="Germany"),                 # named outcome, empty venue
          _ticket(slug="who-wins-the-election")],     # no game signature
         pmus_client=pmus)
     st = [a["status"] for a in attempts if a["venue"] == "polymarket-us"]
-    assert st == ["no-counterpart", "outcome-not-yes-no", "no-signature"]
+    assert st == ["no-counterpart", "no-counterpart", "no-signature"]
     assert okey + ":yes" in {a["origin_key"] for a in attempts}
 
 
@@ -141,6 +147,126 @@ def test_pmus_collision_refused_as_ambiguous():
         [_ticket(slug="mlb-bal-tex-2026-08-12", outcome="Yes")], pmus_client=pmus)
     assert tickets == []
     assert [a["status"] for a in attempts] == ["ambiguous"]
+
+
+# --- PM-US name matcher (tennis / moneylines) ------------------------------------
+
+# The live shape measured 2026-08-12: intl `atp-shevche-oconnel-2026-08-12` is
+# PM-US `aec-atp-aleshe-chroco-2026-08-12` - the slug tokens share NOTHING, and only
+# the side metadata (full names + venue abbreviations + the long flag) connects them.
+_TENNIS = PMUSListing(
+    slug="aec-atp-aleshe-chroco-2026-08-12",
+    question="Alexander Shevchenko vs. Christopher O'Connell",
+    outcomes=("Alexander Shevchenko", "Christopher O'Connell"),
+    sides=({"name": "Alexander Shevchenko", "abbr": "aleshe", "long": True},
+           {"name": "Christopher O'Connell", "abbr": "chroco", "long": False}),
+    game_start="2026-08-12T15:30:00Z",
+    market_type="tennis_match_winner",
+)
+
+
+def _tennis_ticket(**over):
+    base = {"slug": "atp-shevche-oconnel-2026-08-12",
+            "outcome": "Alexander Shevchenko",
+            "title": "Shevchenko vs. O'Connell"}
+    base.update(over)
+    return _ticket(**base)
+
+
+def _tennis_client(listings=None):
+    return MockPolymarketUSClient(
+        {"aec-atp-aleshe-chroco-2026-08-12": PMUSMarket(
+            "aec-atp-aleshe-chroco-2026-08-12", 0.37, 0.38, 0.36)},
+        listings=list(listings) if listings is not None else [_TENNIS])
+
+
+def test_pmus_name_match_long_side():
+    tickets, attempts = build_bridge_tickets([_tennis_ticket()],
+                                             pmus_client=_tennis_client())
+    assert [a["status"] for a in attempts] == ["matched"]
+    [t] = tickets
+    assert t["market_id"] == "aec-atp-aleshe-chroco-2026-08-12"
+    assert t["entry_price"] == 0.38            # long side: the ask
+    assert t["outcome"] == "Alexander Shevchenko"   # intl name kept for settlement
+    assert t["source"] == "whale-pmus"
+
+
+def test_pmus_name_match_short_side_pays_one_minus_bid():
+    # Apostrophe and truncation both live in this one: `oconnel` -> "O'Connell".
+    tickets, _ = build_bridge_tickets(
+        [_tennis_ticket(outcome="Christopher O'Connell")],
+        pmus_client=_tennis_client())
+    assert tickets[0]["entry_price"] == 0.63   # 1 - long bid == the venue shortQuote
+
+
+def test_pmus_name_match_refuses_non_winner_types():
+    # Identical sides hang off the games-spread market; the type gate must hold or a
+    # match bet gets routed onto a handicap contract.
+    spread = PMUSListing(slug="asc-atp-aleshe-chroco-2026-08-12-gs-neg-1pt5",
+                         question="cover -1.5?", outcomes=("Yes", "No"),
+                         sides=_TENNIS.sides, game_start=_TENNIS.game_start,
+                         market_type="tennis_match_games_spread")
+    _, attempts = build_bridge_tickets([_tennis_ticket()],
+                                       pmus_client=_tennis_client([spread]))
+    assert [a["status"] for a in attempts] == ["no-counterpart"]
+
+
+def test_pmus_name_match_refuses_two_survivors():
+    twin = dataclasses.replace(_TENNIS, slug="aec-atp-aleshe-chroco-2026-08-13")
+    _, attempts = build_bridge_tickets([_tennis_ticket()],
+                                       pmus_client=_tennis_client([_TENNIS, twin]))
+    assert [a["status"] for a in attempts] == ["ambiguous"]
+
+
+def test_pmus_name_match_respects_date_window():
+    far = dataclasses.replace(_TENNIS, game_start="2026-08-20T15:30:00Z",
+                              slug="aec-atp-aleshe-chroco-2026-08-20")
+    _, attempts = build_bridge_tickets([_tennis_ticket()],
+                                       pmus_client=_tennis_client([far]))
+    assert [a["status"] for a in attempts] == ["no-counterpart"]
+
+
+def test_pmus_name_match_outcome_unmapped_is_not_a_guess():
+    # Right game found, but the ticket's outcome ("Over 8.5") names no side: the
+    # market must NOT be matched on fragments alone.
+    mlb = PMUSListing(
+        slug="aec-mlb-sd-mil-2026-08-12", question="Padres vs Brewers",
+        outcomes=("San Diego Padres", "Milwaukee Brewers"),
+        sides=({"name": "San Diego Padres", "abbr": "sd", "long": True},
+               {"name": "Milwaukee Brewers", "abbr": "mil", "long": False}),
+        game_start="2026-08-12T23:00:00Z", market_type="baseball_team_full_game_winner")
+    client = MockPolymarketUSClient(
+        {"aec-mlb-sd-mil-2026-08-12": PMUSMarket("aec-mlb-sd-mil-2026-08-12",
+                                                 0.44, 0.46, 0.45)},
+        listings=[mlb])
+    _, attempts = build_bridge_tickets(
+        [_ticket(slug="mlb-mil-sd-2026-08-12-total-7pt5", outcome="Over")],
+        pmus_client=client)
+    assert [a["status"] for a in attempts] == ["outcome-unmapped"]
+
+    # And the moneyline itself, matched by venue abbreviation, does bridge.
+    tickets, attempts = build_bridge_tickets(
+        [_ticket(slug="mlb-mil-sd-2026-08-12", outcome="San Diego Padres")],
+        pmus_client=client)
+    assert [a["status"] for a in attempts] == ["matched"]
+    assert tickets[0]["entry_price"] == 0.46
+
+
+def test_pmus_name_match_strips_accents():
+    cina = PMUSListing(
+        slug="aec-atp-trisch-fedcin-2026-08-10",
+        question="Tristan Schoolkate vs. Federico Cina",
+        outcomes=("Tristan Schoolkate", "Federico Cina"),
+        sides=({"name": "Tristan Schoolkate", "abbr": "trisch", "long": True},
+               {"name": "Federico Cina", "abbr": "fedcin", "long": False}),
+        game_start="2026-08-12T18:00:00Z", market_type="tennis_match_winner")
+    client = MockPolymarketUSClient(
+        {cina.slug: PMUSMarket(cina.slug, 0.62, 0.64, 0.63)}, listings=[cina])
+    tickets, attempts = build_bridge_tickets(
+        [_ticket(slug="atp-school-cina-2026-08-12", outcome="Federico Cinà")],
+        pmus_client=client)
+    assert [a["status"] for a in attempts] == ["matched"]
+    assert tickets[0]["entry_price"] == 0.38   # short side: 1 - 0.62 bid
 
 
 # --- Kalshi adapter --------------------------------------------------------------
