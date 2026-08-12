@@ -1415,6 +1415,52 @@
       "end_iso": "2026-08-14T00:00:00+00:00",
       "event_iso": "2026-08-14T00:00:00+00:00",
       "fee": 1.65
+    },
+    {
+      "key": "KXHIGHCHI-26AUG13-B80.5:yes",
+      "opened_at": 1786547816.535378,
+      "market_id": "KXHIGHCHI-26AUG13-B80.5",
+      "venue": "kalshi",
+      "outcome": "Yes",
+      "title": "Will the high temp in Chicago be 80-81\u00b0 on Aug 13, 2026?",
+      "url": "https://kalshi.com/markets/KXHIGHCHI-26AUG13",
+      "price": 0.17,
+      "stake": 100.0,
+      "contracts": 588.2353,
+      "shown": true,
+      "source": "weather",
+      "conviction": null,
+      "n_wallets": null,
+      "whale_usd": null,
+      "drift_c": null,
+      "hours_to_resolve": null,
+      "liquidity": null,
+      "end_iso": "2026-08-14T00:00:00+00:00",
+      "event_iso": "2026-08-14T00:00:00+00:00",
+      "fee": 1.46
+    },
+    {
+      "key": "KXHIGHNY-26AUG13-B87.5:yes",
+      "opened_at": 1786547816.535378,
+      "market_id": "KXHIGHNY-26AUG13-B87.5",
+      "venue": "kalshi",
+      "outcome": "Yes",
+      "title": "Will the **high temp in NYC** be 87-88\u00b0 on Aug 13, 2026?",
+      "url": "https://kalshi.com/markets/KXHIGHNY-26AUG13",
+      "price": 0.11,
+      "stake": 100.0,
+      "contracts": 909.0909,
+      "shown": true,
+      "source": "weather",
+      "conviction": null,
+      "n_wallets": null,
+      "whale_usd": null,
+      "drift_c": null,
+      "hours_to_resolve": null,
+      "liquidity": null,
+      "end_iso": "2026-08-14T00:00:00+00:00",
+      "event_iso": "2026-08-14T00:00:00+00:00",
+      "fee": 1.56
     }
   ],
   "settled": [
@@ -3100,7 +3146,7 @@
       "DSR 0.860 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 63,
+    "open_positions": 65,
     "trial_days": 5.0,
     "by_source": {
       "weather": {
@@ -3109,7 +3155,7 @@
         "reasons": [
           "no settled bets"
         ],
-        "open_positions": 8
+        "open_positions": 10
       },
       "whale": {
         "n": 62,
@@ -3138,6 +3184,6 @@
       }
     }
   },
-  "generated": "2026-08-12 15:10:36",
+  "generated": "2026-08-12 15:17:03",
   "voided": []
 }
