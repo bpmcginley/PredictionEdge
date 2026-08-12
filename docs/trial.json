@@ -566,29 +566,6 @@
       "fee": 0.66
     },
     {
-      "key": "0x4e1434138cac7d693753977e6e7ca91f8562fb9148c8ec60b8021c1ee423fe0b:legacy",
-      "opened_at": 1786486837.9716296,
-      "market_id": "0x4e1434138cac7d693753977e6e7ca91f8562fb9148c8ec60b8021c1ee423fe0b",
-      "venue": "polymarket",
-      "outcome": "Legacy",
-      "title": "Counter-Strike: NIP vs Legacy (BO1) - Esports World Cup Group B",
-      "url": "https://polymarket.com/event/cs2-nip-lgc-2026-08-12",
-      "price": 0.575,
-      "stake": 100.0,
-      "contracts": 173.913,
-      "shown": true,
-      "source": "whale",
-      "conviction": 0.504,
-      "n_wallets": 1,
-      "whale_usd": 17241,
-      "drift_c": -0.5,
-      "hours_to_resolve": 15.2,
-      "liquidity": 207721,
-      "end_iso": "2026-08-12T19:30:00Z",
-      "event_iso": "2026-08-12 13:30:00+00",
-      "fee": 0.75
-    },
-    {
       "key": "0x9d89a919757fdc9d4df5a6415717c1934844987a49f660ae3f53d9d6b74cbe50:federico agustin gomez",
       "opened_at": 1786486837.9716296,
       "market_id": "0x9d89a919757fdc9d4df5a6415717c1934844987a49f660ae3f53d9d6b74cbe50",
@@ -1461,6 +1438,78 @@
       "end_iso": "2026-08-14T00:00:00+00:00",
       "event_iso": "2026-08-14T00:00:00+00:00",
       "fee": 1.56
+    },
+    {
+      "key": "0xaebf14d763675c3588bfebd8355ba428b9d068e3d4facfd76e859ae9d8e1ac92:no",
+      "opened_at": 1786550964.7351213,
+      "market_id": "0xaebf14d763675c3588bfebd8355ba428b9d068e3d4facfd76e859ae9d8e1ac92",
+      "venue": "polymarket",
+      "outcome": "No",
+      "title": "Will there be a run scored in the first inning?: Philadelphia Phillies vs. St. Louis Cardinals",
+      "url": "https://polymarket.com/event/mlb-phi-stl-2026-08-12",
+      "price": 0.55,
+      "stake": 100.0,
+      "contracts": 181.8182,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.498,
+      "n_wallets": 1,
+      "whale_usd": 11878,
+      "drift_c": -0.68,
+      "hours_to_resolve": 2.1,
+      "liquidity": 68778,
+      "end_iso": "2026-08-19T18:15:00Z",
+      "event_iso": "2026-08-12 18:15:00+00",
+      "origin_market_id": "",
+      "fee": 0.79
+    },
+    {
+      "key": "0x5e68ef759e8b9856972b1cbfd70803a2e449a394c77b7c3a778f52ce94ed4f4a:dino prizmic",
+      "opened_at": 1786550964.7351213,
+      "market_id": "0x5e68ef759e8b9856972b1cbfd70803a2e449a394c77b7c3a778f52ce94ed4f4a",
+      "venue": "polymarket",
+      "outcome": "Dino Prizmic",
+      "title": "Cincinnati Open: Cameron Norrie vs Dino Prizmic",
+      "url": "https://polymarket.com/event/atp-norrie-prizmic-2026-08-13",
+      "price": 0.405,
+      "stake": 100.0,
+      "contracts": 246.9136,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.418,
+      "n_wallets": 1,
+      "whale_usd": 5700,
+      "drift_c": 2.5,
+      "hours_to_resolve": 21.8,
+      "liquidity": 32420,
+      "end_iso": "2026-08-20T14:00:00Z",
+      "event_iso": "2026-08-13 14:00:00+00",
+      "origin_market_id": "",
+      "fee": 1.05
+    },
+    {
+      "key": "aec-wta-alikor-alicha-2026-08-13:alina charaeva",
+      "opened_at": 1786550964.7351213,
+      "market_id": "aec-wta-alikor-alicha-2026-08-13",
+      "venue": "polymarket-us",
+      "outcome": "Alina Charaeva",
+      "title": "Cincinnati Open, Qualification: Alina Korneeva vs Alina Charaeva",
+      "url": "https://polymarket.us/market/aec-wta-alikor-alicha-2026-08-13",
+      "price": 0.24,
+      "stake": 100.0,
+      "contracts": 416.6667,
+      "shown": true,
+      "source": "whale-pmus",
+      "conviction": 0.518,
+      "n_wallets": 1,
+      "whale_usd": 29260,
+      "drift_c": -1.31,
+      "hours_to_resolve": 0.8,
+      "liquidity": 213745,
+      "end_iso": "2026-08-19T17:00:00Z",
+      "event_iso": "2026-08-12 17:00:00+00",
+      "origin_market_id": "0x743f66a6ca70e0a18e98e318836427cf4f74605ee4b5ae333f8b62ca3d28e947",
+      "fee": 5.33
     }
   ],
   "settled": [
@@ -3121,32 +3170,60 @@
       "won": false,
       "pred": 0.405,
       "realized": -101.05
+    },
+    {
+      "key": "0x4e1434138cac7d693753977e6e7ca91f8562fb9148c8ec60b8021c1ee423fe0b:legacy",
+      "opened_at": 1786486837.9716296,
+      "market_id": "0x4e1434138cac7d693753977e6e7ca91f8562fb9148c8ec60b8021c1ee423fe0b",
+      "venue": "polymarket",
+      "outcome": "Legacy",
+      "title": "Counter-Strike: NIP vs Legacy (BO1) - Esports World Cup Group B",
+      "url": "https://polymarket.com/event/cs2-nip-lgc-2026-08-12",
+      "price": 0.575,
+      "stake": 100.0,
+      "contracts": 173.913,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.504,
+      "n_wallets": 1,
+      "whale_usd": 17241,
+      "drift_c": -0.5,
+      "hours_to_resolve": 15.2,
+      "liquidity": 207721,
+      "end_iso": "2026-08-12T19:30:00Z",
+      "event_iso": "2026-08-12 13:30:00+00",
+      "fee": 0.75,
+      "settled_at": 1786550982.5760162,
+      "winner": "Legacy",
+      "won": true,
+      "pred": 0.575,
+      "realized": 73.163
     }
   ],
   "stats": {
-    "n": 62,
-    "win_rate": 0.629,
-    "avg_predicted": 0.5413,
-    "calibration_gap": -0.0878,
-    "brier": 0.2099,
-    "total_pnl": 812.1,
-    "roi_on_stake": 0.131,
-    "mean_return": 0.131,
-    "sharpe_per_bet": 0.1399,
-    "psr_vs_zero": 0.8595,
-    "dsr": 0.8595,
+    "n": 63,
+    "win_rate": 0.6349,
+    "avg_predicted": 0.5418,
+    "calibration_gap": -0.0931,
+    "brier": 0.2094,
+    "total_pnl": 885.26,
+    "roi_on_stake": 0.1405,
+    "mean_return": 0.1405,
+    "sharpe_per_bet": 0.1508,
+    "psr_vs_zero": 0.8786,
+    "dsr": 0.8786,
     "implied_sr0": 0.0,
     "bootstrap_ci": [
-      -0.0237,
-      0.2852
+      -0.0183,
+      0.2884
     ],
-    "p_mean_le_0": 0.091,
+    "p_mean_le_0": 0.0725,
     "deploy": false,
     "reasons": [
-      "DSR 0.860 < 0.95",
+      "DSR 0.879 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 65,
+    "open_positions": 67,
     "trial_days": 5.0,
     "by_source": {
       "weather": {
@@ -3158,39 +3235,47 @@
         "open_positions": 10
       },
       "whale": {
-        "n": 62,
-        "win_rate": 0.629,
-        "avg_predicted": 0.5413,
-        "calibration_gap": -0.0878,
-        "brier": 0.2099,
-        "total_pnl": 812.1,
-        "roi_on_stake": 0.131,
-        "mean_return": 0.131,
-        "sharpe_per_bet": 0.1399,
-        "psr_vs_zero": 0.8595,
-        "dsr": 0.8595,
+        "n": 63,
+        "win_rate": 0.6349,
+        "avg_predicted": 0.5418,
+        "calibration_gap": -0.0931,
+        "brier": 0.2094,
+        "total_pnl": 885.26,
+        "roi_on_stake": 0.1405,
+        "mean_return": 0.1405,
+        "sharpe_per_bet": 0.1508,
+        "psr_vs_zero": 0.8786,
+        "dsr": 0.8786,
         "implied_sr0": 0.0,
         "bootstrap_ci": [
-          -0.0237,
-          0.2852
+          -0.0183,
+          0.2884
         ],
-        "p_mean_le_0": 0.091,
+        "p_mean_le_0": 0.0725,
         "deploy": false,
         "reasons": [
-          "DSR 0.860 < 0.95",
+          "DSR 0.879 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 55
+        "open_positions": 56
+      },
+      "whale-pmus": {
+        "n": 0,
+        "deploy": false,
+        "reasons": [
+          "no settled bets"
+        ],
+        "open_positions": 1
       }
     }
   },
-  "generated": "2026-08-12 15:28:42",
+  "generated": "2026-08-12 16:09:42",
   "voided": [],
   "bridge": {
     "log": {
       "0xc33f1686421237eb205f827b45d8947e067816c15f67f2c2f22726b04de1d192:over": {
-        "polymarket-us": "outcome-not-yes-no",
-        "ts": 1786548518.4,
+        "polymarket-us": "outcome-unmapped",
+        "ts": 1786550964.7,
         "kalshi": "outcome-not-a-team"
       },
       "0x987f24d77f17d9086dabc50d1d6680121be6279f55522f3c58298fc9e1c14fa5:rafael jodar": {
@@ -3202,15 +3287,45 @@
         "polymarket-us": "outcome-not-yes-no",
         "ts": 1786548518.4,
         "kalshi": "no-series"
+      },
+      "0x3dd97c070ee813453634f553b89912075ee9e76cc1ceaa403e86dfc8d332cfb3:100 thieves": {
+        "polymarket-us": "no-signature",
+        "ts": 1786550964.7,
+        "kalshi": "no-signature"
+      },
+      "0x0ac031b4eb98e3adc6d0a1f9bc7acf62762a01dc5f0805537dfb84afe6a052ce:astralis": {
+        "polymarket-us": "no-signature",
+        "ts": 1786550964.7,
+        "kalshi": "no-signature"
+      },
+      "0x743f66a6ca70e0a18e98e318836427cf4f74605ee4b5ae333f8b62ca3d28e947:alina charaeva": {
+        "polymarket-us": "matched",
+        "ts": 1786550964.7,
+        "kalshi": "no-series"
+      },
+      "0xaebf14d763675c3588bfebd8355ba428b9d068e3d4facfd76e859ae9d8e1ac92:no": {
+        "polymarket-us": "no-counterpart",
+        "ts": 1786550964.7,
+        "kalshi": "outcome-not-a-team"
+      },
+      "0x0a061d09daa5ac4221fa7ea0d7abf84ab2ac42af0817a001d4c0dd3262be2cd8:yes": {
+        "polymarket-us": "no-signature",
+        "ts": 1786550964.7,
+        "kalshi": "no-signature"
       }
     },
     "summary": {
       "polymarket-us": {
-        "outcome-not-yes-no": 3
+        "outcome-unmapped": 1,
+        "outcome-not-yes-no": 2,
+        "no-signature": 3,
+        "matched": 1,
+        "no-counterpart": 1
       },
       "kalshi": {
-        "outcome-not-a-team": 1,
-        "no-series": 2
+        "outcome-not-a-team": 2,
+        "no-series": 3,
+        "no-signature": 3
       }
     }
   }
