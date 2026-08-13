@@ -1693,6 +1693,78 @@
       "event_iso": "2026-08-13 16:00:00+00",
       "origin_market_id": "0xa0a54b010859ead8699e2eaa8592be593239a0e35774ad4088c892bb93c5b316",
       "fee": 3.22
+    },
+    {
+      "key": "0xe4886441add1403fb483187e9457f7fa88f0650176a1d145bd732c2afc6497c7:m80",
+      "opened_at": 1786617541.8781798,
+      "market_id": "0xe4886441add1403fb483187e9457f7fa88f0650176a1d145bd732c2afc6497c7",
+      "venue": "polymarket",
+      "outcome": "M80",
+      "title": "Counter-Strike: Aurora Gaming vs M80 (BO3) - Esports World Cup Group A",
+      "url": "https://polymarket.com/event/cs2-aur1-m80-2026-08-13",
+      "price": 0.275,
+      "stake": 100.0,
+      "contracts": 363.6364,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.477,
+      "n_wallets": 1,
+      "whale_usd": 20000,
+      "drift_c": -0.5,
+      "hours_to_resolve": 3.4,
+      "liquidity": 203530,
+      "end_iso": "2026-08-13T20:00:00Z",
+      "event_iso": "2026-08-13 14:00:00+00",
+      "origin_market_id": "",
+      "fee": 1.28
+    },
+    {
+      "key": "0x4583ae29998115189eebd272995745bfde282fcabacbad9c46a017ee6fd5dd30:marton fucsovics",
+      "opened_at": 1786617541.8781798,
+      "market_id": "0x4583ae29998115189eebd272995745bfde282fcabacbad9c46a017ee6fd5dd30",
+      "venue": "polymarket",
+      "outcome": "Marton Fucsovics",
+      "title": "Cincinnati Open: Marton Fucsovics vs Terence Atmane",
+      "url": "https://polymarket.com/event/atp-fucsovi-atmane-2026-08-13",
+      "price": 0.355,
+      "stake": 100.0,
+      "contracts": 281.6901,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.467,
+      "n_wallets": 1,
+      "whale_usd": 13723,
+      "drift_c": 0.5,
+      "hours_to_resolve": 8.9,
+      "liquidity": 75152,
+      "end_iso": "2026-08-20T14:00:00Z",
+      "event_iso": "2026-08-13 19:30:00+00",
+      "origin_market_id": "",
+      "fee": 1.13
+    },
+    {
+      "key": "aec-atp-marfuc-teratm-2026-08-13:marton fucsovics",
+      "opened_at": 1786617541.8781798,
+      "market_id": "aec-atp-marfuc-teratm-2026-08-13",
+      "venue": "polymarket-us",
+      "outcome": "Marton Fucsovics",
+      "title": "Cincinnati Open: Marton Fucsovics vs Terence Atmane",
+      "url": "https://polymarket.us/market/aec-atp-marfuc-teratm-2026-08-13",
+      "price": 0.36,
+      "stake": 100.0,
+      "contracts": 277.7778,
+      "shown": true,
+      "source": "whale-pmus",
+      "conviction": 0.467,
+      "n_wallets": 1,
+      "whale_usd": 13723,
+      "drift_c": 0.5,
+      "hours_to_resolve": 8.9,
+      "liquidity": 75152,
+      "end_iso": "2026-08-20T14:00:00Z",
+      "event_iso": "2026-08-13 19:30:00+00",
+      "origin_market_id": "0x4583ae29998115189eebd272995745bfde282fcabacbad9c46a017ee6fd5dd30",
+      "fee": 4.49
     }
   ],
   "settled": [
@@ -5252,7 +5324,7 @@
       "DSR 0.762 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 73,
+    "open_positions": 76,
     "trial_days": 5.7,
     "by_source": {
       "weather": {
@@ -5286,7 +5358,7 @@
           "DSR 0.753 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 57
+        "open_positions": 59
       },
       "whale-pmus": {
         "n": 9,
@@ -5311,11 +5383,11 @@
           "n=9 < min_n=30",
           "DSR 0.570 < 0.95"
         ],
-        "open_positions": 6
+        "open_positions": 7
       }
     }
   },
-  "generated": "2026-08-13 09:21:13",
+  "generated": "2026-08-13 10:39:41",
   "voided": [],
   "bridge": {
     "log": {
@@ -5521,7 +5593,7 @@
       },
       "0xc04094452b0386a73a9a6e07da0370fffb2722e05c837a5246b88c914e78b79f:islam makhachev": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786612848.7,
+        "ts": 1786617541.9,
         "kalshi": "no-series"
       },
       "0xf2cafdf9c307fbc34fd47c617ebfeb713d5a7750c85e33041f18bd9171ab5c81:toronto blue jays": {
@@ -5558,21 +5630,36 @@
         "polymarket-us": "no-signature",
         "ts": 1786612848.7,
         "kalshi": "no-signature"
+      },
+      "0xf8ff725f2038965f1c85efb0aa084dd82b1b82a51c2e7b27d31fe6578dad1983:spirit": {
+        "polymarket-us": "no-signature",
+        "ts": 1786617541.9,
+        "kalshi": "no-signature"
+      },
+      "0xe4886441add1403fb483187e9457f7fa88f0650176a1d145bd732c2afc6497c7:m80": {
+        "polymarket-us": "no-signature",
+        "ts": 1786617541.9,
+        "kalshi": "no-signature"
+      },
+      "0x4583ae29998115189eebd272995745bfde282fcabacbad9c46a017ee6fd5dd30:marton fucsovics": {
+        "polymarket-us": "matched",
+        "ts": 1786617541.9,
+        "kalshi": "no-series"
       }
     },
     "summary": {
       "polymarket-us": {
         "outcome-unmapped": 6,
-        "matched": 15,
+        "matched": 16,
         "outcome-not-yes-no": 1,
-        "no-signature": 11,
+        "no-signature": 13,
         "no-counterpart": 12,
         "ambiguous": 3
       },
       "kalshi": {
         "outcome-not-a-team": 12,
-        "no-series": 25,
-        "no-signature": 11
+        "no-series": 26,
+        "no-signature": 13
       }
     }
   }
