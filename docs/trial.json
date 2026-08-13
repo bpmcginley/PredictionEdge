@@ -1429,6 +1429,102 @@
       "event_iso": "2026-08-13 07:00:00+00",
       "origin_market_id": "",
       "fee": 1.01
+    },
+    {
+      "key": "0xf2cafdf9c307fbc34fd47c617ebfeb713d5a7750c85e33041f18bd9171ab5c81:toronto blue jays",
+      "opened_at": 1786607809.7778645,
+      "market_id": "0xf2cafdf9c307fbc34fd47c617ebfeb713d5a7750c85e33041f18bd9171ab5c81",
+      "venue": "polymarket",
+      "outcome": "Toronto Blue Jays",
+      "title": "Boston Red Sox vs. Toronto Blue Jays",
+      "url": "https://polymarket.com/event/mlb-bos-tor-2026-08-13",
+      "price": 0.405,
+      "stake": 100.0,
+      "contracts": 246.9136,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.507,
+      "n_wallets": 1,
+      "whale_usd": 29954,
+      "drift_c": 0.5,
+      "hours_to_resolve": 11.2,
+      "liquidity": 178877,
+      "end_iso": "2026-08-20T19:07:00Z",
+      "event_iso": "2026-08-13 19:07:00+00",
+      "origin_market_id": "",
+      "fee": 1.05
+    },
+    {
+      "key": "0x258b7478bbc5bd518ed41dc5c52fc493945125753cda05801abd93f5bc3142ad:yes",
+      "opened_at": 1786607809.7778645,
+      "market_id": "0x258b7478bbc5bd518ed41dc5c52fc493945125753cda05801abd93f5bc3142ad",
+      "venue": "polymarket",
+      "outcome": "Yes",
+      "title": "Will CF Am\u00e9rica win on 2026-08-13?",
+      "url": "https://polymarket.com/event/lec-ame-aus-2026-08-13",
+      "price": 0.44,
+      "stake": 100.0,
+      "contracts": 227.2727,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.388,
+      "n_wallets": 1,
+      "whale_usd": 5000,
+      "drift_c": 1.0,
+      "hours_to_resolve": 16.6,
+      "liquidity": 28860,
+      "end_iso": "2026-08-14T00:30:00Z",
+      "event_iso": "2026-08-14 00:30:00+00",
+      "origin_market_id": "",
+      "fee": 0.98
+    },
+    {
+      "key": "0xef3a95c29d4750a22ec450b6e37aff1cf1b2bda1e21a752cfcc14d482e5ea651:bnk fearx",
+      "opened_at": 1786607809.7778645,
+      "market_id": "0xef3a95c29d4750a22ec450b6e37aff1cf1b2bda1e21a752cfcc14d482e5ea651",
+      "venue": "polymarket",
+      "outcome": "BNK FEARX",
+      "title": "LoL: Kiwoom DRX vs BNK FEARX (BO3) - LCK Round 3-4 Rise Group",
+      "url": "https://polymarket.com/event/lol-drx-fox1-2026-08-13",
+      "price": 0.585,
+      "stake": 100.0,
+      "contracts": 170.9402,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.375,
+      "n_wallets": 1,
+      "whale_usd": 20000,
+      "drift_c": 0.5,
+      "hours_to_resolve": 0.1,
+      "liquidity": 334157,
+      "end_iso": "2026-08-13T14:00:00Z",
+      "event_iso": "2026-08-13 08:00:00+00",
+      "origin_market_id": "",
+      "fee": 0.73
+    },
+    {
+      "key": "aec-mlb-bos-tor-2026-08-13:toronto blue jays",
+      "opened_at": 1786607809.7778645,
+      "market_id": "aec-mlb-bos-tor-2026-08-13",
+      "venue": "polymarket-us",
+      "outcome": "Toronto Blue Jays",
+      "title": "Boston Red Sox vs. Toronto Blue Jays",
+      "url": "https://polymarket.us/market/aec-mlb-bos-tor-2026-08-13",
+      "price": 0.405,
+      "stake": 100.0,
+      "contracts": 246.9136,
+      "shown": true,
+      "source": "whale-pmus",
+      "conviction": 0.507,
+      "n_wallets": 1,
+      "whale_usd": 29954,
+      "drift_c": 0.5,
+      "hours_to_resolve": 11.2,
+      "liquidity": 178877,
+      "end_iso": "2026-08-20T19:07:00Z",
+      "event_iso": "2026-08-13 19:07:00+00",
+      "origin_market_id": "0xf2cafdf9c307fbc34fd47c617ebfeb713d5a7750c85e33041f18bd9171ab5c81",
+      "fee": 4.17
     }
   ],
   "settled": [
@@ -4901,7 +4997,7 @@
       "DSR 0.841 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 62,
+    "open_positions": 66,
     "trial_days": 5.6,
     "by_source": {
       "weather": {
@@ -4935,7 +5031,7 @@
           "DSR 0.812 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 48
+        "open_positions": 51
       },
       "whale-pmus": {
         "n": 8,
@@ -4961,11 +5057,11 @@
           "DSR 0.683 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 4
+        "open_positions": 5
       }
     }
   },
-  "generated": "2026-08-13 06:07:42",
+  "generated": "2026-08-13 07:57:30",
   "voided": [],
   "bridge": {
     "log": {
@@ -5131,7 +5227,7 @@
       },
       "0x3a128e0a8ffd4b487c52237eae1fbafde68edaeec9a38d33c2375f7cd6140f69:hanwha life esports": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786578685.9,
+        "ts": 1786607809.8,
         "kalshi": "no-series"
       },
       "0x86a9832b1419b130bfe2477ba7fb51dbab31c8634b505c56edcde1f8709220f6:ella seidel": {
@@ -5171,21 +5267,26 @@
       },
       "0xc04094452b0386a73a9a6e07da0370fffb2722e05c837a5246b88c914e78b79f:islam makhachev": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786601232.4,
+        "ts": 1786607809.8,
         "kalshi": "no-series"
+      },
+      "0xf2cafdf9c307fbc34fd47c617ebfeb713d5a7750c85e33041f18bd9171ab5c81:toronto blue jays": {
+        "polymarket-us": "matched",
+        "ts": 1786607809.8,
+        "kalshi": "outcome-not-a-team"
       }
     },
     "summary": {
       "polymarket-us": {
         "outcome-unmapped": 6,
-        "matched": 12,
+        "matched": 13,
         "outcome-not-yes-no": 1,
         "no-signature": 9,
         "no-counterpart": 11,
         "ambiguous": 2
       },
       "kalshi": {
-        "outcome-not-a-team": 11,
+        "outcome-not-a-team": 12,
         "no-series": 21,
         "no-signature": 9
       }
