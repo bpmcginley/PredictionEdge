@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-13 10:39:43",
+  "generated": "2026-08-13 11:34:14",
   "rows": {
     "KXHIGHCHI:2026-08-11": {
       "city": "Chicago Midway, IL",
@@ -20,6 +20,8 @@
       "settles_by": "https://forecast.weather.gov/product.php?site=LOT&product=CLI&issuedby=MDW"
     },
     "KXHIGHCHI:2026-08-12": {
+      "bracket_cap": 83,
+      "bracket_floor": 82,
       "city": "Chicago Midway, IL",
       "day": "2026-08-12",
       "event_ticker": "KXHIGHCHI-26AUG12",
@@ -31,9 +33,10 @@
       "last_market_mu_f": 82.53,
       "last_market_sigma_f": 0.65,
       "last_seen_at": 1786595544.3345232,
-      "observed_bracket": null,
-      "observed_f": null,
-      "resolved_at": null,
+      "observed_bracket": "82\u00b0 to 83\u00b0",
+      "observed_f": 83.0,
+      "observed_src": "cli",
+      "resolved_at": 1786620852.8162818,
       "series": "KXHIGHCHI",
       "settles_by": "https://forecast.weather.gov/product.php?site=LOT&product=CLI&issuedby=MDW"
     },
@@ -46,9 +49,9 @@
       "first_market_sigma_f": 2.62,
       "first_seen_at": 1786543718.0785594,
       "last_forecast_f": 80.0,
-      "last_market_mu_f": 80.69,
-      "last_market_sigma_f": 1.55,
-      "last_seen_at": 1786617581.353054,
+      "last_market_mu_f": 79.8,
+      "last_market_sigma_f": 1.76,
+      "last_seen_at": 1786620852.0144897,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -74,6 +77,8 @@
       "settles_by": "https://forecast.weather.gov/product.php?site=BOU&product=CLI&issuedby=DEN"
     },
     "KXHIGHDEN:2026-08-12": {
+      "bracket_cap": null,
+      "bracket_floor": 94,
       "city": "Denver, CO",
       "day": "2026-08-12",
       "event_ticker": "KXHIGHDEN-26AUG12",
@@ -85,9 +90,10 @@
       "last_market_mu_f": 95.84,
       "last_market_sigma_f": 1.12,
       "last_seen_at": 1786601262.728395,
-      "observed_bracket": null,
-      "observed_f": null,
-      "resolved_at": null,
+      "observed_bracket": "95\u00b0 or above",
+      "observed_f": 96.0,
+      "observed_src": "cli",
+      "resolved_at": 1786620852.8162818,
       "series": "KXHIGHDEN",
       "settles_by": "https://forecast.weather.gov/product.php?site=BOU&product=CLI&issuedby=DEN"
     },
@@ -100,9 +106,9 @@
       "first_market_sigma_f": null,
       "first_seen_at": 1786543718.0785594,
       "last_forecast_f": 95.0,
-      "last_market_mu_f": 80.6,
-      "last_market_sigma_f": 2.39,
-      "last_seen_at": 1786617581.353054,
+      "last_market_mu_f": 80.47,
+      "last_market_sigma_f": 2.32,
+      "last_seen_at": 1786620852.0144897,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -128,6 +134,8 @@
       "settles_by": "https://forecast.weather.gov/product.php?site=MFL&product=CLI&issuedby=MIA"
     },
     "KXHIGHMIA:2026-08-12": {
+      "bracket_cap": 94,
+      "bracket_floor": 93,
       "city": "Miami International Airport",
       "day": "2026-08-12",
       "event_ticker": "KXHIGHMIA-26AUG12",
@@ -139,9 +147,10 @@
       "last_market_mu_f": 93.47,
       "last_market_sigma_f": 0.65,
       "last_seen_at": 1786595544.3345232,
-      "observed_bracket": null,
-      "observed_f": null,
-      "resolved_at": null,
+      "observed_bracket": "93\u00b0 to 94\u00b0",
+      "observed_f": 93.5,
+      "observed_src": "bracket",
+      "resolved_at": 1786620852.8162818,
       "series": "KXHIGHMIA",
       "settles_by": "https://forecast.weather.gov/product.php?site=MFL&product=CLI&issuedby=MIA"
     },
@@ -154,9 +163,9 @@
       "first_market_sigma_f": 1.87,
       "first_seen_at": 1786543718.0785594,
       "last_forecast_f": 92.0,
-      "last_market_mu_f": 93.12,
-      "last_market_sigma_f": 1.46,
-      "last_seen_at": 1786617581.353054,
+      "last_market_mu_f": 93.01,
+      "last_market_sigma_f": 1.44,
+      "last_seen_at": 1786620852.0144897,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -183,6 +192,8 @@
       "settles_by": "https://forecast.weather.gov/product.php?site=OKX&product=CLI&issuedby=NYC"
     },
     "KXHIGHNY:2026-08-12": {
+      "bracket_cap": 84,
+      "bracket_floor": 83,
       "city": "Central Park, New York",
       "day": "2026-08-12",
       "event_ticker": "KXHIGHNY-26AUG12",
@@ -194,9 +205,10 @@
       "last_market_mu_f": 83.59,
       "last_market_sigma_f": 0.81,
       "last_seen_at": 1786595544.3345232,
-      "observed_bracket": null,
-      "observed_f": null,
-      "resolved_at": null,
+      "observed_bracket": "83\u00b0 to 84\u00b0",
+      "observed_f": 84.0,
+      "observed_src": "cli",
+      "resolved_at": 1786620852.8162818,
       "series": "KXHIGHNY",
       "settles_by": "https://forecast.weather.gov/product.php?site=OKX&product=CLI&issuedby=NYC"
     },
@@ -209,9 +221,9 @@
       "first_market_sigma_f": 2.41,
       "first_seen_at": 1786543718.0785594,
       "last_forecast_f": 86.0,
-      "last_market_mu_f": 84.08,
-      "last_market_sigma_f": 1.64,
-      "last_seen_at": 1786617581.353054,
+      "last_market_mu_f": 84.12,
+      "last_market_sigma_f": 1.67,
+      "last_seen_at": 1786620852.0144897,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -221,31 +233,31 @@
   },
   "summary": {
     "KXHIGHCHI": {
-      "bias_f": -0.5,
+      "bias_f": -0.75,
       "city": "Chicago Midway, IL",
-      "mae_f": 0.5,
-      "n": 1,
-      "sigma_f": 0.0
+      "mae_f": 0.75,
+      "n": 2,
+      "sigma_f": 0.35
     },
     "KXHIGHDEN": {
-      "bias_f": -0.5,
+      "bias_f": -1.25,
       "city": "Denver, CO",
-      "mae_f": 0.5,
-      "n": 1,
-      "sigma_f": 0.0
+      "mae_f": 1.25,
+      "n": 2,
+      "sigma_f": 1.06
     },
     "KXHIGHMIA": {
-      "bias_f": -2.5,
+      "bias_f": -1.5,
       "city": "Miami International Airport",
-      "mae_f": 2.5,
-      "n": 1,
-      "sigma_f": 0.0
+      "mae_f": 1.5,
+      "n": 2,
+      "sigma_f": 1.41
     },
     "KXHIGHNY": {
       "bias_f": 3.0,
       "city": "Central Park, New York",
       "mae_f": 3.0,
-      "n": 1,
+      "n": 2,
       "sigma_f": 0.0
     }
   }
