@@ -58,10 +58,12 @@ LOST_AT = 0.01
 
 DEFAULT_STAKE = 100.0
 
-# The weather model's own inputs, carried verbatim onto the row when the ticket has
-# them. Without these the trial can prove the sleeve wins or loses but never WHY -
-# `model_prob` against `won` is the calibration check the sleeve exists to earn, and
+# The model sleeves' own inputs, carried verbatim onto the row when the ticket has
+# them. Without these the trial can prove a sleeve wins or loses but never WHY -
+# `model_prob` against `won` is the calibration check each sleeve exists to earn, and
 # a trial that drops it can validate the picks while leaving the model unfalsifiable.
+# Weather fields (`*_f`) and gas fields (aaa_*, drift, sigma, forecast, lr_tilt,
+# market_mu, market_sigma) never collide, so one spread list serves both.
 MODEL_FIELDS = ("model_prob", "edge", "forecast_f", "sigma_f", "market_mu_f",
                 "market_sigma_f", "days_ahead", "market_prob", "model", "city",
                 "forecast_src", "nbm_cycle", "nbm_sd_f", "forecast_grid_f",
@@ -72,7 +74,9 @@ MODEL_FIELDS = ("model_prob", "edge", "forecast_f", "sigma_f", "market_mu_f",
                 # Sports de-vig A/B: fair value under every method plus which one
                 # was operative, so the trial can score multiplicative vs power vs
                 # Shin from ONE run instead of needing a trial per method.
-                "fair_mult", "fair_power", "fair_shin", "devig_method")
+                "fair_mult", "fair_power", "fair_shin", "devig_method",
+                "aaa_today", "aaa_target_date", "drift", "sigma", "forecast",
+                "lr_tilt", "market_mu", "market_sigma")
 
 
 def venue_of(row: dict) -> str:
@@ -465,9 +469,13 @@ def main(argv: list[str] | None = None) -> int:
     # rather than a hand-set conviction cutoff that needs validating from both sides.
     # Weather rows also override the trial-wide maker default: their entry IS the ask,
     # so the honest fee is the taker fee - see `retag_weather_fees`.
+    # Gas rows enter exactly as weather rows do: already filtered to what cleared
+    # their own modelled edge bar (so every row is `_shown`), and their entry IS the
+    # ask, so the honest fee is the taker fee.
     flow = [{**t, "_shown": True} for t in (board.get("tickets") or [])] + \
            [{**t, "_shown": False} for t in (board.get("probe") or [])] + \
-           [{**t, "_shown": True, "_maker": False} for t in (board.get("weather") or [])]
+           [{**t, "_shown": True, "_maker": False} for t in (board.get("weather") or [])] + \
+           [{**t, "_shown": True, "_maker": False} for t in (board.get("gas") or [])]
 
     # Maker-first: this run's board IS the next 15-minute snapshot of every market a
     # pending order is resting in, so pending orders are checked against it BEFORE new

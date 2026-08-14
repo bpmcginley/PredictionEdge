@@ -291,6 +291,17 @@ class Config:
     maker_max_polls: int = 8
     maker_fallback_taker: bool = False
 
+    # --- AAA national gas price markets on Kalshi (paper-only research sleeve) ---
+    # The weather sleeve's architecture pointed at gasprices.aaa.com (see gas.py).
+    # `gas_min_edge` sits ON TOP of the taker fee, which gas.py charges explicitly.
+    gas_enabled: bool = True
+    gas_min_edge: float = 0.05
+    gas_max_days: float = 2.0
+    gas_ewma_window: int = 5        # span of the EWMA drift over daily deltas
+    gas_sigma_window: int = 10      # how many recent deltas the sigma is fit on
+    gas_sigma_floor: float = 0.0015  # dollars (0.15c): sparse history can't imply certainty
+    gas_min_deltas: int = 3         # observed daily moves required before any ticket
+
     # --- Paper trading / backtest dataset ---
     paper_ledger_path: str = "data/paper_ledger.jsonl"
     settled_path: str = "data/settled_bets.jsonl"   # labeled bets for the backtest
@@ -440,6 +451,13 @@ class Config:
             maker_max_polls=int(f("PE_MAKER_MAX_POLLS", cls.maker_max_polls)),
             maker_fallback_taker=_truthy(e.get("PE_MAKER_FALLBACK_TAKER"),
                                          cls.maker_fallback_taker),
+            gas_enabled=_truthy(e.get("PE_GAS_ENABLED"), cls.gas_enabled),
+            gas_min_edge=f("PE_GAS_MIN_EDGE", cls.gas_min_edge),
+            gas_max_days=f("PE_GAS_MAX_DAYS", cls.gas_max_days),
+            gas_ewma_window=int(f("PE_GAS_EWMA_WINDOW", cls.gas_ewma_window)),
+            gas_sigma_window=int(f("PE_GAS_SIGMA_WINDOW", cls.gas_sigma_window)),
+            gas_sigma_floor=f("PE_GAS_SIGMA_FLOOR", cls.gas_sigma_floor),
+            gas_min_deltas=int(f("PE_GAS_MIN_DELTAS", cls.gas_min_deltas)),
             paper_ledger_path=e.get("PE_PAPER_LEDGER", cls.paper_ledger_path),
             settled_path=e.get("PE_SETTLED_PATH", cls.settled_path),
         )
