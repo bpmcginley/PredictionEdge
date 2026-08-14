@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-14 22:01:02",
-  "generated_at": 1786744862.9945366,
+  "generated": "2026-08-14 22:42:47",
+  "generated_at": 1786747367.2772846,
   "account_size": 100000.0,
   "tickets": [
     {
@@ -11,15 +11,15 @@
       "entry_price": 0.765,
       "whale_price": 0.769,
       "drift_c": -0.42,
-      "contracts": 769,
-      "cost": 588.28,
-      "max_payout": 769.0,
-      "conviction": 0.589,
-      "hours_to_resolve": 23.0,
+      "contracts": 722,
+      "cost": 552.33,
+      "max_payout": 722.0,
+      "conviction": 0.553,
+      "hours_to_resolve": 22.3,
       "n_wallets": 1,
       "whale_usd": 95534,
-      "minutes_ago": 79,
-      "liquidity": 225372,
+      "minutes_ago": 121,
+      "liquidity": 247576,
       "url": "https://polymarket.com/event/ufc-isl-ian1-2026-08-15",
       "end_iso": "2026-08-16T03:59:59.999Z",
       "event_iso": "2026-08-15 21:00:00+00",
@@ -28,10 +28,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$95,534, 98% of their own book",
-        "latest buy 79 min ago",
+        "latest buy 121 min ago",
         "still near their entry price",
-        "23h until it resolves",
-        "$225,372 liquidity"
+        "22h until it resolves",
+        "$247,576 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
@@ -46,15 +46,15 @@
       "entry_price": 0.605,
       "whale_price": 0.609,
       "drift_c": -0.36,
-      "contracts": 915,
-      "cost": 553.57,
-      "max_payout": 915.0,
-      "conviction": 0.554,
-      "hours_to_resolve": 1.2,
+      "contracts": 856,
+      "cost": 517.88,
+      "max_payout": 856.0,
+      "conviction": 0.518,
+      "hours_to_resolve": 0.5,
       "n_wallets": 1,
       "whale_usd": 41077,
-      "minutes_ago": 13,
-      "liquidity": 509077,
+      "minutes_ago": 55,
+      "liquidity": 542878,
       "url": "https://polymarket.com/event/mlb-bal-tb-2026-08-14",
       "end_iso": "2026-08-21T23:10:00Z",
       "event_iso": "2026-08-14 23:10:00+00",
@@ -63,32 +63,102 @@
       "why": [
         "1 profitable wallet on this side",
         "$41,077, 100% of their own book",
-        "latest buy 13 min ago",
+        "latest buy 55 min ago",
         "still near their entry price",
-        "1h until it resolves",
-        "$509,077 liquidity"
+        "0h until it resolves",
+        "$542,878 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     },
     {
+      "market_id": "0x68f4414fec7cfde3da92b1830df7a7b6815c281626b83d6ee24ceba3af6dd38e",
+      "title": "New York Yankees vs. Toronto Blue Jays",
+      "side_label": "New York Yankees \u2014 New York Yankees vs. Toronto Blue Jays",
+      "outcome": "New York Yankees",
+      "entry_price": 0.575,
+      "whale_price": 0.58,
+      "drift_c": -0.5,
+      "contracts": 880,
+      "cost": 506.0,
+      "max_payout": 880.0,
+      "conviction": 0.506,
+      "hours_to_resolve": 0.5,
+      "n_wallets": 1,
+      "whale_usd": 20690,
+      "minutes_ago": 30,
+      "liquidity": 799709,
+      "url": "https://polymarket.com/event/mlb-nyy-tor-2026-08-14",
+      "end_iso": "2026-08-21T23:15:00Z",
+      "event_iso": "2026-08-14 23:15:00+00",
+      "slug": "mlb-nyy-tor-2026-08-14",
+      "signal_ts": 1786745539.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$20,690, 100% of their own book",
+        "latest buy 30 min ago",
+        "still near their entry price",
+        "1h until it resolves",
+        "$799,709 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x2dacd33f3a1d0f49bc6a1898868214635a168237edd94ea4d5c2513db8325b95",
+      "title": "Ethereum Up or Down on August 15?",
+      "side_label": "Down \u2014 Ethereum Up or Down on August 15?",
+      "outcome": "Down",
+      "entry_price": 0.56,
+      "whale_price": 0.64,
+      "drift_c": -8.0,
+      "contracts": 871,
+      "cost": 487.76,
+      "max_payout": 871.0,
+      "conviction": 0.488,
+      "hours_to_resolve": 17.3,
+      "n_wallets": 1,
+      "whale_usd": 4000,
+      "minutes_ago": 25,
+      "liquidity": 14836,
+      "url": "https://polymarket.com/event/ethereum-up-or-down-on-august-15-2026",
+      "end_iso": "2026-08-15T16:00:00Z",
+      "event_iso": "",
+      "slug": "ethereum-up-or-down-on-august-15-2026",
+      "signal_ts": 1786745847.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$4,000, 56% of their own book",
+        "latest buy 25 min ago",
+        "price 8.0c cheaper than they paid",
+        "17h until it resolves"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    }
+  ],
+  "probe": [
+    {
       "market_id": "0x9a9d3bfbb23acafb8c574adba6bcacc7faffc1b9666b341b26112a94604930e3",
       "title": "Colorado Rockies vs. San Francisco Giants",
       "side_label": "San Francisco Giants \u2014 Colorado Rockies vs. San Francisco Giants",
       "outcome": "San Francisco Giants",
-      "entry_price": 0.545,
+      "entry_price": 0.555,
       "whale_price": 0.55,
-      "drift_c": -0.5,
-      "contracts": 900,
-      "cost": 490.5,
-      "max_payout": 900.0,
-      "conviction": 0.491,
-      "hours_to_resolve": 4.2,
+      "drift_c": 0.5,
+      "contracts": 789,
+      "cost": 437.9,
+      "max_payout": 789.0,
+      "conviction": 0.438,
+      "hours_to_resolve": 3.5,
       "n_wallets": 1,
       "whale_usd": 11418,
-      "minutes_ago": 7,
-      "liquidity": 372217,
+      "minutes_ago": 49,
+      "liquidity": 424607,
       "url": "https://polymarket.com/event/mlb-col-sf-2026-08-14",
       "end_iso": "2026-08-22T02:15:00Z",
       "event_iso": "2026-08-15 02:15:00+00",
@@ -97,10 +167,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$11,418 \u2014 but only 9.1% of their book",
-        "latest buy 7 min ago",
+        "latest buy 49 min ago",
         "still near their entry price",
         "4h until it resolves",
-        "$372,217 liquidity"
+        "$424,607 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -114,15 +184,15 @@
       "entry_price": 0.8,
       "whale_price": 0.79,
       "drift_c": 1.0,
-      "contracts": 587,
-      "cost": 469.6,
-      "max_payout": 587.0,
-      "conviction": 0.47,
-      "hours_to_resolve": 410.0,
+      "contracts": 543,
+      "cost": 434.4,
+      "max_payout": 543.0,
+      "conviction": 0.435,
+      "hours_to_resolve": 409.3,
       "n_wallets": 1,
       "whale_usd": 5320,
-      "minutes_ago": 68,
-      "liquidity": 92363,
+      "minutes_ago": 110,
+      "liquidity": 91438,
       "url": "https://polymarket.com/event/us-announces-end-of-iranian-blockade-byptptpt-20260713152715080",
       "end_iso": "2026-08-31T23:59:00Z",
       "event_iso": "",
@@ -131,17 +201,15 @@
       "why": [
         "1 profitable wallet on this side",
         "$5,320 \u2014 but only 1.1% of their book",
-        "latest buy 68 min ago",
+        "latest buy 110 min ago",
         "price up 1.0c since they bought",
-        "410h until it resolves",
-        "$92,363 liquidity"
+        "409h until it resolves",
+        "$91,438 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
-    }
-  ],
-  "probe": [
+    },
     {
       "market_id": "0x86ef00c993db7bcb48f09d110a05c2e56522aee811743492b51aeb49d99a2cc0",
       "title": "UFC 330: Vicente Luque vs. Tresean Gore (Middleweight, Early Prelims)",
@@ -150,15 +218,15 @@
       "entry_price": 0.495,
       "whale_price": 0.5,
       "drift_c": -0.5,
-      "contracts": 903,
-      "cost": 446.99,
-      "max_payout": 903.0,
-      "conviction": 0.447,
-      "hours_to_resolve": 23.0,
+      "contracts": 836,
+      "cost": 413.82,
+      "max_payout": 836.0,
+      "conviction": 0.414,
+      "hours_to_resolve": 22.3,
       "n_wallets": 1,
       "whale_usd": 22057,
-      "minutes_ago": 141,
-      "liquidity": 181801,
+      "minutes_ago": 183,
+      "liquidity": 176150,
       "url": "https://polymarket.com/event/ufc-vic-tre3-2026-08-15",
       "end_iso": "2026-08-16T03:59:59.999Z",
       "event_iso": "2026-08-15 21:00:00+00",
@@ -167,10 +235,10 @@
       "why": [
         "new wallet with no track record \u2014 pattern signal, not a copy",
         "$22,057, 100% of their own book",
-        "latest buy 141 min ago",
+        "latest buy 183 min ago",
         "still near their entry price",
-        "23h until it resolves",
-        "$181,801 liquidity"
+        "22h until it resolves",
+        "$176,150 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
@@ -185,15 +253,15 @@
       "entry_price": 0.595,
       "whale_price": 0.6,
       "drift_c": -0.5,
-      "contracts": 734,
-      "cost": 436.73,
-      "max_payout": 734.0,
-      "conviction": 0.437,
-      "hours_to_resolve": 12.0,
+      "contracts": 673,
+      "cost": 400.44,
+      "max_payout": 673.0,
+      "conviction": 0.401,
+      "hours_to_resolve": 11.3,
       "n_wallets": 1,
       "whale_usd": 3383,
-      "minutes_ago": 49,
-      "liquidity": 90029,
+      "minutes_ago": 91,
+      "liquidity": 92562,
       "url": "https://polymarket.com/event/lol-fox1-dnf-2026-08-15",
       "end_iso": "2026-08-15T16:00:00Z",
       "event_iso": "2026-08-15 10:00:00+00",
@@ -202,46 +270,13 @@
       "why": [
         "1 profitable wallet on this side",
         "$3,383 \u2014 but only 2.3% of their book",
-        "latest buy 49 min ago",
+        "latest buy 91 min ago",
         "still near their entry price",
-        "12h until it resolves",
-        "$90,029 liquidity"
+        "11h until it resolves",
+        "$92,562 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x0e81bd4de4f1827af0b9426ddec226e88f43c4a8e85812116d22bf0f1c94efc8",
-      "title": "Will Ethereum dip to $1,700 in August?",
-      "side_label": "NO on: Will Ethereum dip to $1,700 in August?",
-      "outcome": "No",
-      "entry_price": 0.76,
-      "whale_price": 0.76,
-      "drift_c": 0.0,
-      "contracts": 535,
-      "cost": 406.6,
-      "max_payout": 535.0,
-      "conviction": 0.407,
-      "hours_to_resolve": 414.0,
-      "n_wallets": 1,
-      "whale_usd": 9902,
-      "minutes_ago": 352,
-      "liquidity": 39072,
-      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-august-2026",
-      "end_iso": "2026-09-01T04:00:00Z",
-      "event_iso": "",
-      "slug": "will-ethereum-dip-to-1700-in-august-2026",
-      "signal_ts": 1786723701.0,
-      "why": [
-        "1 profitable wallet on this side",
-        "$9,902 \u2014 but only 0.3% of their book",
-        "latest buy 352 min ago",
-        "still near their entry price",
-        "414h until it resolves"
-      ],
-      "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     },
@@ -253,15 +288,15 @@
       "entry_price": 0.495,
       "whale_price": 0.469,
       "drift_c": 2.62,
-      "contracts": 567,
-      "cost": 280.67,
-      "max_payout": 567.0,
-      "conviction": 0.281,
-      "hours_to_resolve": 23.0,
+      "contracts": 565,
+      "cost": 279.68,
+      "max_payout": 565.0,
+      "conviction": 0.28,
+      "hours_to_resolve": 22.3,
       "n_wallets": 1,
       "whale_usd": 7433,
-      "minutes_ago": 187,
-      "liquidity": 56949,
+      "minutes_ago": 229,
+      "liquidity": 55850,
       "url": "https://polymarket.com/event/ufc-cha15-edu8-2026-08-15",
       "end_iso": "2026-08-16T03:59:59.999Z",
       "event_iso": "2026-08-15 21:00:00+00",
@@ -270,10 +305,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$7,433 \u2014 but only 11.6% of their book",
-        "latest buy 187 min ago",
+        "latest buy 229 min ago",
         "price up 2.6c since they bought",
-        "23h until it resolves",
-        "$56,949 liquidity"
+        "22h until it resolves",
+        "$55,850 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
@@ -281,21 +316,22 @@
       ]
     }
   ],
-  "considered": 464,
+  "considered": 484,
   "rejected": {
-    "market closed": 202,
-    "already resolved": 30,
-    "in-play (event already started)": 20,
+    "market closed": 241,
+    "already resolved": 27,
     "resolves more than 30 days out": 5,
-    "fresh wallet: market too liquid for the pattern": 103,
-    "resolves in under 3h": 7,
-    "signal too old for this market's horizon": 4,
+    "in-play (event already started)": 15,
+    "fresh wallet: market too liquid for the pattern": 67,
+    "wallet not new (no track record either)": 89,
+    "resolves in under 3h": 12,
+    "signal too old for this market's horizon": 6,
     "no resolution or start time": 2,
-    "wallet not new (no track record either)": 75,
-    "price ran away from the whale's entry": 2,
-    "parlay / combo ticket, not a single market": 5,
+    "parlay / combo ticket, not a single market": 8,
+    "price ran away from the whale's entry": 1,
     "price outside tradeable band": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 4
+    "fresh wallet: market depth unknown": 1,
+    "below the 0.45 buy bar (recorded, not bought)": 5
   },
   "notes": [],
   "consistency": {
@@ -308,13 +344,12 @@
       "not a ladder: group labels are not thresholds or deadlines": 54,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "bracket has too many legs to place by hand": 2,
-      "bracket overround smaller than the spread": 2,
-      "ladder pair too illiquid to fill": 105,
+      "bracket overround smaller than the spread": 1,
+      "ladder pair too illiquid to fill": 164,
       "bracket underround smaller than the spread": 1,
-      "not a ladder: numeric group spans different end dates": 1,
-      "not a ladder: a live leg carries no group label": 5,
+      "not a ladder: numeric group spans different end dates": 2,
+      "not a ladder: a live leg carries no group label": 4,
       "bracket leg too illiquid to fill": 4,
-      "ladder inversion smaller than the spread": 1,
       "dominance gap smaller than the spread": 2
     },
     "notes": [],
@@ -335,7 +370,7 @@
         "nowcast_pp": 0.203341742698412,
         "nowcast_as_of": "2026-08-14 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.087pp (x1.84). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.087pp (x1.83). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -353,16 +388,16 @@
           },
           {
             "label": "0.2%",
-            "market_prob": 0.445,
+            "market_prob": 0.44,
             "model_prob": 0.2453,
-            "gap_c": -19.97,
+            "gap_c": -19.47,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.32,
+            "market_prob": 0.29,
             "model_prob": 0.2056,
-            "gap_c": -11.44,
+            "gap_c": -8.44,
             "suspect": false
           },
           {
@@ -416,23 +451,23 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.0395,
+            "market_prob": 0.052,
             "model_prob": 0.1297,
-            "gap_c": 9.02,
+            "gap_c": 7.77,
             "suspect": false
           },
           {
             "label": "2.3%",
-            "market_prob": 0.335,
+            "market_prob": 0.34,
             "model_prob": 0.215,
-            "gap_c": -12.0,
+            "gap_c": -12.5,
             "suspect": false
           },
           {
             "label": "2.4%",
-            "market_prob": 0.41,
+            "market_prob": 0.39,
             "model_prob": 0.2441,
-            "gap_c": -16.59,
+            "gap_c": -14.59,
             "suspect": false
           },
           {
@@ -444,9 +479,9 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.0405,
+            "market_prob": 0.0415,
             "model_prob": 0.1012,
-            "gap_c": 6.07,
+            "gap_c": 5.97,
             "suspect": false
           },
           {
@@ -493,9 +528,9 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.044,
+            "market_prob": 0.0445,
             "model_prob": 0.0009,
-            "gap_c": -4.31,
+            "gap_c": -4.36,
             "suspect": false
           },
           {
@@ -528,9 +563,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.4,
+            "market_prob": 0.395,
             "model_prob": 0.2359,
-            "gap_c": -16.41,
+            "gap_c": -15.91,
             "suspect": false
           },
           {
@@ -633,9 +668,9 @@
           },
           {
             "label": "3.9%",
-            "market_prob": 0.0195,
+            "market_prob": 0.019,
             "model_prob": 0.001,
-            "gap_c": -1.85,
+            "gap_c": -1.8,
             "suspect": false
           },
           {
@@ -659,18 +694,18 @@
       "url": "https://kalshi.com/markets/KXHIGHNY-26AUG15",
       "entry_price": 0.05,
       "bid": 0.03,
-      "model_prob": 0.1296,
-      "edge": 0.0796,
+      "model_prob": 0.1252,
+      "edge": 0.0752,
       "forecast_f": 83.0,
       "sigma_f": 2.01,
-      "market_mu_f": 81.75,
+      "market_mu_f": 81.78,
       "market_sigma_f": 2.01,
-      "days_ahead": 0.08,
+      "days_ahead": 0.05,
       "market_prob": 0.04,
       "model": "kalshi-ladder-tilted-by-nbm-station",
       "validated": false,
       "cal_prob": 0.0633,
-      "cal_edge": 0.0663,
+      "cal_edge": 0.0619,
       "cal_b": 0.915,
       "forecast_src": "nbm-station",
       "nbm_cycle": "2026-08-14T19Z",
@@ -682,33 +717,33 @@
       "event_iso": "2026-08-16T00:00:00+00:00"
     },
     {
-      "market_id": "KXHIGHNY-26AUG15-B84.5",
+      "market_id": "KXHIGHCHI-26AUG15-B85.5",
       "venue": "kalshi",
       "source": "weather",
       "outcome": "Yes",
-      "title": "Will the maximum temperature be 84-85\u00b0 on Aug 15, 2026?",
-      "url": "https://kalshi.com/markets/KXHIGHNY-26AUG15",
-      "entry_price": 0.12,
-      "bid": 0.09,
-      "model_prob": 0.1922,
-      "edge": 0.0722,
+      "title": "Will the maximum temperature be 85-86\u00b0 on Aug 15, 2026?",
+      "url": "https://kalshi.com/markets/KXHIGHCHI-26AUG15",
+      "entry_price": 0.11,
+      "bid": 0.08,
+      "model_prob": 0.1818,
+      "edge": 0.0718,
       "forecast_f": 83.0,
-      "sigma_f": 2.01,
+      "sigma_f": 2.38,
       "market_mu_f": 81.75,
-      "market_sigma_f": 2.01,
-      "days_ahead": 0.08,
-      "market_prob": 0.105,
+      "market_sigma_f": 2.38,
+      "days_ahead": 0.05,
+      "market_prob": 0.095,
       "model": "kalshi-ladder-tilted-by-nbm-station",
       "validated": false,
-      "cal_prob": 0.1391,
-      "cal_edge": 0.0531,
+      "cal_prob": 0.1286,
+      "cal_edge": 0.0532,
       "cal_b": 0.915,
       "forecast_src": "nbm-station",
       "nbm_cycle": "2026-08-14T19Z",
-      "nbm_sd_f": 2.0,
-      "forecast_grid_f": 82.0,
-      "city": "Central Park, New York",
-      "settles_by": "https://forecast.weather.gov/product.php?site=OKX&product=CLI&issuedby=NYC",
+      "nbm_sd_f": 4.0,
+      "forecast_grid_f": 84.0,
+      "city": "Chicago Midway, IL",
+      "settles_by": "https://forecast.weather.gov/product.php?site=LOT&product=CLI&issuedby=MDW",
       "end_iso": "2026-08-16T00:00:00+00:00",
       "event_iso": "2026-08-16T00:00:00+00:00"
     }
