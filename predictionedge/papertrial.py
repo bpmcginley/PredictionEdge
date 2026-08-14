@@ -68,7 +68,11 @@ MODEL_FIELDS = ("model_prob", "edge", "forecast_f", "sigma_f", "market_mu_f",
                 # Calibration-overlay verdict (calibration.py): the corrected market
                 # probability, the edge against it, and the slope used. Carried so the
                 # veto rule itself can be scored once rows settle.
-                "cal_prob", "cal_edge", "cal_b")
+                "cal_prob", "cal_edge", "cal_b",
+                # Sports de-vig A/B: fair value under every method plus which one
+                # was operative, so the trial can score multiplicative vs power vs
+                # Shin from ONE run instead of needing a trial per method.
+                "fair_mult", "fair_power", "fair_shin", "devig_method")
 
 
 def venue_of(row: dict) -> str:

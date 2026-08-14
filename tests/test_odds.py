@@ -10,6 +10,7 @@ from predictionedge.odds import (
     BookOdds,
     SportEvent,
     _parse_odds_event,
+    consensus_fair_all,
     consensus_fair_prob,
 )
 
@@ -60,3 +61,31 @@ def test_consensus_is_none_when_no_book_survives():
     """No fair value means no edge. An empty result must never read as a clean one."""
     bad = BookOdds("broken", (1.16, 15.42))
     assert consensus_fair_prob(SportEvent("e", "l", ("A", "B"), [bad])) is None
+
+
+# --- consensus_fair_all: the A/B instrumentation ----------------------------
+
+def test_consensus_fair_all_matches_per_method_consensus():
+    """Each key must equal the single-method consensus - one source of truth."""
+    ev = SportEvent("e", "l", ("A", "B"),
+                    [BookOdds("pinnacle", (1.80, 2.10)),
+                     BookOdds("draftkings", (1.83, 2.05))])
+    out = consensus_fair_all(ev)
+    assert set(out) == {"fair_mult", "fair_power", "fair_shin"}
+    assert abs(out["fair_mult"] - consensus_fair_prob(ev, "multiplicative")) < 1e-12
+    assert abs(out["fair_power"] - consensus_fair_prob(ev, "power")) < 1e-12
+    assert abs(out["fair_shin"] - consensus_fair_prob(ev, "shin")) < 1e-12
+
+
+def test_consensus_fair_all_drops_a_bad_book_from_every_method():
+    """A book one method can't de-vig is dropped from all three, so the A/B
+    comparison always scores the same books."""
+    good = BookOdds("pinnacle", (1.80, 2.10))
+    bad = BookOdds("broken", (1.16, 15.42))
+    assert consensus_fair_all(SportEvent("e", "l", ("A", "B"), [good, bad])) == \
+        consensus_fair_all(SportEvent("e", "l", ("A", "B"), [good]))
+
+
+def test_consensus_fair_all_none_when_no_book_survives():
+    bad = BookOdds("broken", (1.16, 15.42))
+    assert consensus_fair_all(SportEvent("e", "l", ("A", "B"), [bad])) is None

@@ -18,7 +18,7 @@ class PaperLedger:
         self.path = Path(path)
         self.path.parent.mkdir(parents=True, exist_ok=True)
 
-    def record(self, opp: Opportunity, note: str = "") -> None:
+    def record(self, opp: Opportunity, note: str = "", extra: dict | None = None) -> None:
         entry = {
             "ts": datetime.now(timezone.utc).isoformat(),
             "status": "open",
@@ -33,6 +33,11 @@ class PaperLedger:
             "expected_value": round(opp.expected_value, 4),
             "note": note,
         }
+        # Sleeve metadata carried verbatim (the sports sleeve's fair_mult /
+        # fair_power / fair_shin A/B fields arrive this way). setdefault, not
+        # update: a stray key may annotate a row, never falsify its accounting.
+        for k, v in (extra or {}).items():
+            entry.setdefault(k, v)
         self._append(entry)
 
     def resolve(self, ticker: str, yes_won: bool) -> None:

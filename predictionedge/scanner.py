@@ -2,14 +2,14 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from .config import Config
 from .discovery import discover_links
 from .edge import Opportunity, find_edge
 from .fairvalue import blended_fair_prob
 from .matching import DEFAULT_LINKS, MarketLink, orient
-from .odds import SportEvent, consensus_fair_prob
+from .odds import SportEvent, consensus_fair_all, consensus_fair_prob
 
 
 @dataclass(frozen=True)
@@ -19,6 +19,10 @@ class ScanResult:
     label: str
     link: MarketLink
     market: object = None   # the KalshiMarket (for team names + web URL)
+    # A/B instrumentation: P(YES) under EVERY de-vig method, alongside the
+    # operative one, plus which method was operative - so the paper record can
+    # later score multiplicative vs power vs Shin without a second trial.
+    fair_all: dict = field(default_factory=dict)
 
 
 def resolve_links(cfg: Config, kalshi, events: list[SportEvent]) -> list[MarketLink]:
@@ -46,12 +50,21 @@ def find_opportunities(cfg: Config, odds, kalshi, whales) -> list[ScanResult]:
         whale = whales.signal_for(link.kalshi_ticker)
         fair = blended_fair_prob(fair_yes, whale, cfg.whale_weight)
 
+        # Pre-whale-blend, deliberately: the blend applies identically whichever
+        # de-vig method is operative, so the raw per-method consensus is the
+        # clean A/B variable. Oriented to P(YES) like the operative path.
+        all_methods = consensus_fair_all(event) or {}
+        fair_all = {k: round(orient(p, link), 4) for k, p in all_methods.items()}
+        if fair_all:
+            fair_all["devig_method"] = cfg.devig_method
+
         market = kalshi.market(link.kalshi_ticker)
         if market is None:
             continue
         opp = find_edge(market.ticker, fair, market.quote(), cfg)
         if opp is not None:
-            results.append(ScanResult(opp, fair, event.label, link, market))
+            results.append(ScanResult(opp, fair, event.label, link, market,
+                                      fair_all=fair_all))
 
     results.sort(key=lambda r: r.opp.expected_value, reverse=True)
     return results

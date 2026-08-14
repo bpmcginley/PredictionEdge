@@ -60,7 +60,7 @@ def main(argv: list[str] | None = None) -> int:
             print("  no opportunities clear the edge threshold")
         for r in results:
             print("  " + r.opp.describe())
-            ledger.record(r.opp, note=r.label)
+            ledger.record(r.opp, note=r.label, extra=r.fair_all)
         if not args.loop:
             break
         time.sleep(args.interval)

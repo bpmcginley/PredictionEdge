@@ -107,7 +107,7 @@ sportsbook odds ─► de-vig ─► consensus fair prob ─┐
 | Module | Role |
 |---|---|
 | `fees.py` | Kalshi fee formula (taker/maker, per-contract for EV) |
-| `devig.py` | odds → fair probabilities (3 methods) |
+| `devig.py` | odds → fair probabilities (5 methods; power default, Shin + log-odds blend available) |
 | `odds.py` | sportsbook ingest + consensus (mock + The Odds API) |
 | `kalshi.py` | data client + **live trading client** (orders/cancel/balance), verified contract |
 | `polymarket.py` | Polymarket public data client (leaderboard + market holders) |

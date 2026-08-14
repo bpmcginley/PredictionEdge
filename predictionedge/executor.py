@@ -35,7 +35,7 @@ def _new_coid() -> str:
 class Executor(Protocol):
     live: bool
     def place(self, opp: Opportunity, fair_yes: float, *, kind: str = "entry",
-              note: str = "") -> ExecResult: ...
+              note: str = "", extra: dict | None = None) -> ExecResult: ...
     def cancel(self, client_order_id: str, kalshi_order_id: str | None) -> ExecResult: ...
 
 
@@ -48,7 +48,7 @@ class DryRunExecutor:
         self.cfg, self.state, self.ledger, self.log = cfg, state, ledger, logger
 
     def place(self, opp: Opportunity, fair_yes: float, *, kind: str = "entry",
-              note: str = "") -> ExecResult:
+              note: str = "", extra: dict | None = None) -> ExecResult:
         # Dry-run dedup: don't re-simulate a market we already have a paper position in
         # (paper no longer blocks via the live-default checks, so dedup here).
         if kind == "entry" and self.state.has_active_market(opp.ticker, statuses=("paper",)):
@@ -60,7 +60,7 @@ class DryRunExecutor:
             entry_event_prob=event_prob_for_side(fair_yes, opp.side),
             status="paper", kind=kind, note=note,
         )
-        self.ledger.record(opp, note=f"[{kind}] {note}")
+        self.ledger.record(opp, note=f"[{kind}] {note}", extra=extra)
         self.log.info("DRY-RUN %s: %s", kind, opp.describe())
         return ExecResult(True, coid, "paper")
 
@@ -87,7 +87,7 @@ class LiveExecutor:
         self.client = client  # LiveKalshiTradingClient
 
     def place(self, opp: Opportunity, fair_yes: float, *, kind: str = "entry",
-              note: str = "") -> ExecResult:
+              note: str = "", extra: dict | None = None) -> ExecResult:
         coid = _new_coid()
         price_cents = round(opp.price * 100)
         # Record as 'placed' BEFORE the call so a crash mid-flight is never silent.
@@ -110,7 +110,7 @@ class LiveExecutor:
 
         kalshi_id = (resp.get("order") or {}).get("order_id") or resp.get("order_id")
         self.state.update_order_status(coid, "open", kalshi_order_id=kalshi_id)
-        self.ledger.record(opp, note=f"[LIVE {kind}] {note}")
+        self.ledger.record(opp, note=f"[LIVE {kind}] {note}", extra=extra)
         self.log.info("LIVE %s placed %s (kalshi_id=%s): %s", kind, coid, kalshi_id,
                       opp.describe())
         return ExecResult(True, coid, "placed", kalshi_id)

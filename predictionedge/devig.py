@@ -5,13 +5,24 @@ excess is the "vig" (the book's margin). De-vigging removes it to recover the
 book's true probability estimate, which we treat as fair value to fade Kalshi
 against.
 
-Three methods are provided. Multiplicative (proportional normalisation) is the
-default and the most common; additive spreads the overround equally; power solves
-for an exponent that makes the probabilities sum to 1 and tends to behave best on
-two-outcome favourite/longshot markets.
+Five methods are provided. Multiplicative (proportional normalisation) is the
+most common but - per Štrumbelj (2014) and the practitioner replications since -
+also the LEAST accurate, because it spreads the vig proportionally when books
+actually load it onto longshots. Additive spreads the overround equally. Power
+solves for an exponent that makes the probabilities sum to 1; Shin inverts an
+insider-trading model of how the book sets its margin. Power and Shin best
+recover true probabilities, with the gains concentrated on lopsided
+favourite/longshot markets - both give the favourite MORE and the longshot LESS
+than multiplicative does. Blend averages power and Shin in log-odds space, the
+scale on which probabilities combine without favourite/longshot distortion.
 """
 
 from __future__ import annotations
+
+import logging
+import math
+
+log = logging.getLogger(__name__)
 
 
 def implied_from_decimal(decimal_odds: float) -> float:
@@ -104,19 +115,121 @@ def devig_power(implied: list[float], *, tol: float = 1e-10, max_iter: int = 200
     return [p**k for p in implied]
 
 
+def _shin_probs(implied: list[float], z: float) -> list[float]:
+    """Shin fair probabilities for a given insider share z (Shin 1992/1993).
+
+    p_i = (sqrt(z^2 + 4(1-z) q_i^2 / S) - z) / (2(1-z)),  S = sum(q_j).
+    At z = 0 this is q_i / sqrt(S), so a book with no vig (S = 1) is returned
+    unchanged - z = 0 is recovered exactly, not approximately.
+    """
+    s = sum(implied)
+    w = 1.0 - z
+    return [(math.sqrt(z * z + 4.0 * w * q * q / s) - z) / (2.0 * w) for q in implied]
+
+
+def _shin_z_two_way(implied: list[float]) -> float:
+    """Closed-form insider share for a 2-outcome book.
+
+    Setting sum(p_i) = 1 in the Shin formula and solving for w = 1-z gives
+    w = 2(a1 + a2 - 1) / ((a1 - a2)^2 - 1) with a_i = q_i^2 / S. Exact - no
+    iteration, no tolerance.
+    """
+    s = sum(implied)
+    a1, a2 = (q * q / s for q in implied)
+    return 1.0 - 2.0 * (a1 + a2 - 1.0) / ((a1 - a2) ** 2 - 1.0)
+
+
+def devig_shin(implied: list[float], *, tol: float = 1e-12, max_iter: int = 200,
+               z_max: float = 0.2) -> list[float]:
+    """Shin's method: back out the insider share z the book priced its vig for.
+
+    Two-outcome books use the closed form; n-outcome books bisect on z in
+    [0, z_max] (real books imply z of a few percent; 0.2 is far beyond any
+    plausible margin). If the solve lands outside that bracket or fails to
+    converge, falls back to multiplicative and logs - a wrong-but-confident
+    number is worse than the standard one.
+    """
+    require_complete_market(implied)
+    if len(implied) == 2:
+        z = _shin_z_two_way(implied)
+        if not 0.0 <= z < 1.0:
+            log.warning("shin closed form gave z=%.6f outside [0,1); "
+                        "falling back to multiplicative", z)
+            return devig_multiplicative(implied)
+        return _shin_probs(implied, z)
+
+    # sum(p_i(z)) is sqrt(S) >= 1 at z=0 and decreases in z; bisect to 1.
+    lo, hi = 0.0, z_max
+    if sum(_shin_probs(implied, hi)) - 1.0 > 0.0:
+        log.warning("shin bisection not bracketed on [0, %.2f] (overround %.4f); "
+                    "falling back to multiplicative", z_max, overround(implied))
+        return devig_multiplicative(implied)
+    z = 0.0
+    for _ in range(max_iter):
+        z = 0.5 * (lo + hi)
+        f = sum(_shin_probs(implied, z)) - 1.0
+        if abs(f) < tol:
+            break
+        if f > 0.0:
+            lo = z
+        else:
+            hi = z
+    else:
+        # max_iter bisections on [0, 0.2] is far past float precision; unreachable
+        # in practice, but if it ever fires we refuse to guess.
+        log.warning("shin bisection did not converge; falling back to multiplicative")
+        return devig_multiplicative(implied)
+    return _shin_probs(implied, z)
+
+
+def devig_blend(implied: list[float]) -> list[float]:
+    """Average power and Shin in log-odds space, then renormalise.
+
+    Log-odds is the scale on which averaging two probability estimates does not
+    systematically drag favourites and longshots toward 0.5. For a two-outcome
+    book the result sums to 1 exactly (the logits are antisymmetric); for n > 2
+    a final multiplicative renormalisation absorbs the tiny residual.
+    """
+    require_complete_market(implied)
+    power = devig_power(implied)
+    shin = devig_shin(implied)
+    blended = []
+    for pp, ps in zip(power, shin):
+        logit = 0.5 * (math.log(pp / (1.0 - pp)) + math.log(ps / (1.0 - ps)))
+        blended.append(1.0 / (1.0 + math.exp(-logit)))
+    total = sum(blended)
+    return [p / total for p in blended]
+
+
 _METHODS = {
     "multiplicative": devig_multiplicative,
     "additive": devig_additive,
     "power": devig_power,
+    "shin": devig_shin,
+    "blend": devig_blend,
 }
 
 
 def devig(implied: list[float], method: str = "multiplicative") -> list[float]:
-    """De-vig by name. Methods: multiplicative (default), additive, power."""
+    """De-vig by name. Methods: multiplicative, additive, power, shin, blend."""
     try:
         return _METHODS[method](implied)
     except KeyError:
         raise ValueError(f"unknown de-vig method {method!r}; choose from {sorted(_METHODS)}")
+
+
+def fair_all(implied: list[float]) -> dict[str, float]:
+    """First-outcome fair probability under each A/B-tracked method.
+
+    This is the paper trial's instrumentation: every sports record carries all
+    three so the trial can score which method would have done better WITHOUT
+    running a second trial. Keys are the trial-row field names.
+    """
+    return {
+        "fair_mult": devig_multiplicative(implied)[0],
+        "fair_power": devig_power(implied)[0],
+        "fair_shin": devig_shin(implied)[0],
+    }
 
 
 def fair_prob_two_way(
