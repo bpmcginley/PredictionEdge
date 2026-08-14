@@ -886,30 +886,6 @@
       "fee": 1.1
     },
     {
-      "key": "0x347586402adfe1103bfecd1d61185b2aed1d48a2649d408292a9c84587ea7788:yes",
-      "market_id": "0x347586402adfe1103bfecd1d61185b2aed1d48a2649d408292a9c84587ea7788",
-      "venue": "polymarket",
-      "outcome": "Yes",
-      "title": "Will Telstar 1963 win on 2026-08-14?",
-      "url": "https://polymarket.com/event/ere-tel-spa-2026-08-14",
-      "stake": 100.0,
-      "shown": true,
-      "source": "whale",
-      "conviction": 0.482,
-      "n_wallets": 1,
-      "whale_usd": 49455,
-      "drift_c": 2.7,
-      "hours_to_resolve": 11.9,
-      "liquidity": 92514,
-      "end_iso": "2026-08-14T18:00:00Z",
-      "event_iso": "2026-08-14 18:00:00+00",
-      "origin_market_id": "",
-      "opened_at": 1786687546.4300973,
-      "price": 0.46,
-      "contracts": 217.3913,
-      "fee": 0.95
-    },
-    {
       "key": "0xfc8f592dfa7bc4d13844fcc4ace439b490cafd0475b6f8e03030c4430960dcae:no",
       "market_id": "0xfc8f592dfa7bc4d13844fcc4ace439b490cafd0475b6f8e03030c4430960dcae",
       "venue": "polymarket",
@@ -1412,30 +1388,6 @@
       "price": 0.465,
       "contracts": 215.0538,
       "fee": 0.94
-    },
-    {
-      "key": "0x2a908d5593f9006f33d2ce9f69a4a98d5e5468bba73931e4680fa08c3b2ba6a9:no",
-      "market_id": "0x2a908d5593f9006f33d2ce9f69a4a98d5e5468bba73931e4680fa08c3b2ba6a9",
-      "venue": "polymarket",
-      "outcome": "No",
-      "title": "Will Telstar 1963 vs. Sparta Rotterdam end in a draw?",
-      "url": "https://polymarket.com/event/ere-tel-spa-2026-08-14",
-      "stake": 100.0,
-      "shown": false,
-      "source": "whale",
-      "conviction": 0.398,
-      "n_wallets": 1,
-      "whale_usd": 4107,
-      "drift_c": 1.0,
-      "hours_to_resolve": 3.0,
-      "liquidity": 175899,
-      "end_iso": "2026-08-14T18:00:00Z",
-      "event_iso": "2026-08-14 18:00:00+00",
-      "origin_market_id": "",
-      "opened_at": 1786719572.5707157,
-      "price": 0.76,
-      "contracts": 131.5789,
-      "fee": 0.43
     },
     {
       "key": "aec-atp-adawal-nicmej-2026-08-14:adam walton",
@@ -2112,6 +2064,54 @@
       "price": 0.595,
       "contracts": 168.0672,
       "fee": 0.71
+    },
+    {
+      "key": "0x9952ac8902f12c98f87d7868689becb6fad664b74f254121ba6326afb0ccc1ea:tampa bay rays",
+      "market_id": "0x9952ac8902f12c98f87d7868689becb6fad664b74f254121ba6326afb0ccc1ea",
+      "venue": "polymarket",
+      "outcome": "Tampa Bay Rays",
+      "title": "Baltimore Orioles vs. Tampa Bay Rays",
+      "url": "https://polymarket.com/event/mlb-bal-tb-2026-08-14",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.554,
+      "n_wallets": 1,
+      "whale_usd": 41077,
+      "drift_c": -0.36,
+      "hours_to_resolve": 1.2,
+      "liquidity": 509077,
+      "end_iso": "2026-08-21T23:10:00Z",
+      "event_iso": "2026-08-14 23:10:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786744862.9945366,
+      "price": 0.605,
+      "contracts": 165.2893,
+      "fee": 0.7
+    },
+    {
+      "key": "0x9a9d3bfbb23acafb8c574adba6bcacc7faffc1b9666b341b26112a94604930e3:san francisco giants",
+      "market_id": "0x9a9d3bfbb23acafb8c574adba6bcacc7faffc1b9666b341b26112a94604930e3",
+      "venue": "polymarket",
+      "outcome": "San Francisco Giants",
+      "title": "Colorado Rockies vs. San Francisco Giants",
+      "url": "https://polymarket.com/event/mlb-col-sf-2026-08-14",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.491,
+      "n_wallets": 1,
+      "whale_usd": 11418,
+      "drift_c": -0.5,
+      "hours_to_resolve": 4.2,
+      "liquidity": 372217,
+      "end_iso": "2026-08-22T02:15:00Z",
+      "event_iso": "2026-08-15 02:15:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786744862.9945366,
+      "price": 0.545,
+      "contracts": 183.4862,
+      "fee": 0.8
     }
   ],
   "settled": [
@@ -10621,29 +10621,87 @@
       "won": false,
       "pred": 0.12,
       "realized": -106.16
+    },
+    {
+      "key": "0x347586402adfe1103bfecd1d61185b2aed1d48a2649d408292a9c84587ea7788:yes",
+      "market_id": "0x347586402adfe1103bfecd1d61185b2aed1d48a2649d408292a9c84587ea7788",
+      "venue": "polymarket",
+      "outcome": "Yes",
+      "title": "Will Telstar 1963 win on 2026-08-14?",
+      "url": "https://polymarket.com/event/ere-tel-spa-2026-08-14",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.482,
+      "n_wallets": 1,
+      "whale_usd": 49455,
+      "drift_c": 2.7,
+      "hours_to_resolve": 11.9,
+      "liquidity": 92514,
+      "end_iso": "2026-08-14T18:00:00Z",
+      "event_iso": "2026-08-14 18:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786687546.4300973,
+      "price": 0.46,
+      "contracts": 217.3913,
+      "fee": 0.95,
+      "settled_at": 1786744914.3159375,
+      "winner": "No",
+      "won": false,
+      "pred": 0.46,
+      "realized": -100.95
+    },
+    {
+      "key": "0x2a908d5593f9006f33d2ce9f69a4a98d5e5468bba73931e4680fa08c3b2ba6a9:no",
+      "market_id": "0x2a908d5593f9006f33d2ce9f69a4a98d5e5468bba73931e4680fa08c3b2ba6a9",
+      "venue": "polymarket",
+      "outcome": "No",
+      "title": "Will Telstar 1963 vs. Sparta Rotterdam end in a draw?",
+      "url": "https://polymarket.com/event/ere-tel-spa-2026-08-14",
+      "stake": 100.0,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.398,
+      "n_wallets": 1,
+      "whale_usd": 4107,
+      "drift_c": 1.0,
+      "hours_to_resolve": 3.0,
+      "liquidity": 175899,
+      "end_iso": "2026-08-14T18:00:00Z",
+      "event_iso": "2026-08-14 18:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786719572.5707157,
+      "price": 0.76,
+      "contracts": 131.5789,
+      "fee": 0.43,
+      "settled_at": 1786744914.3159375,
+      "winner": "No",
+      "won": true,
+      "pred": 0.76,
+      "realized": 31.1489
     }
   ],
   "stats": {
-    "n": 300,
-    "win_rate": 0.5567,
-    "avg_predicted": 0.5212,
-    "calibration_gap": -0.0354,
-    "brier": 0.2231,
-    "total_pnl": 827.36,
-    "roi_on_stake": 0.0276,
-    "mean_return": 0.0276,
-    "sharpe_per_bet": 0.0276,
-    "psr_vs_zero": 0.684,
-    "dsr": 0.684,
+    "n": 302,
+    "win_rate": 0.5563,
+    "avg_predicted": 0.5218,
+    "calibration_gap": -0.0345,
+    "brier": 0.2225,
+    "total_pnl": 757.56,
+    "roi_on_stake": 0.0251,
+    "mean_return": 0.0251,
+    "sharpe_per_bet": 0.0252,
+    "psr_vs_zero": 0.6692,
+    "dsr": 0.6692,
     "implied_sr0": 0.0,
     "bootstrap_ci": [
-      -0.0673,
-      0.1238
+      -0.0697,
+      0.122
     ],
-    "p_mean_le_0": 0.3505,
+    "p_mean_le_0": 0.353,
     "deploy": false,
     "reasons": [
-      "DSR 0.684 < 0.95",
+      "DSR 0.669 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
     "open_positions": 86,
@@ -10677,26 +10735,26 @@
         "open_positions": 5
       },
       "whale": {
-        "n": 235,
-        "win_rate": 0.5745,
-        "avg_predicted": 0.5379,
-        "calibration_gap": -0.0365,
-        "brier": 0.2244,
-        "total_pnl": 1209.46,
-        "roi_on_stake": 0.0515,
-        "mean_return": 0.0515,
-        "sharpe_per_bet": 0.0525,
-        "psr_vs_zero": 0.7899,
-        "dsr": 0.7899,
+        "n": 237,
+        "win_rate": 0.5738,
+        "avg_predicted": 0.5386,
+        "calibration_gap": -0.0353,
+        "brier": 0.2236,
+        "total_pnl": 1139.65,
+        "roi_on_stake": 0.0481,
+        "mean_return": 0.0481,
+        "sharpe_per_bet": 0.0491,
+        "psr_vs_zero": 0.7756,
+        "dsr": 0.7756,
         "implied_sr0": 0.0,
         "bootstrap_ci": [
-          -0.042,
-          0.1437
+          -0.0413,
+          0.1388
         ],
-        "p_mean_le_0": 0.1825,
+        "p_mean_le_0": 0.1855,
         "deploy": false,
         "reasons": [
-          "DSR 0.790 < 0.95",
+          "DSR 0.776 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
         "open_positions": 69
@@ -10728,7 +10786,7 @@
       }
     },
     "maker": {
-      "pending": 0,
+      "pending": 1,
       "filled": 2,
       "fallback": 0,
       "expired": 1,
@@ -10737,7 +10795,7 @@
       "foregone_edge": 0.0745
     }
   },
-  "generated": "2026-08-14 21:32:56",
+  "generated": "2026-08-14 22:01:54",
   "voided": [],
   "bridge": {
     "log": {
@@ -10943,7 +11001,7 @@
       },
       "0xc04094452b0386a73a9a6e07da0370fffb2722e05c837a5246b88c914e78b79f:islam makhachev": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786743161.9,
+        "ts": 1786744863.0,
         "kalshi": "no-series"
       },
       "0xf2cafdf9c307fbc34fd47c617ebfeb713d5a7750c85e33041f18bd9171ab5c81:toronto blue jays": {
@@ -11470,6 +11528,16 @@
         "polymarket-us": "no-counterpart",
         "ts": 1786743161.9,
         "kalshi": "no-series"
+      },
+      "0x9952ac8902f12c98f87d7868689becb6fad664b74f254121ba6326afb0ccc1ea:tampa bay rays": {
+        "polymarket-us": "ambiguous",
+        "ts": 1786744863.0,
+        "kalshi": "outcome-not-a-team"
+      },
+      "0x9a9d3bfbb23acafb8c574adba6bcacc7faffc1b9666b341b26112a94604930e3:san francisco giants": {
+        "polymarket-us": "ambiguous",
+        "ts": 1786744863.0,
+        "kalshi": "outcome-not-a-team"
       }
     },
     "summary": {
@@ -11479,16 +11547,61 @@
         "outcome-not-yes-no": 1,
         "no-signature": 29,
         "no-counterpart": 19,
-        "ambiguous": 8
+        "ambiguous": 10
       },
       "kalshi": {
-        "outcome-not-a-team": 39,
+        "outcome-not-a-team": 41,
         "no-series": 78,
         "no-signature": 29
       }
     }
   },
-  "pending": [],
+  "pending": [
+    {
+      "key": "KXHIGHNY-26AUG15-B86.5:yes",
+      "market_id": "KXHIGHNY-26AUG15-B86.5",
+      "venue": "kalshi",
+      "outcome": "Yes",
+      "title": "Will the maximum temperature be 86-87\u00b0 on Aug 15, 2026?",
+      "url": "https://kalshi.com/markets/KXHIGHNY-26AUG15",
+      "stake": 100.0,
+      "shown": true,
+      "source": "weather",
+      "conviction": null,
+      "n_wallets": null,
+      "whale_usd": null,
+      "drift_c": null,
+      "hours_to_resolve": null,
+      "liquidity": null,
+      "end_iso": "2026-08-16T00:00:00+00:00",
+      "event_iso": "2026-08-16T00:00:00+00:00",
+      "model_prob": 0.1296,
+      "edge": 0.0796,
+      "forecast_f": 83.0,
+      "sigma_f": 2.01,
+      "market_mu_f": 81.75,
+      "market_sigma_f": 2.01,
+      "days_ahead": 0.08,
+      "market_prob": 0.04,
+      "model": "kalshi-ladder-tilted-by-nbm-station",
+      "city": "Central Park, New York",
+      "forecast_src": "nbm-station",
+      "nbm_cycle": "2026-08-14T19Z",
+      "nbm_sd_f": 2.0,
+      "forecast_grid_f": 82.0,
+      "cal_prob": 0.0633,
+      "cal_edge": 0.0663,
+      "cal_b": 0.915,
+      "origin_market_id": "",
+      "intent_at": 1786744862.9945366,
+      "limit_price": 0.03,
+      "intended_price": 0.03,
+      "ask_at_intent": 0.05,
+      "fair_at_intent": 0.1296,
+      "edge_at_intent": 0.0796,
+      "polls": 0
+    }
+  ],
   "maker": {
     "expired": [
       {

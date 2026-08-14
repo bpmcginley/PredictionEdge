@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-14 21:32:41",
-  "generated_at": 1786743161.8553226,
+  "generated": "2026-08-14 22:01:02",
+  "generated_at": 1786744862.9945366,
   "account_size": 100000.0,
   "tickets": [
     {
@@ -11,15 +11,15 @@
       "entry_price": 0.765,
       "whale_price": 0.769,
       "drift_c": -0.42,
-      "contracts": 801,
-      "cost": 612.76,
-      "max_payout": 801.0,
-      "conviction": 0.613,
-      "hours_to_resolve": 23.5,
+      "contracts": 769,
+      "cost": 588.28,
+      "max_payout": 769.0,
+      "conviction": 0.589,
+      "hours_to_resolve": 23.0,
       "n_wallets": 1,
       "whale_usd": 95534,
-      "minutes_ago": 51,
-      "liquidity": 232848,
+      "minutes_ago": 79,
+      "liquidity": 225372,
       "url": "https://polymarket.com/event/ufc-isl-ian1-2026-08-15",
       "end_iso": "2026-08-16T03:59:59.999Z",
       "event_iso": "2026-08-15 21:00:00+00",
@@ -28,13 +28,81 @@
       "why": [
         "1 profitable wallet on this side",
         "$95,534, 98% of their own book",
-        "latest buy 51 min ago",
+        "latest buy 79 min ago",
         "still near their entry price",
         "23h until it resolves",
-        "$232,848 liquidity"
+        "$225,372 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x9952ac8902f12c98f87d7868689becb6fad664b74f254121ba6326afb0ccc1ea",
+      "title": "Baltimore Orioles vs. Tampa Bay Rays",
+      "side_label": "Tampa Bay Rays \u2014 Baltimore Orioles vs. Tampa Bay Rays",
+      "outcome": "Tampa Bay Rays",
+      "entry_price": 0.605,
+      "whale_price": 0.609,
+      "drift_c": -0.36,
+      "contracts": 915,
+      "cost": 553.57,
+      "max_payout": 915.0,
+      "conviction": 0.554,
+      "hours_to_resolve": 1.2,
+      "n_wallets": 1,
+      "whale_usd": 41077,
+      "minutes_ago": 13,
+      "liquidity": 509077,
+      "url": "https://polymarket.com/event/mlb-bal-tb-2026-08-14",
+      "end_iso": "2026-08-21T23:10:00Z",
+      "event_iso": "2026-08-14 23:10:00+00",
+      "slug": "mlb-bal-tb-2026-08-14",
+      "signal_ts": 1786744084.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$41,077, 100% of their own book",
+        "latest buy 13 min ago",
+        "still near their entry price",
+        "1h until it resolves",
+        "$509,077 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x9a9d3bfbb23acafb8c574adba6bcacc7faffc1b9666b341b26112a94604930e3",
+      "title": "Colorado Rockies vs. San Francisco Giants",
+      "side_label": "San Francisco Giants \u2014 Colorado Rockies vs. San Francisco Giants",
+      "outcome": "San Francisco Giants",
+      "entry_price": 0.545,
+      "whale_price": 0.55,
+      "drift_c": -0.5,
+      "contracts": 900,
+      "cost": 490.5,
+      "max_payout": 900.0,
+      "conviction": 0.491,
+      "hours_to_resolve": 4.2,
+      "n_wallets": 1,
+      "whale_usd": 11418,
+      "minutes_ago": 7,
+      "liquidity": 372217,
+      "url": "https://polymarket.com/event/mlb-col-sf-2026-08-14",
+      "end_iso": "2026-08-22T02:15:00Z",
+      "event_iso": "2026-08-15 02:15:00+00",
+      "slug": "mlb-col-sf-2026-08-14",
+      "signal_ts": 1786744447.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$11,418 \u2014 but only 9.1% of their book",
+        "latest buy 7 min ago",
+        "still near their entry price",
+        "4h until it resolves",
+        "$372,217 liquidity"
+      ],
+      "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     },
@@ -46,15 +114,15 @@
       "entry_price": 0.8,
       "whale_price": 0.79,
       "drift_c": 1.0,
-      "contracts": 616,
-      "cost": 492.8,
-      "max_payout": 616.0,
-      "conviction": 0.493,
-      "hours_to_resolve": 410.4,
+      "contracts": 587,
+      "cost": 469.6,
+      "max_payout": 587.0,
+      "conviction": 0.47,
+      "hours_to_resolve": 410.0,
       "n_wallets": 1,
       "whale_usd": 5320,
-      "minutes_ago": 40,
-      "liquidity": 91982,
+      "minutes_ago": 68,
+      "liquidity": 92363,
       "url": "https://polymarket.com/event/us-announces-end-of-iranian-blockade-byptptpt-20260713152715080",
       "end_iso": "2026-08-31T23:59:00Z",
       "event_iso": "",
@@ -63,15 +131,17 @@
       "why": [
         "1 profitable wallet on this side",
         "$5,320 \u2014 but only 1.1% of their book",
-        "latest buy 40 min ago",
+        "latest buy 68 min ago",
         "price up 1.0c since they bought",
         "410h until it resolves",
-        "$91,982 liquidity"
+        "$92,363 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
-    },
+    }
+  ],
+  "probe": [
     {
       "market_id": "0x86ef00c993db7bcb48f09d110a05c2e56522aee811743492b51aeb49d99a2cc0",
       "title": "UFC 330: Vicente Luque vs. Tresean Gore (Middleweight, Early Prelims)",
@@ -80,15 +150,15 @@
       "entry_price": 0.495,
       "whale_price": 0.5,
       "drift_c": -0.5,
-      "contracts": 953,
-      "cost": 471.74,
-      "max_payout": 953.0,
-      "conviction": 0.472,
-      "hours_to_resolve": 23.5,
+      "contracts": 903,
+      "cost": 446.99,
+      "max_payout": 903.0,
+      "conviction": 0.447,
+      "hours_to_resolve": 23.0,
       "n_wallets": 1,
       "whale_usd": 22057,
-      "minutes_ago": 113,
-      "liquidity": 177679,
+      "minutes_ago": 141,
+      "liquidity": 181801,
       "url": "https://polymarket.com/event/ufc-vic-tre3-2026-08-15",
       "end_iso": "2026-08-16T03:59:59.999Z",
       "event_iso": "2026-08-15 21:00:00+00",
@@ -97,48 +167,14 @@
       "why": [
         "new wallet with no track record \u2014 pattern signal, not a copy",
         "$22,057, 100% of their own book",
-        "latest buy 113 min ago",
+        "latest buy 141 min ago",
         "still near their entry price",
         "23h until it resolves",
-        "$177,679 liquidity"
+        "$181,801 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
         "unproven wallet \u2014 this is a pattern, not a track record"
-      ]
-    },
-    {
-      "market_id": "0x4520580992fbd381428fbb091b8f1bc69cab798b387d5ad964babc6effa223d7",
-      "title": "Brownsburg: Andre Ilagan vs Tristan Schoolkate",
-      "side_label": "Andre Ilagan \u2014 Brownsburg: Andre Ilagan vs Tristan Schoolkate",
-      "outcome": "Andre Ilagan",
-      "entry_price": 0.49,
-      "whale_price": 0.5,
-      "drift_c": -0.99,
-      "contracts": 959,
-      "cost": 469.91,
-      "max_payout": 959.0,
-      "conviction": 0.47,
-      "hours_to_resolve": 0.2,
-      "n_wallets": 1,
-      "whale_usd": 6840,
-      "minutes_ago": 32,
-      "liquidity": 233794,
-      "url": "https://polymarket.com/event/atp-ilagan-schoolk-2026-08-14",
-      "end_iso": "2026-08-21T17:00:00Z",
-      "event_iso": "2026-08-14 21:45:00+00",
-      "slug": "atp-ilagan-schoolk-2026-08-14",
-      "signal_ts": 1786741245.0,
-      "why": [
-        "1 profitable wallet on this side",
-        "$6,840, 100% of their own book",
-        "latest buy 32 min ago",
-        "price 1.0c cheaper than they paid",
-        "0h until it resolves",
-        "$233,794 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
       ]
     },
     {
@@ -149,15 +185,15 @@
       "entry_price": 0.595,
       "whale_price": 0.6,
       "drift_c": -0.5,
-      "contracts": 774,
-      "cost": 460.53,
-      "max_payout": 774.0,
-      "conviction": 0.461,
-      "hours_to_resolve": 12.5,
+      "contracts": 734,
+      "cost": 436.73,
+      "max_payout": 734.0,
+      "conviction": 0.437,
+      "hours_to_resolve": 12.0,
       "n_wallets": 1,
       "whale_usd": 3383,
-      "minutes_ago": 21,
-      "liquidity": 88335,
+      "minutes_ago": 49,
+      "liquidity": 90029,
       "url": "https://polymarket.com/event/lol-fox1-dnf-2026-08-15",
       "end_iso": "2026-08-15T16:00:00Z",
       "event_iso": "2026-08-15 10:00:00+00",
@@ -166,18 +202,16 @@
       "why": [
         "1 profitable wallet on this side",
         "$3,383 \u2014 but only 2.3% of their book",
-        "latest buy 21 min ago",
+        "latest buy 49 min ago",
         "still near their entry price",
         "12h until it resolves",
-        "$88,335 liquidity"
+        "$90,029 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
         "only one wallet \u2014 single opinion"
       ]
-    }
-  ],
-  "probe": [
+    },
     {
       "market_id": "0x0e81bd4de4f1827af0b9426ddec226e88f43c4a8e85812116d22bf0f1c94efc8",
       "title": "Will Ethereum dip to $1,700 in August?",
@@ -190,11 +224,11 @@
       "cost": 406.6,
       "max_payout": 535.0,
       "conviction": 0.407,
-      "hours_to_resolve": 414.5,
+      "hours_to_resolve": 414.0,
       "n_wallets": 1,
       "whale_usd": 9902,
-      "minutes_ago": 324,
-      "liquidity": 39322,
+      "minutes_ago": 352,
+      "liquidity": 39072,
       "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-august-2026",
       "end_iso": "2026-09-01T04:00:00Z",
       "event_iso": "",
@@ -203,43 +237,9 @@
       "why": [
         "1 profitable wallet on this side",
         "$9,902 \u2014 but only 0.3% of their book",
-        "latest buy 324 min ago",
+        "latest buy 352 min ago",
         "still near their entry price",
         "414h until it resolves"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0xe4a34e0e91055f4a0352fe3c5bc3c8c694612cacdc86a00f8101d0196a9ddb24",
-      "title": "Set Handicap: Cilic (-1.5) vs Aguilar (+1.5)",
-      "side_label": "Aguilar \u2014 Set Handicap: Cilic (-1.5) vs Aguilar (+1.5)",
-      "outcome": "Aguilar",
-      "entry_price": 0.785,
-      "whale_price": 0.766,
-      "drift_c": 1.89,
-      "contracts": 508,
-      "cost": 398.78,
-      "max_payout": 508.0,
-      "conviction": 0.399,
-      "hours_to_resolve": 0.5,
-      "n_wallets": 1,
-      "whale_usd": 18274,
-      "minutes_ago": 75,
-      "liquidity": 135105,
-      "url": "https://polymarket.com/event/atp-aguilar-cilic-2026-08-13",
-      "end_iso": "2026-08-20T14:00:00Z",
-      "event_iso": "2026-08-14 22:00:00+00",
-      "slug": "atp-aguilar-cilic-2026-08-13-set-handicap-away-1pt5",
-      "signal_ts": 1786738668.0,
-      "why": [
-        "1 profitable wallet on this side",
-        "$18,274 \u2014 but only 18.8% of their book",
-        "latest buy 75 min ago",
-        "price up 1.9c since they bought",
-        "0h until it resolves",
-        "$135,105 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -253,15 +253,15 @@
       "entry_price": 0.495,
       "whale_price": 0.469,
       "drift_c": 2.62,
-      "contracts": 606,
-      "cost": 299.97,
-      "max_payout": 606.0,
-      "conviction": 0.3,
-      "hours_to_resolve": 23.5,
+      "contracts": 567,
+      "cost": 280.67,
+      "max_payout": 567.0,
+      "conviction": 0.281,
+      "hours_to_resolve": 23.0,
       "n_wallets": 1,
       "whale_usd": 7433,
-      "minutes_ago": 159,
-      "liquidity": 56396,
+      "minutes_ago": 187,
+      "liquidity": 56949,
       "url": "https://polymarket.com/event/ufc-cha15-edu8-2026-08-15",
       "end_iso": "2026-08-16T03:59:59.999Z",
       "event_iso": "2026-08-15 21:00:00+00",
@@ -270,10 +270,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$7,433 \u2014 but only 11.6% of their book",
-        "latest buy 159 min ago",
+        "latest buy 187 min ago",
         "price up 2.6c since they bought",
         "23h until it resolves",
-        "$56,396 liquidity"
+        "$56,949 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
@@ -281,21 +281,21 @@
       ]
     }
   ],
-  "considered": 458,
+  "considered": 464,
   "rejected": {
-    "market closed": 212,
+    "market closed": 202,
     "already resolved": 30,
-    "in-play (event already started)": 18,
-    "resolves more than 30 days out": 4,
-    "fresh wallet: market too liquid for the pattern": 88,
-    "resolves in under 3h": 4,
+    "in-play (event already started)": 20,
+    "resolves more than 30 days out": 5,
+    "fresh wallet: market too liquid for the pattern": 103,
+    "resolves in under 3h": 7,
     "signal too old for this market's horizon": 4,
-    "no resolution or start time": 3,
-    "wallet not new (no track record either)": 79,
+    "no resolution or start time": 2,
+    "wallet not new (no track record either)": 75,
     "price ran away from the whale's entry": 2,
     "parlay / combo ticket, not a single market": 5,
     "price outside tradeable band": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 3
+    "below the 0.45 buy bar (recorded, not bought)": 4
   },
   "notes": [],
   "consistency": {
@@ -308,8 +308,8 @@
       "not a ladder: group labels are not thresholds or deadlines": 54,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "bracket has too many legs to place by hand": 2,
-      "bracket overround smaller than the spread": 1,
-      "ladder pair too illiquid to fill": 104,
+      "bracket overround smaller than the spread": 2,
+      "ladder pair too illiquid to fill": 105,
       "bracket underround smaller than the spread": 1,
       "not a ladder: numeric group spans different end dates": 1,
       "not a ladder: a live leg carries no group label": 5,
@@ -339,9 +339,9 @@
         "rows": [
           {
             "label": "\u22640.0%",
-            "market_prob": 0.065,
+            "market_prob": 0.06,
             "model_prob": 0.1689,
-            "gap_c": 10.39,
+            "gap_c": 10.89,
             "suspect": false
           },
           {
@@ -409,16 +409,16 @@
           },
           {
             "label": "2.1%",
-            "market_prob": 0.002,
+            "market_prob": 0.0015,
             "model_prob": 0.0536,
-            "gap_c": 5.16,
+            "gap_c": 5.21,
             "suspect": false
           },
           {
             "label": "2.2%",
-            "market_prob": 0.0365,
+            "market_prob": 0.0395,
             "model_prob": 0.1297,
-            "gap_c": 9.32,
+            "gap_c": 9.02,
             "suspect": false
           },
           {
@@ -437,16 +437,16 @@
           },
           {
             "label": "2.5%",
-            "market_prob": 0.205,
+            "market_prob": 0.2,
             "model_prob": 0.1899,
-            "gap_c": -1.51,
+            "gap_c": -1.01,
             "suspect": false
           },
           {
             "label": "2.6%",
-            "market_prob": 0.042,
+            "market_prob": 0.0405,
             "model_prob": 0.1012,
-            "gap_c": 5.92,
+            "gap_c": 6.07,
             "suspect": false
           },
           {
@@ -493,9 +493,9 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.0305,
+            "market_prob": 0.044,
             "model_prob": 0.0009,
-            "gap_c": -2.96,
+            "gap_c": -4.31,
             "suspect": false
           },
           {
@@ -535,16 +535,16 @@
           },
           {
             "label": "0.4%",
-            "market_prob": 0.385,
+            "market_prob": 0.39,
             "model_prob": 0.232,
-            "gap_c": -15.3,
+            "gap_c": -15.8,
             "suspect": false
           },
           {
             "label": "\u22650.5%",
-            "market_prob": 0.165,
+            "market_prob": 0.17,
             "model_prob": 0.2571,
-            "gap_c": 9.21,
+            "gap_c": 8.71,
             "suspect": false
           }
         ]
@@ -649,7 +649,70 @@
       }
     ]
   },
-  "weather": [],
+  "weather": [
+    {
+      "market_id": "KXHIGHNY-26AUG15-B86.5",
+      "venue": "kalshi",
+      "source": "weather",
+      "outcome": "Yes",
+      "title": "Will the maximum temperature be 86-87\u00b0 on Aug 15, 2026?",
+      "url": "https://kalshi.com/markets/KXHIGHNY-26AUG15",
+      "entry_price": 0.05,
+      "bid": 0.03,
+      "model_prob": 0.1296,
+      "edge": 0.0796,
+      "forecast_f": 83.0,
+      "sigma_f": 2.01,
+      "market_mu_f": 81.75,
+      "market_sigma_f": 2.01,
+      "days_ahead": 0.08,
+      "market_prob": 0.04,
+      "model": "kalshi-ladder-tilted-by-nbm-station",
+      "validated": false,
+      "cal_prob": 0.0633,
+      "cal_edge": 0.0663,
+      "cal_b": 0.915,
+      "forecast_src": "nbm-station",
+      "nbm_cycle": "2026-08-14T19Z",
+      "nbm_sd_f": 2.0,
+      "forecast_grid_f": 82.0,
+      "city": "Central Park, New York",
+      "settles_by": "https://forecast.weather.gov/product.php?site=OKX&product=CLI&issuedby=NYC",
+      "end_iso": "2026-08-16T00:00:00+00:00",
+      "event_iso": "2026-08-16T00:00:00+00:00"
+    },
+    {
+      "market_id": "KXHIGHNY-26AUG15-B84.5",
+      "venue": "kalshi",
+      "source": "weather",
+      "outcome": "Yes",
+      "title": "Will the maximum temperature be 84-85\u00b0 on Aug 15, 2026?",
+      "url": "https://kalshi.com/markets/KXHIGHNY-26AUG15",
+      "entry_price": 0.12,
+      "bid": 0.09,
+      "model_prob": 0.1922,
+      "edge": 0.0722,
+      "forecast_f": 83.0,
+      "sigma_f": 2.01,
+      "market_mu_f": 81.75,
+      "market_sigma_f": 2.01,
+      "days_ahead": 0.08,
+      "market_prob": 0.105,
+      "model": "kalshi-ladder-tilted-by-nbm-station",
+      "validated": false,
+      "cal_prob": 0.1391,
+      "cal_edge": 0.0531,
+      "cal_b": 0.915,
+      "forecast_src": "nbm-station",
+      "nbm_cycle": "2026-08-14T19Z",
+      "nbm_sd_f": 2.0,
+      "forecast_grid_f": 82.0,
+      "city": "Central Park, New York",
+      "settles_by": "https://forecast.weather.gov/product.php?site=OKX&product=CLI&issuedby=NYC",
+      "end_iso": "2026-08-16T00:00:00+00:00",
+      "event_iso": "2026-08-16T00:00:00+00:00"
+    }
+  ],
   "weather_diag": {
     "cal_vetoed": 0
   },
