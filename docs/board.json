@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-14 00:16:35",
-  "generated_at": 1786666595.9021404,
+  "generated": "2026-08-14 00:20:53",
+  "generated_at": 1786666853.27522,
   "account_size": 100000.0,
   "tickets": [
     {
@@ -11,15 +11,15 @@
       "entry_price": 0.71,
       "whale_price": 0.71,
       "drift_c": 0.0,
-      "contracts": 778,
-      "cost": 552.38,
-      "max_payout": 778.0,
-      "conviction": 0.553,
+      "contracts": 773,
+      "cost": 548.83,
+      "max_payout": 773.0,
+      "conviction": 0.549,
       "hours_to_resolve": 435.7,
       "n_wallets": 1,
       "whale_usd": 13475,
-      "minutes_ago": 8,
-      "liquidity": 20289,
+      "minutes_ago": 13,
+      "liquidity": 20109,
       "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
       "end_iso": "2026-09-01T04:00:00Z",
       "event_iso": "",
@@ -28,7 +28,7 @@
       "why": [
         "1 profitable wallet on this side",
         "$13,475 \u2014 but only 0.4% of their book",
-        "latest buy 8 min ago",
+        "latest buy 13 min ago",
         "still near their entry price",
         "436h until it resolves"
       ],
@@ -44,15 +44,15 @@
       "entry_price": 0.415,
       "whale_price": 0.42,
       "drift_c": -0.5,
-      "contracts": 1200,
-      "cost": 498.0,
-      "max_payout": 1200.0,
-      "conviction": 0.498,
+      "contracts": 1190,
+      "cost": 493.85,
+      "max_payout": 1190.0,
+      "conviction": 0.494,
       "hours_to_resolve": 1.8,
       "n_wallets": 1,
       "whale_usd": 15812,
-      "minutes_ago": 23,
-      "liquidity": 580578,
+      "minutes_ago": 28,
+      "liquidity": 580304,
       "url": "https://polymarket.com/event/mlb-tex-laa-2026-08-13",
       "end_iso": "2026-08-21T02:07:00Z",
       "event_iso": "2026-08-14 02:07:00+00",
@@ -61,10 +61,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$15,812 \u2014 but only 17.0% of their book",
-        "latest buy 23 min ago",
+        "latest buy 28 min ago",
         "still near their entry price",
         "2h until it resolves",
-        "$580,578 liquidity"
+        "$580,304 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -78,14 +78,14 @@
       "entry_price": 0.665,
       "whale_price": 0.67,
       "drift_c": -0.5,
-      "contracts": 706,
-      "cost": 469.49,
-      "max_payout": 706.0,
-      "conviction": 0.47,
+      "contracts": 700,
+      "cost": 465.5,
+      "max_payout": 700.0,
+      "conviction": 0.466,
       "hours_to_resolve": 13.6,
       "n_wallets": 1,
       "whale_usd": 5998,
-      "minutes_ago": 27,
+      "minutes_ago": 31,
       "liquidity": 38659,
       "url": "https://polymarket.com/event/cs2-fut-mouz-2026-08-14",
       "end_iso": "2026-08-14T19:55:00Z",
@@ -95,7 +95,7 @@
       "why": [
         "1 profitable wallet on this side",
         "$5,998 \u2014 but only 6.0% of their book",
-        "latest buy 27 min ago",
+        "latest buy 31 min ago",
         "still near their entry price",
         "14h until it resolves"
       ],
@@ -114,15 +114,15 @@
       "entry_price": 0.86,
       "whale_price": 0.833,
       "drift_c": 2.69,
-      "contracts": 469,
-      "cost": 403.34,
-      "max_payout": 469.0,
-      "conviction": 0.404,
-      "hours_to_resolve": 215.7,
+      "contracts": 465,
+      "cost": 399.9,
+      "max_payout": 465.0,
+      "conviction": 0.4,
+      "hours_to_resolve": 215.6,
       "n_wallets": 1,
       "whale_usd": 8892,
-      "minutes_ago": 99,
-      "liquidity": 38042,
+      "minutes_ago": 104,
+      "liquidity": 38952,
       "url": "https://polymarket.com/event/us-announces-end-of-iranian-blockade-byptptpt-20260713152715080",
       "end_iso": "2026-08-22T23:59:00Z",
       "event_iso": "",
@@ -131,7 +131,7 @@
       "why": [
         "1 profitable wallet on this side",
         "$8,892 \u2014 but only 5.1% of their book",
-        "latest buy 99 min ago",
+        "latest buy 104 min ago",
         "price up 2.7c since they bought",
         "216h until it resolves"
       ],
@@ -140,14 +140,14 @@
       ]
     }
   ],
-  "considered": 460,
+  "considered": 461,
   "rejected": {
-    "in-play (event already started)": 16,
+    "in-play (event already started)": 13,
     "resolves more than 30 days out": 11,
-    "market closed": 235,
-    "fresh wallet: market too liquid for the pattern": 26,
-    "already resolved": 40,
-    "wallet not new (no track record either)": 91,
+    "market closed": 239,
+    "fresh wallet: market too liquid for the pattern": 31,
+    "already resolved": 39,
+    "wallet not new (no track record either)": 87,
     "resolves in under 3h": 15,
     "signal too old for this market's horizon": 10,
     "parlay / combo ticket, not a single market": 10,
@@ -237,9 +237,9 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.045,
+            "market_prob": 0.04,
             "model_prob": 0.1012,
-            "gap_c": 5.62,
+            "gap_c": 6.12,
             "suspect": false
           },
           {
@@ -279,9 +279,9 @@
         "rows": [
           {
             "label": "\u22640.0%",
-            "market_prob": 0.08,
+            "market_prob": 0.085,
             "model_prob": 0.1689,
-            "gap_c": 8.89,
+            "gap_c": 8.39,
             "suspect": false
           },
           {
@@ -342,9 +342,9 @@
         "rows": [
           {
             "label": "\u22642.9%",
-            "market_prob": 0.033,
+            "market_prob": 0.032,
             "model_prob": 0.005,
-            "gap_c": -2.8,
+            "gap_c": -2.7,
             "suspect": false
           },
           {
@@ -363,16 +363,16 @@
           },
           {
             "label": "3.2%",
-            "market_prob": 0.0395,
+            "market_prob": 0.0405,
             "model_prob": 0.1495,
-            "gap_c": 11.0,
+            "gap_c": 10.9,
             "suspect": false
           },
           {
             "label": "3.3%",
-            "market_prob": 0.355,
+            "market_prob": 0.365,
             "model_prob": 0.2282,
-            "gap_c": -12.68,
+            "gap_c": -13.68,
             "suspect": false
           },
           {
@@ -391,9 +391,9 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.07,
+            "market_prob": 0.055,
             "model_prob": 0.084,
-            "gap_c": 1.4,
+            "gap_c": 2.9,
             "suspect": false
           },
           {
@@ -405,16 +405,16 @@
           },
           {
             "label": "3.8%",
-            "market_prob": 0.029,
+            "market_prob": 0.028,
             "model_prob": 0.0065,
-            "gap_c": -2.25,
+            "gap_c": -2.15,
             "suspect": false
           },
           {
             "label": "3.9%",
-            "market_prob": 0.0225,
+            "market_prob": 0.0235,
             "model_prob": 0.001,
-            "gap_c": -2.15,
+            "gap_c": -2.25,
             "suspect": false
           },
           {
@@ -447,9 +447,9 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.0505,
+            "market_prob": 0.0495,
             "model_prob": 0.0009,
-            "gap_c": -4.96,
+            "gap_c": -4.86,
             "suspect": false
           },
           {
@@ -496,9 +496,9 @@
           },
           {
             "label": "\u22650.5%",
-            "market_prob": 0.205,
+            "market_prob": 0.2,
             "model_prob": 0.2571,
-            "gap_c": 5.21,
+            "gap_c": 5.71,
             "suspect": false
           }
         ]
@@ -513,20 +513,20 @@
       "outcome": "Yes",
       "title": "Will the maximum temperature be 83-84\u00b0 on Aug 14, 2026?",
       "url": "https://kalshi.com/markets/KXHIGHDEN-26AUG14",
-      "entry_price": 0.27,
-      "bid": 0.26,
-      "model_prob": 0.3645,
-      "edge": 0.0945,
+      "entry_price": 0.28,
+      "bid": 0.27,
+      "model_prob": 0.375,
+      "edge": 0.095,
       "forecast_f": 84.0,
-      "sigma_f": 2.52,
-      "market_mu_f": 85.6,
-      "market_sigma_f": 2.52,
+      "sigma_f": 2.51,
+      "market_mu_f": 85.56,
+      "market_sigma_f": 2.51,
       "days_ahead": 0.0,
-      "market_prob": 0.265,
+      "market_prob": 0.275,
       "model": "kalshi-ladder-tilted-by-nbm-station",
       "validated": false,
-      "cal_prob": 0.287,
-      "cal_edge": 0.0775,
+      "cal_prob": 0.2965,
+      "cal_edge": 0.0785,
       "cal_b": 0.915,
       "forecast_src": "nbm-station",
       "nbm_cycle": "2026-08-13T19Z",
@@ -546,18 +546,18 @@
       "url": "https://kalshi.com/markets/KXHIGHCHI-26AUG14",
       "entry_price": 0.13,
       "bid": 0.12,
-      "model_prob": 0.2223,
-      "edge": 0.0923,
+      "model_prob": 0.2236,
+      "edge": 0.0936,
       "forecast_f": 81.0,
-      "sigma_f": 2.04,
-      "market_mu_f": 79.8,
-      "market_sigma_f": 2.04,
+      "sigma_f": 2.05,
+      "market_mu_f": 79.79,
+      "market_sigma_f": 2.05,
       "days_ahead": 0.0,
       "market_prob": 0.125,
       "model": "kalshi-ladder-tilted-by-nbm-station",
       "validated": false,
       "cal_prob": 0.1494,
-      "cal_edge": 0.0729,
+      "cal_edge": 0.0742,
       "cal_b": 0.915,
       "forecast_src": "nbm-station",
       "nbm_cycle": "2026-08-13T19Z",
@@ -608,18 +608,18 @@
       "url": "https://kalshi.com/markets/KXHIGHDEN-26AUG14",
       "entry_price": 0.07,
       "bid": 0.06,
-      "model_prob": 0.144,
-      "edge": 0.074,
+      "model_prob": 0.1419,
+      "edge": 0.0719,
       "forecast_f": 84.0,
-      "sigma_f": 2.52,
-      "market_mu_f": 85.6,
-      "market_sigma_f": 2.52,
+      "sigma_f": 2.51,
+      "market_mu_f": 85.56,
+      "market_sigma_f": 2.51,
       "days_ahead": 0.0,
       "market_prob": 0.065,
       "model": "kalshi-ladder-tilted-by-nbm-station",
       "validated": false,
       "cal_prob": 0.0857,
-      "cal_edge": 0.0583,
+      "cal_edge": 0.0562,
       "cal_b": 0.915,
       "forecast_src": "nbm-station",
       "nbm_cycle": "2026-08-13T19Z",
@@ -635,6 +635,7 @@
     "cal_vetoed": 0
   },
   "gas": [],
+  "spxindex": [],
   "sizing": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
