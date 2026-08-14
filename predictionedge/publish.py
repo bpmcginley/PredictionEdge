@@ -30,7 +30,8 @@ from .config import Config
 NBM_CACHE = "docs/nbm.json"
 
 
-def weather_tickets(cfg: Config, nbm_cache_path: str = NBM_CACHE) -> list[dict]:
+def weather_tickets(cfg: Config, nbm_cache_path: str = NBM_CACHE,
+                    diag: dict | None = None) -> list[dict]:
     """The NWS/Kalshi sleeve, in its OWN array - never merged into `tickets`.
 
     Two sleeves, two hypotheses. The board's tickets claim "whales pick winners"; these
@@ -52,7 +53,10 @@ def weather_tickets(cfg: Config, nbm_cache_path: str = NBM_CACHE) -> list[dict]:
         from .weather import find_weather_edges
         tickets = find_weather_edges(min_edge=cfg.weather_min_edge,
                                      max_days=cfg.weather_max_days,
-                                     nbm_cache=cache)
+                                     nbm_cache=cache,
+                                     cal_overlay=cfg.calibration_overlay,
+                                     cal_shrink=cfg.calibration_shrink,
+                                     diag=diag)
     except Exception as exc:  # noqa: BLE001
         print(f"weather sleeve unavailable: {exc}")
         return []
@@ -68,7 +72,12 @@ def build_payload(cfg: Config) -> dict:
     from .dashboard import build_board_payload
 
     payload = build_board_payload(cfg)
-    payload["weather"] = weather_tickets(cfg)
+    # One small diagnostic, published rather than logged: how often the calibration
+    # overlay vetoed a weather ticket this run. A veto rate that quietly climbs to
+    # 100% is the overlay silencing the sleeve, and that must be visible on the page.
+    wx_diag: dict = {"cal_vetoed": 0}
+    payload["weather"] = weather_tickets(cfg, diag=wx_diag)
+    payload["weather_diag"] = wx_diag
     # The journal is personal and browser-local; never publish it.
     payload.pop("journal", None)
     payload.pop("journal_state", None)
@@ -106,6 +115,7 @@ def main(argv: list[str] | None = None) -> int:
         # A data outage must publish an honest empty board, not break the site.
         payload = {"generated": time.strftime("%Y-%m-%d %H:%M:%S"),
                    "generated_at": time.time(), "tickets": [], "weather": [],
+                   "weather_diag": {"cal_vetoed": 0},
                    "considered": 0,
                    "rejected": {}, "notes": [f"board generation failed: {exc}"],
                    "account_size": cfg.board_account_size,

@@ -60,6 +60,9 @@ import math
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 
+from . import calibration
+from .fees import fee_per_contract
+
 log = logging.getLogger(__name__)
 
 NWS_API = "https://api.weather.gov"
@@ -394,10 +397,60 @@ def _mid(bid: float | None, ask: float | None) -> float | None:
     return (bid + ask) / 2.0
 
 
+def _hours_to_expiry(close_iso: str, day: str, now: datetime) -> float:
+    """Horizon for the calibration overlay, from the market's own close time.
+
+    Falls back to the end of the target day (UTC) when the API serves no parseable
+    close_time - for a daily-high market that is within hours of the truth, and the
+    overlay's horizon buckets are 48h wide, so the fallback cannot change a bucket
+    except at a boundary the real close was already straddling.
+    """
+    when = None
+    if close_iso:
+        try:
+            when = datetime.fromisoformat(close_iso.replace("Z", "+00:00"))
+            if when.tzinfo is None:
+                when = when.replace(tzinfo=timezone.utc)
+        except ValueError:
+            when = None
+    if when is None:
+        when = datetime.strptime(day, "%Y-%m-%d").replace(
+            tzinfo=timezone.utc) + timedelta(days=1)
+    return max(0.0, (when - now).total_seconds() / 3600.0)
+
+
+def _calibration_gate(t: dict, hours: float, *, shrink: float,
+                      diag: dict | None = None) -> bool:
+    """Apply the overlay to one candidate ticket. True = keep (and annotate).
+
+    The veto logic lives in `calibration.assess`; this is only the weather wiring:
+    fair = the tilted model probability, quote = the ask we would pay, fee threshold =
+    the taker fee at that price (a weather entry takes the ask - see `papertrial`).
+    A suppressed ticket is counted, not logged away: `cal_vetoed` lands in the
+    published diagnostics so the rate of vetoes is visible without grepping logs.
+    """
+    a = calibration.assess(t["model_prob"], t["entry_price"], "weather", hours,
+                           shrink=shrink,
+                           min_abs_edge=fee_per_contract(t["entry_price"], maker=False))
+    if not a.ok:
+        log.info("calibration veto (%s): %s edge=%+.3f cal_edge=%+.3f",
+                 a.reason, t.get("market_id", "?"), t["edge"], a.cal_edge)
+        if diag is not None:
+            diag["cal_vetoed"] = diag.get("cal_vetoed", 0) + 1
+        return False
+    t["cal_prob"] = round(a.cal_prob, 4)
+    t["cal_edge"] = round(a.cal_edge, 4)
+    t["cal_b"] = round(a.cal_b, 4)
+    return True
+
+
 def find_weather_edges(*, cities: dict[str, WeatherCity] | None = None,
                        kalshi_fetch=None, nws_fetch=None,
                        nbm_cache: dict | None = None, nbm_fetch=None,
                        max_days: float = 5.0, min_edge: float = 0.07,
+                       cal_overlay: bool = True,
+                       cal_shrink: float = calibration.DEFAULT_SHRINK,
+                       diag: dict | None = None,
                        now: datetime | None = None) -> list[dict]:
     """Every bracket whose model probability beats its ask by `min_edge`.
 
@@ -408,6 +461,12 @@ def find_weather_edges(*, cities: dict[str, WeatherCity] | None = None,
     place (the caller owns saving it). When it holds a value for a city's station and
     target day, that value is the mean and the gridpoint is only recorded for
     comparison; with no cache or no value, the gridpoint prices the day as before.
+
+    `cal_overlay` runs each candidate through the calibration sanity layer
+    (`calibration.py`): a ticket whose edge does not survive correcting the market's
+    published miscalibration out of its price is suppressed, and the count lands in
+    `diag["cal_vetoed"]` when the caller supplies a dict. Survivors carry `cal_prob`,
+    `cal_edge` and `cal_b` so the trial can score the veto rule itself later.
     """
     from .kalshi import KALSHI_API, _default_fetch as kx_fetch, _price_to_dollars
 
@@ -476,8 +535,14 @@ def find_weather_edges(*, cities: dict[str, WeatherCity] | None = None,
             if days_ahead < -0.5 or days_ahead > max_days:
                 continue
             mu = float(ent["f"]) if ent is not None else highs[day]
+            close_iso = next((leg.get("close_time") for leg in ladder
+                              if leg.get("close_time")), "")
+            hours = _hours_to_expiry(close_iso, day, now)
             for t in price_ladder(ladder, mu, days_ahead=max(0.0, days_ahead),
                                   min_edge=min_edge):
+                if cal_overlay and not _calibration_gate(t, hours, shrink=cal_shrink,
+                                                         diag=diag):
+                    continue
                 if ent is not None:
                     t["model"] = "kalshi-ladder-tilted-by-nbm-station"
                     t["forecast_src"] = "nbm-station"
