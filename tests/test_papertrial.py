@@ -342,3 +342,212 @@ def test_whale_rows_do_not_grow_null_model_fields():
     record(trial, [_ticket()])
     assert "model_prob" not in trial["open"][0]
     assert "sigma_f" not in trial["open"][0]
+
+
+# --- maker-first entries -----------------------------------------------------------
+#
+# The single biggest EV lever on a 1-3c edge is not paying the taker fee, so the
+# trial must simulate passive entry honestly: join the bid, wait, and record the
+# case for the trade AT INTENT TIME - because a record of fills alone drops the
+# unfilled winners and keeps the filled losers.
+
+from predictionedge.papertrial import check_fills, maker_stats  # noqa: E402
+
+
+def _q(bid=None, ask=None):
+    return {"KXHIGHNY-26AUG12-B87.5:yes": {"bid": bid, "ask": ask}}
+
+
+def test_maker_first_records_an_intent_not_a_position():
+    trial = _blank()
+    added = record(trial, [_weather_ticket(bid=0.06, _maker=False)],
+                   stake=100.0, maker_first=True)
+    assert added == 1
+    assert trial["open"] == []
+    row = trial["pending"][0]
+    assert row["limit_price"] == 0.06        # joined the bid
+    assert row["intended_price"] == 0.06
+    assert row["ask_at_intent"] == 0.08      # the taker price it refused to pay
+    assert row["fair_at_intent"] == 0.19     # the model's case, frozen at intent
+    assert row["edge_at_intent"] == 0.11
+    assert row["polls"] == 0
+
+
+def test_a_republished_ticket_is_not_a_second_intent():
+    trial = _blank()
+    record(trial, [_weather_ticket(bid=0.06)], maker_first=True)
+    assert record(trial, [_weather_ticket(bid=0.05)], maker_first=True) == 0
+    assert len(trial["pending"]) == 1
+
+
+def test_a_ticket_without_a_bid_takes_the_ask_as_before():
+    # An empty book has nothing to join; the honest entry is still the taker cross.
+    trial = _blank()
+    record(trial, [_weather_ticket(_maker=False)], stake=100.0,
+           fee_multiplier=0.07, maker=True, maker_first=True)
+    assert trial.get("pending", []) == []
+    assert trial["open"][0]["fee"] == trade_fee(0.08, 1250, multiplier=0.07, maker=False)
+
+
+def test_maker_first_off_keeps_the_old_path_bid_or_not():
+    trial = _blank()
+    record(trial, [_weather_ticket(bid=0.06, _maker=False)], stake=100.0)
+    assert trial.get("pending", []) == []
+    assert trial["open"][0]["price"] == 0.08
+
+
+def test_an_intent_does_not_fill_while_the_ask_stays_away():
+    trial = _blank()
+    record(trial, [_weather_ticket(bid=0.06)], maker_first=True)
+    filled, expired = check_fills(trial, _q(bid=0.06, ask=0.08), max_polls=8)
+    assert (filled, expired) == (0, 0)
+    assert trial["pending"][0]["polls"] == 1
+    assert trial["open"] == []
+
+
+def test_an_intent_fills_when_a_later_ask_comes_to_the_limit():
+    trial = _blank()
+    record(trial, [_weather_ticket(bid=0.06)], stake=100.0, maker_first=True)
+    check_fills(trial, _q(bid=0.06, ask=0.08))
+    filled, _ = check_fills(trial, _q(bid=0.05, ask=0.06))
+    assert filled == 1
+    assert trial["pending"] == []
+    row = trial["open"][0]
+    assert row["price"] == 0.06              # filled at OUR limit, not the new quote
+    assert row["filled_price"] == 0.06
+    assert row["intended_price"] == 0.06
+    assert row["fill_polls"] == 2
+    assert row["maker"] is True
+    assert row["contracts"] == round(100.0 / 0.06, 4)
+    assert row["fee"] == 0.0                 # maker fills are free on standard markets
+
+
+def test_a_market_that_left_the_board_counts_the_poll_toward_expiry():
+    # No quote reads as "did not come to us" - never as a free fill.
+    trial = _blank()
+    record(trial, [_weather_ticket(bid=0.06)], maker_first=True)
+    filled, expired = check_fills(trial, {}, max_polls=2)
+    assert (filled, expired) == (0, 0)
+    filled, expired = check_fills(trial, {}, max_polls=2)
+    assert (filled, expired) == (0, 1)
+
+
+def test_an_unfilled_intent_expires_into_the_log_with_its_foregone_edge():
+    trial = _blank()
+    record(trial, [_weather_ticket(bid=0.06)], maker_first=True)
+    for _ in range(2):
+        check_fills(trial, _q(bid=0.06, ask=0.08), max_polls=2)
+    assert trial["pending"] == []
+    assert trial["open"] == []               # cancel is the default: no trade happened
+    dead = trial["maker"]["expired"][0]
+    assert dead["edge_at_intent"] == 0.11
+    assert "expired_at" in dead
+    assert maker_stats(trial)["foregone_edge"] == 0.11
+
+
+def test_an_expired_intent_blocks_reentry():
+    # Re-arming on the same market is the adverse-selection machine itself:
+    # keep placing the order and you fill only when the market falls through you.
+    trial = _blank()
+    record(trial, [_weather_ticket(bid=0.06)], maker_first=True)
+    check_fills(trial, {}, max_polls=1)
+    assert record(trial, [_weather_ticket(bid=0.06)], maker_first=True) == 0
+
+
+def test_taker_fallback_crosses_at_the_then_current_ask():
+    trial = _blank()
+    record(trial, [_weather_ticket(bid=0.06)], stake=100.0, maker_first=True)
+    filled, expired = check_fills(trial, _q(bid=0.06, ask=0.09), max_polls=1,
+                                  fallback_taker=True, fee_multiplier=0.07)
+    assert (filled, expired) == (1, 0)
+    row = trial["open"][0]
+    assert row["price"] == 0.09              # the ask NOW, not the ask at intent
+    assert row["maker"] is False
+    assert row["maker_fallback"] is True
+    contracts = 100.0 / 0.09
+    assert row["fee"] == trade_fee(0.09, max(1, round(contracts)),
+                                   multiplier=0.07, maker=False)
+
+
+def test_a_fallback_with_no_quote_cancels_instead_of_inventing_a_price():
+    trial = _blank()
+    record(trial, [_weather_ticket(bid=0.06)], maker_first=True)
+    filled, expired = check_fills(trial, {}, max_polls=1, fallback_taker=True)
+    assert (filled, expired) == (0, 1)
+    assert trial["open"] == []
+
+
+def test_a_maker_fill_settles_through_the_same_machinery():
+    trial = _blank()
+    record(trial, [_weather_ticket(bid=0.06)], stake=100.0, maker_first=True)
+    check_fills(trial, _q(ask=0.06))
+    assert settle(trial, {"KXHIGHNY-26AUG12-B87.5": _meta(["Yes", "No"], [1.0, 0.0])}) == 1
+    row = trial["settled"][0]
+    assert row["won"] is True
+    assert row["pred"] == 0.06               # the fill price is the honest null
+    contracts = round(100.0 / 0.06, 4)
+    assert row["realized"] == round(contracts * (1.0 - 0.06) - 0.0, 4)
+    assert stats(trial)["by_source"]["weather"]["n"] == 1
+
+
+def test_retag_leaves_maker_fills_alone():
+    # A maker fill's zero fee is the point of the whole path; the taker recharge
+    # exists for instant crosses booked wrong, not for fills the simulator priced.
+    from predictionedge.papertrial import retag_weather_fees
+    trial = _blank()
+    record(trial, [_weather_ticket(bid=0.06)], stake=100.0, maker_first=True)
+    check_fills(trial, _q(ask=0.06))
+    assert retag_weather_fees(trial) == 0
+    assert trial["open"][0]["fee"] == 0.0
+
+
+def test_designated_markets_charge_a_quarter_of_taker_on_maker_fills(monkeypatch):
+    from predictionedge import fees
+    monkeypatch.setattr(fees, "DESIGNATED_MAKER_SERIES", ("KXHIGH",))
+    trial = _blank()
+    record(trial, [_weather_ticket(bid=0.06)], stake=100.0,
+           fee_multiplier=0.07, maker_first=True)
+    check_fills(trial, _q(ask=0.06), fee_multiplier=0.07)
+    contracts = 100.0 / 0.06
+    assert trial["open"][0]["fee"] == trade_fee(0.06, max(1, round(contracts)),
+                                                multiplier=0.07, maker=True)
+
+
+def test_pending_orders_round_trip_through_disk():
+    d = tempfile.mkdtemp()
+    p = os.path.join(d, "trial.json")
+    trial = _blank()
+    record(trial, [_weather_ticket(bid=0.06)], maker_first=True)
+    check_fills(trial, _q(bid=0.06, ask=0.08))
+    save(p, trial)
+    again = load(p)
+    assert again["pending"][0]["limit_price"] == 0.06
+    assert again["pending"][0]["polls"] == 1
+    filled, _ = check_fills(again, _q(ask=0.06))   # state survives the reload intact
+    assert filled == 1
+
+
+def test_the_stats_block_reports_the_maker_scoreboard():
+    trial = _blank()
+    record(trial, [_weather_ticket(bid=0.06),
+                   _weather_ticket(mid="KXHIGHCHI-26AUG12-B90.5", bid=0.05,
+                                   entry_price=0.07, edge=0.09),
+                   _weather_ticket(mid="KXHIGHAUS-26AUG12-B99.5", bid=0.04,
+                                   entry_price=0.06, edge=0.08)],
+                  stake=100.0, maker_first=True)
+    check_fills(trial, {**_q(ask=0.06),
+                        "KXHIGHCHI-26AUG12-B90.5:yes": {"ask": 0.08}}, max_polls=1)
+    mk = stats(trial)["maker"]
+    assert mk["pending"] == 0
+    assert mk["filled"] == 1                 # NY came to us
+    assert mk["expired"] == 2                # CHI never did, AUS had no quote...
+    assert mk["fill_rate"] == round(1 / 3, 4)
+    assert mk["avg_fill_polls"] == 1.0
+    assert mk["foregone_edge"] == round(0.09 + 0.08, 4)
+
+
+def test_an_intent_records_polls_even_while_the_stats_show_it_pending():
+    trial = _blank()
+    record(trial, [_weather_ticket(bid=0.06)], maker_first=True)
+    assert stats(trial)["maker"]["pending"] == 1
+    assert stats(trial)["maker"]["fill_rate"] is None   # nothing resolved yet

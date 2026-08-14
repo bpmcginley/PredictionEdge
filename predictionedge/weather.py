@@ -375,6 +375,9 @@ def price_ladder(ladder: list[dict], forecast_f: float, *, days_ahead: float,
             "title": m.get("title", ""),
             "url": m.get("url", ""),
             "entry_price": round(ask, 4),
+            # The best bid rides along so the paper trial can simulate a maker-first
+            # entry (join the bid, wait) instead of assuming a taker cross at the ask.
+            "bid": round(float(m["bid"]), 4) if m.get("bid") is not None else None,
             "model_prob": round(p, 4),
             "edge": round(edge, 4),
             # Everything below exists so the prior can be re-fit later against what

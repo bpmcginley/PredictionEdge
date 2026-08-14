@@ -154,6 +154,13 @@ def test_every_ticket_carries_what_is_needed_to_refit_the_prior_later():
         assert field in t
 
 
+def test_every_ticket_carries_the_bid_so_the_trial_can_rest_an_order_there():
+    """Maker-first simulation needs a passive price to join; without the bid the
+    trial can only ever model crossing the spread."""
+    t = price_ladder(_full_ladder(), 89.5, days_ahead=0.0, min_edge=0.05)[0]
+    assert 0.0 < t["bid"] < t["entry_price"]
+
+
 # --- plumbing ----------------------------------------------------------------
 
 def test_event_day_parses_the_kalshi_date_suffix():
