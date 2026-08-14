@@ -212,17 +212,20 @@ class TradingRunner:
         whale_edges = find_whale_edges(self.cfg, self.kalshi, self.whales)
         crypto_edges = (find_crypto_edges(self.cfg, self.kalshi, self.crypto_data)
                         if self.crypto_data is not None else [])
-        # (opp, fair_yes, label, force_paper). Crypto stays paper until validated
+        # (opp, fair_yes, label, force_paper, extra). Crypto stays paper until validated
         # (cfg.crypto_live) - it records for the backtest but never risks real money yet.
+        # `extra` is per-sleeve metadata for the paper record; sports carries the
+        # de-vig A/B fields (fair_mult / fair_power / fair_shin) on every ticket.
         crypto_paper = not self.cfg.crypto_live
-        candidates = ([(r.opp, r.fair_yes, r.label, False) for r in results]
-                      + [(w.opp, w.signal.prob, f"whale: {w.label}", False) for w in whale_edges]
-                      + [(c.opp, c.model_prob, f"crypto: {c.asset}", crypto_paper)
+        candidates = ([(r.opp, r.fair_yes, r.label, False, r.fair_all) for r in results]
+                      + [(w.opp, w.signal.prob, f"whale: {w.label}", False, None)
+                         for w in whale_edges]
+                      + [(c.opp, c.model_prob, f"crypto: {c.asset}", crypto_paper, None)
                          for c in crypto_edges])
         candidates.sort(key=lambda c: c[0].expected_value, reverse=True)
 
         placed = 0
-        for opp, fair_yes, label, force_paper in candidates:
+        for opp, fair_yes, label, force_paper, extra in candidates:
             if placed >= self.cfg.max_orders_per_cycle:
                 break
             decision = self.risk.vet(opp)
@@ -230,7 +233,7 @@ class TradingRunner:
                 self.log.info("skip %s: %s", opp.ticker, decision.reason)
                 continue
             executor = self.dry_executor if force_paper else self.executor
-            if executor.place(opp, fair_yes, note=label).ok:
+            if executor.place(opp, fair_yes, note=label, extra=extra).ok:
                 placed += 1
 
         # Polymarket US copy-trading (its own arm/enable gate inside).

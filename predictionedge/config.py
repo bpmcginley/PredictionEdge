@@ -52,7 +52,13 @@ class Config:
     assume_maker: bool = True              # we post resting orders, so model maker fees
 
     # --- De-vig ---
-    devig_method: str = "multiplicative"
+    # "power", not "multiplicative": the literature (Štrumbelj 2014 + practitioner
+    # replications) is consistent that multiplicative is the LEAST accurate de-vig,
+    # with power/Shin best recovering true probabilities on lopsided books. Every
+    # sports record still carries fair_mult/fair_power/fair_shin so the paper trial
+    # can adjudicate the choice from one run. Also valid: "shin", "blend"
+    # (power+Shin averaged in log-odds), "multiplicative", "additive".
+    devig_method: str = "power"
 
     # --- Market matching ---
     dynamic_discovery: bool = False        # auto-discover & match Kalshi sports markets

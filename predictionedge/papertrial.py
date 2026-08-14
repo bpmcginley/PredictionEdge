@@ -52,7 +52,11 @@ DEFAULT_STAKE = 100.0
 # a trial that drops it can validate the picks while leaving the model unfalsifiable.
 MODEL_FIELDS = ("model_prob", "edge", "forecast_f", "sigma_f", "market_mu_f",
                 "market_sigma_f", "days_ahead", "market_prob", "model", "city",
-                "forecast_src", "nbm_cycle", "nbm_sd_f", "forecast_grid_f")
+                "forecast_src", "nbm_cycle", "nbm_sd_f", "forecast_grid_f",
+                # Sports de-vig A/B: fair value under every method plus which one
+                # was operative, so the trial can score multiplicative vs power vs
+                # Shin from ONE run instead of needing a trial per method.
+                "fair_mult", "fair_power", "fair_shin", "devig_method")
 
 
 def venue_of(row: dict) -> str:

@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Protocol
 
-from .devig import devig, implied_from_decimal
+from .devig import devig, fair_all, implied_from_decimal
 
 # Process-wide odds cache so the dashboard and the trading engine SHARE one fetch.
 # The Odds API free tier is 500 credits/month (cost = sports x regions per call) and it
@@ -68,6 +68,30 @@ def consensus_fair_prob(event: SportEvent, method: str = "multiplicative") -> fl
     if not probs:
         return None
     return sum(probs) / len(probs)
+
+
+def consensus_fair_all(event: SportEvent) -> dict[str, float] | None:
+    """Per-method consensus fair P(first outcome): the A/B instrumentation.
+
+    Same book-averaging as `consensus_fair_prob`, computed under multiplicative,
+    power AND Shin at once, so every sports record can carry all three fair
+    values alongside the operative one and the paper trial can later score which
+    method would have done better without a second trial. A book that any method
+    refuses (incomplete market) is dropped from all three - the comparison is
+    only honest if every method saw the same books.
+    """
+    acc: dict[str, list[float]] = {"fair_mult": [], "fair_power": [], "fair_shin": []}
+    for b in event.books:
+        try:
+            implied = [implied_from_decimal(o) for o in b.outcomes]
+            per_book = fair_all(implied)
+        except ValueError:
+            continue
+        for key, p in per_book.items():
+            acc[key].append(p)
+    if not acc["fair_mult"]:
+        return None
+    return {key: sum(v) / len(v) for key, v in acc.items()}
 
 
 class MockOddsProvider:
