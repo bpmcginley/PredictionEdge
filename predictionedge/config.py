@@ -263,6 +263,15 @@ class Config:
     weather_min_edge: float = 0.07
     weather_max_days: float = 3.0
 
+    # --- Calibration overlay (calibration.py) --------------------------------
+    # Sanity layer from Le 2026 (arXiv 2602.19520): correct the market's measured
+    # domain x horizon miscalibration out of its price and suppress any ticket whose
+    # edge does not survive the correction. Shrink applies only that fraction of the
+    # published slopes (the study window ended Dec 2025 and slopes drift); 0 disables
+    # the correction entirely, 1 applies it in full.
+    calibration_overlay: bool = True
+    calibration_shrink: float = 0.5
+
     # --- Paper trading / backtest dataset ---
     paper_ledger_path: str = "data/paper_ledger.jsonl"
     settled_path: str = "data/settled_bets.jsonl"   # labeled bets for the backtest
@@ -405,6 +414,9 @@ class Config:
             weather_enabled=_truthy(e.get("PE_WEATHER_ENABLED"), cls.weather_enabled),
             weather_min_edge=f("PE_WEATHER_MIN_EDGE", cls.weather_min_edge),
             weather_max_days=f("PE_WEATHER_MAX_DAYS", cls.weather_max_days),
+            calibration_overlay=_truthy(e.get("PE_CALIBRATION_OVERLAY"),
+                                        cls.calibration_overlay),
+            calibration_shrink=f("PE_CALIBRATION_SHRINK", cls.calibration_shrink),
             paper_ledger_path=e.get("PE_PAPER_LEDGER", cls.paper_ledger_path),
             settled_path=e.get("PE_SETTLED_PATH", cls.settled_path),
         )

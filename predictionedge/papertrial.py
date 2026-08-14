@@ -52,7 +52,11 @@ DEFAULT_STAKE = 100.0
 # a trial that drops it can validate the picks while leaving the model unfalsifiable.
 MODEL_FIELDS = ("model_prob", "edge", "forecast_f", "sigma_f", "market_mu_f",
                 "market_sigma_f", "days_ahead", "market_prob", "model", "city",
-                "forecast_src", "nbm_cycle", "nbm_sd_f", "forecast_grid_f")
+                "forecast_src", "nbm_cycle", "nbm_sd_f", "forecast_grid_f",
+                # Calibration-overlay verdict (calibration.py): the corrected market
+                # probability, the edge against it, and the slope used. Carried so the
+                # veto rule itself can be scored once rows settle.
+                "cal_prob", "cal_edge", "cal_b")
 
 
 def venue_of(row: dict) -> str:
