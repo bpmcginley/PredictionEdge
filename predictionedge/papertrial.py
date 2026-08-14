@@ -26,6 +26,18 @@ signal: it claims a position is worth taking, never that P(win) is some number. 
 honest null is the market's own price, which makes `backtest`'s ``calibration_gap``
 (avg_pred - win_rate) read directly as realised edge in probability points, with a
 NEGATIVE gap meaning the tickets beat the price they were bought at.
+
+MAKER-FIRST ENTRIES (``Config.maker_first``). Kalshi charges resting orders nothing
+on standard markets while the taker fee peaks at 1.75c/contract - on a 1-3c gross
+edge that is the biggest single EV lever the system has, so the trial simulates it
+rather than assume it. A ticket that carries a ``bid`` becomes a PENDING order at
+that bid instead of an instant taker fill at the ask; on each later poll it fills
+only if the market's ask has come to the limit, and after ``maker_max_polls`` it
+cancels into an expired-intent log (or, opt-in, crosses at the then-current ask at
+taker fees). The log keeps fair value and edge AS OF INTENT TIME, because scoring
+fills alone drops the unfilled winners and keeps the filled losers - adverse
+selection dressed up as edge. Tickets without a bid (whale, probe, bridge) keep
+their existing accounting untouched.
 """
 
 from __future__ import annotations
@@ -35,7 +47,7 @@ import json
 import time
 from pathlib import Path
 
-from .fees import trade_fee
+from .fees import is_designated, maker_trade_fee, trade_fee
 
 # A resolved Polymarket market pays its winning leg at 1 and the rest at 0. Demanding
 # the extremes - rather than trusting `closed` alone - is what keeps a UMA dispute or a
@@ -93,6 +105,7 @@ def load(path: str | Path) -> dict:
     data.setdefault("open", [])
     data.setdefault("settled", [])
     data.setdefault("voided", [])
+    data.setdefault("pending", [])
     data.setdefault("stats", {})
     return data
 
@@ -105,10 +118,18 @@ def save(path: str | Path, trial: dict) -> None:
 
 def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
            fee_multiplier: float = 0.07, maker: bool = True,
-           now: float | None = None) -> int:
-    """Open a paper position for each ticket not already held. Returns how many."""
+           maker_first: bool = False, now: float | None = None) -> int:
+    """Open a paper position (or a pending maker order) for each ticket not
+    already held. Returns how many were newly recorded, intents included."""
     now = time.time() if now is None else now
-    seen = {r["key"] for r in trial["open"]} | {r["key"] for r in trial["settled"]}
+    pending = trial.setdefault("pending", [])
+    expired = (trial.get("maker") or {}).get("expired") or []
+    # Pending and expired intents both block re-entry. Pending for the same reason
+    # open rows do; expired because "retry until it fills" is exactly the adverse-
+    # selection machine this module exists to expose - keep placing the order and
+    # the record fills only when the market comes down through it.
+    seen = {r["key"] for r in trial["open"]} | {r["key"] for r in trial["settled"]} \
+        | {r["key"] for r in pending} | {r["key"] for r in expired}
     added = 0
     for t in tickets:
         price = float(t.get("entry_price") or 0.0)
@@ -117,18 +138,14 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
         key = _key(t.get("market_id", ""), t.get("outcome", ""))
         if key in seen:
             continue
-        contracts = stake / price
-        trial["open"].append({
+        base = {
             "key": key,
-            "opened_at": now,
             "market_id": t.get("market_id", ""),
             "venue": venue_of(t),
             "outcome": t.get("outcome", ""),
             "title": t.get("title", ""),
             "url": t.get("url", ""),
-            "price": round(price, 4),
             "stake": round(stake, 4),
-            "contracts": round(contracts, 4),
             # Everything below is for slicing the result later, not for scoring it.
             # True = cleared the buy bar and was recommended. False = cleared every hard
             # filter but sat below it. Only the first is evidence about the board as
@@ -150,16 +167,113 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
             # Bridge rows resolve via the market they were copied FROM (see `main`):
             # a PM-US slug can't be asked Gamma anything, but its origin can.
             "origin_market_id": t.get("origin_market_id", ""),
-            # `_maker` is a per-ticket override of the trial-wide default. Bridge rows
-            # model taking the ask the moment the board fires, and a taker fill booked
-            # at maker fees would understate the venue cost the sleeve exists to measure.
-            "fee": trade_fee(price, max(1, round(contracts)),
-                             multiplier=fee_multiplier,
-                             maker=bool(t.get("_maker", maker))),
-        })
+        }
+        bid = float(t.get("bid") or 0.0)
+        if maker_first and 0.0 < bid < price:
+            # Maker-first: join the bid instead of crossing to the ask, and record
+            # the case for the trade AT INTENT TIME. If this order never fills, the
+            # intent - fair value, edge, foregone price - is what the trial keeps,
+            # because a record of fills alone drops the unfilled winners and keeps
+            # the filled losers, which manufactures edge out of adverse selection.
+            pending.append({
+                **base,
+                "intent_at": now,
+                "limit_price": round(bid, 4),
+                "intended_price": round(bid, 4),
+                "ask_at_intent": round(price, 4),
+                "fair_at_intent": t.get("model_prob"),
+                "edge_at_intent": t.get("edge"),
+                "polls": 0,
+            })
+        else:
+            contracts = stake / price
+            base.update({
+                "opened_at": now,
+                "price": round(price, 4),
+                "contracts": round(contracts, 4),
+                # `_maker` is a per-ticket override of the trial-wide default. Bridge
+                # rows model taking the ask the moment the board fires, and a taker
+                # fill booked at maker fees would understate the venue cost the
+                # sleeve exists to measure.
+                "fee": trade_fee(price, max(1, round(contracts)),
+                                 multiplier=fee_multiplier,
+                                 maker=bool(t.get("_maker", maker))),
+            })
+            trial["open"].append(base)
         seen.add(key)
         added += 1
     return added
+
+
+def _open_from_pending(trial: dict, row: dict, *, price: float, now: float,
+                       taker: bool, fee_multiplier: float) -> None:
+    """Turn a pending maker order into an open row at ``price``."""
+    contracts = row["stake"] / price
+    if taker:
+        fee = trade_fee(price, max(1, round(contracts)),
+                        multiplier=fee_multiplier, maker=False)
+    else:
+        # Maker fills are free on standard markets; `is_designated` is the hook
+        # for the few series Kalshi charges 25% of taker on resting orders.
+        fee = maker_trade_fee(price, max(1, round(contracts)),
+                              multiplier=fee_multiplier,
+                              designated=is_designated(row["market_id"]))
+    open_row = {k: v for k, v in row.items() if k != "polls"}
+    open_row.update({
+        "opened_at": now,
+        "price": round(price, 4),
+        "contracts": round(contracts, 4),
+        "filled_price": round(price, 4),
+        "fill_polls": row["polls"],
+        "maker": not taker,
+        "fee": fee,
+    })
+    if taker:
+        open_row["maker_fallback"] = True
+    trial["open"].append(open_row)
+
+
+def check_fills(trial: dict, quotes: dict[str, dict], *, max_polls: int = 8,
+                fallback_taker: bool = False, fee_multiplier: float = 0.07,
+                now: float | None = None) -> tuple[int, int]:
+    """Advance every pending maker order one poll. Returns (filled, expired).
+
+    The fill rule is deliberately conservative: a resting bid fills ONLY when a
+    later snapshot shows the ask at or through our limit - the market came to us.
+    Touches, queue position, and trades inside the spread are all invisible to a
+    15-minute poller, and guessing about them would flatter the fill rate on
+    exactly the orders adverse selection punishes.
+
+    An order still unfilled after ``max_polls`` either cancels (default) - moving
+    to the expired-intent log with its edge-at-intent so unfilled winners cannot
+    silently vanish from the record - or, with ``fallback_taker``, crosses the
+    spread at the then-current ask at taker fees. A fallback with no live quote
+    cancels instead: inventing a price to cross at would be fiction.
+    """
+    now = time.time() if now is None else now
+    still: list[dict] = []
+    filled = expired = 0
+    for row in trial.setdefault("pending", []):
+        row["polls"] = int(row.get("polls") or 0) + 1
+        q = quotes.get(row["key"]) or {}
+        ask = float(q.get("ask") or 0.0)
+        if 0.0 < ask < 1.0 and ask <= row["limit_price"] + 1e-9:
+            _open_from_pending(trial, row, price=row["limit_price"], now=now,
+                               taker=False, fee_multiplier=fee_multiplier)
+            filled += 1
+        elif row["polls"] >= max_polls:
+            if fallback_taker and 0.0 < ask < 1.0:
+                _open_from_pending(trial, row, price=ask, now=now,
+                                   taker=True, fee_multiplier=fee_multiplier)
+                filled += 1
+            else:
+                mk = trial.setdefault("maker", {})
+                mk.setdefault("expired", []).append({**row, "expired_at": now})
+                expired += 1
+        else:
+            still.append(row)
+    trial["pending"] = still
+    return filled, expired
 
 
 def retag_weather_fees(trial: dict, *, multiplier: float = 0.07) -> int:
@@ -178,6 +292,11 @@ def retag_weather_fees(trial: dict, *, multiplier: float = 0.07) -> int:
     changed = 0
     for row in trial["open"]:
         if source_of(row) != "weather":
+            continue
+        # Maker-first fills are not taker crosses: their fee was set at fill time
+        # by `check_fills` and recharging them here would undo the very accounting
+        # the maker-first path exists to record.
+        if "fill_polls" in row:
             continue
         fee = trade_fee(row["price"], max(1, round(row["contracts"])),
                         multiplier=multiplier, maker=False)
@@ -276,7 +395,37 @@ def stats(trial: dict, *, min_n: int = 30) -> dict:
         sliced = evaluate(sleeves.get(src, []), min_n=min_n)
         sliced["open_positions"] = open_by.get(src, 0)
         out["by_source"][src] = sliced
+    out["maker"] = maker_stats(trial)
     return out
+
+
+def maker_stats(trial: dict) -> dict:
+    """The maker-first simulation's own scoreboard, fills and non-fills alike.
+
+    The number that matters most here is the pairing of `fill_rate` with
+    `foregone_edge`: a high fill rate with low foregone edge says passive entry
+    is nearly free; a low fill rate with high foregone edge says the maker
+    saving is being paid for in missed trades, which no per-fill fee number
+    would ever reveal on its own.
+    """
+    rows = trial["open"] + trial["settled"] + (trial.get("voided") or [])
+    fills = [r for r in rows if r.get("maker") and "fill_polls" in r]
+    fallbacks = [r for r in rows if r.get("maker_fallback")]
+    expired = (trial.get("maker") or {}).get("expired") or []
+    resolved = len(fills) + len(fallbacks) + len(expired)
+    return {
+        "pending": len(trial.get("pending") or []),
+        "filled": len(fills),
+        "fallback": len(fallbacks),
+        "expired": len(expired),
+        "fill_rate": round(len(fills) / resolved, 4) if resolved else None,
+        "avg_fill_polls": round(sum(r["fill_polls"] for r in fills) / len(fills), 2)
+        if fills else None,
+        # Edge the record walked away from by not chasing: the sum of edge-at-
+        # intent over every cancelled order. Read it against the fee savings.
+        "foregone_edge": round(sum(float(r.get("edge_at_intent") or 0.0)
+                                   for r in expired), 4),
+    }
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -311,8 +460,26 @@ def main(argv: list[str] | None = None) -> int:
     flow = [{**t, "_shown": True} for t in (board.get("tickets") or [])] + \
            [{**t, "_shown": False} for t in (board.get("probe") or [])] + \
            [{**t, "_shown": True, "_maker": False} for t in (board.get("weather") or [])]
+
+    # Maker-first: this run's board IS the next 15-minute snapshot of every market a
+    # pending order is resting in, so pending orders are checked against it BEFORE new
+    # tickets are recorded - a fill can only come from a strictly later poll than the
+    # intent. A market that dropped off the board contributes no quote, which reads as
+    # "did not come to us" and counts the poll toward expiry; conservative on purpose.
+    filled = expired = 0
+    if cfg.maker_first:
+        quotes = {_key(t.get("market_id", ""), t.get("outcome", "")):
+                  {"bid": t.get("bid"), "ask": float(t.get("entry_price") or 0.0)}
+                  for t in flow}
+        filled, expired = check_fills(
+            trial, quotes, max_polls=cfg.maker_max_polls,
+            fallback_taker=cfg.maker_fallback_taker,
+            fee_multiplier=cfg.fee_multiplier,
+            now=board.get("generated_at") or None)
+
     added = record(trial, flow, stake=args.stake,
                    fee_multiplier=cfg.fee_multiplier, maker=cfg.assume_maker,
+                   maker_first=cfg.maker_first,
                    now=board.get("generated_at") or None)
 
     # The venue bridge: every SHOWN whale ticket is re-recorded at the live ask on
@@ -379,6 +546,16 @@ def main(argv: list[str] | None = None) -> int:
     s = trial["stats"]
     print(f"recorded {added} new, settled {settled}; "
           f"{s.get('open_positions', 0)} open, {s.get('n', 0)} settled")
+    mk = s.get("maker") or {}
+    if cfg.maker_first and (mk.get("pending") or mk.get("filled")
+                            or mk.get("expired") or mk.get("fallback")):
+        rate = mk.get("fill_rate")
+        print(f"  maker: {mk.get('pending', 0)} pending "
+              f"(+{filled} filled / +{expired} expired this run); "
+              f"lifetime {mk.get('filled', 0)} filled, {mk.get('expired', 0)} expired"
+              + (f", fill rate {rate:.0%}" if rate is not None else "")
+              + (f", avg {mk['avg_fill_polls']} polls to fill"
+                 if mk.get("avg_fill_polls") is not None else ""))
     if s.get("n"):
         print(f"  win rate {s['win_rate']:.1%} vs avg entry price "
               f"{s['avg_predicted']:.1%}  (edge {-s['calibration_gap']:+.1%} pts)")

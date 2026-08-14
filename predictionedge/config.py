@@ -263,6 +263,19 @@ class Config:
     weather_min_edge: float = 0.07
     weather_max_days: float = 3.0
 
+    # --- Maker-first paper entries (papertrial) ---
+    # Most edges this system trades are 1-3c gross while the taker fee peaks at
+    # 1.75c/contract, so passive entry vs crossing the spread is the single biggest
+    # EV lever - the trial must simulate it honestly rather than assume it. When on,
+    # a ticket that carries a bid becomes a PENDING order at that bid instead of an
+    # instant taker fill at the ask; it fills only if a later poll's ask comes to it.
+    maker_first: bool = True
+    # ~2 hours at the 15-minute board cadence. An order still unfilled then either
+    # cancels (default - the honest accounting: the trade never happened) or, with
+    # the fallback flag, crosses the spread at the then-current ask at taker fees.
+    maker_max_polls: int = 8
+    maker_fallback_taker: bool = False
+
     # --- Paper trading / backtest dataset ---
     paper_ledger_path: str = "data/paper_ledger.jsonl"
     settled_path: str = "data/settled_bets.jsonl"   # labeled bets for the backtest
@@ -405,6 +418,10 @@ class Config:
             weather_enabled=_truthy(e.get("PE_WEATHER_ENABLED"), cls.weather_enabled),
             weather_min_edge=f("PE_WEATHER_MIN_EDGE", cls.weather_min_edge),
             weather_max_days=f("PE_WEATHER_MAX_DAYS", cls.weather_max_days),
+            maker_first=_truthy(e.get("PE_MAKER_FIRST"), cls.maker_first),
+            maker_max_polls=int(f("PE_MAKER_MAX_POLLS", cls.maker_max_polls)),
+            maker_fallback_taker=_truthy(e.get("PE_MAKER_FALLBACK_TAKER"),
+                                         cls.maker_fallback_taker),
             paper_ledger_path=e.get("PE_PAPER_LEDGER", cls.paper_ledger_path),
             settled_path=e.get("PE_SETTLED_PATH", cls.settled_path),
         )

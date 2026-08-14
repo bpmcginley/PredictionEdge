@@ -18,6 +18,42 @@ import math
 DEFAULT_FEE_MULTIPLIER = 0.07
 MAKER_FRACTION = 0.25
 
+# Series whose MAKER fills are charged (25% of taker) rather than free. Kalshi's
+# fee schedule calls these "designated" markets; the general schedule charges
+# resting orders nothing. Empty until a traded series actually appears on that
+# list - membership is a fact to verify against https://kalshi.com/fee-schedule,
+# not a guess to default on.
+DESIGNATED_MAKER_SERIES: tuple[str, ...] = ()
+
+
+def is_designated(ticker: str) -> bool:
+    """Does this market charge maker fees? Prefix match against the vetted list."""
+    t = (ticker or "").strip().upper()
+    return any(t.startswith(s) for s in DESIGNATED_MAKER_SERIES)
+
+
+def maker_trade_fee(
+    price: float,
+    contracts: int,
+    *,
+    multiplier: float = DEFAULT_FEE_MULTIPLIER,
+    designated: bool = False,
+) -> float:
+    """Total fee in dollars for a RESTING order that fills.
+
+    Zero on standard markets (verified against the fee schedule 2026-08):
+    the ``maker=True`` branch of `trade_fee` - 25% of taker - is the charge on
+    Kalshi's *designated* markets only, so that path is opt-in via
+    ``designated`` rather than the default. Keeping this separate from
+    `trade_fee` means the whale sleeve's long-standing 25%-of-taker accounting
+    does not silently change mid-sample.
+    """
+    if not 0.0 < price < 1.0:
+        raise ValueError(f"price must be in (0, 1), got {price}")
+    if contracts <= 0 or not designated:
+        return 0.0
+    return trade_fee(price, contracts, multiplier=multiplier, maker=True)
+
 
 def _roundup_cent(dollars: float) -> float:
     """Round a dollar amount up to the next whole cent (Kalshi rounds fees up)."""
