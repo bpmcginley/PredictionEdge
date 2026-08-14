@@ -64,11 +64,55 @@ def weather_tickets(cfg: Config, nbm_cache_path: str = NBM_CACHE) -> list[dict]:
     return tickets
 
 
+# The gas observation log lives next to the trial for the same reason the NBM cache
+# does: the workflow checks out fresh every run, and committing the file is what lets
+# sigma and drift come from accumulated OBSERVED history rather than assumptions.
+GASLOG = "docs/gaslog.json"
+
+
+def gas_tickets(cfg: Config, gaslog_path: str = GASLOG) -> list[dict]:
+    """The AAA/Kalshi gas sleeve, in its OWN array - never merged into `tickets`.
+
+    Same isolation argument as `weather_tickets`: this sleeve claims "a persistence
+    forecast of the AAA print locates tomorrow better than the ladder does", which
+    is a different hypothesis from the whale board's and from weather's, so it is
+    recorded and scored separately. Never raises - a gas outage must not take the
+    rest of the board down - and the log is saved even when no ticket fired,
+    because the accumulating history IS the sleeve's sigma.
+    """
+    if not cfg.gas_enabled:
+        return []
+    from . import gaslog as gl
+    try:
+        glog = gl.load(gaslog_path)
+    except Exception:  # noqa: BLE001
+        glog = {"days": {}, "rows": {}}    # corrupt: rebuilt from tomorrow's prints
+    try:
+        from .gas import find_gas_edges
+        tickets = find_gas_edges(gaslog=glog, min_edge=cfg.gas_min_edge,
+                                 max_days=cfg.gas_max_days,
+                                 fee_multiplier=cfg.fee_multiplier,
+                                 ewma_window=cfg.gas_ewma_window,
+                                 sigma_window=cfg.gas_sigma_window,
+                                 sigma_floor=cfg.gas_sigma_floor,
+                                 min_deltas=cfg.gas_min_deltas)
+    except Exception as exc:  # noqa: BLE001
+        print(f"gas sleeve unavailable: {exc}")
+        return []
+    try:
+        glog["summary"] = gl.summarise(glog)
+        gl.save(gaslog_path, glog)
+    except Exception as exc:  # noqa: BLE001
+        print(f"gaslog not saved: {exc}")   # today's print is lost, not corrupted
+    return tickets
+
+
 def build_payload(cfg: Config) -> dict:
     from .dashboard import build_board_payload
 
     payload = build_board_payload(cfg)
     payload["weather"] = weather_tickets(cfg)
+    payload["gas"] = gas_tickets(cfg)
     # The journal is personal and browser-local; never publish it.
     payload.pop("journal", None)
     payload.pop("journal_state", None)
@@ -106,7 +150,7 @@ def main(argv: list[str] | None = None) -> int:
         # A data outage must publish an honest empty board, not break the site.
         payload = {"generated": time.strftime("%Y-%m-%d %H:%M:%S"),
                    "generated_at": time.time(), "tickets": [], "weather": [],
-                   "considered": 0,
+                   "gas": [], "considered": 0,
                    "rejected": {}, "notes": [f"board generation failed: {exc}"],
                    "account_size": cfg.board_account_size,
                    # ok=False, not an empty list: a failed run must not render as a
@@ -122,7 +166,8 @@ def main(argv: list[str] | None = None) -> int:
     out.write_text(json.dumps(payload, indent=2), encoding="utf-8")
     print(f"wrote {out} — {len(payload['tickets'])} ticket(s) "
           f"from {payload['considered']} signal(s), "
-          f"{len(payload.get('weather') or [])} weather")
+          f"{len(payload.get('weather') or [])} weather, "
+          f"{len(payload.get('gas') or [])} gas")
     return 0
 
 
