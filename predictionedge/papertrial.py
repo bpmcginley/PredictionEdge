@@ -46,13 +46,17 @@ LOST_AT = 0.01
 
 DEFAULT_STAKE = 100.0
 
-# The weather model's own inputs, carried verbatim onto the row when the ticket has
-# them. Without these the trial can prove the sleeve wins or loses but never WHY -
-# `model_prob` against `won` is the calibration check the sleeve exists to earn, and
+# The model sleeves' own inputs, carried verbatim onto the row when the ticket has
+# them. Without these the trial can prove a sleeve wins or loses but never WHY -
+# `model_prob` against `won` is the calibration check each sleeve exists to earn, and
 # a trial that drops it can validate the picks while leaving the model unfalsifiable.
+# The weather fields and the spxindex fields (spot_used, chain_ts, vrp_shrink, fair,
+# implied_sigma, series) share one tuple: rows only pick up keys the ticket carries.
 MODEL_FIELDS = ("model_prob", "edge", "forecast_f", "sigma_f", "market_mu_f",
                 "market_sigma_f", "days_ahead", "market_prob", "model", "city",
-                "forecast_src", "nbm_cycle", "nbm_sd_f", "forecast_grid_f")
+                "forecast_src", "nbm_cycle", "nbm_sd_f", "forecast_grid_f",
+                "spot_used", "chain_ts", "vrp_shrink", "fair", "implied_sigma",
+                "series")
 
 
 def venue_of(row: dict) -> str:
@@ -150,11 +154,15 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
             # Bridge rows resolve via the market they were copied FROM (see `main`):
             # a PM-US slug can't be asked Gamma anything, but its origin can.
             "origin_market_id": t.get("origin_market_id", ""),
-            # `_maker` is a per-ticket override of the trial-wide default. Bridge rows
-            # model taking the ask the moment the board fires, and a taker fill booked
-            # at maker fees would understate the venue cost the sleeve exists to measure.
+            # `_maker` and `_fee_mult` are per-ticket overrides of the trial-wide
+            # defaults. Bridge rows model taking the ask the moment the board fires,
+            # and a taker fill booked at maker fees would understate the venue cost
+            # the sleeve exists to measure. `_fee_mult` exists because Kalshi does
+            # not charge one multiplier: S&P/Nasdaq markets are 0.035 where the
+            # general schedule is 0.07, and booking an index row at the general rate
+            # would double its modelled cost.
             "fee": trade_fee(price, max(1, round(contracts)),
-                             multiplier=fee_multiplier,
+                             multiplier=float(t.get("_fee_mult") or fee_multiplier),
                              maker=bool(t.get("_maker", maker))),
         })
         seen.add(key)
@@ -308,9 +316,14 @@ def main(argv: list[str] | None = None) -> int:
     # rather than a hand-set conviction cutoff that needs validating from both sides.
     # Weather rows also override the trial-wide maker default: their entry IS the ask,
     # so the honest fee is the taker fee - see `retag_weather_fees`.
+    # The spxindex sleeve is a taker cross at the ask too, and its markets sit on
+    # Kalshi's 0.035 index fee schedule - see `record` on `_fee_mult`.
+    from .fees import INDEX_FEE_MULTIPLIER
     flow = [{**t, "_shown": True} for t in (board.get("tickets") or [])] + \
            [{**t, "_shown": False} for t in (board.get("probe") or [])] + \
-           [{**t, "_shown": True, "_maker": False} for t in (board.get("weather") or [])]
+           [{**t, "_shown": True, "_maker": False} for t in (board.get("weather") or [])] + \
+           [{**t, "_shown": True, "_maker": False, "_fee_mult": INDEX_FEE_MULTIPLIER}
+            for t in (board.get("spxindex") or [])]
     added = record(trial, flow, stake=args.stake,
                    fee_multiplier=cfg.fee_multiplier, maker=cfg.assume_maker,
                    now=board.get("generated_at") or None)

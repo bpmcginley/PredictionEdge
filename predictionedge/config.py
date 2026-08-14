@@ -263,6 +263,26 @@ class Config:
     weather_min_edge: float = 0.07
     weather_max_days: float = 3.0
 
+    # --- SPX/NDX 0DTE options-implied density vs Kalshi index ladders (paper) ---
+    # Reads CBOE's free 15-min-delayed chain; every ticket is paper-only by
+    # construction (source "spxindex", venue "kalshi", nothing in the order path).
+    spx_enabled: bool = True
+    spx_min_edge: float = 0.03             # required edge BEYOND the taker fee
+    # Risk-neutral tails are fatter than real-world ones (the variance risk
+    # premium). Implied sigma is multiplied by this before bracket probabilities
+    # are computed, and the value used is recorded on every ticket so it can be
+    # re-fit from settled rows instead of argued about.
+    spx_vrp_shrink: float = 0.92
+    # The chain is 15 minutes delayed; near the close that delay is toxic. No
+    # tickets at or after this ET wall-clock time ("HH:MM", 24h).
+    spx_blackout_start_et: str = "15:00"
+    spx_min_strikes: int = 8               # thinner smile than this = fail closed
+    spx_max_spread_frac: float = 0.25      # drop option quotes wider than this
+    # Where the density's location comes from. "chain" = the payload's own delayed
+    # spot (same-timestamp internal consistency). A future fresher source gets a
+    # new name here rather than silently changing what spot_used means.
+    spx_spot_source: str = "chain"
+
     # --- Paper trading / backtest dataset ---
     paper_ledger_path: str = "data/paper_ledger.jsonl"
     settled_path: str = "data/settled_bets.jsonl"   # labeled bets for the backtest
@@ -405,6 +425,14 @@ class Config:
             weather_enabled=_truthy(e.get("PE_WEATHER_ENABLED"), cls.weather_enabled),
             weather_min_edge=f("PE_WEATHER_MIN_EDGE", cls.weather_min_edge),
             weather_max_days=f("PE_WEATHER_MAX_DAYS", cls.weather_max_days),
+            spx_enabled=_truthy(e.get("PE_SPX_ENABLED"), cls.spx_enabled),
+            spx_min_edge=f("PE_SPX_MIN_EDGE", cls.spx_min_edge),
+            spx_vrp_shrink=f("PE_SPX_VRP_SHRINK", cls.spx_vrp_shrink),
+            spx_blackout_start_et=e.get("PE_SPX_BLACKOUT_START_ET",
+                                        cls.spx_blackout_start_et),
+            spx_min_strikes=int(f("PE_SPX_MIN_STRIKES", cls.spx_min_strikes)),
+            spx_max_spread_frac=f("PE_SPX_MAX_SPREAD_FRAC", cls.spx_max_spread_frac),
+            spx_spot_source=e.get("PE_SPX_SPOT_SOURCE", cls.spx_spot_source),
             paper_ledger_path=e.get("PE_PAPER_LEDGER", cls.paper_ledger_path),
             settled_path=e.get("PE_SETTLED_PATH", cls.settled_path),
         )

@@ -16,6 +16,11 @@ from __future__ import annotations
 import math
 
 DEFAULT_FEE_MULTIPLIER = 0.07
+# Kalshi's S&P 500 / Nasdaq-100 index markets are charged at HALF the general
+# multiplier (0.035, per the published fee schedule). Using 0.07 on the index
+# sleeve would double its modelled cost and hide real edge; using 0.035 anywhere
+# else would invent edge. Every sleeve must pick one of these two on purpose.
+INDEX_FEE_MULTIPLIER = 0.035
 MAKER_FRACTION = 0.25
 
 
