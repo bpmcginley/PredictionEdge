@@ -62,8 +62,10 @@ DEFAULT_STAKE = 100.0
 # them. Without these the trial can prove a sleeve wins or loses but never WHY -
 # `model_prob` against `won` is the calibration check each sleeve exists to earn, and
 # a trial that drops it can validate the picks while leaving the model unfalsifiable.
-# Weather fields (`*_f`) and gas fields (aaa_*, drift, sigma, forecast, lr_tilt,
-# market_mu, market_sigma) never collide, so one spread list serves both.
+# Weather fields (`*_f`), gas fields (aaa_*, drift, sigma, forecast, lr_tilt,
+# market_mu, market_sigma) and spxindex fields (spot_used, chain_ts, vrp_shrink,
+# fair, implied_sigma, series) never collide, so one spread list serves all: rows
+# only pick up keys the ticket carries.
 MODEL_FIELDS = ("model_prob", "edge", "forecast_f", "sigma_f", "market_mu_f",
                 "market_sigma_f", "days_ahead", "market_prob", "model", "city",
                 "forecast_src", "nbm_cycle", "nbm_sd_f", "forecast_grid_f",
@@ -76,7 +78,9 @@ MODEL_FIELDS = ("model_prob", "edge", "forecast_f", "sigma_f", "market_mu_f",
                 # Shin from ONE run instead of needing a trial per method.
                 "fair_mult", "fair_power", "fair_shin", "devig_method",
                 "aaa_today", "aaa_target_date", "drift", "sigma", "forecast",
-                "lr_tilt", "market_mu", "market_sigma")
+                "lr_tilt", "market_mu", "market_sigma",
+                "spot_used", "chain_ts", "vrp_shrink", "fair", "implied_sigma",
+                "series")
 
 
 def venue_of(row: dict) -> str:
@@ -203,12 +207,15 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
                 "opened_at": now,
                 "price": round(price, 4),
                 "contracts": round(contracts, 4),
-                # `_maker` is a per-ticket override of the trial-wide default. Bridge
-                # rows model taking the ask the moment the board fires, and a taker
-                # fill booked at maker fees would understate the venue cost the
-                # sleeve exists to measure.
+                # `_maker` and `_fee_mult` are per-ticket overrides of the trial-wide
+                # defaults. Bridge rows model taking the ask the moment the board
+                # fires, and a taker fill booked at maker fees would understate the
+                # venue cost the sleeve exists to measure. `_fee_mult` exists because
+                # Kalshi does not charge one multiplier: S&P/Nasdaq markets are 0.035
+                # where the general schedule is 0.07, and booking an index row at the
+                # general rate would double its modelled cost.
                 "fee": trade_fee(price, max(1, round(contracts)),
-                                 multiplier=fee_multiplier,
+                                 multiplier=float(t.get("_fee_mult") or fee_multiplier),
                                  maker=bool(t.get("_maker", maker))),
             })
             trial["open"].append(base)
@@ -472,10 +479,15 @@ def main(argv: list[str] | None = None) -> int:
     # Gas rows enter exactly as weather rows do: already filtered to what cleared
     # their own modelled edge bar (so every row is `_shown`), and their entry IS the
     # ask, so the honest fee is the taker fee.
+    # The spxindex sleeve is a taker cross at the ask too, and its markets sit on
+    # Kalshi's 0.035 index fee schedule - see `record` on `_fee_mult`.
+    from .fees import INDEX_FEE_MULTIPLIER
     flow = [{**t, "_shown": True} for t in (board.get("tickets") or [])] + \
            [{**t, "_shown": False} for t in (board.get("probe") or [])] + \
            [{**t, "_shown": True, "_maker": False} for t in (board.get("weather") or [])] + \
-           [{**t, "_shown": True, "_maker": False} for t in (board.get("gas") or [])]
+           [{**t, "_shown": True, "_maker": False} for t in (board.get("gas") or [])] + \
+           [{**t, "_shown": True, "_maker": False, "_fee_mult": INDEX_FEE_MULTIPLIER}
+            for t in (board.get("spxindex") or [])]
 
     # Maker-first: this run's board IS the next 15-minute snapshot of every market a
     # pending order is resting in, so pending orders are checked against it BEFORE new

@@ -111,6 +111,24 @@ def gas_tickets(cfg: Config, gaslog_path: str = GASLOG) -> list[dict]:
     return tickets
 
 
+def spxindex_tickets(cfg: Config) -> list[dict]:
+    """The 0DTE index-density sleeve, in its OWN array - never merged into `tickets`.
+
+    Same separation, same reason as `weather_tickets`: this sleeve's hypothesis is
+    "the option chain locates the 4pm close better than the Kalshi ladder does",
+    which is not the whale board's hypothesis, and pooling their records would
+    answer neither. Never raises - a CBOE outage must not take the board down.
+    """
+    if not cfg.spx_enabled:
+        return []
+    try:
+        from .spxdensity import find_spx_edges
+        return find_spx_edges(cfg)
+    except Exception as exc:  # noqa: BLE001
+        print(f"spxindex sleeve unavailable: {exc}")
+        return []
+
+
 def build_payload(cfg: Config) -> dict:
     from .dashboard import build_board_payload
 
@@ -122,6 +140,7 @@ def build_payload(cfg: Config) -> dict:
     payload["weather"] = weather_tickets(cfg, diag=wx_diag)
     payload["weather_diag"] = wx_diag
     payload["gas"] = gas_tickets(cfg)
+    payload["spxindex"] = spxindex_tickets(cfg)
     # The journal is personal and browser-local; never publish it.
     payload.pop("journal", None)
     payload.pop("journal_state", None)
@@ -160,7 +179,7 @@ def main(argv: list[str] | None = None) -> int:
         payload = {"generated": time.strftime("%Y-%m-%d %H:%M:%S"),
                    "generated_at": time.time(), "tickets": [], "weather": [],
                    "weather_diag": {"cal_vetoed": 0},
-                   "gas": [], "considered": 0,
+                   "gas": [], "spxindex": [], "considered": 0,
                    "rejected": {}, "notes": [f"board generation failed: {exc}"],
                    "account_size": cfg.board_account_size,
                    # ok=False, not an empty list: a failed run must not render as a
@@ -177,7 +196,8 @@ def main(argv: list[str] | None = None) -> int:
     print(f"wrote {out} — {len(payload['tickets'])} ticket(s) "
           f"from {payload['considered']} signal(s), "
           f"{len(payload.get('weather') or [])} weather, "
-          f"{len(payload.get('gas') or [])} gas")
+          f"{len(payload.get('gas') or [])} gas, "
+          f"{len(payload.get('spxindex') or [])} spxindex")
     return 0
 
 
