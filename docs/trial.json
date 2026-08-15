@@ -2676,6 +2676,30 @@
       "price": 0.565,
       "contracts": 176.9912,
       "fee": 0.77
+    },
+    {
+      "key": "0x12e54660d2271cde9a2cca5173eb1971ff590c3b569fd181ae420ee9ab46e4f1:tampa bay rays",
+      "market_id": "0x12e54660d2271cde9a2cca5173eb1971ff590c3b569fd181ae420ee9ab46e4f1",
+      "venue": "polymarket",
+      "outcome": "Tampa Bay Rays",
+      "title": "Baltimore Orioles vs. Tampa Bay Rays",
+      "url": "https://polymarket.com/event/mlb-bal-tb-2026-08-15",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.46,
+      "n_wallets": 1,
+      "whale_usd": 4042,
+      "drift_c": 0.5,
+      "hours_to_resolve": 5.1,
+      "liquidity": 310137,
+      "end_iso": "2026-08-22T22:10:00Z",
+      "event_iso": "2026-08-15 22:10:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786813343.458226,
+      "price": 0.585,
+      "contracts": 170.9402,
+      "fee": 0.73
     }
   ],
   "settled": [
@@ -12906,7 +12930,7 @@
       "DSR 0.705 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 109,
+    "open_positions": 110,
     "trial_days": 8.0,
     "by_source": {
       "weather": {
@@ -12959,7 +12983,7 @@
           "DSR 0.758 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 87
+        "open_positions": 88
       },
       "whale-pmus": {
         "n": 66,
@@ -12997,7 +13021,7 @@
       "foregone_edge": 0.5481
     }
   },
-  "generated": "2026-08-15 16:36:57",
+  "generated": "2026-08-15 17:02:50",
   "voided": [],
   "bridge": {
     "log": {
@@ -13958,17 +13982,17 @@
       },
       "0x5539ec7351b133c58717813036da83e5f384f50bfc2fc9c50c1384d489a12206:yes": {
         "polymarket-us": "ambiguous",
-        "ts": 1786811783.1,
+        "ts": 1786813343.5,
         "kalshi": "no-series"
       },
       "0xc04094452b0386a73a9a6e07da0370fffb2722e05c837a5246b88c914e78b79f:ian machado garry": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786811783.1,
+        "ts": 1786813343.5,
         "kalshi": "no-series"
       },
       "0x4a72bd680a440e216b6953758b7cce3f8e6a9f2dc7821f3f5d075cb26eeec89e:minnesota twins": {
         "polymarket-us": "ambiguous",
-        "ts": 1786811783.1,
+        "ts": 1786813343.5,
         "kalshi": "outcome-not-a-team"
       },
       "0xe8bee207cd09035619f9c79ce6a8b34f9c3b2eb86ef15d15fdf20e6b8ceed4c2:las vegas aces": {
@@ -13993,12 +14017,17 @@
       },
       "0x47aac0d91293182cf11508a8ac911b0384c5b00de91a3b6de90d994df095a6ff:texas rangers": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786811783.1,
+        "ts": 1786813343.5,
         "kalshi": "outcome-not-a-team"
       },
       "0x3560dacbcc4ffb2e95ddedc7d27516e515702216e891b0262fbfe9bfa571b132:detroit tigers": {
         "polymarket-us": "ambiguous",
-        "ts": 1786811783.1,
+        "ts": 1786813343.5,
+        "kalshi": "outcome-not-a-team"
+      },
+      "0x12e54660d2271cde9a2cca5173eb1971ff590c3b569fd181ae420ee9ab46e4f1:tampa bay rays": {
+        "polymarket-us": "ambiguous",
+        "ts": 1786813343.5,
         "kalshi": "outcome-not-a-team"
       }
     },
@@ -14009,10 +14038,10 @@
         "outcome-not-yes-no": 1,
         "no-signature": 43,
         "no-counterpart": 25,
-        "ambiguous": 20
+        "ambiguous": 21
       },
       "kalshi": {
-        "outcome-not-a-team": 55,
+        "outcome-not-a-team": 56,
         "no-series": 102,
         "no-signature": 43
       }
@@ -14061,7 +14090,7 @@
       "ask_at_intent": 0.06,
       "fair_at_intent": 0.1767,
       "edge_at_intent": 0.1167,
-      "polls": 3
+      "polls": 4
     },
     {
       "key": "KXHIGHDEN-26AUG16-B80.5:yes",
@@ -14105,7 +14134,7 @@
       "ask_at_intent": 0.11,
       "fair_at_intent": 0.214,
       "edge_at_intent": 0.104,
-      "polls": 3
+      "polls": 4
     }
   ],
   "maker": {
