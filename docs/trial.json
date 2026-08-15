@@ -488,30 +488,6 @@
       "fee": 1.03
     },
     {
-      "key": "0x4f0b0cd3c2bf3f1b0996d43c1a6a325041eae93dff8f47c7e87fcfdbda590f45:ramiz brahimaj",
-      "opened_at": 1786588545.1152413,
-      "market_id": "0x4f0b0cd3c2bf3f1b0996d43c1a6a325041eae93dff8f47c7e87fcfdbda590f45",
-      "venue": "polymarket",
-      "outcome": "Ramiz Brahimaj",
-      "title": "UFC 330: Neil Magny vs. Ramiz Brahimaj (Welterweight, Prelims)",
-      "url": "https://polymarket.com/event/ufc-nei-ram2-2026-08-15",
-      "price": 0.555,
-      "stake": 100.0,
-      "contracts": 180.1802,
-      "shown": true,
-      "source": "whale",
-      "conviction": 0.582,
-      "n_wallets": 1,
-      "whale_usd": 30640,
-      "drift_c": 0.5,
-      "hours_to_resolve": 66.4,
-      "liquidity": 45025,
-      "end_iso": "2026-08-16T03:59:59.999Z",
-      "event_iso": "2026-08-15 21:00:00+00",
-      "origin_market_id": "",
-      "fee": 0.78
-    },
-    {
       "key": "0x86ef00c993db7bcb48f09d110a05c2e56522aee811743492b51aeb49d99a2cc0:tresean gore",
       "opened_at": 1786588545.1152413,
       "market_id": "0x86ef00c993db7bcb48f09d110a05c2e56522aee811743492b51aeb49d99a2cc0",
@@ -1692,30 +1668,6 @@
       "price": 0.495,
       "contracts": 202.0202,
       "fee": 0.89
-    },
-    {
-      "key": "0x13a807bc5ad571314fdb48636bfa1973674679f888160a57767d7c581e8a7471:over",
-      "market_id": "0x13a807bc5ad571314fdb48636bfa1973674679f888160a57767d7c581e8a7471",
-      "venue": "polymarket",
-      "outcome": "Over",
-      "title": "Colorado Rockies vs. San Francisco Giants: O/U 8.5",
-      "url": "https://polymarket.com/event/mlb-col-sf-2026-08-15",
-      "stake": 100.0,
-      "shown": true,
-      "source": "whale",
-      "conviction": 0.482,
-      "n_wallets": 1,
-      "whale_usd": 6052,
-      "drift_c": 0.5,
-      "hours_to_resolve": 4.1,
-      "liquidity": 139365,
-      "end_iso": "2026-08-15T20:05:00Z",
-      "event_iso": "2026-08-15 20:05:00+00",
-      "origin_market_id": "",
-      "opened_at": 1786809533.1272984,
-      "price": 0.425,
-      "contracts": 235.2941,
-      "fee": 1.01
     },
     {
       "key": "0x47aac0d91293182cf11508a8ac911b0384c5b00de91a3b6de90d994df095a6ff:texas rangers",
@@ -13729,58 +13681,116 @@
       "won": true,
       "pred": 0.125,
       "realized": 698.46
+    },
+    {
+      "key": "0x4f0b0cd3c2bf3f1b0996d43c1a6a325041eae93dff8f47c7e87fcfdbda590f45:ramiz brahimaj",
+      "opened_at": 1786588545.1152413,
+      "market_id": "0x4f0b0cd3c2bf3f1b0996d43c1a6a325041eae93dff8f47c7e87fcfdbda590f45",
+      "venue": "polymarket",
+      "outcome": "Ramiz Brahimaj",
+      "title": "UFC 330: Neil Magny vs. Ramiz Brahimaj (Welterweight, Prelims)",
+      "url": "https://polymarket.com/event/ufc-nei-ram2-2026-08-15",
+      "price": 0.555,
+      "stake": 100.0,
+      "contracts": 180.1802,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.582,
+      "n_wallets": 1,
+      "whale_usd": 30640,
+      "drift_c": 0.5,
+      "hours_to_resolve": 66.4,
+      "liquidity": 45025,
+      "end_iso": "2026-08-16T03:59:59.999Z",
+      "event_iso": "2026-08-15 21:00:00+00",
+      "origin_market_id": "",
+      "fee": 0.78,
+      "settled_at": 1786834842.5243516,
+      "winner": "Neil Magny",
+      "won": false,
+      "pred": 0.555,
+      "realized": -100.78
+    },
+    {
+      "key": "0x13a807bc5ad571314fdb48636bfa1973674679f888160a57767d7c581e8a7471:over",
+      "market_id": "0x13a807bc5ad571314fdb48636bfa1973674679f888160a57767d7c581e8a7471",
+      "venue": "polymarket",
+      "outcome": "Over",
+      "title": "Colorado Rockies vs. San Francisco Giants: O/U 8.5",
+      "url": "https://polymarket.com/event/mlb-col-sf-2026-08-15",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.482,
+      "n_wallets": 1,
+      "whale_usd": 6052,
+      "drift_c": 0.5,
+      "hours_to_resolve": 4.1,
+      "liquidity": 139365,
+      "end_iso": "2026-08-15T20:05:00Z",
+      "event_iso": "2026-08-15 20:05:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786809533.1272984,
+      "price": 0.425,
+      "contracts": 235.2941,
+      "fee": 1.01,
+      "settled_at": 1786834842.5243516,
+      "winner": "Under",
+      "won": false,
+      "pred": 0.425,
+      "realized": -101.01
     }
   ],
   "stats": {
-    "n": 385,
-    "win_rate": 0.5455,
-    "avg_predicted": 0.5299,
-    "calibration_gap": -0.0156,
-    "brier": 0.2287,
-    "total_pnl": 1185.49,
-    "roi_on_stake": 0.0308,
-    "mean_return": 0.0308,
-    "sharpe_per_bet": 0.0277,
-    "psr_vs_zero": 0.7103,
-    "dsr": 0.7103,
+    "n": 387,
+    "win_rate": 0.5426,
+    "avg_predicted": 0.5297,
+    "calibration_gap": -0.013,
+    "brier": 0.2288,
+    "total_pnl": 983.7,
+    "roi_on_stake": 0.0254,
+    "mean_return": 0.0254,
+    "sharpe_per_bet": 0.0229,
+    "psr_vs_zero": 0.6763,
+    "dsr": 0.6763,
     "implied_sr0": 0.0,
     "bootstrap_ci": [
-      -0.0739,
-      0.1147
+      -0.0676,
+      0.1158
     ],
-    "p_mean_le_0": 0.391,
+    "p_mean_le_0": 0.362,
     "deploy": false,
     "reasons": [
-      "DSR 0.710 < 0.95",
+      "DSR 0.676 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 93,
+    "open_positions": 91,
     "retired_sources": [
       "weather"
     ],
     "retired_excluded": 13,
     "including_retired": {
-      "n": 398,
-      "win_rate": 0.5302,
-      "avg_predicted": 0.5179,
-      "calibration_gap": -0.0122,
-      "brier": 0.2223,
-      "total_pnl": -15.11,
-      "roi_on_stake": -0.0004,
-      "mean_return": -0.0004,
-      "sharpe_per_bet": -0.0003,
-      "psr_vs_zero": 0.4973,
-      "dsr": 0.4973,
+      "n": 400,
+      "win_rate": 0.5275,
+      "avg_predicted": 0.5178,
+      "calibration_gap": -0.0097,
+      "brier": 0.2224,
+      "total_pnl": -216.9,
+      "roi_on_stake": -0.0054,
+      "mean_return": -0.0054,
+      "sharpe_per_bet": -0.0049,
+      "psr_vs_zero": 0.4612,
+      "dsr": 0.4612,
       "implied_sr0": 0.0,
       "bootstrap_ci": [
-        -0.113,
-        0.0772
+        -0.1121,
+        0.0797
       ],
-      "p_mean_le_0": 0.6275,
+      "p_mean_le_0": 0.582,
       "deploy": false,
       "reasons": [
         "mean per-bet return <= 0",
-        "DSR 0.497 < 0.95",
+        "DSR 0.461 < 0.95",
         "bootstrap 5% CI of mean return <= 0"
       ]
     },
@@ -13815,29 +13825,29 @@
         "retired": true
       },
       "whale": {
-        "n": 309,
-        "win_rate": 0.5469,
-        "avg_predicted": 0.5332,
-        "calibration_gap": -0.0137,
-        "brier": 0.2262,
-        "total_pnl": 574.26,
-        "roi_on_stake": 0.0186,
-        "mean_return": 0.0186,
-        "sharpe_per_bet": 0.0176,
-        "psr_vs_zero": 0.6225,
-        "dsr": 0.6225,
+        "n": 311,
+        "win_rate": 0.5434,
+        "avg_predicted": 0.533,
+        "calibration_gap": -0.0104,
+        "brier": 0.2263,
+        "total_pnl": 372.47,
+        "roi_on_stake": 0.012,
+        "mean_return": 0.012,
+        "sharpe_per_bet": 0.0114,
+        "psr_vs_zero": 0.5797,
+        "dsr": 0.5797,
         "implied_sr0": 0.0,
         "bootstrap_ci": [
-          -0.0795,
-          0.0793
+          -0.0786,
+          0.0852
         ],
-        "p_mean_le_0": 0.5,
+        "p_mean_le_0": 0.477,
         "deploy": false,
         "reasons": [
-          "DSR 0.622 < 0.95",
+          "DSR 0.580 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 79
+        "open_positions": 77
       },
       "whale-pmus": {
         "n": 76,
@@ -13875,7 +13885,7 @@
       "foregone_edge": 0.7688
     }
   },
-  "generated": "2026-08-15 22:33:36",
+  "generated": "2026-08-15 23:00:42",
   "voided": [],
   "bridge": {
     "log": {
@@ -14791,7 +14801,7 @@
       },
       "0x33bd6490319d0926955bb451d81e3f345bf6e6d41a0a85d69c02f658277a4de4:san diego padres": {
         "polymarket-us": "ambiguous",
-        "ts": 1786798497.7,
+        "ts": 1786834815.5,
         "kalshi": "outcome-not-a-team"
       },
       "0x95f58aeb0dec6e4c1f996137b16e3caaeaabf29ab8a68644d7749ec31fb29d99:matteo arnaldi": {
@@ -14946,7 +14956,7 @@
       },
       "0xd3538321a5a654bd1c331955ae8f4bc9bf6c37a317a66668d7c2c1ffff6a03bb:los angeles angels": {
         "polymarket-us": "ambiguous",
-        "ts": 1786833190.2,
+        "ts": 1786834815.5,
         "kalshi": "outcome-not-a-team"
       },
       "0xbfbf42bef7dc25cd95c59937a4216db962670d78f766e7730befa4cdad9bad31:no": {
