@@ -910,30 +910,6 @@
       "fee": 0.56
     },
     {
-      "key": "0x78d312393007e870d2dade8572beb140dfe18e02ce17f6289323ae3de7992a8d:over",
-      "market_id": "0x78d312393007e870d2dade8572beb140dfe18e02ce17f6289323ae3de7992a8d",
-      "venue": "polymarket",
-      "outcome": "Over",
-      "title": "DEN vs. ATL: O/U 38.5",
-      "url": "https://polymarket.com/event/nfl-den-atl-2026-08-14",
-      "stake": 100.0,
-      "shown": false,
-      "source": "whale",
-      "conviction": 0.404,
-      "n_wallets": 1,
-      "whale_usd": 67937,
-      "drift_c": 0.5,
-      "hours_to_resolve": 13.8,
-      "liquidity": 25907,
-      "end_iso": "2026-08-14T23:00:00Z",
-      "event_iso": "2026-08-14 23:00:00+00",
-      "origin_market_id": "",
-      "opened_at": 1786698892.59187,
-      "price": 0.535,
-      "contracts": 186.9159,
-      "fee": 0.82
-    },
-    {
       "key": "0x39a4b304b681d530183fb6cac9c80e713c40b927f3da8314ec39f24ece0f2ff7:belinda bencic",
       "market_id": "0x39a4b304b681d530183fb6cac9c80e713c40b927f3da8314ec39f24ece0f2ff7",
       "venue": "polymarket",
@@ -1778,6 +1754,30 @@
       "price": 0.735,
       "contracts": 136.0544,
       "fee": 0.47
+    },
+    {
+      "key": "0x5717228be443d4a01a56ec5c6bd7180c22f0196045081eb4741a42a24e727fd1:dn soopers",
+      "market_id": "0x5717228be443d4a01a56ec5c6bd7180c22f0196045081eb4741a42a24e727fd1",
+      "venue": "polymarket",
+      "outcome": "DN SOOPers",
+      "title": "LoL: BNK FEARX vs DN SOOPers - Game 1 Winner",
+      "url": "https://polymarket.com/event/lol-fox1-dnf-2026-08-15",
+      "stake": 100.0,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.427,
+      "n_wallets": 1,
+      "whale_usd": 6722,
+      "drift_c": 0.5,
+      "hours_to_resolve": 5.3,
+      "liquidity": 77087,
+      "end_iso": "2026-08-15T14:00:00Z",
+      "event_iso": "2026-08-15 10:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786768775.3884666,
+      "price": 0.415,
+      "contracts": 240.9639,
+      "fee": 1.03
     }
   ],
   "settled": [
@@ -11215,29 +11215,58 @@
       "won": false,
       "pred": 0.575,
       "realized": -100.75
+    },
+    {
+      "key": "0x78d312393007e870d2dade8572beb140dfe18e02ce17f6289323ae3de7992a8d:over",
+      "market_id": "0x78d312393007e870d2dade8572beb140dfe18e02ce17f6289323ae3de7992a8d",
+      "venue": "polymarket",
+      "outcome": "Over",
+      "title": "DEN vs. ATL: O/U 38.5",
+      "url": "https://polymarket.com/event/nfl-den-atl-2026-08-14",
+      "stake": 100.0,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.404,
+      "n_wallets": 1,
+      "whale_usd": 67937,
+      "drift_c": 0.5,
+      "hours_to_resolve": 13.8,
+      "liquidity": 25907,
+      "end_iso": "2026-08-14T23:00:00Z",
+      "event_iso": "2026-08-14 23:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786698892.59187,
+      "price": 0.535,
+      "contracts": 186.9159,
+      "fee": 0.82,
+      "settled_at": 1786768786.4032938,
+      "winner": "Under",
+      "won": false,
+      "pred": 0.535,
+      "realized": -100.82
     }
   ],
   "stats": {
-    "n": 332,
-    "win_rate": 0.5542,
-    "avg_predicted": 0.5218,
-    "calibration_gap": -0.0324,
-    "brier": 0.2237,
-    "total_pnl": 757.3,
-    "roi_on_stake": 0.0228,
-    "mean_return": 0.0228,
-    "sharpe_per_bet": 0.0229,
-    "psr_vs_zero": 0.6618,
-    "dsr": 0.6618,
+    "n": 333,
+    "win_rate": 0.5526,
+    "avg_predicted": 0.5219,
+    "calibration_gap": -0.0307,
+    "brier": 0.2239,
+    "total_pnl": 656.48,
+    "roi_on_stake": 0.0197,
+    "mean_return": 0.0197,
+    "sharpe_per_bet": 0.0198,
+    "psr_vs_zero": 0.641,
+    "dsr": 0.641,
     "implied_sr0": 0.0,
     "bootstrap_ci": [
-      -0.0698,
-      0.1111
+      -0.0749,
+      0.1083
     ],
-    "p_mean_le_0": 0.3575,
+    "p_mean_le_0": 0.3725,
     "deploy": false,
     "reasons": [
-      "DSR 0.662 < 0.95",
+      "DSR 0.641 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
     "open_positions": 71,
@@ -11271,26 +11300,26 @@
         "open_positions": 6
       },
       "whale": {
-        "n": 260,
-        "win_rate": 0.5731,
+        "n": 261,
+        "win_rate": 0.5709,
         "avg_predicted": 0.5372,
-        "calibration_gap": -0.0359,
-        "brier": 0.2253,
-        "total_pnl": 1324.21,
-        "roi_on_stake": 0.0509,
-        "mean_return": 0.0509,
-        "sharpe_per_bet": 0.052,
-        "psr_vs_zero": 0.7994,
-        "dsr": 0.7994,
+        "calibration_gap": -0.0337,
+        "brier": 0.2256,
+        "total_pnl": 1223.39,
+        "roi_on_stake": 0.0469,
+        "mean_return": 0.0469,
+        "sharpe_per_bet": 0.0478,
+        "psr_vs_zero": 0.7804,
+        "dsr": 0.7804,
         "implied_sr0": 0.0,
         "bootstrap_ci": [
-          -0.0293,
-          0.135
+          -0.0324,
+          0.1348
         ],
-        "p_mean_le_0": 0.141,
+        "p_mean_le_0": 0.16,
         "deploy": false,
         "reasons": [
-          "DSR 0.799 < 0.95",
+          "DSR 0.780 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
         "open_positions": 57
@@ -11322,16 +11351,16 @@
       }
     },
     "maker": {
-      "pending": 4,
+      "pending": 3,
       "filled": 3,
       "fallback": 0,
-      "expired": 1,
-      "fill_rate": 0.75,
+      "expired": 2,
+      "fill_rate": 0.6,
       "avg_fill_polls": 2.0,
-      "foregone_edge": 0.0745
+      "foregone_edge": 0.1541
     }
   },
-  "generated": "2026-08-15 03:50:11",
+  "generated": "2026-08-15 04:39:46",
   "voided": [],
   "bridge": {
     "log": {
@@ -12109,6 +12138,11 @@
         "polymarket-us": "matched",
         "ts": 1786758743.1,
         "kalshi": "no-series"
+      },
+      "0x1acd92f5aec41db1661c63b2d5dde097066629fb790e783b6085eb198a160441:furia": {
+        "polymarket-us": "no-signature",
+        "ts": 1786768775.4,
+        "kalshi": "no-signature"
       }
     },
     "summary": {
@@ -12116,62 +12150,18 @@
         "outcome-unmapped": 21,
         "matched": 71,
         "outcome-not-yes-no": 1,
-        "no-signature": 32,
+        "no-signature": 33,
         "no-counterpart": 19,
         "ambiguous": 11
       },
       "kalshi": {
         "outcome-not-a-team": 42,
         "no-series": 81,
-        "no-signature": 32
+        "no-signature": 33
       }
     }
   },
   "pending": [
-    {
-      "key": "KXHIGHNY-26AUG15-B86.5:yes",
-      "market_id": "KXHIGHNY-26AUG15-B86.5",
-      "venue": "kalshi",
-      "outcome": "Yes",
-      "title": "Will the maximum temperature be 86-87\u00b0 on Aug 15, 2026?",
-      "url": "https://kalshi.com/markets/KXHIGHNY-26AUG15",
-      "stake": 100.0,
-      "shown": true,
-      "source": "weather",
-      "conviction": null,
-      "n_wallets": null,
-      "whale_usd": null,
-      "drift_c": null,
-      "hours_to_resolve": null,
-      "liquidity": null,
-      "end_iso": "2026-08-16T00:00:00+00:00",
-      "event_iso": "2026-08-16T00:00:00+00:00",
-      "model_prob": 0.1296,
-      "edge": 0.0796,
-      "forecast_f": 83.0,
-      "sigma_f": 2.01,
-      "market_mu_f": 81.75,
-      "market_sigma_f": 2.01,
-      "days_ahead": 0.08,
-      "market_prob": 0.04,
-      "model": "kalshi-ladder-tilted-by-nbm-station",
-      "city": "Central Park, New York",
-      "forecast_src": "nbm-station",
-      "nbm_cycle": "2026-08-14T19Z",
-      "nbm_sd_f": 2.0,
-      "forecast_grid_f": 82.0,
-      "cal_prob": 0.0633,
-      "cal_edge": 0.0663,
-      "cal_b": 0.915,
-      "origin_market_id": "",
-      "intent_at": 1786744862.9945366,
-      "limit_price": 0.03,
-      "intended_price": 0.03,
-      "ask_at_intent": 0.05,
-      "fair_at_intent": 0.1296,
-      "edge_at_intent": 0.0796,
-      "polls": 7
-    },
     {
       "key": "KXHIGHDEN-26AUG15-B81.5:yes",
       "market_id": "KXHIGHDEN-26AUG15-B81.5",
@@ -12214,7 +12204,7 @@
       "ask_at_intent": 0.29,
       "fair_at_intent": 0.3615,
       "edge_at_intent": 0.0715,
-      "polls": 4
+      "polls": 5
     },
     {
       "key": "KXHIGHCHI-26AUG15-T81:yes",
@@ -12258,7 +12248,7 @@
       "ask_at_intent": 0.4,
       "fair_at_intent": 0.6384,
       "edge_at_intent": 0.2384,
-      "polls": 1
+      "polls": 2
     },
     {
       "key": "KXHIGHMIA-26AUG15-B92.5:yes",
@@ -12302,7 +12292,7 @@
       "ask_at_intent": 0.32,
       "fair_at_intent": 0.4041,
       "edge_at_intent": 0.0841,
-      "polls": 1
+      "polls": 2
     }
   ],
   "maker": {
@@ -12351,6 +12341,51 @@
         "edge_at_intent": 0.0745,
         "polls": 8,
         "expired_at": 1786698892.59187
+      },
+      {
+        "key": "KXHIGHNY-26AUG15-B86.5:yes",
+        "market_id": "KXHIGHNY-26AUG15-B86.5",
+        "venue": "kalshi",
+        "outcome": "Yes",
+        "title": "Will the maximum temperature be 86-87\u00b0 on Aug 15, 2026?",
+        "url": "https://kalshi.com/markets/KXHIGHNY-26AUG15",
+        "stake": 100.0,
+        "shown": true,
+        "source": "weather",
+        "conviction": null,
+        "n_wallets": null,
+        "whale_usd": null,
+        "drift_c": null,
+        "hours_to_resolve": null,
+        "liquidity": null,
+        "end_iso": "2026-08-16T00:00:00+00:00",
+        "event_iso": "2026-08-16T00:00:00+00:00",
+        "model_prob": 0.1296,
+        "edge": 0.0796,
+        "forecast_f": 83.0,
+        "sigma_f": 2.01,
+        "market_mu_f": 81.75,
+        "market_sigma_f": 2.01,
+        "days_ahead": 0.08,
+        "market_prob": 0.04,
+        "model": "kalshi-ladder-tilted-by-nbm-station",
+        "city": "Central Park, New York",
+        "forecast_src": "nbm-station",
+        "nbm_cycle": "2026-08-14T19Z",
+        "nbm_sd_f": 2.0,
+        "forecast_grid_f": 82.0,
+        "cal_prob": 0.0633,
+        "cal_edge": 0.0663,
+        "cal_b": 0.915,
+        "origin_market_id": "",
+        "intent_at": 1786744862.9945366,
+        "limit_price": 0.03,
+        "intended_price": 0.03,
+        "ask_at_intent": 0.05,
+        "fair_at_intent": 0.1296,
+        "edge_at_intent": 0.0796,
+        "polls": 8,
+        "expired_at": 1786768775.3884666
       }
     ]
   }
