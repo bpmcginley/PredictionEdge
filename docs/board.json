@@ -1,40 +1,8 @@
 {
-  "generated": "2026-08-15 19:09:54",
-  "generated_at": 1786820994.9096384,
+  "generated": "2026-08-15 19:37:32",
+  "generated_at": 1786822652.4788191,
   "account_size": 100000.0,
   "tickets": [
-    {
-      "market_id": "0x33b857d07a9240bafc68545edd7288d1df391a5cc2ff949200735f847ff692b9",
-      "title": "Cincinnati Open: Jan-Lennard Struff vs Alejandro Tabilo",
-      "side_label": "Jan-Lennard Struff \u2014 Cincinnati Open: Jan-Lennard Struff vs Alejandro Tabilo",
-      "outcome": "Jan-Lennard Struff",
-      "entry_price": 0.375,
-      "whale_price": 0.375,
-      "drift_c": -0.02,
-      "contracts": 1682,
-      "cost": 630.75,
-      "max_payout": 1682.0,
-      "conviction": 0.631,
-      "hours_to_resolve": 0.1,
-      "n_wallets": 2,
-      "whale_usd": 25611,
-      "minutes_ago": 10,
-      "liquidity": 367479,
-      "url": "https://polymarket.com/event/atp-struff-tabilo-2026-08-15",
-      "end_iso": "2026-08-22T14:00:00Z",
-      "event_iso": "2026-08-15 19:15:00+00",
-      "slug": "atp-struff-tabilo-2026-08-15",
-      "signal_ts": 1786820397.0,
-      "why": [
-        "2 profitable wallets on this side",
-        "$25,611, 87% of their own book",
-        "latest buy 10 min ago",
-        "still near their entry price",
-        "0h until it resolves",
-        "$367,479 liquidity"
-      ],
-      "warnings": []
-    },
     {
       "market_id": "0xccf2b4f4ee94200fb3e05bfd45c1fb8a43bb0bf5cf69d78508c969d72b3a7f2b",
       "title": "US announces end of Iranian blockade by August 22, 2026?",
@@ -43,15 +11,15 @@
       "entry_price": 0.9,
       "whale_price": 0.89,
       "drift_c": 1.0,
-      "contracts": 602,
-      "cost": 541.8,
-      "max_payout": 602.0,
-      "conviction": 0.542,
-      "hours_to_resolve": 172.8,
+      "contracts": 576,
+      "cost": 518.4,
+      "max_payout": 576.0,
+      "conviction": 0.519,
+      "hours_to_resolve": 172.4,
       "n_wallets": 1,
       "whale_usd": 8997,
-      "minutes_ago": 3,
-      "liquidity": 56412,
+      "minutes_ago": 31,
+      "liquidity": 48150,
       "url": "https://polymarket.com/event/us-announces-end-of-iranian-blockade-byptptpt-20260713152715080",
       "end_iso": "2026-08-22T23:59:00Z",
       "event_iso": "",
@@ -60,10 +28,77 @@
       "why": [
         "1 profitable wallet on this side",
         "$8,997 \u2014 but only 5.4% of their book",
-        "latest buy 3 min ago",
+        "latest buy 31 min ago",
         "price up 1.0c since they bought",
-        "173h until it resolves",
-        "$56,412 liquidity"
+        "172h until it resolves"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0xb74bf288c6511e1eabbb373810ca403002cfd7288a5e95c54fa1fa782d709350",
+      "title": "Cincinnati Open: Terence Atmane vs Tomas Etcheverry",
+      "side_label": "Terence Atmane \u2014 Cincinnati Open: Terence Atmane vs Tomas Etcheverry",
+      "outcome": "Terence Atmane",
+      "entry_price": 0.625,
+      "whale_price": 0.63,
+      "drift_c": -0.5,
+      "contracts": 785,
+      "cost": 490.62,
+      "max_payout": 785.0,
+      "conviction": 0.491,
+      "hours_to_resolve": 1.2,
+      "n_wallets": 1,
+      "whale_usd": 7937,
+      "minutes_ago": 13,
+      "liquidity": 234858,
+      "url": "https://polymarket.com/event/atp-atmane-etcheve-2026-08-15",
+      "end_iso": "2026-08-22T14:00:00Z",
+      "event_iso": "2026-08-15 20:50:00+00",
+      "slug": "atp-atmane-etcheve-2026-08-15",
+      "signal_ts": 1786821871.0,
+      "why": [
+        "new wallet with no track record \u2014 pattern signal, not a copy",
+        "$7,937, 57% of their own book",
+        "latest buy 13 min ago",
+        "still near their entry price",
+        "1h until it resolves",
+        "$234,858 liquidity"
+      ],
+      "warnings": [
+        "unproven wallet \u2014 this is a pattern, not a track record"
+      ]
+    },
+    {
+      "market_id": "0xcecc81013a1683ce77f39377934cd391417f34d18d64fdc8dc5c1c2bb6d49d0a",
+      "title": "Seattle Mariners vs. Houston Astros",
+      "side_label": "Houston Astros \u2014 Seattle Mariners vs. Houston Astros",
+      "outcome": "Houston Astros",
+      "entry_price": 0.525,
+      "whale_price": 0.53,
+      "drift_c": -0.5,
+      "contracts": 902,
+      "cost": 473.55,
+      "max_payout": 902.0,
+      "conviction": 0.474,
+      "hours_to_resolve": 3.5,
+      "n_wallets": 1,
+      "whale_usd": 10484,
+      "minutes_ago": 6,
+      "liquidity": 372614,
+      "url": "https://polymarket.com/event/mlb-sea-hou-2026-08-15",
+      "end_iso": "2026-08-22T23:10:00Z",
+      "event_iso": "2026-08-15 23:10:00+00",
+      "slug": "mlb-sea-hou-2026-08-15",
+      "signal_ts": 1786822251.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$10,484 \u2014 but only 3.7% of their book",
+        "latest buy 6 min ago",
+        "still near their entry price",
+        "4h until it resolves",
+        "$372,614 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -79,15 +114,15 @@
       "entry_price": 0.485,
       "whale_price": 0.51,
       "drift_c": -2.46,
-      "contracts": 888,
-      "cost": 430.68,
-      "max_payout": 888.0,
-      "conviction": 0.431,
-      "hours_to_resolve": 4.0,
+      "contracts": 839,
+      "cost": 406.91,
+      "max_payout": 839.0,
+      "conviction": 0.407,
+      "hours_to_resolve": 3.5,
       "n_wallets": 1,
       "whale_usd": 6452,
-      "minutes_ago": 84,
-      "liquidity": 52831,
+      "minutes_ago": 111,
+      "liquidity": 52993,
       "url": "https://polymarket.com/event/mlb-sd-cle-2026-08-15",
       "end_iso": "2026-08-15T23:10:00Z",
       "event_iso": "2026-08-15 23:10:00+00",
@@ -96,10 +131,10 @@
       "why": [
         "new wallet with no track record \u2014 pattern signal, not a copy",
         "$6,452, 100% of their own book",
-        "latest buy 84 min ago",
+        "latest buy 111 min ago",
         "price 2.5c cheaper than they paid",
         "4h until it resolves",
-        "$52,831 liquidity"
+        "$52,993 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
@@ -114,15 +149,15 @@
       "entry_price": 0.74,
       "whale_price": 0.73,
       "drift_c": 1.0,
-      "contracts": 572,
-      "cost": 423.28,
-      "max_payout": 572.0,
-      "conviction": 0.424,
-      "hours_to_resolve": 17.3,
+      "contracts": 541,
+      "cost": 400.34,
+      "max_payout": 541.0,
+      "conviction": 0.401,
+      "hours_to_resolve": 16.9,
       "n_wallets": 1,
       "whale_usd": 3958,
-      "minutes_ago": 62,
-      "liquidity": 62557,
+      "minutes_ago": 90,
+      "liquidity": 65117,
       "url": "https://polymarket.com/event/elc-wat-sot-2026-08-16",
       "end_iso": "2026-08-16T12:30:00Z",
       "event_iso": "2026-08-16 12:30:00+00",
@@ -131,47 +166,13 @@
       "why": [
         "1 profitable wallet on this side",
         "$3,958, 23% of their own book",
-        "latest buy 62 min ago",
+        "latest buy 90 min ago",
         "price up 1.0c since they bought",
         "17h until it resolves",
-        "$62,557 liquidity"
+        "$65,117 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x4aec9103eff013285291b1908070fb4aacd8d03649f97dfa2c199cfd14b26ecf",
-      "title": "Cincinnati Open: Emma Navarro vs Anhelina Kalinina",
-      "side_label": "Anhelina Kalinina \u2014 Cincinnati Open: Emma Navarro vs Anhelina Kalinina",
-      "outcome": "Anhelina Kalinina",
-      "entry_price": 0.375,
-      "whale_price": 0.38,
-      "drift_c": -0.5,
-      "contracts": 1120,
-      "cost": 420.0,
-      "max_payout": 1120.0,
-      "conviction": 0.42,
-      "hours_to_resolve": 1.6,
-      "n_wallets": 1,
-      "whale_usd": 8963,
-      "minutes_ago": 102,
-      "liquidity": 382988,
-      "url": "https://polymarket.com/event/wta-navarro-kalinin-2026-08-15",
-      "end_iso": "2026-08-22T14:00:00Z",
-      "event_iso": "2026-08-15 20:45:00+00",
-      "slug": "wta-navarro-kalinin-2026-08-15",
-      "signal_ts": 1786814868.0,
-      "why": [
-        "1 profitable wallet on this side",
-        "$8,963, 53% of their own book",
-        "latest buy 102 min ago",
-        "still near their entry price",
-        "2h until it resolves",
-        "$382,988 liquidity"
-      ],
-      "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     },
@@ -180,18 +181,18 @@
       "title": "Will Ethereum dip to $1,700 in August?",
       "side_label": "NO on: Will Ethereum dip to $1,700 in August?",
       "outcome": "No",
-      "entry_price": 0.79,
+      "entry_price": 0.8,
       "whale_price": 0.79,
-      "drift_c": 0.0,
-      "contracts": 513,
-      "cost": 405.27,
-      "max_payout": 513.0,
-      "conviction": 0.406,
-      "hours_to_resolve": 392.8,
+      "drift_c": 1.0,
+      "contracts": 466,
+      "cost": 372.8,
+      "max_payout": 466.0,
+      "conviction": 0.373,
+      "hours_to_resolve": 392.4,
       "n_wallets": 1,
       "whale_usd": 8765,
-      "minutes_ago": 226,
-      "liquidity": 54434,
+      "minutes_ago": 254,
+      "liquidity": 58466,
       "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-august-2026",
       "end_iso": "2026-09-01T04:00:00Z",
       "event_iso": "",
@@ -200,62 +201,28 @@
       "why": [
         "1 profitable wallet on this side",
         "$8,765 \u2014 but only 0.3% of their book",
-        "latest buy 226 min ago",
-        "still near their entry price",
-        "393h until it resolves",
-        "$54,434 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x9f7053f45a4b4fdfc0af2cddbb92938b55dbe80428609c00c659d11e8c869ff6",
-      "title": "Boston Red Sox vs. Pittsburgh Pirates",
-      "side_label": "Pittsburgh Pirates \u2014 Boston Red Sox vs. Pittsburgh Pirates",
-      "outcome": "Pittsburgh Pirates",
-      "entry_price": 0.475,
-      "whale_price": 0.47,
-      "drift_c": 0.5,
-      "contracts": 846,
-      "cost": 401.85,
-      "max_payout": 846.0,
-      "conviction": 0.402,
-      "hours_to_resolve": 4.1,
-      "n_wallets": 1,
-      "whale_usd": 6211,
-      "minutes_ago": 97,
-      "liquidity": 382928,
-      "url": "https://polymarket.com/event/mlb-bos-pit-2026-08-15",
-      "end_iso": "2026-08-22T23:15:00Z",
-      "event_iso": "2026-08-15 23:15:00+00",
-      "slug": "mlb-bos-pit-2026-08-15",
-      "signal_ts": 1786815169.0,
-      "why": [
-        "1 profitable wallet on this side",
-        "$6,211, 100% of their own book",
-        "latest buy 97 min ago",
-        "still near their entry price",
-        "4h until it resolves",
-        "$382,928 liquidity"
+        "latest buy 254 min ago",
+        "price up 1.0c since they bought",
+        "392h until it resolves",
+        "$58,466 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 416,
+  "considered": 428,
   "rejected": {
-    "already resolved": 59,
-    "wallet not new (no track record either)": 136,
-    "signal too old for this market's horizon": 8,
-    "market closed": 83,
-    "fresh wallet: market too liquid for the pattern": 84,
-    "in-play (event already started)": 22,
-    "resolves in under 3h": 5,
-    "parlay / combo ticket, not a single market": 11,
+    "already resolved": 62,
+    "fresh wallet: market too liquid for the pattern": 91,
+    "in-play (event already started)": 23,
+    "wallet not new (no track record either)": 128,
+    "signal too old for this market's horizon": 9,
+    "market closed": 94,
+    "resolves in under 3h": 4,
+    "parlay / combo ticket, not a single market": 10,
     "resolves more than 30 days out": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 5
+    "below the 0.45 buy bar (recorded, not bought)": 3
   },
   "notes": [],
   "consistency": {
@@ -265,16 +232,16 @@
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 123,
       "not a ladder: fewer than two live, quoted legs": 89,
-      "not a ladder: group labels are not thresholds or deadlines": 57,
+      "not a ladder: group labels are not thresholds or deadlines": 55,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "bracket has too many legs to place by hand": 2,
-      "ladder pair too illiquid to fill": 86,
+      "ladder pair too illiquid to fill": 85,
       "ladder inversion smaller than the spread": 2,
       "not a ladder: numeric group spans different end dates": 1,
-      "not a ladder: a live leg carries no group label": 6,
+      "not a ladder: a live leg carries no group label": 7,
       "bracket leg too illiquid to fill": 4,
       "bracket overround smaller than the spread": 1,
-      "dominance gap smaller than the spread": 3
+      "dominance gap smaller than the spread": 2
     },
     "notes": [],
     "violations": []
@@ -312,9 +279,9 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.049,
+            "market_prob": 0.045,
             "model_prob": 0.1297,
-            "gap_c": 8.07,
+            "gap_c": 8.47,
             "suspect": false
           },
           {
@@ -340,16 +307,16 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.046,
+            "market_prob": 0.0475,
             "model_prob": 0.1012,
-            "gap_c": 5.52,
+            "gap_c": 5.37,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0575,
+            "market_prob": 0.0595,
             "model_prob": 0.0369,
-            "gap_c": -2.06,
+            "gap_c": -2.26,
             "suspect": false
           },
           {
@@ -487,16 +454,16 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.365,
+            "market_prob": 0.34,
             "model_prob": 0.2359,
-            "gap_c": -12.91,
+            "gap_c": -10.41,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.435,
+            "market_prob": 0.43,
             "model_prob": 0.232,
-            "gap_c": -20.3,
+            "gap_c": -19.8,
             "suspect": false
           },
           {
@@ -536,9 +503,9 @@
           },
           {
             "label": "3.1%",
-            "market_prob": 0.059,
+            "market_prob": 0.0615,
             "model_prob": 0.0671,
-            "gap_c": 0.81,
+            "gap_c": 0.56,
             "suspect": false
           },
           {
@@ -550,9 +517,9 @@
           },
           {
             "label": "3.3%",
-            "market_prob": 0.32,
+            "market_prob": 0.325,
             "model_prob": 0.2282,
-            "gap_c": -9.18,
+            "gap_c": -9.68,
             "suspect": false
           },
           {
@@ -571,9 +538,9 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.06,
+            "market_prob": 0.055,
             "model_prob": 0.084,
-            "gap_c": 2.4,
+            "gap_c": 2.9,
             "suspect": false
           },
           {
