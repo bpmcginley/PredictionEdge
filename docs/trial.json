@@ -1826,6 +1826,78 @@
       "price": 0.455,
       "contracts": 219.7802,
       "fee": 0.96
+    },
+    {
+      "key": "0x15f4c1f1521dbaa66f2064b94f8e9045f5ba1093480be9318680503ed477e1be:aurora",
+      "market_id": "0x15f4c1f1521dbaa66f2064b94f8e9045f5ba1093480be9318680503ed477e1be",
+      "venue": "polymarket",
+      "outcome": "Aurora",
+      "title": "Dota 2: BoomBoys vs Aurora (BO3) - The International Group Stage",
+      "url": "https://polymarket.com/event/dota2-boombo-aur1-2026-08-15",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.579,
+      "n_wallets": 1,
+      "whale_usd": 105293,
+      "drift_c": -0.99,
+      "hours_to_resolve": 0.1,
+      "liquidity": 246367,
+      "end_iso": "2026-08-15T11:00:00Z",
+      "event_iso": "2026-08-15 06:20:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786774387.4803305,
+      "price": 0.465,
+      "contracts": 215.0538,
+      "fee": 0.94
+    },
+    {
+      "key": "0xad7d3e66745d3bc4df2b45185873b8a69a2fb25a312a186e29183ea872fcac3a:yes",
+      "market_id": "0xad7d3e66745d3bc4df2b45185873b8a69a2fb25a312a186e29183ea872fcac3a",
+      "venue": "polymarket",
+      "outcome": "Yes",
+      "title": "Will Orlando City SC win on 2026-08-15?",
+      "url": "https://polymarket.com/event/mls-orl-fcc-2026-08-15",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.573,
+      "n_wallets": 2,
+      "whale_usd": 22459,
+      "drift_c": 1.51,
+      "hours_to_resolve": 17.3,
+      "liquidity": 77586,
+      "end_iso": "2026-08-15T23:30:00Z",
+      "event_iso": "2026-08-15 23:30:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786774387.4803305,
+      "price": 0.46,
+      "contracts": 217.3913,
+      "fee": 0.95
+    },
+    {
+      "key": "0x3c135db7b77cc830e908088df95a06b0ef0b38c9d4e13eb828c7839d593381d1:spirit",
+      "market_id": "0x3c135db7b77cc830e908088df95a06b0ef0b38c9d4e13eb828c7839d593381d1",
+      "venue": "polymarket",
+      "outcome": "Spirit",
+      "title": "Counter-Strike: BIG vs Spirit (BO3) - Esports World Cup Group A",
+      "url": "https://polymarket.com/event/cs2-big5-ts7-2026-08-15",
+      "stake": 100.0,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.419,
+      "n_wallets": 1,
+      "whale_usd": 8322,
+      "drift_c": 0.25,
+      "hours_to_resolve": 10.6,
+      "liquidity": 120366,
+      "end_iso": "2026-08-15T22:50:00Z",
+      "event_iso": "2026-08-15 16:50:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786774387.4803305,
+      "price": 0.845,
+      "contracts": 118.3432,
+      "fee": 0.28
     }
   ],
   "settled": [
@@ -11462,7 +11534,7 @@
       "DSR 0.608 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 73,
+    "open_positions": 76,
     "trial_days": 7.6,
     "by_source": {
       "weather": {
@@ -11515,7 +11587,7 @@
           "DSR 0.755 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 60
+        "open_positions": 63
       },
       "whale-pmus": {
         "n": 64,
@@ -11544,16 +11616,16 @@
       }
     },
     "maker": {
-      "pending": 3,
+      "pending": 2,
       "filled": 3,
       "fallback": 0,
-      "expired": 2,
-      "fill_rate": 0.6,
+      "expired": 3,
+      "fill_rate": 0.5,
       "avg_fill_polls": 2.0,
-      "foregone_edge": 0.1541
+      "foregone_edge": 0.2256
     }
   },
-  "generated": "2026-08-15 05:44:33",
+  "generated": "2026-08-15 06:13:26",
   "voided": [],
   "bridge": {
     "log": {
@@ -12366,6 +12438,16 @@
         "polymarket-us": "no-counterpart",
         "ts": 1786772636.8,
         "kalshi": "no-series"
+      },
+      "0x15f4c1f1521dbaa66f2064b94f8e9045f5ba1093480be9318680503ed477e1be:aurora": {
+        "polymarket-us": "no-signature",
+        "ts": 1786774387.5,
+        "kalshi": "no-signature"
+      },
+      "0xad7d3e66745d3bc4df2b45185873b8a69a2fb25a312a186e29183ea872fcac3a:yes": {
+        "polymarket-us": "ambiguous",
+        "ts": 1786774387.5,
+        "kalshi": "no-series"
       }
     },
     "summary": {
@@ -12373,62 +12455,18 @@
         "outcome-unmapped": 21,
         "matched": 72,
         "outcome-not-yes-no": 1,
-        "no-signature": 36,
+        "no-signature": 37,
         "no-counterpart": 21,
-        "ambiguous": 11
+        "ambiguous": 12
       },
       "kalshi": {
         "outcome-not-a-team": 42,
-        "no-series": 84,
-        "no-signature": 36
+        "no-series": 85,
+        "no-signature": 37
       }
     }
   },
   "pending": [
-    {
-      "key": "KXHIGHDEN-26AUG15-B81.5:yes",
-      "market_id": "KXHIGHDEN-26AUG15-B81.5",
-      "venue": "kalshi",
-      "outcome": "Yes",
-      "title": "Will the maximum temperature be 81-82\u00b0 on Aug 15, 2026?",
-      "url": "https://kalshi.com/markets/KXHIGHDEN-26AUG15",
-      "stake": 100.0,
-      "shown": true,
-      "source": "weather",
-      "conviction": null,
-      "n_wallets": null,
-      "whale_usd": null,
-      "drift_c": null,
-      "hours_to_resolve": null,
-      "liquidity": null,
-      "end_iso": "2026-08-16T00:00:00+00:00",
-      "event_iso": "2026-08-16T00:00:00+00:00",
-      "model_prob": 0.3615,
-      "edge": 0.0715,
-      "forecast_f": 82.0,
-      "sigma_f": 2.18,
-      "market_mu_f": 83.17,
-      "market_sigma_f": 2.18,
-      "days_ahead": 0.01,
-      "market_prob": 0.285,
-      "model": "kalshi-ladder-tilted-by-nbm-station",
-      "city": "Denver, CO",
-      "forecast_src": "nbm-station",
-      "nbm_cycle": "2026-08-14T19Z",
-      "nbm_sd_f": 2.0,
-      "forecast_grid_f": 82.0,
-      "cal_prob": 0.3059,
-      "cal_edge": 0.0556,
-      "cal_b": 0.915,
-      "origin_market_id": "",
-      "intent_at": 1786750870.064032,
-      "limit_price": 0.28,
-      "intended_price": 0.28,
-      "ask_at_intent": 0.29,
-      "fair_at_intent": 0.3615,
-      "edge_at_intent": 0.0715,
-      "polls": 7
-    },
     {
       "key": "KXHIGHCHI-26AUG15-T81:yes",
       "market_id": "KXHIGHCHI-26AUG15-T81",
@@ -12471,7 +12509,7 @@
       "ask_at_intent": 0.4,
       "fair_at_intent": 0.6384,
       "edge_at_intent": 0.2384,
-      "polls": 4
+      "polls": 5
     },
     {
       "key": "KXHIGHMIA-26AUG15-B92.5:yes",
@@ -12515,7 +12553,7 @@
       "ask_at_intent": 0.32,
       "fair_at_intent": 0.4041,
       "edge_at_intent": 0.0841,
-      "polls": 4
+      "polls": 5
     }
   ],
   "maker": {
@@ -12609,6 +12647,51 @@
         "edge_at_intent": 0.0796,
         "polls": 8,
         "expired_at": 1786768775.3884666
+      },
+      {
+        "key": "KXHIGHDEN-26AUG15-B81.5:yes",
+        "market_id": "KXHIGHDEN-26AUG15-B81.5",
+        "venue": "kalshi",
+        "outcome": "Yes",
+        "title": "Will the maximum temperature be 81-82\u00b0 on Aug 15, 2026?",
+        "url": "https://kalshi.com/markets/KXHIGHDEN-26AUG15",
+        "stake": 100.0,
+        "shown": true,
+        "source": "weather",
+        "conviction": null,
+        "n_wallets": null,
+        "whale_usd": null,
+        "drift_c": null,
+        "hours_to_resolve": null,
+        "liquidity": null,
+        "end_iso": "2026-08-16T00:00:00+00:00",
+        "event_iso": "2026-08-16T00:00:00+00:00",
+        "model_prob": 0.3615,
+        "edge": 0.0715,
+        "forecast_f": 82.0,
+        "sigma_f": 2.18,
+        "market_mu_f": 83.17,
+        "market_sigma_f": 2.18,
+        "days_ahead": 0.01,
+        "market_prob": 0.285,
+        "model": "kalshi-ladder-tilted-by-nbm-station",
+        "city": "Denver, CO",
+        "forecast_src": "nbm-station",
+        "nbm_cycle": "2026-08-14T19Z",
+        "nbm_sd_f": 2.0,
+        "forecast_grid_f": 82.0,
+        "cal_prob": 0.3059,
+        "cal_edge": 0.0556,
+        "cal_b": 0.915,
+        "origin_market_id": "",
+        "intent_at": 1786750870.064032,
+        "limit_price": 0.28,
+        "intended_price": 0.28,
+        "ask_at_intent": 0.29,
+        "fair_at_intent": 0.3615,
+        "edge_at_intent": 0.0715,
+        "polls": 8,
+        "expired_at": 1786774387.4803305
       }
     ]
   }
