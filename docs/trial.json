@@ -1730,6 +1730,54 @@
       "price": 0.796,
       "contracts": 125.6281,
       "fee": 0.36
+    },
+    {
+      "key": "0x1acd92f5aec41db1661c63b2d5dde097066629fb790e783b6085eb198a160441:furia",
+      "market_id": "0x1acd92f5aec41db1661c63b2d5dde097066629fb790e783b6085eb198a160441",
+      "venue": "polymarket",
+      "outcome": "FURIA",
+      "title": "Counter-Strike: FURIA vs 9z (BO3) - Esports World Cup Group D",
+      "url": "https://polymarket.com/event/cs2-furia-9z-2026-08-15",
+      "stake": 100.0,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.436,
+      "n_wallets": 1,
+      "whale_usd": 20495,
+      "drift_c": -0.5,
+      "hours_to_resolve": 10.1,
+      "liquidity": 111264,
+      "end_iso": "2026-08-15T19:55:00Z",
+      "event_iso": "2026-08-15 13:55:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786765782.5809624,
+      "price": 0.635,
+      "contracts": 157.4803,
+      "fee": 0.64
+    },
+    {
+      "key": "0x5420884d67823c689ec4e334dd4a5f06740d06f40368aaa2f6798c87acee217e:elena rybakina",
+      "market_id": "0x5420884d67823c689ec4e334dd4a5f06740d06f40368aaa2f6798c87acee217e",
+      "venue": "polymarket",
+      "outcome": "Elena Rybakina",
+      "title": "Cincinnati Open: Taylor Townsend vs Elena Rybakina",
+      "url": "https://polymarket.com/event/wta-townsen-rybakin-2026-08-15",
+      "stake": 100.0,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.362,
+      "n_wallets": 1,
+      "whale_usd": 9193,
+      "drift_c": 1.5,
+      "hours_to_resolve": 34.2,
+      "liquidity": 84525,
+      "end_iso": "2026-08-22T14:00:00Z",
+      "event_iso": "2026-08-16 14:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786765782.5809624,
+      "price": 0.735,
+      "contracts": 136.0544,
+      "fee": 0.47
     }
   ],
   "settled": [
@@ -11192,7 +11240,7 @@
       "DSR 0.662 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 69,
+    "open_positions": 71,
     "trial_days": 7.5,
     "by_source": {
       "weather": {
@@ -11245,7 +11293,7 @@
           "DSR 0.799 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 55
+        "open_positions": 57
       },
       "whale-pmus": {
         "n": 62,
@@ -11283,7 +11331,7 @@
       "foregone_edge": 0.0745
     }
   },
-  "generated": "2026-08-15 02:59:41",
+  "generated": "2026-08-15 03:50:11",
   "voided": [],
   "bridge": {
     "log": {
@@ -11489,7 +11537,7 @@
       },
       "0xc04094452b0386a73a9a6e07da0370fffb2722e05c837a5246b88c914e78b79f:islam makhachev": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786762748.2,
+        "ts": 1786765782.6,
         "kalshi": "no-series"
       },
       "0xf2cafdf9c307fbc34fd47c617ebfeb713d5a7750c85e33041f18bd9171ab5c81:toronto blue jays": {
@@ -12122,7 +12170,7 @@
       "ask_at_intent": 0.05,
       "fair_at_intent": 0.1296,
       "edge_at_intent": 0.0796,
-      "polls": 6
+      "polls": 7
     },
     {
       "key": "KXHIGHDEN-26AUG15-B81.5:yes",
@@ -12166,7 +12214,7 @@
       "ask_at_intent": 0.29,
       "fair_at_intent": 0.3615,
       "edge_at_intent": 0.0715,
-      "polls": 3
+      "polls": 4
     },
     {
       "key": "KXHIGHCHI-26AUG15-T81:yes",
@@ -12210,7 +12258,7 @@
       "ask_at_intent": 0.4,
       "fair_at_intent": 0.6384,
       "edge_at_intent": 0.2384,
-      "polls": 0
+      "polls": 1
     },
     {
       "key": "KXHIGHMIA-26AUG15-B92.5:yes",
@@ -12254,7 +12302,7 @@
       "ask_at_intent": 0.32,
       "fair_at_intent": 0.4041,
       "edge_at_intent": 0.0841,
-      "polls": 0
+      "polls": 1
     }
   ],
   "maker": {
