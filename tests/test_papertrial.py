@@ -276,6 +276,45 @@ def test_open_positions_are_counted_per_sleeve_before_anything_settles():
     assert by["weather"]["open_positions"] == 1
 
 
+def test_a_retired_sleeve_leaves_the_headline_but_not_the_file():
+    """The go-forward headline must answer "how does the bot that runs tomorrow do",
+    so a switched-off sleeve cannot drag it. The rows still have to be THERE: a record
+    that deletes its losers is worth nothing, and in a public repo the deletion would
+    only publish a diff of losing rows being removed. Excluded, flagged, and still
+    reachable via `by_source` and `including_retired`.
+    """
+    trial = _blank()
+    record(trial, [_ticket(mid="0xaaa", outcome="Yes", price=0.5),
+                   _ticket(mid="KXHIGHNY-26AUG12-B87.5", outcome="Yes", price=0.1,
+                           source="weather", venue="kalshi")])
+    settle(trial, {"0xaaa": _meta(["Yes", "No"], [1.0, 0.0]),
+                   "KXHIGHNY-26AUG12-B87.5": _meta(["Yes", "No"], [0.0, 1.0])})
+    s = stats(trial)
+
+    assert s["n"] == 1 and s["win_rate"] == 1.0        # headline: active sleeve only
+    assert s["retired_excluded"] == 1
+    assert s["retired_sources"] == ["weather"]
+    assert s["including_retired"]["n"] == 2            # all-time record still reported
+    assert s["including_retired"]["win_rate"] == 0.5
+    assert s["by_source"]["weather"]["retired"] is True
+    assert s["by_source"]["weather"]["n"] == 1
+    # the row itself is untouched on disk
+    assert any(r["market_id"].startswith("KXHIGHNY") for r in trial["settled"])
+
+
+def test_open_retired_positions_are_held_out_of_the_headline_count_too():
+    """The 3 open weather positions were left to settle naturally rather than deleted,
+    so they must not inflate the count of what the live bot is currently carrying."""
+    trial = _blank()
+    record(trial, [_ticket(mid="0xaaa"),
+                   _ticket(mid="KXHIGHNY-26AUG12-B87.5", outcome="Yes", price=0.1,
+                           source="weather")])
+    s = stats(trial)
+    assert s["open_positions"] == 1
+    assert s["by_source"]["weather"]["open_positions"] == 1
+    assert len(trial["open"]) == 2                     # both still recorded
+
+
 # --- honest fees on the weather sleeve -------------------------------------------
 
 def _weather_ticket(**over):

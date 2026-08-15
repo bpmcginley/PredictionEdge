@@ -121,7 +121,11 @@ function onLoadError(){ $('statusdot').className='dot bad'; $('statustext').text
 function loadTrial(){
   fetch('trial.json?t='+Date.now()).then(r=>r.ok?r.json():null).then(t=>{
     if(!t) return;
-    const s=t.stats||{}, n=s.n||0, o=(t.open||[]).length;
+    /* open_positions, not open.length: both must count the same thing. The headline
+       covers the ACTIVE sleeves, so a retired sleeve's positions - left in the file to
+       settle honestly rather than deleted - would otherwise be counted as open against
+       a settled figure that excludes them. */
+    const s=t.stats||{}, n=s.n||0, o=(s.open_positions ?? (t.open||[]).length);
     $('tile-trial-d').textContent = n
       ? `${n} settled · ${(s.win_rate*100).toFixed(0)}% win rate · ${o} still open.`
       : `${o} paper position${o!==1?'s':''} open. Nothing settled yet, so no verdict yet.`;

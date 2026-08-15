@@ -384,19 +384,41 @@ def source_of(row: dict) -> str:
     return (row.get("source") or "").strip().lower() or "whale"
 
 
+# Sleeves that have been switched off after being scored. Their rows STAY in the file -
+# a track record that deletes its losers is worth nothing, and in a public git repo the
+# deletion would not even hide them, it would just publish a diff of losing rows being
+# removed. They are excluded from the HEADLINE instead, because the headline's job is to
+# answer "how does the bot that runs tomorrow perform", and no sleeve that is switched
+# off runs tomorrow. The pooled all-time number is kept alongside, under
+# `including_retired`, so nothing is quietly lost. Retiring a sleeve is therefore an
+# append to this set plus a config flag - never an edit to the settled rows.
+RETIRED_SOURCES = frozenset({"weather"})
+
+
 def stats(trial: dict, *, min_n: int = 30) -> dict:
     """Score the settled rows with the project's existing gate, plus trial bookkeeping.
 
-    The headline numbers stay pooled so the top-line record is one honest number, but
-    `by_source` is where any decision belongs. The sleeves make different claims on
-    different markets with different holding periods; a pooled win rate that mixes a
-    six-month Polymarket resolution with a next-day Kalshi temperature is arithmetic,
-    not evidence. Whichever sleeve reaches `min_n` first gets judged first.
+    The headline covers the ACTIVE sleeves only (see `RETIRED_SOURCES`); the all-time
+    pooled figure lives in `including_retired`. `by_source` is still where any decision
+    belongs, and it reports every sleeve including the retired ones. The sleeves make
+    different claims on different markets with different holding periods; a pooled win
+    rate that mixes a six-month Polymarket resolution with a next-day Kalshi temperature
+    is arithmetic, not evidence. Whichever sleeve reaches `min_n` first gets judged first.
     """
     from .backtest import evaluate
 
-    out = evaluate(trial["settled"], min_n=min_n)
-    out["open_positions"] = len(trial["open"])
+    live = [r for r in trial["settled"] if source_of(r) not in RETIRED_SOURCES]
+    live_open = [r for r in trial["open"] if source_of(r) not in RETIRED_SOURCES]
+
+    out = evaluate(live, min_n=min_n)
+    out["open_positions"] = len(live_open)
+    out["retired_sources"] = sorted(RETIRED_SOURCES)
+    out["retired_excluded"] = len(trial["settled"]) - len(live)
+    # The all-time record, pooled across every sleeve that ever ran. Reported rather
+    # than discarded: the headline answers "what runs tomorrow", this answers "what did
+    # this project actually do", and the gap between them is itself the audit trail.
+    if len(live) != len(trial["settled"]):
+        out["including_retired"] = evaluate(trial["settled"], min_n=min_n)
     if trial["settled"]:
         span = max(r["settled_at"] for r in trial["settled"]) - \
             min(r["opened_at"] for r in trial["settled"])
@@ -413,6 +435,11 @@ def stats(trial: dict, *, min_n: int = 30) -> dict:
     for src in sorted(set(sleeves) | set(open_by)):
         sliced = evaluate(sleeves.get(src, []), min_n=min_n)
         sliced["open_positions"] = open_by.get(src, 0)
+        # Flagged, not dropped. A reader who only ever sees the headline should still
+        # be able to find the sleeve that was switched off, and why the two top-line
+        # numbers differ.
+        if src in RETIRED_SOURCES:
+            sliced["retired"] = True
         out["by_source"][src] = sliced
     out["maker"] = maker_stats(trial)
     return out
@@ -573,7 +600,9 @@ def main(argv: list[str] | None = None) -> int:
 
     s = trial["stats"]
     print(f"recorded {added} new, settled {settled}; "
-          f"{s.get('open_positions', 0)} open, {s.get('n', 0)} settled")
+          f"{s.get('open_positions', 0)} open, {s.get('n', 0)} settled"
+          + (f" (active sleeves; {s['retired_excluded']} retired row(s) held out "
+             f"of the headline)" if s.get("retired_excluded") else ""))
     mk = s.get("maker") or {}
     if cfg.maker_first and (mk.get("pending") or mk.get("filled")
                             or mk.get("expired") or mk.get("fallback")):
