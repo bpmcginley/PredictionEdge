@@ -2618,6 +2618,54 @@
       "price": 0.445,
       "contracts": 224.7191,
       "fee": 0.98
+    },
+    {
+      "key": "0xc313c92f3e0ec40970d84f0c966bbf7d3056a9f266195f07f08fcc0a5c4ae7e7:chicago cubs",
+      "market_id": "0xc313c92f3e0ec40970d84f0c966bbf7d3056a9f266195f07f08fcc0a5c4ae7e7",
+      "venue": "polymarket",
+      "outcome": "Chicago Cubs",
+      "title": "Spread: Chicago Cubs (-1.5)",
+      "url": "https://polymarket.com/event/mlb-stl-chc-2026-08-15",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.47,
+      "n_wallets": 1,
+      "whale_usd": 6210,
+      "drift_c": 0.5,
+      "hours_to_resolve": 3.3,
+      "liquidity": 151934,
+      "end_iso": "2026-08-15T18:20:00Z",
+      "event_iso": "2026-08-15 18:20:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786806077.203637,
+      "price": 0.455,
+      "contracts": 219.7802,
+      "fee": 0.96
+    },
+    {
+      "key": "0x63be7ad75a3acef99c4b2cc00709f2b2436c507545ad82dc8fad05bfc3f61286:under",
+      "market_id": "0x63be7ad75a3acef99c4b2cc00709f2b2436c507545ad82dc8fad05bfc3f61286",
+      "venue": "polymarket",
+      "outcome": "Under",
+      "title": "Baltimore Orioles vs. Tampa Bay Rays: O/U 7.5",
+      "url": "https://polymarket.com/event/mlb-bal-tb-2026-08-15",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.457,
+      "n_wallets": 1,
+      "whale_usd": 10469,
+      "drift_c": 1.0,
+      "hours_to_resolve": 7.1,
+      "liquidity": 148903,
+      "end_iso": "2026-08-15T22:10:00Z",
+      "event_iso": "2026-08-15 22:10:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786806077.203637,
+      "price": 0.53,
+      "contracts": 188.6792,
+      "fee": 0.83
     }
   ],
   "settled": [
@@ -12602,7 +12650,7 @@
       "DSR 0.749 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 106,
+    "open_positions": 108,
     "trial_days": 7.9,
     "by_source": {
       "weather": {
@@ -12655,7 +12703,7 @@
           "DSR 0.788 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 83
+        "open_positions": 85
       },
       "whale-pmus": {
         "n": 66,
@@ -12684,7 +12732,7 @@
       }
     },
     "maker": {
-      "pending": 0,
+      "pending": 2,
       "filled": 3,
       "fallback": 0,
       "expired": 5,
@@ -12693,7 +12741,7 @@
       "foregone_edge": 0.5481
     }
   },
-  "generated": "2026-08-15 14:42:23",
+  "generated": "2026-08-15 15:01:40",
   "voided": [],
   "bridge": {
     "log": {
@@ -12899,7 +12947,7 @@
       },
       "0xc04094452b0386a73a9a6e07da0370fffb2722e05c837a5246b88c914e78b79f:islam makhachev": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786804900.2,
+        "ts": 1786806077.2,
         "kalshi": "no-series"
       },
       "0xf2cafdf9c307fbc34fd47c617ebfeb713d5a7750c85e33041f18bd9171ab5c81:toronto blue jays": {
@@ -13599,7 +13647,7 @@
       },
       "0x887c641092cf6d1b51f0a482b215f665e6e3e715617efcda23fcbfbcfcd0b766:under": {
         "polymarket-us": "outcome-unmapped",
-        "ts": 1786804900.2,
+        "ts": 1786806077.2,
         "kalshi": "outcome-not-a-team"
       },
       "0x82a4b49690494584d6ca7810e482fe0f882ae347ad37cbd541f87ab840cdd1a6:milwaukee brewers": {
@@ -13641,25 +13689,124 @@
         "polymarket-us": "no-signature",
         "ts": 1786802485.7,
         "kalshi": "no-signature"
+      },
+      "0xc313c92f3e0ec40970d84f0c966bbf7d3056a9f266195f07f08fcc0a5c4ae7e7:chicago cubs": {
+        "polymarket-us": "ambiguous",
+        "ts": 1786806077.2,
+        "kalshi": "outcome-not-a-team"
+      },
+      "0x63be7ad75a3acef99c4b2cc00709f2b2436c507545ad82dc8fad05bfc3f61286:under": {
+        "polymarket-us": "outcome-unmapped",
+        "ts": 1786806077.2,
+        "kalshi": "outcome-not-a-team"
       }
     },
     "summary": {
       "polymarket-us": {
-        "outcome-unmapped": 23,
+        "outcome-unmapped": 24,
         "matched": 84,
         "outcome-not-yes-no": 1,
         "no-signature": 43,
         "no-counterpart": 23,
-        "ambiguous": 15
+        "ambiguous": 16
       },
       "kalshi": {
-        "outcome-not-a-team": 46,
+        "outcome-not-a-team": 48,
         "no-series": 100,
         "no-signature": 43
       }
     }
   },
-  "pending": [],
+  "pending": [
+    {
+      "key": "KXHIGHDEN-26AUG16-T80:yes",
+      "market_id": "KXHIGHDEN-26AUG16-T80",
+      "venue": "kalshi",
+      "outcome": "Yes",
+      "title": "Will the maximum temperature be <80\u00b0 on Aug 16, 2026?",
+      "url": "https://kalshi.com/markets/KXHIGHDEN-26AUG16",
+      "stake": 100.0,
+      "shown": true,
+      "source": "weather",
+      "conviction": null,
+      "n_wallets": null,
+      "whale_usd": null,
+      "drift_c": null,
+      "hours_to_resolve": null,
+      "liquidity": null,
+      "end_iso": "2026-08-17T00:00:00+00:00",
+      "event_iso": "2026-08-17T00:00:00+00:00",
+      "model_prob": 0.1767,
+      "edge": 0.1167,
+      "forecast_f": 82.0,
+      "sigma_f": 2.28,
+      "market_mu_f": 83.75,
+      "market_sigma_f": 2.28,
+      "days_ahead": 0.37,
+      "market_prob": 0.04,
+      "model": "kalshi-ladder-tilted-by-nbm-station",
+      "city": "Denver, CO",
+      "forecast_src": "nbm-station",
+      "nbm_cycle": "2026-08-15T13Z",
+      "nbm_sd_f": 4.0,
+      "forecast_grid_f": 84.0,
+      "cal_prob": 0.0746,
+      "cal_edge": 0.1021,
+      "cal_b": 0.915,
+      "origin_market_id": "",
+      "intent_at": 1786806077.203637,
+      "limit_price": 0.02,
+      "intended_price": 0.02,
+      "ask_at_intent": 0.06,
+      "fair_at_intent": 0.1767,
+      "edge_at_intent": 0.1167,
+      "polls": 0
+    },
+    {
+      "key": "KXHIGHDEN-26AUG16-B80.5:yes",
+      "market_id": "KXHIGHDEN-26AUG16-B80.5",
+      "venue": "kalshi",
+      "outcome": "Yes",
+      "title": "Will the maximum temperature be 80-81\u00b0 on Aug 16, 2026?",
+      "url": "https://kalshi.com/markets/KXHIGHDEN-26AUG16",
+      "stake": 100.0,
+      "shown": true,
+      "source": "weather",
+      "conviction": null,
+      "n_wallets": null,
+      "whale_usd": null,
+      "drift_c": null,
+      "hours_to_resolve": null,
+      "liquidity": null,
+      "end_iso": "2026-08-17T00:00:00+00:00",
+      "event_iso": "2026-08-17T00:00:00+00:00",
+      "model_prob": 0.214,
+      "edge": 0.104,
+      "forecast_f": 82.0,
+      "sigma_f": 2.28,
+      "market_mu_f": 83.75,
+      "market_sigma_f": 2.28,
+      "days_ahead": 0.37,
+      "market_prob": 0.1,
+      "model": "kalshi-ladder-tilted-by-nbm-station",
+      "city": "Denver, CO",
+      "forecast_src": "nbm-station",
+      "nbm_cycle": "2026-08-15T13Z",
+      "nbm_sd_f": 4.0,
+      "forecast_grid_f": 84.0,
+      "cal_prob": 0.1286,
+      "cal_edge": 0.0854,
+      "cal_b": 0.915,
+      "origin_market_id": "",
+      "intent_at": 1786806077.203637,
+      "limit_price": 0.09,
+      "intended_price": 0.09,
+      "ask_at_intent": 0.11,
+      "fair_at_intent": 0.214,
+      "edge_at_intent": 0.104,
+      "polls": 0
+    }
+  ],
   "maker": {
     "expired": [
       {
