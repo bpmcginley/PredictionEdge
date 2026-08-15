@@ -283,3 +283,18 @@ def test_a_dead_gridpoint_does_not_silence_a_cached_station_number():
                                  nbm_fetch=_no_nbm, min_edge=0.05, now=_NOW)
     assert tickets and tickets[0]["forecast_src"] == "nbm-station"
     assert "forecast_grid_f" not in tickets[0]
+
+
+def test_the_retired_sleeve_stays_retired_until_someone_arms_it():
+    """The sleeve was retired on measured evidence (see config.weather_enabled), so
+    the DEFAULT is what carries the decision - not a comment. A future edit that flips
+    the default back would silently resume betting a thesis that was tested and failed,
+    which is exactly the failure this pins. The env override is deliberately preserved:
+    the kill must be reversible by whoever re-opens the case, just not by accident.
+    """
+    from predictionedge.config import Config
+    from predictionedge import publish
+
+    assert Config().weather_enabled is False
+    assert publish.weather_tickets(Config()) == []       # gate short-circuits, no I/O
+    assert Config(weather_enabled=True).weather_enabled is True

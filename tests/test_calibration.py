@@ -244,7 +244,11 @@ def test_publish_passes_config_and_diag_through(monkeypatch, tmp_path):
         return []
 
     monkeypatch.setattr("predictionedge.weather.find_weather_edges", fake_edges)
-    cfg = Config(calibration_overlay=True, calibration_shrink=0.25)
+    # weather_enabled is explicit because the sleeve was retired and now defaults to
+    # False. This test is about the calibration knobs reaching the finder, not about
+    # the kill switch, so it arms the sleeve rather than riding on the default.
+    cfg = Config(weather_enabled=True,
+                 calibration_overlay=True, calibration_shrink=0.25)
     diag: dict = {"cal_vetoed": 0}
     assert publish.weather_tickets(cfg, nbm_cache_path=str(tmp_path / "nbm.json"),
                                    diag=diag) == []

@@ -261,11 +261,30 @@ class Config:
     pmus_private_key_path: str = ""        # Ed25519 PEM
     pmus_base_url: str = "https://clob.polymarket.us"   # VERIFY
 
-    # --- NWS weather markets on Kalshi (paper-only research sleeve) ---
-    # On by default: everything it reads is public and unauthenticated, and every
-    # ticket it produces is stamped paper-only. It is a flag at all so a bad forecast
-    # season can be switched off without a deploy.
-    weather_enabled: bool = True
+    # --- NWS weather markets on Kalshi (RETIRED 2026-08-15) -------------------
+    # OFF because the sleeve's thesis was measured and is FALSE. It claimed "the NWS
+    # locates tomorrow's high better than the Kalshi ladder does". Scored against the
+    # unbiased sample in docs/wxlog.json (every city-day looked at, not just the ones
+    # bet), the ladder's own implied mean beat the NBM forecast at EVERY lead bucket:
+    #   contemporaneous  NBM 1.77F vs ladder 0.45F, NBM closer on  1/15 city-days
+    #   first sighting   NBM 1.75F vs ladder 1.15F, NBM closer on  3/14 (sign p~0.03)
+    #   >24h lead only   NBM 1.80F vs ladder 1.11F, NBM closer on  2/10
+    # Three candidate fixes were tested and all fail:
+    #   - per-city bias correction (NY runs +2.5F warm, Miami -1.9F cold, both with
+    #     consistent sign) closes only a third of the gap: 1.77F -> 1.43F vs 0.45F;
+    #   - restricting to the unbiased cities does not help - Chicago's NBM still loses
+    #     to the ladder on 3 of 4 days and went 0-for-3 on tickets;
+    #   - raising `weather_min_edge` makes it WORSE, not better. The edge estimate is
+    #     computed from a mislocated mean, so a higher bar selects harder for the days
+    #     the model is most wrong. That is adverse selection, not a filter.
+    # The structural reason, which is why no tweak rescues it: the ladder already
+    # prices this same free public NBM bulletin, and then keeps updating on intraday
+    # observations the bulletin lags. There is no informational asymmetry to harvest.
+    # Realised while live: 1 win in 10 settled tickets, -$884, t=-4.95.
+    # `weatherlog` still runs every cycle and is deliberately NOT gated on this flag -
+    # it costs one public call, it is the evidence trail, and it is the only thing that
+    # could re-open the case. Re-arm with PE_WEATHER_ENABLED=1 if it ever does.
+    weather_enabled: bool = False
     weather_min_edge: float = 0.07
     weather_max_days: float = 3.0
 
