@@ -1,141 +1,42 @@
 {
-  "generated": "2026-08-15 23:00:15",
-  "generated_at": 1786834815.4743073,
+  "generated": "2026-08-15 23:30:18",
+  "generated_at": 1786836618.1747303,
   "account_size": 100000.0,
-  "tickets": [
+  "tickets": [],
+  "probe": [
     {
-      "market_id": "0x33bd6490319d0926955bb451d81e3f345bf6e6d41a0a85d69c02f658277a4de4",
-      "title": "San Diego Padres vs. Cleveland Guardians",
-      "side_label": "San Diego Padres \u2014 San Diego Padres vs. Cleveland Guardians",
-      "outcome": "San Diego Padres",
-      "entry_price": 0.485,
-      "whale_price": 0.489,
-      "drift_c": -0.43,
-      "contracts": 1414,
-      "cost": 685.79,
-      "max_payout": 1414.0,
-      "conviction": 0.686,
-      "hours_to_resolve": 0.2,
-      "n_wallets": 2,
-      "whale_usd": 59029,
-      "minutes_ago": 0,
-      "liquidity": 438634,
-      "url": "https://polymarket.com/event/mlb-sd-cle-2026-08-15",
-      "end_iso": "2026-08-22T23:10:00Z",
-      "event_iso": "2026-08-15 23:10:00+00",
-      "slug": "mlb-sd-cle-2026-08-15",
-      "signal_ts": 1786834779.0,
-      "why": [
-        "2 profitable wallets on this side",
-        "$59,029, 69% of their own book",
-        "latest buy 0 min ago",
-        "still near their entry price",
-        "0h until it resolves",
-        "$438,634 liquidity"
-      ],
-      "warnings": []
-    },
-    {
-      "market_id": "0x39a4b304b681d530183fb6cac9c80e713c40b927f3da8314ec39f24ece0f2ff7",
-      "title": "Cincinnati Open: Lois Boisson vs Belinda Bencic",
-      "side_label": "Lois Boisson \u2014 Cincinnati Open: Lois Boisson vs Belinda Bencic",
-      "outcome": "Lois Boisson",
-      "entry_price": 0.195,
-      "whale_price": 0.21,
-      "drift_c": -1.5,
-      "contracts": 1900,
-      "cost": 370.5,
-      "max_payout": 1900.0,
-      "conviction": 0.487,
-      "hours_to_resolve": 1.7,
+      "market_id": "0xfb481845055afdf15febad269fcb534be4c5e79d5789b72659a036660b46e11b",
+      "title": "Will Eric Barlow win the 2026 Wyoming Governor Republican primary election?",
+      "side_label": "YES on: Will Eric Barlow win the 2026 Wyoming Governor Republican primary election?",
+      "outcome": "Yes",
+      "entry_price": 0.788,
+      "whale_price": 0.785,
+      "drift_c": 0.3,
+      "contracts": 564,
+      "cost": 444.43,
+      "max_payout": 564.0,
+      "conviction": 0.445,
+      "hours_to_resolve": 48.5,
       "n_wallets": 1,
-      "whale_usd": 45254,
-      "minutes_ago": 101,
-      "liquidity": 263136,
-      "url": "https://polymarket.com/event/wta-boisson-bencic-2026-08-15",
-      "end_iso": "2026-08-22T14:00:00Z",
-      "event_iso": "2026-08-16 00:40:00+00",
-      "slug": "wta-boisson-bencic-2026-08-15",
-      "signal_ts": 1786828756.0,
+      "whale_usd": 6385,
+      "minutes_ago": 27,
+      "liquidity": 41404,
+      "url": "https://polymarket.com/event/wyoming-governor-republican-primary-winner",
+      "end_iso": "2026-08-18T00:00:00Z",
+      "event_iso": "",
+      "slug": "will-eric-barlow-win-the-2026-wyoming-governor-republican-primary-election",
+      "signal_ts": 1786834959.0,
       "why": [
+        "election market and 100% of this is one wallet \u2014 concentration here can move the price rather than confirm it",
         "1 profitable wallet on this side",
-        "$45,254, 100% of their own book",
-        "latest buy 101 min ago",
-        "price 1.5c cheaper than they paid",
-        "2h until it resolves",
-        "$263,136 liquidity"
+        "$6,385 \u2014 but only 1.1% of their book",
+        "latest buy 27 min ago",
+        "still near their entry price",
+        "48h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion",
-        "size capped by the per-market contract limit"
-      ]
-    },
-    {
-      "market_id": "0x26d72d365f2006197140ee82f5c0358bfe0ed93167523d6c7174c92095925e39",
-      "title": "Cincinnati Open: Elise Mertens vs Diane Parry",
-      "side_label": "Elise Mertens \u2014 Cincinnati Open: Elise Mertens vs Diane Parry",
-      "outcome": "Elise Mertens",
-      "entry_price": 0.745,
-      "whale_price": 0.76,
-      "drift_c": -1.5,
-      "contracts": 633,
-      "cost": 471.58,
-      "max_payout": 633.0,
-      "conviction": 0.472,
-      "hours_to_resolve": 0.5,
-      "n_wallets": 1,
-      "whale_usd": 8787,
-      "minutes_ago": 38,
-      "liquidity": 380894,
-      "url": "https://polymarket.com/event/wta-mertens-parry-2026-08-15",
-      "end_iso": "2026-08-22T14:00:00Z",
-      "event_iso": "2026-08-15 23:30:00+00",
-      "slug": "wta-mertens-parry-2026-08-15",
-      "signal_ts": 1786832533.0,
-      "why": [
-        "1 profitable wallet on this side",
-        "$8,787, 92% of their own book",
-        "latest buy 38 min ago",
-        "price 1.5c cheaper than they paid",
-        "1h until it resolves",
-        "$380,894 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x41904eafc71001c09b9607c71fc3aaf7cba67d6f11f92afa94519b377f4c7147",
-      "title": "Cincinnati Open: Rafael Jodar vs Denis Shapovalov",
-      "side_label": "Rafael Jodar \u2014 Cincinnati Open: Rafael Jodar vs Denis Shapovalov",
-      "outcome": "Rafael Jodar",
-      "entry_price": 0.695,
-      "whale_price": 0.7,
-      "drift_c": -0.5,
-      "contracts": 667,
-      "cost": 463.56,
-      "max_payout": 667.0,
-      "conviction": 0.464,
-      "hours_to_resolve": 0.2,
-      "n_wallets": 1,
-      "whale_usd": 6437,
-      "minutes_ago": 37,
-      "liquidity": 280543,
-      "url": "https://polymarket.com/event/atp-jodar-shapova-2026-08-15",
-      "end_iso": "2026-08-22T14:00:00Z",
-      "event_iso": "2026-08-15 23:10:00+00",
-      "slug": "atp-jodar-shapova-2026-08-15",
-      "signal_ts": 1786832593.0,
-      "why": [
-        "1 profitable wallet on this side",
-        "$6,437, 67% of their own book",
-        "latest buy 37 min ago",
-        "still near their entry price",
-        "0h until it resolves",
-        "$280,543 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
+        "100% of this signal is a single wallet on an election market \u2014 that is the shape that distorted 2024 pricing"
       ]
     },
     {
@@ -146,15 +47,15 @@
       "entry_price": 0.585,
       "whale_price": 0.59,
       "drift_c": -0.5,
-      "contracts": 776,
-      "cost": 453.96,
-      "max_payout": 776.0,
-      "conviction": 0.454,
-      "hours_to_resolve": 2.6,
+      "contracts": 731,
+      "cost": 427.63,
+      "max_payout": 731.0,
+      "conviction": 0.428,
+      "hours_to_resolve": 2.1,
       "n_wallets": 1,
       "whale_usd": 24088,
-      "minutes_ago": 46,
-      "liquidity": 611119,
+      "minutes_ago": 76,
+      "liquidity": 572378,
       "url": "https://polymarket.com/event/mlb-kc-laa-2026-08-15",
       "end_iso": "2026-08-23T01:38:00Z",
       "event_iso": "2026-08-16 01:38:00+00",
@@ -163,17 +64,15 @@
       "why": [
         "1 profitable wallet on this side",
         "$24,088 \u2014 but only 3.9% of their book",
-        "latest buy 46 min ago",
+        "latest buy 76 min ago",
         "still near their entry price",
-        "3h until it resolves",
-        "$611,119 liquidity"
+        "2h until it resolves",
+        "$572,378 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
-    }
-  ],
-  "probe": [
+    },
     {
       "market_id": "0x0e81bd4de4f1827af0b9426ddec226e88f43c4a8e85812116d22bf0f1c94efc8",
       "title": "Will Ethereum dip to $1,700 in August?",
@@ -182,15 +81,15 @@
       "entry_price": 0.81,
       "whale_price": 0.804,
       "drift_c": 0.59,
-      "contracts": 549,
-      "cost": 444.69,
-      "max_payout": 549.0,
-      "conviction": 0.445,
-      "hours_to_resolve": 389.0,
+      "contracts": 518,
+      "cost": 419.58,
+      "max_payout": 518.0,
+      "conviction": 0.42,
+      "hours_to_resolve": 388.5,
       "n_wallets": 1,
       "whale_usd": 24218,
-      "minutes_ago": 122,
-      "liquidity": 61696,
+      "minutes_ago": 153,
+      "liquidity": 61113,
       "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-august-2026",
       "end_iso": "2026-09-01T04:00:00Z",
       "event_iso": "",
@@ -199,10 +98,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$24,218 \u2014 but only 0.8% of their book",
-        "latest buy 122 min ago",
+        "latest buy 153 min ago",
         "price up 0.6c since they bought",
-        "389h until it resolves",
-        "$61,696 liquidity"
+        "388h until it resolves",
+        "$61,113 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -216,15 +115,15 @@
       "entry_price": 0.825,
       "whale_price": 0.83,
       "drift_c": -0.5,
-      "contracts": 529,
-      "cost": 436.42,
-      "max_payout": 529.0,
-      "conviction": 0.437,
-      "hours_to_resolve": 3.0,
+      "contracts": 498,
+      "cost": 410.85,
+      "max_payout": 498.0,
+      "conviction": 0.411,
+      "hours_to_resolve": 2.5,
       "n_wallets": 1,
       "whale_usd": 5551,
-      "minutes_ago": 70,
-      "liquidity": 80270,
+      "minutes_ago": 101,
+      "liquidity": 190303,
       "url": "https://polymarket.com/event/dota2-flc-vg-2026-08-15",
       "end_iso": "2026-08-16T08:00:00Z",
       "event_iso": "2026-08-16 02:00:00+00",
@@ -233,10 +132,10 @@
       "why": [
         "new wallet with no track record \u2014 pattern signal, not a copy",
         "$5,551, 99% of their own book",
-        "latest buy 70 min ago",
+        "latest buy 101 min ago",
         "still near their entry price",
-        "3h until it resolves",
-        "$80,270 liquidity"
+        "2h until it resolves",
+        "$190,303 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
@@ -251,15 +150,15 @@
       "entry_price": 0.64,
       "whale_price": 0.64,
       "drift_c": 0.0,
-      "contracts": 682,
-      "cost": 436.48,
-      "max_payout": 682.0,
-      "conviction": 0.437,
-      "hours_to_resolve": 15.0,
+      "contracts": 642,
+      "cost": 410.88,
+      "max_payout": 642.0,
+      "conviction": 0.411,
+      "hours_to_resolve": 14.5,
       "n_wallets": 1,
       "whale_usd": 4579,
-      "minutes_ago": 55,
-      "liquidity": 82376,
+      "minutes_ago": 85,
+      "liquidity": 90529,
       "url": "https://polymarket.com/event/ecs-ars-mci-2026-08-16",
       "end_iso": "2026-08-16T14:00:00Z",
       "event_iso": "2026-08-16 14:00:00+00",
@@ -268,10 +167,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$4,579 \u2014 but only 2.1% of their book",
-        "latest buy 55 min ago",
+        "latest buy 85 min ago",
         "still near their entry price",
-        "15h until it resolves",
-        "$82,376 liquidity"
+        "14h until it resolves",
+        "$90,529 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
@@ -279,22 +178,23 @@
       ]
     }
   ],
-  "considered": 472,
+  "considered": 492,
   "rejected": {
-    "already resolved": 25,
-    "market closed": 223,
-    "fresh wallet: market too liquid for the pattern": 92,
-    "wallet not new (no track record either)": 76,
-    "in-play (event already started)": 21,
+    "already resolved": 30,
+    "market closed": 235,
+    "wallet not new (no track record either)": 94,
+    "in-play (event already started)": 26,
+    "fresh wallet: market too liquid for the pattern": 80,
     "signal too old for this market's horizon": 4,
-    "resolves in under 3h": 10,
-    "parlay / combo ticket, not a single market": 8,
+    "parlay / combo ticket, not a single market": 9,
     "price outside tradeable band": 1,
-    "resolves more than 30 days out": 3,
-    "duplicate event (kept the stronger side)": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 3
+    "resolves in under 3h": 3,
+    "resolves more than 30 days out": 5,
+    "below the 0.45 buy bar (recorded, not bought)": 5
   },
-  "notes": [],
+  "notes": [
+    "Signals came in but none cleared the filters \u2014 that is a normal, and usually correct, outcome."
+  ],
   "consistency": {
     "ok": true,
     "enabled": true,
@@ -306,10 +206,10 @@
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "bracket has too many legs to place by hand": 2,
       "bracket overround smaller than the spread": 2,
-      "ladder pair too illiquid to fill": 95,
+      "ladder pair too illiquid to fill": 96,
       "ladder inversion smaller than the spread": 2,
       "not a ladder: numeric group spans different end dates": 1,
-      "not a ladder: a live leg carries no group label": 4,
+      "not a ladder: a live leg carries no group label": 3,
       "bracket leg too illiquid to fill": 4,
       "dominance gap smaller than the spread": 2
     },
@@ -356,9 +256,9 @@
           },
           {
             "label": "2.3%",
-            "market_prob": 0.355,
+            "market_prob": 0.35,
             "model_prob": 0.215,
-            "gap_c": -14.0,
+            "gap_c": -13.5,
             "suspect": false
           },
           {
@@ -377,16 +277,16 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.0445,
+            "market_prob": 0.043,
             "model_prob": 0.1012,
-            "gap_c": 5.67,
+            "gap_c": 5.82,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.046,
+            "market_prob": 0.0585,
             "model_prob": 0.0369,
-            "gap_c": -0.91,
+            "gap_c": -2.16,
             "suspect": false
           },
           {
@@ -415,7 +315,7 @@
         "nowcast_pp": 0.203341742698412,
         "nowcast_as_of": "2026-08-14 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.087pp (x1.83). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.088pp (x1.82). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -433,9 +333,9 @@
           },
           {
             "label": "0.2%",
-            "market_prob": 0.445,
+            "market_prob": 0.435,
             "model_prob": 0.2453,
-            "gap_c": -19.97,
+            "gap_c": -18.97,
             "suspect": false
           },
           {
@@ -538,9 +438,9 @@
           },
           {
             "label": "\u22650.5%",
-            "market_prob": 0.125,
+            "market_prob": 0.12,
             "model_prob": 0.2571,
-            "gap_c": 13.21,
+            "gap_c": 13.71,
             "suspect": false
           }
         ]
@@ -573,9 +473,9 @@
           },
           {
             "label": "3.1%",
-            "market_prob": 0.055,
+            "market_prob": 0.059,
             "model_prob": 0.0671,
-            "gap_c": 1.21,
+            "gap_c": 0.81,
             "suspect": false
           },
           {
@@ -587,9 +487,9 @@
           },
           {
             "label": "3.3%",
-            "market_prob": 0.32,
+            "market_prob": 0.31,
             "model_prob": 0.2282,
-            "gap_c": -9.18,
+            "gap_c": -8.18,
             "suspect": false
           },
           {
@@ -601,9 +501,9 @@
           },
           {
             "label": "3.5%",
-            "market_prob": 0.15,
+            "market_prob": 0.155,
             "model_prob": 0.171,
-            "gap_c": 2.1,
+            "gap_c": 1.6,
             "suspect": false
           },
           {
