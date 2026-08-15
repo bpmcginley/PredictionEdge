@@ -1898,6 +1898,78 @@
       "price": 0.845,
       "contracts": 118.3432,
       "fee": 0.28
+    },
+    {
+      "key": "0xc29efc5b88fe4d705b7eb8f83ae552b16bb46b4cbad879ebf39dc63cbd23b47a:miomir kecmanovic",
+      "market_id": "0xc29efc5b88fe4d705b7eb8f83ae552b16bb46b4cbad879ebf39dc63cbd23b47a",
+      "venue": "polymarket",
+      "outcome": "Miomir Kecmanovic",
+      "title": "Cincinnati Open: Miomir Kecmanovic vs Flavio Cobolli",
+      "url": "https://polymarket.com/event/atp-kecmano-cobolli-2026-08-15",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.479,
+      "n_wallets": 1,
+      "whale_usd": 15994,
+      "drift_c": 0.5,
+      "hours_to_resolve": 8.0,
+      "liquidity": 133665,
+      "end_iso": "2026-08-22T14:00:00Z",
+      "event_iso": "2026-08-15 15:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786777311.6678658,
+      "price": 0.465,
+      "contracts": 215.0538,
+      "fee": 0.94
+    },
+    {
+      "key": "0x725dd6b2f4ca4e24fc1ef17547c41aee4544fc51a53cef27f5a08d611e38150b:mibr",
+      "market_id": "0x725dd6b2f4ca4e24fc1ef17547c41aee4544fc51a53cef27f5a08d611e38150b",
+      "venue": "polymarket",
+      "outcome": "MIBR",
+      "title": "Valorant: KR\u00dc Esports vs MIBR (BO3) - VCT Americas Stage 2 Play-In",
+      "url": "https://polymarket.com/event/val-kru1-mibr-2026-08-15",
+      "stake": 100.0,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.307,
+      "n_wallets": 1,
+      "whale_usd": 3328,
+      "drift_c": 2.5,
+      "hours_to_resolve": 14.0,
+      "liquidity": 57236,
+      "end_iso": "2026-08-16T03:00:00Z",
+      "event_iso": "2026-08-15 21:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786777311.6678658,
+      "price": 0.725,
+      "contracts": 137.931,
+      "fee": 0.49
+    },
+    {
+      "key": "aec-atp-miokec-flacob-2026-08-14:miomir kecmanovic",
+      "market_id": "aec-atp-miokec-flacob-2026-08-14",
+      "venue": "polymarket-us",
+      "outcome": "Miomir Kecmanovic",
+      "title": "Cincinnati Open: Miomir Kecmanovic vs Flavio Cobolli",
+      "url": "https://polymarket.us/market/aec-atp-miokec-flacob-2026-08-14",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale-pmus",
+      "conviction": 0.479,
+      "n_wallets": 1,
+      "whale_usd": 15994,
+      "drift_c": 0.5,
+      "hours_to_resolve": 8.0,
+      "liquidity": 133665,
+      "end_iso": "2026-08-22T14:00:00Z",
+      "event_iso": "2026-08-15 15:00:00+00",
+      "origin_market_id": "0xc29efc5b88fe4d705b7eb8f83ae552b16bb46b4cbad879ebf39dc63cbd23b47a",
+      "opened_at": 1786777311.6678658,
+      "price": 0.46,
+      "contracts": 217.3913,
+      "fee": 3.78
     }
   ],
   "settled": [
@@ -11534,7 +11606,7 @@
       "DSR 0.608 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 76,
+    "open_positions": 79,
     "trial_days": 7.6,
     "by_source": {
       "weather": {
@@ -11587,7 +11659,7 @@
           "DSR 0.755 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 63
+        "open_positions": 65
       },
       "whale-pmus": {
         "n": 64,
@@ -11612,7 +11684,7 @@
           "DSR 0.633 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 7
+        "open_positions": 8
       }
     },
     "maker": {
@@ -11625,7 +11697,7 @@
       "foregone_edge": 0.2256
     }
   },
-  "generated": "2026-08-15 06:13:26",
+  "generated": "2026-08-15 07:02:22",
   "voided": [],
   "bridge": {
     "log": {
@@ -12181,7 +12253,7 @@
       },
       "0x64bd53521dd843095c63a78a4b4080a2482bab48dc7a2c3cc0e336559accc528:hanwha life esports": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786758743.1,
+        "ts": 1786777311.7,
         "kalshi": "no-series"
       },
       "0x94ffb3e28d5611ec6a76c65471105334f4656b9429d1a0ca503032fb5df2ef71:carlos taberner": {
@@ -12446,14 +12518,19 @@
       },
       "0xad7d3e66745d3bc4df2b45185873b8a69a2fb25a312a186e29183ea872fcac3a:yes": {
         "polymarket-us": "ambiguous",
-        "ts": 1786774387.5,
+        "ts": 1786777311.7,
+        "kalshi": "no-series"
+      },
+      "0xc29efc5b88fe4d705b7eb8f83ae552b16bb46b4cbad879ebf39dc63cbd23b47a:miomir kecmanovic": {
+        "polymarket-us": "matched",
+        "ts": 1786777311.7,
         "kalshi": "no-series"
       }
     },
     "summary": {
       "polymarket-us": {
         "outcome-unmapped": 21,
-        "matched": 72,
+        "matched": 73,
         "outcome-not-yes-no": 1,
         "no-signature": 37,
         "no-counterpart": 21,
@@ -12461,7 +12538,7 @@
       },
       "kalshi": {
         "outcome-not-a-team": 42,
-        "no-series": 85,
+        "no-series": 86,
         "no-signature": 37
       }
     }
@@ -12509,7 +12586,7 @@
       "ask_at_intent": 0.4,
       "fair_at_intent": 0.6384,
       "edge_at_intent": 0.2384,
-      "polls": 5
+      "polls": 6
     },
     {
       "key": "KXHIGHMIA-26AUG15-B92.5:yes",
@@ -12553,7 +12630,7 @@
       "ask_at_intent": 0.32,
       "fair_at_intent": 0.4041,
       "edge_at_intent": 0.0841,
-      "polls": 5
+      "polls": 6
     }
   ],
   "maker": {
