@@ -1970,6 +1970,54 @@
       "price": 0.46,
       "contracts": 217.3913,
       "fee": 3.78
+    },
+    {
+      "key": "0xc29efc5b88fe4d705b7eb8f83ae552b16bb46b4cbad879ebf39dc63cbd23b47a:flavio cobolli",
+      "market_id": "0xc29efc5b88fe4d705b7eb8f83ae552b16bb46b4cbad879ebf39dc63cbd23b47a",
+      "venue": "polymarket",
+      "outcome": "Flavio Cobolli",
+      "title": "Cincinnati Open: Miomir Kecmanovic vs Flavio Cobolli",
+      "url": "https://polymarket.com/event/atp-kecmano-cobolli-2026-08-15",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.495,
+      "n_wallets": 1,
+      "whale_usd": 8656,
+      "drift_c": -0.5,
+      "hours_to_resolve": 7.2,
+      "liquidity": 153835,
+      "end_iso": "2026-08-22T14:00:00Z",
+      "event_iso": "2026-08-15 15:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786779971.8436198,
+      "price": 0.535,
+      "contracts": 186.9159,
+      "fee": 0.82
+    },
+    {
+      "key": "aec-atp-miokec-flacob-2026-08-14:flavio cobolli",
+      "market_id": "aec-atp-miokec-flacob-2026-08-14",
+      "venue": "polymarket-us",
+      "outcome": "Flavio Cobolli",
+      "title": "Cincinnati Open: Miomir Kecmanovic vs Flavio Cobolli",
+      "url": "https://polymarket.us/market/aec-atp-miokec-flacob-2026-08-14",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale-pmus",
+      "conviction": 0.495,
+      "n_wallets": 1,
+      "whale_usd": 8656,
+      "drift_c": -0.5,
+      "hours_to_resolve": 7.2,
+      "liquidity": 153835,
+      "end_iso": "2026-08-22T14:00:00Z",
+      "event_iso": "2026-08-15 15:00:00+00",
+      "origin_market_id": "0xc29efc5b88fe4d705b7eb8f83ae552b16bb46b4cbad879ebf39dc63cbd23b47a",
+      "opened_at": 1786779971.8436198,
+      "price": 0.55,
+      "contracts": 181.8182,
+      "fee": 3.16
     }
   ],
   "settled": [
@@ -11606,7 +11654,7 @@
       "DSR 0.608 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 79,
+    "open_positions": 81,
     "trial_days": 7.6,
     "by_source": {
       "weather": {
@@ -11659,7 +11707,7 @@
           "DSR 0.755 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 65
+        "open_positions": 66
       },
       "whale-pmus": {
         "n": 64,
@@ -11684,7 +11732,7 @@
           "DSR 0.633 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 8
+        "open_positions": 9
       }
     },
     "maker": {
@@ -11697,7 +11745,7 @@
       "foregone_edge": 0.2256
     }
   },
-  "generated": "2026-08-15 07:02:22",
+  "generated": "2026-08-15 07:46:59",
   "voided": [],
   "bridge": {
     "log": {
@@ -12253,7 +12301,7 @@
       },
       "0x64bd53521dd843095c63a78a4b4080a2482bab48dc7a2c3cc0e336559accc528:hanwha life esports": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786777311.7,
+        "ts": 1786779971.8,
         "kalshi": "no-series"
       },
       "0x94ffb3e28d5611ec6a76c65471105334f4656b9429d1a0ca503032fb5df2ef71:carlos taberner": {
@@ -12518,28 +12566,38 @@
       },
       "0xad7d3e66745d3bc4df2b45185873b8a69a2fb25a312a186e29183ea872fcac3a:yes": {
         "polymarket-us": "ambiguous",
-        "ts": 1786777311.7,
+        "ts": 1786779971.8,
         "kalshi": "no-series"
       },
       "0xc29efc5b88fe4d705b7eb8f83ae552b16bb46b4cbad879ebf39dc63cbd23b47a:miomir kecmanovic": {
         "polymarket-us": "matched",
         "ts": 1786777311.7,
         "kalshi": "no-series"
+      },
+      "0x4609ece43d2fd015027613a8f59bdce9a6ed5f8277a59cc13a33ab9c68e2ead2:up": {
+        "polymarket-us": "no-signature",
+        "ts": 1786779971.8,
+        "kalshi": "no-signature"
+      },
+      "0xc29efc5b88fe4d705b7eb8f83ae552b16bb46b4cbad879ebf39dc63cbd23b47a:flavio cobolli": {
+        "polymarket-us": "matched",
+        "ts": 1786779971.8,
+        "kalshi": "no-series"
       }
     },
     "summary": {
       "polymarket-us": {
         "outcome-unmapped": 21,
-        "matched": 73,
+        "matched": 74,
         "outcome-not-yes-no": 1,
-        "no-signature": 37,
+        "no-signature": 38,
         "no-counterpart": 21,
         "ambiguous": 12
       },
       "kalshi": {
         "outcome-not-a-team": 42,
-        "no-series": 86,
-        "no-signature": 37
+        "no-series": 87,
+        "no-signature": 38
       }
     }
   },
@@ -12586,7 +12644,7 @@
       "ask_at_intent": 0.4,
       "fair_at_intent": 0.6384,
       "edge_at_intent": 0.2384,
-      "polls": 6
+      "polls": 7
     },
     {
       "key": "KXHIGHMIA-26AUG15-B92.5:yes",
@@ -12630,7 +12688,7 @@
       "ask_at_intent": 0.32,
       "fair_at_intent": 0.4041,
       "edge_at_intent": 0.0841,
-      "polls": 6
+      "polls": 7
     }
   ],
   "maker": {
