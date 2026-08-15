@@ -2570,6 +2570,54 @@
       "price": 0.38,
       "contracts": 263.1579,
       "fee": 4.34
+    },
+    {
+      "key": "0x1acd92f5aec41db1661c63b2d5dde097066629fb790e783b6085eb198a160441:9z",
+      "market_id": "0x1acd92f5aec41db1661c63b2d5dde097066629fb790e783b6085eb198a160441",
+      "venue": "polymarket",
+      "outcome": "9z",
+      "title": "Counter-Strike: FURIA vs 9z (BO3) - Esports World Cup Group D",
+      "url": "https://polymarket.com/event/cs2-furia-9z-2026-08-15",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.589,
+      "n_wallets": 1,
+      "whale_usd": 88616,
+      "drift_c": 0.5,
+      "hours_to_resolve": 0.1,
+      "liquidity": 312341,
+      "end_iso": "2026-08-15T19:55:00Z",
+      "event_iso": "2026-08-15 14:05:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786802485.725572,
+      "price": 0.365,
+      "contracts": 273.9726,
+      "fee": 1.12
+    },
+    {
+      "key": "0xafc0ded22349c9109c2ca3e81bba224e45a657558d8d56347c36a3c43dfe22bb:3dmax",
+      "market_id": "0xafc0ded22349c9109c2ca3e81bba224e45a657558d8d56347c36a3c43dfe22bb",
+      "venue": "polymarket",
+      "outcome": "3DMAX",
+      "title": "Counter-Strike: magic vs 3DMAX (BO3) - Esports World Cup Group D",
+      "url": "https://polymarket.com/event/cs2-mgc-3dmax-2026-08-15",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.559,
+      "n_wallets": 1,
+      "whale_usd": 43188,
+      "drift_c": -0.5,
+      "hours_to_resolve": 0.1,
+      "liquidity": 268506,
+      "end_iso": "2026-08-15T19:55:00Z",
+      "event_iso": "2026-08-15 14:10:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786802485.725572,
+      "price": 0.445,
+      "contracts": 224.7191,
+      "fee": 0.98
     }
   ],
   "settled": [
@@ -12554,7 +12602,7 @@
       "DSR 0.749 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 104,
+    "open_positions": 106,
     "trial_days": 7.9,
     "by_source": {
       "weather": {
@@ -12607,7 +12655,7 @@
           "DSR 0.788 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 81
+        "open_positions": 83
       },
       "whale-pmus": {
         "n": 66,
@@ -12645,7 +12693,7 @@
       "foregone_edge": 0.5481
     }
   },
-  "generated": "2026-08-15 13:37:01",
+  "generated": "2026-08-15 14:01:48",
   "voided": [],
   "bridge": {
     "log": {
@@ -12851,7 +12899,7 @@
       },
       "0xc04094452b0386a73a9a6e07da0370fffb2722e05c837a5246b88c914e78b79f:islam makhachev": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786800987.9,
+        "ts": 1786802485.7,
         "kalshi": "no-series"
       },
       "0xf2cafdf9c307fbc34fd47c617ebfeb713d5a7750c85e33041f18bd9171ab5c81:toronto blue jays": {
@@ -13551,12 +13599,12 @@
       },
       "0x887c641092cf6d1b51f0a482b215f665e6e3e715617efcda23fcbfbcfcd0b766:under": {
         "polymarket-us": "outcome-unmapped",
-        "ts": 1786800987.9,
+        "ts": 1786802485.7,
         "kalshi": "outcome-not-a-team"
       },
       "0x82a4b49690494584d6ca7810e482fe0f882ae347ad37cbd541f87ab840cdd1a6:milwaukee brewers": {
         "polymarket-us": "ambiguous",
-        "ts": 1786800987.9,
+        "ts": 1786802485.7,
         "kalshi": "outcome-not-a-team"
       },
       "0x33bd6490319d0926955bb451d81e3f345bf6e6d41a0a85d69c02f658277a4de4:san diego padres": {
@@ -13581,8 +13629,18 @@
       },
       "0xaffb1fc954b893c5c5637d151316eb03a2d293d356f49cedc130c12c9db50373:over": {
         "polymarket-us": "outcome-unmapped",
-        "ts": 1786800987.9,
+        "ts": 1786802485.7,
         "kalshi": "outcome-not-a-team"
+      },
+      "0x1acd92f5aec41db1661c63b2d5dde097066629fb790e783b6085eb198a160441:9z": {
+        "polymarket-us": "no-signature",
+        "ts": 1786802485.7,
+        "kalshi": "no-signature"
+      },
+      "0xafc0ded22349c9109c2ca3e81bba224e45a657558d8d56347c36a3c43dfe22bb:3dmax": {
+        "polymarket-us": "no-signature",
+        "ts": 1786802485.7,
+        "kalshi": "no-signature"
       }
     },
     "summary": {
@@ -13590,14 +13648,14 @@
         "outcome-unmapped": 23,
         "matched": 84,
         "outcome-not-yes-no": 1,
-        "no-signature": 41,
+        "no-signature": 43,
         "no-counterpart": 23,
         "ambiguous": 15
       },
       "kalshi": {
         "outcome-not-a-team": 46,
         "no-series": 100,
-        "no-signature": 41
+        "no-signature": 43
       }
     }
   },
