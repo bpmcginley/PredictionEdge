@@ -16238,6 +16238,36 @@
       "weather"
     ],
     "retired_excluded": 16,
+    "changes": [
+      {
+        "key": "bridge",
+        "at": 1786550946,
+        "commit": "02d129b",
+        "label": "venue bridge",
+        "note": "Whale tickets started being mirrored onto Polymarket US and Kalshi at their live asks, so the record stopped being one venue's prices."
+      },
+      {
+        "key": "levers",
+        "at": 1786666818,
+        "commit": "9bb37b3",
+        "label": "five levers",
+        "note": "Maker-first resting orders, power/Shin de-vig, the SPX 0DTE density sleeve, the calibration overlay, and the AAA gas sleeve all merged together on one night."
+      },
+      {
+        "key": "weather",
+        "at": 1786819577,
+        "commit": "c3bf50c",
+        "label": "weather cut",
+        "note": "The weather sleeve was switched off after its thesis was measured and found false. Its rows are still on file but are held out of the headline, in every window."
+      },
+      {
+        "key": "sizing",
+        "at": 1786903251,
+        "commit": "fca4239",
+        "label": "sizing + exposure rules",
+        "note": "Positions are sized by the house rules instead of a flat $100, both sides of one market can no longer be held at once, and esports is cut. Dollar P&L does not compare across this line; per-position returns do."
+      }
+    ],
     "including_retired": {
       "n": 481,
       "win_rate": 0.5177,
@@ -16355,11 +16385,16 @@
       "foregone_edge": 0.7688
     },
     "exposure": {
-      "blocked": 0,
-      "by_reason": {}
+      "blocked": 1,
+      "by_reason": {
+        "per-event contract cap already full": {
+          "distinct": 1,
+          "times": 1
+        }
+      }
     }
   },
-  "generated": "2026-08-16 18:02:02",
+  "generated": "2026-08-16 18:17:28",
   "voided": [],
   "bridge": {
     "log": {
@@ -17642,6 +17677,11 @@
         "polymarket-us": "outcome-unmapped",
         "ts": 1786903273.7,
         "kalshi": "outcome-not-a-team"
+      },
+      "0xb295def352fb9724a07c99fe0a18ad40a7f97e79bc37483a59edc8286f123889:yes": {
+        "polymarket-us": "no-signature",
+        "ts": 1786904240.6,
+        "kalshi": "no-signature"
       }
     },
     "summary": {
@@ -17649,14 +17689,14 @@
         "outcome-unmapped": 34,
         "matched": 113,
         "outcome-not-yes-no": 1,
-        "no-signature": 49,
+        "no-signature": 50,
         "no-counterpart": 34,
         "ambiguous": 25
       },
       "kalshi": {
         "outcome-not-a-team": 76,
         "no-series": 131,
-        "no-signature": 49
+        "no-signature": 50
       }
     }
   },
@@ -17980,5 +18020,21 @@
       }
     ]
   },
-  "blocked": {}
+  "blocked": {
+    "0xb295def352fb9724a07c99fe0a18ad40a7f97e79bc37483a59edc8286f123889:yes": {
+      "key": "0xb295def352fb9724a07c99fe0a18ad40a7f97e79bc37483a59edc8286f123889:yes",
+      "market_id": "0xb295def352fb9724a07c99fe0a18ad40a7f97e79bc37483a59edc8286f123889",
+      "outcome": "Yes",
+      "title": "Will Ethereum dip to $1,800 in August?",
+      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-august-2026",
+      "source": "whale",
+      "first_at": 1786904240.5712194,
+      "times": 1,
+      "reason": "per-event contract cap already full",
+      "last_at": 1786904240.5712194,
+      "event": "https://polymarket.com/event/what-price-will-ethereum-hit-in-august-2026",
+      "on_event": 442,
+      "cap": 380
+    }
+  }
 }
