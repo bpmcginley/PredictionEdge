@@ -1024,30 +1024,6 @@
       "fee": 3.57
     },
     {
-      "key": "0x815fe01c737a1078f0e8974dc113cf5083c92d95eaa8bb764855259bd5d670e3:joblife",
-      "market_id": "0x815fe01c737a1078f0e8974dc113cf5083c92d95eaa8bb764855259bd5d670e3",
-      "venue": "polymarket",
-      "outcome": "Joblife",
-      "title": "Valorant: Fire Flux Esports vs Joblife (BO3) - VCT EMEA Play-Ins",
-      "url": "https://polymarket.com/event/val-ff3-jl-2026-08-16",
-      "stake": 100.0,
-      "shown": true,
-      "source": "whale",
-      "conviction": 0.473,
-      "n_wallets": 1,
-      "whale_usd": 35414,
-      "drift_c": 0.5,
-      "hours_to_resolve": 7.4,
-      "liquidity": 51929,
-      "end_iso": "2026-08-16T22:00:00Z",
-      "event_iso": "2026-08-16 16:00:00+00",
-      "origin_market_id": "",
-      "opened_at": 1786869550.2439382,
-      "price": 0.485,
-      "contracts": 206.1856,
-      "fee": 0.91
-    },
-    {
       "key": "0x4234a8fc59b3e003c00d5f590bce15bd7f778b2049dabd7bcb3e6d0e409398a6:no",
       "market_id": "0x4234a8fc59b3e003c00d5f590bce15bd7f778b2049dabd7bcb3e6d0e409398a6",
       "venue": "polymarket",
@@ -16223,32 +16199,61 @@
       "won": true,
       "pred": 0.485,
       "realized": 105.2756
+    },
+    {
+      "key": "0x815fe01c737a1078f0e8974dc113cf5083c92d95eaa8bb764855259bd5d670e3:joblife",
+      "market_id": "0x815fe01c737a1078f0e8974dc113cf5083c92d95eaa8bb764855259bd5d670e3",
+      "venue": "polymarket",
+      "outcome": "Joblife",
+      "title": "Valorant: Fire Flux Esports vs Joblife (BO3) - VCT EMEA Play-Ins",
+      "url": "https://polymarket.com/event/val-ff3-jl-2026-08-16",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.473,
+      "n_wallets": 1,
+      "whale_usd": 35414,
+      "drift_c": 0.5,
+      "hours_to_resolve": 7.4,
+      "liquidity": 51929,
+      "end_iso": "2026-08-16T22:00:00Z",
+      "event_iso": "2026-08-16 16:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786869550.2439382,
+      "price": 0.485,
+      "contracts": 206.1856,
+      "fee": 0.91,
+      "settled_at": 1786907275.7209318,
+      "winner": "Fire Flux Esports",
+      "won": false,
+      "pred": 0.485,
+      "realized": -100.91
     }
   ],
   "stats": {
-    "n": 468,
-    "win_rate": 0.5342,
-    "avg_predicted": 0.5315,
-    "calibration_gap": -0.0027,
-    "brier": 0.2261,
-    "total_pnl": 182.92,
-    "roi_on_stake": 0.0039,
-    "mean_return": 0.0039,
-    "sharpe_per_bet": 0.0035,
-    "psr_vs_zero": 0.5305,
-    "dsr": 0.5305,
+    "n": 469,
+    "win_rate": 0.533,
+    "avg_predicted": 0.5314,
+    "calibration_gap": -0.0016,
+    "brier": 0.2262,
+    "total_pnl": 82.01,
+    "roi_on_stake": 0.0017,
+    "mean_return": 0.0017,
+    "sharpe_per_bet": 0.0016,
+    "psr_vs_zero": 0.5136,
+    "dsr": 0.5136,
     "implied_sr0": 0.0,
     "bootstrap_ci": [
-      -0.0885,
-      0.0863
+      -0.0884,
+      0.0907
     ],
-    "p_mean_le_0": 0.479,
+    "p_mean_le_0": 0.5065,
     "deploy": false,
     "reasons": [
-      "DSR 0.530 < 0.95",
+      "DSR 0.514 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 96,
+    "open_positions": 95,
     "retired_sources": [
       "weather"
     ],
@@ -16284,27 +16289,27 @@
       }
     ],
     "including_retired": {
-      "n": 484,
-      "win_rate": 0.5186,
-      "avg_predicted": 0.5196,
-      "calibration_gap": 0.001,
-      "brier": 0.2198,
-      "total_pnl": -1317.68,
-      "roi_on_stake": -0.0272,
-      "mean_return": -0.0272,
-      "sharpe_per_bet": -0.0246,
-      "psr_vs_zero": 0.2974,
-      "dsr": 0.2974,
+      "n": 485,
+      "win_rate": 0.5175,
+      "avg_predicted": 0.5195,
+      "calibration_gap": 0.002,
+      "brier": 0.2199,
+      "total_pnl": -1418.59,
+      "roi_on_stake": -0.0292,
+      "mean_return": -0.0292,
+      "sharpe_per_bet": -0.0265,
+      "psr_vs_zero": 0.2838,
+      "dsr": 0.2838,
       "implied_sr0": 0.0,
       "bootstrap_ci": [
-        -0.1191,
-        0.0532
+        -0.1226,
+        0.0578
       ],
-      "p_mean_le_0": 0.7375,
+      "p_mean_le_0": 0.734,
       "deploy": false,
       "reasons": [
         "mean per-bet return <= 0",
-        "DSR 0.297 < 0.95",
+        "DSR 0.284 < 0.95",
         "bootstrap 5% CI of mean return <= 0"
       ]
     },
@@ -16339,30 +16344,30 @@
         "retired": true
       },
       "whale": {
-        "n": 374,
-        "win_rate": 0.5321,
-        "avg_predicted": 0.5356,
-        "calibration_gap": 0.0035,
+        "n": 375,
+        "win_rate": 0.5307,
+        "avg_predicted": 0.5355,
+        "calibration_gap": 0.0048,
         "brier": 0.2227,
-        "total_pnl": -786.26,
-        "roi_on_stake": -0.021,
-        "mean_return": -0.021,
-        "sharpe_per_bet": -0.0201,
-        "psr_vs_zero": 0.3502,
-        "dsr": 0.3502,
+        "total_pnl": -887.17,
+        "roi_on_stake": -0.0237,
+        "mean_return": -0.0237,
+        "sharpe_per_bet": -0.0227,
+        "psr_vs_zero": 0.3325,
+        "dsr": 0.3325,
         "implied_sr0": 0.0,
         "bootstrap_ci": [
-          -0.0989,
-          0.0518
+          -0.1001,
+          0.0491
         ],
-        "p_mean_le_0": 0.715,
+        "p_mean_le_0": 0.727,
         "deploy": false,
         "reasons": [
           "mean per-bet return <= 0",
-          "DSR 0.350 < 0.95",
+          "DSR 0.332 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 78
+        "open_positions": 77
       },
       "whale-pmus": {
         "n": 94,
@@ -16404,12 +16409,12 @@
       "by_reason": {
         "per-event contract cap already full": {
           "distinct": 1,
-          "times": 2
+          "times": 3
         }
       }
     }
   },
-  "generated": "2026-08-16 18:42:02",
+  "generated": "2026-08-16 19:07:56",
   "voided": [],
   "bridge": {
     "log": {
@@ -18044,9 +18049,9 @@
       "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-august-2026",
       "source": "whale",
       "first_at": 1786904240.5712194,
-      "times": 2,
+      "times": 3,
       "reason": "per-event contract cap already full",
-      "last_at": 1786905713.3476782,
+      "last_at": 1786907269.2587364,
       "event": "https://polymarket.com/event/what-price-will-ethereum-hit-in-august-2026",
       "on_event": 442,
       "cap": 380
