@@ -1096,30 +1096,6 @@
       "fee": 1.61
     },
     {
-      "key": "0xc40947f9c05d91b20cd3fb8e4f8953a5713e9671faa3a1743c73d758da71f5e0:aurora",
-      "market_id": "0xc40947f9c05d91b20cd3fb8e4f8953a5713e9671faa3a1743c73d758da71f5e0",
-      "venue": "polymarket",
-      "outcome": "Aurora",
-      "title": "Game Handicap: AUR (-1.5) vs BoomBoys (+1.5)",
-      "url": "https://polymarket.com/event/dota2-aur1-boombo-2026-08-15",
-      "stake": 100.0,
-      "shown": false,
-      "source": "whale",
-      "conviction": 0.427,
-      "n_wallets": 1,
-      "whale_usd": 27005,
-      "drift_c": 1.17,
-      "hours_to_resolve": 0.2,
-      "liquidity": 165893,
-      "end_iso": "2026-08-16T08:00:00Z",
-      "event_iso": "2026-08-16 02:00:00+00",
-      "origin_market_id": "",
-      "opened_at": 1786845041.4035614,
-      "price": 0.345,
-      "contracts": 289.8551,
-      "fee": 1.15
-    },
-    {
       "key": "0xa02f86d6e5db4e58b205af2e1d90ad6ea3800924d02d889d629b7d677186cc3d:gamerlegion",
       "market_id": "0xa02f86d6e5db4e58b205af2e1d90ad6ea3800924d02d889d629b7d677186cc3d",
       "venue": "polymarket",
@@ -1526,6 +1502,102 @@
       "price": 0.29,
       "contracts": 344.8276,
       "fee": 4.98
+    },
+    {
+      "key": "0x3640b1eee9454fd27dac2ad95834d03ef623859b9f8b358148d7e840b3808351:natus vincere",
+      "market_id": "0x3640b1eee9454fd27dac2ad95834d03ef623859b9f8b358148d7e840b3808351",
+      "venue": "polymarket",
+      "outcome": "Natus Vincere",
+      "title": "LoL: Movistar KOI vs Natus Vincere (BO3) - LEC Regular Season",
+      "url": "https://polymarket.com/event/lol-mkoi-navi-2026-08-16",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.482,
+      "n_wallets": 1,
+      "whale_usd": 9167,
+      "drift_c": -0.5,
+      "hours_to_resolve": 7.2,
+      "liquidity": 47640,
+      "end_iso": "2026-08-16T21:00:00Z",
+      "event_iso": "2026-08-16 15:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786866434.4494555,
+      "price": 0.475,
+      "contracts": 210.5263,
+      "fee": 0.93
+    },
+    {
+      "key": "0xea10d8dd95b0c4ad57330dddb04d8d832d0c85a5774c75e58628622f0aac5332:team yandex",
+      "market_id": "0xea10d8dd95b0c4ad57330dddb04d8d832d0c85a5774c75e58628622f0aac5332",
+      "venue": "polymarket",
+      "outcome": "Team Yandex",
+      "title": "Dota 2: LGD Gaming vs Team Yandex (BO3) - The International Elimination Round",
+      "url": "https://polymarket.com/event/dota2-lgd-ty-2026-08-16",
+      "stake": 100.0,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.448,
+      "n_wallets": 1,
+      "whale_usd": 5000,
+      "drift_c": -0.5,
+      "hours_to_resolve": 0.2,
+      "liquidity": 220008,
+      "end_iso": "2026-08-16T14:00:00Z",
+      "event_iso": "2026-08-16 08:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786866434.4494555,
+      "price": 0.725,
+      "contracts": 137.931,
+      "fee": 0.49
+    },
+    {
+      "key": "0x419f8f4874d03b9deaa4afd6792d913278e891633263dbde5fe42dff47b3a1ec:tec esports",
+      "market_id": "0x419f8f4874d03b9deaa4afd6792d913278e891633263dbde5fe42dff47b3a1ec",
+      "venue": "polymarket",
+      "outcome": "TEC Esports",
+      "title": "Valorant: Nova Esports vs TEC Esports (BO3) - VCT China Stage 2 Playoffs",
+      "url": "https://polymarket.com/event/val-nova-tec-2026-08-16",
+      "stake": 100.0,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.44,
+      "n_wallets": 1,
+      "whale_usd": 10000,
+      "drift_c": -0.5,
+      "hours_to_resolve": 0.2,
+      "liquidity": 174633,
+      "end_iso": "2026-08-16T14:00:00Z",
+      "event_iso": "2026-08-16 08:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786866434.4494555,
+      "price": 0.375,
+      "contracts": 266.6667,
+      "fee": 1.1
+    },
+    {
+      "key": "aec-lol-mkoi-navi-2026-08-16:natus vincere",
+      "market_id": "aec-lol-mkoi-navi-2026-08-16",
+      "venue": "polymarket-us",
+      "outcome": "Natus Vincere",
+      "title": "LoL: Movistar KOI vs Natus Vincere (BO3) - LEC Regular Season",
+      "url": "https://polymarket.us/market/aec-lol-mkoi-navi-2026-08-16",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale-pmus",
+      "conviction": 0.482,
+      "n_wallets": 1,
+      "whale_usd": 9167,
+      "drift_c": -0.5,
+      "hours_to_resolve": 7.2,
+      "liquidity": 47640,
+      "end_iso": "2026-08-16T21:00:00Z",
+      "event_iso": "2026-08-16 15:00:00+00",
+      "origin_market_id": "0x3640b1eee9454fd27dac2ad95834d03ef623859b9f8b358148d7e840b3808351",
+      "opened_at": 1786866434.4494555,
+      "price": 0.49,
+      "contracts": 204.0816,
+      "fee": 3.57
     }
   ],
   "settled": [
@@ -14566,62 +14638,91 @@
       "won": true,
       "pred": 0.81,
       "realized": 22.1268
+    },
+    {
+      "key": "0xc40947f9c05d91b20cd3fb8e4f8953a5713e9671faa3a1743c73d758da71f5e0:aurora",
+      "market_id": "0xc40947f9c05d91b20cd3fb8e4f8953a5713e9671faa3a1743c73d758da71f5e0",
+      "venue": "polymarket",
+      "outcome": "Aurora",
+      "title": "Game Handicap: AUR (-1.5) vs BoomBoys (+1.5)",
+      "url": "https://polymarket.com/event/dota2-aur1-boombo-2026-08-15",
+      "stake": 100.0,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.427,
+      "n_wallets": 1,
+      "whale_usd": 27005,
+      "drift_c": 1.17,
+      "hours_to_resolve": 0.2,
+      "liquidity": 165893,
+      "end_iso": "2026-08-16T08:00:00Z",
+      "event_iso": "2026-08-16 02:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786845041.4035614,
+      "price": 0.345,
+      "contracts": 289.8551,
+      "fee": 1.15,
+      "settled_at": 1786866457.820456,
+      "winner": "BoomBoys",
+      "won": false,
+      "pred": 0.345,
+      "realized": -101.15
     }
   ],
   "stats": {
-    "n": 442,
-    "win_rate": 0.5362,
-    "avg_predicted": 0.5316,
-    "calibration_gap": -0.0046,
-    "brier": 0.2271,
-    "total_pnl": 362.65,
-    "roi_on_stake": 0.0082,
-    "mean_return": 0.0082,
-    "sharpe_per_bet": 0.0074,
-    "psr_vs_zero": 0.5621,
-    "dsr": 0.5621,
+    "n": 443,
+    "win_rate": 0.535,
+    "avg_predicted": 0.5311,
+    "calibration_gap": -0.0038,
+    "brier": 0.2268,
+    "total_pnl": 261.5,
+    "roi_on_stake": 0.0059,
+    "mean_return": 0.0059,
+    "sharpe_per_bet": 0.0053,
+    "psr_vs_zero": 0.5447,
+    "dsr": 0.5447,
     "implied_sr0": 0.0,
     "bootstrap_ci": [
-      -0.0804,
-      0.0993
+      -0.082,
+      0.0976
     ],
-    "p_mean_le_0": 0.4525,
+    "p_mean_le_0": 0.4715,
     "deploy": false,
     "reasons": [
-      "DSR 0.562 < 0.95",
+      "DSR 0.545 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 59,
+    "open_positions": 62,
     "retired_sources": [
       "weather"
     ],
     "retired_excluded": 13,
     "including_retired": {
-      "n": 455,
-      "win_rate": 0.5231,
-      "avg_predicted": 0.5211,
-      "calibration_gap": -0.002,
-      "brier": 0.2216,
-      "total_pnl": -837.95,
-      "roi_on_stake": -0.0184,
-      "mean_return": -0.0184,
-      "sharpe_per_bet": -0.0166,
-      "psr_vs_zero": 0.3631,
-      "dsr": 0.3631,
+      "n": 456,
+      "win_rate": 0.5219,
+      "avg_predicted": 0.5207,
+      "calibration_gap": -0.0012,
+      "brier": 0.2214,
+      "total_pnl": -939.1,
+      "roi_on_stake": -0.0206,
+      "mean_return": -0.0206,
+      "sharpe_per_bet": -0.0186,
+      "psr_vs_zero": 0.3477,
+      "dsr": 0.3477,
       "implied_sr0": 0.0,
       "bootstrap_ci": [
-        -0.1118,
-        0.0714
+        -0.1136,
+        0.0677
       ],
-      "p_mean_le_0": 0.656,
+      "p_mean_le_0": 0.6605,
       "deploy": false,
       "reasons": [
         "mean per-bet return <= 0",
-        "DSR 0.363 < 0.95",
+        "DSR 0.348 < 0.95",
         "bootstrap 5% CI of mean return <= 0"
       ]
     },
-    "trial_days": 8.6,
+    "trial_days": 8.7,
     "by_source": {
       "weather": {
         "n": 13,
@@ -14652,30 +14753,30 @@
         "retired": true
       },
       "whale": {
-        "n": 352,
-        "win_rate": 0.5369,
-        "avg_predicted": 0.5351,
-        "calibration_gap": -0.0018,
-        "brier": 0.2244,
-        "total_pnl": -235.28,
-        "roi_on_stake": -0.0067,
-        "mean_return": -0.0067,
-        "sharpe_per_bet": -0.0064,
-        "psr_vs_zero": 0.4527,
-        "dsr": 0.4527,
+        "n": 353,
+        "win_rate": 0.5354,
+        "avg_predicted": 0.5346,
+        "calibration_gap": -0.0009,
+        "brier": 0.2241,
+        "total_pnl": -336.43,
+        "roi_on_stake": -0.0095,
+        "mean_return": -0.0095,
+        "sharpe_per_bet": -0.0091,
+        "psr_vs_zero": 0.4327,
+        "dsr": 0.4327,
         "implied_sr0": 0.0,
         "bootstrap_ci": [
-          -0.0862,
-          0.0688
+          -0.087,
+          0.0725
         ],
-        "p_mean_le_0": 0.5715,
+        "p_mean_le_0": 0.599,
         "deploy": false,
         "reasons": [
           "mean per-bet return <= 0",
-          "DSR 0.453 < 0.95",
+          "DSR 0.433 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 53
+        "open_positions": 55
       },
       "whale-pmus": {
         "n": 90,
@@ -14700,7 +14801,7 @@
           "DSR 0.691 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 6
+        "open_positions": 7
       }
     },
     "maker": {
@@ -14713,7 +14814,7 @@
       "foregone_edge": 0.7688
     }
   },
-  "generated": "2026-08-16 07:01:28",
+  "generated": "2026-08-16 07:47:38",
   "voided": [],
   "bridge": {
     "log": {
@@ -15856,12 +15957,17 @@
         "polymarket-us": "matched",
         "ts": 1786860218.5,
         "kalshi": "no-series"
+      },
+      "0x3640b1eee9454fd27dac2ad95834d03ef623859b9f8b358148d7e840b3808351:natus vincere": {
+        "polymarket-us": "matched",
+        "ts": 1786866434.4,
+        "kalshi": "no-series"
       }
     },
     "summary": {
       "polymarket-us": {
         "outcome-unmapped": 29,
-        "matched": 97,
+        "matched": 98,
         "outcome-not-yes-no": 1,
         "no-signature": 46,
         "no-counterpart": 31,
@@ -15869,7 +15975,7 @@
       },
       "kalshi": {
         "outcome-not-a-team": 63,
-        "no-series": 119,
+        "no-series": 120,
         "no-signature": 46
       }
     }
