@@ -323,29 +323,6 @@
       "fee": 0.4
     },
     {
-      "key": "0xa055e1cf533c2fcb1f1c89c20c41c8aa25526dcf27c3ff6be69c230fd8898282:no",
-      "opened_at": 1786521660.9092884,
-      "market_id": "0xa055e1cf533c2fcb1f1c89c20c41c8aa25526dcf27c3ff6be69c230fd8898282",
-      "venue": "polymarket",
-      "outcome": "No",
-      "title": "US announces end of Iranian blockade by August 15, 2026?",
-      "url": "https://polymarket.com/event/us-announces-end-of-iranian-blockade-byptptpt-20260713152715080",
-      "price": 0.9,
-      "stake": 100.0,
-      "contracts": 111.1111,
-      "shown": true,
-      "source": "whale",
-      "conviction": 0.653,
-      "n_wallets": 2,
-      "whale_usd": 17300,
-      "drift_c": 0.39,
-      "hours_to_resolve": 88.0,
-      "liquidity": 123447,
-      "end_iso": "2026-08-15T23:59:00Z",
-      "event_iso": "",
-      "fee": 0.18
-    },
-    {
       "key": "0x743f66a6ca70e0a18e98e318836427cf4f74605ee4b5ae333f8b62ca3d28e947:alina charaeva",
       "opened_at": 1786543711.1351244,
       "market_id": "0x743f66a6ca70e0a18e98e318836427cf4f74605ee4b5ae333f8b62ca3d28e947",
@@ -1645,6 +1622,54 @@
       "price": 0.525,
       "contracts": 190.4762,
       "fee": 0.83
+    },
+    {
+      "key": "0xc1fffbd87ff7d3278649b40862e7fdbce532e7d567748cd8ba968e018ec4220d:lgd gaming",
+      "market_id": "0xc1fffbd87ff7d3278649b40862e7fdbce532e7d567748cd8ba968e018ec4220d",
+      "venue": "polymarket",
+      "outcome": "LGD Gaming",
+      "title": "Dota 2: LGD Gaming vs Team Yandex - Game 1 Winner",
+      "url": "https://polymarket.com/event/dota2-lgd-ty-2026-08-16",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.495,
+      "n_wallets": 1,
+      "whale_usd": 7000,
+      "drift_c": -0.5,
+      "hours_to_resolve": 1.9,
+      "liquidity": 191910,
+      "end_iso": "2026-08-16T12:00:00Z",
+      "event_iso": "2026-08-16 08:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786860218.528305,
+      "price": 0.345,
+      "contracts": 289.8551,
+      "fee": 1.15
+    },
+    {
+      "key": "aec-dota2-lgd-ty-2026-08-16:lgd gaming",
+      "market_id": "aec-dota2-lgd-ty-2026-08-16",
+      "venue": "polymarket-us",
+      "outcome": "LGD Gaming",
+      "title": "Dota 2: LGD Gaming vs Team Yandex - Game 1 Winner",
+      "url": "https://polymarket.us/market/aec-dota2-lgd-ty-2026-08-16",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale-pmus",
+      "conviction": 0.495,
+      "n_wallets": 1,
+      "whale_usd": 7000,
+      "drift_c": -0.5,
+      "hours_to_resolve": 1.9,
+      "liquidity": 191910,
+      "end_iso": "2026-08-16T12:00:00Z",
+      "event_iso": "2026-08-16 08:00:00+00",
+      "origin_market_id": "0xc1fffbd87ff7d3278649b40862e7fdbce532e7d567748cd8ba968e018ec4220d",
+      "opened_at": 1786860218.528305,
+      "price": 0.29,
+      "contracts": 344.8276,
+      "fee": 4.98
     }
   ],
   "settled": [
@@ -14483,62 +14508,90 @@
       "won": true,
       "pred": 0.585,
       "realized": 70.2102
+    },
+    {
+      "key": "0xa055e1cf533c2fcb1f1c89c20c41c8aa25526dcf27c3ff6be69c230fd8898282:no",
+      "opened_at": 1786521660.9092884,
+      "market_id": "0xa055e1cf533c2fcb1f1c89c20c41c8aa25526dcf27c3ff6be69c230fd8898282",
+      "venue": "polymarket",
+      "outcome": "No",
+      "title": "US announces end of Iranian blockade by August 15, 2026?",
+      "url": "https://polymarket.com/event/us-announces-end-of-iranian-blockade-byptptpt-20260713152715080",
+      "price": 0.9,
+      "stake": 100.0,
+      "contracts": 111.1111,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.653,
+      "n_wallets": 2,
+      "whale_usd": 17300,
+      "drift_c": 0.39,
+      "hours_to_resolve": 88.0,
+      "liquidity": 123447,
+      "end_iso": "2026-08-15T23:59:00Z",
+      "event_iso": "",
+      "fee": 0.18,
+      "settled_at": 1786860243.1685264,
+      "winner": "No",
+      "won": true,
+      "pred": 0.9,
+      "realized": 10.9311
     }
   ],
   "stats": {
-    "n": 435,
-    "win_rate": 0.5333,
-    "avg_predicted": 0.529,
-    "calibration_gap": -0.0043,
-    "brier": 0.2298,
-    "total_pnl": 470.57,
-    "roi_on_stake": 0.0108,
-    "mean_return": 0.0108,
-    "sharpe_per_bet": 0.0097,
-    "psr_vs_zero": 0.5806,
-    "dsr": 0.5806,
+    "n": 436,
+    "win_rate": 0.5344,
+    "avg_predicted": 0.5299,
+    "calibration_gap": -0.0045,
+    "brier": 0.2293,
+    "total_pnl": 481.51,
+    "roi_on_stake": 0.011,
+    "mean_return": 0.011,
+    "sharpe_per_bet": 0.0099,
+    "psr_vs_zero": 0.5825,
+    "dsr": 0.5825,
     "implied_sr0": 0.0,
     "bootstrap_ci": [
-      -0.0831,
-      0.096
+      -0.0821,
+      0.0994
     ],
-    "p_mean_le_0": 0.4755,
+    "p_mean_le_0": 0.4685,
     "deploy": false,
     "reasons": [
-      "DSR 0.581 < 0.95",
+      "DSR 0.582 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 64,
+    "open_positions": 65,
     "retired_sources": [
       "weather"
     ],
     "retired_excluded": 13,
     "including_retired": {
-      "n": 448,
-      "win_rate": 0.5201,
-      "avg_predicted": 0.5185,
-      "calibration_gap": -0.0016,
-      "brier": 0.2241,
-      "total_pnl": -730.03,
-      "roi_on_stake": -0.0163,
-      "mean_return": -0.0163,
-      "sharpe_per_bet": -0.0146,
-      "psr_vs_zero": 0.3797,
-      "dsr": 0.3797,
+      "n": 449,
+      "win_rate": 0.5212,
+      "avg_predicted": 0.5193,
+      "calibration_gap": -0.0019,
+      "brier": 0.2237,
+      "total_pnl": -719.1,
+      "roi_on_stake": -0.016,
+      "mean_return": -0.016,
+      "sharpe_per_bet": -0.0144,
+      "psr_vs_zero": 0.3815,
+      "dsr": 0.3815,
       "implied_sr0": 0.0,
       "bootstrap_ci": [
-        -0.1166,
-        0.0654
+        -0.1136,
+        0.0698
       ],
-      "p_mean_le_0": 0.6685,
+      "p_mean_le_0": 0.661,
       "deploy": false,
       "reasons": [
         "mean per-bet return <= 0",
-        "DSR 0.380 < 0.95",
+        "DSR 0.381 < 0.95",
         "bootstrap 5% CI of mean return <= 0"
       ]
     },
-    "trial_days": 8.5,
+    "trial_days": 8.6,
     "by_source": {
       "weather": {
         "n": 13,
@@ -14569,27 +14622,27 @@
         "retired": true
       },
       "whale": {
-        "n": 348,
-        "win_rate": 0.5345,
-        "avg_predicted": 0.5326,
-        "calibration_gap": -0.0018,
-        "brier": 0.2261,
-        "total_pnl": -191.61,
-        "roi_on_stake": -0.0055,
-        "mean_return": -0.0055,
-        "sharpe_per_bet": -0.0052,
-        "psr_vs_zero": 0.4614,
-        "dsr": 0.4614,
+        "n": 349,
+        "win_rate": 0.5358,
+        "avg_predicted": 0.5337,
+        "calibration_gap": -0.0021,
+        "brier": 0.2254,
+        "total_pnl": -180.68,
+        "roi_on_stake": -0.0052,
+        "mean_return": -0.0052,
+        "sharpe_per_bet": -0.0049,
+        "psr_vs_zero": 0.4636,
+        "dsr": 0.4636,
         "implied_sr0": 0.0,
         "bootstrap_ci": [
-          -0.0897,
-          0.0689
+          -0.0887,
+          0.069
         ],
-        "p_mean_le_0": 0.617,
+        "p_mean_le_0": 0.601,
         "deploy": false,
         "reasons": [
           "mean per-bet return <= 0",
-          "DSR 0.461 < 0.95",
+          "DSR 0.464 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
         "open_positions": 56
@@ -14617,7 +14670,7 @@
           "DSR 0.712 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 8
+        "open_positions": 9
       }
     },
     "maker": {
@@ -14630,7 +14683,7 @@
       "foregone_edge": 0.7688
     }
   },
-  "generated": "2026-08-16 05:35:08",
+  "generated": "2026-08-16 06:04:03",
   "voided": [],
   "bridge": {
     "log": {
@@ -15751,7 +15804,7 @@
       },
       "0x4fc889e9cabcfaf2dca7f9f7af0e9bca69ac54dbf529a6d9e61ae35d0526d7df:under": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786858490.4,
+        "ts": 1786860218.5,
         "kalshi": "no-series"
       },
       "0xdd87afe11abb21a3a49278a7ff888ce7834761c1d78b46c98e294cacfb5cbb85:lgd gaming": {
@@ -15768,12 +15821,17 @@
         "polymarket-us": "no-counterpart",
         "ts": 1786858490.4,
         "kalshi": "no-series"
+      },
+      "0xc1fffbd87ff7d3278649b40862e7fdbce532e7d567748cd8ba968e018ec4220d:lgd gaming": {
+        "polymarket-us": "matched",
+        "ts": 1786860218.5,
+        "kalshi": "no-series"
       }
     },
     "summary": {
       "polymarket-us": {
         "outcome-unmapped": 29,
-        "matched": 96,
+        "matched": 97,
         "outcome-not-yes-no": 1,
         "no-signature": 46,
         "no-counterpart": 31,
@@ -15781,7 +15839,7 @@
       },
       "kalshi": {
         "outcome-not-a-team": 63,
-        "no-series": 118,
+        "no-series": 119,
         "no-signature": 46
       }
     }
