@@ -394,6 +394,94 @@ def test_open_retired_positions_are_held_out_of_the_headline_count_too():
     assert len(trial["open"]) == 2                     # both still recorded
 
 
+# --- a retired market CLASS, which is not a sleeve --------------------------------
+
+def _esports_ticket(**over):
+    base = dict(mid="0xcs2", outcome="Astralis", price=0.5,
+                title="Counter-Strike: Astralis vs NIP - Map 1 Winner",
+                url="https://polymarket.com/event/cs2-ast10-nip-2026-08-16")
+    base.update(over)
+    return _ticket(**base)
+
+
+def test_esports_rows_are_held_out_of_the_headline_though_they_are_whale_rows():
+    """The cut that `RETIRED_SOURCES` could not express. Esports was switched off at the
+    gate, but those rows carry `source="whale"` - so keying the holdout on the sleeve
+    left 127 settled rows worth -$1,904 scoring inside a headline whose whole claim is
+    that it describes the bot that runs tomorrow. It does not bet them tomorrow.
+    """
+    trial = _blank()
+    record(trial, [_ticket(mid="0xaaa", outcome="Yes", price=0.5), _esports_ticket()])
+    settle(trial, {"0xaaa": _meta(["Yes", "No"], [1.0, 0.0]),
+                   "0xcs2": _meta(["Astralis", "NIP"], [0.0, 1.0])})
+    s = stats(trial)
+
+    assert s["n"] == 1 and s["win_rate"] == 1.0        # the live row only
+    assert s["retired_excluded"] == 1
+    assert s["retired_classes"] == ["esports"]
+    assert s["including_retired"]["n"] == 2            # still on the all-time record
+    # and still on file, untouched: a record that deletes its losers is worth nothing
+    assert any(r["market_id"] == "0xcs2" for r in trial["settled"])
+
+
+def test_a_retired_class_is_its_own_slice_not_a_drag_on_the_sleeve_it_came_through():
+    """`by_source` has to stay a partition, or the headline and its own breakdown say
+    different things: every settled row counted once, the live slices summing to the
+    headline and the retired ones to the difference."""
+    trial = _blank()
+    record(trial, [_ticket(mid="0xaaa", outcome="Yes", price=0.5), _esports_ticket()])
+    settle(trial, {"0xaaa": _meta(["Yes", "No"], [1.0, 0.0]),
+                   "0xcs2": _meta(["Astralis", "NIP"], [0.0, 1.0])})
+    by = stats(trial)["by_source"]
+
+    assert by["whale"]["n"] == 1 and by["whale"]["win_rate"] == 1.0   # esports NOT in it
+    assert by["esports"]["n"] == 1 and by["esports"]["retired"] is True
+    assert by["whale"]["n"] + by["esports"]["n"] == len(trial["settled"])
+
+
+def test_open_esports_positions_leave_the_headline_count_too():
+    """They were opened before the cut and are left to settle honestly, so they must not
+    be counted as what the live bot is carrying."""
+    trial = _blank()
+    record(trial, [_ticket(mid="0xaaa"), _esports_ticket()])
+    s = stats(trial)
+    assert s["open_positions"] == 1
+    assert s["by_source"]["esports"]["open_positions"] == 1
+    assert len(trial["open"]) == 2
+
+
+def test_the_holdout_reads_the_event_slug_exactly_as_the_gate_does():
+    """A derivative market on an esports fixture names no game anywhere in its title -
+    only the event slug does. If the record classified on the title alone it would hold
+    out less than the gate refuses, which is the flattering direction."""
+    trial = _blank()
+    record(trial, [_esports_ticket(mid="0xhcap",
+                                  title="Game Handicap: NS (-1.5) vs DN SOOPers (+1.5)",
+                                  url="https://polymarket.com/event/lol-dnf-ns-2026-08-12")])
+    assert stats(trial)["open_positions"] == 0
+    # ...and an ordinary sport that merely looks similar stays live
+    trial = _blank()
+    record(trial, [_ticket(mid="0xsoccer", title="Club Leon vs. Deportivo Toluca",
+                           url="https://polymarket.com/event/lec-tig-vwh-2026-08-16")])
+    assert stats(trial)["open_positions"] == 1
+
+
+def test_every_held_out_row_is_named_by_key_for_the_page():
+    """The Trial page slices these same rows into its own windows. It can read a retired
+    SLEEVE off the `source` field; it cannot read a retired CLASS off anything, and a
+    second copy of the classifier in JavaScript would be free to disagree with this one.
+    Publishing the keys is what makes the page's holdout provably the same holdout."""
+    trial = _blank()
+    record(trial, [_ticket(mid="0xaaa"), _esports_ticket(),
+                   _ticket(mid="KXHIGHNY-26AUG12-B87.5", outcome="Yes", price=0.1,
+                           source="weather")])
+    settle(trial, {"0xcs2": _meta(["Astralis", "NIP"], [0.0, 1.0])})
+    keys = stats(trial)["retired_keys"]
+
+    assert keys == sorted(["0xcs2:astralis", "KXHIGHNY-26AUG12-B87.5:yes"])
+    assert "0xaaa:mets" not in keys                    # settled AND open rows, live ones never
+
+
 # --- honest fees on the weather sleeve -------------------------------------------
 
 def _weather_ticket(**over):

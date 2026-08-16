@@ -45,9 +45,11 @@ from __future__ import annotations
 import argparse
 import json
 import time
+from collections.abc import Callable
 from pathlib import Path
 
 from . import sizing
+from .copytrade import is_esports
 from .fees import is_designated, maker_trade_fee, trade_fee
 
 # A resolved Polymarket market pays its winning leg at 1 and the rest at 0. Demanding
@@ -566,6 +568,47 @@ def source_of(row: dict) -> str:
 RETIRED_SOURCES = frozenset({"weather"})
 
 
+# Retired MARKET CLASSES: the same holdout, for a cut that does not line up with a
+# sleeve. `RETIRED_SOURCES` keys on `source`, which can only express "this sleeve is
+# off" - and esports was never a sleeve. Those rows arrive through the whale sleeve and
+# its Polymarket US mirror, so when esports was cut at the gate on 2026-08-16 the record
+# kept scoring it: 127 settled rows worth -$1,904 and -15.0% per bet stayed inside a
+# headline whose entire claim is that it describes the bot that runs tomorrow. It does
+# not bet those markets tomorrow. Holding weather out and esports in was not a judgement
+# call, it was the data model - which is exactly the kind of accident that flatters a
+# record without anyone deciding to.
+#
+# The predicate is `is_esports` itself, the SAME classifier the board rejects on, called
+# on the row's title and event url (`is_esports` reads slug prefixes like `/cs2-`, which
+# is the only thing that identifies a derivative market such as "Game Handicap: NS
+# (-1.5) vs DN SOOPers (+1.5)"). One implementation means what the record holds out and
+# what the gate refuses cannot drift apart; a second copy of that regex would eventually
+# disagree with the first, and the direction it disagreed in would be nobody's decision.
+#
+# The bar for adding an entry here is the same as for `RETIRED_SOURCES` and higher than
+# it looks: a class removed from the headline must actually be OFF at the gate, or the
+# headline stops describing the live bot in the other direction.
+RETIRED_CLASSES: tuple[tuple[str, Callable[[dict], bool]], ...] = (
+    ("esports", lambda row: is_esports(row.get("title", ""), row.get("url", ""))),
+)
+
+
+def retired_as(row: dict) -> str:
+    """Which retired bucket holds this row out of the headline, or "" if it is live.
+
+    Sources are checked before classes so a row can only ever land in one bucket, which
+    is what keeps `by_source` a partition of the file: every settled row is counted in
+    exactly one slice, and the slices still sum to `including_retired`.
+    """
+    src = source_of(row)
+    if src in RETIRED_SOURCES:
+        return src
+    for name, matches in RETIRED_CLASSES:
+        if matches(row):
+            return name
+    return ""
+
+
 # When the rules the bot bets by actually CHANGED, as UTC seconds. Published with the
 # stats so the Trial page can slice its headline into "before" and "since" without
 # hardcoding dates in JavaScript that would rot the moment a lever moves.
@@ -607,22 +650,33 @@ CHANGE_POINTS: tuple[dict, ...] = (
 def stats(trial: dict, *, min_n: int = 30) -> dict:
     """Score the settled rows with the project's existing gate, plus trial bookkeeping.
 
-    The headline covers the ACTIVE sleeves only (see `RETIRED_SOURCES`); the all-time
-    pooled figure lives in `including_retired`. `by_source` is still where any decision
-    belongs, and it reports every sleeve including the retired ones. The sleeves make
-    different claims on different markets with different holding periods; a pooled win
-    rate that mixes a six-month Polymarket resolution with a next-day Kalshi temperature
-    is arithmetic, not evidence. Whichever sleeve reaches `min_n` first gets judged first.
+    The headline covers what is still ACTIVE - every retired sleeve (`RETIRED_SOURCES`)
+    and every retired market class (`RETIRED_CLASSES`) is held out of it, settled rows
+    and open positions alike; the all-time pooled figure lives in `including_retired`.
+    `by_source` is still where any decision belongs, and it reports every bucket
+    including the retired ones. The sleeves make different claims on different markets
+    with different holding periods; a pooled win rate that mixes a six-month Polymarket
+    resolution with a next-day Kalshi temperature is arithmetic, not evidence. Whichever
+    sleeve reaches `min_n` first gets judged first.
     """
     from .backtest import evaluate
 
-    live = [r for r in trial["settled"] if source_of(r) not in RETIRED_SOURCES]
-    live_open = [r for r in trial["open"] if source_of(r) not in RETIRED_SOURCES]
+    live = [r for r in trial["settled"] if not retired_as(r)]
+    live_open = [r for r in trial["open"] if not retired_as(r)]
 
     out = evaluate(live, min_n=min_n)
     out["open_positions"] = len(live_open)
     out["retired_sources"] = sorted(RETIRED_SOURCES)
+    out["retired_classes"] = [name for name, _ in RETIRED_CLASSES]
     out["retired_excluded"] = len(trial["settled"]) - len(live)
+    # Every held-out row named by key, because the Trial page slices the SAME rows into
+    # its own windows and has to hold out exactly what Python holds out. A retired
+    # source it can match on the `source` field; a retired class it cannot, and a copy
+    # of the classifier in JavaScript would be a second implementation free to disagree
+    # with this one. Naming the rows instead means the page cannot get it wrong.
+    out["retired_keys"] = sorted(
+        r["key"] for r in trial["settled"] + trial["open"]
+        if r.get("key") and retired_as(r))
     # Shipped alongside the numbers rather than kept in the page, so the "before/since"
     # windows on the Trial page can only ever name changes that really happened.
     out["changes"] = [dict(c) for c in CHANGE_POINTS]
@@ -636,13 +690,20 @@ def stats(trial: dict, *, min_n: int = 30) -> dict:
             min(r["opened_at"] for r in trial["settled"])
         out["trial_days"] = round(span / 86400.0, 1)
 
+    # Bucketed by `retired_as(row) or source_of(row)`, so a retired class becomes its own
+    # slice instead of staying inside the sleeve it arrived through. That is what makes
+    # these numbers reconcile: `by_source["whale"]` now means the live whale sleeve, the
+    # one the headline is built from, and the retired buckets are what the headline drops.
+    # Leaving esports inside "whale" would have published a sleeve number that no longer
+    # matched the sleeve - the headline saying one thing and its own breakdown another.
     sleeves: dict[str, list[dict]] = {}
     for row in trial["settled"]:
-        sleeves.setdefault(source_of(row), []).append(row)
+        sleeves.setdefault(retired_as(row) or source_of(row), []).append(row)
     open_by: dict[str, int] = {}
     for row in trial["open"]:
-        src = source_of(row)
+        src = retired_as(row) or source_of(row)
         open_by[src] = open_by.get(src, 0) + 1
+    retired_names = set(RETIRED_SOURCES) | {name for name, _ in RETIRED_CLASSES}
     out["by_source"] = {}
     for src in sorted(set(sleeves) | set(open_by)):
         sliced = evaluate(sleeves.get(src, []), min_n=min_n)
@@ -650,7 +711,7 @@ def stats(trial: dict, *, min_n: int = 30) -> dict:
         # Flagged, not dropped. A reader who only ever sees the headline should still
         # be able to find the sleeve that was switched off, and why the two top-line
         # numbers differ.
-        if src in RETIRED_SOURCES:
+        if src in retired_names:
             sliced["retired"] = True
         out["by_source"][src] = sliced
     out["maker"] = maker_stats(trial)
@@ -831,10 +892,11 @@ def main(argv: list[str] | None = None) -> int:
     save(args.trial, trial)
 
     s = trial["stats"]
+    held = ", ".join(s.get("retired_sources", []) + s.get("retired_classes", []))
     print(f"recorded {added} new, settled {settled}; "
           f"{s.get('open_positions', 0)} open, {s.get('n', 0)} settled"
-          + (f" (active sleeves; {s['retired_excluded']} retired row(s) held out "
-             f"of the headline)" if s.get("retired_excluded") else ""))
+          + (f" (active only; {s['retired_excluded']} retired row(s) held out of "
+             f"the headline: {held})" if s.get("retired_excluded") else ""))
     exp = s.get("exposure") or {}
     for reason, c in sorted((exp.get("by_reason") or {}).items()):
         print(f"  blocked: {c['distinct']} ticket(s) — {reason} "

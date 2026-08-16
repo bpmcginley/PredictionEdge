@@ -142,9 +142,21 @@ function row(r, settled) {
 let WIN = { key: 'all', from: null, to: null, fromStr: '', toStr: '' };
 
 const changes = () => (TRIAL && TRIAL.stats && TRIAL.stats.changes) || [];
+const srcOf = r => (r.source || 'whale').trim().toLowerCase();
+
+/* What the headline holds out, named row by row. Two kinds of retirement exist and only
+   one of them is readable off a row: a retired SLEEVE is a `source` value, but a retired
+   market CLASS (esports) arrives through the live sleeves and is identified by a
+   classifier that lives in Python. `retired_keys` is that classifier's answer, published
+   with the stats — so this page holds out exactly the rows Python holds out, instead of
+   carrying a second copy of the regex that would be free to disagree with the first.
+   The source check stays as the fallback for any trial.json written before those keys. */
+const retiredKeys = () =>
+  new Set((TRIAL && TRIAL.stats && TRIAL.stats.retired_keys) || []);
 const retiredSet = () =>
   new Set((TRIAL && TRIAL.stats && TRIAL.stats.retired_sources) || []);
-const srcOf = r => (r.source || 'whale').trim().toLowerCase();
+const retiredNames = () => [...((TRIAL && TRIAL.stats && TRIAL.stats.retired_sources) || []),
+                            ...((TRIAL && TRIAL.stats && TRIAL.stats.retired_classes) || [])];
 const inWin = ts => (WIN.from == null || ts >= WIN.from) &&
                     (WIN.to == null || ts < WIN.to);
 
@@ -261,10 +273,11 @@ function render() {
 
   const s = TRIAL.stats || {}, allOpen = TRIAL.open || [], allDone = TRIAL.settled || [];
   const whole = WIN.key === 'all';
-  const retired = retiredSet();
-  const scored = rs => rs.filter(r => !retired.has(srcOf(r)) && inWin(r.opened_at));
-  // The lists keep every sleeve — a retired row is still part of what happened — but
-  // the scored figures hold them out, in every window, exactly as the headline does.
+  const retKeys = retiredKeys(), retSrc = retiredSet();
+  const isRetired = r => retKeys.has(r.key) || retSrc.has(srcOf(r));
+  const scored = rs => rs.filter(r => !isRetired(r) && inWin(r.opened_at));
+  // The lists keep every row — a retired one is still part of what happened — but the
+  // scored figures hold them out, in every window, exactly as the headline does.
   const done = allDone.filter(r => inWin(r.opened_at));
   const open = allOpen.filter(r => inWin(r.opened_at));
   const d = describe(scored(done));
@@ -298,9 +311,14 @@ function render() {
         WIN.to != null ? 'before ' + day(WIN.to * 1000) : ''} — the rules that chose
       them, not the day they resolved.`);
   const heldOut = done.length - scored(done).length;
-  if (heldOut) notes.push(`${heldOut} settled row${heldOut !== 1 ? 's' : ''} from the
-    retired ${(s.retired_sources || []).join(', ')} sleeve ${heldOut !== 1 ? 'are' : 'is'}
-    listed below but held out of these figures, because that sleeve does not run
+  // Named, not just counted: a reader who sees rows missing from a total is owed WHICH
+  // rows, and the list is the whole defence against a holdout that quietly flatters.
+  const names = retiredNames();
+  const named = names.slice(0, -1).join(', ') +
+    (names.length > 1 ? ' and ' : '') + (names[names.length - 1] || '');
+  if (heldOut) notes.push(`${heldOut} retired ${named} row${heldOut !== 1 ? 's' : ''}
+    ${heldOut !== 1 ? 'are' : 'is'} listed below but held out of these figures, because
+    the bot does not bet ${names.length !== 1 ? 'those markets' : 'that sleeve'}
     tomorrow.`);
   if (openN) notes.push(`${openN} position${openN !== 1 ? 's' : ''} opened in this window
     ${openN !== 1 ? 'are' : 'is'} still unresolved, so the figures count only what has
