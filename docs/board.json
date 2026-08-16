@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-16 23:13:35",
-  "generated_at": 1786922015.0770187,
+  "generated": "2026-08-16 23:30:23",
+  "generated_at": 1786923023.7564597,
   "account_size": 100000.0,
   "tickets": [
     {
@@ -11,15 +11,15 @@
       "entry_price": 0.615,
       "whale_price": 0.616,
       "drift_c": -0.06,
-      "contracts": 835,
-      "cost": 513.52,
-      "max_payout": 835.0,
-      "conviction": 0.514,
-      "hours_to_resolve": 1.4,
+      "contracts": 813,
+      "cost": 500.0,
+      "max_payout": 813.0,
+      "conviction": 0.5,
+      "hours_to_resolve": 1.2,
       "n_wallets": 1,
       "whale_usd": 48733,
-      "minutes_ago": 73,
-      "liquidity": 318687,
+      "minutes_ago": 90,
+      "liquidity": 309386,
       "url": "https://polymarket.com/event/atp-sonego-tiafoe-2026-08-16",
       "end_iso": "2026-08-23T14:00:00Z",
       "event_iso": "2026-08-17 00:40:00+00",
@@ -28,10 +28,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$48,733, 45% of their own book",
-        "latest buy 73 min ago",
+        "latest buy 90 min ago",
         "still near their entry price",
         "1h until it resolves",
-        "$318,687 liquidity"
+        "$309,386 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -42,18 +42,18 @@
       "title": "Bitcoin Up or Down on August 17?",
       "side_label": "Down \u2014 Bitcoin Up or Down on August 17?",
       "outcome": "Down",
-      "entry_price": 0.615,
+      "entry_price": 0.645,
       "whale_price": 0.655,
-      "drift_c": -4.02,
-      "contracts": 834,
-      "cost": 512.91,
-      "max_payout": 834.0,
-      "conviction": 0.513,
-      "hours_to_resolve": 16.8,
+      "drift_c": -1.02,
+      "contracts": 773,
+      "cost": 498.59,
+      "max_payout": 773.0,
+      "conviction": 0.499,
+      "hours_to_resolve": 16.5,
       "n_wallets": 1,
       "whale_usd": 18179,
-      "minutes_ago": 43,
-      "liquidity": 43403,
+      "minutes_ago": 59,
+      "liquidity": 43263,
       "url": "https://polymarket.com/event/bitcoin-up-or-down-on-august-17-2026",
       "end_iso": "2026-08-17T16:00:00Z",
       "event_iso": "",
@@ -62,9 +62,9 @@
       "why": [
         "1 profitable wallet on this side",
         "$18,179, 91% of their own book",
-        "latest buy 43 min ago",
-        "price 4.0c cheaper than they paid",
-        "17h until it resolves"
+        "latest buy 59 min ago",
+        "price 1.0c cheaper than they paid",
+        "16h until it resolves"
       ],
       "warnings": [
         "resolves within 2 days",
@@ -81,15 +81,15 @@
       "entry_price": 0.65,
       "whale_price": 0.65,
       "drift_c": 0.0,
-      "contracts": 690,
-      "cost": 448.5,
-      "max_payout": 690.0,
-      "conviction": 0.449,
-      "hours_to_resolve": 137.3,
+      "contracts": 669,
+      "cost": 434.85,
+      "max_payout": 669.0,
+      "conviction": 0.435,
+      "hours_to_resolve": 137.0,
       "n_wallets": 1,
       "whale_usd": 3205,
-      "minutes_ago": 127,
-      "liquidity": 140020,
+      "minutes_ago": 143,
+      "liquidity": 140034,
       "url": "https://polymarket.com/event/epl-bre-tot-2026-08-22",
       "end_iso": "2026-08-22T16:30:00Z",
       "event_iso": "2026-08-22 16:30:00+00",
@@ -98,27 +98,26 @@
       "why": [
         "1 profitable wallet on this side",
         "$3,205 \u2014 but only 0.4% of their book",
-        "latest buy 127 min ago",
+        "latest buy 143 min ago",
         "still near their entry price",
         "137h until it resolves",
-        "$140,020 liquidity"
+        "$140,034 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 486,
+  "considered": 490,
   "rejected": {
-    "in-play (event already started)": 15,
-    "already resolved": 54,
-    "market closed": 237,
-    "wallet not new (no track record either)": 79,
-    "resolves in under 3h": 4,
-    "fresh wallet: market too liquid for the pattern": 42,
-    "resolves more than 30 days out": 2,
-    "esports (sleeve retired \u2014 see esports_enabled)": 39,
-    "parlay / combo ticket, not a single market": 9,
+    "market closed": 252,
+    "already resolved": 52,
+    "wallet not new (no track record either)": 72,
+    "resolves more than 30 days out": 3,
+    "esports (sleeve retired \u2014 see esports_enabled)": 47,
+    "fresh wallet: market too liquid for the pattern": 36,
+    "in-play (event already started)": 13,
+    "parlay / combo ticket, not a single market": 10,
     "price ran away from the whale's entry": 1,
     "duplicate event (kept the stronger side)": 1,
     "below the 0.45 buy bar (recorded, not bought)": 1
@@ -129,21 +128,66 @@
     "enabled": true,
     "events_scanned": 345,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 124,
+      "bracket has legs we cannot price (fail closed)": 123,
       "not a ladder: fewer than two live, quoted legs": 91,
-      "not a ladder: group labels are not thresholds or deadlines": 52,
+      "not a ladder: group labels are not thresholds or deadlines": 53,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "bracket has too many legs to place by hand": 2,
-      "ladder pair too illiquid to fill": 71,
+      "ladder pair too illiquid to fill": 76,
       "bracket underround smaller than the spread": 1,
       "not a ladder: numeric group spans different end dates": 1,
-      "not a ladder: a live leg carries no group label": 5,
+      "not a ladder: a live leg carries no group label": 4,
       "bracket leg too illiquid to fill": 4,
       "bracket overround smaller than the spread": 1,
       "dominance gap smaller than the spread": 2
     },
     "notes": [],
-    "violations": []
+    "violations": [
+      {
+        "family": "bracket",
+        "event_slug": "mex-ame-asl-2026-08-16",
+        "constraint": "3 mutually exclusive outcomes offer at 0.8100 total, but exactly one of them pays 1.00",
+        "edge_c": 19.0,
+        "actions": [
+          "BUY YES  CF Am\u00e9rica  @ 0.510",
+          "BUY YES  Draw (CF Am\u00e9rica vs. Atl\u00e9tico San Luis)  @ 0.190",
+          "BUY YES  Atl\u00e9tico San Luis  @ 0.110"
+        ],
+        "warnings": [
+          "requires filling all 3 legs - confirm the event page lists exactly 3 outcomes before trusting the sum"
+        ],
+        "url": "https://polymarket.com/event/mex-ame-asl-2026-08-16",
+        "legs": [
+          {
+            "question": "Will CF Am\u00e9rica win on 2026-08-16?",
+            "name": "CF Am\u00e9rica",
+            "bid": 0.5,
+            "ask": 0.51,
+            "liquidity": 129768.6026,
+            "end_iso": "2026-08-16T23:00:00Z",
+            "url": "https://polymarket.com/event/mex-ame-asl-2026-08-16"
+          },
+          {
+            "question": "Will CF Am\u00e9rica vs. Atl\u00e9tico San Luis end in a draw?",
+            "name": "Draw (CF Am\u00e9rica vs. Atl\u00e9tico San Luis)",
+            "bid": 0.16,
+            "ask": 0.19,
+            "liquidity": 73644.4148,
+            "end_iso": "2026-08-16T23:00:00Z",
+            "url": "https://polymarket.com/event/mex-ame-asl-2026-08-16"
+          },
+          {
+            "question": "Will Atl\u00e9tico San Luis win on 2026-08-16?",
+            "name": "Atl\u00e9tico San Luis",
+            "bid": 0.09,
+            "ask": 0.11,
+            "liquidity": 61484.1823,
+            "end_iso": "2026-08-16T23:00:00Z",
+            "url": "https://polymarket.com/event/mex-ame-asl-2026-08-16"
+          }
+        ]
+      }
+    ]
   },
   "macro": {
     "ok": true,
@@ -206,9 +250,9 @@
           },
           {
             "label": "0.6%+",
-            "market_prob": 0.0245,
+            "market_prob": 0.0235,
             "model_prob": 0.0151,
-            "gap_c": -0.94,
+            "gap_c": -0.84,
             "suspect": false
           }
         ]
@@ -248,9 +292,9 @@
           },
           {
             "label": "2.3%",
-            "market_prob": 0.35,
+            "market_prob": 0.375,
             "model_prob": 0.215,
-            "gap_c": -13.5,
+            "gap_c": -16.0,
             "suspect": false
           },
           {
@@ -269,9 +313,9 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.044,
+            "market_prob": 0.0435,
             "model_prob": 0.1012,
-            "gap_c": 5.72,
+            "gap_c": 5.77,
             "suspect": false
           },
           {
@@ -395,16 +439,16 @@
           },
           {
             "label": "3.0%",
-            "market_prob": 0.0445,
+            "market_prob": 0.043,
             "model_prob": 0.0206,
-            "gap_c": -2.39,
+            "gap_c": -2.24,
             "suspect": false
           },
           {
             "label": "3.1%",
-            "market_prob": 0.0455,
+            "market_prob": 0.047,
             "model_prob": 0.0671,
-            "gap_c": 2.16,
+            "gap_c": 2.01,
             "suspect": false
           },
           {
@@ -430,9 +474,9 @@
           },
           {
             "label": "3.5%",
-            "market_prob": 0.135,
+            "market_prob": 0.13,
             "model_prob": 0.171,
-            "gap_c": 3.6,
+            "gap_c": 4.1,
             "suspect": false
           },
           {

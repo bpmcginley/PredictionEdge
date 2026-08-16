@@ -928,54 +928,6 @@
       "fee": 3.26
     },
     {
-      "key": "0xd0931285bc113225a34787e34f7355d63b0313b30cc7640ab9a9b72e52a38340:milwaukee brewers",
-      "market_id": "0xd0931285bc113225a34787e34f7355d63b0313b30cc7640ab9a9b72e52a38340",
-      "venue": "polymarket",
-      "outcome": "Milwaukee Brewers",
-      "title": "Milwaukee Brewers vs. Los Angeles Dodgers",
-      "url": "https://polymarket.com/event/mlb-mil-lad-2026-08-16",
-      "stake": 100.0,
-      "shown": true,
-      "source": "whale",
-      "conviction": 0.534,
-      "n_wallets": 1,
-      "whale_usd": 38777,
-      "drift_c": 0.5,
-      "hours_to_resolve": 5.1,
-      "liquidity": 305652,
-      "end_iso": "2026-08-23T20:10:00Z",
-      "event_iso": "2026-08-16 20:10:00+00",
-      "origin_market_id": "",
-      "opened_at": 1786892539.0984352,
-      "price": 0.375,
-      "contracts": 266.6667,
-      "fee": 1.1
-    },
-    {
-      "key": "aec-mlb-mil-lad-2026-08-16:milwaukee brewers",
-      "market_id": "aec-mlb-mil-lad-2026-08-16",
-      "venue": "polymarket-us",
-      "outcome": "Milwaukee Brewers",
-      "title": "Milwaukee Brewers vs. Los Angeles Dodgers",
-      "url": "https://polymarket.us/market/aec-mlb-mil-lad-2026-08-16",
-      "stake": 100.0,
-      "shown": true,
-      "source": "whale-pmus",
-      "conviction": 0.534,
-      "n_wallets": 1,
-      "whale_usd": 38777,
-      "drift_c": 0.5,
-      "hours_to_resolve": 5.1,
-      "liquidity": 305652,
-      "end_iso": "2026-08-23T20:10:00Z",
-      "event_iso": "2026-08-16 20:10:00+00",
-      "origin_market_id": "0xd0931285bc113225a34787e34f7355d63b0313b30cc7640ab9a9b72e52a38340",
-      "opened_at": 1786892539.0984352,
-      "price": 0.375,
-      "contracts": 266.6667,
-      "fee": 4.39
-    },
-    {
       "key": "0xa604e351f37ce95f9574dd2e5ba3d52d35c4f42030341b29e425997c01f0a371:no",
       "market_id": "0xa604e351f37ce95f9574dd2e5ba3d52d35c4f42030341b29e425997c01f0a371",
       "venue": "polymarket",
@@ -16533,32 +16485,90 @@
       "won": false,
       "pred": 0.555,
       "realized": -100.78
+    },
+    {
+      "key": "0xd0931285bc113225a34787e34f7355d63b0313b30cc7640ab9a9b72e52a38340:milwaukee brewers",
+      "market_id": "0xd0931285bc113225a34787e34f7355d63b0313b30cc7640ab9a9b72e52a38340",
+      "venue": "polymarket",
+      "outcome": "Milwaukee Brewers",
+      "title": "Milwaukee Brewers vs. Los Angeles Dodgers",
+      "url": "https://polymarket.com/event/mlb-mil-lad-2026-08-16",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.534,
+      "n_wallets": 1,
+      "whale_usd": 38777,
+      "drift_c": 0.5,
+      "hours_to_resolve": 5.1,
+      "liquidity": 305652,
+      "end_iso": "2026-08-23T20:10:00Z",
+      "event_iso": "2026-08-16 20:10:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786892539.0984352,
+      "price": 0.375,
+      "contracts": 266.6667,
+      "fee": 1.1,
+      "settled_at": 1786923028.5831509,
+      "winner": "Milwaukee Brewers",
+      "won": true,
+      "pred": 0.375,
+      "realized": 165.5667
+    },
+    {
+      "key": "aec-mlb-mil-lad-2026-08-16:milwaukee brewers",
+      "market_id": "aec-mlb-mil-lad-2026-08-16",
+      "venue": "polymarket-us",
+      "outcome": "Milwaukee Brewers",
+      "title": "Milwaukee Brewers vs. Los Angeles Dodgers",
+      "url": "https://polymarket.us/market/aec-mlb-mil-lad-2026-08-16",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale-pmus",
+      "conviction": 0.534,
+      "n_wallets": 1,
+      "whale_usd": 38777,
+      "drift_c": 0.5,
+      "hours_to_resolve": 5.1,
+      "liquidity": 305652,
+      "end_iso": "2026-08-23T20:10:00Z",
+      "event_iso": "2026-08-16 20:10:00+00",
+      "origin_market_id": "0xd0931285bc113225a34787e34f7355d63b0313b30cc7640ab9a9b72e52a38340",
+      "opened_at": 1786892539.0984352,
+      "price": 0.375,
+      "contracts": 266.6667,
+      "fee": 4.39,
+      "settled_at": 1786923028.5831509,
+      "winner": "Milwaukee Brewers",
+      "won": true,
+      "pred": 0.375,
+      "realized": 162.2767
     }
   ],
   "stats": {
-    "n": 381,
-    "win_rate": 0.5433,
-    "avg_predicted": 0.5308,
-    "calibration_gap": -0.0125,
-    "brier": 0.2272,
-    "total_pnl": 1097.38,
-    "roi_on_stake": 0.0288,
-    "mean_return": 0.0288,
-    "sharpe_per_bet": 0.0255,
-    "psr_vs_zero": 0.6939,
-    "dsr": 0.6939,
+    "n": 383,
+    "win_rate": 0.5457,
+    "avg_predicted": 0.53,
+    "calibration_gap": -0.0157,
+    "brier": 0.228,
+    "total_pnl": 1425.22,
+    "roi_on_stake": 0.0372,
+    "mean_return": 0.0372,
+    "sharpe_per_bet": 0.0329,
+    "psr_vs_zero": 0.7447,
+    "dsr": 0.7447,
     "implied_sr0": 0.0,
     "bootstrap_ci": [
-      -0.067,
-      0.1234
+      -0.0699,
+      0.1296
     ],
-    "p_mean_le_0": 0.311,
+    "p_mean_le_0": 0.2915,
     "deploy": false,
     "reasons": [
-      "DSR 0.694 < 0.95",
+      "DSR 0.745 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 48,
+    "open_positions": 46,
     "retired_sources": [
       "weather"
     ],
@@ -16753,27 +16763,27 @@
       }
     ],
     "including_retired": {
-      "n": 531,
-      "win_rate": 0.5104,
-      "avg_predicted": 0.5192,
-      "calibration_gap": 0.0088,
-      "brier": 0.2195,
-      "total_pnl": -2501.98,
-      "roi_on_stake": -0.0471,
-      "mean_return": -0.0471,
-      "sharpe_per_bet": -0.0432,
-      "psr_vs_zero": 0.1676,
-      "dsr": 0.1676,
+      "n": 533,
+      "win_rate": 0.5122,
+      "avg_predicted": 0.5187,
+      "calibration_gap": 0.0065,
+      "brier": 0.2201,
+      "total_pnl": -2174.14,
+      "roi_on_stake": -0.0408,
+      "mean_return": -0.0408,
+      "sharpe_per_bet": -0.0373,
+      "psr_vs_zero": 0.2011,
+      "dsr": 0.2011,
       "implied_sr0": 0.0,
       "bootstrap_ci": [
-        -0.1288,
-        0.0393
+        -0.1251,
+        0.043
       ],
-      "p_mean_le_0": 0.819,
+      "p_mean_le_0": 0.807,
       "deploy": false,
       "reasons": [
         "mean per-bet return <= 0",
-        "DSR 0.168 < 0.95",
+        "DSR 0.201 < 0.95",
         "bootstrap 5% CI of mean return <= 0"
       ]
     },
@@ -16835,54 +16845,54 @@
         "retired": true
       },
       "whale": {
-        "n": 290,
-        "win_rate": 0.5414,
-        "avg_predicted": 0.5332,
-        "calibration_gap": -0.0082,
-        "brier": 0.2251,
-        "total_pnl": 304.79,
-        "roi_on_stake": 0.0105,
-        "mean_return": 0.0105,
-        "sharpe_per_bet": 0.0098,
-        "psr_vs_zero": 0.5668,
-        "dsr": 0.5668,
+        "n": 291,
+        "win_rate": 0.543,
+        "avg_predicted": 0.5327,
+        "calibration_gap": -0.0103,
+        "brier": 0.2257,
+        "total_pnl": 470.36,
+        "roi_on_stake": 0.0162,
+        "mean_return": 0.0162,
+        "sharpe_per_bet": 0.0151,
+        "psr_vs_zero": 0.6023,
+        "dsr": 0.6023,
         "implied_sr0": 0.0,
         "bootstrap_ci": [
-          -0.081,
-          0.1079
+          -0.0805,
+          0.1101
         ],
-        "p_mean_le_0": 0.415,
+        "p_mean_le_0": 0.421,
         "deploy": false,
         "reasons": [
-          "DSR 0.567 < 0.95",
+          "DSR 0.602 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 44
+        "open_positions": 43
       },
       "whale-pmus": {
-        "n": 91,
-        "win_rate": 0.5495,
-        "avg_predicted": 0.523,
-        "calibration_gap": -0.0265,
-        "brier": 0.2337,
-        "total_pnl": 792.58,
-        "roi_on_stake": 0.0871,
-        "mean_return": 0.0871,
-        "sharpe_per_bet": 0.0666,
-        "psr_vs_zero": 0.7499,
-        "dsr": 0.7499,
+        "n": 92,
+        "win_rate": 0.5543,
+        "avg_predicted": 0.5214,
+        "calibration_gap": -0.033,
+        "brier": 0.2354,
+        "total_pnl": 954.86,
+        "roi_on_stake": 0.1038,
+        "mean_return": 0.1038,
+        "sharpe_per_bet": 0.0792,
+        "psr_vs_zero": 0.7922,
+        "dsr": 0.7922,
         "implied_sr0": 0.0,
         "bootstrap_ci": [
-          -0.0926,
-          0.3102
+          -0.0865,
+          0.3068
         ],
-        "p_mean_le_0": 0.1835,
+        "p_mean_le_0": 0.1745,
         "deploy": false,
         "reasons": [
-          "DSR 0.750 < 0.95",
+          "DSR 0.792 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 4
+        "open_positions": 3
       }
     },
     "maker": {
@@ -16903,12 +16913,12 @@
         },
         "opposing side of this market already held": {
           "distinct": 3,
-          "times": 4
+          "times": 5
         }
       }
     }
   },
-  "generated": "2026-08-16 23:13:38",
+  "generated": "2026-08-16 23:30:29",
   "voided": [],
   "bridge": {
     "log": {
@@ -18578,9 +18588,9 @@
       "url": "https://polymarket.com/event/bitcoin-up-or-down-on-august-17-2026",
       "source": "whale",
       "first_at": 1786909020.042475,
-      "times": 2,
+      "times": 3,
       "reason": "opposing side of this market already held",
-      "last_at": 1786922015.0770187,
+      "last_at": 1786923023.7564597,
       "held": [
         "up"
       ]
