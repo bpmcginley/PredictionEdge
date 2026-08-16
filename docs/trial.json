@@ -1598,6 +1598,102 @@
       "price": 0.49,
       "contracts": 204.0816,
       "fee": 3.57
+    },
+    {
+      "key": "0x815fe01c737a1078f0e8974dc113cf5083c92d95eaa8bb764855259bd5d670e3:joblife",
+      "market_id": "0x815fe01c737a1078f0e8974dc113cf5083c92d95eaa8bb764855259bd5d670e3",
+      "venue": "polymarket",
+      "outcome": "Joblife",
+      "title": "Valorant: Fire Flux Esports vs Joblife (BO3) - VCT EMEA Play-Ins",
+      "url": "https://polymarket.com/event/val-ff3-jl-2026-08-16",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.473,
+      "n_wallets": 1,
+      "whale_usd": 35414,
+      "drift_c": 0.5,
+      "hours_to_resolve": 7.4,
+      "liquidity": 51929,
+      "end_iso": "2026-08-16T22:00:00Z",
+      "event_iso": "2026-08-16 16:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786869550.2439382,
+      "price": 0.485,
+      "contracts": 206.1856,
+      "fee": 0.91
+    },
+    {
+      "key": "0x4234a8fc59b3e003c00d5f590bce15bd7f778b2049dabd7bcb3e6d0e409398a6:no",
+      "market_id": "0x4234a8fc59b3e003c00d5f590bce15bd7f778b2049dabd7bcb3e6d0e409398a6",
+      "venue": "polymarket",
+      "outcome": "No",
+      "title": "Will Paris Saint-Germain win on 2026-08-16?",
+      "url": "https://polymarket.com/event/frtc-rcl-psg-2026-08-16",
+      "stake": 100.0,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.444,
+      "n_wallets": 1,
+      "whale_usd": 4960,
+      "drift_c": 1.0,
+      "hours_to_resolve": 10.1,
+      "liquidity": 50571,
+      "end_iso": "2026-08-16T18:45:00Z",
+      "event_iso": "2026-08-16 18:45:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786869550.2439382,
+      "price": 0.44,
+      "contracts": 227.2727,
+      "fee": 0.98
+    },
+    {
+      "key": "0xb01fd46b4c866dfa96a093c0ea54e11581ad2ca2666bacfba5cb4fc69cb5081d:yes",
+      "market_id": "0xb01fd46b4c866dfa96a093c0ea54e11581ad2ca2666bacfba5cb4fc69cb5081d",
+      "venue": "polymarket",
+      "outcome": "Yes",
+      "title": "Will Real Madrid win on 2026-08-16?",
+      "url": "https://polymarket.com/event/clf-sch-rma-2026-08-16",
+      "stake": 100.0,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.386,
+      "n_wallets": 1,
+      "whale_usd": 8307,
+      "drift_c": 1.0,
+      "hours_to_resolve": 6.4,
+      "liquidity": 51981,
+      "end_iso": "2026-08-16T15:00:00Z",
+      "event_iso": "2026-08-16 15:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786869550.2439382,
+      "price": 0.72,
+      "contracts": 138.8889,
+      "fee": 0.5
+    },
+    {
+      "key": "0x995705f945b0ca47cafcb3ec89fead6d9a0f2d0a5f42fecff68fed619d25e86e:yes",
+      "market_id": "0x995705f945b0ca47cafcb3ec89fead6d9a0f2d0a5f42fecff68fed619d25e86e",
+      "venue": "polymarket",
+      "outcome": "Yes",
+      "title": "Will Ryan Elijah be the FL-07 Republican nominee?",
+      "url": "https://polymarket.com/event/fl-07-republican-primary-winner-20260717204847811",
+      "stake": 100.0,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.345,
+      "n_wallets": 1,
+      "whale_usd": 3349,
+      "drift_c": 3.2,
+      "hours_to_resolve": 63.3,
+      "liquidity": 29272,
+      "end_iso": "2026-08-18T23:59:00Z",
+      "event_iso": "",
+      "origin_market_id": "",
+      "opened_at": 1786869550.2439382,
+      "price": 0.8,
+      "contracts": 125.0,
+      "fee": 0.35
     }
   ],
   "settled": [
@@ -14692,7 +14788,7 @@
       "DSR 0.545 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 62,
+    "open_positions": 66,
     "retired_sources": [
       "weather"
     ],
@@ -14776,7 +14872,7 @@
           "DSR 0.433 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 55
+        "open_positions": 59
       },
       "whale-pmus": {
         "n": 90,
@@ -14814,7 +14910,7 @@
       "foregone_edge": 0.7688
     }
   },
-  "generated": "2026-08-16 07:47:38",
+  "generated": "2026-08-16 08:39:48",
   "voided": [],
   "bridge": {
     "log": {
@@ -15962,6 +16058,11 @@
         "polymarket-us": "matched",
         "ts": 1786866434.4,
         "kalshi": "no-series"
+      },
+      "0x815fe01c737a1078f0e8974dc113cf5083c92d95eaa8bb764855259bd5d670e3:joblife": {
+        "polymarket-us": "no-counterpart",
+        "ts": 1786869550.2,
+        "kalshi": "no-series"
       }
     },
     "summary": {
@@ -15970,12 +16071,12 @@
         "matched": 98,
         "outcome-not-yes-no": 1,
         "no-signature": 46,
-        "no-counterpart": 31,
+        "no-counterpart": 32,
         "ambiguous": 24
       },
       "kalshi": {
         "outcome-not-a-team": 63,
-        "no-series": 120,
+        "no-series": 121,
         "no-signature": 46
       }
     }
