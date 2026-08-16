@@ -705,3 +705,40 @@ def test_the_bar_splits_bought_from_merely_recorded():
     assert len(r.tickets) == 1
     assert len(r.probe) == 2
     assert min(t.conviction for t in r.tickets) > max(t.conviction for t in r.probe)
+
+
+# --- esports, cut on measured evidence (see Config.esports_enabled) -----------
+
+def test_an_esports_market_is_rejected_by_name():
+    trades = [_trade("0xSHARP1", "A", "Yes", 60_000, 0.40)]
+    r = _board(trades, {"A": _meta(
+        question="Counter-Strike: BIG vs G2 (BO3) - Esports World Cup Group A")})
+    assert r.tickets == []
+    assert any("esports" in k for k in r.rejected)
+
+
+def test_an_esports_derivative_is_caught_by_the_event_slug():
+    """"Game Handicap: DK (-1.5) vs KT Rolster (+1.5)" names no game anywhere in the
+    title. Only the event slug says it is a League of Legends match, and these
+    derivatives are half the esports rows in the live record."""
+    trades = [_trade("0xSHARP1", "A", "Yes", 60_000, 0.40)]
+    trades[0] = replace(trades[0], event_slug="lol-kt-dk-2026-08-12")
+    r = _board(trades, {"A": _meta(question="Game Handicap: DK (-1.5) vs KT Rolster (+1.5)")})
+    assert r.tickets == []
+    assert any("esports" in k for k in r.rejected)
+
+
+def test_a_leagues_cup_soccer_fixture_is_not_esports():
+    """`lec-tig-vwh` is Leagues Cup, not the LoL EMEA Championship. Matching on the
+    bare league acronym swept four soccer markets into the esports pile in testing,
+    which is why the classifier does not look at LCK/LPL/LEC/LCS at all."""
+    trades = [_trade("0xSHARP1", "A", "Yes", 60_000, 0.40)]
+    trades[0] = replace(trades[0], event_slug="lec-tig-vwh-2026-08-11")
+    r = _board(trades, {"A": _meta(question="Will Vancouver Whitecaps FC win on 2026-08-11?")})
+    assert len(r.tickets) == 1
+
+
+def test_the_esports_cut_is_a_flag_not_a_hardcoded_skip():
+    trades = [_trade("0xSHARP1", "A", "Yes", 60_000, 0.40)]
+    metas = {"A": _meta(question="Counter-Strike: BIG vs G2 (BO3)")}
+    assert _board(trades, metas, cfg=_cfg(esports_enabled=True)).tickets != []

@@ -147,6 +147,21 @@ class Config:
     board_max_signal_age_min: float = 120.0      # floor
     board_stale_fraction: float = 0.20
     board_max_signal_age_cap_min: float = 2880.0  # 48h ceiling
+    # --- esports (RETIRED 2026-08-16) ----------------------------------------
+    # OFF because it is the one slice of the whale board that is stably, decisively bad.
+    # Scored on `docs/trial.json`: 96 settled rows, 46.9% win rate, -$1,697, -17.7% per
+    # bet. Unlike the candidate filters found by slicing, this one does NOT flip sign
+    # between halves - it was -16.3% before the 2026-08-14 five-lever merge and -4.3%
+    # after, losing money in both windows - and it survived as a loser in the same
+    # split-half test that killed every other slice as noise.
+    #
+    # Why it is structurally hopeless rather than unlucky: these are the fastest-moving,
+    # thinnest, most-arbitraged books on the venue, the whale feed's own latency is
+    # largest relative to a BO1 map, and the wallets copied earned their record on
+    # politics and crypto leaderboards, not on Counter-Strike. Set PE_ESPORTS_ENABLED=1
+    # to re-arm; the classifier stays live either way so the reject is COUNTED in the
+    # board ledger rather than becoming an invisible hole in `considered`.
+    esports_enabled: bool = False
     board_min_price: float = 0.05
     board_max_price: float = 0.90
     board_max_drift_c: float = 4.0          # max cents price may run past the whale's entry
@@ -413,6 +428,7 @@ class Config:
             board_stale_fraction=f("PE_BOARD_STALE_FRACTION", cls.board_stale_fraction),
             board_max_signal_age_cap_min=f("PE_BOARD_MAX_SIGNAL_AGE_CAP_MIN",
                                            cls.board_max_signal_age_cap_min),
+            esports_enabled=_truthy(e.get("PE_ESPORTS_ENABLED"), cls.esports_enabled),
             board_min_price=f("PE_BOARD_MIN_PRICE", cls.board_min_price),
             board_max_price=f("PE_BOARD_MAX_PRICE", cls.board_max_price),
             board_max_drift_c=f("PE_BOARD_MAX_DRIFT_C", cls.board_max_drift_c),

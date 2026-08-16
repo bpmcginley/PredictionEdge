@@ -251,3 +251,26 @@ def test_copy_order_params_none_market():
 def test_copy_order_params_out_of_band():
     deep = PMUSMarket("mkt", yes_bid=0.0, yes_ask=0.99, last_px=0.99)
     assert copy_order_params(_SIG_YES, deep, max_price=0.90) is None
+
+
+# --- esports classifier -------------------------------------------------------
+
+def test_is_esports_matches_game_names_and_the_best_of_convention():
+    from predictionedge.copytrade import is_esports
+    assert is_esports("Counter-Strike: BIG vs G2 (BO1) - Esports World Cup Group A")
+    assert is_esports("LoL: KT Rolster vs Dplus KIA (BO3) - LCK Round 3-4")
+    assert is_esports("Valorant: Evil Geniuses GC vs Arashi GC (BO3)")
+    assert is_esports("Game Handicap: NS (-1.5) vs DN SOOPers (+1.5)",
+                      "https://polymarket.com/event/lol-dnf-ns-2026-08-12")
+
+
+def test_is_esports_does_not_swallow_ordinary_sports():
+    """League acronyms are deliberately not matched: `lec-tig-vwh` is a Leagues Cup
+    soccer fixture, and treating it as esports would cut real sports rows."""
+    from predictionedge.copytrade import is_esports
+    assert not is_esports("Will Vancouver Whitecaps FC win on 2026-08-11?",
+                          "https://polymarket.com/event/lec-tig-vwh-2026-08-11")
+    assert not is_esports("New York Mets vs. Pittsburgh Pirates",
+                          "https://polymarket.com/event/mlb-nym-pit-2026-08-07")
+    assert not is_esports("Cincinnati Open: Cameron Norrie vs Dino Prizmic",
+                          "https://polymarket.com/event/atp-nor-priz-2026-08-13")

@@ -47,6 +47,7 @@ import json
 import time
 from pathlib import Path
 
+from . import sizing
 from .fees import is_designated, maker_trade_fee, trade_fee
 
 # A resolved Polymarket market pays its winning leg at 1 and the rest at 0. Demanding
@@ -113,6 +114,72 @@ def _key(market_id: str, outcome: str) -> str:
     return f"{market_id}:{outcome.strip().lower()}"
 
 
+def _event_of(row: dict) -> str:
+    """Which EVENT a row (or a ticket) belongs to, for the per-event exposure cap.
+
+    The Polymarket event-page url is the venue's own event identifier, and it is the
+    only field that groups the markets of one fixture: a moneyline and its O/U carry
+    different ids and different titles but the same `/event/mlb-bal-tex-2026-08-07`.
+    Falling back to the market id where there is no url (the Kalshi sleeves) makes each
+    market its own event, which is the no-op default - safer than a guess that would
+    lump unrelated markets under one ceiling.
+    """
+    url = (row.get("url") or "").strip().lower()
+    return url or (row.get("market_id") or "").strip()
+
+
+def _contracts_of(row: dict) -> int:
+    """Contracts a live row represents, derived for rows written before the sizer.
+
+    Rows opened under the old flat-stake path all carry `contracts`; maker intents did
+    not, because a pending order only stored its dollar stake. Deriving from the limit
+    price rather than assuming zero matters: a resting order IS exposure on its event,
+    and counting it as none would let the cap be walked around by leaving orders out.
+    """
+    c = row.get("contracts")
+    if c is None:
+        price = float(row.get("price") or row.get("limit_price") or 0.0)
+        c = (float(row.get("stake") or 0.0) / price) if price > 0 else 0.0
+    return int(round(float(c)))
+
+
+def _account_for(stake: float) -> sizing.Account:
+    """The account the trial's flat stake implies, so the house caps bind at trial scale.
+
+    `sizing.Account` states the risk budget as a FRACTION of capital, and the trial
+    states it as a flat dollar stake; the two are the same statement, so the account is
+    `stake / per_trade_fraction`. Deriving it rather than hardcoding `Account()` keeps
+    the caps proportional to whatever `--stake` the trial is run at, instead of sizing a
+    $100 paper book against the sizer's $100,000 default and never binding at all.
+    """
+    base = sizing.Account()
+    return sizing.Account(size=stake / base.per_trade_fraction,
+                          daily_loss_limit_fraction=base.daily_loss_limit_fraction,
+                          per_trade_fraction=base.per_trade_fraction)
+
+
+def _block(log: dict, key: str, t: dict, now: float, reason: str, **extra) -> None:
+    """Log a ticket the exposure rules refused. Keyed, so it cannot grow unbounded.
+
+    A refusal is evidence - it is the entire point of having the rule - but the board
+    republishes a blocked ticket every 15 minutes, so this is a dict updated in place
+    rather than a list appended to. `times` is how often the rule fired, which is what
+    distinguishes a cap doing real work from one that has never actually bound.
+
+    Blocked keys are deliberately NOT added to `seen`: a per-event cap is a live
+    constraint that frees up as positions settle, so the same ticket gets re-judged next
+    cycle at the price it would then be paid, rather than being retired on one refusal.
+    """
+    row = log.get(key)
+    if row is None:
+        row = log[key] = {"key": key, "market_id": t.get("market_id", ""),
+                          "outcome": t.get("outcome", ""), "title": t.get("title", ""),
+                          "url": t.get("url", ""), "source": t.get("source") or "whale",
+                          "first_at": now, "times": 0}
+    row.update({"reason": reason, "last_at": now, **extra})
+    row["times"] += 1
+
+
 def load(path: str | Path) -> dict:
     p = Path(path)
     if not p.exists():
@@ -122,6 +189,7 @@ def load(path: str | Path) -> dict:
     data.setdefault("settled", [])
     data.setdefault("voided", [])
     data.setdefault("pending", [])
+    data.setdefault("blocked", {})
     data.setdefault("stats", {})
     return data
 
@@ -134,11 +202,44 @@ def save(path: str | Path, trial: dict) -> None:
 
 def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
            fee_multiplier: float = 0.07, maker: bool = True,
-           maker_first: bool = False, now: float | None = None) -> int:
+           maker_first: bool = False, account: sizing.Account | None = None,
+           now: float | None = None) -> int:
     """Open a paper position (or a pending maker order) for each ticket not
-    already held. Returns how many were newly recorded, intents included."""
+    already held. Returns how many were newly recorded, intents included.
+
+    SIZED BY THE HOUSE RULES, not by a flat dollar amount (changed 2026-08-16). The
+    trial ran for months at a flat stake while `sizing.py` sat unused, so its
+    concentration caps never bound on anything: six legs of one baseball game each took
+    a full stake and $600 landed on a single event. Every entry now goes through
+    `sizing.size_position` against the account the stake implies, so the per-market and
+    per-event ceilings apply to the paper book exactly as they would to a real one.
+
+    The deeper reason is that the trial was scoring a position nobody was ever told to
+    place. `build_board` already sizes every published ticket through this same function
+    and the page re-sizes it against the reader's own capital - so the board said "buy N
+    contracts under the caps" while the record said "$100 flat". Those are different
+    bets. They now agree, differing only in account size, which is the one thing that
+    SHOULD differ between a $100 paper book and whatever capital a reader has.
+
+    A consequence worth knowing: 19 contracts per $1,000 against a 1% risk budget means
+    the per-market cap binds below ~52.6c, so most rows are now sized by contract count
+    rather than by dollars, and a longshot stakes less than a coinflip. That is the
+    house rule, not an accident of the account chosen - the crossover is a ratio of the
+    two constants and is the same at any account size. Per-bet returns stay comparable
+    to the flat-staked rows already in the file because a return is scale-free; DOLLAR
+    P&L across the 2026-08-16 boundary is not, and should not be added up naively.
+
+    Conviction is passed as 1.0 ON PURPOSE. The sizer can scale a stake by conviction
+    and this deliberately does not use that: the module docstring's argument is one
+    hypothesis at a time, and the settled rows say conviction does not rank anyway - the
+    0.44 bucket made +$852 while the 0.46 bucket lost $1,300. Scaling by a score
+    measured not to rank would put the most money on the worst-evidenced bets. What is
+    wired in here is the CAPS, which is the part that was missing.
+    """
     now = time.time() if now is None else now
     pending = trial.setdefault("pending", [])
+    blocked = trial.setdefault("blocked", {})
+    account = _account_for(stake) if account is None else account
     expired = (trial.get("maker") or {}).get("expired") or []
     # Pending and expired intents both block re-entry. Pending for the same reason
     # open rows do; expired because "retry until it fills" is exactly the adverse-
@@ -146,6 +247,16 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
     # the record fills only when the market comes down through it.
     seen = {r["key"] for r in trial["open"]} | {r["key"] for r in trial["settled"]} \
         | {r["key"] for r in pending} | {r["key"] for r in expired}
+    # Live exposure, from open positions AND resting intents. Settled rows are excluded
+    # on purpose: a resolved market is not a position, so it neither eats event room nor
+    # contradicts a new opinion.
+    on_event: dict[str, int] = {}
+    held_leg: dict[str, set[str]] = {}
+    for r in trial["open"] + pending:
+        ev = _event_of(r)
+        on_event[ev] = on_event.get(ev, 0) + _contracts_of(r)
+        held_leg.setdefault(r.get("market_id", ""), set()).add(
+            (r.get("outcome") or "").strip().lower())
     added = 0
     for t in tickets:
         price = float(t.get("entry_price") or 0.0)
@@ -154,6 +265,42 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
         key = _key(t.get("market_id", ""), t.get("outcome", ""))
         if key in seen:
             continue
+
+        # NEVER BOTH SIDES OF ONE MARKET. `_key` is (market, outcome), so a binary
+        # market's two legs are different keys and both used to be recorded - 40 events
+        # in the live record ended up held on both sides, a median 7.3 hours apart. That
+        # is a guaranteed loss of two fees for a locked payout, and worse as evidence:
+        # the signal contradicting itself was being scored as two independent opinions,
+        # which is 23% of the whale rows. `build_board` already keeps one opinion per
+        # event WITHIN a run; this is the same rule ACROSS runs, which is where every
+        # one of those contradictions actually happened.
+        mid = t.get("market_id", "")
+        side = (t.get("outcome") or "").strip().lower()
+        held = held_leg.get(mid)
+        if held and side not in held:
+            _block(blocked, key, t, now, "opposing side of this market already held",
+                   held=sorted(held))
+            continue
+
+        ev = _event_of(t)
+        bid = float(t.get("bid") or 0.0)
+        # Size at what we would actually PAY: the resting bid on a maker-first intent,
+        # the ask otherwise. Sizing a limit order off the ask would book contracts we
+        # never agreed to buy at a price we never agreed to pay.
+        entry = bid if (maker_first and 0.0 < bid < price) else price
+        if account.max_contracts_per_event - on_event.get(ev, 0) <= 0:
+            _block(blocked, key, t, now, "per-event contract cap already full",
+                   event=ev, on_event=on_event.get(ev, 0),
+                   cap=account.max_contracts_per_event)
+            continue
+        sized = sizing.size_position(entry, account, conviction=1.0,
+                                     already_on_event=on_event.get(ev, 0))
+        if sized is None:
+            _block(blocked, key, t, now, "no valid position size at this price",
+                   entry=round(entry, 4))
+            continue
+        contracts = sized.contracts
+
         base = {
             "key": key,
             "market_id": t.get("market_id", ""),
@@ -161,7 +308,14 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
             "outcome": t.get("outcome", ""),
             "title": t.get("title", ""),
             "url": t.get("url", ""),
-            "stake": round(stake, 4),
+            # What the sized order actually costs, which is at or below the flat stake
+            # once a cap bites. Kept as `stake` because it is still the denominator of
+            # this row's return - `backtest.evaluate` reads `realized / stake` - so the
+            # per-bet figures the deploy gate scores stay scale-free and comparable to
+            # every flat-staked row already in the file.
+            "stake": round(contracts * entry, 4),
+            # Which rule set the size: "risk-budget" means the caps never bound.
+            "capped_by": sized.capped_by,
             # Everything below is for slicing the result later, not for scoring it.
             # True = cleared the buy bar and was recommended. False = cleared every hard
             # filter but sat below it. Only the first is evidence about the board as
@@ -184,7 +338,6 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
             # a PM-US slug can't be asked Gamma anything, but its origin can.
             "origin_market_id": t.get("origin_market_id", ""),
         }
-        bid = float(t.get("bid") or 0.0)
         if maker_first and 0.0 < bid < price:
             # Maker-first: join the bid instead of crossing to the ask, and record
             # the case for the trade AT INTENT TIME. If this order never fills, the
@@ -197,16 +350,19 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
                 "limit_price": round(bid, 4),
                 "intended_price": round(bid, 4),
                 "ask_at_intent": round(price, 4),
+                # The order is for a contract COUNT, so the count is what rests in the
+                # book and what `_open_from_pending` fills - not a dollar figure that
+                # would silently re-divide at whatever price the fill came in at.
+                "contracts": float(contracts),
                 "fair_at_intent": t.get("model_prob"),
                 "edge_at_intent": t.get("edge"),
                 "polls": 0,
             })
         else:
-            contracts = stake / price
             base.update({
                 "opened_at": now,
                 "price": round(price, 4),
-                "contracts": round(contracts, 4),
+                "contracts": float(contracts),
                 # `_maker` and `_fee_mult` are per-ticket overrides of the trial-wide
                 # defaults. Bridge rows model taking the ask the moment the board
                 # fires, and a taker fill booked at maker fees would understate the
@@ -214,12 +370,18 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
                 # Kalshi does not charge one multiplier: S&P/Nasdaq markets are 0.035
                 # where the general schedule is 0.07, and booking an index row at the
                 # general rate would double its modelled cost.
-                "fee": trade_fee(price, max(1, round(contracts)),
+                "fee": trade_fee(price, max(1, contracts),
                                  multiplier=float(t.get("_fee_mult") or fee_multiplier),
                                  maker=bool(t.get("_maker", maker))),
             })
             trial["open"].append(base)
         seen.add(key)
+        # The caps must bind WITHIN a run too. Tickets arrive from the board sorted by
+        # conviction, so a single cycle can carry several legs of one fixture, and
+        # updating exposure only between runs would let exactly the concentration this
+        # is meant to prevent through the door on the first day it happened.
+        on_event[ev] = on_event.get(ev, 0) + contracts
+        held_leg.setdefault(mid, set()).add(side)
         added += 1
     return added
 
@@ -227,7 +389,12 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
 def _open_from_pending(trial: dict, row: dict, *, price: float, now: float,
                        taker: bool, fee_multiplier: float) -> None:
     """Turn a pending maker order into an open row at ``price``."""
-    contracts = row["stake"] / price
+    # A resting order is for a contract COUNT, so the fill is that count at whatever
+    # price it came in at - which is why the stake is recomputed below rather than
+    # carried. Intents written before the sizer store only a dollar stake and keep the
+    # old derivation; they are the three rows already in `docs/trial.json`.
+    stored = row.get("contracts")
+    contracts = float(stored) if stored else row["stake"] / price
     if taker:
         fee = trade_fee(price, max(1, round(contracts)),
                         multiplier=fee_multiplier, maker=False)
@@ -242,6 +409,10 @@ def _open_from_pending(trial: dict, row: dict, *, price: float, now: float,
         "opened_at": now,
         "price": round(price, 4),
         "contracts": round(contracts, 4),
+        # A taker fallback crosses at a HIGHER price than the limit, so the same
+        # contracts cost more. Carrying the intent's stake would understate what the
+        # fill actually cost and inflate this row's return by the width of the spread.
+        "stake": round(contracts * price, 4),
         "filled_price": round(price, 4),
         "fill_polls": row["polls"],
         "maker": not taker,
@@ -442,7 +613,27 @@ def stats(trial: dict, *, min_n: int = 30) -> dict:
             sliced["retired"] = True
         out["by_source"][src] = sliced
     out["maker"] = maker_stats(trial)
+    out["exposure"] = exposure_stats(trial)
     return out
+
+
+def exposure_stats(trial: dict) -> dict:
+    """What the exposure rules refused, by reason. Published, not logged.
+
+    A cap that never fires is a cap that is not doing anything, and a cap that fires on
+    everything has become an off switch - neither is visible from the settled rows,
+    because a blocked ticket leaves no row. `distinct` counts tickets; `times` counts
+    republished sightings of them, so the two together say whether one stubborn ticket
+    or many different ones are hitting the rule.
+    """
+    blocked = trial.get("blocked") or {}
+    by_reason: dict[str, dict[str, int]] = {}
+    for row in blocked.values():
+        r = by_reason.setdefault(row.get("reason") or "unknown",
+                                 {"distinct": 0, "times": 0})
+        r["distinct"] += 1
+        r["times"] += int(row.get("times") or 0)
+    return {"blocked": len(blocked), "by_reason": by_reason}
 
 
 def maker_stats(trial: dict) -> dict:
@@ -603,6 +794,10 @@ def main(argv: list[str] | None = None) -> int:
           f"{s.get('open_positions', 0)} open, {s.get('n', 0)} settled"
           + (f" (active sleeves; {s['retired_excluded']} retired row(s) held out "
              f"of the headline)" if s.get("retired_excluded") else ""))
+    exp = s.get("exposure") or {}
+    for reason, c in sorted((exp.get("by_reason") or {}).items()):
+        print(f"  blocked: {c['distinct']} ticket(s) — {reason} "
+              f"(seen {c['times']}x)")
     mk = s.get("maker") or {}
     if cfg.maker_first and (mk.get("pending") or mk.get("filled")
                             or mk.get("expired") or mk.get("fallback")):

@@ -68,6 +68,29 @@ def is_election_market(title: str, slug: str = "") -> bool:
     return bool(_ELECTION_RE.search(f"{title or ''} {(slug or '').replace('-', ' ')}"))
 
 
+# Competitive video-gaming markets. Matched on unambiguous game names, the word
+# "esports", the bracketed best-of convention Polymarket uses only here ("(BO3)"), and
+# the event-slug prefixes the venue assigns per title. Deliberately NOT the league
+# acronyms LCK/LPL/LEC/LCS: `lec-tig-vwh` is a LEAGUES CUP soccer fixture, and matching
+# on it silently swept four soccer markets into the esports pile in testing.
+_ESPORTS_RE = re.compile(
+    r"counter-strike|\bcs2\b|\bcs:?go\b|league of legends|\blol\b|\bdota\b|valorant|"
+    r"rainbow six|call of duty|overwatch|rocket league|starcraft|\besports?\b|"
+    r"\(bo[1-9]\)|(?:^|/)(?:cs2|lol|val|dota2?|ow|r6|cod|rl|sc2)-", re.I)
+
+
+def is_esports(title: str, slug_or_url: str = "") -> bool:
+    """A competitive-gaming market, which this project no longer bets.
+
+    Kept as a classifier rather than a hardcoded skip so the cut is one config flag and
+    the evidence for it is testable - see `Config.esports_enabled` for the numbers. The
+    slug/url is checked as well as the title because Polymarket's derivative markets on
+    an esports fixture carry no game name at all ("Game Handicap: NS (-1.5) vs DN
+    SOOPers (+1.5)"); only the event slug `lol-dnf-ns-2026-08-12` says what sport it is.
+    """
+    return bool(_ESPORTS_RE.search(f"{title or ''} {slug_or_url or ''}"))
+
+
 @dataclass(frozen=True)
 class CopySignal:
     market_id: str         # Polymarket condition_id

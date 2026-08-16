@@ -12,8 +12,11 @@ def _blank():
 
 
 def _ticket(mid="0xabc", outcome="Mets", price=0.5, **over):
+    # The url is per-market by default because it is now the EVENT key (`_event_of`),
+    # and one shared url would silently put every fixture in a test under one per-event
+    # contract ceiling. Tests that mean "same event" pass the same url explicitly.
     t = {"market_id": mid, "outcome": outcome, "entry_price": price,
-         "title": "Mets vs Pirates", "url": "https://x", "conviction": 0.7,
+         "title": "Mets vs Pirates", "url": f"https://x/{mid}", "conviction": 0.7,
          "n_wallets": 3, "whale_usd": 12000.0, "drift_c": 2.0,
          "hours_to_resolve": 6.0, "liquidity": 50000.0,
          "end_iso": "2026-08-18T00:00:00Z", "event_iso": "2026-08-11T23:00:00Z"}
@@ -25,14 +28,38 @@ def _meta(outcomes, prices, closed=True):
     return {"closed": closed, "outcomes": outcomes, "prices": prices}
 
 
-def test_a_ticket_becomes_one_open_position_at_the_flat_stake():
+def test_a_ticket_is_sized_by_the_house_rules_not_by_a_flat_dollar_amount():
+    # $100 at 1% per trade implies a $10,000 account, so 19 contracts per $1,000 caps
+    # this market at 190. The risk budget alone would have bought 250 at 40c; the cap
+    # is the binding constraint below ~52.6c, which is where most of the book lives.
     trial = _blank()
     assert record(trial, [_ticket(price=0.4)], stake=100.0) == 1
     row = trial["open"][0]
-    assert row["stake"] == 100.0
-    assert row["contracts"] == 250.0        # 100 / 0.40
+    assert row["contracts"] == 190.0
+    assert row["stake"] == 76.0             # 190 * 0.40, what the sized order costs
+    assert row["capped_by"] == "per-market-limit"
     assert row["price"] == 0.4
     assert row["conviction"] == 0.7         # recorded for slicing, not for sizing
+
+
+def test_above_the_crossover_the_risk_budget_binds_instead_of_the_cap():
+    # At 80c the budget buys 125 contracts, well under the 190 ceiling - so the stake
+    # is the full flat amount and `capped_by` says which rule was actually in charge.
+    trial = _blank()
+    record(trial, [_ticket(price=0.8)], stake=100.0)
+    row = trial["open"][0]
+    assert row["contracts"] == 125.0
+    assert row["stake"] == 100.0
+    assert row["capped_by"] == "risk-budget"
+
+
+def test_conviction_never_scales_the_stake():
+    # The sizer CAN scale by conviction and the trial deliberately does not: one
+    # hypothesis at a time, and the settled rows say conviction does not rank anyway.
+    trial = _blank()
+    record(trial, [_ticket(mid="0x1", price=0.8, conviction=0.30),
+                   _ticket(mid="0x2", price=0.8, conviction=0.95)], stake=100.0)
+    assert {r["stake"] for r in trial["open"]} == {100.0}
 
 
 def test_the_same_ticket_republished_is_not_a_second_position():
@@ -53,9 +80,58 @@ def test_a_closed_position_cannot_be_reopened():
     assert record(trial, [_ticket()], stake=100.0) == 0
 
 
-def test_two_legs_of_one_market_are_two_positions():
+def test_both_sides_of_one_market_is_never_two_positions():
+    # 40 events in the live record were held on both sides, a median 7.3h apart: a
+    # guaranteed loss of two fees, scored as two independent opinions when it is one
+    # signal contradicting itself. The second leg is refused and the refusal is logged.
     trial = _blank()
     n = record(trial, [_ticket(outcome="Mets"), _ticket(outcome="Pirates")], stake=50.0)
+    assert n == 1
+    assert [r["outcome"] for r in trial["open"]] == ["Mets"]
+    blocked = list(trial["blocked"].values())
+    assert len(blocked) == 1
+    assert blocked[0]["outcome"] == "Pirates"
+    assert blocked[0]["held"] == ["mets"]
+
+
+def test_the_opposing_side_is_blocked_across_runs_not_just_within_one():
+    # The board already keeps one opinion per event within a run, so every real
+    # contradiction happened on a LATER cycle. That is the case this has to catch.
+    trial = _blank()
+    record(trial, [_ticket(outcome="Mets")], stake=50.0)
+    assert record(trial, [_ticket(outcome="Pirates")], stake=50.0) == 0
+    assert len(trial["open"]) == 1
+
+
+def test_a_republished_block_is_one_entry_with_a_count_not_a_growing_list():
+    # The board reprints a blocked ticket every 15 minutes. A list would grow forever.
+    trial = _blank()
+    record(trial, [_ticket(outcome="Mets")], stake=50.0)
+    for _ in range(4):
+        record(trial, [_ticket(outcome="Pirates")], stake=50.0)
+    assert len(trial["blocked"]) == 1
+    assert list(trial["blocked"].values())[0]["times"] == 4
+
+
+def test_the_per_event_cap_stops_a_third_leg_of_the_same_fixture():
+    # Same event url, different markets - a moneyline and its totals. 380 contracts per
+    # event at this scale, 190 per market, so the third leg has no room left. This is
+    # the $600-on-one-baseball-game case the flat stake used to wave through.
+    trial = _blank()
+    ev = "https://polymarket.com/event/mlb-nym-pit-2026-08-11"
+    n = record(trial, [_ticket(mid="0x1", outcome="Mets", url=ev),
+                       _ticket(mid="0x2", outcome="Over", url=ev),
+                       _ticket(mid="0x3", outcome="Yes", url=ev)], stake=100.0)
+    assert n == 2
+    assert sum(r["contracts"] for r in trial["open"]) == 380.0
+    reasons = [r["reason"] for r in trial["blocked"].values()]
+    assert reasons == ["per-event contract cap already full"]
+
+
+def test_two_legs_of_different_events_are_still_two_positions():
+    trial = _blank()
+    n = record(trial, [_ticket(mid="0x1", outcome="Mets"),
+                       _ticket(mid="0x2", outcome="Pirates")], stake=50.0)
     assert n == 2
 
 
@@ -94,9 +170,9 @@ def test_a_win_pays_the_contracts_less_the_fee():
     record(trial, [_ticket(price=0.4)], stake=100.0, fee_multiplier=0.07, maker=True)
     assert settle(trial, {"0xabc": _meta(["Mets", "Pirates"], [1.0, 0.0])}) == 1
     row = trial["settled"][0]
-    fee = trade_fee(0.4, 250, multiplier=0.07, maker=True)
+    fee = trade_fee(0.4, 190, multiplier=0.07, maker=True)
     assert row["won"] is True
-    assert row["realized"] == round(250.0 * 0.6 - fee, 4)
+    assert row["realized"] == round(190.0 * 0.6 - fee, 4)
     assert trial["open"] == []
 
 
@@ -105,9 +181,12 @@ def test_a_loss_costs_the_stake_plus_the_fee():
     record(trial, [_ticket(price=0.4)], stake=100.0, fee_multiplier=0.07, maker=True)
     settle(trial, {"0xabc": _meta(["Mets", "Pirates"], [0.0, 1.0])})
     row = trial["settled"][0]
-    fee = trade_fee(0.4, 250, multiplier=0.07, maker=True)
+    fee = trade_fee(0.4, 190, multiplier=0.07, maker=True)
     assert row["won"] is False
-    assert row["realized"] == round(-100.0 - fee, 4)
+    # A loss costs what the sized order cost - 190 * 0.40 - not the flat stake it was
+    # capped down from. `stake` is the denominator of this row's return, so the two
+    # must be the same number or the loss reads as worse than 100%.
+    assert row["realized"] == round(-76.0 - fee, 4)
 
 
 def test_outcome_matching_ignores_case_and_padding():
@@ -332,7 +411,7 @@ def test_a_maker_False_ticket_is_charged_taker_fees_despite_the_default():
     record(trial, [_weather_ticket(_maker=False)], stake=100.0,
            fee_multiplier=0.07, maker=True)
     row = trial["open"][0]
-    assert row["fee"] == trade_fee(0.08, 1250, multiplier=0.07, maker=False)
+    assert row["fee"] == trade_fee(0.08, 190, multiplier=0.07, maker=False)
 
 
 def test_retag_recharges_legacy_maker_booked_weather_rows():
@@ -343,7 +422,7 @@ def test_retag_recharges_legacy_maker_booked_weather_rows():
     stale = trial["open"][0]["fee"]
     assert retag_weather_fees(trial) == 1
     fixed = trial["open"][0]["fee"]
-    assert fixed == trade_fee(0.08, 1250, multiplier=0.07, maker=False)
+    assert fixed == trade_fee(0.08, 190, multiplier=0.07, maker=False)
     assert fixed > stale * 3            # the understatement was real money
     assert retag_weather_fees(trial) == 0   # idempotent: taker recomputes to itself
 
@@ -425,7 +504,7 @@ def test_a_ticket_without_a_bid_takes_the_ask_as_before():
     record(trial, [_weather_ticket(_maker=False)], stake=100.0,
            fee_multiplier=0.07, maker=True, maker_first=True)
     assert trial.get("pending", []) == []
-    assert trial["open"][0]["fee"] == trade_fee(0.08, 1250, multiplier=0.07, maker=False)
+    assert trial["open"][0]["fee"] == trade_fee(0.08, 190, multiplier=0.07, maker=False)
 
 
 def test_maker_first_off_keeps_the_old_path_bid_or_not():
@@ -457,7 +536,7 @@ def test_an_intent_fills_when_a_later_ask_comes_to_the_limit():
     assert row["intended_price"] == 0.06
     assert row["fill_polls"] == 2
     assert row["maker"] is True
-    assert row["contracts"] == round(100.0 / 0.06, 4)
+    assert row["contracts"] == 190.0
     assert row["fee"] == 0.0                 # maker fills are free on standard markets
 
 
@@ -503,9 +582,11 @@ def test_taker_fallback_crosses_at_the_then_current_ask():
     assert row["price"] == 0.09              # the ask NOW, not the ask at intent
     assert row["maker"] is False
     assert row["maker_fallback"] is True
-    contracts = 100.0 / 0.09
-    assert row["fee"] == trade_fee(0.09, max(1, round(contracts)),
-                                   multiplier=0.07, maker=False)
+    # 190 contracts were ORDERED at the 6c limit; a taker fallback fills that same
+    # count at 9c, so the cost rises with the price and the count does not change.
+    assert row["contracts"] == 190.0
+    assert row["stake"] == round(190.0 * 0.09, 4)
+    assert row["fee"] == trade_fee(0.09, 190, multiplier=0.07, maker=False)
 
 
 def test_a_fallback_with_no_quote_cancels_instead_of_inventing_a_price():
@@ -524,7 +605,7 @@ def test_a_maker_fill_settles_through_the_same_machinery():
     row = trial["settled"][0]
     assert row["won"] is True
     assert row["pred"] == 0.06               # the fill price is the honest null
-    contracts = round(100.0 / 0.06, 4)
+    contracts = 190.0
     assert row["realized"] == round(contracts * (1.0 - 0.06) - 0.0, 4)
     assert stats(trial)["by_source"]["weather"]["n"] == 1
 
@@ -547,8 +628,7 @@ def test_designated_markets_charge_a_quarter_of_taker_on_maker_fills(monkeypatch
     record(trial, [_weather_ticket(bid=0.06)], stake=100.0,
            fee_multiplier=0.07, maker_first=True)
     check_fills(trial, _q(ask=0.06), fee_multiplier=0.07)
-    contracts = 100.0 / 0.06
-    assert trial["open"][0]["fee"] == trade_fee(0.06, max(1, round(contracts)),
+    assert trial["open"][0]["fee"] == trade_fee(0.06, 190,
                                                 multiplier=0.07, maker=True)
 
 
@@ -590,3 +670,16 @@ def test_an_intent_records_polls_even_while_the_stats_show_it_pending():
     record(trial, [_weather_ticket(bid=0.06)], maker_first=True)
     assert stats(trial)["maker"]["pending"] == 1
     assert stats(trial)["maker"]["fill_rate"] is None   # nothing resolved yet
+
+
+def test_the_exposure_block_is_published_with_the_stats():
+    # A cap that never fires does nothing; a cap that fires on everything is an off
+    # switch. Neither is visible from the settled rows, because a block leaves no row.
+    trial = _blank()
+    record(trial, [_ticket(outcome="Mets")], stake=50.0)
+    record(trial, [_ticket(outcome="Pirates")], stake=50.0)
+    record(trial, [_ticket(outcome="Pirates")], stake=50.0)
+    exp = stats(trial)["exposure"]
+    assert exp["blocked"] == 1
+    reason = "opposing side of this market already held"
+    assert exp["by_reason"][reason] == {"distinct": 1, "times": 2}

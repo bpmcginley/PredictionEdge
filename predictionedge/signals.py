@@ -28,7 +28,7 @@ import time
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 
-from .copytrade import scan_smart_flow
+from .copytrade import is_esports, scan_smart_flow
 from .sizing import Account, Sizing, event_url, size_position
 
 # A real Polymarket market key is 0x + 64 hex. Combo tickets fake one at 62, zero-padded.
@@ -442,6 +442,17 @@ def build_board(cfg, client, scorer, account: Account, *,
 
         if m.get("closed") or not m.get("active", True):
             report.reject("market closed")
+            continue
+
+        # Esports, cut on measured evidence - see `Config.esports_enabled`. Placed AFTER
+        # the metadata fetch on purpose: Gamma's `question` and `slug` are what the
+        # classifier can trust, and a derivative market on an esports fixture ("Game
+        # Handicap: NS (-1.5) vs DN SOOPers (+1.5)") names no game anywhere except the
+        # event slug. Rejecting by reason rather than skipping silently keeps the count
+        # visible on the board, so re-arming can be judged against what it lets back in.
+        if not getattr(cfg, "esports_enabled", False) and is_esports(
+                m.get("question") or s.title, s.event_slug or m.get("slug", "")):
+            report.reject("esports (sleeve retired — see esports_enabled)")
             continue
 
         if s.fresh:
