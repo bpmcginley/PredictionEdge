@@ -1336,30 +1336,6 @@
       "fee": 0.85
     },
     {
-      "key": "0xceb95b92110903907f8630f1c554b996753f021ce02689535929b5e4757b1666:legacy",
-      "market_id": "0xceb95b92110903907f8630f1c554b996753f021ce02689535929b5e4757b1666",
-      "venue": "polymarket",
-      "outcome": "Legacy",
-      "title": "Counter-Strike: Legacy vs MIBR (BO3) - Esports World Cup Group B",
-      "url": "https://polymarket.com/event/cs2-lgc-mibr-2026-08-16",
-      "stake": 100.0,
-      "shown": false,
-      "source": "whale",
-      "conviction": 0.405,
-      "n_wallets": 1,
-      "whale_usd": 9000,
-      "drift_c": 2.5,
-      "hours_to_resolve": 0.2,
-      "liquidity": 151208,
-      "end_iso": "2026-08-16T23:50:00Z",
-      "event_iso": "2026-08-16 17:50:00+00",
-      "origin_market_id": "",
-      "opened_at": 1786901786.339988,
-      "price": 0.635,
-      "contracts": 157.4803,
-      "fee": 0.64
-    },
-    {
       "key": "0xbb1682e49e0aba1d452eb672fcc6a4c3dea2ddd01edff310cfa569e46c8602a6:team liquid",
       "market_id": "0xbb1682e49e0aba1d452eb672fcc6a4c3dea2ddd01edff310cfa569e46c8602a6",
       "venue": "polymarket",
@@ -16428,33 +16404,62 @@
       "won": true,
       "pred": 0.87,
       "realized": 14.0225
+    },
+    {
+      "key": "0xceb95b92110903907f8630f1c554b996753f021ce02689535929b5e4757b1666:legacy",
+      "market_id": "0xceb95b92110903907f8630f1c554b996753f021ce02689535929b5e4757b1666",
+      "venue": "polymarket",
+      "outcome": "Legacy",
+      "title": "Counter-Strike: Legacy vs MIBR (BO3) - Esports World Cup Group B",
+      "url": "https://polymarket.com/event/cs2-lgc-mibr-2026-08-16",
+      "stake": 100.0,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.405,
+      "n_wallets": 1,
+      "whale_usd": 9000,
+      "drift_c": 2.5,
+      "hours_to_resolve": 0.2,
+      "liquidity": 151208,
+      "end_iso": "2026-08-16T23:50:00Z",
+      "event_iso": "2026-08-16 17:50:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786901786.339988,
+      "price": 0.635,
+      "contracts": 157.4803,
+      "fee": 0.64,
+      "settled_at": 1786917511.4923284,
+      "winner": "Legacy",
+      "won": true,
+      "pred": 0.635,
+      "realized": 56.8403
     }
   ],
   "stats": {
-    "n": 504,
-    "win_rate": 0.5278,
-    "avg_predicted": 0.5301,
-    "calibration_gap": 0.0023,
-    "brier": 0.224,
-    "total_pnl": -692.55,
-    "roi_on_stake": -0.0137,
-    "mean_return": -0.0137,
-    "sharpe_per_bet": -0.0125,
-    "psr_vs_zero": 0.3902,
-    "dsr": 0.3902,
+    "n": 505,
+    "win_rate": 0.5287,
+    "avg_predicted": 0.5303,
+    "calibration_gap": 0.0016,
+    "brier": 0.2238,
+    "total_pnl": -635.71,
+    "roi_on_stake": -0.0126,
+    "mean_return": -0.0126,
+    "sharpe_per_bet": -0.0115,
+    "psr_vs_zero": 0.399,
+    "dsr": 0.399,
     "implied_sr0": 0.0,
     "bootstrap_ci": [
-      -0.101,
-      0.0668
+      -0.1021,
+      0.0656
     ],
-    "p_mean_le_0": 0.631,
+    "p_mean_le_0": 0.6235,
     "deploy": false,
     "reasons": [
       "mean per-bet return <= 0",
-      "DSR 0.390 < 0.95",
+      "DSR 0.399 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 61,
+    "open_positions": 60,
     "retired_sources": [
       "weather"
     ],
@@ -16490,27 +16495,27 @@
       }
     ],
     "including_retired": {
-      "n": 520,
-      "win_rate": 0.5135,
-      "avg_predicted": 0.519,
-      "calibration_gap": 0.0056,
-      "brier": 0.2182,
-      "total_pnl": -2193.15,
-      "roi_on_stake": -0.0422,
-      "mean_return": -0.0422,
-      "sharpe_per_bet": -0.0386,
-      "psr_vs_zero": 0.1963,
-      "dsr": 0.1963,
+      "n": 521,
+      "win_rate": 0.5144,
+      "avg_predicted": 0.5193,
+      "calibration_gap": 0.0049,
+      "brier": 0.218,
+      "total_pnl": -2136.31,
+      "roi_on_stake": -0.041,
+      "mean_return": -0.041,
+      "sharpe_per_bet": -0.0375,
+      "psr_vs_zero": 0.2023,
+      "dsr": 0.2023,
       "implied_sr0": 0.0,
       "bootstrap_ci": [
-        -0.1265,
-        0.0448
+        -0.1212,
+        0.0441
       ],
-      "p_mean_le_0": 0.8045,
+      "p_mean_le_0": 0.804,
       "deploy": false,
       "reasons": [
         "mean per-bet return <= 0",
-        "DSR 0.196 < 0.95",
+        "DSR 0.202 < 0.95",
         "bootstrap 5% CI of mean return <= 0"
       ]
     },
@@ -16545,30 +16550,30 @@
         "retired": true
       },
       "whale": {
-        "n": 399,
-        "win_rate": 0.5288,
-        "avg_predicted": 0.5342,
-        "calibration_gap": 0.0054,
-        "brier": 0.2216,
-        "total_pnl": -1155.25,
-        "roi_on_stake": -0.029,
-        "mean_return": -0.029,
-        "sharpe_per_bet": -0.0279,
-        "psr_vs_zero": 0.2916,
-        "dsr": 0.2916,
+        "n": 400,
+        "win_rate": 0.53,
+        "avg_predicted": 0.5345,
+        "calibration_gap": 0.0045,
+        "brier": 0.2214,
+        "total_pnl": -1098.41,
+        "roi_on_stake": -0.0275,
+        "mean_return": -0.0275,
+        "sharpe_per_bet": -0.0265,
+        "psr_vs_zero": 0.3008,
+        "dsr": 0.3008,
         "implied_sr0": 0.0,
         "bootstrap_ci": [
-          -0.1073,
-          0.0419
+          -0.1068,
+          0.0417
         ],
-        "p_mean_le_0": 0.7735,
+        "p_mean_le_0": 0.7765,
         "deploy": false,
         "reasons": [
           "mean per-bet return <= 0",
-          "DSR 0.292 < 0.95",
+          "DSR 0.301 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 54
+        "open_positions": 53
       },
       "whale-pmus": {
         "n": 105,
@@ -16619,7 +16624,7 @@
       }
     }
   },
-  "generated": "2026-08-16 21:37:07",
+  "generated": "2026-08-16 21:58:32",
   "voided": [],
   "bridge": {
     "log": {
@@ -17920,7 +17925,7 @@
       },
       "0x9359698aab64d2cf210dbee9926d01188cb5277a3442dcf0552855842c44dce0:no": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786916211.0,
+        "ts": 1786917495.9,
         "kalshi": "no-series"
       }
     },

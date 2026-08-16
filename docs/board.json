@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-16 21:36:50",
-  "generated_at": 1786916210.9827511,
+  "generated": "2026-08-16 21:58:15",
+  "generated_at": 1786917495.8580928,
   "account_size": 100000.0,
   "tickets": [
     {
@@ -11,15 +11,15 @@
       "entry_price": 0.65,
       "whale_price": 0.65,
       "drift_c": 0.0,
-      "contracts": 815,
-      "cost": 529.75,
-      "max_payout": 815.0,
-      "conviction": 0.53,
-      "hours_to_resolve": 138.9,
+      "contracts": 787,
+      "cost": 511.55,
+      "max_payout": 787.0,
+      "conviction": 0.512,
+      "hours_to_resolve": 138.5,
       "n_wallets": 1,
       "whale_usd": 3205,
-      "minutes_ago": 30,
-      "liquidity": 136125,
+      "minutes_ago": 51,
+      "liquidity": 133355,
       "url": "https://polymarket.com/event/epl-bre-tot-2026-08-22",
       "end_iso": "2026-08-22T16:30:00Z",
       "event_iso": "2026-08-22 16:30:00+00",
@@ -28,65 +28,29 @@
       "why": [
         "1 profitable wallet on this side",
         "$3,205 \u2014 but only 0.4% of their book",
-        "latest buy 30 min ago",
+        "latest buy 51 min ago",
         "still near their entry price",
         "139h until it resolves",
-        "$136,125 liquidity"
+        "$133,355 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "probe": [
-    {
-      "market_id": "0xb295def352fb9724a07c99fe0a18ad40a7f97e79bc37483a59edc8286f123889",
-      "title": "Will Ethereum dip to $1,800 in August?",
-      "side_label": "YES on: Will Ethereum dip to $1,800 in August?",
-      "outcome": "Yes",
-      "entry_price": 0.57,
-      "whale_price": 0.53,
-      "drift_c": 4.0,
-      "contracts": 478,
-      "cost": 272.46,
-      "max_payout": 478.0,
-      "conviction": 0.273,
-      "hours_to_resolve": 366.4,
-      "n_wallets": 1,
-      "whale_usd": 4661,
-      "minutes_ago": 203,
-      "liquidity": 26645,
-      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-august-2026",
-      "end_iso": "2026-09-01T04:00:00Z",
-      "event_iso": "",
-      "slug": "will-ethereum-dip-to-1800-in-august-2026",
-      "signal_ts": 1786903987.0,
-      "why": [
-        "1 profitable wallet on this side",
-        "$4,661 \u2014 but only 0.6% of their book",
-        "latest buy 203 min ago",
-        "price up 4.0c since they bought",
-        "366h until it resolves"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    }
-  ],
-  "considered": 487,
+  "probe": [],
+  "considered": 486,
   "rejected": {
-    "in-play (event already started)": 22,
-    "market closed": 208,
-    "already resolved": 51,
-    "fresh wallet: market too liquid for the pattern": 36,
-    "wallet not new (no track record either)": 90,
-    "resolves in under 3h": 12,
-    "esports (sleeve retired \u2014 see esports_enabled)": 52,
+    "in-play (event already started)": 25,
+    "resolves in under 3h": 16,
+    "already resolved": 48,
+    "market closed": 218,
+    "fresh wallet: market too liquid for the pattern": 42,
+    "wallet not new (no track record either)": 89,
+    "esports (sleeve retired \u2014 see esports_enabled)": 33,
     "resolves more than 30 days out": 3,
-    "signal too old for this market's horizon": 1,
-    "parlay / combo ticket, not a single market": 9,
-    "price ran away from the whale's entry": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 1
+    "price ran away from the whale's entry": 3,
+    "parlay / combo ticket, not a single market": 8
   },
   "notes": [],
   "consistency": {
@@ -96,13 +60,13 @@
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 124,
       "not a ladder: fewer than two live, quoted legs": 93,
-      "not a ladder: group labels are not thresholds or deadlines": 52,
+      "not a ladder: group labels are not thresholds or deadlines": 51,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "bracket has too many legs to place by hand": 2,
-      "ladder pair too illiquid to fill": 73,
+      "ladder pair too illiquid to fill": 74,
       "bracket underround smaller than the spread": 1,
       "not a ladder: numeric group spans different end dates": 1,
-      "not a ladder: a live leg carries no group label": 6,
+      "not a ladder: a live leg carries no group label": 7,
       "bracket leg too illiquid to fill": 4,
       "bracket overround smaller than the spread": 1,
       "dominance gap smaller than the spread": 2
@@ -199,23 +163,23 @@
           },
           {
             "label": "2.1%",
-            "market_prob": 0.0045,
+            "market_prob": 0.005,
             "model_prob": 0.0536,
-            "gap_c": 4.91,
+            "gap_c": 4.86,
             "suspect": false
           },
           {
             "label": "2.2%",
-            "market_prob": 0.0405,
+            "market_prob": 0.0385,
             "model_prob": 0.1297,
-            "gap_c": 8.92,
+            "gap_c": 9.12,
             "suspect": false
           },
           {
             "label": "2.3%",
-            "market_prob": 0.37,
+            "market_prob": 0.36,
             "model_prob": 0.215,
-            "gap_c": -15.5,
+            "gap_c": -14.5,
             "suspect": false
           },
           {
@@ -234,16 +198,16 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.0435,
+            "market_prob": 0.046,
             "model_prob": 0.1012,
-            "gap_c": 5.77,
+            "gap_c": 5.52,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.057,
+            "market_prob": 0.055,
             "model_prob": 0.0369,
-            "gap_c": -2.01,
+            "gap_c": -1.81,
             "suspect": false
           },
           {
@@ -283,9 +247,9 @@
           },
           {
             "label": "3.0%",
-            "market_prob": 0.0435,
+            "market_prob": 0.0425,
             "model_prob": 0.0206,
-            "gap_c": -2.29,
+            "gap_c": -2.19,
             "suspect": false
           },
           {
@@ -381,9 +345,9 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.0405,
+            "market_prob": 0.042,
             "model_prob": 0.0009,
-            "gap_c": -3.96,
+            "gap_c": -4.11,
             "suspect": false
           },
           {
@@ -416,9 +380,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.36,
+            "market_prob": 0.35,
             "model_prob": 0.2359,
-            "gap_c": -12.41,
+            "gap_c": -11.41,
             "suspect": false
           },
           {
