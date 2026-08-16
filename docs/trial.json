@@ -764,30 +764,6 @@
       "fee": 0.36
     },
     {
-      "key": "0x5420884d67823c689ec4e334dd4a5f06740d06f40368aaa2f6798c87acee217e:elena rybakina",
-      "market_id": "0x5420884d67823c689ec4e334dd4a5f06740d06f40368aaa2f6798c87acee217e",
-      "venue": "polymarket",
-      "outcome": "Elena Rybakina",
-      "title": "Cincinnati Open: Taylor Townsend vs Elena Rybakina",
-      "url": "https://polymarket.com/event/wta-townsen-rybakin-2026-08-15",
-      "stake": 100.0,
-      "shown": false,
-      "source": "whale",
-      "conviction": 0.362,
-      "n_wallets": 1,
-      "whale_usd": 9193,
-      "drift_c": 1.5,
-      "hours_to_resolve": 34.2,
-      "liquidity": 84525,
-      "end_iso": "2026-08-22T14:00:00Z",
-      "event_iso": "2026-08-16 14:00:00+00",
-      "origin_market_id": "",
-      "opened_at": 1786765782.5809624,
-      "price": 0.735,
-      "contracts": 136.0544,
-      "fee": 0.47
-    },
-    {
       "key": "0xf13284a9605afe362c0ca146dd8e998ac3e4d411625ced4a92f39706bc673a6b:no",
       "market_id": "0xf13284a9605afe362c0ca146dd8e998ac3e4d411625ced4a92f39706bc673a6b",
       "venue": "polymarket",
@@ -2370,6 +2346,54 @@
       "price": 0.67,
       "contracts": 149.2537,
       "fee": 2.31
+    },
+    {
+      "key": "0x78cf766ae15f9ae5f9eda779b8078572ac3e52977270812249e8a4e0c690fa72:up",
+      "market_id": "0x78cf766ae15f9ae5f9eda779b8078572ac3e52977270812249e8a4e0c690fa72",
+      "venue": "polymarket",
+      "outcome": "Up",
+      "title": "Bitcoin Up or Down on August 17?",
+      "url": "https://polymarket.com/event/bitcoin-up-or-down-on-august-17-2026",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.538,
+      "n_wallets": 1,
+      "whale_usd": 18392,
+      "drift_c": -3.5,
+      "hours_to_resolve": 23.0,
+      "liquidity": 36816,
+      "end_iso": "2026-08-17T16:00:00Z",
+      "event_iso": "",
+      "origin_market_id": "",
+      "opened_at": 1786899767.6603677,
+      "price": 0.555,
+      "contracts": 180.1802,
+      "fee": 0.78
+    },
+    {
+      "key": "0xa294bafb0da4530036cfa88c393cd16ca6ac6daa0d716460b40c0d7a02e0aa72:taylor fritz",
+      "market_id": "0xa294bafb0da4530036cfa88c393cd16ca6ac6daa0d716460b40c0d7a02e0aa72",
+      "venue": "polymarket",
+      "outcome": "Taylor Fritz",
+      "title": "Cincinnati Open: Taylor Fritz vs Alex Michelsen",
+      "url": "https://polymarket.com/event/atp-fritz-michels-2026-08-16",
+      "stake": 100.0,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.435,
+      "n_wallets": 1,
+      "whale_usd": 4100,
+      "drift_c": 0.5,
+      "hours_to_resolve": 1.2,
+      "liquidity": 243057,
+      "end_iso": "2026-08-23T14:00:00Z",
+      "event_iso": "2026-08-16 18:15:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786899767.6603677,
+      "price": 0.615,
+      "contracts": 162.6016,
+      "fee": 0.68
     }
   ],
   "settled": [
@@ -15923,58 +15947,87 @@
       "won": false,
       "pred": 0.18,
       "realized": -100.0
+    },
+    {
+      "key": "0x5420884d67823c689ec4e334dd4a5f06740d06f40368aaa2f6798c87acee217e:elena rybakina",
+      "market_id": "0x5420884d67823c689ec4e334dd4a5f06740d06f40368aaa2f6798c87acee217e",
+      "venue": "polymarket",
+      "outcome": "Elena Rybakina",
+      "title": "Cincinnati Open: Taylor Townsend vs Elena Rybakina",
+      "url": "https://polymarket.com/event/wta-townsen-rybakin-2026-08-15",
+      "stake": 100.0,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.362,
+      "n_wallets": 1,
+      "whale_usd": 9193,
+      "drift_c": 1.5,
+      "hours_to_resolve": 34.2,
+      "liquidity": 84525,
+      "end_iso": "2026-08-22T14:00:00Z",
+      "event_iso": "2026-08-16 14:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786765782.5809624,
+      "price": 0.735,
+      "contracts": 136.0544,
+      "fee": 0.47,
+      "settled_at": 1786899792.9891021,
+      "winner": "Elena Rybakina",
+      "won": true,
+      "pred": 0.735,
+      "realized": 35.5844
     }
   ],
   "stats": {
-    "n": 458,
-    "win_rate": 0.5328,
-    "avg_predicted": 0.5291,
-    "calibration_gap": -0.0036,
-    "brier": 0.2272,
-    "total_pnl": 314.01,
-    "roi_on_stake": 0.0069,
-    "mean_return": 0.0069,
-    "sharpe_per_bet": 0.0062,
-    "psr_vs_zero": 0.5526,
-    "dsr": 0.5526,
+    "n": 459,
+    "win_rate": 0.5338,
+    "avg_predicted": 0.5296,
+    "calibration_gap": -0.0042,
+    "brier": 0.2269,
+    "total_pnl": 349.6,
+    "roi_on_stake": 0.0076,
+    "mean_return": 0.0076,
+    "sharpe_per_bet": 0.0068,
+    "psr_vs_zero": 0.5585,
+    "dsr": 0.5585,
     "implied_sr0": 0.0,
     "bootstrap_ci": [
-      -0.0817,
-      0.0948
+      -0.0841,
+      0.0953
     ],
-    "p_mean_le_0": 0.4505,
+    "p_mean_le_0": 0.4605,
     "deploy": false,
     "reasons": [
-      "DSR 0.553 < 0.95",
+      "DSR 0.559 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 96,
+    "open_positions": 97,
     "retired_sources": [
       "weather"
     ],
     "retired_excluded": 14,
     "including_retired": {
-      "n": 472,
-      "win_rate": 0.5191,
-      "avg_predicted": 0.5184,
-      "calibration_gap": -0.0007,
-      "brier": 0.2215,
-      "total_pnl": -986.59,
-      "roi_on_stake": -0.0209,
-      "mean_return": -0.0209,
-      "sharpe_per_bet": -0.0188,
-      "psr_vs_zero": 0.3436,
-      "dsr": 0.3436,
+      "n": 473,
+      "win_rate": 0.5201,
+      "avg_predicted": 0.5188,
+      "calibration_gap": -0.0013,
+      "brier": 0.2212,
+      "total_pnl": -951.01,
+      "roi_on_stake": -0.0201,
+      "mean_return": -0.0201,
+      "sharpe_per_bet": -0.0181,
+      "psr_vs_zero": 0.3489,
+      "dsr": 0.3489,
       "implied_sr0": 0.0,
       "bootstrap_ci": [
-        -0.1114,
-        0.0704
+        -0.1145,
+        0.0699
       ],
-      "p_mean_le_0": 0.672,
+      "p_mean_le_0": 0.6725,
       "deploy": false,
       "reasons": [
         "mean per-bet return <= 0",
-        "DSR 0.344 < 0.95",
+        "DSR 0.349 < 0.95",
         "bootstrap 5% CI of mean return <= 0"
       ]
     },
@@ -16009,30 +16062,30 @@
         "retired": true
       },
       "whale": {
-        "n": 365,
-        "win_rate": 0.5315,
-        "avg_predicted": 0.5336,
-        "calibration_gap": 0.0021,
-        "brier": 0.2234,
-        "total_pnl": -637.24,
-        "roi_on_stake": -0.0175,
-        "mean_return": -0.0175,
-        "sharpe_per_bet": -0.0166,
-        "psr_vs_zero": 0.3765,
-        "dsr": 0.3765,
+        "n": 366,
+        "win_rate": 0.5328,
+        "avg_predicted": 0.5341,
+        "calibration_gap": 0.0013,
+        "brier": 0.223,
+        "total_pnl": -601.66,
+        "roi_on_stake": -0.0164,
+        "mean_return": -0.0164,
+        "sharpe_per_bet": -0.0157,
+        "psr_vs_zero": 0.3831,
+        "dsr": 0.3831,
         "implied_sr0": 0.0,
         "bootstrap_ci": [
-          -0.0928,
-          0.0593
+          -0.0982,
+          0.0577
         ],
-        "p_mean_le_0": 0.6625,
+        "p_mean_le_0": 0.6735,
         "deploy": false,
         "reasons": [
           "mean per-bet return <= 0",
-          "DSR 0.376 < 0.95",
+          "DSR 0.383 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 79
+        "open_positions": 80
       },
       "whale-pmus": {
         "n": 93,
@@ -16070,7 +16123,7 @@
       "foregone_edge": 0.7688
     }
   },
-  "generated": "2026-08-16 16:37:47",
+  "generated": "2026-08-16 17:03:13",
   "voided": [],
   "bridge": {
     "log": {
@@ -17251,7 +17304,7 @@
       },
       "0xbb1682e49e0aba1d452eb672fcc6a4c3dea2ddd01edff310cfa569e46c8602a6:team yandex": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786898244.3,
+        "ts": 1786899767.7,
         "kalshi": "no-series"
       },
       "0x61ec63587cfad7b9cbf7089665e2e1d955ebb2d048a85131d9ed1f4b645fc87f:pittsburgh pirates": {
@@ -17333,6 +17386,11 @@
         "polymarket-us": "matched",
         "ts": 1786898244.3,
         "kalshi": "no-series"
+      },
+      "0x78cf766ae15f9ae5f9eda779b8078572ac3e52977270812249e8a4e0c690fa72:up": {
+        "polymarket-us": "no-signature",
+        "ts": 1786899767.7,
+        "kalshi": "no-signature"
       }
     },
     "summary": {
@@ -17340,14 +17398,14 @@
         "outcome-unmapped": 33,
         "matched": 111,
         "outcome-not-yes-no": 1,
-        "no-signature": 48,
+        "no-signature": 49,
         "no-counterpart": 34,
         "ambiguous": 25
       },
       "kalshi": {
         "outcome-not-a-team": 74,
         "no-series": 130,
-        "no-signature": 48
+        "no-signature": 49
       }
     }
   },
