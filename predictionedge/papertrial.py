@@ -566,6 +566,44 @@ def source_of(row: dict) -> str:
 RETIRED_SOURCES = frozenset({"weather"})
 
 
+# When the rules the bot bets by actually CHANGED, as UTC seconds. Published with the
+# stats so the Trial page can slice its headline into "before" and "since" without
+# hardcoding dates in JavaScript that would rot the moment a lever moves.
+#
+# `at` is the COMMIT time of the change, which is within a minute of the push and so of
+# the first board run under the new rules - the board publishes every 15 minutes, so a
+# finer boundary than that would be false precision. A row belongs to the window its
+# `opened_at` falls in, never its `settled_at`: the question these windows answer is
+# "which rules picked this bet", and a position opened on Monday and resolved on Friday
+# was chosen by Monday's rules.
+#
+# Adding an entry here is a claim that the change could plausibly move the record. Keep
+# it to real regime changes; a slice of the record per bugfix is how a track record gets
+# mined for a flattering window, which is the exact failure this project keeps guarding
+# against. The page says so, and deliberately does NOT re-run the deploy gate per slice.
+CHANGE_POINTS: tuple[dict, ...] = (
+    {"key": "bridge", "at": 1786550946, "commit": "02d129b",
+     "label": "venue bridge",
+     "note": "Whale tickets started being mirrored onto Polymarket US and Kalshi at "
+             "their live asks, so the record stopped being one venue's prices."},
+    {"key": "levers", "at": 1786666818, "commit": "9bb37b3",
+     "label": "five levers",
+     "note": "Maker-first resting orders, power/Shin de-vig, the SPX 0DTE density "
+             "sleeve, the calibration overlay, and the AAA gas sleeve all merged "
+             "together on one night."},
+    {"key": "weather", "at": 1786819577, "commit": "c3bf50c",
+     "label": "weather cut",
+     "note": "The weather sleeve was switched off after its thesis was measured and "
+             "found false. Its rows are still on file but are held out of the "
+             "headline, in every window."},
+    {"key": "sizing", "at": 1786903251, "commit": "fca4239",
+     "label": "sizing + exposure rules",
+     "note": "Positions are sized by the house rules instead of a flat $100, both "
+             "sides of one market can no longer be held at once, and esports is cut. "
+             "Dollar P&L does not compare across this line; per-position returns do."},
+)
+
+
 def stats(trial: dict, *, min_n: int = 30) -> dict:
     """Score the settled rows with the project's existing gate, plus trial bookkeeping.
 
@@ -585,6 +623,9 @@ def stats(trial: dict, *, min_n: int = 30) -> dict:
     out["open_positions"] = len(live_open)
     out["retired_sources"] = sorted(RETIRED_SOURCES)
     out["retired_excluded"] = len(trial["settled"]) - len(live)
+    # Shipped alongside the numbers rather than kept in the page, so the "before/since"
+    # windows on the Trial page can only ever name changes that really happened.
+    out["changes"] = [dict(c) for c in CHANGE_POINTS]
     # The all-time record, pooled across every sleeve that ever ran. Reported rather
     # than discarded: the headline answers "what runs tomorrow", this answers "what did
     # this project actually do", and the gap between them is itself the audit trail.

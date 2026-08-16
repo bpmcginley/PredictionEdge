@@ -17,13 +17,16 @@
     <p class="lede">
       Every ticket the board publishes is opened here as a paper position at the price
       shown, held to settlement, and labelled from the venue's own resolution — no hand
-      entry, no discretion, no deleting the bad ones. Positions are all the same size on
-      purpose, so this measures the signal rather than the sizing rule.
+      entry, no discretion, no deleting the bad ones. Positions were a flat $100 until
+      16 August and are sized by the house rules after it, so compare per-position
+      returns across that line rather than dollars.
     </p>
   </section>
 
   <div class="card">
+    <div class="win" id="win"></div>
     <div class="stats" id="stats"></div>
+    <div class="winnote" id="winnote"></div>
   </div>
 
   <div class="card prose" id="verdict"></div>
@@ -124,6 +127,121 @@ function row(r, settled) {
       </div></div>`;
 }
 
+/* --- headline window -----------------------------------------------------
+   The six headline figures are descriptive arithmetic — a count, three means and a
+   sum — so they are recomputed here for whichever slice is selected, straight from
+   the published rows. The DEPLOY GATE is deliberately not recomputed: it stays on
+   the whole active record that Python scores. Re-running a significance test on
+   each of nine hand-picked windows and reporting the one that passes is how a
+   record gets mined rather than measured, and the windows exist to compare regimes,
+   not to go shopping for a verdict.
+
+   A row belongs to the window containing its `opened_at`, never its settlement: the
+   question is which rules chose the bet, and a position opened on Monday and
+   resolved on Friday was chosen by Monday's rules. */
+let WIN = { key: 'all', from: null, to: null, fromStr: '', toStr: '' };
+
+const changes = () => (TRIAL && TRIAL.stats && TRIAL.stats.changes) || [];
+const retiredSet = () =>
+  new Set((TRIAL && TRIAL.stats && TRIAL.stats.retired_sources) || []);
+const srcOf = r => (r.source || 'whale').trim().toLowerCase();
+const inWin = ts => (WIN.from == null || ts >= WIN.from) &&
+                    (WIN.to == null || ts < WIN.to);
+
+/* Date inputs speak naive local days; the window speaks epoch seconds. `to` is the
+   first instant NOT included, so picking "12 Aug to 14 Aug" includes all of the 14th
+   rather than stopping at its midnight. */
+const isoDay = ts => {
+  if (ts == null) return '';
+  const d = new Date(ts * 1000);
+  return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+};
+const dayStart = str => {
+  const p = String(str || '').split('-').map(Number);
+  return p.length === 3 && p.every(x => !isNaN(x))
+    ? new Date(p[0], p[1] - 1, p[2]).getTime() / 1000 : null;
+};
+
+function presets() {
+  const out = [{ key: 'all', group: 'since', label: 'All time', from: null, to: null,
+                 note: 'Every position the trial has ever recorded.' }];
+  for (const c of changes()) {
+    out.push({ key: 'since-' + c.key, group: 'since', label: 'Since ' + c.label,
+               from: c.at, to: null, change: c });
+    out.push({ key: 'before-' + c.key, group: 'before', label: 'Before ' + c.label,
+               from: null, to: c.at, change: c });
+  }
+  return out;
+}
+
+function applyPreset(key) {
+  const p = presets().find(x => x.key === key);
+  if (!p) return;
+  // The `to` bound is an instant, so the last INCLUDED day is the one a second before
+  // it — otherwise a preset would populate the date box with a day it excludes.
+  WIN = { key, from: p.from, to: p.to,
+          fromStr: isoDay(p.from), toStr: p.to == null ? '' : isoDay(p.to - 1) };
+  render();
+}
+
+function onDates() {
+  const f = dayStart($('winfrom').value), t = dayStart($('winto').value);
+  // Clearing both boxes means "no window", which is the whole record - and the whole
+  // record is the one slice the deploy gate is allowed to speak for, so it must land on
+  // `all` rather than on a custom window that happens to contain everything.
+  if (f == null && t == null) return applyPreset('all');
+  WIN = { key: 'custom', from: f, to: t == null ? null : t + 86400,
+          fromStr: $('winfrom').value, toStr: $('winto').value };
+  render();
+}
+
+function mountWindow() {
+  const el = $('win');
+  if (el.dataset.mounted) return;          // the change list is static; build it once
+  const chip = p => {
+    const t = p.change
+      ? `${day(p.change.at * 1000)} · ${p.change.commit} — ${p.change.note}`
+      : p.note;
+    return `<button type="button" data-win="${esc(p.key)}" title="${esc(t)}">${esc(p.label)}</button>`;
+  };
+  const ps = presets();
+  el.innerHTML =
+    `<div class="row"><span class="lab">Since</span>${
+        ps.filter(p => p.group === 'since').map(chip).join('')}</div>` +
+    (changes().length ? `<div class="row"><span class="lab">Before</span>${
+        ps.filter(p => p.group === 'before').map(chip).join('')}</div>` : '') +
+    `<div class="row"><span class="lab">Dates</span>
+       <input type="date" id="winfrom" aria-label="first day counted" />
+       <span class="muted">to</span>
+       <input type="date" id="winto" aria-label="last day counted" />
+       <button type="button" data-win="all" data-reset="1">Reset</button></div>`;
+  el.addEventListener('click', e => {
+    const b = e.target.closest('button[data-win]');
+    if (b) applyPreset(b.dataset.win);
+  });
+  $('winfrom').addEventListener('change', onDates);
+  $('winto').addEventListener('change', onDates);
+  el.dataset.mounted = '1';
+}
+
+/* Exactly the figures the six boxes show, on exactly the rows Python would score:
+   `evaluate` drops anything without a positive stake, so this does too. */
+function describe(rows) {
+  const kept = rows.filter(r => (r.stake || 0) > 0);
+  const n = kept.length;
+  if (!n) return { n: 0 };
+  const avg = a => a.reduce((x, y) => x + y, 0) / a.length;
+  const rets = kept.map(r => r.realized / r.stake);
+  const pred = kept.map(r => Number(r.pred != null ? r.pred : r.price));
+  const won = kept.map(r => (r.won ? 1 : 0));
+  const m = avg(rets);
+  const sd = n > 1
+    ? Math.sqrt(rets.reduce((a, x) => a + (x - m) * (x - m), 0) / (n - 1)) : 0;
+  return { n, win_rate: avg(won), avg_predicted: avg(pred), mean_return: m,
+           sharpe: sd > 0 ? m / sd : null, wins: won.reduce((a, x) => a + x, 0),
+           total_pnl: kept.reduce((a, r) => a + (r.realized || 0), 0) };
+}
+
 function render() {
   stampUpdated();
   const dot = $('statusdot'), txt = $('statustext');
@@ -133,27 +251,84 @@ function render() {
     txt.textContent = 'trial.json unavailable';
     return;
   }
-  const s = TRIAL.stats || {}, open = TRIAL.open || [], done = TRIAL.settled || [];
-  const n = s.n || 0;
-  dot.className = n ? 'dot' : 'dot warn';
-  txt.textContent = n ? `${n} settled · ${open.length} open`
-                      : `${open.length} open · nothing has settled yet`;
+  mountWindow();
+  // Reset is an action, not a choice, so it never takes the selected styling even
+  // though it selects the same window the first chip does.
+  for (const b of $('win').querySelectorAll('button[data-win]:not([data-reset])'))
+    b.setAttribute('aria-pressed', b.dataset.win === WIN.key);
+  if (document.activeElement !== $('winfrom')) $('winfrom').value = WIN.fromStr;
+  if (document.activeElement !== $('winto')) $('winto').value = WIN.toStr;
 
-  // calibration_gap is avg entry price minus win rate, so realised edge is its
-  // negative: we beat the price we paid exactly when we win more often than it implied.
-  const edge = (s.calibration_gap == null) ? null : -s.calibration_gap;
+  const s = TRIAL.stats || {}, allOpen = TRIAL.open || [], allDone = TRIAL.settled || [];
+  const whole = WIN.key === 'all';
+  const retired = retiredSet();
+  const scored = rs => rs.filter(r => !retired.has(srcOf(r)) && inWin(r.opened_at));
+  // The lists keep every sleeve — a retired row is still part of what happened — but
+  // the scored figures hold them out, in every window, exactly as the headline does.
+  const done = allDone.filter(r => inWin(r.opened_at));
+  const open = allOpen.filter(r => inWin(r.opened_at));
+  const d = describe(scored(done));
+  const openN = scored(open).length;
+  const n = d.n;
+
+  dot.className = n ? 'dot' : 'dot warn';
+  txt.textContent = n ? `${n} settled · ${openN} open`
+                      : `${openN} open · nothing settled in this window`;
+
+  // Realised edge is win rate minus the price paid: we beat the price exactly when we
+  // win more often than it implied. (Python publishes the same thing, negated, as
+  // `calibration_gap`.)
+  const edge = n ? d.win_rate - d.avg_predicted : null;
 
   $('stats').innerHTML =
     statb(n, 'settled') +
-    statb(open.length, 'open') +
-    statb(n ? pct(s.win_rate) : '—', 'win rate') +
-    statb(n ? pct(s.avg_predicted) : '—', 'avg entry price') +
+    statb(openN, 'open') +
+    statb(n ? pct(d.win_rate) : '—', 'win rate') +
+    statb(n ? pct(d.avg_predicted) : '—', 'avg entry price') +
     statb(n ? spct(edge) : '—', 'realised edge', edge == null ? '' : (edge > 0 ? 'pos' : 'neg')) +
-    statb(n ? signed(s.total_pnl) : '—', 'paper p&l', (s.total_pnl || 0) >= 0 ? 'pos' : 'neg');
+    statb(n ? signed(d.total_pnl) : '—', 'paper p&l', (d.total_pnl || 0) >= 0 ? 'pos' : 'neg');
 
-  const need = Math.max(0, 30 - n);
+  // Everything that would otherwise make these numbers read better than they are:
+  // which rows are excluded, which are still unresolved, and where the units change.
+  const notes = [];
+  const label = (presets().find(p => p.key === WIN.key) || {}).label;
+  notes.push(whole ? 'Counting every position on file.'
+    : `Counting positions <b>opened</b> ${WIN.from != null ? 'on or after ' + day(WIN.from * 1000) : ''}${
+        WIN.from != null && WIN.to != null ? ' and ' : ''}${
+        WIN.to != null ? 'before ' + day(WIN.to * 1000) : ''} — the rules that chose
+      them, not the day they resolved.`);
+  const heldOut = done.length - scored(done).length;
+  if (heldOut) notes.push(`${heldOut} settled row${heldOut !== 1 ? 's' : ''} from the
+    retired ${(s.retired_sources || []).join(', ')} sleeve ${heldOut !== 1 ? 'are' : 'is'}
+    listed below but held out of these figures, because that sleeve does not run
+    tomorrow.`);
+  if (openN) notes.push(`${openN} position${openN !== 1 ? 's' : ''} opened in this window
+    ${openN !== 1 ? 'are' : 'is'} still unresolved, so the figures count only what has
+    settled so far — short-horizon markets settle first, which tilts a recent window
+    toward them.`);
+  if (WIN.from == null || WIN.from < 1786903251)
+    notes.push(`Positions opened before 16 August were a flat $100 and later ones are
+      sized by the house rules, so <b>paper p&l is not comparable across that line</b>;
+      win rate, realised edge and per-position return are.`);
+  $('winnote').innerHTML = notes.join(' ');
+
+  const need = Math.max(0, 30 - (s.n || 0));
   let v;
-  if (!n) {
+  if (!whole) {
+    // A slice gets described, never adjudicated. Nine windows scored against one record
+    // would turn up a passing one by luck long before it turned up an edge.
+    v = n
+      ? `<p><strong>${esc(label || 'Custom window')}: ${n} settled position${n !== 1 ? 's' : ''}.</strong>
+         ${d.wins}W–${n - d.wins}L, mean return ${spct(d.mean_return)} per position${
+           d.sharpe == null ? '' : `, Sharpe ${d.sharpe.toFixed(2)} per position`}, paper
+         p&amp;l ${signed(d.total_pnl)}.</p>
+         <p class="muted">The deploy gate is not re-run on a slice, and this window is
+         not a verdict. Scoring a significance test separately on each window of one
+         record finds a passing window by chance long before it finds an edge — so the
+         gate stays on the whole active record. Switch back to <b>All time</b> for it.</p>`
+      : `<p><strong>No settled positions in this window.</strong> Either nothing was
+         opened in it, or nothing opened in it has resolved yet.</p>`;
+  } else if (!(s.n || 0)) {
     v = `<p><strong>No verdict yet, and that is the honest answer.</strong> Nothing has
          reached settlement, so there is no evidence here in either direction. The gate
          needs 30 settled positions before it will even score the record, and roughly
@@ -166,7 +341,7 @@ function render() {
          position ${s.sharpe_per_bet} · deflated Sharpe ${s.dsr} · bootstrap 5–95% CI
          [${(s.bootstrap_ci || []).map(x => spct(x)).join(', ')}] · Brier ${s.brier}.</p>`;
   } else {
-    v = `<p><strong>The gate passes on ${n} settled positions.</strong> Mean return
+    v = `<p><strong>The gate passes on ${s.n} settled positions.</strong> Mean return
          ${spct(s.mean_return)} per position, deflated Sharpe ${s.dsr}, bootstrap 5%
          bound ${spct((s.bootstrap_ci || [])[0])} above zero. That is evidence, not a
          guarantee — the same gate has been wrong before on smaller samples.</p>`;
@@ -185,10 +360,10 @@ function render() {
     : 'none';
   $('settled').innerHTML = done.length
     ? done.slice().sort((a, b) => b.settled_at - a.settled_at).map(r => row(r, true)).join('')
-    : '<div class="card empty">Nothing has settled yet.</div>';
+    : '<div class="card empty">Nothing has settled in this window.</div>';
   $('open').innerHTML = open.length
     ? open.slice().sort((a, b) => b.opened_at - a.opened_at).map(r => row(r, false)).join('')
-    : '<div class="card empty">No open paper positions.</div>';
+    : '<div class="card empty">No open paper positions in this window.</div>';
 }
 
 async function loadTrial() {

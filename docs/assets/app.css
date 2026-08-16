@@ -100,6 +100,22 @@ details.fold > div{margin-top:var(--s2)}
 
 .chip{background:var(--panel2);border:1px solid var(--line);border-radius:99px;
   padding:4px 11px;font-size:12px;color:var(--muted);display:inline-block}
+
+/* Headline window picker (trial). Rows are labelled rather than grouped by colour so
+   the two directions - since a change, before it - never depend on reading a hue. */
+.win{display:flex;flex-direction:column;gap:var(--s1);margin-bottom:var(--s3);
+  padding-bottom:var(--s3);border-bottom:1px solid var(--line)}
+.win .row{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.win .lab{color:var(--dim);font-size:10px;text-transform:uppercase;letter-spacing:.6px;
+  width:54px;flex:none}
+.win button{border-radius:99px;padding:5px 12px;font-size:12px;color:var(--muted)}
+.win button[aria-pressed=true]{color:var(--txt);border-color:var(--accent);
+  background:#0B2A17}
+.win input[type=date]{background:var(--bg);color:var(--txt);border:1px solid var(--line);
+  border-radius:8px;padding:5px 9px;font:inherit;font-size:12px;
+  font-variant-numeric:tabular-nums;color-scheme:dark}
+.win input[type=date]:focus{outline:none;border-color:var(--accent2)}
+.winnote{color:var(--dim);font-size:12px;margin-top:var(--s2);max-width:78ch}
 .filters{display:flex;flex-wrap:wrap;gap:var(--s1);margin-top:var(--s2)}
 .empty{color:var(--muted);font-style:italic;padding:var(--s3) 2px}
 

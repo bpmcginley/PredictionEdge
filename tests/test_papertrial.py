@@ -683,3 +683,36 @@ def test_the_exposure_block_is_published_with_the_stats():
     assert exp["blocked"] == 1
     reason = "opposing side of this market already held"
     assert exp["by_reason"][reason] == {"distinct": 1, "times": 2}
+
+
+from predictionedge.papertrial import CHANGE_POINTS  # noqa: E402
+
+
+def test_every_change_point_carries_what_the_page_needs_to_label_it():
+    # The Trial page renders these directly. A missing label is a nameless button and a
+    # missing note is a date with no explanation of why anyone should slice there.
+    for c in CHANGE_POINTS:
+        assert set(c) == {"key", "at", "commit", "label", "note"}
+        assert c["label"] and c["note"] and c["commit"]
+        assert isinstance(c["at"], int)
+
+
+def test_change_points_are_in_order_and_distinct():
+    # Out-of-order entries would render "before X" windows that contain rows opened
+    # after X, which is the one thing a window selector must never do quietly.
+    ats = [c["at"] for c in CHANGE_POINTS]
+    assert ats == sorted(ats)
+    assert len(set(ats)) == len(ats)
+    assert len({c["key"] for c in CHANGE_POINTS}) == len(CHANGE_POINTS)
+
+
+def test_the_change_points_ship_with_the_stats():
+    # Published, not hardcoded in the page: the windows can then only ever name changes
+    # that are actually recorded here.
+    assert stats(_blank())["changes"] == [dict(c) for c in CHANGE_POINTS]
+
+
+def test_a_change_point_predates_the_rows_it_is_meant_to_split():
+    # The trial started 2026-08-11; a boundary before that would produce an empty
+    # "before" window that reads as "the old rules never won" rather than "no data".
+    assert all(c["at"] > 1786459633 for c in CHANGE_POINTS)
