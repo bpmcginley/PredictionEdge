@@ -1407,6 +1407,56 @@
       "price": 0.65,
       "contracts": 153.0,
       "fee": 0.61
+    },
+    {
+      "key": "0x542ea9fe1a48c357b45072ba9408b7e1eebee1252fe04882c3f50218ccd297fc:frances tiafoe",
+      "market_id": "0x542ea9fe1a48c357b45072ba9408b7e1eebee1252fe04882c3f50218ccd297fc",
+      "venue": "polymarket",
+      "outcome": "Frances Tiafoe",
+      "title": "Cincinnati Open: Lorenzo Sonego vs Frances Tiafoe",
+      "url": "https://polymarket.com/event/atp-sonego-tiafoe-2026-08-16",
+      "stake": 99.63,
+      "capped_by": "risk-budget",
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.55,
+      "n_wallets": 1,
+      "whale_usd": 48733,
+      "drift_c": -0.06,
+      "hours_to_resolve": 2.1,
+      "liquidity": 378845,
+      "end_iso": "2026-08-23T14:00:00Z",
+      "event_iso": "2026-08-17 00:40:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786919507.8420653,
+      "price": 0.615,
+      "contracts": 162.0,
+      "fee": 0.68
+    },
+    {
+      "key": "aec-atp-lorson-fratia-2026-08-15:frances tiafoe",
+      "market_id": "aec-atp-lorson-fratia-2026-08-15",
+      "venue": "polymarket-us",
+      "outcome": "Frances Tiafoe",
+      "title": "Cincinnati Open: Lorenzo Sonego vs Frances Tiafoe",
+      "url": "https://polymarket.us/market/aec-atp-lorson-fratia-2026-08-15",
+      "stake": 99.54,
+      "capped_by": "risk-budget",
+      "shown": true,
+      "source": "whale-pmus",
+      "conviction": 0.55,
+      "n_wallets": 1,
+      "whale_usd": 48733,
+      "drift_c": -0.06,
+      "hours_to_resolve": 2.1,
+      "liquidity": 378845,
+      "end_iso": "2026-08-23T14:00:00Z",
+      "event_iso": "2026-08-17 00:40:00+00",
+      "origin_market_id": "0x542ea9fe1a48c357b45072ba9408b7e1eebee1252fe04882c3f50218ccd297fc",
+      "opened_at": 1786919507.8420653,
+      "price": 0.63,
+      "contracts": 158.0,
+      "fee": 2.58
     }
   ],
   "settled": [
@@ -16459,7 +16509,7 @@
       "DSR 0.399 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 60,
+    "open_positions": 62,
     "retired_sources": [
       "weather"
     ],
@@ -16573,7 +16623,7 @@
           "DSR 0.301 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 53
+        "open_positions": 54
       },
       "whale-pmus": {
         "n": 105,
@@ -16598,7 +16648,7 @@
           "DSR 0.640 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 7
+        "open_positions": 8
       }
     },
     "maker": {
@@ -16624,7 +16674,7 @@
       }
     }
   },
-  "generated": "2026-08-16 21:58:32",
+  "generated": "2026-08-16 22:32:11",
   "voided": [],
   "bridge": {
     "log": {
@@ -17925,14 +17975,19 @@
       },
       "0x9359698aab64d2cf210dbee9926d01188cb5277a3442dcf0552855842c44dce0:no": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786917495.9,
+        "ts": 1786919507.8,
+        "kalshi": "no-series"
+      },
+      "0x542ea9fe1a48c357b45072ba9408b7e1eebee1252fe04882c3f50218ccd297fc:frances tiafoe": {
+        "polymarket-us": "matched",
+        "ts": 1786919507.8,
         "kalshi": "no-series"
       }
     },
     "summary": {
       "polymarket-us": {
         "outcome-unmapped": 34,
-        "matched": 114,
+        "matched": 115,
         "outcome-not-yes-no": 1,
         "no-signature": 51,
         "no-counterpart": 35,
@@ -17940,7 +17995,7 @@
       },
       "kalshi": {
         "outcome-not-a-team": 76,
-        "no-series": 133,
+        "no-series": 134,
         "no-signature": 51
       }
     }
