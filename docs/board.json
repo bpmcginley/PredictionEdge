@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-16 22:59:24",
-  "generated_at": 1786921164.9518735,
+  "generated": "2026-08-16 23:13:35",
+  "generated_at": 1786922015.0770187,
   "account_size": 100000.0,
   "tickets": [
     {
@@ -11,15 +11,15 @@
       "entry_price": 0.615,
       "whale_price": 0.616,
       "drift_c": -0.06,
-      "contracts": 856,
-      "cost": 526.44,
-      "max_payout": 856.0,
-      "conviction": 0.527,
-      "hours_to_resolve": 1.7,
+      "contracts": 835,
+      "cost": 513.52,
+      "max_payout": 835.0,
+      "conviction": 0.514,
+      "hours_to_resolve": 1.4,
       "n_wallets": 1,
       "whale_usd": 48733,
-      "minutes_ago": 59,
-      "liquidity": 378964,
+      "minutes_ago": 73,
+      "liquidity": 318687,
       "url": "https://polymarket.com/event/atp-sonego-tiafoe-2026-08-16",
       "end_iso": "2026-08-23T14:00:00Z",
       "event_iso": "2026-08-17 00:40:00+00",
@@ -28,15 +28,51 @@
       "why": [
         "1 profitable wallet on this side",
         "$48,733, 45% of their own book",
-        "latest buy 59 min ago",
+        "latest buy 73 min ago",
         "still near their entry price",
-        "2h until it resolves",
-        "$378,964 liquidity"
+        "1h until it resolves",
+        "$318,687 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     },
+    {
+      "market_id": "0x78cf766ae15f9ae5f9eda779b8078572ac3e52977270812249e8a4e0c690fa72",
+      "title": "Bitcoin Up or Down on August 17?",
+      "side_label": "Down \u2014 Bitcoin Up or Down on August 17?",
+      "outcome": "Down",
+      "entry_price": 0.615,
+      "whale_price": 0.655,
+      "drift_c": -4.02,
+      "contracts": 834,
+      "cost": 512.91,
+      "max_payout": 834.0,
+      "conviction": 0.513,
+      "hours_to_resolve": 16.8,
+      "n_wallets": 1,
+      "whale_usd": 18179,
+      "minutes_ago": 43,
+      "liquidity": 43403,
+      "url": "https://polymarket.com/event/bitcoin-up-or-down-on-august-17-2026",
+      "end_iso": "2026-08-17T16:00:00Z",
+      "event_iso": "",
+      "slug": "bitcoin-up-or-down-on-august-17-2026",
+      "signal_ts": 1786919442.0,
+      "why": [
+        "1 profitable wallet on this side",
+        "$18,179, 91% of their own book",
+        "latest buy 43 min ago",
+        "price 4.0c cheaper than they paid",
+        "17h until it resolves"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    }
+  ],
+  "probe": [
     {
       "market_id": "0x9359698aab64d2cf210dbee9926d01188cb5277a3442dcf0552855842c44dce0",
       "title": "Will Tottenham Hotspur FC win on 2026-08-22?",
@@ -45,15 +81,15 @@
       "entry_price": 0.65,
       "whale_price": 0.65,
       "drift_c": 0.0,
-      "contracts": 709,
-      "cost": 460.85,
-      "max_payout": 709.0,
-      "conviction": 0.461,
-      "hours_to_resolve": 137.5,
+      "contracts": 690,
+      "cost": 448.5,
+      "max_payout": 690.0,
+      "conviction": 0.449,
+      "hours_to_resolve": 137.3,
       "n_wallets": 1,
       "whale_usd": 3205,
-      "minutes_ago": 112,
-      "liquidity": 139855,
+      "minutes_ago": 127,
+      "liquidity": 140020,
       "url": "https://polymarket.com/event/epl-bre-tot-2026-08-22",
       "end_iso": "2026-08-22T16:30:00Z",
       "event_iso": "2026-08-22 16:30:00+00",
@@ -62,30 +98,30 @@
       "why": [
         "1 profitable wallet on this side",
         "$3,205 \u2014 but only 0.4% of their book",
-        "latest buy 112 min ago",
+        "latest buy 127 min ago",
         "still near their entry price",
-        "138h until it resolves",
-        "$139,855 liquidity"
+        "137h until it resolves",
+        "$140,020 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "probe": [],
-  "considered": 483,
+  "considered": 486,
   "rejected": {
-    "in-play (event already started)": 18,
-    "already resolved": 56,
-    "resolves in under 3h": 14,
-    "market closed": 221,
-    "wallet not new (no track record either)": 83,
-    "fresh wallet: market too liquid for the pattern": 37,
-    "price ran away from the whale's entry": 2,
-    "esports (sleeve retired \u2014 see esports_enabled)": 37,
-    "resolves more than 30 days out": 3,
+    "in-play (event already started)": 15,
+    "already resolved": 54,
+    "market closed": 237,
+    "wallet not new (no track record either)": 79,
+    "resolves in under 3h": 4,
+    "fresh wallet: market too liquid for the pattern": 42,
+    "resolves more than 30 days out": 2,
+    "esports (sleeve retired \u2014 see esports_enabled)": 39,
     "parlay / combo ticket, not a single market": 9,
-    "duplicate event (kept the stronger side)": 1
+    "price ran away from the whale's entry": 1,
+    "duplicate event (kept the stronger side)": 1,
+    "below the 0.45 buy bar (recorded, not bought)": 1
   },
   "notes": [],
   "consistency": {
@@ -94,65 +130,20 @@
     "events_scanned": 345,
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 124,
-      "not a ladder: fewer than two live, quoted legs": 92,
-      "not a ladder: group labels are not thresholds or deadlines": 50,
+      "not a ladder: fewer than two live, quoted legs": 91,
+      "not a ladder: group labels are not thresholds or deadlines": 52,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "bracket has too many legs to place by hand": 2,
-      "ladder pair too illiquid to fill": 73,
+      "ladder pair too illiquid to fill": 71,
       "bracket underround smaller than the spread": 1,
       "not a ladder: numeric group spans different end dates": 1,
-      "not a ladder: a live leg carries no group label": 6,
+      "not a ladder: a live leg carries no group label": 5,
       "bracket leg too illiquid to fill": 4,
       "bracket overround smaller than the spread": 1,
       "dominance gap smaller than the spread": 2
     },
     "notes": [],
-    "violations": [
-      {
-        "family": "bracket",
-        "event_slug": "mls-nyc-phi-2026-08-16",
-        "constraint": "3 mutually exclusive outcomes offer at 0.9800 total, but exactly one of them pays 1.00",
-        "edge_c": 2.0,
-        "actions": [
-          "BUY YES  New York City FC  @ 0.610",
-          "BUY YES  Draw (New York City FC vs. Philadelphia Union)  @ 0.280",
-          "BUY YES  Philadelphia Union  @ 0.090"
-        ],
-        "warnings": [
-          "requires filling all 3 legs - confirm the event page lists exactly 3 outcomes before trusting the sum"
-        ],
-        "url": "https://polymarket.com/event/mls-nyc-phi-2026-08-16",
-        "legs": [
-          {
-            "question": "Will New York City FC win on 2026-08-16?",
-            "name": "New York City FC",
-            "bid": 0.59,
-            "ask": 0.61,
-            "liquidity": 65665.0505,
-            "end_iso": "2026-08-16T22:00:00Z",
-            "url": "https://polymarket.com/event/mls-nyc-phi-2026-08-16"
-          },
-          {
-            "question": "Will New York City FC vs. Philadelphia Union end in a draw?",
-            "name": "Draw (New York City FC vs. Philadelphia Union)",
-            "bid": 0.26,
-            "ask": 0.28,
-            "liquidity": 66617.2804,
-            "end_iso": "2026-08-16T22:00:00Z",
-            "url": "https://polymarket.com/event/mls-nyc-phi-2026-08-16"
-          },
-          {
-            "question": "Will Philadelphia Union win on 2026-08-16?",
-            "name": "Philadelphia Union",
-            "bid": 0.05,
-            "ask": 0.09,
-            "liquidity": 48573.4313,
-            "end_iso": "2026-08-16T22:00:00Z",
-            "url": "https://polymarket.com/event/mls-nyc-phi-2026-08-16"
-          }
-        ]
-      }
-    ]
+    "violations": []
   },
   "macro": {
     "ok": true,
@@ -250,9 +241,9 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.036,
+            "market_prob": 0.0355,
             "model_prob": 0.1297,
-            "gap_c": 9.37,
+            "gap_c": 9.42,
             "suspect": false
           },
           {
@@ -278,16 +269,16 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.046,
+            "market_prob": 0.044,
             "model_prob": 0.1012,
-            "gap_c": 5.52,
+            "gap_c": 5.72,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0545,
+            "market_prob": 0.0485,
             "model_prob": 0.0369,
-            "gap_c": -1.76,
+            "gap_c": -1.16,
             "suspect": false
           },
           {
@@ -404,9 +395,9 @@
           },
           {
             "label": "3.0%",
-            "market_prob": 0.0415,
+            "market_prob": 0.0445,
             "model_prob": 0.0206,
-            "gap_c": -2.09,
+            "gap_c": -2.39,
             "suspect": false
           },
           {
@@ -439,9 +430,9 @@
           },
           {
             "label": "3.5%",
-            "market_prob": 0.13,
+            "market_prob": 0.135,
             "model_prob": 0.171,
-            "gap_c": 4.1,
+            "gap_c": 3.6,
             "suspect": false
           },
           {
