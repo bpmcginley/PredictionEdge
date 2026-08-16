@@ -1862,6 +1862,54 @@
       "price": 0.39,
       "contracts": 256.4103,
       "fee": 4.27
+    },
+    {
+      "key": "0x544a75cdda60d64948acf4fe00f0db75d84b95c8ec979d2ef2c54675043bb65e:cloud9",
+      "market_id": "0x544a75cdda60d64948acf4fe00f0db75d84b95c8ec979d2ef2c54675043bb65e",
+      "venue": "polymarket",
+      "outcome": "Cloud9",
+      "title": "Valorant: Cloud9 vs Evil Geniuses (BO3) - VCT Americas Stage 2 Play-In",
+      "url": "https://polymarket.com/event/val-c9-eg2-2026-08-16",
+      "stake": 100.0,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.435,
+      "n_wallets": 1,
+      "whale_usd": 27772,
+      "drift_c": 0.51,
+      "hours_to_resolve": 13.3,
+      "liquidity": 41542,
+      "end_iso": "2026-08-17T06:00:00Z",
+      "event_iso": "2026-08-17 00:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786876967.3087537,
+      "price": 0.515,
+      "contracts": 194.1748,
+      "fee": 0.85
+    },
+    {
+      "key": "0xd50d6fe398452c08511591eea270268240ae1bca6d6017b7422c614e1f69e8c7:g2 esports",
+      "market_id": "0xd50d6fe398452c08511591eea270268240ae1bca6d6017b7422c614e1f69e8c7",
+      "venue": "polymarket",
+      "outcome": "G2 Esports",
+      "title": "Valorant: FURIA Esports vs G2 Esports (BO3) - VCT Americas Stage 2 Play-In",
+      "url": "https://polymarket.com/event/val-fur-g21-2026-08-16",
+      "stake": 100.0,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.381,
+      "n_wallets": 1,
+      "whale_usd": 5094,
+      "drift_c": 0.5,
+      "hours_to_resolve": 10.3,
+      "liquidity": 73169,
+      "end_iso": "2026-08-17T03:00:00Z",
+      "event_iso": "2026-08-16 21:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786876967.3087537,
+      "price": 0.715,
+      "contracts": 139.8601,
+      "fee": 0.5
     }
   ],
   "settled": [
@@ -15014,7 +15062,7 @@
       "DSR 0.510 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 73,
+    "open_positions": 75,
     "retired_sources": [
       "weather"
     ],
@@ -15098,7 +15146,7 @@
           "DSR 0.394 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 63
+        "open_positions": 65
       },
       "whale-pmus": {
         "n": 90,
@@ -15136,7 +15184,7 @@
       "foregone_edge": 0.7688
     }
   },
-  "generated": "2026-08-16 10:08:29",
+  "generated": "2026-08-16 10:43:10",
   "voided": [],
   "bridge": {
     "log": {
@@ -16247,7 +16295,7 @@
       },
       "0xa41db93e5e1cc9ab394739debe3db6f639f480ff8d09da5d4a469fc8a37da1d4:under": {
         "polymarket-us": "outcome-unmapped",
-        "ts": 1786849691.4,
+        "ts": 1786876967.3,
         "kalshi": "outcome-not-a-team"
       },
       "0x2fb15810a854d163b5c5321907d0621208b743ee89b02a7afafea019e66c83fd:yes": {
