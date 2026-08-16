@@ -1694,6 +1694,102 @@
       "price": 0.8,
       "contracts": 125.0,
       "fee": 0.35
+    },
+    {
+      "key": "0x6edf1cf6de4241a71ec1828225d22fd733dcc1670df8b3986612b6394c092b9f:aleksandar kovacevic",
+      "market_id": "0x6edf1cf6de4241a71ec1828225d22fd733dcc1670df8b3986612b6394c092b9f",
+      "venue": "polymarket",
+      "outcome": "Aleksandar Kovacevic",
+      "title": "Cincinnati Open: Brandon Nakashima vs Aleksandar Kovacevic",
+      "url": "https://polymarket.com/event/atp-nakashi-kovacev-2026-08-16",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.503,
+      "n_wallets": 1,
+      "whale_usd": 30287,
+      "drift_c": 1.5,
+      "hours_to_resolve": 8.8,
+      "liquidity": 58972,
+      "end_iso": "2026-08-23T14:00:00Z",
+      "event_iso": "2026-08-16 18:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786871386.7764544,
+      "price": 0.245,
+      "contracts": 408.1633,
+      "fee": 1.33
+    },
+    {
+      "key": "0x8cb9d527416db370493cb8fce92f7b5ea6a1a90ea5000a9e71e73f8f9a3d0c6d:botic van de zandschulp",
+      "market_id": "0x8cb9d527416db370493cb8fce92f7b5ea6a1a90ea5000a9e71e73f8f9a3d0c6d",
+      "venue": "polymarket",
+      "outcome": "Botic van de Zandschulp",
+      "title": "Cincinnati Open: Joao Fonseca vs Botic van de Zandschulp",
+      "url": "https://polymarket.com/event/atp-fonseca-zandsch-2026-08-16",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.494,
+      "n_wallets": 1,
+      "whale_usd": 21347,
+      "drift_c": 0.74,
+      "hours_to_resolve": 7.3,
+      "liquidity": 94588,
+      "end_iso": "2026-08-23T14:00:00Z",
+      "event_iso": "2026-08-16 16:30:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786871386.7764544,
+      "price": 0.295,
+      "contracts": 338.9831,
+      "fee": 1.24
+    },
+    {
+      "key": "aec-atp-branak-alekov-2026-08-16:aleksandar kovacevic",
+      "market_id": "aec-atp-branak-alekov-2026-08-16",
+      "venue": "polymarket-us",
+      "outcome": "Aleksandar Kovacevic",
+      "title": "Cincinnati Open: Brandon Nakashima vs Aleksandar Kovacevic",
+      "url": "https://polymarket.us/market/aec-atp-branak-alekov-2026-08-16",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale-pmus",
+      "conviction": 0.503,
+      "n_wallets": 1,
+      "whale_usd": 30287,
+      "drift_c": 1.5,
+      "hours_to_resolve": 8.8,
+      "liquidity": 58972,
+      "end_iso": "2026-08-23T14:00:00Z",
+      "event_iso": "2026-08-16 18:00:00+00",
+      "origin_market_id": "0x6edf1cf6de4241a71ec1828225d22fd733dcc1670df8b3986612b6394c092b9f",
+      "opened_at": 1786871386.7764544,
+      "price": 0.24,
+      "contracts": 416.6667,
+      "fee": 5.33
+    },
+    {
+      "key": "aec-atp-joafon-botzan-2026-08-16:botic van de zandschulp",
+      "market_id": "aec-atp-joafon-botzan-2026-08-16",
+      "venue": "polymarket-us",
+      "outcome": "Botic van de Zandschulp",
+      "title": "Cincinnati Open: Joao Fonseca vs Botic van de Zandschulp",
+      "url": "https://polymarket.us/market/aec-atp-joafon-botzan-2026-08-16",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale-pmus",
+      "conviction": 0.494,
+      "n_wallets": 1,
+      "whale_usd": 21347,
+      "drift_c": 0.74,
+      "hours_to_resolve": 7.3,
+      "liquidity": 94588,
+      "end_iso": "2026-08-23T14:00:00Z",
+      "event_iso": "2026-08-16 16:30:00+00",
+      "origin_market_id": "0x8cb9d527416db370493cb8fce92f7b5ea6a1a90ea5000a9e71e73f8f9a3d0c6d",
+      "opened_at": 1786871386.7764544,
+      "price": 0.3,
+      "contracts": 333.3333,
+      "fee": 4.9
     }
   ],
   "settled": [
@@ -14788,7 +14884,7 @@
       "DSR 0.545 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 66,
+    "open_positions": 70,
     "retired_sources": [
       "weather"
     ],
@@ -14872,7 +14968,7 @@
           "DSR 0.433 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 59
+        "open_positions": 61
       },
       "whale-pmus": {
         "n": 90,
@@ -14897,7 +14993,7 @@
           "DSR 0.691 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 7
+        "open_positions": 9
       }
     },
     "maker": {
@@ -14910,7 +15006,7 @@
       "foregone_edge": 0.7688
     }
   },
-  "generated": "2026-08-16 08:39:48",
+  "generated": "2026-08-16 09:10:19",
   "voided": [],
   "bridge": {
     "log": {
@@ -16063,12 +16159,22 @@
         "polymarket-us": "no-counterpart",
         "ts": 1786869550.2,
         "kalshi": "no-series"
+      },
+      "0x6edf1cf6de4241a71ec1828225d22fd733dcc1670df8b3986612b6394c092b9f:aleksandar kovacevic": {
+        "polymarket-us": "matched",
+        "ts": 1786871386.8,
+        "kalshi": "no-series"
+      },
+      "0x8cb9d527416db370493cb8fce92f7b5ea6a1a90ea5000a9e71e73f8f9a3d0c6d:botic van de zandschulp": {
+        "polymarket-us": "matched",
+        "ts": 1786871386.8,
+        "kalshi": "no-series"
       }
     },
     "summary": {
       "polymarket-us": {
         "outcome-unmapped": 29,
-        "matched": 98,
+        "matched": 100,
         "outcome-not-yes-no": 1,
         "no-signature": 46,
         "no-counterpart": 32,
@@ -16076,7 +16182,7 @@
       },
       "kalshi": {
         "outcome-not-a-team": 63,
-        "no-series": 121,
+        "no-series": 123,
         "no-signature": 46
       }
     }
