@@ -1169,6 +1169,56 @@
       "price": 0.63,
       "contracts": 158.0,
       "fee": 2.58
+    },
+    {
+      "key": "0x8db706b23a24ae07be441d240e3168e55c2ad8b6dd32a1341198122b58be3df0:elina svitolina",
+      "market_id": "0x8db706b23a24ae07be441d240e3168e55c2ad8b6dd32a1341198122b58be3df0",
+      "venue": "polymarket",
+      "outcome": "Elina Svitolina",
+      "title": "Cincinnati Open: Tereza Valentova vs Elina Svitolina",
+      "url": "https://polymarket.com/event/wta-valento-svitoli-2026-08-16",
+      "stake": 99.96,
+      "capped_by": "risk-budget",
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.54,
+      "n_wallets": 1,
+      "whale_usd": 33393,
+      "drift_c": -1.37,
+      "hours_to_resolve": 0.8,
+      "liquidity": 291046,
+      "end_iso": "2026-08-23T14:00:00Z",
+      "event_iso": "2026-08-17 00:40:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786924337.5424507,
+      "price": 0.735,
+      "contracts": 136.0,
+      "fee": 0.47
+    },
+    {
+      "key": "aec-wta-terval-elisvi-2026-08-15:elina svitolina",
+      "market_id": "aec-wta-terval-elisvi-2026-08-15",
+      "venue": "polymarket-us",
+      "outcome": "Elina Svitolina",
+      "title": "Cincinnati Open: Tereza Valentova vs Elina Svitolina",
+      "url": "https://polymarket.us/market/aec-wta-terval-elisvi-2026-08-15",
+      "stake": 99.56,
+      "capped_by": "risk-budget",
+      "shown": true,
+      "source": "whale-pmus",
+      "conviction": 0.54,
+      "n_wallets": 1,
+      "whale_usd": 33393,
+      "drift_c": -1.37,
+      "hours_to_resolve": 0.8,
+      "liquidity": 291046,
+      "end_iso": "2026-08-23T14:00:00Z",
+      "event_iso": "2026-08-17 00:40:00+00",
+      "origin_market_id": "0x8db706b23a24ae07be441d240e3168e55c2ad8b6dd32a1341198122b58be3df0",
+      "opened_at": 1786924337.5424507,
+      "price": 0.76,
+      "contracts": 131.0,
+      "fee": 1.68
     }
   ],
   "settled": [
@@ -16568,7 +16618,7 @@
       "DSR 0.745 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 46,
+    "open_positions": 48,
     "retired_sources": [
       "weather"
     ],
@@ -16867,7 +16917,7 @@
           "DSR 0.602 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 43
+        "open_positions": 44
       },
       "whale-pmus": {
         "n": 92,
@@ -16892,7 +16942,7 @@
           "DSR 0.792 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 3
+        "open_positions": 4
       }
     },
     "maker": {
@@ -16913,12 +16963,12 @@
         },
         "opposing side of this market already held": {
           "distinct": 3,
-          "times": 5
+          "times": 6
         }
       }
     }
   },
-  "generated": "2026-08-16 23:30:29",
+  "generated": "2026-08-16 23:52:40",
   "voided": [],
   "bridge": {
     "log": {
@@ -18226,12 +18276,17 @@
         "polymarket-us": "matched",
         "ts": 1786919507.8,
         "kalshi": "no-series"
+      },
+      "0x8db706b23a24ae07be441d240e3168e55c2ad8b6dd32a1341198122b58be3df0:elina svitolina": {
+        "polymarket-us": "matched",
+        "ts": 1786924337.5,
+        "kalshi": "no-series"
       }
     },
     "summary": {
       "polymarket-us": {
         "outcome-unmapped": 34,
-        "matched": 115,
+        "matched": 116,
         "outcome-not-yes-no": 1,
         "no-signature": 51,
         "no-counterpart": 35,
@@ -18239,7 +18294,7 @@
       },
       "kalshi": {
         "outcome-not-a-team": 76,
-        "no-series": 134,
+        "no-series": 135,
         "no-signature": 51
       }
     }
@@ -18588,9 +18643,9 @@
       "url": "https://polymarket.com/event/bitcoin-up-or-down-on-august-17-2026",
       "source": "whale",
       "first_at": 1786909020.042475,
-      "times": 3,
+      "times": 4,
       "reason": "opposing side of this market already held",
-      "last_at": 1786923023.7564597,
+      "last_at": 1786924337.5424507,
       "held": [
         "up"
       ]
