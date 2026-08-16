@@ -2318,6 +2318,30 @@
       "price": 0.87,
       "contracts": 114.9425,
       "fee": 0.92
+    },
+    {
+      "key": "0x59372661d584e524bbe7988b17afd78a034c1e23c3962648c0ec3a606947883b:no",
+      "market_id": "0x59372661d584e524bbe7988b17afd78a034c1e23c3962648c0ec3a606947883b",
+      "venue": "polymarket",
+      "outcome": "No",
+      "title": "Exact Score: Chicago Fire FC 2 - 1 Portland Timbers?",
+      "url": "https://polymarket.com/event/mls-chi-por-2026-08-16-exact-score",
+      "stake": 100.0,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.42,
+      "n_wallets": 1,
+      "whale_usd": 5193,
+      "drift_c": 1.0,
+      "hours_to_resolve": 4.0,
+      "liquidity": 78745,
+      "end_iso": "2026-08-16T22:00:00Z",
+      "event_iso": "2026-08-16 22:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786903099.2433407,
+      "price": 0.9,
+      "contracts": 111.1111,
+      "fee": 0.18
     }
   ],
   "settled": [
@@ -16209,7 +16233,7 @@
       "DSR 0.527 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 98,
+    "open_positions": 99,
     "retired_sources": [
       "weather"
     ],
@@ -16293,7 +16317,7 @@
           "DSR 0.346 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 80
+        "open_positions": 81
       },
       "whale-pmus": {
         "n": 94,
@@ -16331,7 +16355,7 @@
       "foregone_edge": 0.7688
     }
   },
-  "generated": "2026-08-16 17:36:51",
+  "generated": "2026-08-16 17:58:34",
   "voided": [],
   "bridge": {
     "log": {
@@ -17612,7 +17636,7 @@
       },
       "0x18d2a58abec3b5f4c00dc8326c9b1969c112930494a067a706f717dafab89cc7:portland fire": {
         "polymarket-us": "outcome-unmapped",
-        "ts": 1786901786.3,
+        "ts": 1786903099.2,
         "kalshi": "outcome-not-a-team"
       }
     },
