@@ -1576,30 +1576,6 @@
       "fee": 0.51
     },
     {
-      "key": "0x9a0db7182e5ba1e12e49c93c30d528aa8a84bf96db18a61f42ada346755b1cec:kiwoom drx",
-      "market_id": "0x9a0db7182e5ba1e12e49c93c30d528aa8a84bf96db18a61f42ada346755b1cec",
-      "venue": "polymarket",
-      "outcome": "Kiwoom DRX",
-      "title": "LoL: Kiwoom DRX vs HANJIN BRION (BO3) - LCK Round 3-4 Rise Group",
-      "url": "https://polymarket.com/event/lol-drx-bro2-2026-08-16",
-      "stake": 100.0,
-      "shown": false,
-      "source": "whale",
-      "conviction": 0.409,
-      "n_wallets": 1,
-      "whale_usd": 6928,
-      "drift_c": 0.5,
-      "hours_to_resolve": 0.3,
-      "liquidity": 286896,
-      "end_iso": "2026-08-16T16:00:00Z",
-      "event_iso": "2026-08-16 10:00:00+00",
-      "origin_market_id": "",
-      "opened_at": 1786873498.7179759,
-      "price": 0.495,
-      "contracts": 202.0202,
-      "fee": 0.89
-    },
-    {
       "key": "0xa088cf912407c665775b676193fdaa31b6a581b0576e8ebc47eba4a8a5653e34:no",
       "market_id": "0xa088cf912407c665775b676193fdaa31b6a581b0576e8ebc47eba4a8a5653e34",
       "venue": "polymarket",
@@ -2342,6 +2318,78 @@
       "price": 0.47,
       "contracts": 212.766,
       "fee": 3.72
+    },
+    {
+      "key": "0xfe967225e2dbf4992130fca9d8486a000602fa320016fe2d4532ae7e19c011b0:detroit tigers",
+      "market_id": "0xfe967225e2dbf4992130fca9d8486a000602fa320016fe2d4532ae7e19c011b0",
+      "venue": "polymarket",
+      "outcome": "Detroit Tigers",
+      "title": "Chicago White Sox vs. Detroit Tigers",
+      "url": "https://polymarket.com/event/mlb-cws-det-2026-08-16",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.499,
+      "n_wallets": 1,
+      "whale_usd": 18613,
+      "drift_c": 0.5,
+      "hours_to_resolve": 1.7,
+      "liquidity": 771537,
+      "end_iso": "2026-08-23T17:40:00Z",
+      "event_iso": "2026-08-16 17:40:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786895999.4111338,
+      "price": 0.515,
+      "contracts": 194.1748,
+      "fee": 0.85
+    },
+    {
+      "key": "0x27d9788cbd8905bfc795b12401e0e6f8c4fa2e054652bfd01950f9678aa0f3f9:over",
+      "market_id": "0x27d9788cbd8905bfc795b12401e0e6f8c4fa2e054652bfd01950f9678aa0f3f9",
+      "venue": "polymarket",
+      "outcome": "Over",
+      "title": "Seattle Mariners vs. Houston Astros: O/U 7.5",
+      "url": "https://polymarket.com/event/mlb-sea-hou-2026-08-16",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.46,
+      "n_wallets": 1,
+      "whale_usd": 12939,
+      "drift_c": 0.5,
+      "hours_to_resolve": 7.3,
+      "liquidity": 197943,
+      "end_iso": "2026-08-16T23:20:00Z",
+      "event_iso": "2026-08-16 23:20:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786895999.4111338,
+      "price": 0.525,
+      "contracts": 190.4762,
+      "fee": 0.83
+    },
+    {
+      "key": "aec-mlb-cws-det-2026-08-16:detroit tigers",
+      "market_id": "aec-mlb-cws-det-2026-08-16",
+      "venue": "polymarket-us",
+      "outcome": "Detroit Tigers",
+      "title": "Chicago White Sox vs. Detroit Tigers",
+      "url": "https://polymarket.us/market/aec-mlb-cws-det-2026-08-16",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale-pmus",
+      "conviction": 0.499,
+      "n_wallets": 1,
+      "whale_usd": 18613,
+      "drift_c": 0.5,
+      "hours_to_resolve": 1.7,
+      "liquidity": 771537,
+      "end_iso": "2026-08-23T17:40:00Z",
+      "event_iso": "2026-08-16 17:40:00+00",
+      "origin_market_id": "0xfe967225e2dbf4992130fca9d8486a000602fa320016fe2d4532ae7e19c011b0",
+      "opened_at": 1786895999.4111338,
+      "price": 0.52,
+      "contracts": 192.3077,
+      "fee": 3.36
     }
   ],
   "settled": [
@@ -15759,62 +15807,91 @@
       "won": false,
       "pred": 0.39,
       "realized": -104.27
+    },
+    {
+      "key": "0x9a0db7182e5ba1e12e49c93c30d528aa8a84bf96db18a61f42ada346755b1cec:kiwoom drx",
+      "market_id": "0x9a0db7182e5ba1e12e49c93c30d528aa8a84bf96db18a61f42ada346755b1cec",
+      "venue": "polymarket",
+      "outcome": "Kiwoom DRX",
+      "title": "LoL: Kiwoom DRX vs HANJIN BRION (BO3) - LCK Round 3-4 Rise Group",
+      "url": "https://polymarket.com/event/lol-drx-bro2-2026-08-16",
+      "stake": 100.0,
+      "shown": false,
+      "source": "whale",
+      "conviction": 0.409,
+      "n_wallets": 1,
+      "whale_usd": 6928,
+      "drift_c": 0.5,
+      "hours_to_resolve": 0.3,
+      "liquidity": 286896,
+      "end_iso": "2026-08-16T16:00:00Z",
+      "event_iso": "2026-08-16 10:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786873498.7179759,
+      "price": 0.495,
+      "contracts": 202.0202,
+      "fee": 0.89,
+      "settled_at": 1786896033.330786,
+      "winner": "HANJIN BRION",
+      "won": false,
+      "pred": 0.495,
+      "realized": -100.89
     }
   ],
   "stats": {
-    "n": 455,
-    "win_rate": 0.5341,
+    "n": 456,
+    "win_rate": 0.5329,
     "avg_predicted": 0.529,
-    "calibration_gap": -0.005,
+    "calibration_gap": -0.0039,
     "brier": 0.2276,
-    "total_pnl": 473.55,
-    "roi_on_stake": 0.0104,
-    "mean_return": 0.0104,
-    "sharpe_per_bet": 0.0093,
-    "psr_vs_zero": 0.5793,
-    "dsr": 0.5793,
+    "total_pnl": 372.66,
+    "roi_on_stake": 0.0082,
+    "mean_return": 0.0082,
+    "sharpe_per_bet": 0.0073,
+    "psr_vs_zero": 0.5624,
+    "dsr": 0.5624,
     "implied_sr0": 0.0,
     "bootstrap_ci": [
-      -0.0801,
-      0.1043
+      -0.079,
+      0.1022
     ],
-    "p_mean_le_0": 0.415,
+    "p_mean_le_0": 0.434,
     "deploy": false,
     "reasons": [
-      "DSR 0.579 < 0.95",
+      "DSR 0.562 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 93,
+    "open_positions": 95,
     "retired_sources": [
       "weather"
     ],
     "retired_excluded": 13,
     "including_retired": {
-      "n": 468,
-      "win_rate": 0.5214,
+      "n": 469,
+      "win_rate": 0.5203,
       "avg_predicted": 0.5189,
-      "calibration_gap": -0.0025,
-      "brier": 0.2222,
-      "total_pnl": -727.05,
-      "roi_on_stake": -0.0155,
-      "mean_return": -0.0155,
-      "sharpe_per_bet": -0.014,
-      "psr_vs_zero": 0.3826,
-      "dsr": 0.3826,
+      "calibration_gap": -0.0014,
+      "brier": 0.2223,
+      "total_pnl": -827.94,
+      "roi_on_stake": -0.0177,
+      "mean_return": -0.0177,
+      "sharpe_per_bet": -0.0159,
+      "psr_vs_zero": 0.3672,
+      "dsr": 0.3672,
       "implied_sr0": 0.0,
       "bootstrap_ci": [
-        -0.1077,
-        0.0773
+        -0.1099,
+        0.0768
       ],
-      "p_mean_le_0": 0.629,
+      "p_mean_le_0": 0.6375,
       "deploy": false,
       "reasons": [
         "mean per-bet return <= 0",
-        "DSR 0.383 < 0.95",
+        "DSR 0.367 < 0.95",
         "bootstrap 5% CI of mean return <= 0"
       ]
     },
-    "trial_days": 8.9,
+    "trial_days": 9.0,
     "by_source": {
       "weather": {
         "n": 13,
@@ -15845,30 +15922,30 @@
         "retired": true
       },
       "whale": {
-        "n": 362,
-        "win_rate": 0.5331,
-        "avg_predicted": 0.5335,
-        "calibration_gap": 0.0003,
-        "brier": 0.2238,
-        "total_pnl": -477.7,
-        "roi_on_stake": -0.0132,
-        "mean_return": -0.0132,
-        "sharpe_per_bet": -0.0126,
-        "psr_vs_zero": 0.4063,
-        "dsr": 0.4063,
+        "n": 363,
+        "win_rate": 0.5317,
+        "avg_predicted": 0.5334,
+        "calibration_gap": 0.0017,
+        "brier": 0.2239,
+        "total_pnl": -578.59,
+        "roi_on_stake": -0.0159,
+        "mean_return": -0.0159,
+        "sharpe_per_bet": -0.0152,
+        "psr_vs_zero": 0.3873,
+        "dsr": 0.3873,
         "implied_sr0": 0.0,
         "bootstrap_ci": [
-          -0.0907,
-          0.064
+          -0.0933,
+          0.0629
         ],
-        "p_mean_le_0": 0.627,
+        "p_mean_le_0": 0.63,
         "deploy": false,
         "reasons": [
           "mean per-bet return <= 0",
-          "DSR 0.406 < 0.95",
+          "DSR 0.387 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 78
+        "open_positions": 79
       },
       "whale-pmus": {
         "n": 93,
@@ -15893,7 +15970,7 @@
           "DSR 0.783 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 15
+        "open_positions": 16
       }
     },
     "maker": {
@@ -15906,7 +15983,7 @@
       "foregone_edge": 0.7688
     }
   },
-  "generated": "2026-08-16 15:39:11",
+  "generated": "2026-08-16 16:00:33",
   "voided": [],
   "bridge": {
     "log": {
@@ -17087,7 +17164,7 @@
       },
       "0xbb1682e49e0aba1d452eb672fcc6a4c3dea2ddd01edff310cfa569e46c8602a6:team yandex": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786894733.5,
+        "ts": 1786895999.4,
         "kalshi": "no-series"
       },
       "0x61ec63587cfad7b9cbf7089665e2e1d955ebb2d048a85131d9ed1f4b645fc87f:pittsburgh pirates": {
@@ -17132,7 +17209,7 @@
       },
       "0x2d144e6f334f048a7e155981dd131f47a96b639d6dd7c72a4e71e1df68f004ba:texas rangers": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786894733.5,
+        "ts": 1786895999.4,
         "kalshi": "outcome-not-a-team"
       },
       "0xd0931285bc113225a34787e34f7355d63b0313b30cc7640ab9a9b72e52a38340:milwaukee brewers": {
@@ -17154,19 +17231,29 @@
         "polymarket-us": "matched",
         "ts": 1786894733.5,
         "kalshi": "no-series"
+      },
+      "0xfe967225e2dbf4992130fca9d8486a000602fa320016fe2d4532ae7e19c011b0:detroit tigers": {
+        "polymarket-us": "matched",
+        "ts": 1786895999.4,
+        "kalshi": "outcome-not-a-team"
+      },
+      "0x27d9788cbd8905bfc795b12401e0e6f8c4fa2e054652bfd01950f9678aa0f3f9:over": {
+        "polymarket-us": "outcome-unmapped",
+        "ts": 1786895999.4,
+        "kalshi": "outcome-not-a-team"
       }
     },
     "summary": {
       "polymarket-us": {
-        "outcome-unmapped": 32,
-        "matched": 109,
+        "outcome-unmapped": 33,
+        "matched": 110,
         "outcome-not-yes-no": 1,
         "no-signature": 48,
         "no-counterpart": 34,
         "ambiguous": 25
       },
       "kalshi": {
-        "outcome-not-a-team": 72,
+        "outcome-not-a-team": 74,
         "no-series": 129,
         "no-signature": 48
       }
