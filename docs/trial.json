@@ -1621,6 +1621,30 @@
       "price": 0.31,
       "contracts": 322.5806,
       "fee": 4.84
+    },
+    {
+      "key": "0xa51c8ecab27199b4811674d285df000b0837fbd2d1e4ed26acc17f29552d1672:under",
+      "market_id": "0xa51c8ecab27199b4811674d285df000b0837fbd2d1e4ed26acc17f29552d1672",
+      "venue": "polymarket",
+      "outcome": "Under",
+      "title": "Yellow-Red KV Mechelen vs. Standard Liege: O/U 2.5",
+      "url": "https://polymarket.com/event/bel1-yrm-sta-2026-08-16-more-markets",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.468,
+      "n_wallets": 1,
+      "whale_usd": 8842,
+      "drift_c": -0.38,
+      "hours_to_resolve": 10.9,
+      "liquidity": 19907,
+      "end_iso": "2026-08-16T16:30:00Z",
+      "event_iso": "2026-08-16 16:30:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786858490.433296,
+      "price": 0.525,
+      "contracts": 190.4762,
+      "fee": 0.83
     }
   ],
   "settled": [
@@ -14484,7 +14508,7 @@
       "DSR 0.581 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 63,
+    "open_positions": 64,
     "retired_sources": [
       "weather"
     ],
@@ -14568,7 +14592,7 @@
           "DSR 0.461 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 55
+        "open_positions": 56
       },
       "whale-pmus": {
         "n": 87,
@@ -14606,7 +14630,7 @@
       "foregone_edge": 0.7688
     }
   },
-  "generated": "2026-08-16 04:52:38",
+  "generated": "2026-08-16 05:35:08",
   "voided": [],
   "bridge": {
     "log": {
@@ -15702,7 +15726,7 @@
       },
       "0xa02f86d6e5db4e58b205af2e1d90ad6ea3800924d02d889d629b7d677186cc3d:gamerlegion": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786855925.2,
+        "ts": 1786858490.4,
         "kalshi": "no-series"
       },
       "0x1535d38e067772f841cf56f89cf6fbc2aaff4ec08416ae59af751300fd9e3a38:nip": {
@@ -15727,7 +15751,7 @@
       },
       "0x4fc889e9cabcfaf2dca7f9f7af0e9bca69ac54dbf529a6d9e61ae35d0526d7df:under": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786855925.2,
+        "ts": 1786858490.4,
         "kalshi": "no-series"
       },
       "0xdd87afe11abb21a3a49278a7ff888ce7834761c1d78b46c98e294cacfb5cbb85:lgd gaming": {
@@ -15737,7 +15761,12 @@
       },
       "0xc4236dcca3bc3403c780305c0563bb484e5ebf598313f5ba508e71c6987ea1b3:gen.g": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786855925.2,
+        "ts": 1786858490.4,
+        "kalshi": "no-series"
+      },
+      "0xa51c8ecab27199b4811674d285df000b0837fbd2d1e4ed26acc17f29552d1672:under": {
+        "polymarket-us": "no-counterpart",
+        "ts": 1786858490.4,
         "kalshi": "no-series"
       }
     },
@@ -15747,12 +15776,12 @@
         "matched": 96,
         "outcome-not-yes-no": 1,
         "no-signature": 46,
-        "no-counterpart": 30,
+        "no-counterpart": 31,
         "ambiguous": 24
       },
       "kalshi": {
         "outcome-not-a-team": 63,
-        "no-series": 117,
+        "no-series": 118,
         "no-signature": 46
       }
     }
