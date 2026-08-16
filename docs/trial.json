@@ -2006,6 +2006,78 @@
       "price": 0.56,
       "contracts": 178.5714,
       "fee": 3.09
+    },
+    {
+      "key": "0xb85958568351b40b91c8d1786c4151d16378a49ede295910192b55dd793aeb65:over",
+      "market_id": "0xb85958568351b40b91c8d1786c4151d16378a49ede295910192b55dd793aeb65",
+      "venue": "polymarket",
+      "outcome": "Over",
+      "title": "St. Louis Cardinals vs. Chicago Cubs: O/U 8.5",
+      "url": "https://polymarket.com/event/mlb-stl-chc-2026-08-16",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.459,
+      "n_wallets": 1,
+      "whale_usd": 11618,
+      "drift_c": 0.5,
+      "hours_to_resolve": 4.6,
+      "liquidity": 127106,
+      "end_iso": "2026-08-16T19:15:00Z",
+      "event_iso": "2026-08-16 19:15:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786891317.7457345,
+      "price": 0.545,
+      "contracts": 183.4862,
+      "fee": 0.8
+    },
+    {
+      "key": "0xf0ba5044f380f881ce1d37a0a3038ade98ce4abe86a02243b57aa698d1aa0394:daniil medvedev",
+      "market_id": "0xf0ba5044f380f881ce1d37a0a3038ade98ce4abe86a02243b57aa698d1aa0394",
+      "venue": "polymarket",
+      "outcome": "Daniil Medvedev",
+      "title": "Cincinnati Open: Marco Trungelliti vs Daniil Medvedev",
+      "url": "https://polymarket.com/event/atp-trungel-medvede-2026-08-15",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale",
+      "conviction": 0.453,
+      "n_wallets": 1,
+      "whale_usd": 3720,
+      "drift_c": 0.5,
+      "hours_to_resolve": 0.3,
+      "liquidity": 226667,
+      "end_iso": "2026-08-22T15:00:00Z",
+      "event_iso": "2026-08-16 15:00:00+00",
+      "origin_market_id": "",
+      "opened_at": 1786891317.7457345,
+      "price": 0.845,
+      "contracts": 118.3432,
+      "fee": 0.28
+    },
+    {
+      "key": "aec-atp-martru-danmed-2026-08-15:daniil medvedev",
+      "market_id": "aec-atp-martru-danmed-2026-08-15",
+      "venue": "polymarket-us",
+      "outcome": "Daniil Medvedev",
+      "title": "Cincinnati Open: Marco Trungelliti vs Daniil Medvedev",
+      "url": "https://polymarket.us/market/aec-atp-martru-danmed-2026-08-15",
+      "stake": 100.0,
+      "shown": true,
+      "source": "whale-pmus",
+      "conviction": 0.453,
+      "n_wallets": 1,
+      "whale_usd": 3720,
+      "drift_c": 0.5,
+      "hours_to_resolve": 0.3,
+      "liquidity": 226667,
+      "end_iso": "2026-08-22T15:00:00Z",
+      "event_iso": "2026-08-16 15:00:00+00",
+      "origin_market_id": "0xf0ba5044f380f881ce1d37a0a3038ade98ce4abe86a02243b57aa698d1aa0394",
+      "opened_at": 1786891317.7457345,
+      "price": 0.84,
+      "contracts": 119.0476,
+      "fee": 1.12
     }
   ],
   "settled": [
@@ -15448,7 +15520,7 @@
       "DSR 0.579 < 0.95",
       "bootstrap 5% CI of mean return <= 0"
     ],
-    "open_positions": 79,
+    "open_positions": 82,
     "retired_sources": [
       "weather"
     ],
@@ -15532,7 +15604,7 @@
           "DSR 0.406 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 68
+        "open_positions": 70
       },
       "whale-pmus": {
         "n": 93,
@@ -15557,7 +15629,7 @@
           "DSR 0.783 < 0.95",
           "bootstrap 5% CI of mean return <= 0"
         ],
-        "open_positions": 11
+        "open_positions": 12
       }
     },
     "maker": {
@@ -15570,7 +15642,7 @@
       "foregone_edge": 0.7688
     }
   },
-  "generated": "2026-08-16 14:02:07",
+  "generated": "2026-08-16 14:42:33",
   "voided": [],
   "bridge": {
     "log": {
@@ -16721,7 +16793,7 @@
       },
       "0x815fe01c737a1078f0e8974dc113cf5083c92d95eaa8bb764855259bd5d670e3:joblife": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786869550.2,
+        "ts": 1786891317.7,
         "kalshi": "no-series"
       },
       "0x6edf1cf6de4241a71ec1828225d22fd733dcc1670df8b3986612b6394c092b9f:aleksandar kovacevic": {
@@ -16751,7 +16823,7 @@
       },
       "0xbb1682e49e0aba1d452eb672fcc6a4c3dea2ddd01edff310cfa569e46c8602a6:team yandex": {
         "polymarket-us": "no-counterpart",
-        "ts": 1786888906.0,
+        "ts": 1786891317.7,
         "kalshi": "no-series"
       },
       "0x61ec63587cfad7b9cbf7089665e2e1d955ebb2d048a85131d9ed1f4b645fc87f:pittsburgh pirates": {
@@ -16783,20 +16855,30 @@
         "polymarket-us": "matched",
         "ts": 1786887524.7,
         "kalshi": "no-series"
+      },
+      "0xb85958568351b40b91c8d1786c4151d16378a49ede295910192b55dd793aeb65:over": {
+        "polymarket-us": "outcome-unmapped",
+        "ts": 1786891317.7,
+        "kalshi": "outcome-not-a-team"
+      },
+      "0xf0ba5044f380f881ce1d37a0a3038ade98ce4abe86a02243b57aa698d1aa0394:daniil medvedev": {
+        "polymarket-us": "matched",
+        "ts": 1786891317.7,
+        "kalshi": "no-series"
       }
     },
     "summary": {
       "polymarket-us": {
-        "outcome-unmapped": 31,
-        "matched": 105,
+        "outcome-unmapped": 32,
+        "matched": 106,
         "outcome-not-yes-no": 1,
         "no-signature": 48,
         "no-counterpart": 33,
         "ambiguous": 24
       },
       "kalshi": {
-        "outcome-not-a-team": 68,
-        "no-series": 126,
+        "outcome-not-a-team": 69,
+        "no-series": 127,
         "no-signature": 48
       }
     }
