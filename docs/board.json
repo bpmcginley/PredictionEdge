@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-17 05:00:45",
-  "generated_at": 1786942845.3879855,
+  "generated": "2026-08-17 05:52:36",
+  "generated_at": 1786945956.0490484,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [
@@ -16,11 +16,11 @@
       "cost": 403.0,
       "max_payout": 620.0,
       "conviction": 0.403,
-      "hours_to_resolve": 131.5,
+      "hours_to_resolve": 130.6,
       "n_wallets": 1,
       "whale_usd": 2083,
-      "minutes_ago": 474,
-      "liquidity": 146431,
+      "minutes_ago": 526,
+      "liquidity": 145718,
       "url": "https://polymarket.com/event/epl-bre-tot-2026-08-22",
       "end_iso": "2026-08-22T16:30:00Z",
       "event_iso": "2026-08-22 16:30:00+00",
@@ -35,10 +35,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$2,083 \u2014 but only 0.3% of their book",
-        "latest buy 474 min ago",
+        "latest buy 526 min ago",
         "still near their entry price",
         "131h until it resolves",
-        "$146,431 liquidity"
+        "$145,718 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -49,18 +49,18 @@
       "title": "US announces end of Iranian blockade by August 31, 2026?",
       "side_label": "NO on: US announces end of Iranian blockade by August 31, 2026?",
       "outcome": "No",
-      "entry_price": 0.87,
+      "entry_price": 0.88,
       "whale_price": 0.85,
-      "drift_c": 2.0,
-      "contracts": 397,
-      "cost": 345.39,
-      "max_payout": 397.0,
-      "conviction": 0.346,
-      "hours_to_resolve": 355.0,
+      "drift_c": 3.0,
+      "contracts": 355,
+      "cost": 312.4,
+      "max_payout": 355.0,
+      "conviction": 0.313,
+      "hours_to_resolve": 354.1,
       "n_wallets": 1,
       "whale_usd": 3816,
-      "minutes_ago": 282,
-      "liquidity": 217480,
+      "minutes_ago": 333,
+      "liquidity": 214725,
       "url": "https://polymarket.com/event/us-announces-end-of-iranian-blockade-byptptpt-20260713152715080",
       "end_iso": "2026-08-31T23:59:00Z",
       "event_iso": "",
@@ -75,25 +75,25 @@
       "why": [
         "1 profitable wallet on this side",
         "$3,816 \u2014 but only 2.9% of their book",
-        "latest buy 282 min ago",
-        "price up 2.0c since they bought",
-        "355h until it resolves",
-        "$217,480 liquidity"
+        "latest buy 333 min ago",
+        "price up 3.0c since they bought",
+        "354h until it resolves",
+        "$214,725 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 274,
+  "considered": 295,
   "rejected": {
-    "market closed": 210,
-    "already resolved": 11,
-    "esports (sleeve retired \u2014 see esports_enabled)": 12,
+    "market closed": 239,
+    "esports (sleeve retired \u2014 see esports_enabled)": 11,
+    "resolves more than 30 days out": 6,
+    "already resolved": 5,
     "fresh wallet: market too liquid for the pattern": 9,
-    "resolves more than 30 days out": 5,
-    "wallet not new (no track record either)": 17,
     "signal too old for this market's horizon": 2,
+    "wallet not new (no track record either)": 15,
     "parlay / combo ticket, not a single market": 6,
     "below the 0.45 buy bar (recorded, not bought)": 2
   },
@@ -106,12 +106,12 @@
     "events_scanned": 344,
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 124,
-      "not a ladder: fewer than two live, quoted legs": 93,
+      "not a ladder: fewer than two live, quoted legs": 94,
       "not a ladder: group labels are not thresholds or deadlines": 50,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "bracket has too many legs to place by hand": 2,
       "bracket overround smaller than the spread": 2,
-      "ladder pair too illiquid to fill": 82,
+      "ladder pair too illiquid to fill": 84,
       "bracket underround smaller than the spread": 1,
       "not a ladder: numeric group spans different end dates": 2,
       "not a ladder: a live leg carries no group label": 3,
@@ -217,9 +217,9 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.03,
+            "market_prob": 0.029,
             "model_prob": 0.1297,
-            "gap_c": 9.97,
+            "gap_c": 10.07,
             "suspect": false
           },
           {
@@ -245,16 +245,16 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.044,
+            "market_prob": 0.039,
             "model_prob": 0.1012,
-            "gap_c": 5.72,
+            "gap_c": 6.22,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0425,
+            "market_prob": 0.0415,
             "model_prob": 0.0369,
-            "gap_c": -0.56,
+            "gap_c": -0.46,
             "suspect": false
           },
           {
@@ -294,30 +294,30 @@
           },
           {
             "label": "3.0%",
-            "market_prob": 0.0465,
+            "market_prob": 0.044,
             "model_prob": 0.0206,
-            "gap_c": -2.59,
+            "gap_c": -2.34,
             "suspect": false
           },
           {
             "label": "3.1%",
-            "market_prob": 0.044,
+            "market_prob": 0.041,
             "model_prob": 0.0671,
-            "gap_c": 2.31,
+            "gap_c": 2.61,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.1055,
+            "market_prob": 0.1035,
             "model_prob": 0.1495,
-            "gap_c": 4.4,
+            "gap_c": 4.6,
             "suspect": false
           },
           {
             "label": "3.3%",
-            "market_prob": 0.335,
+            "market_prob": 0.345,
             "model_prob": 0.2282,
-            "gap_c": -10.68,
+            "gap_c": -11.68,
             "suspect": false
           },
           {
@@ -329,9 +329,9 @@
           },
           {
             "label": "3.5%",
-            "market_prob": 0.14,
+            "market_prob": 0.125,
             "model_prob": 0.171,
-            "gap_c": 3.1,
+            "gap_c": 4.6,
             "suspect": false
           },
           {
@@ -392,9 +392,9 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.0505,
+            "market_prob": 0.0465,
             "model_prob": 0.0009,
-            "gap_c": -4.96,
+            "gap_c": -4.56,
             "suspect": false
           },
           {
@@ -441,9 +441,9 @@
           },
           {
             "label": "\u22650.5%",
-            "market_prob": 0.15,
+            "market_prob": 0.12,
             "model_prob": 0.2571,
-            "gap_c": 10.71,
+            "gap_c": 13.71,
             "suspect": false
           }
         ]
@@ -463,12 +463,78 @@
       "outcome": "No",
       "title": "Will the S&P 500 be between 7800 and 7824.9999 on Aug 17, 2026 at 4pm EDT?",
       "url": "https://kalshi.com/markets/KXINX-26AUG17H1600",
-      "entry_price": 0.7,
+      "entry_price": 0.68,
       "model_prob": 0.7377,
-      "edge": 0.0377,
+      "edge": 0.0577,
       "fair": 0.2623,
-      "market_prob": 0.315,
-      "implied_sigma": 0.0924,
+      "market_prob": 0.34,
+      "implied_sigma": 0.0952,
+      "spot_used": 7785.76,
+      "chain_ts": "2026-08-17 02:47:38",
+      "vrp_shrink": 0.92,
+      "series": "KXINX",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-08-17T20:00:00+00:00",
+      "event_iso": "2026-08-17T20:00:00+00:00"
+    },
+    {
+      "market_id": "KXNASDAQ100-26AUG17H1600-B29850",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "Yes",
+      "title": "Will the Nasdaq-100 be between 29800 and 29899.9900 at the end of Aug 17, 2026 at 4pm EDT?",
+      "url": "https://kalshi.com/markets/KXNASDAQ100-26AUG17H1600",
+      "entry_price": 0.06,
+      "model_prob": 0.1072,
+      "edge": 0.0472,
+      "fair": 0.1072,
+      "market_prob": 0.04,
+      "implied_sigma": 0.1794,
+      "spot_used": 30046.14,
+      "chain_ts": "2026-08-17 05:43:02",
+      "vrp_shrink": 0.92,
+      "series": "KXNASDAQ100",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-08-17T20:00:00+00:00",
+      "event_iso": "2026-08-17T20:00:00+00:00"
+    },
+    {
+      "market_id": "KXNASDAQ100-26AUG17H1600-B30050",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "Yes",
+      "title": "Will the Nasdaq-100 be between 30000 and 30099.9900 at the end of Aug 17, 2026 at 4pm EDT?",
+      "url": "https://kalshi.com/markets/KXNASDAQ100-26AUG17H1600",
+      "entry_price": 0.18,
+      "model_prob": 0.2206,
+      "edge": 0.0406,
+      "fair": 0.2206,
+      "market_prob": 0.16,
+      "implied_sigma": 0.1794,
+      "spot_used": 30046.14,
+      "chain_ts": "2026-08-17 05:43:02",
+      "vrp_shrink": 0.92,
+      "series": "KXNASDAQ100",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-08-17T20:00:00+00:00",
+      "event_iso": "2026-08-17T20:00:00+00:00"
+    },
+    {
+      "market_id": "KXINX-26AUG17H1600-B7837",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "No",
+      "title": "Will the S&P 500 be between 7825 and 7849.9999 on Aug 17, 2026 at 4pm EDT?",
+      "url": "https://kalshi.com/markets/KXINX-26AUG17H1600",
+      "entry_price": 0.88,
+      "model_prob": 0.9141,
+      "edge": 0.0341,
+      "fair": 0.0859,
+      "market_prob": 0.14,
+      "implied_sigma": 0.0952,
       "spot_used": 7785.76,
       "chain_ts": "2026-08-17 02:47:38",
       "vrp_shrink": 0.92,
