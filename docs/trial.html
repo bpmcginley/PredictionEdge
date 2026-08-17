@@ -176,6 +176,48 @@ const inWin = ts => (WIN.from == null || ts >= WIN.from) &&
 const feeAdj = () => (TRIAL && TRIAL.stats && TRIAL.stats.fee_adjustment) || {};
 const realOf = r => (r.realized || 0) + (feeAdj()[r.key] || 0);
 
+/* One row per OPINION, not per fill. The venue bridge mirrors a single opinion onto a
+   second venue, so the same view of the same question is on file as two rows. Counting
+   both tells you the record has twice the evidence it has — n is what a win rate is an
+   average over, and the deploy gate deflates its Sharpe by it. Which rows are the same
+   opinion is Python's answer, published as `opinion_of`, for the same reason
+   `retired_keys` is: a copy of the rule here would be free to disagree, and that is
+   precisely how this page came to show +0.1% per bet while `stats` said −0.8%.
+
+   The arithmetic is here rather than in Python because the collapse has to happen AFTER
+   the window and holdout filters — an opinion whose two legs opened either side of a
+   date boundary is one row in that window, not a whole one — so there is no fixed set of
+   collapsed rows to publish. It matches `papertrial.per_opinion` line for line: stakes
+   and P&L summed, `pred` stake-weighted, `won` from the leg carrying the most money,
+   groups of one passed through. `_real` is the corrected P&L, already summed, so callers
+   read it instead of applying `realOf` a second time. */
+const opinionOf = () => (TRIAL && TRIAL.stats && TRIAL.stats.opinion_of) || {};
+function collapse(rows) {
+  const map = opinionOf(), groups = new Map();
+  for (const r of rows) {
+    const id = map[r.key] || r.key;
+    if (!groups.has(id)) groups.set(id, []);
+    groups.get(id).push(r);
+  }
+  const out = [];
+  for (const legs of groups.values()) {
+    const stake = legs.reduce((a, l) => a + (l.stake || 0), 0);
+    if (legs.length === 1 || stake <= 0) {
+      for (const l of legs) out.push({ ...l, _real: realOf(l) });
+      continue;
+    }
+    const lead = legs.reduce((a, l) => ((l.stake || 0) > (a.stake || 0) ? l : a));
+    out.push({ ...lead,
+               opened_at: Math.min(...legs.map(l => l.opened_at)),
+               stake,
+               _real: legs.reduce((a, l) => a + realOf(l), 0),
+               won: lead.won,
+               pred: legs.reduce((a, l) => a + (l.pred || 0) * (l.stake || 0), 0) / stake,
+               venues: legs.length });
+  }
+  return out.sort((a, b) => (a.opened_at || 0) - (b.opened_at || 0));
+}
+
 /* Date inputs speak naive local days; the window speaks epoch seconds. `to` is the
    first instant NOT included, so picking "12 Aug to 14 Aug" includes all of the 14th
    rather than stopping at its midnight. */
@@ -253,21 +295,26 @@ function mountWindow() {
 }
 
 /* Exactly the figures the six boxes show, on exactly the rows Python would score:
-   `evaluate` drops anything without a positive stake, so this does too. */
+   collapse to opinions first and drop anything without a positive stake second, which is
+   the order `stats` applies them in — `evaluate` sees `per_opinion`'s output, so a leg
+   with no stake is still part of its group's total rather than gone before the sum.
+   `rows` is the count of underlying fills, kept so the page can say when the two differ
+   instead of quietly reporting one under the other's name. */
 function describe(rows) {
-  const kept = rows.filter(r => (r.stake || 0) > 0);
+  const kept = collapse(rows).filter(r => (r.stake || 0) > 0);
   const n = kept.length;
-  if (!n) return { n: 0 };
+  if (!n) return { n: 0, rows: 0 };
   const avg = a => a.reduce((x, y) => x + y, 0) / a.length;
-  const rets = kept.map(r => realOf(r) / r.stake);
+  const rets = kept.map(r => r._real / r.stake);
   const pred = kept.map(r => Number(r.pred != null ? r.pred : r.price));
   const won = kept.map(r => (r.won ? 1 : 0));
   const m = avg(rets);
   const sd = n > 1
     ? Math.sqrt(rets.reduce((a, x) => a + (x - m) * (x - m), 0) / (n - 1)) : 0;
-  return { n, win_rate: avg(won), avg_predicted: avg(pred), mean_return: m,
+  return { n, rows: rows.filter(r => (r.stake || 0) > 0).length,
+           win_rate: avg(won), avg_predicted: avg(pred), mean_return: m,
            sharpe: sd > 0 ? m / sd : null, wins: won.reduce((a, x) => a + x, 0),
-           total_pnl: kept.reduce((a, r) => a + realOf(r), 0) };
+           total_pnl: kept.reduce((a, r) => a + r._real, 0) };
 }
 
 function render() {
@@ -300,8 +347,13 @@ function render() {
   const openN = scored(open).length;
   const n = d.n;
 
+  // "Opinions", not "settled", whenever the bridge mirrored one onto two venues in this
+  // window: the box counts what the figures beside it are an average over, and calling
+  // that a settled-row count would be the same overstatement in words that collapsing
+  // just took out of the arithmetic.
+  const unit = d.rows !== n ? 'opinions' : 'settled';
   dot.className = n ? 'dot' : 'dot warn';
-  txt.textContent = n ? `${n} settled · ${openN} open`
+  txt.textContent = n ? `${n} ${unit} · ${openN} open`
                       : `${openN} open · nothing settled in this window`;
 
   // Realised edge is win rate minus the price paid: we beat the price exactly when we
@@ -310,7 +362,7 @@ function render() {
   const edge = n ? d.win_rate - d.avg_predicted : null;
 
   $('stats').innerHTML =
-    statb(n, 'settled') +
+    statb(n, unit) +
     statb(openN, 'open') +
     statb(n ? pct(d.win_rate) : '—', 'win rate') +
     statb(n ? pct(d.avg_predicted) : '—', 'avg entry price') +
@@ -336,6 +388,10 @@ function render() {
     ${heldOut !== 1 ? 'are' : 'is'} listed below but held out of these figures, because
     the bot does not bet ${names.length !== 1 ? 'those markets' : 'that sleeve'}
     tomorrow.`);
+  if (d.rows !== n) notes.push(`${d.rows} settled rows are ${n} opinions: the venue
+    bridge mirrors one view onto a second venue, and the two fills are one bet made
+    twice, not two bets. They are listed separately below and counted once here —
+    stakes and p&l summed, entry price weighted by stake.`);
   if (openN) notes.push(`${openN} position${openN !== 1 ? 's' : ''} opened in this window
     ${openN !== 1 ? 'are' : 'is'} still unresolved, so the figures count only what has
     settled so far — short-horizon markets settle first, which tilts a recent window

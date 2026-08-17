@@ -65,6 +65,7 @@ from __future__ import annotations
 import argparse
 import json
 import time
+from collections import Counter
 from collections.abc import Callable
 from pathlib import Path
 
@@ -908,6 +909,26 @@ def on_taker_fees(rows: list[dict]) -> list[dict]:
     return out
 
 
+def opinion_id(row: dict) -> str:
+    """The identity a row shares with every venue that mirrored the same opinion.
+
+    A mirror is identified by the key its ORIGIN was recorded as, built with `_key`
+    rather than by formatting the two fields here, so the string cannot drift from the
+    one on the origin row. Everything else is identified by its own `key`, which `_key`
+    already guarantees is one row per market leg ever - so a row with no mirror is alone
+    under its own identity by construction.
+
+    Split out of `per_opinion` because the Trial page has to group the SAME rows the same
+    way to slice its own windows, and it is handed this function's answer as
+    `stats["opinion_of"]` rather than carrying a copy of the rule in JavaScript - the
+    same reason `retired_keys` and `fee_adjustment` are published.
+    """
+    origin = row.get("origin_market_id")
+    if origin:
+        return _key(origin, row.get("outcome", ""))
+    return row.get("key") or _key(row.get("market_id", ""), row.get("outcome", ""))
+
+
 def per_opinion(rows: list[dict]) -> list[dict]:
     """Score-time COPIES of ``rows``, one per OPINION rather than one per fill.
 
@@ -929,17 +950,7 @@ def per_opinion(rows: list[dict]) -> list[dict]:
     """
     groups: dict[str, list[dict]] = {}
     for row in rows:
-        # A mirror groups under the key its ORIGIN was recorded as, built with `_key`
-        # rather than by formatting the two fields here, so the string cannot drift from
-        # the one on the origin row. Everything else groups under its own `key`, which
-        # `_key` already guarantees is one row per market leg ever - so a row with no
-        # mirror is alone in its group by construction, and this collapses only what the
-        # bridge actually duplicated.
-        origin = row.get("origin_market_id")
-        ident = (_key(origin, row.get("outcome", "")) if origin
-                 else row.get("key") or _key(row.get("market_id", ""),
-                                             row.get("outcome", "")))
-        groups.setdefault(ident, []).append(row)
+        groups.setdefault(opinion_id(row), []).append(row)
 
     out: list[dict] = []
     for legs in groups.values():
@@ -1066,6 +1077,17 @@ def stats(trial: dict, *, min_n: int = 30) -> dict:
         for r, corrected in zip(trial["settled"] + trial["open"],
                                 on_taker_fees(trial["settled"] + trial["open"]))
         if r.get("key") and "fee_as_recorded" in corrected}
+    # Which rows are the same opinion arriving twice, so the Trial page can collapse its
+    # own windows the way `per_opinion` collapses the headline. Published for the reason
+    # `retired_keys` is: the rule is a classifier, and a copy of it in JavaScript would
+    # be free to disagree with this one - which is exactly how the page came to show
+    # +0.1%/bet while this block said -0.8%. Only rows that actually share an identity
+    # with another row appear; a key absent from this map is alone by definition, so the
+    # map stays a few dozen entries rather than one per row.
+    _ids = [(r["key"], opinion_id(r)) for r in trial["settled"] + trial["open"]
+            if r.get("key")]
+    _mirrored = {i for i, c in Counter(i for _, i in _ids).items() if c > 1}
+    out["opinion_of"] = {k: i for k, i in _ids if i in _mirrored}
     out["open_positions"] = len(live_open)
     out["retired_sources"] = sorted(RETIRED_SOURCES)
     out["retired_classes"] = [name for name, _ in RETIRED_CLASSES]

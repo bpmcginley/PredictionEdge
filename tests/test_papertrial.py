@@ -1,6 +1,7 @@
 import json
 import os
 import tempfile
+from pathlib import Path
 
 import pytest
 
@@ -581,6 +582,50 @@ def test_every_held_out_row_is_named_by_key_for_the_page():
 
     assert keys == sorted(["0xcs2:astralis", "KXHIGHNY-26AUG12-B87.5:yes"])
     assert "0xaaa:mets" not in keys                    # settled AND open rows, live ones never
+
+
+def test_every_mirrored_row_is_named_by_opinion_for_the_page():
+    """Same argument as `retired_keys` one test up, for the other classifier. The page
+    slices these rows into its own windows, so it has to collapse mirrors the way
+    `per_opinion` does - and it cannot work out which rows are mirrors without either
+    this map or a copy of the rule in JavaScript free to disagree.
+
+    Only rows sharing an identity are named. A key absent from the map is alone by
+    definition, which is what keeps this a few dozen entries rather than one per row.
+    """
+    trial = _blank()
+    record(trial, [_ticket(mid="0xm", outcome="Mets", price=0.5),
+                   _ticket(mid="0xm-pmus", outcome="Mets", price=0.5,
+                           origin_market_id="0xm"),
+                   _ticket(mid="0xaaa")])
+    settle(trial, {"0xm": _meta(["Mets", "Pirates"], [1.0, 0.0]),
+                   "0xm-pmus": _meta(["Mets", "Pirates"], [1.0, 0.0])})
+    ids = stats(trial)["opinion_of"]
+
+    # Both legs answer to the ORIGIN's key, so the page groups them without knowing why.
+    assert ids == {"0xm:mets": "0xm:mets", "0xm-pmus:mets": "0xm:mets"}
+    assert "0xaaa:mets" not in ids                     # never mirrored, never named
+
+
+def test_the_page_collapses_opinions_from_pythons_answer_not_its_own_rule():
+    """The Trial page recomputes its figures client-side so its date and source filters
+    work, and for one sample it recomputed them WRONG: it applied the fee correction and
+    the retirement holdout but had no notion of an opinion, so it published +0.1% per bet
+    beside a `stats` block in the same file that said -0.8%.
+
+    The fix is the rule this file already uses twice - Python publishes the classifier's
+    answer, the page applies it. So the page must name `opinion_of`, and must not carry
+    the rule itself: `origin_market_id` is the field the rule turns on, and its presence
+    anywhere in the page would mean a second implementation had grown back.
+    """
+    page = (Path(__file__).resolve().parents[1] / "docs" / "trial.html").read_text(
+        encoding="utf-8")
+
+    assert "opinion_of" in page
+    assert "origin_market_id" not in page
+    # The collapse reads the corrected P&L it summed, rather than re-adding the fee
+    # adjustment on top of a total that already includes it.
+    assert "_real" in page
 
 
 # --- honest fees on the weather sleeve -------------------------------------------
