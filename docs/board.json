@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-17 04:05:23",
-  "generated_at": 1786939523.851607,
+  "generated": "2026-08-17 05:00:45",
+  "generated_at": 1786942845.3879855,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [
@@ -16,11 +16,11 @@
       "cost": 403.0,
       "max_payout": 620.0,
       "conviction": 0.403,
-      "hours_to_resolve": 132.4,
+      "hours_to_resolve": 131.5,
       "n_wallets": 1,
       "whale_usd": 2083,
-      "minutes_ago": 418,
-      "liquidity": 146206,
+      "minutes_ago": 474,
+      "liquidity": 146431,
       "url": "https://polymarket.com/event/epl-bre-tot-2026-08-22",
       "end_iso": "2026-08-22T16:30:00Z",
       "event_iso": "2026-08-22 16:30:00+00",
@@ -35,10 +35,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$2,083 \u2014 but only 0.3% of their book",
-        "latest buy 418 min ago",
+        "latest buy 474 min ago",
         "still near their entry price",
-        "132h until it resolves",
-        "$146,206 liquidity"
+        "131h until it resolves",
+        "$146,431 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -56,11 +56,11 @@
       "cost": 345.39,
       "max_payout": 397.0,
       "conviction": 0.346,
-      "hours_to_resolve": 355.9,
+      "hours_to_resolve": 355.0,
       "n_wallets": 1,
       "whale_usd": 3816,
-      "minutes_ago": 226,
-      "liquidity": 239687,
+      "minutes_ago": 282,
+      "liquidity": 217480,
       "url": "https://polymarket.com/event/us-announces-end-of-iranian-blockade-byptptpt-20260713152715080",
       "end_iso": "2026-08-31T23:59:00Z",
       "event_iso": "",
@@ -75,25 +75,24 @@
       "why": [
         "1 profitable wallet on this side",
         "$3,816 \u2014 but only 2.9% of their book",
-        "latest buy 226 min ago",
+        "latest buy 282 min ago",
         "price up 2.0c since they bought",
-        "356h until it resolves",
-        "$239,687 liquidity"
+        "355h until it resolves",
+        "$217,480 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 287,
+  "considered": 274,
   "rejected": {
-    "in-play (event already started)": 5,
     "market closed": 210,
-    "already resolved": 12,
-    "esports (sleeve retired \u2014 see esports_enabled)": 17,
-    "wallet not new (no track record either)": 23,
+    "already resolved": 11,
+    "esports (sleeve retired \u2014 see esports_enabled)": 12,
+    "fresh wallet: market too liquid for the pattern": 9,
     "resolves more than 30 days out": 5,
-    "fresh wallet: market too liquid for the pattern": 5,
+    "wallet not new (no track record either)": 17,
     "signal too old for this market's horizon": 2,
     "parlay / combo ticket, not a single market": 6,
     "below the 0.45 buy bar (recorded, not bought)": 2
@@ -106,16 +105,16 @@
     "enabled": true,
     "events_scanned": 344,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 123,
+      "bracket has legs we cannot price (fail closed)": 124,
       "not a ladder: fewer than two live, quoted legs": 93,
-      "not a ladder: group labels are not thresholds or deadlines": 51,
+      "not a ladder: group labels are not thresholds or deadlines": 50,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "bracket has too many legs to place by hand": 2,
-      "bracket overround smaller than the spread": 3,
-      "ladder pair too illiquid to fill": 79,
+      "bracket overround smaller than the spread": 2,
+      "ladder pair too illiquid to fill": 82,
       "bracket underround smaller than the spread": 1,
-      "not a ladder: numeric group spans different end dates": 1,
-      "not a ladder: a live leg carries no group label": 4,
+      "not a ladder: numeric group spans different end dates": 2,
+      "not a ladder: a live leg carries no group label": 3,
       "bracket leg too illiquid to fill": 4,
       "dominance gap smaller than the spread": 2
     },
@@ -137,7 +136,7 @@
         "nowcast_pp": 0.203341742698412,
         "nowcast_as_of": "2026-08-14 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.088pp (x1.81). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.088pp (x1.82). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -162,9 +161,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.26,
+            "market_prob": 0.27,
             "model_prob": 0.2056,
-            "gap_c": -5.44,
+            "gap_c": -6.44,
             "suspect": false
           },
           {
@@ -211,23 +210,23 @@
           },
           {
             "label": "2.1%",
-            "market_prob": 0.005,
+            "market_prob": 0.0045,
             "model_prob": 0.0536,
-            "gap_c": 4.86,
+            "gap_c": 4.91,
             "suspect": false
           },
           {
             "label": "2.2%",
-            "market_prob": 0.034,
+            "market_prob": 0.03,
             "model_prob": 0.1297,
-            "gap_c": 9.57,
+            "gap_c": 9.97,
             "suspect": false
           },
           {
             "label": "2.3%",
-            "market_prob": 0.36,
+            "market_prob": 0.355,
             "model_prob": 0.215,
-            "gap_c": -14.5,
+            "gap_c": -14.0,
             "suspect": false
           },
           {
@@ -246,16 +245,16 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.041,
+            "market_prob": 0.044,
             "model_prob": 0.1012,
-            "gap_c": 6.02,
+            "gap_c": 5.72,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0475,
+            "market_prob": 0.0425,
             "model_prob": 0.0369,
-            "gap_c": -1.06,
+            "gap_c": -0.56,
             "suspect": false
           },
           {
@@ -288,37 +287,37 @@
         "rows": [
           {
             "label": "\u22642.9%",
-            "market_prob": 0.0245,
+            "market_prob": 0.024,
             "model_prob": 0.005,
-            "gap_c": -1.95,
+            "gap_c": -1.9,
             "suspect": false
           },
           {
             "label": "3.0%",
-            "market_prob": 0.0405,
+            "market_prob": 0.0465,
             "model_prob": 0.0206,
-            "gap_c": -1.99,
+            "gap_c": -2.59,
             "suspect": false
           },
           {
             "label": "3.1%",
-            "market_prob": 0.0675,
+            "market_prob": 0.044,
             "model_prob": 0.0671,
-            "gap_c": -0.04,
+            "gap_c": 2.31,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.0605,
+            "market_prob": 0.1055,
             "model_prob": 0.1495,
-            "gap_c": 8.9,
+            "gap_c": 4.4,
             "suspect": false
           },
           {
             "label": "3.3%",
-            "market_prob": 0.34,
+            "market_prob": 0.335,
             "model_prob": 0.2282,
-            "gap_c": -11.18,
+            "gap_c": -10.68,
             "suspect": false
           },
           {
@@ -330,9 +329,9 @@
           },
           {
             "label": "3.5%",
-            "market_prob": 0.12,
+            "market_prob": 0.14,
             "model_prob": 0.171,
-            "gap_c": 5.1,
+            "gap_c": 3.1,
             "suspect": false
           },
           {
@@ -358,16 +357,16 @@
           },
           {
             "label": "3.9%",
-            "market_prob": 0.006,
+            "market_prob": 0.0055,
             "model_prob": 0.001,
-            "gap_c": -0.5,
+            "gap_c": -0.45,
             "suspect": false
           },
           {
             "label": "\u22654.0%",
-            "market_prob": 0.006,
+            "market_prob": 0.0055,
             "model_prob": 0.0001,
-            "gap_c": -0.59,
+            "gap_c": -0.54,
             "suspect": false
           }
         ]
@@ -393,9 +392,9 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.047,
+            "market_prob": 0.0505,
             "model_prob": 0.0009,
-            "gap_c": -4.61,
+            "gap_c": -4.96,
             "suspect": false
           },
           {
@@ -442,9 +441,9 @@
           },
           {
             "label": "\u22650.5%",
-            "market_prob": 0.145,
+            "market_prob": 0.15,
             "model_prob": 0.2571,
-            "gap_c": 11.21,
+            "gap_c": 10.71,
             "suspect": false
           }
         ]
@@ -458,22 +457,22 @@
   "gas": [],
   "spxindex": [
     {
-      "market_id": "KXNASDAQ100-26AUG17H1600-B29850",
+      "market_id": "KXINX-26AUG17H1600-B7812",
       "venue": "kalshi",
       "source": "spxindex",
-      "outcome": "Yes",
-      "title": "Will the Nasdaq-100 be between 29800 and 29899.9900 at the end of Aug 17, 2026 at 4pm EDT?",
-      "url": "https://kalshi.com/markets/KXNASDAQ100-26AUG17H1600",
-      "entry_price": 0.07,
-      "model_prob": 0.1072,
-      "edge": 0.0372,
-      "fair": 0.1072,
-      "market_prob": 0.05,
-      "implied_sigma": 0.169,
-      "spot_used": 30046.14,
-      "chain_ts": "2026-08-17 03:48:01",
+      "outcome": "No",
+      "title": "Will the S&P 500 be between 7800 and 7824.9999 on Aug 17, 2026 at 4pm EDT?",
+      "url": "https://kalshi.com/markets/KXINX-26AUG17H1600",
+      "entry_price": 0.7,
+      "model_prob": 0.7377,
+      "edge": 0.0377,
+      "fair": 0.2623,
+      "market_prob": 0.315,
+      "implied_sigma": 0.0924,
+      "spot_used": 7785.76,
+      "chain_ts": "2026-08-17 02:47:38",
       "vrp_shrink": 0.92,
-      "series": "KXNASDAQ100",
+      "series": "KXINX",
       "model": "cboe-0dte-density",
       "validated": false,
       "end_iso": "2026-08-17T20:00:00+00:00",
