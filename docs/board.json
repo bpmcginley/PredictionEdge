@@ -1,8 +1,48 @@
 {
-  "generated": "2026-08-17 07:09:42",
-  "generated_at": 1786950582.8920963,
+  "generated": "2026-08-17 08:02:21",
+  "generated_at": 1786953741.6566784,
   "account_size": 100000.0,
-  "tickets": [],
+  "tickets": [
+    {
+      "market_id": "0x211f2f58d38d8022f3d71a99685ebec3ff12a396118c38e8fb97fdcab53ded1e",
+      "title": "Will Bitcoin dip to $60,000 in August?",
+      "side_label": "NO on: Will Bitcoin dip to $60,000 in August?",
+      "outcome": "No",
+      "entry_price": 0.71,
+      "whale_price": 0.7,
+      "drift_c": 1.0,
+      "contracts": 695,
+      "cost": 493.45,
+      "max_payout": 695.0,
+      "conviction": 0.494,
+      "hours_to_resolve": 356.0,
+      "n_wallets": 1,
+      "whale_usd": 3516,
+      "minutes_ago": 33,
+      "liquidity": 33663,
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
+      "end_iso": "2026-09-01T04:00:00Z",
+      "event_iso": "",
+      "slug": "will-bitcoin-dip-to-60k-in-august-2026",
+      "signal_ts": 1786951729.0,
+      "wallet_usd": [
+        [
+          "0x06dc51826bc524d9a83770e7de9dd7e005b04524",
+          3516.1
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$3,516 \u2014 but only 0.5% of their book",
+        "latest buy 33 min ago",
+        "price up 1.0c since they bought",
+        "356h until it resolves"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    }
+  ],
   "probe": [
     {
       "market_id": "0x9359698aab64d2cf210dbee9926d01188cb5277a3442dcf0552855842c44dce0",
@@ -16,11 +56,11 @@
       "cost": 403.0,
       "max_payout": 620.0,
       "conviction": 0.403,
-      "hours_to_resolve": 129.3,
+      "hours_to_resolve": 128.5,
       "n_wallets": 1,
       "whale_usd": 2083,
-      "minutes_ago": 603,
-      "liquidity": 144988,
+      "minutes_ago": 655,
+      "liquidity": 145947,
       "url": "https://polymarket.com/event/epl-bre-tot-2026-08-22",
       "end_iso": "2026-08-22T16:30:00Z",
       "event_iso": "2026-08-22 16:30:00+00",
@@ -35,10 +75,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$2,083 \u2014 but only 0.3% of their book",
-        "latest buy 603 min ago",
+        "latest buy 655 min ago",
         "still near their entry price",
-        "129h until it resolves",
-        "$144,988 liquidity"
+        "128h until it resolves",
+        "$145,947 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -56,11 +96,11 @@
       "cost": 345.39,
       "max_payout": 397.0,
       "conviction": 0.346,
-      "hours_to_resolve": 352.8,
+      "hours_to_resolve": 351.9,
       "n_wallets": 1,
       "whale_usd": 3816,
-      "minutes_ago": 411,
-      "liquidity": 225332,
+      "minutes_ago": 463,
+      "liquidity": 224978,
       "url": "https://polymarket.com/event/us-announces-end-of-iranian-blockade-byptptpt-20260713152715080",
       "end_iso": "2026-08-31T23:59:00Z",
       "event_iso": "",
@@ -75,38 +115,36 @@
       "why": [
         "1 profitable wallet on this side",
         "$3,816 \u2014 but only 2.6% of their book",
-        "latest buy 411 min ago",
+        "latest buy 463 min ago",
         "price up 2.0c since they bought",
-        "353h until it resolves",
-        "$225,332 liquidity"
+        "352h until it resolves",
+        "$224,978 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 283,
+  "considered": 262,
   "rejected": {
-    "market closed": 224,
-    "esports (sleeve retired \u2014 see esports_enabled)": 12,
+    "market closed": 208,
+    "esports (sleeve retired \u2014 see esports_enabled)": 13,
     "resolves more than 30 days out": 7,
-    "already resolved": 5,
-    "fresh wallet: market too liquid for the pattern": 9,
+    "fresh wallet: market too liquid for the pattern": 6,
+    "already resolved": 1,
     "signal too old for this market's horizon": 2,
-    "wallet not new (no track record either)": 16,
-    "parlay / combo ticket, not a single market": 6,
+    "wallet not new (no track record either)": 15,
+    "parlay / combo ticket, not a single market": 7,
     "below the 0.45 buy bar (recorded, not bought)": 2
   },
-  "notes": [
-    "Signals came in but none cleared the filters \u2014 that is a normal, and usually correct, outcome."
-  ],
+  "notes": [],
   "consistency": {
     "ok": true,
     "enabled": true,
     "events_scanned": 344,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 124,
-      "not a ladder: fewer than two live, quoted legs": 94,
+      "bracket has legs we cannot price (fail closed)": 123,
+      "not a ladder: fewer than two live, quoted legs": 95,
       "not a ladder: group labels are not thresholds or deadlines": 50,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "bracket has too many legs to place by hand": 2,
@@ -115,6 +153,7 @@
       "not a ladder: numeric group spans different end dates": 2,
       "not a ladder: a live leg carries no group label": 3,
       "bracket leg too illiquid to fill": 4,
+      "ladder inversion smaller than the spread": 1,
       "bracket overround smaller than the spread": 1,
       "dominance gap smaller than the spread": 2
     },
@@ -217,9 +256,9 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.048,
+            "market_prob": 0.044,
             "model_prob": 0.1297,
-            "gap_c": 8.17,
+            "gap_c": 8.57,
             "suspect": false
           },
           {
@@ -245,16 +284,16 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.0395,
+            "market_prob": 0.043,
             "model_prob": 0.1012,
-            "gap_c": 6.17,
+            "gap_c": 5.82,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0575,
+            "market_prob": 0.0585,
             "model_prob": 0.0369,
-            "gap_c": -2.06,
+            "gap_c": -2.16,
             "suspect": false
           },
           {
@@ -294,30 +333,30 @@
           },
           {
             "label": "3.0%",
-            "market_prob": 0.046,
+            "market_prob": 0.039,
             "model_prob": 0.0206,
-            "gap_c": -2.54,
+            "gap_c": -1.84,
             "suspect": false
           },
           {
             "label": "3.1%",
-            "market_prob": 0.0585,
+            "market_prob": 0.044,
             "model_prob": 0.0671,
-            "gap_c": 0.86,
+            "gap_c": 2.31,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.11,
+            "market_prob": 0.0965,
             "model_prob": 0.1495,
-            "gap_c": 3.95,
+            "gap_c": 5.3,
             "suspect": false
           },
           {
             "label": "3.3%",
-            "market_prob": 0.33,
+            "market_prob": 0.34,
             "model_prob": 0.2282,
-            "gap_c": -10.18,
+            "gap_c": -11.18,
             "suspect": false
           },
           {
@@ -336,9 +375,9 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.055,
+            "market_prob": 0.05,
             "model_prob": 0.084,
-            "gap_c": 2.9,
+            "gap_c": 3.4,
             "suspect": false
           },
           {
@@ -350,9 +389,9 @@
           },
           {
             "label": "3.8%",
-            "market_prob": 0.035,
+            "market_prob": 0.0345,
             "model_prob": 0.0065,
-            "gap_c": -2.85,
+            "gap_c": -2.8,
             "suspect": false
           },
           {
@@ -441,9 +480,9 @@
           },
           {
             "label": "\u22650.5%",
-            "market_prob": 0.12,
+            "market_prob": 0.15,
             "model_prob": 0.2571,
-            "gap_c": 13.71,
+            "gap_c": 10.71,
             "suspect": false
           }
         ]
@@ -468,9 +507,9 @@
       "edge": 0.0706,
       "fair": 0.2206,
       "market_prob": 0.13,
-      "implied_sigma": 0.1882,
+      "implied_sigma": 0.1949,
       "spot_used": 30046.14,
-      "chain_ts": "2026-08-17 07:08:16",
+      "chain_ts": "2026-08-17 08:02:19",
       "vrp_shrink": 0.92,
       "series": "KXNASDAQ100",
       "model": "cboe-0dte-density",
@@ -490,9 +529,9 @@
       "edge": 0.0601,
       "fair": 0.1401,
       "market_prob": 0.06,
-      "implied_sigma": 0.1882,
+      "implied_sigma": 0.1949,
       "spot_used": 30046.14,
-      "chain_ts": "2026-08-17 07:08:16",
+      "chain_ts": "2026-08-17 08:02:19",
       "vrp_shrink": 0.92,
       "series": "KXNASDAQ100",
       "model": "cboe-0dte-density",
@@ -512,9 +551,9 @@
       "edge": 0.0572,
       "fair": 0.1072,
       "market_prob": 0.035,
-      "implied_sigma": 0.1882,
+      "implied_sigma": 0.1949,
       "spot_used": 30046.14,
-      "chain_ts": "2026-08-17 07:08:16",
+      "chain_ts": "2026-08-17 08:02:19",
       "vrp_shrink": 0.92,
       "series": "KXNASDAQ100",
       "model": "cboe-0dte-density",
