@@ -1118,8 +1118,8 @@ def test_the_new_fields_are_forward_only_and_never_invented():
 # The record held an entry price and a settlement and nothing between them, so "was
 # this ever underwater" was not a hard question, it was an unaskable one.
 
-from predictionedge.papertrial import (MARK_CAP, _thin_marks,  # noqa: E402
-                                       mark_open)
+from predictionedge.papertrial import (MARK_CAP, MARK_MAX_GAP,  # noqa: E402
+                                       _thin_marks, mark_open)
 
 
 def _live(bid, ask, outcomes=("Mets", "Pirates")):
@@ -1129,15 +1129,80 @@ def _live(bid, ask, outcomes=("Mets", "Pirates")):
 
 
 def test_marks_accumulate_across_polls():
+    """A mark per MOVE, not a mark per poll."""
+    trial = _blank()
+    record(trial, [_ticket(price=0.5)], stake=100.0)
+    for i, q in enumerate([(0.49, 0.51), (0.52, 0.54), (0.60, 0.62)]):
+        assert mark_open(trial, {"0xabc": _live(*q)}, now=1000 + 900 * i) == 1
+    assert trial["open"][0]["marks"] == [
+        {"t": 1000, "best_bid": 0.49, "best_ask": 0.51},
+        {"t": 1900, "best_bid": 0.52, "best_ask": 0.54},
+        {"t": 2800, "best_bid": 0.60, "best_ask": 0.62}]
+
+
+def test_a_book_that_has_not_moved_extends_its_mark_instead_of_repeating_it():
+    """The file is committed every 15 minutes and most polls find the book exactly where
+    they left it. Appending an identical mark each time was ~252 changed lines on every
+    one of ~96 commits a day - and git history is the one thing here that cannot be
+    compacted later, so the churn is the permanent cost, not the bytes.
+    """
     trial = _blank()
     record(trial, [_ticket(price=0.5)], stake=100.0)
     metas = {"0xabc": _live(0.49, 0.51)}
-    for i in range(3):
-        assert mark_open(trial, metas, now=1000 + 900 * i) == 1
+    for i in range(4):
+        assert mark_open(trial, metas, now=1000 + 900 * i) == 1   # still priced...
+    assert trial["open"][0]["marks"] == [                          # ...but not repeated
+        {"t": 1000, "best_bid": 0.49, "best_ask": 0.51, "until": 3700}]
+
+    # The observation itself is never rewritten - `until` only ever moves forward, and
+    # the moment the book moves the standing mark is left saying exactly how long it held.
+    mark_open(trial, {"0xabc": _live(0.55, 0.57)}, now=4600)
     assert trial["open"][0]["marks"] == [
-        {"t": 1000, "best_bid": 0.49, "best_ask": 0.51},
-        {"t": 1900, "best_bid": 0.49, "best_ask": 0.51},
-        {"t": 2800, "best_bid": 0.49, "best_ask": 0.51}]
+        {"t": 1000, "best_bid": 0.49, "best_ask": 0.51, "until": 3700},
+        {"t": 4600, "best_bid": 0.55, "best_ask": 0.57}]
+
+
+def test_a_hold_and_an_unreadable_quote_do_not_look_alike():
+    """The whole reason a hold is written as `until` rather than as silence. Skipping
+    the append outright would be cheaper still and would make a gap in the series mean
+    either "the price sat still" or "we could not read the book" - opposite facts about
+    the position, and the second one is the one that matters.
+    """
+    trial = _blank()
+    record(trial, [_ticket(price=0.5)], stake=100.0)
+    mark_open(trial, {"0xabc": _live(0.49, 0.51)}, now=1000)
+    mark_open(trial, {"0xabc": _live(0.49, 0.51)}, now=1900)      # held
+    assert mark_open(trial, {"0xabc": _live(0.0, 0.0)}, now=2800) == 0   # unreadable
+    mark_open(trial, {"0xabc": _live(0.49, 0.51)}, now=3700)      # same book, later
+
+    marks = trial["open"][0]["marks"]
+    # A hold says how long it held; the unreadable poll leaves no claim at all. The
+    # later sighting is too far from the last one to be written as the same hold, so
+    # it starts a fresh mark and the unobserved stretch is a visible gap between them.
+    assert marks == [{"t": 1000, "best_bid": 0.49, "best_ask": 0.51, "until": 1900},
+                     {"t": 3700, "best_bid": 0.49, "best_ask": 0.51}]
+
+
+def test_an_outage_is_never_absorbed_into_a_claim_that_the_price_held():
+    """The failure mode `MARK_MAX_GAP` exists for. A feed that breaks for a day and
+    returns to an unchanged book would otherwise extend one mark straight across the
+    outage - a whole day of "we know the price sat still" built from two sightings.
+    """
+    trial = _blank()
+    record(trial, [_ticket(price=0.5)], stake=100.0)
+    metas = {"0xabc": _live(0.49, 0.51)}
+    mark_open(trial, metas, now=1000)
+    mark_open(trial, metas, now=1000 + 86400)                   # back a day later
+
+    assert [m["t"] for m in trial["open"][0]["marks"]] == [1000, 87400]
+    # Jitter is not an outage: a run a few minutes late still extends the standing mark,
+    # which is the whole point of the bound being wider than the poll interval.
+    trial2 = _blank()
+    record(trial2, [_ticket(price=0.5)], stake=100.0)
+    mark_open(trial2, metas, now=1000)
+    mark_open(trial2, metas, now=1000 + MARK_MAX_GAP)
+    assert trial2["open"][0]["marks"] == [
+        {"t": 1000, "best_bid": 0.49, "best_ask": 0.51, "until": 1000 + MARK_MAX_GAP}]
 
 
 def test_the_mark_is_the_book_for_the_leg_this_row_bought():

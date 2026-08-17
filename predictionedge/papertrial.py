@@ -611,7 +611,7 @@ def settle(trial: dict, metas: dict[str, dict], *, now: float | None = None) -> 
 
 
 # How many price marks one open row keeps. A mark serialises to ~94 bytes at this
-# file's indent, and a 15-minute poller lays down 96 of them a day, so an uncapped
+# file's indent, and a 15-minute poller would lay down 96 of them a day, so an uncapped
 # series costs ~9.0 KB per open row per day - measured 2026-08-17 against the live
 # file, that is 421 KB A DAY across the 48 markable open rows, growing without bound in
 # a 650 KB record that is committed on every run. Git history is the one thing in this
@@ -619,10 +619,26 @@ def settle(trial: dict, metas: dict[str, dict], *, now: float | None = None) -> 
 # is a permanent one. Capped, a row tops out at ~2.3 KB and the whole file gains ~106 KB
 # (+16%) once every row has filled its series - a step, not a slope.
 #
+# Those are the worst-case figures, and the worst case is a book that moves on every
+# single poll. `mark_open` extends a standing mark instead of repeating it, so a row
+# only spends a mark when its quote actually CHANGES; the daily 96 is a ceiling almost
+# nothing reaches, and the cap below is what stops a genuinely jumpy market from
+# reaching it either.
+#
 # 24 is roughly a mark an hour over a day-long hold and a coarse shape over a week-long
 # one, which is the resolution the questions in `mark_open` actually need: they are
 # about whether a position went underwater and by how much, not about the tick.
 MARK_CAP = 24
+
+# How far apart two sightings of the same book may be and still be written as one held
+# mark. A poll runs every 15 minutes, so this is one and a half intervals: enough slack
+# for a late run - GitHub's scheduler is routinely a few minutes behind - and not enough
+# to cover a poll that never produced a quote. Past it the next sighting starts a FRESH
+# mark, so the stretch nobody could read shows up as a gap between one mark's `until`
+# and the next one's `t`, which is exactly what it is. Without this bound a feed that
+# broke for a day and came back to an unchanged book would extend one mark straight
+# across the outage and read as "held all day".
+MARK_MAX_GAP = 1350
 
 
 def _leg_quote(meta: dict, outcome: str) -> tuple[float, float] | None:
@@ -697,8 +713,13 @@ def _thin_marks(marks: list[dict], cap: int) -> list[dict]:
 
 
 def mark_open(trial: dict, metas: dict[str, dict], *, now: float | None = None,
-              cap: int = MARK_CAP) -> int:
-    """Append one price mark to every open row the batch quote can price. Returns how many.
+              cap: int = MARK_CAP, max_gap: float = MARK_MAX_GAP) -> int:
+    """Mark every open row the batch quote can price. Returns how many were priced.
+
+    A row whose book has MOVED gains a mark; a row whose book is exactly where the last
+    mark left it has that mark's ``until`` extended instead, so a flat position costs one
+    changed number per poll rather than a repeated five-line entry. Both count as priced,
+    because the question this number answers is how many rows the batch could quote.
 
     THE RECORD HAD NO PRICE PATH AT ALL. Across the 585 settled and open rows there is
     an entry price and a settlement and nothing in between - not a bid, not an ask, not
@@ -743,12 +764,39 @@ def mark_open(trial: dict, metas: dict[str, dict], *, now: float | None = None,
         quote = _leg_quote(metas.get(row["market_id"]) or {}, row.get("outcome", ""))
         if quote is None:
             continue
-        bid, ask = quote
+        bid, ask = round(quote[0], 4), round(quote[1], 4)
         marks = row.setdefault("marks", [])
+        last = marks[-1] if marks else None
+        seen = last.get("until") or last["t"] if last else 0
+        if (last and last["best_bid"] == bid and last["best_ask"] == ask
+                and now - seen <= max_gap):
+            # THE QUOTE HAS NOT MOVED, so the standing mark is extended rather than
+            # duplicated: it reads "this book, from `t`, still there at `until`". Most
+            # 15-minute polls find the book exactly where they left it, and appending an
+            # identical mark for each one costs ~5 changed lines per row on a file that
+            # is committed every 15 minutes - measured 2026-08-17, ~252 lines a commit
+            # across the open rows, on top of the 73-240 a board refresh already moves.
+            # Git history is the one thing here that can never be compacted, so the
+            # churn is the durable cost, not the bytes.
+            #
+            # `until` is why this is a dedup and not a data loss. The alternative -
+            # simply skipping - makes a gap mean either "the price held" or "the quote
+            # was unreadable", and those are opposite facts about the position. With
+            # `until`, a hold is stated and a gap still means only what it meant before -
+            # which is also why `max_gap` exists: a sighting too far from the last one is
+            # a new mark, so an outage cannot be absorbed into a claim that it held.
+            #
+            # Extending it is not a rewrite of a committed result. `t`, `best_bid` and
+            # `best_ask` never change once written, this row is still OPEN and has no
+            # result to contradict, and `until` only ever moves forward - it records
+            # that an observation kept holding, which is the same added-data act as
+            # appending would have been.
+            last["until"] = round(now)
+            marked += 1
+            continue
         # Seconds, not fractions of one: the poll interval is 15 minutes, so anything
         # finer is a decimal place of noise paid for on every commit, forever.
-        marks.append({"t": round(now), "best_bid": round(bid, 4),
-                      "best_ask": round(ask, 4)})
+        marks.append({"t": round(now), "best_bid": bid, "best_ask": ask})
         if len(marks) > cap:
             row["marks"] = _thin_marks(marks, cap)
         marked += 1
