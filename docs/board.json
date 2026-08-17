@@ -1,8 +1,50 @@
 {
-  "generated": "2026-08-17 08:02:21",
-  "generated_at": 1786953741.6566784,
+  "generated": "2026-08-17 09:03:04",
+  "generated_at": 1786957384.392759,
   "account_size": 100000.0,
   "tickets": [
+    {
+      "market_id": "0x42b0ae98ebf26bc27f996105bf49ff2d05d8ef9d88b54578dc9b76b8b6be6a37",
+      "title": "Miami Marlins vs. Philadelphia Phillies",
+      "side_label": "Philadelphia Phillies \u2014 Miami Marlins vs. Philadelphia Phillies",
+      "outcome": "Philadelphia Phillies",
+      "entry_price": 0.695,
+      "whale_price": 0.69,
+      "drift_c": 0.5,
+      "contracts": 673,
+      "cost": 467.73,
+      "max_payout": 673.0,
+      "conviction": 0.468,
+      "hours_to_resolve": 13.6,
+      "n_wallets": 1,
+      "whale_usd": 13356,
+      "minutes_ago": 13,
+      "liquidity": 257902,
+      "url": "https://polymarket.com/event/mlb-mia-phi-2026-08-17",
+      "end_iso": "2026-08-24T22:40:00Z",
+      "event_iso": "2026-08-17 22:40:00+00",
+      "slug": "mlb-mia-phi-2026-08-17",
+      "signal_ts": 1786956565.0,
+      "wallet_usd": [
+        [
+          "0x3dfb153c197d4c19d3b31c1ecd2c7b6860eeabaf",
+          13356.08
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$13,356 \u2014 but only 3.6% of their book",
+        "latest buy 13 min ago",
+        "still near their entry price",
+        "14h until it resolves",
+        "$257,902 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    }
+  ],
+  "probe": [
     {
       "market_id": "0x211f2f58d38d8022f3d71a99685ebec3ff12a396118c38e8fb97fdcab53ded1e",
       "title": "Will Bitcoin dip to $60,000 in August?",
@@ -11,15 +53,15 @@
       "entry_price": 0.71,
       "whale_price": 0.7,
       "drift_c": 1.0,
-      "contracts": 695,
-      "cost": 493.45,
-      "max_payout": 695.0,
-      "conviction": 0.494,
-      "hours_to_resolve": 356.0,
+      "contracts": 625,
+      "cost": 443.75,
+      "max_payout": 625.0,
+      "conviction": 0.444,
+      "hours_to_resolve": 355.0,
       "n_wallets": 1,
       "whale_usd": 3516,
-      "minutes_ago": 33,
-      "liquidity": 33663,
+      "minutes_ago": 94,
+      "liquidity": 36382,
       "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
       "end_iso": "2026-09-01T04:00:00Z",
       "event_iso": "",
@@ -34,16 +76,14 @@
       "why": [
         "1 profitable wallet on this side",
         "$3,516 \u2014 but only 0.5% of their book",
-        "latest buy 33 min ago",
+        "latest buy 94 min ago",
         "price up 1.0c since they bought",
-        "356h until it resolves"
+        "355h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
-    }
-  ],
-  "probe": [
+    },
     {
       "market_id": "0x9359698aab64d2cf210dbee9926d01188cb5277a3442dcf0552855842c44dce0",
       "title": "Will Tottenham Hotspur FC win on 2026-08-22?",
@@ -56,11 +96,11 @@
       "cost": 403.0,
       "max_payout": 620.0,
       "conviction": 0.403,
-      "hours_to_resolve": 128.5,
+      "hours_to_resolve": 127.5,
       "n_wallets": 1,
       "whale_usd": 2083,
-      "minutes_ago": 655,
-      "liquidity": 145947,
+      "minutes_ago": 716,
+      "liquidity": 144516,
       "url": "https://polymarket.com/event/epl-bre-tot-2026-08-22",
       "end_iso": "2026-08-22T16:30:00Z",
       "event_iso": "2026-08-22 16:30:00+00",
@@ -75,10 +115,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$2,083 \u2014 but only 0.3% of their book",
-        "latest buy 655 min ago",
+        "latest buy 716 min ago",
         "still near their entry price",
-        "128h until it resolves",
-        "$145,947 liquidity"
+        "127h until it resolves",
+        "$144,516 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -96,11 +136,11 @@
       "cost": 345.39,
       "max_payout": 397.0,
       "conviction": 0.346,
-      "hours_to_resolve": 351.9,
+      "hours_to_resolve": 350.9,
       "n_wallets": 1,
       "whale_usd": 3816,
-      "minutes_ago": 463,
-      "liquidity": 224978,
+      "minutes_ago": 524,
+      "liquidity": 222675,
       "url": "https://polymarket.com/event/us-announces-end-of-iranian-blockade-byptptpt-20260713152715080",
       "end_iso": "2026-08-31T23:59:00Z",
       "event_iso": "",
@@ -115,27 +155,70 @@
       "why": [
         "1 profitable wallet on this side",
         "$3,816 \u2014 but only 2.6% of their book",
-        "latest buy 463 min ago",
+        "latest buy 524 min ago",
         "price up 2.0c since they bought",
-        "352h until it resolves",
-        "$224,978 liquidity"
+        "351h until it resolves",
+        "$222,675 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
+    },
+    {
+      "market_id": "0xc16fade4bbc06895f8e456e1e49c6aa51c1b2dc7f734b3ad8fe8a5900d6a4174",
+      "title": "Will Jim Schwartzel be the Republican nominee for FL-19?",
+      "side_label": "NO on: Will Jim Schwartzel be the Republican nominee for FL-19?",
+      "outcome": "No",
+      "entry_price": 0.9,
+      "whale_price": 0.875,
+      "drift_c": 2.5,
+      "contracts": 348,
+      "cost": 313.2,
+      "max_payout": 348.0,
+      "conviction": 0.314,
+      "hours_to_resolve": 15.0,
+      "n_wallets": 1,
+      "whale_usd": 5250,
+      "minutes_ago": 60,
+      "liquidity": 64844,
+      "url": "https://polymarket.com/event/fl-19-republican-primary-winner",
+      "end_iso": "2026-08-18T00:00:00Z",
+      "event_iso": "",
+      "slug": "will-jim-schwartzel-be-the-republican-nominee-for-fl-19",
+      "signal_ts": 1786953781.0,
+      "wallet_usd": [
+        [
+          "0x98d04f9eb52d08ef9697f6eb8d7cfe8d46e5f14a",
+          5249.87
+        ]
+      ],
+      "why": [
+        "election market and 100% of this is one wallet \u2014 concentration here can move the price rather than confirm it",
+        "1 profitable wallet on this side",
+        "$5,250 \u2014 but only 8.3% of their book",
+        "latest buy 60 min ago",
+        "price up 2.5c since they bought",
+        "15h until it resolves",
+        "$64,844 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion",
+        "100% of this signal is a single wallet on an election market \u2014 that is the shape that distorted 2024 pricing"
+      ]
     }
   ],
-  "considered": 262,
+  "considered": 242,
   "rejected": {
-    "market closed": 208,
-    "esports (sleeve retired \u2014 see esports_enabled)": 13,
+    "market closed": 183,
+    "esports (sleeve retired \u2014 see esports_enabled)": 14,
     "resolves more than 30 days out": 7,
-    "fresh wallet: market too liquid for the pattern": 6,
+    "fresh wallet: market too liquid for the pattern": 7,
     "already resolved": 1,
+    "wallet not new (no track record either)": 16,
     "signal too old for this market's horizon": 2,
-    "wallet not new (no track record either)": 15,
     "parlay / combo ticket, not a single market": 7,
-    "below the 0.45 buy bar (recorded, not bought)": 2
+    "below the 0.45 buy bar (recorded, not bought)": 4
   },
   "notes": [],
   "consistency": {
@@ -144,16 +227,16 @@
     "events_scanned": 344,
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 123,
-      "not a ladder: fewer than two live, quoted legs": 95,
-      "not a ladder: group labels are not thresholds or deadlines": 50,
+      "not a ladder: fewer than two live, quoted legs": 94,
+      "not a ladder: group labels are not thresholds or deadlines": 51,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "bracket has too many legs to place by hand": 2,
-      "ladder pair too illiquid to fill": 84,
+      "ladder pair too illiquid to fill": 82,
+      "ladder inversion smaller than the spread": 2,
       "bracket underround smaller than the spread": 1,
       "not a ladder: numeric group spans different end dates": 2,
       "not a ladder: a live leg carries no group label": 3,
       "bracket leg too illiquid to fill": 4,
-      "ladder inversion smaller than the spread": 1,
       "bracket overround smaller than the spread": 1,
       "dominance gap smaller than the spread": 2
     },
@@ -200,9 +283,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.22,
+            "market_prob": 0.215,
             "model_prob": 0.2056,
-            "gap_c": -1.44,
+            "gap_c": -0.94,
             "suspect": false
           },
           {
@@ -256,44 +339,44 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.044,
+            "market_prob": 0.0405,
             "model_prob": 0.1297,
-            "gap_c": 8.57,
+            "gap_c": 8.92,
             "suspect": false
           },
           {
             "label": "2.3%",
-            "market_prob": 0.355,
+            "market_prob": 0.35,
             "model_prob": 0.215,
-            "gap_c": -14.0,
+            "gap_c": -13.5,
             "suspect": false
           },
           {
             "label": "2.4%",
-            "market_prob": 0.395,
+            "market_prob": 0.385,
             "model_prob": 0.2441,
-            "gap_c": -15.09,
+            "gap_c": -14.09,
             "suspect": false
           },
           {
             "label": "2.5%",
-            "market_prob": 0.2,
+            "market_prob": 0.205,
             "model_prob": 0.1899,
-            "gap_c": -1.01,
+            "gap_c": -1.51,
             "suspect": false
           },
           {
             "label": "2.6%",
-            "market_prob": 0.043,
+            "market_prob": 0.046,
             "model_prob": 0.1012,
-            "gap_c": 5.82,
+            "gap_c": 5.52,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0585,
+            "market_prob": 0.0455,
             "model_prob": 0.0369,
-            "gap_c": -2.16,
+            "gap_c": -0.86,
             "suspect": false
           },
           {
@@ -333,23 +416,23 @@
           },
           {
             "label": "3.0%",
-            "market_prob": 0.039,
+            "market_prob": 0.043,
             "model_prob": 0.0206,
-            "gap_c": -1.84,
+            "gap_c": -2.24,
             "suspect": false
           },
           {
             "label": "3.1%",
-            "market_prob": 0.044,
+            "market_prob": 0.0375,
             "model_prob": 0.0671,
-            "gap_c": 2.31,
+            "gap_c": 2.96,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.0965,
+            "market_prob": 0.0995,
             "model_prob": 0.1495,
-            "gap_c": 5.3,
+            "gap_c": 5.0,
             "suspect": false
           },
           {
@@ -431,9 +514,9 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.0465,
+            "market_prob": 0.047,
             "model_prob": 0.0009,
-            "gap_c": -4.56,
+            "gap_c": -4.61,
             "suspect": false
           },
           {
@@ -473,16 +556,16 @@
           },
           {
             "label": "0.4%",
-            "market_prob": 0.4,
+            "market_prob": 0.395,
             "model_prob": 0.232,
-            "gap_c": -16.8,
+            "gap_c": -16.3,
             "suspect": false
           },
           {
             "label": "\u22650.5%",
-            "market_prob": 0.15,
+            "market_prob": 0.12,
             "model_prob": 0.2571,
-            "gap_c": 10.71,
+            "gap_c": 13.71,
             "suspect": false
           }
         ]
@@ -507,31 +590,9 @@
       "edge": 0.0706,
       "fair": 0.2206,
       "market_prob": 0.13,
-      "implied_sigma": 0.1949,
+      "implied_sigma": 0.2038,
       "spot_used": 30046.14,
-      "chain_ts": "2026-08-17 08:02:19",
-      "vrp_shrink": 0.92,
-      "series": "KXNASDAQ100",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-08-17T20:00:00+00:00",
-      "event_iso": "2026-08-17T20:00:00+00:00"
-    },
-    {
-      "market_id": "KXNASDAQ100-26AUG17H1600-B29950",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "Yes",
-      "title": "Will the Nasdaq-100 be between 29900 and 29999.9900 at the end of Aug 17, 2026 at 4pm EDT?",
-      "url": "https://kalshi.com/markets/KXNASDAQ100-26AUG17H1600",
-      "entry_price": 0.08,
-      "model_prob": 0.1401,
-      "edge": 0.0601,
-      "fair": 0.1401,
-      "market_prob": 0.06,
-      "implied_sigma": 0.1949,
-      "spot_used": 30046.14,
-      "chain_ts": "2026-08-17 08:02:19",
+      "chain_ts": "2026-08-17 09:01:23",
       "vrp_shrink": 0.92,
       "series": "KXNASDAQ100",
       "model": "cboe-0dte-density",
@@ -551,9 +612,31 @@
       "edge": 0.0572,
       "fair": 0.1072,
       "market_prob": 0.035,
-      "implied_sigma": 0.1949,
+      "implied_sigma": 0.2038,
       "spot_used": 30046.14,
-      "chain_ts": "2026-08-17 08:02:19",
+      "chain_ts": "2026-08-17 09:01:23",
+      "vrp_shrink": 0.92,
+      "series": "KXNASDAQ100",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-08-17T20:00:00+00:00",
+      "event_iso": "2026-08-17T20:00:00+00:00"
+    },
+    {
+      "market_id": "KXNASDAQ100-26AUG17H1600-B29950",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "Yes",
+      "title": "Will the Nasdaq-100 be between 29900 and 29999.9900 at the end of Aug 17, 2026 at 4pm EDT?",
+      "url": "https://kalshi.com/markets/KXNASDAQ100-26AUG17H1600",
+      "entry_price": 0.09,
+      "model_prob": 0.1401,
+      "edge": 0.0501,
+      "fair": 0.1401,
+      "market_prob": 0.07,
+      "implied_sigma": 0.2038,
+      "spot_used": 30046.14,
+      "chain_ts": "2026-08-17 09:01:23",
       "vrp_shrink": 0.92,
       "series": "KXNASDAQ100",
       "model": "cboe-0dte-density",
