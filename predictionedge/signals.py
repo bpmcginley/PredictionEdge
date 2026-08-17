@@ -29,6 +29,7 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 
 from .copytrade import is_esports, scan_smart_flow
+from .edge import copy_give_up_c
 from .sizing import Account, Sizing, event_url, size_position
 
 # A real Polymarket market key is 0x + 64 hex. Combo tickets fake one at 62, zero-padded.
@@ -544,8 +545,24 @@ def build_board(cfg, client, scorer, account: Account, *,
             continue
 
         drift_c = round((entry - s.avg_price) * 100, 2)
-        if drift_c > cfg.board_max_drift_c:
-            report.reject("price ran away from the whale's entry")
+        # Drift was never the whole of what we pay away versus the whale. The taker fee
+        # is gone the moment the fill lands, exactly like drift, and this gate ignored
+        # it - so under a 4.0c cap a ticket could sit 5.75c worse than the trade it
+        # claimed to copy. `copy_give_up_c` charges the fee against the same budget; the
+        # budget itself is untouched.
+        #
+        # It is the SAME fee the row will be booked at (`papertrial.record` uses
+        # `cfg.fee_multiplier` for anything without an index override), because a bar
+        # tested against one schedule and settled against another is not a bar.
+        #
+        # Over the 293 published opinions this refuses 7: a 28.6% win rate and -$375,
+        # against 54.9% and +$394 for what it keeps. The headline moves from -0.79 to
+        # -0.21 points per bet. That is a measurement of what the gate would have done,
+        # not a claim it will do it again - and no published row changes, since the
+        # trial is append-only and these seven are already settled and recorded.
+        if copy_give_up_c(entry, s.avg_price,
+                          multiplier=cfg.fee_multiplier) > cfg.board_max_drift_c:
+            report.reject("price + fee ran away from the whale's entry")
             continue
 
         conviction, why = _conviction(

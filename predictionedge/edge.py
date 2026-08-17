@@ -11,7 +11,7 @@ import math
 from dataclasses import dataclass
 
 from .config import Config
-from .fees import fee_per_contract, trade_fee
+from .fees import DEFAULT_FEE_MULTIPLIER, fee_per_contract, trade_fee
 
 
 @dataclass(frozen=True)
@@ -104,6 +104,40 @@ def _evaluate_side(side: str, win_prob: float, price: float, cfg: Config) -> Opp
         est_fee=fee,
         expected_value=net_per_ct * contracts,
     )
+
+
+def copy_give_up_c(entry: float, whale_price: float, *,
+                   multiplier: float = DEFAULT_FEE_MULTIPLIER) -> float:
+    """Cents per contract handed away versus the fill being copied: drift PLUS the fee.
+
+    The copy sleeve has no fair-value model. `find_edge` needs a `fair_prob` and there
+    is nothing to hand it - which is why not one of the 293 published opinions ever
+    passed through it, and why the whole sleeve reached the record with no fee bar at
+    all. What it does have is the whale's own price: their money asserts fair is at
+    least what they paid. That makes `board_max_drift_c` an edge budget measured from
+    that floor - how far past the whale's asserted value we will chase, on the belief
+    their information is worth more than they paid for it.
+
+    Charged against that budget, the taker fee belongs in it. It is money gone the
+    moment the fill lands, exactly like drift, and leaving it out let a ticket sit 5.75c
+    worse than the trade it claimed to copy under a 4c cap. Because the fee peaks at 50c
+    and shrinks toward the extremes, counting it also tightens the budget precisely
+    where `fees` says it should: 4c buys 2.25c of drift at 50c and 3.4c at 90c.
+
+    This is not the conviction score in another coat. Over the settled rows conviction
+    predicts realised edge not at all - the 0.30 band (below the buy bar, recorded as a
+    probe) ran +10.3 points/bet and the 0.40 band -1.0 - so scaling the budget by it
+    would be fitting to noise. Price and drift are things we observe before the bet.
+
+    Taker, unconditionally, for the reason `_evaluate_side` gives: this is a BAR, and a
+    bar you clear only if the queue is kind to you is not a bar.
+    """
+    drift_c = (entry - whale_price) * 100.0
+    if not 0.0 < entry < 1.0:
+        # Unpriceable, so there is no fee to quote. Return the drift alone rather than
+        # raising: the price-band gate owns this case and refuses it first.
+        return drift_c
+    return drift_c + 100.0 * fee_per_contract(entry, multiplier=multiplier, maker=False)
 
 
 def find_edge(ticker: str, fair_prob: float, quote: Quote, cfg: Config) -> Opportunity | None:

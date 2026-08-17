@@ -273,8 +273,10 @@ def test_fresh_wallets_never_claim_category_competence():
     assert sigs[0].category == "SPORTS" and sigs[0].n_category_matched == 0
 
 
-_SIG_YES = CopySignal("cid", "T", "Yes", 2, 30000, 0.40, 5.0, slug="mkt")
-_SIG_NO = CopySignal("cid", "T", "No", 2, 30000, 0.40, 5.0, slug="mkt")
+# Whale price 0.51, i.e. right next to the book below, so these fixtures exercise
+# PRICING. The give-up bar is a separate question and gets its own tests.
+_SIG_YES = CopySignal("cid", "T", "Yes", 2, 30000, 0.51, 5.0, slug="mkt")
+_SIG_NO = CopySignal("cid", "T", "No", 2, 30000, 0.51, 5.0, slug="mkt")
 _MKT = PMUSMarket("mkt", yes_bid=0.50, yes_ask=0.52, last_px=0.51)
 
 
@@ -295,6 +297,25 @@ def test_copy_order_params_none_market():
 def test_copy_order_params_out_of_band():
     deep = PMUSMarket("mkt", yes_bid=0.0, yes_ask=0.99, last_px=0.99)
     assert copy_order_params(_SIG_YES, deep, max_price=0.90) is None
+
+
+def test_the_order_path_refuses_what_the_board_would_refuse():
+    """It used to compare the copy to the whale's price not at all - no drift gate, no
+    fee - so the armed half of the project would buy tickets the research half rejected
+    by name. 4c past a 0.52 book is 4c of drift plus 1.75c of taker fee."""
+    late = CopySignal("cid", "T", "Yes", 2, 30000, 0.48, 5.0, slug="mkt")
+    assert copy_order_params(late, _MKT, size_usd=10) is None
+    # And it is the SAME rule, not a second copy of it, so raising the budget past the
+    # give-up admits it again.
+    assert copy_order_params(late, _MKT, size_usd=10, max_give_up_c=6.0) is not None
+
+
+def test_the_order_path_charges_the_fee_against_the_drift_budget():
+    """A 3c drift fits a 4c budget until the fee is charged to the same budget."""
+    drifted = CopySignal("cid", "T", "Yes", 2, 30000, 0.49, 5.0, slug="mkt")
+    assert copy_order_params(drifted, _MKT, size_usd=10) is None
+    # Fee-blind, this is the ticket that used to go through: 3c of drift, 4c allowed.
+    assert copy_order_params(drifted, _MKT, size_usd=10, fee_multiplier=0.0) is not None
 
 
 # --- esports classifier -------------------------------------------------------

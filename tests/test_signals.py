@@ -747,3 +747,30 @@ def test_the_esports_cut_is_a_flag_not_a_hardcoded_skip():
     trades = [_trade("0xSHARP1", "A", "Yes", 60_000, 0.40)]
     metas = {"A": _meta(question="Counter-Strike: BIG vs G2 (BO3)")}
     assert _board(trades, metas, cfg=_cfg(esports_enabled=True)).tickets != []
+
+
+def test_the_drift_budget_is_charged_the_fee_it_will_be_settled_at():
+    """`board_max_drift_c` is how far past the whale's own price we will chase. The
+    taker fee is spent just as irreversibly as drift and was never counted against it,
+    so a ticket could sit 5.75c worse than the trade it claimed to copy under a 4c cap.
+
+    3c of drift at a 0.41 ask: fee-blind it fits the budget, fee-charged it does not.
+    Asserted both ways round so the case cannot pass on some unrelated filter, and
+    against `fee_multiplier` rather than a wider budget so what moves is the fee."""
+    trades = [_trade("0xSHARP1", "A", "Yes", 60_000, 0.38)]   # whale at 0.38, ask 0.41
+    metas = {"A": _meta()}
+
+    r = _board(trades, metas, cfg=_cfg(fee_multiplier=0.0))
+    assert len(r.tickets) == 1 and r.tickets[0].drift_c == 3.0
+
+    r = _board(trades, metas)                               # the real 0.07 schedule
+    assert r.tickets == []
+    assert any("fee" in k for k in r.rejected)
+
+
+def test_a_fill_cheaper_than_the_whales_still_clears_the_bar():
+    """The fee tightens the gate; it must not close it. Buying 2c under the whale is
+    the best case the sleeve has, and it stays a ticket."""
+    trades = [_trade("0xSHARP1", "A", "Yes", 60_000, 0.43)]   # whale at 0.43, ask 0.41
+    r = _board(trades, {"A": _meta()})
+    assert len(r.tickets) == 1 and r.tickets[0].drift_c == -2.0

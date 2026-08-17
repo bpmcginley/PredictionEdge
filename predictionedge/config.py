@@ -170,7 +170,14 @@ class Config:
     esports_enabled: bool = False
     board_min_price: float = 0.05
     board_max_price: float = 0.90
-    board_max_drift_c: float = 4.0          # max cents price may run past the whale's entry
+    # Max cents per contract we will hand away versus the fill being copied - and since
+    # 2026-08-17 that means drift PLUS the taker fee, not drift alone (`edge.copy_give_up_c`).
+    # Read it as an edge budget measured from the whale's own price: their money asserts
+    # fair is at least what they paid, and this is how far past that we will chase on the
+    # belief their information is worth more than they paid for it. The fee comes out of
+    # the budget because it is spent just as irreversibly, so 4.0c buys 2.25c of drift at
+    # a 50c entry and 3.4c at 90c. The number itself is unchanged and unfitted.
+    board_max_drift_c: float = 4.0
     # THE BUY BAR. A ticket is bought because it is good enough, not because it placed
     # in the day's top N - a quota buys the ninth-best ticket on a quiet day and skips a
     # better one on a busy day, which is backwards.

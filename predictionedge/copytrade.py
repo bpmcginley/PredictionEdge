@@ -15,6 +15,9 @@ import re
 import time
 from dataclasses import dataclass
 
+from .config import Config
+from .edge import copy_give_up_c
+from .fees import DEFAULT_FEE_MULTIPLIER
 from .polymarket_us import BUY_NO, BUY_YES
 from .whales import SmartWalletScorer
 
@@ -318,11 +321,18 @@ def find_copy_signals(client, scorer: SmartWalletScorer, **kw) -> list[CopySigna
 
 
 def copy_order_params(signal: CopySignal, market, *, min_price: float = 0.05,
-                      max_price: float = 0.90, size_usd: float = 5.0):
+                      max_price: float = 0.90, size_usd: float = 5.0,
+                      max_give_up_c: float = Config.board_max_drift_c,
+                      fee_multiplier: float = DEFAULT_FEE_MULTIPLIER):
     """(intent, price, quantity) for a Polymarket US copy order, or None if not actionable.
 
     Side mirrors what the smart money bought; price comes from PM-US's own book (BUY YES
     at the YES ask; BUY NO at the NO ask = 1 - YES bid), capped to a sane band.
+
+    The order path had NO comparison to the whale's own price at all - not drift, not
+    fees - so it would copy a fill at any distance from the trade it was copying, while
+    the research board next door refused anything past 4c. Same bar, same function
+    (`edge.copy_give_up_c`), so the armed path can never take what the board rejects.
     """
     if market is None:
         return None
@@ -330,6 +340,8 @@ def copy_order_params(signal: CopySignal, market, *, min_price: float = 0.05,
     intent = BUY_NO if buy_no else BUY_YES
     price = round(1.0 - market.yes_bid, 2) if buy_no else round(market.yes_ask, 2)
     if not (min_price <= price <= max_price):
+        return None
+    if copy_give_up_c(price, signal.avg_price, multiplier=fee_multiplier) > max_give_up_c:
         return None
     qty = int(size_usd / price)
     if qty < 1:

@@ -1076,6 +1076,18 @@ CHANGE_POINTS: tuple[dict, ...] = (
              "The headline goes from +3.14% to +1.27% per bet. This is an accounting "
              "correction only: no bet was picked, sized or timed differently, and it "
              "makes the record worse, which is the point of running it."},
+    # The first entry in this list that changes WHICH BETS ARE TAKEN rather than how
+    # they are booked, so it is the one the before/since slice was built for.
+    {"key": "copyfeebar", "at": 1786931498, "commit": "pending",
+     "label": "fee-aware copy bar",
+     "note": "The copy sleeve never had a fee test: `find_edge` needs a fair "
+             "probability and there is none to give it, so every published row reached "
+             "the board on conviction alone. The 4c budget for chasing past the "
+             "whale's own price is now charged the taker fee as well as the drift, "
+             "since both are spent the same way. On the settled rows it would have "
+             "refused 7 of 293 - 28.6% winners, -$375 - but that is a measurement of "
+             "the past, not a promise about the future: rows already recorded are "
+             "never edited, and only bets opened after this line were filtered by it."},
 )
 
 

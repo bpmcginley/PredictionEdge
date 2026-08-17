@@ -152,7 +152,7 @@ function render(){
     ['Stale signal','Older than 20% of the market\'s remaining life (floor 2h, ceiling 48h).'],
     ['Outcome can\'t be priced','The specific outcome has no identifiable price; never guessed.'],
     ['Price out of band','Outside roughly 5¢–90¢.'],
-    ['Price ran away',`More than ${Math.round((n(f.max_drift_c,4)))}¢ past the whale's entry — buying their exhaust.`],
+    ['Price ran away',`Drift plus the trading fee is more than ${Math.round((n(f.max_drift_c,4)))}¢ past the whale's entry — buying their exhaust. The fee counts because it is spent just as irreversibly, and it peaks near 50¢, so a mid-priced market gets less room to drift than a lopsided one.`],
     ['Conviction too low',`Below ${(n(f.min_conviction,0.35)*100).toFixed(0)} out of 100.`],
     ['No valid size','Your capital can\'t buy a single contract within the caps.'],
     ['Duplicate event','One ticket per event; the stronger side wins.'],

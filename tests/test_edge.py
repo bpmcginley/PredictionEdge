@@ -1,8 +1,10 @@
 from dataclasses import replace
 
+import pytest
+
 from predictionedge.config import Config
-from predictionedge.edge import Quote, find_edge
-from predictionedge.fees import trade_fee
+from predictionedge.edge import Quote, copy_give_up_c, find_edge
+from predictionedge.fees import fee_per_contract, trade_fee
 
 CFG = Config()  # defaults: min_edge=0.03, kelly=0.25, per_market_cap=0.05, bankroll=500
 
@@ -77,3 +79,38 @@ def test_reported_fee_is_the_fee_the_edge_was_tested_against():
                                     multiplier=CFG.fee_multiplier, maker=False)
     assert opp.est_fee > trade_fee(opp.price, opp.contracts,
                                    multiplier=CFG.fee_multiplier, maker=True)
+
+
+# --- the copy sleeve's bar ----------------------------------------------------
+# `find_edge` above needs a fair probability. The copy sleeve has none - it has the
+# whale's price, and the budget for chasing past it is `board_max_drift_c`.
+
+def test_the_copy_bar_charges_drift_and_the_fee_to_one_budget():
+    """Both halves of what a copy hands away, in one number."""
+    # 2c past a 0.50 fill, where the taker fee is at its 1.75c peak.
+    assert copy_give_up_c(0.52, 0.50, multiplier=0.07) == pytest.approx(
+        2.0 + 100 * fee_per_contract(0.52, multiplier=0.07, maker=False))
+
+
+def test_getting_in_cheaper_than_the_whale_still_pays_the_fee():
+    """Negative drift is a real credit, but it does not make the fill free."""
+    give_up = copy_give_up_c(0.48, 0.50, multiplier=0.07)
+    assert -2.0 < give_up < 0.0        # 2c cheaper, minus ~1.75c of fee
+
+
+def test_the_copy_bar_leaves_less_room_at_50c_than_at_the_extremes():
+    """The whole point of charging the fee: it peaks in the middle of the book, so a
+    fixed budget buys the least drift exactly where the venue takes the most."""
+    budget = Config().board_max_drift_c
+    room_mid = max(d / 100 for d in range(0, 600)
+                   if copy_give_up_c(0.50 + d / 10000, 0.50, multiplier=0.07) <= budget)
+    room_edge = max(d / 100 for d in range(0, 600)
+                    if copy_give_up_c(0.90 + d / 10000, 0.90, multiplier=0.07) <= budget)
+    assert room_mid < room_edge < budget
+
+
+def test_an_unpriceable_entry_is_left_to_the_price_gate():
+    """0 and 1 have no fee to quote. Returning the drift beats raising into a caller
+    whose next line is the price-band refusal anyway."""
+    assert copy_give_up_c(0.0, 0.50, multiplier=0.07) == pytest.approx(-50.0)
+    assert copy_give_up_c(1.0, 0.50, multiplier=0.07) == pytest.approx(50.0)

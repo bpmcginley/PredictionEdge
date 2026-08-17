@@ -149,9 +149,16 @@ class TradingRunner:
                 continue
             if self.state.open_exposure() + self.cfg.copytrade_size_usd > self.cfg.max_total_exposure:
                 break
+            # One give-up budget for both halves of the project: what the board refuses
+            # to recommend, the armed path must refuse to buy. PM-US publishes no fee
+            # schedule we model, so Kalshi's general multiplier stands in - which errs
+            # toward refusing a copy, the only direction a threshold is safe to be wrong
+            # in (`edge._evaluate_side` makes the same argument about the same fee).
             params = copy_order_params(s, self.pmus.market(pmus_slug), min_price=self.cfg.min_price,
                                        max_price=self.cfg.copytrade_max_price,
-                                       size_usd=self.cfg.copytrade_size_usd)
+                                       size_usd=self.cfg.copytrade_size_usd,
+                                       max_give_up_c=self.cfg.board_max_drift_c,
+                                       fee_multiplier=self.cfg.fee_multiplier)
             if params is None:
                 continue
             intent, price, qty = params
