@@ -36,13 +36,43 @@ def test_copy_signal_groups_smart_buys():
         _t("0xSHARP1", "PMC", "Yes", 30000, side="SELL"),  # sell -> ignored
         _t("0xSHARP1", "PMD", "Yes", 12000, price=0.97),   # near-resolved -> filtered
     ]
+    # min_usd is the feed's CASH bar (size*price), as the live API applies it, so 5000
+    # is what lets a 20,000-contract fill at 40c through.
     sigs = find_copy_signals(MockPolymarketDataClient(trades=trades), _scorer(),
-                             min_usd=10000, max_price=0.90, now_ts=2000)
+                             min_usd=5000, max_price=0.90, now_ts=2000)
     assert len(sigs) == 1
     s = sigs[0]
     assert s.market_id == "PMA" and s.outcome == "Yes"
-    assert s.n_wallets == 2 and abs(s.total_usd - 35000) < 1e-6
-    assert 0.41 < s.avg_price < 0.43          # volume-weighted ~0.421
+    # 20000 contracts at 40c + 15000 at 45c = $14,750 of cash, NOT 35,000 of anything.
+    assert s.n_wallets == 2 and abs(s.total_usd - 14_750) < 1e-6
+    assert 0.41 < s.avg_price < 0.43          # contract-weighted ~0.421
+
+
+def test_total_usd_is_cash_not_a_contract_count():
+    """The units of `total_usd`, pinned. `Trade.size` off the feed is CONTRACTS.
+
+    Priced at 25c so the two readings are 4x apart and cannot be mistaken for each
+    other by a rounding tolerance: 40,000 contracts is $10,000 of risk. If this ever
+    fails with the share total, the dollar figure has been swapped back for the count
+    and every whale headline in the product is inflated by 1/price again.
+    """
+    trades = [_t("0xSHARP1", "PMA", "Yes", 40_000, price=0.25),
+              _t("0xSHARP2", "PMA", "Yes", 8_000, price=0.25)]
+    sigs, _ = _flow(trades, min_usd=1000)
+    s = sigs[0]
+    assert s.total_usd == 12_000, "total_usd must be size*price, not a share count"
+    assert s.total_usd != 48_000, "total_usd is the sum of Trade.size - the units bug"
+    # The per-wallet breakdown is fed to bankroll fractions, so it is money too.
+    assert dict(s.wallet_usd) == {"0xSHARP1": 10_000, "0xSHARP2": 2_000}
+    assert sum(u for _a, u in s.wallet_usd) == s.total_usd
+    # The invariant that makes the units checkable from the outside: dollars divided by
+    # the average price gives back the contracts, and the price stays a probability.
+    assert abs(s.total_usd / s.avg_price - 48_000) < 1e-6
+    assert 0.0 < s.avg_price <= 1.0
+    # Same rule on the way out: an exit's total is what they took off the table.
+    sells = [_t("0xSHARP1", "PMB", "Yes", 40_000, side="SELL", price=0.25)]
+    _s2, exits = _flow(sells, min_usd=1000)
+    assert exits[0].total_usd == 10_000 and exits[0].avg_price == 0.25
 
 
 def test_signal_keeps_each_wallet_s_own_notional():
@@ -52,14 +82,17 @@ def test_signal_keeps_each_wallet_s_own_notional():
               _t("0xSHARP1", "PMA", "Yes", 5000, price=0.41)]   # same wallet again
     sigs = find_copy_signals(MockPolymarketDataClient(trades=trades), _scorer(),
                              min_usd=1000, now_ts=2000)
-    assert dict(sigs[0].wallet_usd) == {"0xSHARP1": 25000, "0xSHARP2": 15000}
+    # Dollars per wallet: SHARP1 = 20000*0.40 + 5000*0.41, SHARP2 = 15000*0.45.
+    assert dict(sigs[0].wallet_usd) == {"0xSHARP1": 10_050, "0xSHARP2": 6_750}
     assert sigs[0].n_wallets == 2
 
 
 def test_min_wallets_gate():
+    # 20,000 contracts at 40c = $8,000, comfortably over the feed bar, so the empty
+    # result is the wallet gate doing its job and not the trade being filtered away.
     trades = [_t("0xSHARP1", "PMA", "Yes", 20000)]
     sigs = find_copy_signals(MockPolymarketDataClient(trades=trades), _scorer(),
-                             min_usd=10000, min_wallets=2, now_ts=2000)
+                             min_usd=5000, min_wallets=2, now_ts=2000)
     assert sigs == []
 
 
@@ -74,7 +107,9 @@ def test_no_signals_when_no_smart_buys():
 # themselves by entering. A whale dumping is the same trader with the same information.
 
 def _flow(trades, **kw):
-    kw.setdefault("min_usd", 10000)
+    # $2k, the production default, and a bar these fixtures clear in CASH: the feed
+    # filter is size*price on both the live client and the mock.
+    kw.setdefault("min_usd", 2000)
     kw.setdefault("now_ts", 2000)
     kw.setdefault("track_exits", True)
     return scan_smart_flow(MockPolymarketDataClient(trades=trades), _scorer(), **kw)
@@ -87,7 +122,7 @@ def test_smart_sells_are_collected_not_discarded():
     assert len(exits) == 1
     x = exits[0]
     assert x.market_id == "PMA" and x.outcome == "Yes"
-    assert x.n_wallets == 2 and x.total_usd == 30000
+    assert x.n_wallets == 2 and x.total_usd == 9_200   # 20000*0.30 + 10000*0.32
     assert x.minutes_ago == 5.0            # from the LATEST sell (ts 1700), not the first
 
 
@@ -112,8 +147,8 @@ def test_buy_and_sell_on_one_market_are_kept_apart():
     trades = [_t("0xSHARP1", "PMA", "Yes", 20000, price=0.40, ts=1000),
               _t("0xSHARP2", "PMA", "Yes", 30000, side="SELL", price=0.44, ts=1800)]
     sigs, exits = _flow(trades)
-    assert sigs[0].total_usd == 20000       # the sell does not inflate the buy side
-    assert exits[0].total_usd == 30000
+    assert sigs[0].total_usd == 8_000        # the sell does not inflate the buy side
+    assert exits[0].total_usd == 13_200      # 30000 contracts at 44c
 
 
 # --- E4.3 fresh-wallet candidates ---------------------------------------------
@@ -124,7 +159,7 @@ def test_unranked_wallet_becomes_a_fresh_candidate():
     trades = [_t("0xRANDO", "PMA", "Yes", 30000, price=0.40)]
     sigs, _ = _flow(trades, fresh_min_usd=5000)
     assert len(sigs) == 1 and sigs[0].fresh is True
-    assert sigs[0].wallet_usd == (("0xRANDO", 30000),)
+    assert sigs[0].wallet_usd == (("0xRANDO", 12_000),)   # 30000 contracts at 40c
 
 
 def test_fresh_candidates_are_off_by_default():
@@ -141,8 +176,17 @@ def test_a_wallet_on_both_sides_is_hedging_not_betting():
 
 
 def test_small_unranked_trades_are_not_a_pattern():
-    trades = [_t("0xRANDO", "PMA", "Yes", 12000, price=0.40)]
+    trades = [_t("0xRANDO", "PMA", "Yes", 12000, price=0.40)]   # $4,800 of cash
     assert _flow(trades, min_usd=1000, fresh_min_usd=25000)[0] == []
+
+
+def test_the_fresh_wallet_bar_is_measured_in_dollars():
+    """20,000 contracts is a $5k bet at 25c and a $12k bet at 60c - same count, and the
+    threshold is named for money, so only the cash may decide."""
+    cheap = [_t("0xRANDO", "PMA", "Yes", 20_000, price=0.25)]
+    dear = [_t("0xRANDO", "PMA", "Yes", 20_000, price=0.60)]
+    assert _flow(cheap, min_usd=1000, fresh_min_usd=10_000)[0] == []
+    assert len(_flow(dear, min_usd=1000, fresh_min_usd=10_000)[0]) == 1
 
 
 def test_fresh_candidates_do_not_pool_separate_wallets():

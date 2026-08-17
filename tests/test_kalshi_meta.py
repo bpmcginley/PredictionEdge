@@ -1,13 +1,82 @@
 """Kalshi settlement metadata, in the shape the paper trial already understands."""
 
-from predictionedge.kalshi import _event_of, market_meta
+import pytest
+
+from predictionedge import gas, spxdensity, weather, weatherlog
+from predictionedge.kalshi import _event_of, event_day, market_meta
 from predictionedge.papertrial import _winner
 
 
+# Every ticker below is a REAL event ticker read off api.elections.kalshi.com on
+# 2026-08-16, one per series that a sleeve actually reads. The originals are the point:
+# this parser shipped for the life of the SPX sleeve reading the whole tail as a date,
+# so `KXINX-26AUG17H1600` scored None, the day filter matched nothing, and the sleeve
+# produced zero rows without ever raising. A fixture ticker with the suffix trimmed off
+# is what let that survive, so no ticker here may be tidied up.
+LIVE_EVENT_TICKERS = [
+    # sleeve        event ticker                      settles on
+    ("spxdensity",  "KXINX-26AUG17H1600",             "2026-08-17"),
+    ("spxdensity",  "KXNASDAQ100-26AUG17H1600",       "2026-08-17"),
+    ("weather",     "KXHIGHNY-26AUG12",               "2026-08-12"),
+    ("weather",     "KXHIGHCHI-26AUG12",              "2026-08-12"),
+    ("weather",     "KXHIGHMIA-26AUG12",              "2026-08-12"),
+    ("weather",     "KXHIGHDEN-26AUG12",              "2026-08-12"),
+    ("gas",         "KXAAAGASD-26AUG14",              "2026-08-14"),
+    # Not read by a sleeve today, but they are the two suffix shapes that would break a
+    # tail-parser next: digits with no letter at all, and free-form team codes.
+    ("none",        "KXBTCD-26AUG1719",               "2026-08-17"),
+    ("none",        "KXNFLGAME-26AUG20LVHOU",         "2026-08-20"),
+]
+
+
+@pytest.mark.parametrize("sleeve,ticker,expected", LIVE_EVENT_TICKERS)
+def test_every_sleeve_reads_the_day_off_a_real_suffixed_ticker(sleeve, ticker,
+                                                               expected):
+    assert event_day(ticker) == expected
+
+
+def test_the_three_sleeves_share_one_parser_rather_than_copying_it():
+    """The duplication WAS the bug: three copies, one silently broken for a year.
+
+    Asserted by identity, not by behaviour, because a fresh copy-paste would pass a
+    behavioural check on the day it was made and then drift. `weatherlog` is in here
+    because it imports the name through `weather` rather than from `kalshi`.
+    """
+    assert spxdensity._event_day is event_day
+    assert weather._event_day is event_day
+    assert gas._event_day is event_day
+    assert weatherlog._event_day is event_day
+
+
+def test_an_unreadable_day_is_None_so_the_caller_skips_the_market():
+    assert event_day("KXINX-garbage") is None
+    assert event_day("KXINX-2026-08-17") is None
+    assert event_day("KXINX-26AUG99H1600") is None   # real shape, impossible day
+    assert event_day("KXINX") is None
+    assert event_day("") is None
+
+
+def test_the_month_is_read_case_insensitively_as_strptime_always_did():
+    """The copies this replaced used `%b`, which never cared about case.
+
+    A shared parser has to accept everything the copies accepted, or the dedup
+    quietly narrows a sleeve instead of fixing one.
+    """
+    assert event_day("KXHIGHNY-26aug12") == "2026-08-12"
+    assert event_day("KXHIGHNY-26Aug12") == "2026-08-12"
+
+
 def _mkt(ticker, status="active", result="", **over):
+    """A market in the shape the LIVE API serves (verified 2026-08-16).
+
+    `volume_fp` / `liquidity_dollars` are decimal strings, and the bare `volume` /
+    `liquidity` names this fixture used to carry are gone from the wire entirely -
+    which is exactly why reading them scored every market at the 0.0 default.
+    """
     m = {"ticker": ticker, "event_ticker": _event_of(ticker), "status": status,
          "result": result, "title": f"high temp {ticker}", "yes_bid": 45,
-         "yes_ask": 46, "last_price": 46, "volume": 1081, "liquidity": 0,
+         "yes_ask": 46, "last_price": 46,
+         "volume_fp": "1081.00", "liquidity_dollars": "0.0000",
          "expiration_time": "2026-08-19T14:00:00Z",
          "close_time": "2026-08-13T04:59:00Z"}
     m.update(over)
@@ -105,8 +174,52 @@ def test_a_decided_market_with_an_unrecognised_result_is_not_guessed():
 
 
 def test_liquidity_is_carried_but_is_known_to_be_unpopulated():
-    """Every live weather market reads $0.00 liquidity while the book holds 1,510
-    contracts. The field is recorded, but nothing may gate on it."""
-    fetch = _api({"KXHIGHNY-26AUG12": [_mkt("KXHIGHNY-26AUG12-B85.5", liquidity=0)]})
+    """`liquidity_dollars` reads $0.0000 on every live market (0 of ~900 nonzero on
+    2026-08-16) while the book holds real resting size. Correcting the key name fixed
+    the lookup; it did not make the field populated. Nothing may gate on it."""
+    fetch = _api({"KXHIGHNY-26AUG12": [_mkt("KXHIGHNY-26AUG12-B85.5")]})
     meta = market_meta(["KXHIGHNY-26AUG12-B85.5"], fetch=fetch)["KXHIGHNY-26AUG12-B85.5"]
     assert meta["liquidity"] == 0.0 and meta["volume"] == 1081.0
+
+
+def test_volume_and_liquidity_read_the_live_field_names_at_face_value():
+    """The renamed fields, and their SCALE.
+
+    `volume` -> `volume_fp` and `liquidity` -> `liquidity_dollars`; the old names are
+    absent from every live market, so reading them returned 0.0 for both, always.
+
+    The suffixes name the encoding, not a divisor - both are decimal strings already
+    in natural units. Asserted explicitly because a stray /100 here would filter real
+    markets out just as silently as the bug it replaced. Ground truth: the trades feed
+    for KXINX-26AUG11H1600-B7737 sums to 115702.77 contracts, exactly its `volume_fp`.
+    """
+    fetch = _api({"KXINX-26AUG11H1600": [
+        _mkt("KXINX-26AUG11H1600-B7737", volume_fp="115702.77",
+             liquidity_dollars="4250.5000")]})
+    meta = market_meta(["KXINX-26AUG11H1600-B7737"],
+                       fetch=fetch)["KXINX-26AUG11H1600-B7737"]
+    assert meta["volume"] == 115702.77       # contracts, NOT cents-of-a-contract
+    assert meta["liquidity"] == 4250.50      # dollars, NOT cents
+
+
+def test_the_legacy_field_names_still_read_if_kalshi_ever_serves_them_again():
+    """The migration is not symmetric across endpoints, so the old names stay wired
+    at the same units they always had rather than being deleted outright."""
+    fetch = _api({"KXHIGHNY-26AUG12": [
+        {"ticker": "KXHIGHNY-26AUG12-B85.5", "event_ticker": "KXHIGHNY-26AUG12",
+         "status": "active", "result": "", "volume": 1081, "liquidity": 20.0}]})
+    meta = market_meta(["KXHIGHNY-26AUG12-B85.5"], fetch=fetch)["KXHIGHNY-26AUG12-B85.5"]
+    assert meta["volume"] == 1081.0 and meta["liquidity"] == 20.0
+
+
+def test_a_missing_depth_field_is_loud_rather_than_a_silent_zero(caplog):
+    """The whole shape of this bug: an absent field read as 0.0 is indistinguishable
+    from a genuinely empty book, so the next rename has to be visible in the log."""
+    fetch = _api({"KXHIGHNY-26AUG12": [
+        {"ticker": "KXHIGHNY-26AUG12-B85.5", "event_ticker": "KXHIGHNY-26AUG12",
+         "status": "active", "result": ""}]})
+    with caplog.at_level("WARNING"):
+        meta = market_meta(["KXHIGHNY-26AUG12-B85.5"],
+                           fetch=fetch)["KXHIGHNY-26AUG12-B85.5"]
+    assert meta["volume"] == 0.0 and meta["liquidity"] == 0.0   # shape is preserved
+    assert "volume_fp" in caplog.text and "liquidity_dollars" in caplog.text

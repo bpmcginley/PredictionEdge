@@ -13,8 +13,10 @@ from __future__ import annotations
 
 import base64
 import logging
+import re
 import time
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from typing import Protocol
 
 from .edge import Quote
@@ -85,6 +87,47 @@ def _event_of(ticker: str) -> str:
     return ticker.rsplit("-", 1)[0] if "-" in ticker else ticker
 
 
+# Kalshi hangs a per-series SUFFIX off one shared `YYMMMDD` date grammar, and reading
+# the WHOLE tail as the date is how a sleeve goes silently blind. VERIFIED LIVE against
+# 162 event tickers on 2026-08-16: the index ladders name their settlement hour
+# (`KXINX-26AUG17H1600`), the crypto dailies name an hour with no letter at all
+# (`KXBTCD-26AUG1800`), a game carries team codes (`KXNFLGAME-26AUG22ATLIND`), and the
+# weather and gas ladders hang nothing at all (`KXHIGHNY-26AUG12`). So the day is
+# matched as a PREFIX and the suffix is deliberately never interpreted - a caller only
+# needs to know which day the ladder settles on, and a series that invents a new suffix
+# tomorrow must keep parsing rather than quietly stop matching.
+#
+# This lives here, once, because it used to live three times. spxdensity, weather and
+# gas each carried a byte-identical private copy that read the whole tail, and the
+# spxdensity copy was therefore broken for the entire life of that sleeve: it returned
+# None for every real index ticker, the day filter skipped every market, and the sleeve
+# produced nothing without ever raising. The other two were correct only by luck, their
+# series happening to carry no suffix. One parser means the next series to gain a suffix
+# cannot break a fourth sleeve the same way.
+#
+# Case-insensitive because `%b` always was, and a shared parser must not accept LESS
+# than the copies it replaces. The day is exactly two digits, which IS narrower than
+# `%d` - that is deliberate, because `\d{1,2}` cannot tell day 18 + suffix "0" from
+# day 1 + suffix "80" in `26AUG180`. No Kalshi series uses an unpadded day.
+_EVENT_DAY = re.compile(r"^(\d{2}[A-Z]{3}\d{2})[A-Z0-9]*$", re.IGNORECASE)
+
+
+def event_day(event_ticker: str) -> str | None:
+    """`KXINX-26AUG17H1600` -> `2026-08-17`, ignoring whatever suffix follows the day.
+
+    None whenever the day cannot be read, so a caller skips the market rather than
+    guessing a settlement date for it.
+    """
+    m = _EVENT_DAY.match((event_ticker or "").rsplit("-", 1)[-1])
+    if m is None:
+        return None
+    try:
+        return datetime.strptime(m.group(1), "%y%b%d").replace(
+            tzinfo=timezone.utc).strftime("%Y-%m-%d")
+    except ValueError:
+        return None        # a real-looking tail that is not a real date (26AUG99)
+
+
 def market_meta(tickers: list[str], *, base: str = KALSHI_API, fetch=None,
                 failures: set[str] | None = None) -> dict[str, dict]:
     """Kalshi settlement metadata in the SHAPE ``gamma.market_meta`` returns.
@@ -136,6 +179,15 @@ def market_meta(tickers: list[str], *, base: str = KALSHI_API, fetch=None,
             continue          # the rest of the ladder came along for free; ignore it
         status, result = m.get("status", ""), (m.get("result") or "").lower()
         settled = status in _SETTLED_STATUSES and result in ("yes", "no")
+        volume = _fixed_point(m, "volume_fp", legacy="volume")
+        liquidity = _fixed_point(m, "liquidity_dollars", legacy="liquidity")
+        if volume is None or liquidity is None:
+            # Loud on purpose. The silent version of this is the bug being fixed here:
+            # an absent field read as 0.0 is indistinguishable from a real empty book.
+            log.warning("kalshi %s: no %s - depth/volume UNKNOWN, not zero", ticker,
+                        " or ".join(n for n, v in (("volume_fp", volume),
+                                                   ("liquidity_dollars", liquidity))
+                                    if v is None))
         out[ticker] = {
             "question": m.get("title", ""),
             "slug": ticker,
@@ -148,11 +200,14 @@ def market_meta(tickers: list[str], *, base: str = KALSHI_API, fetch=None,
             "yes_price": _price_to_dollars(m, "last_price"),
             "best_bid": _price_to_dollars(m, "yes_bid"),
             "best_ask": _price_to_dollars(m, "yes_ask"),
-            "volume": float(m.get("volume") or 0.0),
-            # `liquidity` reads $0.00 on every weather market measured 2026-08-11 while
-            # the order book showed 1,510 contracts resting - the field is unpopulated,
-            # so never gate on it. The book is the only honest depth signal here.
-            "liquidity": float(m.get("liquidity") or 0.0),
+            "volume": volume or 0.0,
+            # `liquidity_dollars` reads $0.0000 on every market measured - 0 of ~900
+            # nonzero on 2026-08-16 across KXINX, KXBTCD, KXNBAGAME, KXNFLGAME,
+            # KXMLBGAME and KXHIGHNY - while the order book shows real resting size,
+            # the same finding as the 2026-08-11 weather sweep under the old key name.
+            # Correcting the key fixed the LOOKUP; it did not make the field populated.
+            # Still never gate on it. The book is the only honest depth signal here.
+            "liquidity": liquidity or 0.0,
         }
         if status in _SETTLED_STATUSES and not settled and not out[ticker]["voided"]:
             # Decided-looking but wearing an unrecognised result. Same defensive stance
@@ -177,6 +232,35 @@ def _price_to_dollars(d: dict, key: str) -> float:
             pass
     cents = d.get(key)
     return (cents / 100.0) if cents is not None else 0.0
+
+
+def _fixed_point(d: dict, key: str, *, legacy: str = "") -> float | None:
+    """A Kalshi size/depth measure, or None when the field is absent ENTIRELY.
+
+    Same mid-migration dual schema `_price_to_dollars` handles, one step further along:
+    the bare `volume` and `liquidity` names are now GONE, not merely optional. Measured
+    2026-08-16 over 600 live markets, both scored 0 hits, so reading them returned the
+    `or 0.0` default on every market - a silent zero that any depth filter reads as an
+    empty book. The live names are `volume_fp` and `liquidity_dollars`.
+
+    THE SUFFIX NAMES THE ENCODING, NOT A SCALE FACTOR, and getting that backwards would
+    be worse than the bug it replaces - a stray divisor would filter real markets out
+    just as quietly. Both arrive as decimal STRINGS already in natural units (contracts
+    for `_fp`, dollars for `_dollars`), so they are floated and never rescaled. Verified
+    rather than inferred from the name: `/markets/trades` for KXINX-26AUG11H1600-B7737
+    sums to 115702.77 contracts, exactly that market's `volume_fp` of "115702.77", and
+    each individual trade carries `count_fp: "1.00"` for one contract.
+
+    Returning None rather than 0.0 is the whole point of the signature: the NEXT rename
+    has to surface as "unknown" at the call site instead of passing as "no depth".
+    """
+    for name in (key, legacy):
+        if name and d.get(name) is not None:
+            try:
+                return float(d[name])
+            except (TypeError, ValueError):
+                return None      # present but unreadable is a schema change too
+    return None
 
 
 class KalshiClient(Protocol):

@@ -3,7 +3,7 @@
 import math
 
 from predictionedge.weather import (
-    CITIES, SIGMA_FLOOR_F, WeatherCity, _event_day, bracket_probability, c_to_f,
+    CITIES, SIGMA_FLOOR_F, WeatherCity, bracket_probability, c_to_f,
     find_weather_edges, forecast_highs, market_distribution, price_ladder,
     pricing_sigma, sigma_for_lead,
 )
@@ -163,9 +163,10 @@ def test_every_ticket_carries_the_bid_so_the_trial_can_rest_an_order_there():
 
 # --- plumbing ----------------------------------------------------------------
 
-def test_event_day_parses_the_kalshi_date_suffix():
-    assert _event_day("KXHIGHNY-26AUG12") == "2026-08-12"
-    assert _event_day("KXHIGHNY-garbage") is None
+# `_event_day` is the shared Kalshi ticker parser, tested once in test_kalshi_meta.py
+# against a real suffixed ticker per series - including this sleeve's. This module used
+# to own a copy of it, and the copy was correct only because the weather ladders happen
+# to hang no suffix off the day.
 
 
 def test_celsius_is_converted():

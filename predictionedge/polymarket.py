@@ -29,10 +29,20 @@ class WalletStat:
 
 @dataclass(frozen=True)
 class MarketHolder:
-    """A wallet's current notional position on one market's YES/NO."""
+    """A wallet's current position on one market's YES/NO, counted in CONTRACTS.
+
+    Contracts, not dollars, because that is what the /holders endpoint reports and
+    because a position has no price attached: unlike a trade, nothing here says what
+    the wallet paid. Turning these into cash needs a price, and the two prices you
+    could pick are different quantities - the wallet's own ``avgPrice`` from
+    /positions gives cost basis (what they risked), the current market price gives
+    mark-to-market value (what it is worth now). Multiplying by today's price and
+    calling the result "notional" quietly reports the second while sounding like the
+    first, so a caller that needs money must fetch /positions and say which it means.
+    """
     address: str
-    yes_size: float           # USDC notional on YES
-    no_size: float            # USDC notional on NO
+    yes_size: float           # contracts held on YES (outcome token count)
+    no_size: float            # contracts held on NO
 
 
 @dataclass(frozen=True)
@@ -47,8 +57,14 @@ class Trade:
     wallet: str
     name: str          # trader pseudonym, if any
     side: str          # "BUY" | "SELL"
-    size: float        # USDC
-    price: float
+    # CONTRACTS (outcome tokens), NOT dollars. The cash that changed hands is
+    # ``size * price`` - at a 30c fill, 10,000 contracts cost $3,000. This field was
+    # once commented "USDC", and every consumer that believed it overstated whale size
+    # by 1/price; see copytrade.scan_smart_flow, which now keeps the two apart by name.
+    # Confirmed against the live feed: /trades?filterType=CASH&filterAmount=5000 returns
+    # trades priced at 23c whose `size` is 11,000+ - the bar binds on size*price.
+    size: float        # contracts; multiply by `price` for USDC
+    price: float       # 0..1, the probability paid per contract
     ts: int            # unix seconds
     title: str
     outcome: str       # which side they took (e.g. "Yes", a team, "Up")
@@ -101,7 +117,12 @@ class MockPolymarketDataClient:
         return self._prices.get(market_id)
 
     def recent_trades(self, min_usd: float = 25000, limit: int = 100) -> list[Trade]:
-        return [t for t in self._trades if t.size >= min_usd][:limit]
+        # Cash, like the live client: the API's filterType=CASH bar is size*price, so a
+        # mock that compared the contract count admitted trades the real feed never
+        # sends - a 6,000-contract fill at 25c is $1,500 and does not clear a $5k bar.
+        # A mock whose filter is in different units from production cannot catch a
+        # units bug, which is exactly how one lived here.
+        return [t for t in self._trades if t.size * t.price >= min_usd][:limit]
 
 
 class LivePolymarketDataClient:
@@ -156,7 +177,11 @@ class LivePolymarketDataClient:
             resp.raise_for_status()
             data = resp.json()
             # Shape: [{token, holders:[{proxyWallet, amount, outcomeIndex}]}] (one
-            # group per outcome token). outcomeIndex 0 = YES, 1 = NO.
+            # group per outcome token). outcomeIndex 0 = YES, 1 = NO. `amount` is a
+            # CONTRACT count: the same wallet+market read back off /positions returns
+            # an identical `size`, alongside the avgPrice/initialValue that this
+            # endpoint does not carry (checked live 2026-08-16: amount 71704.105913,
+            # /positions size 71704.1059, avgPrice 0.6274, initialValue 44993.54).
             groups = data if isinstance(data, list) else [data]
             out: list[MarketHolder] = []
             for g in groups:

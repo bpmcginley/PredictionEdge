@@ -225,7 +225,9 @@ def test_one_ticket_per_event_keeps_the_stronger_side():
     strong = [_trade("0xSHARP1", "A", "Yes", 90_000, 0.40, title="Türkiye vs USA"),
               _trade("0xSHARP2", "A", "Yes", 90_000, 0.40, title="Türkiye vs USA")]
     # Same event page as A, so it must collapse into the stronger leg.
-    weak = Trade(wallet="0xSHARP1", name="", side="BUY", size=20_000, price=0.40,
+    # 30,000 contracts at 40c = $12,000, over the feed's cash bar, so this leg reaches
+    # the board and can be collapsed - at 20,000 it never arrived to be de-duplicated.
+    weak = Trade(wallet="0xSHARP1", name="", side="BUY", size=30_000, price=0.40,
                  ts=int(NOW - 120), title="Türkiye vs USA", outcome="Yes",
                  condition_id="B", event_slug="evt-A", slug="mkt-B")
     kick = _iso(hours=6)
@@ -272,7 +274,9 @@ def test_yes_no_label_includes_the_question():
 
 
 def test_the_buy_bar_keeps_weak_ideas_off_the_board():
-    trades = [_trade("0xSHARP1", "A", "Yes", 10_000, 0.40, minutes_ago=110)]
+    # $12,000 of cash (30,000 contracts at 40c): it must clear the feed's cash bar, or
+    # the probe row this test is about is never created and the assert lies.
+    trades = [_trade("0xSHARP1", "A", "Yes", 30_000, 0.40, minutes_ago=110)]
     r = _board(trades, {"A": _meta()}, cfg=_cfg(board_min_conviction=0.95))
     assert r.tickets == []
     # Not bought - but still recorded, because a threshold that only ever observes
@@ -282,7 +286,7 @@ def test_the_buy_bar_keeps_weak_ideas_off_the_board():
 
 
 def test_below_the_probe_floor_is_dropped_outright():
-    trades = [_trade("0xSHARP1", "A", "Yes", 10_000, 0.40, minutes_ago=110)]
+    trades = [_trade("0xSHARP1", "A", "Yes", 30_000, 0.40, minutes_ago=110)]
     r = _board(trades, {"A": _meta()},
                cfg=_cfg(board_min_conviction=0.95, board_probe_min_conviction=0.95))
     assert r.tickets == [] and r.probe == []
@@ -530,7 +534,8 @@ def test_smart_exit_warns_on_the_ticket_it_contradicts():
               _trade("0xSHARP2", "A", "Yes", 25_000, 0.44, minutes_ago=10, side="SELL")]
     r = _board(trades, {"A": _meta()})
     assert len(r.tickets) == 1               # still advice, with the caveat attached
-    assert any("sold $25,000" in w for w in r.tickets[0].warnings)
+    # 25,000 contracts at 44c is $11,000 of cash - the warning quotes money, not count.
+    assert any("sold $11,000" in w for w in r.tickets[0].warnings)
 
 
 def test_exit_before_the_buys_is_not_called_an_exit():

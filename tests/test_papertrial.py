@@ -2,9 +2,12 @@ import json
 import os
 import tempfile
 
+import pytest
+
 from predictionedge.backtest import evaluate
 from predictionedge.fees import trade_fee
-from predictionedge.papertrial import load, record, save, settle, stats
+from predictionedge.papertrial import (load, per_opinion, record, save, settle,
+                                       stats)
 
 
 def _blank():
@@ -167,10 +170,10 @@ def test_a_market_we_know_nothing_about_stays_open():
 
 def test_a_win_pays_the_contracts_less_the_fee():
     trial = _blank()
-    record(trial, [_ticket(price=0.4)], stake=100.0, fee_multiplier=0.07, maker=True)
+    record(trial, [_ticket(price=0.4)], stake=100.0, fee_multiplier=0.07)
     assert settle(trial, {"0xabc": _meta(["Mets", "Pirates"], [1.0, 0.0])}) == 1
     row = trial["settled"][0]
-    fee = trade_fee(0.4, 190, multiplier=0.07, maker=True)
+    fee = trade_fee(0.4, 190, multiplier=0.07, maker=False)
     assert row["won"] is True
     assert row["realized"] == round(190.0 * 0.6 - fee, 4)
     assert trial["open"] == []
@@ -178,10 +181,10 @@ def test_a_win_pays_the_contracts_less_the_fee():
 
 def test_a_loss_costs_the_stake_plus_the_fee():
     trial = _blank()
-    record(trial, [_ticket(price=0.4)], stake=100.0, fee_multiplier=0.07, maker=True)
+    record(trial, [_ticket(price=0.4)], stake=100.0, fee_multiplier=0.07)
     settle(trial, {"0xabc": _meta(["Mets", "Pirates"], [0.0, 1.0])})
     row = trial["settled"][0]
-    fee = trade_fee(0.4, 190, multiplier=0.07, maker=True)
+    fee = trade_fee(0.4, 190, multiplier=0.07, maker=False)
     assert row["won"] is False
     # A loss costs what the sized order cost - 190 * 0.40 - not the flat stake it was
     # capped down from. `stake` is the denominator of this row's return, so the two
@@ -404,6 +407,104 @@ def _esports_ticket(**over):
     return _ticket(**base)
 
 
+def test_the_gate_counts_one_opinion_once_however_many_venues_carried_it():
+    """The bridge turns one view of one question into two rows. The deploy gate measures
+    whether independent draws support an edge, so counting the reflection as a second
+    draw hands it evidence that was never collected.
+    """
+    trial = _blank()
+    record(trial, [_ticket(mid="0xm", outcome="Mets", price=0.5),
+                   _ticket(mid="0xm-pmus", outcome="Mets", price=0.5,
+                           origin_market_id="0xm")])
+    settle(trial, {"0xm": _meta(["Mets", "Pirates"], [1.0, 0.0]),
+                   "0xm-pmus": _meta(["Mets", "Pirates"], [1.0, 0.0])})
+    s = stats(trial)
+
+    assert s["n"] == 1                      # one opinion, not two draws
+    assert s["opinions"] == 1
+    assert s["settled_rows"] == 2           # both rows still scored and still on file
+    assert s["as_recorded"]["n"] == 2       # the per-row view is kept, not replaced
+    assert s["by_source"]["whale"]["n"] == 2
+
+
+def test_collapsing_sums_the_money_across_the_venues_that_carried_it():
+    """One position split over two venues earned what both legs earned. Averaging the
+    RETURNS instead would quietly reweight a $10 leg to match a $1,000 one.
+    """
+    trial = _blank()
+    rows = per_opinion([
+        {"market_id": "0xm", "outcome": "Mets", "opened_at": 10, "stake": 100.0,
+         "realized": 50.0, "won": True, "pred": 0.4},
+        {"market_id": "0xm-pmus", "origin_market_id": "0xm", "outcome": "Mets",
+         "opened_at": 20, "stake": 300.0, "realized": -30.0, "won": True, "pred": 0.6},
+    ])
+    assert len(rows) == 1
+    assert rows[0]["stake"] == 400.0 and rows[0]["realized"] == 20.0
+    assert rows[0]["pred"] == pytest.approx(0.55)   # stake-weighted, not 0.5
+    assert rows[0]["opened_at"] == 10               # the opinion dates from its first leg
+    assert trial == _blank()                        # nothing recorded, nothing touched
+
+
+def test_opposite_sides_of_one_market_are_two_opinions_not_one():
+    """Identity is market AND outcome. Merging YES with NO would net a genuine hedge into
+    a single flat row and hide both bets from the gate."""
+    rows = per_opinion([
+        {"market_id": "0xm", "outcome": "Yes", "opened_at": 1, "stake": 100.0,
+         "realized": 10.0, "won": True, "pred": 0.5},
+        {"market_id": "0xm", "outcome": "No", "opened_at": 2, "stake": 100.0,
+         "realized": -10.0, "won": False, "pred": 0.5},
+    ])
+    assert len(rows) == 2
+
+
+def test_a_record_with_no_mirrors_is_unchanged_by_collapsing():
+    """A no-op has to be a real no-op: this runs on every publish."""
+    rows = [{"market_id": f"0x{i}", "outcome": "Yes", "opened_at": i, "stake": 10.0,
+             "realized": 1.0, "won": True, "pred": 0.5} for i in range(5)]
+    assert per_opinion(rows) == rows
+
+
+def test_a_mirror_of_a_derivative_market_is_held_out_but_its_origin_is_not():
+    """The bridge matched a spread onto the destination's PLAIN market, so the row books
+    our price against someone else's question - which is why the four such rows on file
+    realized -105.7%, -101.2%, +136.9% and +727.2%. Only the MIRROR is held out: the
+    bridge refuses to mirror these now, but the whale sleeve still bets the origin, and a
+    headline that drops rows the live bot still takes is wrong in the other direction.
+    """
+    trial = _blank()
+    origin = _ticket(mid="0xspread", outcome="Texas Rangers",
+                     title="Spread: Texas Rangers (-1.5)")
+    mirror = _ticket(mid="0xspread-pmus", outcome="Texas Rangers",
+                     title="Spread: Texas Rangers (-1.5)",
+                     origin_market_id="0xspread")
+    record(trial, [origin, mirror])
+    settle(trial, {"0xspread": _meta(["Texas Rangers", "No"], [1.0, 0.0]),
+                   "0xspread-pmus": _meta(["Texas Rangers", "No"], [1.0, 0.0])})
+    s = stats(trial)
+
+    assert s["n"] == 1                                 # the origin, still live
+    assert s["by_source"]["derivative-mirror"]["n"] == 1
+    assert s["by_source"]["derivative-mirror"]["retired"] is True
+    # The pooled figure counts opinions too, so the retired mirror rejoins its origin
+    # rather than arriving as a second draw - the two corrections composing, not fighting.
+    assert s["including_retired"]["n"] == 1
+    # Nothing left the file: the holdout is a scoring decision, never a deletion.
+    assert len(trial["settled"]) == 2
+    assert any(r["market_id"] == "0xspread-pmus" for r in trial["settled"])
+
+
+def test_a_plain_mirror_still_counts_in_the_headline():
+    """The gate is a title heuristic, so its blast radius has to stay where it is aimed:
+    an ordinary venue mirror is the bridge working as intended and belongs in the record.
+    """
+    trial = _blank()
+    record(trial, [_ticket(mid="0xplain-pmus", outcome="Mets",
+                           title="Mets vs Pirates", origin_market_id="0xplain")])
+    settle(trial, {"0xplain-pmus": _meta(["Mets", "Pirates"], [1.0, 0.0])})
+
+    assert stats(trial)["n"] == 1
+
+
 def test_esports_rows_are_held_out_of_the_headline_though_they_are_whale_rows():
     """The cut that `RETIRED_SOURCES` could not express. Esports was switched off at the
     gate, but those rows carry `source="whale"` - so keying the holdout on the sleeve
@@ -418,7 +519,7 @@ def test_esports_rows_are_held_out_of_the_headline_though_they_are_whale_rows():
 
     assert s["n"] == 1 and s["win_rate"] == 1.0        # the live row only
     assert s["retired_excluded"] == 1
-    assert s["retired_classes"] == ["esports"]
+    assert s["retired_classes"] == ["esports", "derivative-mirror"]
     assert s["including_retired"]["n"] == 2            # still on the all-time record
     # and still on file, untouched: a record that deletes its losers is worth nothing
     assert any(r["market_id"] == "0xcs2" for r in trial["settled"])
@@ -494,19 +595,36 @@ def _weather_ticket(**over):
     return _ticket(**base)
 
 
-def test_a_maker_False_ticket_is_charged_taker_fees_despite_the_default():
+def test_an_instant_fill_is_charged_the_taker_fee_it_incurred():
+    """Entries are priced at the ask, so the fill crossed the spread and owes taker.
+
+    This is the whole of the 2026-08-17 correction on the forward side: there is no
+    longer a knob that can book this row at a quarter of what it cost.
+    """
     trial = _blank()
-    record(trial, [_weather_ticket(_maker=False)], stake=100.0,
-           fee_multiplier=0.07, maker=True)
+    record(trial, [_weather_ticket()], stake=100.0, fee_multiplier=0.07)
     row = trial["open"][0]
     assert row["fee"] == trade_fee(0.08, 190, multiplier=0.07, maker=False)
+    assert row["fee"] > trade_fee(0.08, 190, multiplier=0.07, maker=True) * 3
+
+
+def test_a_whale_row_gets_no_maker_discount_either():
+    """The whale sleeve is where `assume_maker` did its damage: 287 settled rows."""
+    trial = _blank()
+    record(trial, [_ticket(price=0.4)], stake=100.0, fee_multiplier=0.07)
+    assert trial["open"][0]["fee"] == trade_fee(0.4, 190, multiplier=0.07, maker=False)
 
 
 def test_retag_recharges_legacy_maker_booked_weather_rows():
-    """Rows opened before the fix carry maker fees - 4x too low on a taker cross."""
+    """Rows opened before the fix carry maker fees - 4x too low on a taker cross.
+
+    Built by hand because `record` can no longer produce one: this is the shape of a
+    row already in `docs/trial.json`, not a shape the code writes today.
+    """
     from predictionedge.papertrial import retag_weather_fees
     trial = _blank()
-    record(trial, [_weather_ticket()], stake=100.0, fee_multiplier=0.07, maker=True)
+    record(trial, [_weather_ticket()], stake=100.0, fee_multiplier=0.07)
+    trial["open"][0]["fee"] = trade_fee(0.08, 190, multiplier=0.07, maker=True)
     stale = trial["open"][0]["fee"]
     assert retag_weather_fees(trial) == 1
     fixed = trial["open"][0]["fee"]
@@ -516,12 +634,12 @@ def test_retag_recharges_legacy_maker_booked_weather_rows():
 
 
 def test_retag_leaves_whale_rows_and_settled_rows_alone():
-    """The whale sleeve's maker accounting must not change mid-sample, and settled
-    rows are evidence - a retroactive edit would be worse than the bug it fixes."""
+    """The whale sleeve's fee accounting is not retag's business, and settled rows are
+    evidence - a retroactive edit would be worse than the bug it fixes."""
     from predictionedge.papertrial import retag_weather_fees
     trial = _blank()
     record(trial, [_ticket(price=0.4), _weather_ticket()],
-           stake=100.0, fee_multiplier=0.07, maker=True)
+           stake=100.0, fee_multiplier=0.07)
     settle(trial, {"0xabc": _meta(["Mets", "Pirates"], [1.0, 0.0])})
     whale_settled_fee = trial["settled"][0]["fee"]
     retag_weather_fees(trial)
@@ -589,8 +707,8 @@ def test_a_republished_ticket_is_not_a_second_intent():
 def test_a_ticket_without_a_bid_takes_the_ask_as_before():
     # An empty book has nothing to join; the honest entry is still the taker cross.
     trial = _blank()
-    record(trial, [_weather_ticket(_maker=False)], stake=100.0,
-           fee_multiplier=0.07, maker=True, maker_first=True)
+    record(trial, [_weather_ticket()], stake=100.0,
+           fee_multiplier=0.07, maker_first=True)
     assert trial.get("pending", []) == []
     assert trial["open"][0]["fee"] == trade_fee(0.08, 190, multiplier=0.07, maker=False)
 
@@ -804,3 +922,319 @@ def test_a_change_point_predates_the_rows_it_is_meant_to_split():
     # The trial started 2026-08-11; a boundary before that would produce an empty
     # "before" window that reads as "the old rules never won" rather than "no data".
     assert all(c["at"] > 1786459633 for c in CHANGE_POINTS)
+
+
+# --- the fee correction: forward-only in the rows, backward at scoring time ---------
+#
+# The trial charged the Kalshi MAKER fee - a quarter of taker - on fills that crossed
+# the spread by construction, for the whole of its first sample. The forward half of
+# the fix is above (`record` has no maker knob left). This is the backward half, and
+# its hard constraint is that a settled row is NEVER edited: the correction happens on
+# copies, at scoring time, every time the stats are built.
+
+from predictionedge.papertrial import (corrected_fee, on_taker_fees,  # noqa: E402
+                                       rested_and_filled)
+
+
+def _maker_booked(price=0.4, contracts=190, won=True):
+    """A settled row of the shape already in `docs/trial.json`: taker fill, maker fee."""
+    fee = trade_fee(price, contracts, multiplier=0.07, maker=True)
+    payout = contracts * (1.0 - price) if won else -contracts * price
+    return {"key": "0xabc:mets", "market_id": "0xabc", "outcome": "Mets",
+            "title": "Mets vs Pirates", "url": "https://x/0xabc", "source": "whale",
+            "price": price, "contracts": float(contracts),
+            "stake": round(contracts * price, 4), "fee": fee,
+            "opened_at": 1786500000.0, "settled_at": 1786600000.0,
+            "won": won, "pred": price, "realized": round(payout - fee, 4)}
+
+
+def test_the_scoring_layer_recharges_a_maker_booked_row_at_taker():
+    row = _maker_booked()
+    taker = trade_fee(0.4, 190, multiplier=0.07, maker=False)
+    assert corrected_fee(row) == taker
+    scored = on_taker_fees([row])[0]
+    assert scored["fee"] == taker
+    assert scored["fee_as_recorded"] == row["fee"]
+    assert scored["realized"] == round(row["realized"] + row["fee"] - taker, 4)
+    assert scored["realized"] < row["realized"]        # the correction costs money
+
+
+def test_the_scoring_layer_does_not_mutate_the_row_it_corrects():
+    # The one claim this record has over a spreadsheet is that a row is written once and
+    # never touched. A correction that edits the row would forfeit exactly that.
+    row = _maker_booked()
+    before = json.dumps(row, sort_keys=True)
+    on_taker_fees([row])
+    assert json.dumps(row, sort_keys=True) == before
+
+
+def test_a_row_already_charged_taker_is_left_exactly_alone():
+    trial = _blank()
+    record(trial, [_ticket(price=0.4)], stake=100.0, fee_multiplier=0.07)
+    row = trial["open"][0]
+    assert corrected_fee(row) == row["fee"]
+    assert on_taker_fees([row])[0] is row
+
+
+def test_a_genuine_resting_fill_keeps_its_maker_fee_through_scoring():
+    # `_open_from_pending` is the one path that EARNS the discount: it rested at a bid
+    # and an ask came to it. Recharging that at taker would be as wrong as the bug.
+    trial = _blank()
+    record(trial, [_weather_ticket(bid=0.06)], stake=100.0, maker_first=True)
+    check_fills(trial, _q(ask=0.06))
+    row = trial["open"][0]
+    assert rested_and_filled(row) is True
+    assert corrected_fee(row) == row["fee"] == 0.0
+    assert on_taker_fees([row])[0] is row
+
+
+def test_a_taker_fallback_is_not_treated_as_a_resting_fill():
+    # It has `fill_polls` because it came through the pending path, but it crossed.
+    trial = _blank()
+    record(trial, [_weather_ticket(bid=0.06)], stake=100.0, maker_first=True)
+    check_fills(trial, _q(ask=0.09), max_polls=1, fallback_taker=True)
+    row = trial["open"][0]
+    assert rested_and_filled(row) is False
+    assert corrected_fee(row) == row["fee"]     # already taker, so nothing to correct
+
+
+def test_an_unreproducible_row_falls_back_to_what_was_recorded():
+    # None means "we cannot establish what this should have cost", never "zero". Any
+    # other answer would put a guess into the headline in the name of correcting it.
+    for bad in ({"price": 0.0}, {"price": 1.0}, {"price": None}, {"contracts": None},
+                {"fee": 999.0}):
+        row = {**_maker_booked(), **bad}
+        assert corrected_fee(row) is None
+        assert on_taker_fees([row])[0] is row
+
+
+def test_the_index_fee_schedule_is_corrected_on_its_own_multiplier():
+    # S&P/Nasdaq ladders are 0.035, not 0.07. Correcting one at the general rate would
+    # double its modelled cost, so the schedule is identified by exact match.
+    from predictionedge.fees import INDEX_FEE_MULTIPLIER
+    row = {**_maker_booked(),
+           "fee": trade_fee(0.4, 190, multiplier=INDEX_FEE_MULTIPLIER, maker=True)}
+    assert corrected_fee(row) == trade_fee(0.4, 190, multiplier=INDEX_FEE_MULTIPLIER,
+                                           maker=False)
+
+
+def test_the_headline_is_scored_on_corrected_fees_and_publishes_the_old_basis():
+    trial = _blank()
+    trial["settled"] = [{**_maker_booked(), "key": f"0x{i}:mets"} for i in range(40)]
+    out = stats(trial)
+    taker = trade_fee(0.4, 190, multiplier=0.07, maker=False)
+    corrected = on_taker_fees(trial["settled"])
+    assert out["n"] == 40
+    assert out["mean_return"] == evaluate(corrected)["mean_return"]
+    # Both bases published; the headline is the corrected one and is strictly worse.
+    assert out["as_recorded"]["mean_return"] == evaluate(trial["settled"])["mean_return"]
+    assert out["mean_return"] < out["as_recorded"]["mean_return"]
+    # The gate, the DSR and the bootstrap CI all read the corrected rows.
+    for k in ("deploy", "dsr", "psr_vs_zero", "bootstrap_ci", "sharpe_per_bet"):
+        assert out[k] == evaluate(corrected)[k]
+    # Per-row deltas, published so the page can slice its own windows on this basis.
+    assert out["fee_adjustment"]["0x0:mets"] == round(
+        trial["settled"][0]["fee"] - taker, 4)
+    assert len(out["fee_adjustment"]) == 40
+
+
+def test_the_sleeve_breakdown_is_corrected_too():
+    # A headline on one basis and its own breakdown on another is the failure mode.
+    trial = _blank()
+    trial["settled"] = [{**_maker_booked(), "key": f"0x{i}:mets"} for i in range(40)]
+    out = stats(trial)
+    assert out["by_source"]["whale"]["mean_return"] == out["mean_return"]
+
+
+# --- the copy signal's own inputs are recorded ------------------------------------
+
+def test_the_wallets_and_the_signal_age_are_recorded_on_the_row():
+    # "A good wallet bought this" is the whole thesis of the whale sleeve, and the
+    # record held neither the wallet nor how stale the buy was when we copied it.
+    trial = _blank()
+    wallets = [["0xF00d", 8000.0], ["0xBeeF", 4000.0]]
+    record(trial, [_ticket(minutes_ago=42, wallet_usd=wallets)], stake=100.0)
+    row = trial["open"][0]
+    assert row["minutes_ago"] == 42
+    assert row["wallet_usd"] == wallets       # plaintext: joinable to the leaderboard
+
+
+def test_the_new_fields_are_forward_only_and_never_invented():
+    # `bridge._carry` copies by key and writes None where the origin had nothing; a row
+    # claiming "wallet_usd: null" would assert knowledge it does not have.
+    trial = _blank()
+    record(trial, [_ticket()], stake=100.0)
+    record(trial, [_ticket(mid="0xdef", minutes_ago=None, wallet_usd=None)], stake=100.0)
+    for row in trial["open"]:
+        assert "wallet_usd" not in row and "minutes_ago" not in row
+
+
+# --- price marks on open rows ------------------------------------------------------
+# The record held an entry price and a settlement and nothing between them, so "was
+# this ever underwater" was not a hard question, it was an unaskable one.
+
+from predictionedge.papertrial import (MARK_CAP, _thin_marks,  # noqa: E402
+                                       mark_open)
+
+
+def _live(bid, ask, outcomes=("Mets", "Pirates")):
+    """A settlement meta for a market that has NOT resolved but is quoting a book."""
+    return {"closed": False, "outcomes": list(outcomes), "prices": [],
+            "best_bid": bid, "best_ask": ask}
+
+
+def test_marks_accumulate_across_polls():
+    trial = _blank()
+    record(trial, [_ticket(price=0.5)], stake=100.0)
+    metas = {"0xabc": _live(0.49, 0.51)}
+    for i in range(3):
+        assert mark_open(trial, metas, now=1000 + 900 * i) == 1
+    assert trial["open"][0]["marks"] == [
+        {"t": 1000, "best_bid": 0.49, "best_ask": 0.51},
+        {"t": 1900, "best_bid": 0.49, "best_ask": 0.51},
+        {"t": 2800, "best_bid": 0.49, "best_ask": 0.51}]
+
+
+def test_the_mark_is_the_book_for_the_leg_this_row_bought():
+    # Both adapters quote the FIRST outcome's token. Half the open rows are on the
+    # other leg, whose book is the complement with the spread flipped - storing the
+    # first leg's numbers on them would invert the sign of "underwater".
+    trial = _blank()
+    record(trial, [_ticket(mid="0xa", outcome="Mets", price=0.5),
+                   _ticket(mid="0xb", outcome="Pirates", price=0.5)], stake=100.0)
+    mark_open(trial, {"0xa": _live(0.40, 0.44), "0xb": _live(0.40, 0.44)}, now=1000)
+    mets, pirates = trial["open"]
+    assert mets["marks"] == [{"t": 1000, "best_bid": 0.40, "best_ask": 0.44}]
+    assert pirates["marks"] == [{"t": 1000, "best_bid": 0.56, "best_ask": 0.60}]
+
+
+@pytest.mark.parametrize("meta", [
+    {"closed": False, "outcomes": ["Mets", "Pirates"], "best_bid": 0.0, "best_ask": 0.0},
+    {"closed": False, "outcomes": ["Mets", "Pirates"], "best_bid": 0.6, "best_ask": 0.4},
+    {"closed": False, "outcomes": ["Yankees", "Pirates"], "best_bid": 0.4, "best_ask": 0.5},
+    {"closed": False, "outcomes": [], "best_bid": 0.4, "best_ask": 0.5},
+    {"closed": False, "outcomes": ["Mets", "Pirates"]},
+    {},
+])
+def test_an_unreadable_quote_leaves_a_gap_rather_than_a_wrong_mark(meta):
+    # All-zero (an absent field is indistinguishable from an empty book), crossed, a
+    # leg this row never bought, no legs at all, no book at all. A missing mark is a
+    # gap in the series; a guessed one is a false answer to the question marks exist for.
+    trial = _blank()
+    record(trial, [_ticket(price=0.5)], stake=100.0)
+    assert mark_open(trial, {"0xabc": meta}, now=1000) == 0
+    assert "marks" not in trial["open"][0]
+
+
+def test_the_series_is_capped_however_long_the_position_is_held():
+    # 96 polls a day against a file committed every 15 minutes: uncapped, one row
+    # would add ~9.6 KB a day to the public record forever.
+    trial = _blank()
+    record(trial, [_ticket(price=0.5)], stake=100.0)
+    for i in range(400):
+        price = 0.30 + (i % 17) / 100.0
+        mark_open(trial, {"0xabc": _live(round(price, 2), round(price + 0.02, 2))},
+                  now=1000 + 900 * i)
+        assert len(trial["open"][0]["marks"]) <= MARK_CAP
+    assert len(trial["open"][0]["marks"]) == MARK_CAP
+
+
+def test_thinning_keeps_the_first_the_last_and_both_extremes():
+    # The extremes ARE the question. An even sample would delete the one spike it was
+    # asked about and keep the flat hours either side of it.
+    marks = [{"t": 1000 + 900 * i, "best_bid": 0.50, "best_ask": 0.52}
+             for i in range(200)]
+    marks[57] = {"t": marks[57]["t"], "best_bid": 0.11, "best_ask": 0.13}    # the low
+    marks[132] = {"t": marks[132]["t"], "best_bid": 0.88, "best_ask": 0.90}  # the high
+    kept = _thin_marks(marks, MARK_CAP)
+    assert len(kept) == MARK_CAP
+    assert kept[0] == marks[0] and kept[-1] == marks[-1]
+    assert marks[57] in kept and marks[132] in kept
+    assert kept == sorted(kept, key=lambda m: m["t"])   # still a series, still in order
+
+
+def test_the_extremes_survive_hundreds_of_polls_not_just_one_thinning():
+    # Thinning runs on every poll, so the worst mid ever printed has to survive being
+    # re-thinned dozens of times, not once.
+    trial = _blank()
+    record(trial, [_ticket(price=0.5)], stake=100.0)
+    for i in range(300):
+        bid = 0.05 if i == 40 else (0.95 if i == 210 else 0.50)
+        mark_open(trial, {"0xabc": _live(bid, round(bid + 0.02, 2))},
+                  now=1000 + 900 * i)
+    mids = [(m["best_bid"] + m["best_ask"]) / 2 for m in trial["open"][0]["marks"]]
+    assert min(mids) == pytest.approx(0.06)
+    assert max(mids) == pytest.approx(0.96)
+
+
+def test_a_settled_rows_marks_are_frozen():
+    # A mark is data appended to a position with no result yet. A settled row is a
+    # committed result, and this module never edits one - `settle` has already moved
+    # it out of `open` by the time marks are taken, so it is not even reachable.
+    trial = _blank()
+    record(trial, [_ticket(price=0.5)], stake=100.0)
+    mark_open(trial, {"0xabc": _live(0.49, 0.51)}, now=1000)
+    settle(trial, {"0xabc": _meta(["Mets", "Pirates"], [1.0, 0.0])})
+    frozen = [dict(m) for m in trial["settled"][0]["marks"]]
+    assert mark_open(trial, {"0xabc": _live(0.97, 0.99)}, now=1900) == 0
+    assert trial["settled"][0]["marks"] == frozen
+
+
+def test_marking_never_reaches_the_network(monkeypatch):
+    # The claim is that marks ride on the batch the settle path already fetched. If a
+    # quote were ever pulled per row, this run would be 30 round trips and would raise.
+    from predictionedge import gamma, kalshi
+
+    def boom(*a, **k):
+        raise AssertionError("a mark must never cost its own network call")
+    monkeypatch.setattr(gamma, "_default_fetch", boom)
+    monkeypatch.setattr(kalshi, "_default_fetch", boom)
+
+    trial = _blank()
+    record(trial, [_ticket(mid=f"0x{i}", price=0.5) for i in range(30)], stake=100.0)
+    metas = {f"0x{i}": _live(0.49, 0.51) for i in range(30)}
+    assert mark_open(trial, metas, now=1000) == 30
+
+
+def test_a_pmus_row_is_not_marked_with_the_market_it_was_copied_from():
+    # PM-US rows settle against their origin market because PM-US answers no
+    # resolution endpoint. That is sound for "which way did it resolve" and unsound
+    # for a price: the venue basis is real, and it is not this row's drift.
+    trial = _blank()
+    record(trial, [_ticket(mid="pmus-mets", price=0.5, venue="polymarket-us",
+                           origin_market_id="0xabc")], stake=100.0)
+    assert mark_open(trial, {"pmus-mets": _live(0.49, 0.51)}, now=1000) == 0
+    assert "marks" not in trial["open"][0]
+
+
+def test_one_batch_fetch_covers_every_open_row(monkeypatch, tmp_path):
+    """End to end: 40 open rows, one metadata call, 40 rows marked.
+
+    The whole design of `mark_open` is that it is free - it reads the batch the settle
+    path fetched anyway. A per-row fetch would still pass every test above and would be
+    a 40x regression in a job that runs every 15 minutes, so the call count is asserted.
+    """
+    from predictionedge import gamma, papertrial
+    from predictionedge.config import Config
+
+    monkeypatch.setattr(Config, "from_env", classmethod(
+        lambda cls: Config(bridge_enabled=False, maker_first=False)))
+    calls = []
+
+    def one_batch(ids, **kw):
+        calls.append(list(ids))
+        return {i: _live(0.49, 0.51) for i in ids}
+    monkeypatch.setattr(gamma, "market_meta", one_batch)
+
+    trial = _blank()
+    record(trial, [_ticket(mid=f"0x{i}", price=0.5) for i in range(40)], stake=100.0)
+    trial_path = tmp_path / "trial.json"
+    save(trial_path, trial)
+    board = tmp_path / "board.json"
+    board.write_text(json.dumps({"tickets": [], "generated_at": 1000}), encoding="utf-8")
+
+    assert papertrial.main(["--board", str(board), "--trial", str(trial_path)]) == 0
+    assert len(calls) == 1 and len(calls[0]) == 40
+    out = load(trial_path)
+    assert len(out["open"]) == 40
+    assert all(len(r["marks"]) == 1 for r in out["open"])

@@ -11,7 +11,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from .fees import trade_fee
+from .fees import is_designated, maker_trade_fee, trade_fee
 
 # Kalshi does not return the single string this module originally tested for. A market
 # that has paid out reports `finalized`; `settled` was never observed in production.
@@ -24,6 +24,23 @@ from .fees import trade_fee
 # It is a SET rather than a corrected literal so that a vocabulary change costs nothing,
 # and `result` carries the real decision: a market with result yes/no has been called.
 _TERMINAL_STATUSES = frozenset({"finalized", "settled", "determined"})
+
+
+def rested_and_filled(row) -> bool:
+    """Did this position EARN a maker discount, or is that merely being assumed?
+
+    The same question `papertrial.rested_and_filled` asks of a trial row, answered by
+    the same rule: the discount needs evidence of a resting fill and is never a default.
+    The `orders` table (state.py) records none - a row goes placed -> open -> settled
+    and never says how it filled - so this is False on every row that exists today and
+    settlement charges the taker fee.
+
+    It is a function rather than a `False` constant because the day a fill event is
+    recorded, this is the one place that has to learn about it; what it must never
+    become again is a flat config flag that answers yes for every position at once.
+    """
+    keys = row.keys() if hasattr(row, "keys") else ()
+    return "maker" in keys and bool(row["maker"])
 
 
 def settle_positions(cfg, state, kalshi, ledger, log) -> dict:
@@ -51,7 +68,22 @@ def settle_positions(cfg, state, kalshi, ledger, log) -> dict:
 
         won = row["side"] == market.result
         price, contracts, stake = row["price"], row["contracts"], row["stake"]
-        fee = trade_fee(price, contracts, multiplier=cfg.fee_multiplier, maker=cfg.assume_maker)
+        # TAKER unless the fill is KNOWN to have rested. A `cfg.assume_maker` flag decided
+        # this before (deleted 2026-08-17); it was wrong twice: entries are at the ask, and
+        # 25%-of-taker
+        # is Kalshi's DESIGNATED-series maker rate - a resting fill on a standard market
+        # costs nothing at all, which is why the earned branch goes through
+        # `maker_trade_fee` rather than `trade_fee(maker=True)`.
+        #
+        # This one is not only a label on the record. It lands in `realized`, which goes
+        # to `add_realized` and therefore into the `max_daily_loss` breaker and into the
+        # labelled dataset `backtest.py` scores. A fee booked at a quarter of its size
+        # makes the brakes late and the evidence flattering, in that order.
+        if rested_and_filled(row):
+            fee = maker_trade_fee(price, contracts, multiplier=cfg.fee_multiplier,
+                                  designated=is_designated(row["ticker"]))
+        else:
+            fee = trade_fee(price, contracts, multiplier=cfg.fee_multiplier, maker=False)
         # Win: receive $1/contract, having staked `stake`. Loss: forfeit the stake.
         realized = (contracts * (1.0 - price) - fee) if won else (-stake - fee)
 

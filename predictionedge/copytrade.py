@@ -97,14 +97,21 @@ class CopySignal:
     title: str
     outcome: str           # the outcome smart money bought (Yes/No/team)
     n_wallets: int         # how many distinct profitable wallets bought it
-    total_usd: float       # their combined size
-    avg_price: float       # their volume-weighted entry price
+    # Cash, not contracts. `Trade.size` off the feed is a CONTRACT count (which is why
+    # dividing a size-weighted price sum by it recovers a price at all), so the dollars
+    # at risk are size*price. Measured over the 567 recorded trial fills, reading the
+    # count as dollars overstated the whale by 1.9x at the median and 2.8x at p10 -
+    # anything asking "how big was the bet" means money, so it gets money.
+    total_usd: float       # their combined stake in dollars
+    avg_price: float       # their contract-weighted entry price
     minutes_ago: float     # recency of the latest such buy
     slug: str = ""         # market slug = the Polymarket US order key (marketSlug)
     event_slug: str = ""
-    # Who put in what. The aggregate hides the thing that matters most - whether this
-    # is one wallet's whole conviction or petty change from several - and bankroll
-    # weighting downstream is per-wallet, so it cannot work off the total alone.
+    # Who put in what, in dollars like the total. The aggregate hides the thing that
+    # matters most - whether this is one wallet's whole conviction or petty change from
+    # several - and bankroll weighting downstream is per-wallet, so it cannot work off
+    # the total alone. Dollars matter doubly here: this is divided by a wallet's USDC
+    # bankroll downstream, and contracts over dollars is not a fraction of anything.
     wallet_usd: tuple[tuple[str, float], ...] = ()
     # True when this came from the fresh-wallet pattern rather than the leaderboard.
     # These wallets have NO track record - that is the whole point, and it means their
@@ -127,7 +134,7 @@ class CopyExit:
     market_id: str
     outcome: str
     n_wallets: int
-    total_usd: float
+    total_usd: float       # dollars sold (size*price), matching CopySignal.total_usd
     avg_price: float
     minutes_ago: float     # recency of the latest such sell
 
@@ -189,6 +196,13 @@ def scan_smart_flow(client, scorer: SmartWalletScorer, *,
     the real constraint on how much signal exists: 500 trades covers only ~20h, while
     the staleness rule downstream accepts up to 48h. Lowering ``min_usd`` instead
     *shrinks* the window, since the same 500 slots fill with smaller trades.
+
+    Two accumulators per group, named for their units and kept apart on purpose:
+    ``shares`` counts contracts (``Trade.size``) and ``usd`` counts the cash those
+    contracts cost (size*price). Everything a caller calls a dollar figure comes off
+    ``usd``; ``shares`` exists only as the denominator that turns the cash back into a
+    weighted price. They were once the same field, which quietly inflated every whale
+    figure in the product by 1/price.
     """
     now = time.time() if now_ts is None else now_ts
     by_cat = smart_by_category(client, scorer, categories, time_periods, leaderboard_limit)
@@ -211,38 +225,38 @@ def scan_smart_flow(client, scorer: SmartWalletScorer, *,
                 seen_sides.setdefault((t.wallet, t.condition_id), set()).add(t.outcome)
                 u = unknown.setdefault((t.wallet, t.condition_id, t.outcome), {
                     "title": t.title, "event_slug": t.event_slug, "slug": t.slug,
-                    "usd": 0.0, "pxusd": 0.0, "latest": 0,
+                    "shares": 0.0, "usd": 0.0, "latest": 0,
                 })
-                u["usd"] += t.size
-                u["pxusd"] += t.size * t.price
+                u["shares"] += t.size
+                u["usd"] += t.size * t.price
                 u["latest"] = max(u["latest"], t.ts)
             continue
         if t.side == "SELL":
             if not track_exits:
                 continue
             e = exits.setdefault((t.condition_id, t.outcome),
-                                 {"wallets": set(), "usd": 0.0, "pxusd": 0.0, "latest": 0})
+                                 {"wallets": set(), "shares": 0.0, "usd": 0.0, "latest": 0})
             e["wallets"].add(t.wallet)
-            e["usd"] += t.size
-            e["pxusd"] += t.size * t.price
+            e["shares"] += t.size
+            e["usd"] += t.size * t.price
             e["latest"] = max(e["latest"], t.ts)
             continue
         if t.side != "BUY":
             continue
         g = groups.setdefault((t.condition_id, t.outcome), {
             "title": t.title, "event_slug": t.event_slug, "slug": t.slug,
-            "wallets": {}, "usd": 0.0, "pxusd": 0.0, "latest": 0,
+            "wallets": {}, "shares": 0.0, "usd": 0.0, "latest": 0,
         })
-        g["wallets"][t.wallet] = g["wallets"].get(t.wallet, 0.0) + t.size
-        g["usd"] += t.size
-        g["pxusd"] += t.size * t.price
+        g["wallets"][t.wallet] = g["wallets"].get(t.wallet, 0.0) + t.size * t.price
+        g["shares"] += t.size
+        g["usd"] += t.size * t.price
         g["latest"] = max(g["latest"], t.ts)
 
     out: list[CopySignal] = []
     for (cid, outcome), g in groups.items():
         if len(g["wallets"]) < min_wallets:
             continue
-        avg = g["pxusd"] / g["usd"] if g["usd"] > 0 else 0.0
+        avg = g["usd"] / g["shares"] if g["shares"] > 0 else 0.0
         if avg <= 0 or avg > max_price:
             continue  # no upside left if they're already near resolution
         cat = classify_market(g["title"], g["slug"])
@@ -260,13 +274,17 @@ def scan_smart_flow(client, scorer: SmartWalletScorer, *,
     # an API call per wallet, so it is the last gate applied, after the board's cheap
     # filters have already thrown most candidates out.
     for (wallet, cid, outcome), u in unknown.items():
+        # Dollars against a dollar threshold. This gate used to read the contract count,
+        # so the "$5k" bar really admitted ~$2.6k of cash at the median fill price. The
+        # default in `whale_fresh_min_usd` was set against that inflated figure and has
+        # NOT been retuned here: the bar now bites as hard as it always claimed to.
         if u["usd"] < (fresh_min_usd or 0.0):
             continue
         # Both sides of the same market is a hedge or a market-maker, not a directional
         # opinion - and "one-sided" is half the claim this signal is making.
         if len(seen_sides.get((wallet, cid), ())) != 1:
             continue
-        avg = u["pxusd"] / u["usd"] if u["usd"] > 0 else 0.0
+        avg = u["usd"] / u["shares"] if u["shares"] > 0 else 0.0
         if avg <= 0 or avg > max_price:
             continue
         # No track record anywhere, so no category credit is possible - only the
@@ -285,7 +303,7 @@ def scan_smart_flow(client, scorer: SmartWalletScorer, *,
     # regardless, because it is a caveat on advice, not advice of its own.
     exit_out = [
         CopyExit(cid, outcome, len(e["wallets"]), e["usd"],
-                 e["pxusd"] / e["usd"] if e["usd"] > 0 else 0.0,
+                 e["usd"] / e["shares"] if e["shares"] > 0 else 0.0,
                  max(0.0, (now - e["latest"]) / 60.0))
         for (cid, outcome), e in exits.items()
     ]

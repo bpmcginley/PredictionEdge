@@ -119,7 +119,17 @@ def _build_hedge(cfg: Config, kalshi, entry_side: str, ticker: str, z_dollars: f
     contracts = min(int(math.floor(z_dollars / price)), cfg.max_contracts)
     if contracts <= 0:
         return None
-    fee = trade_fee(price, contracts, multiplier=cfg.fee_multiplier, maker=cfg.assume_maker)
+    # TAKER: this order is priced at the CURRENT inverse ask because its whole job is
+    # to lock the arb now - `optimal_arbitrage_orders` sizes against a move that has
+    # already happened, and a hedge that rests for a better price is a hedge that can
+    # miss the thing it was hedging. The one deliberately impatient order in the system
+    # is the last one that should be booked at a resting order's rate.
+    #
+    # Unlike `edge._evaluate_side`, this fee gates nothing: `arb_min_ratio` is checked
+    # against `r_max`, which is computed from stake and the probability shift alone.
+    # It is the number the paper ledger and `describe()` report as the cost of the
+    # hedge, so it still has to be the cost of the hedge.
+    fee = trade_fee(price, contracts, multiplier=cfg.fee_multiplier, maker=False)
     return Opportunity(
         ticker=ticker, side=hedge_side, fair_prob=0.0, price=price,
         edge_per_contract=0.0, contracts=contracts, stake=contracts * price,

@@ -62,6 +62,10 @@ from datetime import datetime, timedelta, timezone
 
 from . import calibration
 from .fees import fee_per_contract
+# Re-exported, not just used: `weatherlog` imports `_event_day` from here. It is the
+# one shared Kalshi ticker parser now - this module used to carry its own copy, which
+# was correct only because the weather ladders happen to hang no suffix off the day.
+from .kalshi import event_day as _event_day
 
 log = logging.getLogger(__name__)
 
@@ -284,16 +288,6 @@ def _default_fetch(url: str, params: dict | None = None) -> dict:
                      timeout=20)
     r.raise_for_status()
     return r.json()
-
-
-def _event_day(event_ticker: str) -> str | None:
-    """`KXHIGHNY-26AUG12` -> `2026-08-12`."""
-    tail = event_ticker.rsplit("-", 1)[-1]
-    try:
-        return datetime.strptime(tail, "%y%b%d").replace(
-            tzinfo=timezone.utc).strftime("%Y-%m-%d")
-    except ValueError:
-        return None
 
 
 # A ratio between two normal tail probabilities can run to millions when the forecast

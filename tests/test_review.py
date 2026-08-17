@@ -1,3 +1,4 @@
+import json
 import logging
 import os
 import tempfile
@@ -5,6 +6,7 @@ from dataclasses import replace
 
 from predictionedge.config import Config
 from predictionedge.executor import DryRunExecutor
+from predictionedge.fees import trade_fee
 from predictionedge.kalshi import MockKalshiClient
 from predictionedge.ledger import PaperLedger
 from predictionedge.odds import MockOddsProvider
@@ -47,6 +49,23 @@ def test_review_hedges_on_favourable_move():
     hedges = [r for r in state.active_orders() if r["kind"] == "hedge"]
     assert len(hedges) == 1
     assert hedges[0]["side"] == "no"          # inverse of the YES entry
+
+
+def test_hedge_is_booked_at_taker_fees():
+    """A hedge is priced at the inverse ASK on purpose - it exists to lock the move in
+    now - so it is the last order in the system that may be booked at a resting rate.
+    This used to guard against `cfg.assume_maker` reaching the fee and reading a quarter
+    of the real cost; the flag is gone, and the assertion below is what survives it."""
+    cfg, state, risk, ex = _ctx()
+    state.record_order(client_order_id="e1", ticker="KXNBA-LALBOS", side="yes",
+                       price=0.40, contracts=25, stake=10.0, entry_event_prob=0.40,
+                       status="placed")
+    _review(cfg, state, risk, ex)
+    rows = [json.loads(line) for line
+            in open(cfg.paper_ledger_path, encoding="utf-8").read().splitlines() if line]
+    hedge = next(r for r in rows if r["note"].startswith("[hedge]"))
+    assert hedge["est_fee"] == trade_fee(hedge["price"], hedge["contracts"],
+                                         multiplier=cfg.fee_multiplier, maker=False)
 
 
 def test_review_does_not_double_hedge():

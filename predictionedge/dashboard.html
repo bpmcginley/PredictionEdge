@@ -168,7 +168,7 @@ async function load(){
       <td class="muted">${s.minutes_ago}m ago</td>
       <td>${s.url?`<a href="${s.url}" target="_blank" rel="noopener" class="mlink">${s.title}</a>`:s.title} <span class="pill ${s.category==='event'?'demo':'skip'}">${s.category}</span></td>
       <td class="side-${s.side==='BUY'?'yes':'no'}">${s.side} ${s.outcome} @ ${s.price}</td>
-      <td class="mono">$${Number(s.size).toLocaleString()}</td>
+      <td class="mono">$${Number(s.usd).toLocaleString()}<div class="muted">${Number(s.contracts).toLocaleString()} ct</div></td>
       <td class="muted">${s.trader}</td>
       <td class="${s.closes_in_days!=null && s.closes_in_days<=7?'neg':'muted'}">${s.closes_in_days==null?'—':(s.closes_in_days<=0?'closing':s.closes_in_days+'d')}</td>
     </tr>`).join(''):'<tr><td colspan="6" class="empty">No large event-market trades in the recent feed.</td></tr>';

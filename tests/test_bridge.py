@@ -320,22 +320,137 @@ def test_skip_set_prevents_refetch():
     assert calls == []
 
 
+# --- origin market-type gate ------------------------------------------------------
+
+# One title per pattern the gate refuses, each carrying only its own pattern so a
+# regression names the branch that broke rather than "something still matched".
+_DERIVATIVE_TITLES = [
+    "Asian Handicap: Arsenal vs Chelsea",
+    "Spread: Texas Rangers",
+    "Baltimore Orioles vs. Texas Rangers: O/U 8",
+    "Mariners vs Astros Over/Under 7",
+    "Total runs, Yankees vs Red Sox",
+    "TheMongolz vs paiN - Map 1 Winner",
+    "LGD Gaming vs Team Yandex - Game 1 Winner",
+    "Alcaraz vs Sinner - Set 2 Winner",
+    "Cubs vs Cardinals: First Five",
+    "Runs scored in the 1st inning",
+    "Highest scoring quarter",
+    "Texas Rangers -1.5",
+]
+
+
+def _open_venue():
+    """A venue that matches everything: only the gate can produce zero tickets here."""
+    return MockPolymarketUSClient({
+        "atc-fwc-ecu-ger-2026-06-25-ger": PMUSMarket(
+            "atc-fwc-ecu-ger-2026-06-25-ger", 0.50, 0.55, 0.52),
+    })
+
+
+def test_gate_refuses_every_derivative_title():
+    for title in _DERIVATIVE_TITLES:
+        tickets, attempts = build_bridge_tickets([_ticket(title=title)],
+                                                 pmus_client=_open_venue())
+        assert tickets == [], title
+        assert [a["status"] for a in attempts] == ["origin-not-binary"], title
+
+
+def test_gate_lets_plain_binary_titles_through():
+    # The same slug and venue as the refusals above: the TITLE is the only difference,
+    # so this is what proves the gate costs nothing on a plain YES/NO question.
+    for title in ("Will Germany win?", "Will Arsenal FC win on 2026-08-16?",
+                  "Cincinnati Open: Lorenzo Sonego vs Frances Tiafoe"):
+        tickets, attempts = build_bridge_tickets([_ticket(title=title)],
+                                                 pmus_client=_open_venue())
+        assert [a["status"] for a in attempts] == ["matched"], title
+        assert tickets[0]["entry_price"] == 0.55
+
+
+def test_gate_stops_both_venues_before_either_adapter_runs():
+    # The refusal is a fact about the ORIGIN market, so neither venue may be consulted -
+    # not the PM-US listing crawl, not a Kalshi lookup. Both legs are still logged.
+    calls = []
+
+    class _SpyPMUS(MockPolymarketUSClient):
+        def active_markets(self, max_markets=40_000):
+            calls.append("pmus-listings")
+            return super().active_markets(max_markets)
+
+        def market(self, slug):
+            calls.append("pmus-quote")
+            return super().market(slug)
+
+    pmus = _SpyPMUS({"atc-mlb-bal-tex-2026-08-12": PMUSMarket(
+        "atc-mlb-bal-tex-2026-08-12", 0.50, 0.55, 0.52)})
+    kx = _kx_fetch_factory([{"ticker": "KXMLBGAME-26AUG12BALTEX-TEX",
+                             "title": "Texas to win", "yes_ask": 57}], calls)
+    tickets, attempts = build_bridge_tickets(
+        [_ticket(slug="mlb-bal-tex-2026-08-12-tex", outcome="Texas Rangers",
+                 title="Spread: Texas Rangers (-1.5)")],
+        pmus_client=pmus, kalshi_fetch=kx)
+    assert tickets == []
+    assert calls == []
+    assert {a["venue"]: a["status"] for a in attempts} == {
+        "polymarket-us": "origin-not-binary", "kalshi": "origin-not-binary"}
+
+
+def test_gate_rejections_are_counted_as_coverage_lost():
+    # Rule 3 of the module: a refusal the caller cannot count is indistinguishable from
+    # a market the bridge never saw, and it would flatter the coverage number.
+    trial = {}
+    _, attempts = build_bridge_tickets(
+        [_ticket(market_id="0x" + "ab" * 32, title="Spread: Texas Rangers (-1.5)"),
+         _ticket(market_id="0x" + "cd" * 32, title="Game Handicap: FLC (-1.5) vs LGD"),
+         _ticket(market_id="0x" + "ef" * 32, title="Will Germany win?")],
+        pmus_client=_open_venue(), kalshi_fetch=_kx_fetch_factory([]))
+    update_log(trial, attempts, now=1000.0)
+    assert trial["bridge"]["summary"]["polymarket-us"]["origin-not-binary"] == 2
+    assert trial["bridge"]["summary"]["kalshi"]["origin-not-binary"] == 2
+    # Permanent: a title does not become a different market on the next run, so the
+    # legs are skipped from here on and the counted loss stays counted.
+    skips = permanent_skips(trial)
+    assert "0x" + "cd" * 32 + ":yes:polymarket-us" in skips
+    assert "0x" + "cd" * 32 + ":yes:kalshi" in skips
+    _, again = build_bridge_tickets(
+        [_ticket(market_id="0x" + "cd" * 32, title="Game Handicap: FLC (-1.5) vs LGD")],
+        pmus_client=_open_venue(), kalshi_fetch=_kx_fetch_factory([]), skip=skips)
+    assert again == []
+
+
+def test_gate_catches_the_rows_that_were_measured():
+    # The four mirrors actually on file on 2026-08-16, whose returns ran from -105.7%
+    # to +727.2% - dispersion that is the signature of a mis-mapped outcome, not a bad
+    # bet. They are also every venue gap above 20c the record has ever shown (24.5-28.5c
+    # against a 6.5c largest on the plain markets). Holding them out moves the published
+    # headline from +3.142%/bet (n=376) to +1.409%/bet (n=372).
+    measured = ["Game Handicap: FLC (-1.5) vs LGD Gaming (+1.5)",
+                "Spread: Texas Rangers (-1.5)",
+                "Game Handicap: FLC (-1.5) vs GamerLegion (+1.5)",
+                "Game Handicap: FLC (-1.5) vs Vici Gaming (+1.5)"]
+    tickets, attempts = build_bridge_tickets(
+        [_ticket(market_id=f"0x{i:064x}", title=t) for i, t in enumerate(measured)],
+        pmus_client=_open_venue())
+    assert tickets == []
+    assert [a["status"] for a in attempts] == ["origin-not-binary"] * 4
+
+
 # --- record() integration: taker fees, dedup, settlement -------------------------
 
-def test_bridge_rows_book_taker_fees_despite_maker_default():
+def test_bridge_rows_book_taker_fees():
     trial = {"open": [], "settled": []}
     pmus = MockPolymarketUSClient({
         "atc-fwc-ecu-ger-2026-06-25-ger": PMUSMarket(
             "atc-fwc-ecu-ger-2026-06-25-ger", 0.50, 0.55, 0.52),
     })
     tickets, _ = build_bridge_tickets([_ticket()], pmus_client=pmus)
-    assert record(trial, tickets, maker=True) == 1
+    assert record(trial, tickets) == 1
     row = trial["open"][0]
     contracts = max(1, round(row["contracts"]))
     assert row["fee"] == trade_fee(0.55, contracts, multiplier=0.07, maker=False)
     assert row["fee"] > trade_fee(0.55, contracts, multiplier=0.07, maker=True)
     # Re-record is a no-op: one position per venue leg, first sighting wins.
-    assert record(trial, tickets, maker=True) == 0
+    assert record(trial, tickets) == 0
 
 
 def test_pmus_row_settles_via_origin_meta():

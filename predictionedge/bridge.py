@@ -16,6 +16,9 @@ Design rules, in order of importance:
    signatures outright (see `pmus_match`), and the Kalshi adapter never searches - it
    CONSTRUCTS the one exact ticker the ticket implies and checks whether it exists.
    A wrong guess about Kalshi's naming produces zero matches, never a wrong row.
+   Neither adapter is even offered a market whose title does not name the outcome the
+   bet is on - spreads, totals, map/game/set legs - because there the two venues use
+   the same words for different questions (see `_DERIVATIVE_TITLE`).
 2. TAKER FEES, ALWAYS. Bridge rows model "take the ask the moment the board fires",
    so they carry `_maker: False` regardless of the trial's global maker default.
    Kalshi's published taker formula is also applied to the PM-US rows - PM-US's own
@@ -61,7 +64,10 @@ _MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN",
 # name that didn't map) is retried on every run until the ticket leaves the board.
 # "outcome-not-yes-no" - retired 2026-08-12 when the name matcher landed - is
 # deliberately NOT here, so tickets it froze under the old adapter get re-tried.
-_PERMANENT = frozenset({"matched", "no-signature", "no-series", "outcome-not-a-team"})
+# "origin-not-binary" is permanent for the same reason the others are: a title does not
+# become a different kind of market on the next run.
+_PERMANENT = frozenset({"matched", "no-signature", "no-series", "outcome-not-a-team",
+                        "origin-not-binary"})
 
 
 def parse_series_env(raw: str) -> dict[str, str]:
@@ -231,11 +237,51 @@ def match_by_name(listings, intl_slug: str, outcome: str):
     return None, ("outcome-unmapped" if saw_candidate else "no-counterpart")
 
 
+# Origin titles where the team named in the title is NOT the outcome the bet is on.
+# On a plain binary market "Texas Rangers" means the Rangers win; on the run line it
+# means they win by two, and on a map/game/set market it means they take one leg of a
+# series. Both venues use the same words for those different questions, so the matchers
+# above - which reason about names, dates and team codes, none of which change - will
+# cheerfully find the destination's PLAIN market for a spread ticket and book someone
+# else's question at our price. Every 24-28c "arbitrage" this record has shown between
+# venues came from exactly that: not free money, the price of a different question.
+#
+# What this is: a heuristic over titles, and it is wrong in both directions. A mis-typed
+# market whose title reads plain ("Rangers to win the series") sails straight through,
+# and a genuinely binary market that merely contains the word "total" ("Will total
+# domestic gross reach $900m?") is refused and costs real coverage. It is a title regex
+# because the origin ticket has no market-type field to ask instead: PM-US publishes one
+# (`sportsMarketType`, which is what `_is_winner_type` gates the DESTINATION on) and the
+# international Gamma ticket the whale sleeve builds carries no equivalent. If one ever
+# appears on the origin ticket, that field belongs here and this regex becomes its
+# fallback.
+_DERIVATIVE_TITLE = re.compile(
+    r"handicap|spread|o/u|over/under|total|map \d|game \d|set \d|"
+    r"first five|inning|quarter|[+-]\d+\.5", re.I)
+
+
+def is_derivative_title(title: str) -> bool:
+    """True when a title names a market whose team name is not the outcome bet on.
+
+    Public because the paper trial holds these rows out of its headline using this
+    predicate, and it has to be THIS one. The same argument the trial already makes for
+    calling `is_esports` rather than copying its regex: what the record excludes and what
+    the bridge refuses must be one implementation, or the two eventually disagree and the
+    direction they disagree in is nobody's decision.
+    """
+    return bool(_DERIVATIVE_TITLE.search(title or ""))
+
+
 def _carry(t: dict) -> dict:
-    """Slice-later context copied from the origin ticket onto its bridge rows."""
+    """Slice-later context copied from the origin ticket onto its bridge rows.
+
+    `minutes_ago` and `wallet_usd` travel with the rest: a bridge row is the SAME whale
+    signal expressed at another venue's price, so it has to answer "which wallets, how
+    stale" identically to its origin or the two stop being comparable.
+    """
     return {k: t.get(k) for k in ("conviction", "n_wallets", "whale_usd", "drift_c",
                                   "hours_to_resolve", "liquidity", "end_iso",
-                                  "event_iso")}
+                                  "event_iso", "minutes_ago", "wallet_usd")}
 
 
 def build_bridge_tickets(tickets: list[dict], *, pmus_client=None, kalshi_fetch=None,
@@ -246,7 +292,8 @@ def build_bridge_tickets(tickets: list[dict], *, pmus_client=None, kalshi_fetch=
     Returns (bridge_tickets, attempts) where each attempt is
     {"origin_key", "venue", "status"}. `skip` holds "origin_key:venue" strings whose
     status is already permanent (matched or structurally impossible) so settled
-    history isn't re-fetched every 15 minutes.
+    history isn't re-fetched every 15 minutes. A ticket whose origin market is not a
+    plain binary question reaches neither adapter - see `_DERIVATIVE_TITLE`.
     """
     series_map = series_map if series_map is not None else DEFAULT_KALSHI_SERIES
     skip = skip or set()
@@ -285,6 +332,19 @@ def build_bridge_tickets(tickets: list[dict], *, pmus_client=None, kalshi_fetch=
         price = float(t.get("entry_price") or 0.0)
         if not 0.0 < price < 1.0:
             continue  # the trial itself would refuse it; don't measure coverage on it
+
+        # One gate, both venues: what makes this ticket unmirrorable is a fact about the
+        # ORIGIN market, so it is refused here rather than re-derived inside each
+        # adapter, where the two could drift apart. Recorded per venue like any other
+        # refusal, because that is the only way the cost shows up: a gate that skipped
+        # silently would shrink the denominator and make the bridge's coverage read
+        # better for having stopped trying.
+        if _DERIVATIVE_TITLE.search(t.get("title") or ""):
+            for venue, attempted in (("polymarket-us", pmus_client is not None),
+                                     ("kalshi", kalshi_fetch is not None)):
+                if attempted and f"{okey}:{venue}" not in skip:
+                    note(okey, venue, "origin-not-binary")
+            continue
 
         # --- Polymarket US -------------------------------------------------
         if pmus_client is not None and f"{okey}:polymarket-us" not in skip:

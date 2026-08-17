@@ -137,6 +137,10 @@ def build_board_payload(cfg: Config, force_mock: bool = False) -> dict:
             "liquidity": t.liquidity, "url": t.url,
             "end_iso": t.end_iso, "event_iso": t.event_iso,
             "slug": t.slug, "signal_ts": t.signal_ts,
+            # Who bought, in plaintext, so the paper trial can record it and the record
+            # stays joinable to Polymarket's public leaderboard. Listed rather than
+            # tupled because this is JSON either way.
+            "wallet_usd": [[addr, usd] for addr, usd in t.wallet_usd],
             "why": t.why, "warnings": t.warnings,
         }
 
@@ -308,7 +312,20 @@ def build_snapshot(cfg: Config, force_mock: bool = False) -> dict:
                     pass
             spikes.append({
                 "title": t.title, "outcome": t.outcome, "side": t.side,
-                "size": round(t.size), "price": round(t.price, 3),
+                # WHAT THE BET COST, in dollars, straight off `flow.Spike.usd`. This
+                # field is rendered with a "$" in front of it under a heading that
+                # says "≥ $25k", and it used to be `t.size` - a CONTRACT COUNT. A
+                # contract costs its price, so every whale on the panel was inflated
+                # by 1/price: 1.9x at the median 53c fill and 33x on a 3c longshot,
+                # with the cheapest bets looking like the biggest. The panel's own
+                # bar is already cash (`find_spikes(min_usd=25000)` filters on
+                # size*price), so the heading was true and only the column lied.
+                #
+                # The contract count is still published, under a name that says what
+                # it is: it is the honest denominator of the fill and free to keep,
+                # but it is never again the number wearing the dollar sign.
+                "usd": round(s.usd), "contracts": round(t.size),
+                "price": round(t.price, 3),
                 "minutes_ago": round(s.minutes_ago), "category": s.category,
                 "trader": t.name or (t.wallet[:6] + "…" + t.wallet[-4:] if t.wallet else ""),
                 "url": ("https://polymarket.com/event/" + t.event_slug) if t.event_slug else "",

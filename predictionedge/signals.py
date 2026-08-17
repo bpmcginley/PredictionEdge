@@ -64,6 +64,14 @@ class TradeTicket:
     event_iso: str = ""   # kickoff, when the venue gives us one; "" otherwise
     slug: str = ""        # intl market slug - the key cross-venue matching runs on
     signal_ts: float = 0.0
+    # WHO bought and for how much, as (address, usd) pairs, in PLAINTEXT. `n_wallets`
+    # and `whale_usd` are summaries of exactly this, and the concentration and bankroll
+    # rules are computed from it, so the board was publishing conclusions whose inputs
+    # it threw away. Addresses are not hashed because they are already public on Polygon
+    # and on Polymarket's own leaderboard - a hash would protect nobody and would break
+    # the join back to that leaderboard, which is the only reason to keep them at all:
+    # "did the wallets we copied stay profitable" needs the address to be answerable.
+    wallet_usd: tuple[tuple[str, float], ...] = ()
     why: list[str] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
 
@@ -626,6 +634,8 @@ def build_board(cfg, client, scorer, account: Account, *,
             event_iso=m.get("game_start", ""),
             slug=s.slug or m.get("slug", ""),
             signal_ts=now - s.minutes_ago * 60.0,
+            wallet_usd=tuple((addr, round(float(usd), 2))
+                             for addr, usd in (s.wallet_usd or ())),
             why=why,
             warnings=warnings,
         ))

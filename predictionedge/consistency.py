@@ -40,7 +40,7 @@ and there must never be one.
 from __future__ import annotations
 
 import re
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from datetime import datetime, timezone
 
 GAMMA = "https://gamma-api.polymarket.com"
@@ -793,13 +793,18 @@ def main(argv: list[str] | None = None) -> int:
                     help="show why each group was thrown out")
     args = ap.parse_args(argv)
 
+    # `Config` is frozen, so a CLI override REPLACES it rather than assigning into it -
+    # the assignments this used to do raised FrozenInstanceError the moment any of the
+    # three flags was passed. Frozen is the right shape and stays: a scan must not be
+    # able to edit the config out from under whatever else holds a reference to it.
     cfg = Config.from_env()
-    if args.min_edge_c is not None:
-        cfg.consistency_min_edge_c = args.min_edge_c
-    if args.max_events is not None:
-        cfg.consistency_max_events = args.max_events
-    if args.min_liquidity is not None:
-        cfg.consistency_min_liquidity = args.min_liquidity
+    overrides = {name: value for name, value in (
+        ("consistency_min_edge_c", args.min_edge_c),
+        ("consistency_max_events", args.max_events),
+        ("consistency_min_liquidity", args.min_liquidity),
+    ) if value is not None}
+    if overrides:
+        cfg = replace(cfg, **overrides)
 
     rep = scan(cfg, max_bracket_legs=args.max_bracket_legs)
     print(f"scanned {rep.events_scanned} multi-market Polymarket event(s) | "

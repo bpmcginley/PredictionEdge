@@ -63,6 +63,9 @@ import re
 from datetime import datetime, timedelta, timezone
 
 from .fees import fee_per_contract
+# The one shared Kalshi ticker parser. This module used to carry its own copy, which
+# was correct only because the AAA ladders happen to hang no suffix off the day.
+from .kalshi import event_day as _event_day
 
 log = logging.getLogger(__name__)
 
@@ -308,16 +311,6 @@ def _mid(bid: float | None, ask: float | None) -> float | None:
     if bid is None or ask is None:
         return None
     return (bid + ask) / 2.0
-
-
-def _event_day(event_ticker: str) -> str | None:
-    """`KXAAAGASD-26AUG14` -> `2026-08-14`. Same suffix convention as weather."""
-    tail = event_ticker.rsplit("-", 1)[-1]
-    try:
-        return datetime.strptime(tail, "%y%b%d").replace(
-            tzinfo=timezone.utc).strftime("%Y-%m-%d")
-    except ValueError:
-        return None
 
 
 def find_gas_edges(*, gaslog: dict, kalshi_fetch=None, aaa_fetch=None,

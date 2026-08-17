@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 from predictionedge import gaslog
 from predictionedge.gas import (
     bracket_probability, fetch_national, find_gas_edges, market_distribution,
-    parse_national, price_ladder, _event_day,
+    parse_national, price_ladder,
 )
 
 # Trimmed to the load-bearing shape of the live page (probed 2026-08-13): the
@@ -328,9 +328,10 @@ def test_a_dead_kalshi_feed_means_no_tickets_never_a_crash():
 
 # --- plumbing ----------------------------------------------------------------
 
-def test_event_day_parses_the_kalshi_date_suffix():
-    assert _event_day("KXAAAGASD-26AUG14") == "2026-08-14"
-    assert _event_day("KXAAAGASD-garbage") is None
+# `_event_day` is the shared Kalshi ticker parser, tested once in test_kalshi_meta.py
+# against a real suffixed ticker per series - including this sleeve's. This module used
+# to own a copy of it, and the copy was correct only because the AAA ladders happen to
+# hang no suffix off the day.
 
 
 def test_gas_rows_carry_their_model_metadata_into_the_trial():

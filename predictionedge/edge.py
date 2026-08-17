@@ -54,8 +54,28 @@ def _kelly_fraction(win_prob: float, price: float) -> float:
 def _evaluate_side(side: str, win_prob: float, price: float, cfg: Config) -> Opportunity | None:
     if not 0.0 < price < 1.0:
         return None  # 0/100c (e.g. a longshot's NO side) - no tradeable edge, skip
+    # TAKER, unconditionally. `Quote` is built from the book's OFFERS, so the price
+    # under test is an ask and a fill at it lifts it - and this line is a BAR, not
+    # bookkeeping: it is the cost an edge has to clear before a ticket is published.
+    # Reading the old `cfg.assume_maker` flag here (deleted 2026-08-17) was wrong twice
+    # over.
+    #
+    #   - At 25% of taker the bar sat up to 1.31c/contract below the truth (the taker
+    #     fee peaks at 1.75c/ct at the 50c price point), which is 44% of the 3c
+    #     `min_edge`. A 3.4c gap at 50c therefore read as a 3c edge when it was a 1.7c
+    #     one. Understating a fee in the accounting misstates a result; understating it
+    #     HERE buys the marginal ticket, and it points the wrong way - the error only
+    #     ever admits bets, never rejects them.
+    #   - 25%-of-taker is not the maker rate on a standard market anyway. Kalshi
+    #     charges a resting order nothing there; the quarter rate is its DESIGNATED
+    #     series only (`fees.maker_trade_fee` / `fees.DESIGNATED_MAKER_SERIES`).
+    #
+    # `LiveExecutor` does submit `post_only`, so a fill genuinely can rest - and a rest
+    # on a standard market is FREE, i.e. strictly cheaper than this bar. That is the
+    # only safe direction for a threshold to be wrong in: an edge that exists only if
+    # the queue is kind to you is not an edge you can act on.
     net_per_ct = win_prob - price - fee_per_contract(
-        price, multiplier=cfg.fee_multiplier, maker=cfg.assume_maker
+        price, multiplier=cfg.fee_multiplier, maker=False
     )
     if net_per_ct < cfg.min_edge:
         return None
@@ -69,7 +89,10 @@ def _evaluate_side(side: str, win_prob: float, price: float, cfg: Config) -> Opp
     if contracts <= 0:
         return None
 
-    fee = trade_fee(price, contracts, multiplier=cfg.fee_multiplier, maker=cfg.assume_maker)
+    # The same schedule the bar above was tested against. A reported fee that
+    # disagreed with the gate's would put one number in `describe()` and the paper
+    # ledger and a different one behind the decision that produced them.
+    fee = trade_fee(price, contracts, multiplier=cfg.fee_multiplier, maker=False)
     return Opportunity(
         ticker="",  # filled in by caller
         side=side,

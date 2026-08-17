@@ -49,7 +49,13 @@ class Config:
 
     # --- Fees ---
     fee_multiplier: float = 0.07
-    assume_maker: bool = True              # we post resting orders, so model maker fees
+    # There was an `assume_maker` flag here (deleted 2026-08-17). It claimed "we post
+    # resting orders, so model maker fees" and it was false on both halves: entries are
+    # priced at the ask, and 25%-of-taker is Kalshi's DESIGNATED-series maker rate, not
+    # the standard-market one (a genuine rest there is free). The discount is now EARNED
+    # per fill - `settle.rested_and_filled` / `papertrial.rested_and_filled` - so there is
+    # no switch to set. Deleted rather than pinned to False: a dead flag whose default is
+    # the wrong answer is exactly the shape of thing that gets re-wired in six months.
 
     # --- De-vig ---
     # "power", not "multiplicative": the literature (Štrumbelj 2014 + practitioner
@@ -376,7 +382,6 @@ class Config:
             min_edge=f("PE_MIN_EDGE", cls.min_edge),
             max_contracts=int(f("PE_MAX_CONTRACTS", cls.max_contracts)),
             fee_multiplier=f("PE_FEE_MULTIPLIER", cls.fee_multiplier),
-            assume_maker=_truthy(e.get("PE_ASSUME_MAKER"), cls.assume_maker),
             devig_method=e.get("PE_DEVIG_METHOD", cls.devig_method),
             dynamic_discovery=_truthy(e.get("PE_DYNAMIC_DISCOVERY"), cls.dynamic_discovery),
             max_scan_markets=int(f("PE_MAX_SCAN_MARKETS", cls.max_scan_markets)),

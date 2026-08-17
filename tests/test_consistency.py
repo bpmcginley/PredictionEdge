@@ -19,9 +19,11 @@ from dataclasses import dataclass
 
 import pytest
 
+from predictionedge.config import Config
 from predictionedge.consistency import (
     DOMINANCE_RULES,
     Leg,
+    ScanReport,
     bracket_violation,
     deadline_from_question,
     dominance_violations,
@@ -473,6 +475,32 @@ def test_single_binary_market_is_not_a_group():
     rep = run([ev("xi-jinping-out-before-2027",
                   [mk("", "Xi Jinping out before 2027?", 0.04, 0.05)])])
     assert rep.events_scanned == 0 and rep.violations == []
+
+
+def test_cli_overrides_do_not_assign_into_the_frozen_config(monkeypatch):
+    """`Config` is frozen, so `cfg.consistency_min_edge_c = x` raised
+    FrozenInstanceError the moment any of the three override flags was passed - a
+    latent crash, because nothing on the live board path reaches `main()`. The flags
+    have to REPLACE the config, and the replacement has to actually reach the scan."""
+    from predictionedge import consistency as mod
+
+    seen: list = []
+
+    def fake_scan(cfg, **kw):
+        seen.append(cfg)
+        return ScanReport()
+
+    monkeypatch.setattr(mod, "scan", fake_scan)
+    assert mod.main(["--min-edge-c", "7.5", "--max-events", "12",
+                     "--min-liquidity", "250"]) == 0
+    cfg = seen[0]
+    assert cfg.consistency_min_edge_c == 7.5
+    assert cfg.consistency_max_events == 12
+    assert cfg.consistency_min_liquidity == 250.0
+    # And with no flags the env-loaded config passes through untouched.
+    seen.clear()
+    assert mod.main([]) == 0
+    assert seen[0] == Config.from_env()
 
 
 def test_module_has_no_order_path():

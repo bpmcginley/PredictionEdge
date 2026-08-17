@@ -36,8 +36,28 @@ only if the market's ask has come to the limit, and after ``maker_max_polls`` it
 cancels into an expired-intent log (or, opt-in, crosses at the then-current ask at
 taker fees). The log keeps fair value and edge AS OF INTENT TIME, because scoring
 fills alone drops the unfilled winners and keeps the filled losers - adverse
-selection dressed up as edge. Tickets without a bid (whale, probe, bridge) keep
-their existing accounting untouched.
+selection dressed up as edge. Tickets without a bid (whale, probe, bridge) take the
+ask, and are charged for it.
+
+THE MAKER DISCOUNT IS EARNED, NEVER ASSUMED (corrected 2026-08-17). Everything that
+is not a maker-first fill is a taker cross by construction: `signals.py` prices YES
+at ``best_ask`` and NO at ``1 - best_bid``, so a ticket entered at those prices has
+lifted the offer. The trial nevertheless booked those fills at a ``Config.assume_maker``
+flag - 25% of the taker fee - for the whole of its first sample. The flag was deleted
+outright on 2026-08-17 rather than pinned off, because a switch whose default is the
+wrong answer is the shape of thing someone re-wires later. 287 of the 376 settled
+rows in the headline population were charged that way, and not one of them carries
+`fill_polls` or `maker`, which is the only evidence a resting order leaves; the three
+rows in the file that do carry it are retired weather rows that really did rest.
+Two changes follow from that, and they are deliberately different in kind:
+
+  - FORWARD, `record` charges the taker fee on every instant fill. The maker branch
+    survives only where a fill was OBSERVED (`_open_from_pending`).
+  - BACKWARD, nothing is rewritten. `stats` scores a corrected COPY of each row -
+    ``realized + fee_recorded - fee_correct`` - and publishes the as-recorded figures
+    beside it under ``as_recorded``. The rows themselves keep the numbers they were
+    written with, because the one thing this record has that a spreadsheet does not
+    is that every row was committed once, at open time, and never touched again.
 """
 
 from __future__ import annotations
@@ -49,8 +69,15 @@ from collections.abc import Callable
 from pathlib import Path
 
 from . import sizing
+from .bridge import is_derivative_title
 from .copytrade import is_esports
-from .fees import is_designated, maker_trade_fee, trade_fee
+from .fees import (
+    DEFAULT_FEE_MULTIPLIER,
+    INDEX_FEE_MULTIPLIER,
+    is_designated,
+    maker_trade_fee,
+    trade_fee,
+)
 
 # A resolved Polymarket market pays its winning leg at 1 and the rest at 0. Demanding
 # the extremes - rather than trusting `closed` alone - is what keeps a UMA dispute or a
@@ -84,6 +111,23 @@ MODEL_FIELDS = ("model_prob", "edge", "forecast_f", "sigma_f", "market_mu_f",
                 "lr_tilt", "market_mu", "market_sigma",
                 "spot_used", "chain_ts", "vrp_shrink", "fair", "implied_sigma",
                 "series")
+
+# The copy signal's OWN inputs, carried the same way and for the same reason. Both were
+# computed and then dropped: across 583 rows the record holds zero wallet addresses and
+# zero signal ages, which leaves "a good wallet bought this" - the entire thesis of the
+# whale sleeve - permanently unauditable. `minutes_ago` is how stale the whale's fill
+# already was when we copied it, and it is 15% of the conviction score; `wallet_usd` is
+# who bought and for how much, which is what `n_wallets` and `whale_usd` are summaries
+# of and what every concentration and bankroll rule is computed from.
+#
+# ADDRESSES IN PLAINTEXT, on purpose. They are already public on Polygon and on
+# Polymarket's own leaderboard, so a hash protects nobody; what it would destroy is the
+# join back to that leaderboard, which is the only reason to keep the address at all -
+# "did the wallets we copied stay profitable" is unanswerable without it.
+#
+# Forward-only, like every other field here: a row is written once and never edited, so
+# existing rows keep the shape they were committed with rather than being retro-filled.
+SIGNAL_FIELDS = ("minutes_ago", "wallet_usd")
 
 
 def venue_of(row: dict) -> str:
@@ -203,7 +247,7 @@ def save(path: str | Path, trial: dict) -> None:
 
 
 def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
-           fee_multiplier: float = 0.07, maker: bool = True,
+           fee_multiplier: float = 0.07,
            maker_first: bool = False, account: sizing.Account | None = None,
            now: float | None = None) -> int:
     """Open a paper position (or a pending maker order) for each ticket not
@@ -237,6 +281,13 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
     0.44 bucket made +$852 while the 0.46 bucket lost $1,300. Scaling by a score
     measured not to rank would put the most money on the worst-evidenced bets. What is
     wired in here is the CAPS, which is the part that was missing.
+
+    EVERY INSTANT FILL IS A TAKER FILL (changed 2026-08-17), so there is no longer a
+    `maker` argument to get wrong. The branch below writes a row the moment the board
+    fires, at `entry_price`, which `signals.py` sets to ``best_ask`` for YES and
+    ``1 - best_bid`` for NO - a price you only get by crossing the spread. The maker
+    discount now belongs solely to `_open_from_pending`, which reaches that price by
+    resting at a bid and watching an ask come to it.
     """
     now = time.time() if now is None else now
     pending = trial.setdefault("pending", [])
@@ -336,6 +387,10 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
             "end_iso": t.get("end_iso", ""),
             "event_iso": t.get("event_iso", ""),
             **{k: t[k] for k in MODEL_FIELDS if k in t},
+            # `is not None` rather than `in t`, because `bridge._carry` copies these by
+            # key and writes None where the origin had nothing - a row that says
+            # "wallet_usd: null" claims to know something it does not.
+            **{k: t[k] for k in SIGNAL_FIELDS if t.get(k) is not None},
             # Bridge rows resolve via the market they were copied FROM (see `main`):
             # a PM-US slug can't be asked Gamma anything, but its origin can.
             "origin_market_id": t.get("origin_market_id", ""),
@@ -365,16 +420,18 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
                 "opened_at": now,
                 "price": round(price, 4),
                 "contracts": float(contracts),
-                # `_maker` and `_fee_mult` are per-ticket overrides of the trial-wide
-                # defaults. Bridge rows model taking the ask the moment the board
-                # fires, and a taker fill booked at maker fees would understate the
-                # venue cost the sleeve exists to measure. `_fee_mult` exists because
-                # Kalshi does not charge one multiplier: S&P/Nasdaq markets are 0.035
-                # where the general schedule is 0.07, and booking an index row at the
-                # general rate would double its modelled cost.
+                # TAKER, unconditionally: this row crossed the spread to exist. The
+                # trial used to book it at a `Config.assume_maker` flag, since deleted - a
+                # quarter of the fee
+                # - which flattered the first sample's headline by 1.9 points per bet
+                # and was never true of a single row that reached this branch.
+                #
+                # `_fee_mult` survives because Kalshi does not charge one multiplier:
+                # S&P/Nasdaq markets are 0.035 where the general schedule is 0.07, and
+                # booking an index row at the general rate would double its cost.
                 "fee": trade_fee(price, max(1, contracts),
                                  multiplier=float(t.get("_fee_mult") or fee_multiplier),
-                                 maker=bool(t.get("_maker", maker))),
+                                 maker=False),
             })
             trial["open"].append(base)
         seen.add(key)
@@ -552,6 +609,151 @@ def settle(trial: dict, metas: dict[str, dict], *, now: float | None = None) -> 
     return settled
 
 
+# How many price marks one open row keeps. A mark serialises to ~94 bytes at this
+# file's indent, and a 15-minute poller lays down 96 of them a day, so an uncapped
+# series costs ~9.0 KB per open row per day - measured 2026-08-17 against the live
+# file, that is 421 KB A DAY across the 48 markable open rows, growing without bound in
+# a 650 KB record that is committed on every run. Git history is the one thing in this
+# project that can never be compacted, so an unbounded series is not a disk problem, it
+# is a permanent one. Capped, a row tops out at ~2.3 KB and the whole file gains ~106 KB
+# (+16%) once every row has filled its series - a step, not a slope.
+#
+# 24 is roughly a mark an hour over a day-long hold and a coarse shape over a week-long
+# one, which is the resolution the questions in `mark_open` actually need: they are
+# about whether a position went underwater and by how much, not about the tick.
+MARK_CAP = 24
+
+
+def _leg_quote(meta: dict, outcome: str) -> tuple[float, float] | None:
+    """The book for THE LEG THIS ROW BOUGHT, or None when that cannot be established.
+
+    Both settlement adapters publish `best_bid`/`best_ask` for the market's FIRST
+    outcome - Gamma's `bestBid`/`bestAsk` quote the yes token, Kalshi's `yes_bid`/
+    `yes_ask` say so in the name. Half the open rows in `docs/trial.json` are on the
+    other leg, and a binary's two legs are complements with the spread flipped: to buy
+    the second leg you pay ``1 - best_bid``, and you can sell it at ``1 - best_ask``.
+    Storing the first leg's book on a second-leg row would be the same class of mistake
+    as printing a contract count with a dollar sign in front of it - the number is real,
+    it just answers a different question than the field name promises, and here it would
+    invert the sign of "was this position underwater".
+
+    None rather than a guess in every ambiguous case: an outcome that names neither leg,
+    a market that does not quote two of them, a crossed book, or the all-zero quote that
+    an absent field is indistinguishable from (`kalshi.market_meta` warns about exactly
+    that). A missing mark is a gap in the series; a wrong one is a false answer.
+    """
+    names = [str(n).strip().lower() for n in (meta.get("outcomes") or [])]
+    want = (outcome or "").strip().lower()
+    if len(names) != 2 or want not in names:
+        return None
+    try:
+        bid = float(meta.get("best_bid"))
+        ask = float(meta.get("best_ask"))
+    except (TypeError, ValueError):
+        return None
+    if not 0.0 <= bid <= ask <= 1.0 or (bid <= 0.0 and ask <= 0.0):
+        return None
+    return (bid, ask) if names.index(want) == 0 else (1.0 - ask, 1.0 - bid)
+
+
+def _thin_marks(marks: list[dict], cap: int) -> list[dict]:
+    """Drop marks until at most ``cap`` remain, keeping first, last, min and max.
+
+    Those four are kept because they are the ones the series exists to answer for.
+    "Was this position ever underwater" is a question about the EXTREMES - the worst
+    mid the row ever printed against the price it was opened at - and a thinning rule
+    that sampled evenly would delete exactly the spike it was asked about while keeping
+    the flat hours either side of it. First and last are kept for the same reason in
+    time: they bound the hold, so entry timing and the price at settlement stay
+    answerable however hard the middle is thinned.
+
+    The rest of the budget is spent on the widest TIME gap each pass, not the widest
+    stretch of list positions. A thinned series is no longer evenly spaced, so bisecting
+    by index would compound its unevenness a little more on every poll until the record
+    was dense around one afternoon and blank across the days on either side.
+
+    Those four are a FLOOR, not a target: a ``cap`` below four returns all four anyway,
+    because a cap that could only be met by dropping the high, the low or an endpoint
+    would be saving bytes by deleting the answer rather than the padding.
+    """
+    if len(marks) <= cap:
+        return marks
+    mids = [(m["best_bid"] + m["best_ask"]) / 2.0 for m in marks]
+    kept = sorted({0, len(marks) - 1, mids.index(min(mids)), mids.index(max(mids))})
+    while len(kept) < cap:
+        # Only gaps with a mark still inside them are candidates; the widest gap in the
+        # series may already be a pair of neighbours, and stopping there would leave the
+        # budget unspent while marks that could have been kept were thrown away.
+        gaps = [i for i in range(len(kept) - 1) if kept[i + 1] - kept[i] > 1]
+        if not gaps:
+            break
+        i = max(gaps, key=lambda j: marks[kept[j + 1]]["t"] - marks[kept[j]]["t"])
+        lo, hi = kept[i], kept[i + 1]
+        target = (marks[lo]["t"] + marks[hi]["t"]) / 2.0
+        kept.insert(i + 1, min(range(lo + 1, hi),
+                               key=lambda j: abs(marks[j]["t"] - target)))
+    return [marks[i] for i in kept]
+
+
+def mark_open(trial: dict, metas: dict[str, dict], *, now: float | None = None,
+              cap: int = MARK_CAP) -> int:
+    """Append one price mark to every open row the batch quote can price. Returns how many.
+
+    THE RECORD HAD NO PRICE PATH AT ALL. Across the 585 settled and open rows there is
+    an entry price and a settlement and nothing in between - not a bid, not an ask, not
+    a spread - so a whole class of question about it is not merely unanswered but
+    unaskable: was the position ever underwater, would any exit rule have helped, what
+    did the spread cost, did entry timing matter. None of those can be back-filled later
+    from anywhere, because a quote that was not written down when it was live is gone.
+
+    THIS IS NOT AN EDIT, and the distinction is the one this module is built on. A
+    settled row is a committed RESULT and is never rewritten - see `on_taker_fees`,
+    which corrects fees on score-time copies rather than touch a recorded row. A mark is
+    a new observation appended to a position that is still open and still has no result,
+    which is the same thing `record` does when it opens a row: added data, not altered
+    data. Marks freeze at settlement structurally rather than by a rule anyone has to
+    remember - this loops over ``trial["open"]``, and `settle` has already moved every
+    row it resolved into ``trial["settled"]`` by the time this runs, so a settled row is
+    not reachable from here at all. Thinning only ever drops marks from a row that is
+    still open, and the file it lands in is committed every 15 minutes, so the history
+    of what was dropped is in the git log either way.
+
+    FORWARD-ONLY. Rows already in the file start their series at the next poll and
+    nothing is retro-filled: a mark claims a quote was READ at time t, and inventing one
+    for a Tuesday last month would be fabricating the very evidence this adds.
+
+    NO EXTRA NETWORK CALL. ``metas`` is the batch the settle path has already fetched
+    for exactly these rows, and it carries the live book alongside the resolution
+    fields. This runs every 15 minutes in CI over ~52 open rows; a per-row quote fetch
+    would be 52 round trips a run to learn what one batch already knows.
+    """
+    now = time.time() if now is None else now
+    marked = 0
+    for row in trial["open"]:
+        # PM-US bridge rows settle against their ORIGIN market's metadata (see `main`),
+        # because PM-US has no public resolution endpoint here. That substitution is
+        # sound for "did it resolve, and which way" - the same contract resolves the
+        # same way on both venues - and unsound for a price: the venue basis between
+        # them is a real number, and it is one of the things the bridge exists to
+        # measure. Marking a PM-US row with the international book would bake that
+        # basis into the row as if it were drift.
+        if venue_of(row) == "polymarket-us":
+            continue
+        quote = _leg_quote(metas.get(row["market_id"]) or {}, row.get("outcome", ""))
+        if quote is None:
+            continue
+        bid, ask = quote
+        marks = row.setdefault("marks", [])
+        # Seconds, not fractions of one: the poll interval is 15 minutes, so anything
+        # finer is a decimal place of noise paid for on every commit, forever.
+        marks.append({"t": round(now), "best_bid": round(bid, 4),
+                      "best_ask": round(ask, 4)})
+        if len(marks) > cap:
+            row["marks"] = _thin_marks(marks, cap)
+        marked += 1
+    return marked
+
+
 def source_of(row: dict) -> str:
     """Which sleeve a row belongs to, inferred when the row predates the field."""
     return (row.get("source") or "").strip().lower() or "whale"
@@ -590,6 +792,28 @@ RETIRED_SOURCES = frozenset({"weather"})
 # headline stops describing the live bot in the other direction.
 RETIRED_CLASSES: tuple[tuple[str, Callable[[dict], bool]], ...] = (
     ("esports", lambda row: is_esports(row.get("title", ""), row.get("url", ""))),
+    # Venue mirrors of markets where the title's team is NOT the outcome bet on -
+    # handicaps, spreads, totals, map/game/set legs. The bridge matched these by name
+    # onto the destination's PLAIN market, so the row records our price against someone
+    # else's question, and the realized returns say so: -105.7%, -101.2%, +136.9% and
+    # +727.2% on four rows. That dispersion is not a run of bad bets, it is a mis-mapped
+    # outcome - and it is also where every 24-28c "arbitrage" this record has shown
+    # between venues came from. The widest gap on any plain market is 6.5c.
+    #
+    # Mirrors ONLY (`origin_market_id`), because only the mirror is off at the gate:
+    # `bridge.build_bridge_tickets` now refuses to mirror these, but the whale sleeve
+    # still bets the origin market itself, so an origin row on a spread stays in the
+    # headline. Holding it out too would break the rule stated above the esports entry -
+    # a class removed from the headline must actually be OFF at the gate, or the headline
+    # stops describing the live bot in the other direction.
+    #
+    # Three of the four are esports mirrors the esports entry cannot see: the mirror's
+    # url is `polymarket.us/market/<slug>`, carrying no `/cs2-` prefix, and its title
+    # carries no game name, so neither field `is_esports` reads survives the crossing.
+    # The origin rows were retired correctly; only their reflections leaked.
+    ("derivative-mirror",
+     lambda row: bool(row.get("origin_market_id"))
+     and is_derivative_title(row.get("title", ""))),
 )
 
 
@@ -607,6 +831,136 @@ def retired_as(row: dict) -> str:
         if matches(row):
             return name
     return ""
+
+
+# The two schedules a row could honestly have been booked at. Order matters below only
+# in that TAKER is tried first: at some prices the maker and taker fees round to the same
+# cent, and a row that is already right must never be "corrected".
+_FEE_MULTIPLIERS = (DEFAULT_FEE_MULTIPLIER, INDEX_FEE_MULTIPLIER)
+
+
+def rested_and_filled(row: dict) -> bool:
+    """Did this row EARN the maker discount by resting in the book until an ask came?
+
+    The only path that can answer yes is `_open_from_pending`, which writes both fields
+    below at fill time - `maker` False on a taker fallback that crossed after the intent
+    expired, True on a genuine resting fill. Everything else opened at the ask.
+    """
+    if "maker" in row:
+        return bool(row["maker"])
+    return "fill_polls" in row          # fills recorded before `maker` was written
+
+
+def corrected_fee(row: dict) -> float | None:
+    """The fee ``row`` should carry, or None when that cannot be established.
+
+    None is not an error and not a zero: it means the recorded fee matches neither
+    schedule at either multiplier (a hand-written row, a shape from before the fee model,
+    a price or contract count that is missing or nonsensical), and the caller must fall
+    back to the number actually recorded. Guessing at a row we cannot reproduce would put
+    fiction into the headline in the name of correcting it.
+    """
+    if rested_and_filled(row):
+        return row.get("fee")           # the maker branch was legitimate here
+    recorded = row.get("fee")
+    try:
+        price = float(row.get("price"))
+        contracts = max(1, round(float(row.get("contracts"))))
+        recorded = float(recorded)
+    except (TypeError, ValueError):
+        return None
+    if not 0.0 < price < 1.0:
+        return None
+    # Identify the schedule by exact match rather than by assuming a multiplier, because
+    # the multiplier is not recorded on the row: `_fee_mult` is a ticket-time override
+    # that never reached the file. A row that already matches taker is returned unchanged.
+    fees = [(mult, trade_fee(price, contracts, multiplier=mult, maker=False))
+            for mult in _FEE_MULTIPLIERS]
+    for _, taker in fees:
+        if abs(recorded - taker) < 1e-9:
+            return recorded
+    for mult, taker in fees:
+        if abs(recorded - trade_fee(price, contracts, multiplier=mult,
+                                    maker=True)) < 1e-9:
+            return taker
+    return None
+
+
+def on_taker_fees(rows: list[dict]) -> list[dict]:
+    """Score-time COPIES of ``rows``, recharged at the fee the fill actually incurred.
+
+    THE RECORDED ROWS ARE NEVER TOUCHED, and that is the whole design. This trial's one
+    claim over a spreadsheet is that every row was committed once, at open time, and
+    never edited afterwards - a claim that survives exactly as long as nothing edits a
+    row, including a correction that is genuinely right. So the arithmetic happens here,
+    on copies, every time the stats are built, and anyone can re-derive it from the file
+    as published. `fee_as_recorded` rides along on the copy so the delta stays visible.
+    """
+    out: list[dict] = []
+    for row in rows:
+        fee = corrected_fee(row)
+        recorded = row.get("fee")
+        if fee is None or recorded is None or fee == recorded or "realized" not in row:
+            out.append(row)
+            continue
+        out.append({**row, "fee": fee, "fee_as_recorded": recorded,
+                    "realized": round(row["realized"] + recorded - fee, 4)})
+    return out
+
+
+def per_opinion(rows: list[dict]) -> list[dict]:
+    """Score-time COPIES of ``rows``, one per OPINION rather than one per fill.
+
+    The venue bridge mirrors a single opinion onto a second venue, so the same view of
+    the same question arrives as two rows. Scoring them as two rows tells the deploy gate
+    it has seen two independent draws, and independence is the one thing the gate is
+    actually measuring: n feeds the DSR's deflation term and the bootstrap resamples the
+    list. 376 headline rows are 263 opinions, so the gate was being handed 113 draws that
+    do not exist - not a bigger sample, the same sample counted twice.
+
+    A group collapses to what ONE position across both venues would have earned: stakes
+    and P&L summed, `pred` stake-weighted, `won` taken from the leg that carried the most
+    money. Singleton groups are passed through untouched rather than rebuilt, so this is
+    a no-op on a record with no mirrors. Kept in `opened_at` order because the block
+    bootstrap resamples runs and would otherwise be reordering the history it samples.
+
+    Like `on_taker_fees`, this never touches a recorded row - see that docstring for why
+    that rule is the trial's only real claim over a spreadsheet.
+    """
+    groups: dict[str, list[dict]] = {}
+    for row in rows:
+        # A mirror groups under the key its ORIGIN was recorded as, built with `_key`
+        # rather than by formatting the two fields here, so the string cannot drift from
+        # the one on the origin row. Everything else groups under its own `key`, which
+        # `_key` already guarantees is one row per market leg ever - so a row with no
+        # mirror is alone in its group by construction, and this collapses only what the
+        # bridge actually duplicated.
+        origin = row.get("origin_market_id")
+        ident = (_key(origin, row.get("outcome", "")) if origin
+                 else row.get("key") or _key(row.get("market_id", ""),
+                                             row.get("outcome", "")))
+        groups.setdefault(ident, []).append(row)
+
+    out: list[dict] = []
+    for legs in groups.values():
+        if len(legs) == 1:
+            out.append(legs[0])
+            continue
+        stake = sum(leg.get("stake") or 0.0 for leg in legs)
+        if stake <= 0:                      # nothing to weight by; leave them alone
+            out.extend(legs)
+            continue
+        lead = max(legs, key=lambda leg: leg.get("stake") or 0.0)
+        out.append({**lead,
+                    "opened_at": min(leg["opened_at"] for leg in legs),
+                    "stake": stake,
+                    "realized": round(sum(leg.get("realized") or 0.0 for leg in legs), 4),
+                    "won": lead.get("won"),
+                    "pred": sum((leg.get("pred") or 0.0) * (leg.get("stake") or 0.0)
+                                for leg in legs) / stake,
+                    "venues": len(legs)})
+    out.sort(key=lambda r: r.get("opened_at") or 0)
+    return out
 
 
 # When the rules the bot bets by actually CHANGED, as UTC seconds. Published with the
@@ -629,11 +983,20 @@ CHANGE_POINTS: tuple[dict, ...] = (
      "label": "venue bridge",
      "note": "Whale tickets started being mirrored onto Polymarket US and Kalshi at "
              "their live asks, so the record stopped being one venue's prices."},
+    # This note used to blame the window's -14.24% on the five levers by name. Checked
+    # against the file, all five touched sleeves that are retired or that never fired:
+    # no gas or SPX row has ever been recorded, no row carries a de-vig or calibration
+    # field except three retired weather rows, and the whale tickets carry no `bid`, so
+    # the maker-first path could not engage. Whatever moved that window, it was not
+    # these. Naming a different cause with the same confidence would just be the same
+    # mistake pointed somewhere else, so the note now stops at what is measured.
     {"key": "levers", "at": 1786666818, "commit": "9bb37b3",
      "label": "five levers",
      "note": "Maker-first resting orders, power/Shin de-vig, the SPX 0DTE density "
-             "sleeve, the calibration overlay, and the AAA gas sleeve all merged "
-             "together on one night."},
+             "sleeve, the calibration overlay, and the AAA gas sleeve merged on one "
+             "night. None of them reached the headline population: they touched only "
+             "sleeves since retired or sleeves that never recorded a row, and the whale "
+             "path was unchanged across this window. The move here is unexplained."},
     {"key": "weather", "at": 1786819577, "commit": "c3bf50c",
      "label": "weather cut",
      "note": "The weather sleeve was switched off after its thesis was measured and "
@@ -644,6 +1007,16 @@ CHANGE_POINTS: tuple[dict, ...] = (
      "note": "Positions are sized by the house rules instead of a flat $100, both "
              "sides of one market can no longer be held at once, and esports is cut. "
              "Dollar P&L does not compare across this line; per-position returns do."},
+    {"key": "takerfees", "at": 1786924800, "commit": "pending",
+     "label": "fees charged as taken",
+     "note": "Entries are priced at the ask and were being charged the Kalshi MAKER "
+             "fee, a quarter of taker, on fills that crossed the spread by "
+             "construction. 287 of the 376 settled rows in the headline were booked "
+             "that way. Fees are now charged as taker on every instant fill, and the "
+             "settled rows - which are never edited - are recharged at scoring time. "
+             "The headline goes from +3.14% to +1.27% per bet. This is an accounting "
+             "correction only: no bet was picked, sized or timed differently, and it "
+             "makes the record worse, which is the point of running it."},
 )
 
 
@@ -658,13 +1031,41 @@ def stats(trial: dict, *, min_n: int = 30) -> dict:
     with different holding periods; a pooled win rate that mixes a six-month Polymarket
     resolution with a next-day Kalshi temperature is arithmetic, not evidence. Whichever
     sleeve reaches `min_n` first gets judged first.
+
+    EVERY FIGURE HERE IS ON CORRECTED FEES (`on_taker_fees`), including the deploy gate,
+    the DSR and the bootstrap CI - the decision has to be made on what the fills cost,
+    not on what they were mistakenly booked at. The as-published numbers are kept beside
+    them under `as_recorded` rather than dropped, because "the headline was 3.1% and is
+    now 1.3%, here is both" is the audit trail; silently restating it is not.
     """
     from .backtest import evaluate
 
     live = [r for r in trial["settled"] if not retired_as(r)]
     live_open = [r for r in trial["open"] if not retired_as(r)]
 
-    out = evaluate(live, min_n=min_n)
+    out = evaluate(per_opinion(on_taker_fees(live)), min_n=min_n)
+    # Both corrections are applied in one order and only one order: recharge the fills
+    # first, THEN collapse. Collapsing first would sum fees across venues and leave
+    # `corrected_fee` unable to match either schedule, so every mirrored group would fall
+    # back to its recorded fee and quietly keep the discount this correction removes.
+    #
+    # `n` here counts OPINIONS, so it no longer equals the settled row count and no
+    # longer sums across `by_source` below. That is the point rather than a wart: the
+    # gate's question is how many independent draws support the edge, and the breakdown's
+    # question is what each sleeve did. Row counts stay in `as_recorded` and `by_source`.
+    out["opinions"] = out["n"]
+    out["settled_rows"] = len(live)
+    # What the file itself says, unmodified, for anyone checking the correction rather
+    # than trusting it. The gate above does NOT read this.
+    out["as_recorded"] = evaluate(live, min_n=min_n)
+    # Per-row deltas, so the Trial page can slice its own windows on the corrected basis
+    # without a second fee model in JavaScript - the same reason `retired_keys` is
+    # published. Sign convention: ADD this to the row's recorded `realized`.
+    out["fee_adjustment"] = {
+        r["key"]: round(corrected["fee_as_recorded"] - corrected["fee"], 4)
+        for r, corrected in zip(trial["settled"] + trial["open"],
+                                on_taker_fees(trial["settled"] + trial["open"]))
+        if r.get("key") and "fee_as_recorded" in corrected}
     out["open_positions"] = len(live_open)
     out["retired_sources"] = sorted(RETIRED_SOURCES)
     out["retired_classes"] = [name for name, _ in RETIRED_CLASSES]
@@ -684,7 +1085,8 @@ def stats(trial: dict, *, min_n: int = 30) -> dict:
     # than discarded: the headline answers "what runs tomorrow", this answers "what did
     # this project actually do", and the gap between them is itself the audit trail.
     if len(live) != len(trial["settled"]):
-        out["including_retired"] = evaluate(trial["settled"], min_n=min_n)
+        out["including_retired"] = evaluate(
+            per_opinion(on_taker_fees(trial["settled"])), min_n=min_n)
     if trial["settled"]:
         span = max(r["settled_at"] for r in trial["settled"]) - \
             min(r["opened_at"] for r in trial["settled"])
@@ -706,7 +1108,7 @@ def stats(trial: dict, *, min_n: int = 30) -> dict:
     retired_names = set(RETIRED_SOURCES) | {name for name, _ in RETIRED_CLASSES}
     out["by_source"] = {}
     for src in sorted(set(sleeves) | set(open_by)):
-        sliced = evaluate(sleeves.get(src, []), min_n=min_n)
+        sliced = evaluate(on_taker_fees(sleeves.get(src, [])), min_n=min_n)
         sliced["open_positions"] = open_by.get(src, 0)
         # Flagged, not dropped. A reader who only ever sees the headline should still
         # be able to find the sleeve that was switched off, and why the two top-line
@@ -794,19 +1196,18 @@ def main(argv: list[str] | None = None) -> int:
     # The weather sleeve arrives already filtered to what cleared its own edge bar, so
     # every row is `_shown`; it has no probe tier because its bar is a modelled edge
     # rather than a hand-set conviction cutoff that needs validating from both sides.
-    # Weather rows also override the trial-wide maker default: their entry IS the ask,
-    # so the honest fee is the taker fee - see `retag_weather_fees`.
-    # Gas rows enter exactly as weather rows do: already filtered to what cleared
-    # their own modelled edge bar (so every row is `_shown`), and their entry IS the
-    # ask, so the honest fee is the taker fee.
-    # The spxindex sleeve is a taker cross at the ask too, and its markets sit on
-    # Kalshi's 0.035 index fee schedule - see `record` on `_fee_mult`.
-    from .fees import INDEX_FEE_MULTIPLIER
+    # The weather, gas and spxindex sleeves arrive already filtered to what cleared their
+    # own modelled edge bar, so every row is `_shown`; they have no probe tier because
+    # their bar is a modelled edge rather than a hand-set conviction cutoff that needs
+    # validating from both sides. They no longer need a `_maker: False` override either -
+    # `record` charges taker on every instant fill now, which is what these always were.
+    # The spxindex sleeve still needs `_fee_mult`: its markets sit on Kalshi's 0.035
+    # index schedule rather than the general 0.07 - see `record`.
     flow = [{**t, "_shown": True} for t in (board.get("tickets") or [])] + \
            [{**t, "_shown": False} for t in (board.get("probe") or [])] + \
-           [{**t, "_shown": True, "_maker": False} for t in (board.get("weather") or [])] + \
-           [{**t, "_shown": True, "_maker": False} for t in (board.get("gas") or [])] + \
-           [{**t, "_shown": True, "_maker": False, "_fee_mult": INDEX_FEE_MULTIPLIER}
+           [{**t, "_shown": True} for t in (board.get("weather") or [])] + \
+           [{**t, "_shown": True} for t in (board.get("gas") or [])] + \
+           [{**t, "_shown": True, "_fee_mult": INDEX_FEE_MULTIPLIER}
             for t in (board.get("spxindex") or [])]
 
     # Maker-first: this run's board IS the next 15-minute snapshot of every market a
@@ -826,7 +1227,7 @@ def main(argv: list[str] | None = None) -> int:
             now=board.get("generated_at") or None)
 
     added = record(trial, flow, stake=args.stake,
-                   fee_multiplier=cfg.fee_multiplier, maker=cfg.assume_maker,
+                   fee_multiplier=cfg.fee_multiplier,
                    maker_first=cfg.maker_first,
                    now=board.get("generated_at") or None)
 
@@ -846,12 +1247,12 @@ def main(argv: list[str] | None = None) -> int:
             series_map=_bridge.parse_series_env(cfg.bridge_kalshi_series),
             skip=_bridge.permanent_skips(trial))
         added += record(trial, b_tickets, stake=args.stake,
-                        fee_multiplier=cfg.fee_multiplier, maker=cfg.assume_maker,
+                        fee_multiplier=cfg.fee_multiplier,
                         now=board.get("generated_at") or None)
         _bridge.update_log(trial, attempts,
                            now=board.get("generated_at") or time.time())
 
-    settled = 0
+    settled = marked = 0
     if not args.no_settle and trial["open"]:
         # Only open positions need a lookup, and they are the markets that have
         # dropped OFF the board - a resolved market is exactly the one the board
@@ -886,6 +1287,12 @@ def main(argv: list[str] | None = None) -> int:
                 if meta:
                     metas[r["market_id"]] = meta
         settled = settle(trial, metas)
+        # The same batch, used twice. `metas` carries the live book beside the
+        # resolution fields, so the rows that did NOT settle can be marked at the price
+        # they are trading at right now for free - and after `settle`, so that a row
+        # resolved on this poll is already out of `trial["open"]` and its marks are
+        # frozen by construction rather than by a rule.
+        marked = mark_open(trial, metas)
 
     trial["stats"] = stats(trial)
     trial["generated"] = time.strftime("%Y-%m-%d %H:%M:%S")
@@ -893,7 +1300,7 @@ def main(argv: list[str] | None = None) -> int:
 
     s = trial["stats"]
     held = ", ".join(s.get("retired_sources", []) + s.get("retired_classes", []))
-    print(f"recorded {added} new, settled {settled}; "
+    print(f"recorded {added} new, settled {settled}, marked {marked}; "
           f"{s.get('open_positions', 0)} open, {s.get('n', 0)} settled"
           + (f" (active only; {s['retired_excluded']} retired row(s) held out of "
              f"the headline: {held})" if s.get("retired_excluded") else ""))

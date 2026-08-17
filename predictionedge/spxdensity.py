@@ -58,6 +58,11 @@ from datetime import date, datetime, timedelta, timezone
 from .config import Config
 from .deribit import _IV_CEIL, _IV_FLOOR, Smile, implied_vol
 from .fees import INDEX_FEE_MULTIPLIER, fee_per_contract
+# One parser for Kalshi's `YYMMMDD` + per-series-suffix event tickers, shared with the
+# weather and gas sleeves. It used to be a private copy here that read the whole tail
+# as a date, which rejected every real `KXINX-...H1600` and blinded this sleeve.
+from .kalshi import (KALSHI_API, _default_fetch as kx_fetch, _price_to_dollars,
+                     event_day as _event_day)
 
 log = logging.getLogger(__name__)
 
@@ -284,16 +289,6 @@ def atm_sigma(smile: Smile) -> float:
 
 # ----------------------------------------------------------------------- tickets
 
-def _event_day(event_ticker: str) -> str | None:
-    """`KXINX-26AUG13` -> `2026-08-13`. Same suffix grammar as the weather series."""
-    tail = event_ticker.rsplit("-", 1)[-1]
-    try:
-        return datetime.strptime(tail, "%y%b%d").replace(
-            tzinfo=timezone.utc).strftime("%Y-%m-%d")
-    except ValueError:
-        return None
-
-
 def _mid(bid: float, ask: float) -> float:
     return (bid + ask) / 2.0 if (bid > 0 and ask > 0) else (bid or ask)
 
@@ -324,7 +319,6 @@ def find_spx_edges(cfg: Config, *, cboe_fetch=None, kalshi_fetch=None,
     if expiry_ts <= now.timestamp():
         return []                          # after the close: today is decided
 
-    from .kalshi import KALSHI_API, _default_fetch as kx_fetch, _price_to_dollars
     getter_cboe = cboe_fetch or _default_fetch
     getter_kx = kalshi_fetch or kx_fetch
     day_str = today.strftime("%Y-%m-%d")

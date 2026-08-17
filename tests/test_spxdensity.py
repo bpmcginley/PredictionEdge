@@ -16,8 +16,8 @@ from predictionedge.config import Config
 from predictionedge.deribit import black76
 from predictionedge.fees import INDEX_FEE_MULTIPLIER, fee_per_contract, trade_fee
 from predictionedge.spxdensity import (
-    MODEL_TAG, atm_sigma, bracket_prob, build_smile, close_ts_utc, et_now,
-    find_spx_edges, in_blackout, parse_chain, parse_option_symbol,
+    MODEL_TAG, atm_sigma, bracket_prob, build_smile, close_ts_utc,
+    et_now, find_spx_edges, in_blackout, parse_chain, parse_option_symbol,
 )
 
 _YEAR_SECONDS = 365.25 * 24 * 3600
@@ -65,6 +65,12 @@ def _probs(smile):
 
 
 # --- parsing -----------------------------------------------------------------
+
+# `_event_day` is the shared Kalshi ticker parser, tested once in test_kalshi_meta.py
+# against a real suffixed ticker per series. It is NOT re-tested per sleeve on purpose:
+# three copies of the test would have passed just as happily as three copies of the
+# parser did, one of which was broken for the life of this sleeve.
+
 
 def test_option_symbol_parses_root_expiry_side_strike():
     assert parse_option_symbol("SPXW260813C06400000") == \
@@ -175,6 +181,11 @@ def test_default_location_is_the_chains_own_spot():
 def _kalshi_markets(quotes):
     """The KXINX ladder as the API serves it: cents ints, active, one event day.
 
+    Event tickers carry the live `H1600` settlement-hour suffix (verified 2026-08-16).
+    That matters here rather than being cosmetic: this fixture used the suffix-less
+    weather shape, so every ticket test passed while the sleeve was blind to every
+    real market on the venue.
+
     `quotes` maps SPEC index -> (yes_bid_c, yes_ask_c); anything absent is quoted
     fairly off the shrunk density so it produces no ticket.
     """
@@ -187,7 +198,8 @@ def _kalshi_markets(quotes):
             ask_c = round(fair[i] * 100) + 1
             bid_c = ask_c - 2
         markets.append({
-            "ticker": f"KXINX-26AUG13-B{i}", "event_ticker": "KXINX-26AUG13",
+            "ticker": f"KXINX-26AUG13H1600-B{i}",
+            "event_ticker": "KXINX-26AUG13H1600",
             "status": "active", "title": f"bracket {floor}-{cap}",
             "floor_strike": floor, "cap_strike": cap,
             "yes_bid": bid_c, "yes_ask": ask_c,
@@ -214,7 +226,7 @@ def test_a_mispriced_bracket_tickets_the_right_leg():
     tickets = _run({2: (18, 20)})
     assert len(tickets) == 1
     t = tickets[0]
-    assert t["market_id"] == "KXINX-26AUG13-B2" and t["outcome"] == "Yes"
+    assert t["market_id"] == "KXINX-26AUG13H1600-B2" and t["outcome"] == "Yes"
     assert t["source"] == "spxindex" and t["venue"] == "kalshi"
     assert t["model"] == MODEL_TAG and t["validated"] is False
     assert t["entry_price"] == 0.20
@@ -285,7 +297,7 @@ def test_a_stale_event_day_is_ignored():
     coming along in the same series listing must not be priced off today's chain."""
     markets = _kalshi_markets({2: (18, 20)})
     for m in markets:
-        m["event_ticker"] = "KXINX-26AUG12"
+        m["event_ticker"] = "KXINX-26AUG12H1600"
         m["ticker"] = m["ticker"].replace("26AUG13", "26AUG12")
     assert _run(markets=markets) == []
 
@@ -323,16 +335,17 @@ def test_trial_rows_use_the_index_fee_schedule_and_keep_the_metadata():
     added = papertrial.record(
         trial, [{**ticket, "_shown": True, "_maker": False,
                  "_fee_mult": INDEX_FEE_MULTIPLIER}],
-        stake=100.0, fee_multiplier=0.07, maker=True, now=1_000_000.0)
+        stake=100.0, fee_multiplier=0.07, now=1_000_000.0)
     assert added == 1
     row = trial["open"][0]
     assert row["source"] == "spxindex" and row["venue"] == "kalshi"
     contracts = max(1, round(row["contracts"]))
     assert row["fee"] == trade_fee(row["price"], contracts,
                                    multiplier=INDEX_FEE_MULTIPLIER, maker=False)
-    # And NOT what the trial-wide defaults (0.07, maker) would have charged.
+    # And NOT what the trial-wide default multiplier would have charged. The fee
+    # SCHEDULE is what this asserts; every instant fill is a taker fill either way.
     assert row["fee"] != trade_fee(row["price"], contracts,
-                                   multiplier=0.07, maker=True)
+                                   multiplier=0.07, maker=False)
     for field in ("spot_used", "chain_ts", "vrp_shrink", "fair",
                   "implied_sigma", "series", "model_prob", "edge", "model"):
         assert field in row, field

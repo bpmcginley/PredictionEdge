@@ -42,9 +42,14 @@
   </details>
 
   <div class="banner">
-    <b>Paper, not placed.</b> Nothing on this page was traded. Fees are charged at the
-    Kalshi maker schedule because the point of the trial is to decide whether this is
-    worth trading there — a record that ignores fees flatters itself.
+    <b>Paper, not placed.</b> Nothing on this page was traded. Every entry is priced at
+    the ask, so it is charged the Kalshi <b>taker</b> fee — the point of the trial is to
+    decide whether this is worth trading there, and a record that ignores what its own
+    fills cost flatters itself. It did exactly that until 17 Aug 2026: 287 settled rows
+    were booked at the maker fee, a quarter of taker, which lifted the headline from
+    +1.3% to +3.1% per bet. Those rows are still on file with the numbers they were
+    written with — nothing here is ever edited after the fact — and are recharged when
+    the figures above are computed.
   </div>
 
   <footer>
@@ -98,7 +103,7 @@ function fld(v, l, cls) {
 function row(r, settled) {
   let res, deadline;
   if (settled) {
-    res = fld(`${r.won ? 'WON' : 'LOST'} ${signed(r.realized)}`, 'result',
+    res = fld(`${r.won ? 'WON' : 'LOST'} ${signed(realOf(r))}`, 'result',
               r.won ? 'pos' : 'neg');
     // An actual settlement date beats an estimate of one, so the cell changes meaning
     // rather than going stale the moment the position closes.
@@ -159,6 +164,17 @@ const retiredNames = () => [...((TRIAL && TRIAL.stats && TRIAL.stats.retired_sou
                             ...((TRIAL && TRIAL.stats && TRIAL.stats.retired_classes) || [])];
 const inWin = ts => (WIN.from == null || ts >= WIN.from) &&
                     (WIN.to == null || ts < WIN.to);
+
+/* Fees, corrected. Entries are priced at the ask — a taker cross — and the trial spent
+   its first sample charging the Kalshi MAKER fee, a quarter of that, on 287 of the 376
+   settled rows. The rows themselves are never edited: a record whose whole claim is
+   "written once, never touched" cannot start touching rows, not even to be right. So
+   Python publishes the per-row difference and this page adds it back, exactly as
+   `stats` does — the same reason `retired_keys` is published rather than reimplemented.
+   Every figure below is therefore on the corrected basis, and `trial.json` still holds
+   the numbers each row was committed with, for anyone checking the arithmetic. */
+const feeAdj = () => (TRIAL && TRIAL.stats && TRIAL.stats.fee_adjustment) || {};
+const realOf = r => (r.realized || 0) + (feeAdj()[r.key] || 0);
 
 /* Date inputs speak naive local days; the window speaks epoch seconds. `to` is the
    first instant NOT included, so picking "12 Aug to 14 Aug" includes all of the 14th
@@ -243,7 +259,7 @@ function describe(rows) {
   const n = kept.length;
   if (!n) return { n: 0 };
   const avg = a => a.reduce((x, y) => x + y, 0) / a.length;
-  const rets = kept.map(r => r.realized / r.stake);
+  const rets = kept.map(r => realOf(r) / r.stake);
   const pred = kept.map(r => Number(r.pred != null ? r.pred : r.price));
   const won = kept.map(r => (r.won ? 1 : 0));
   const m = avg(rets);
@@ -251,7 +267,7 @@ function describe(rows) {
     ? Math.sqrt(rets.reduce((a, x) => a + (x - m) * (x - m), 0) / (n - 1)) : 0;
   return { n, win_rate: avg(won), avg_predicted: avg(pred), mean_return: m,
            sharpe: sd > 0 ? m / sd : null, wins: won.reduce((a, x) => a + x, 0),
-           total_pnl: kept.reduce((a, r) => a + (r.realized || 0), 0) };
+           total_pnl: kept.reduce((a, r) => a + realOf(r), 0) };
 }
 
 function render() {
@@ -371,7 +387,7 @@ function render() {
   const wins = done.filter(r => r.won).length;
   $('settledsum').textContent = done.length
     ? `${done.length} positions · ${wins}W–${done.length - wins}L · ${signed(
-        done.reduce((a, r) => a + (r.realized || 0), 0))}`
+        done.reduce((a, r) => a + realOf(r), 0))}`
     : 'nothing yet';
   $('opensum').textContent = open.length
     ? `${open.length} positions · ${money(open.reduce((a, r) => a + (r.stake || 0), 0))} staked`
