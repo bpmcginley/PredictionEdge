@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-18 12:03:33",
+  "generated": "2026-08-18 13:11:34",
   "rows": {
     "KXHIGHCHI:2026-08-11": {
       "city": "Chicago Midway, IL",
@@ -125,6 +125,8 @@
       "settles_by": "https://forecast.weather.gov/product.php?site=LOT&product=CLI&issuedby=MDW"
     },
     "KXHIGHCHI:2026-08-17": {
+      "bracket_cap": 79,
+      "bracket_floor": 78,
       "city": "Chicago Midway, IL",
       "day": "2026-08-17",
       "event_ticker": "KXHIGHCHI-26AUG17",
@@ -136,9 +138,10 @@
       "last_market_mu_f": 78.59,
       "last_market_sigma_f": 0.81,
       "last_seen_at": 1787031383.3390768,
-      "observed_bracket": null,
-      "observed_f": null,
-      "resolved_at": null,
+      "observed_bracket": "78\u00b0 to 79\u00b0",
+      "observed_f": 78.0,
+      "observed_src": "cli",
+      "resolved_at": 1787058694.3451355,
       "series": "KXHIGHCHI",
       "settles_by": "https://forecast.weather.gov/product.php?site=LOT&product=CLI&issuedby=MDW"
     },
@@ -151,9 +154,9 @@
       "first_market_sigma_f": 2.27,
       "first_seen_at": 1786977387.3174303,
       "last_forecast_f": 80.0,
-      "last_market_mu_f": 81.81,
-      "last_market_sigma_f": 1.61,
-      "last_seen_at": 1787054612.6851869,
+      "last_market_mu_f": 81.55,
+      "last_market_sigma_f": 1.59,
+      "last_seen_at": 1787058693.4922056,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -284,6 +287,8 @@
       "settles_by": "https://forecast.weather.gov/product.php?site=BOU&product=CLI&issuedby=DEN"
     },
     "KXHIGHDEN:2026-08-17": {
+      "bracket_cap": null,
+      "bracket_floor": 92,
       "city": "Denver, CO",
       "day": "2026-08-17",
       "event_ticker": "KXHIGHDEN-26AUG17",
@@ -295,9 +300,10 @@
       "last_market_mu_f": 93.84,
       "last_market_sigma_f": 1.12,
       "last_seen_at": 1787033076.563275,
-      "observed_bracket": null,
-      "observed_f": null,
-      "resolved_at": null,
+      "observed_bracket": "93\u00b0 or above",
+      "observed_f": 93.0,
+      "observed_src": "cli",
+      "resolved_at": 1787058694.3451355,
       "series": "KXHIGHDEN",
       "settles_by": "https://forecast.weather.gov/product.php?site=BOU&product=CLI&issuedby=DEN"
     },
@@ -310,9 +316,9 @@
       "first_market_sigma_f": 2.31,
       "first_seen_at": 1786977387.3174303,
       "last_forecast_f": 91.0,
-      "last_market_mu_f": 90.87,
-      "last_market_sigma_f": 1.71,
-      "last_seen_at": 1787054612.6851869,
+      "last_market_mu_f": 90.64,
+      "last_market_sigma_f": 1.79,
+      "last_seen_at": 1787058693.4922056,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -472,9 +478,9 @@
       "first_market_sigma_f": 1.94,
       "first_seen_at": 1786977387.3174303,
       "last_forecast_f": 98.0,
-      "last_market_mu_f": 98.06,
-      "last_market_sigma_f": 1.51,
-      "last_seen_at": 1787054612.6851869,
+      "last_market_mu_f": 98.07,
+      "last_market_sigma_f": 1.54,
+      "last_seen_at": 1787058693.4922056,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -635,9 +641,9 @@
       "first_market_sigma_f": 2.29,
       "first_seen_at": 1786977387.3174303,
       "last_forecast_f": 85.0,
-      "last_market_mu_f": 83.91,
-      "last_market_sigma_f": 1.58,
-      "last_seen_at": 1787054612.6851869,
+      "last_market_mu_f": 83.75,
+      "last_market_sigma_f": 1.59,
+      "last_seen_at": 1787058693.4922056,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -647,18 +653,18 @@
   },
   "summary": {
     "KXHIGHCHI": {
-      "bias_f": 0.08,
+      "bias_f": 0.36,
       "city": "Chicago Midway, IL",
-      "mae_f": 1.58,
-      "n": 6,
-      "sigma_f": 1.96
+      "mae_f": 1.64,
+      "n": 7,
+      "sigma_f": 1.93
     },
     "KXHIGHDEN": {
-      "bias_f": -0.42,
+      "bias_f": -0.93,
       "city": "Denver, CO",
-      "mae_f": 1.42,
-      "n": 6,
-      "sigma_f": 1.86
+      "mae_f": 1.79,
+      "n": 7,
+      "sigma_f": 2.17
     },
     "KXHIGHMIA": {
       "bias_f": -1.36,
