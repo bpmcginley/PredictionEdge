@@ -95,7 +95,34 @@ def test_both_sides_of_one_market_is_never_two_positions():
     blocked = list(trial["blocked"].values())
     assert len(blocked) == 1
     assert blocked[0]["outcome"] == "Pirates"
-    assert blocked[0]["held"] == ["mets"]
+    # The refusal names the position that caused it, so the log says which bet holds the
+    # event rather than only that something does.
+    assert blocked[0]["held"] == "0xabc:mets"
+
+
+def test_two_disjoint_brackets_of_one_question_are_not_two_bets():
+    """The case the per-MARKET form of this rule could not see. Different markets, both
+    YES, and they cannot both pay - a high of 87-88 is not a high of 89-90. Four such
+    events reached the live record: $800 staked, -$838.30 realised, every leg lost."""
+    trial = _blank()
+    day = "https://kalshi.com/markets/KXHIGHNY-26AUG12"
+    n = record(trial, [_ticket(mid="KXHIGHNY-26AUG12-B87.5", outcome="Yes", url=day),
+                       _ticket(mid="KXHIGHNY-26AUG12-B89.5", outcome="Yes", url=day)],
+               stake=100.0)
+    assert n == 1
+    assert [r["reason"] for r in trial["blocked"].values()] == [
+        "already hold a position on this event"]
+
+
+def test_a_leg_that_merely_overlaps_another_is_refused_too():
+    """A moneyline beside its own spread is not a contradiction, only a second bet on one
+    outcome - 51 events and 122 rows of it on file. Refused anyway: there is no
+    dependency model here to be finer with, and the multi-leg families lost money."""
+    trial = _blank()
+    ev = "https://polymarket.com/event/mlb-nym-pit-2026-08-11"
+    n = record(trial, [_ticket(mid="0x1", outcome="Mets", url=ev),
+                       _ticket(mid="0x2", outcome="Over", url=ev)], stake=100.0)
+    assert n == 1
 
 
 def test_the_opposing_side_is_blocked_across_runs_not_just_within_one():
@@ -117,19 +144,20 @@ def test_a_republished_block_is_one_entry_with_a_count_not_a_growing_list():
     assert list(trial["blocked"].values())[0]["times"] == 4
 
 
-def test_the_per_event_cap_stops_a_third_leg_of_the_same_fixture():
-    # Same event url, different markets - a moneyline and its totals. 380 contracts per
-    # event at this scale, 190 per market, so the third leg has no room left. This is
-    # the $600-on-one-baseball-game case the flat stake used to wave through.
+def test_one_leg_of_a_fixture_is_all_that_is_ever_taken():
+    # This was the $600-on-one-baseball-game case, stopped at the THIRD leg by the
+    # contract cap. It is stopped at the second now, by the event rule, and the cap
+    # behind it never gets the chance to fire - which is what the last line asserts,
+    # because a cap firing here would mean a second leg had got through.
     trial = _blank()
     ev = "https://polymarket.com/event/mlb-nym-pit-2026-08-11"
     n = record(trial, [_ticket(mid="0x1", outcome="Mets", url=ev),
                        _ticket(mid="0x2", outcome="Over", url=ev),
                        _ticket(mid="0x3", outcome="Yes", url=ev)], stake=100.0)
-    assert n == 2
-    assert sum(r["contracts"] for r in trial["open"]) == 380.0
+    assert n == 1
+    assert sum(r["contracts"] for r in trial["open"]) == 190.0
     reasons = [r["reason"] for r in trial["blocked"].values()]
-    assert reasons == ["per-event contract cap already full"]
+    assert reasons == ["already hold a position on this event"] * 2
 
 
 def test_two_legs_of_different_events_are_still_two_positions():
@@ -446,16 +474,52 @@ def test_collapsing_sums_the_money_across_the_venues_that_carried_it():
     assert trial == _blank()                        # nothing recorded, nothing touched
 
 
-def test_opposite_sides_of_one_market_are_two_opinions_not_one():
-    """Identity is market AND outcome. Merging YES with NO would net a genuine hedge into
-    a single flat row and hide both bets from the gate."""
+def test_opposite_sides_of_one_market_are_one_opinion_not_two():
+    """Reversed on purpose (2026-08-17). This used to assert two rows, on the argument
+    that netting YES against NO would hide a genuine hedge from the gate. It is not a
+    hedge: the trial pays two fees for a locked payout, and one of the two legs is
+    GUARANTEED to win - so scoring them apart hands the gate a winner that could not lose
+    and calls it independent evidence. Netted, the pair earns what it actually earned."""
     rows = per_opinion([
         {"market_id": "0xm", "outcome": "Yes", "opened_at": 1, "stake": 100.0,
          "realized": 10.0, "won": True, "pred": 0.5},
         {"market_id": "0xm", "outcome": "No", "opened_at": 2, "stake": 100.0,
          "realized": -10.0, "won": False, "pred": 0.5},
     ])
-    assert len(rows) == 2
+    assert len(rows) == 1
+    assert rows[0]["stake"] == 200.0 and rows[0]["realized"] == 0.0
+
+
+def test_legs_of_one_event_collapse_even_across_different_markets():
+    """The point of the event half of `opinion_ids`: these are different markets with
+    different keys, so no mirror rule ever reaches them."""
+    ev = "https://polymarket.com/event/mlb-nym-pit-2026-08-11"
+    rows = per_opinion([
+        {"market_id": "0x1", "outcome": "Mets", "url": ev, "opened_at": 1,
+         "stake": 100.0, "realized": 40.0, "won": True, "pred": 0.5},
+        {"market_id": "0x2", "outcome": "Over", "url": ev, "opened_at": 2,
+         "stake": 100.0, "realized": -100.0, "won": False, "pred": 0.5},
+    ])
+    assert len(rows) == 1
+    assert rows[0]["stake"] == 200.0 and rows[0]["realized"] == -60.0
+
+
+def test_a_mirror_drags_its_origins_whole_event_into_one_opinion():
+    """Transitive, which is why this is a union-find and not a group-by: the bridged row
+    shares no event with its origin - it is on another venue - and the origin shares no
+    key with its own second leg."""
+    ev = "https://polymarket.com/event/mlb-nym-pit-2026-08-11"
+    rows = per_opinion([
+        {"market_id": "0x1", "outcome": "Mets", "url": ev, "opened_at": 1,
+         "stake": 10.0, "realized": 1.0, "won": True, "pred": 0.5},
+        {"market_id": "0x2", "outcome": "Over", "url": ev, "opened_at": 2,
+         "stake": 10.0, "realized": 1.0, "won": True, "pred": 0.5},
+        {"market_id": "0x1-pmus", "origin_market_id": "0x1", "outcome": "Mets",
+         "url": "https://pmus/x", "opened_at": 3, "stake": 10.0, "realized": 1.0,
+         "won": True, "pred": 0.5},
+    ])
+    assert len(rows) == 1
+    assert rows[0]["stake"] == 30.0
 
 
 def test_a_record_with_no_mirrors_is_unchanged_by_collapsing():
@@ -932,7 +996,7 @@ def test_the_exposure_block_is_published_with_the_stats():
     record(trial, [_ticket(outcome="Pirates")], stake=50.0)
     exp = stats(trial)["exposure"]
     assert exp["blocked"] == 1
-    reason = "opposing side of this market already held"
+    reason = "already hold a position on this event"
     assert exp["by_reason"][reason] == {"distinct": 1, "times": 2}
 
 
@@ -1065,7 +1129,10 @@ def test_the_index_fee_schedule_is_corrected_on_its_own_multiplier():
 
 def test_the_headline_is_scored_on_corrected_fees_and_publishes_the_old_basis():
     trial = _blank()
-    trial["settled"] = [{**_maker_booked(), "key": f"0x{i}:mets"} for i in range(40)]
+    # Distinct markets AND distinct events: these rows exist to exercise the fee
+    # correction, and 40 copies of one event would collapse to a single opinion first.
+    trial["settled"] = [{**_maker_booked(), "key": f"0x{i}:mets", "market_id": f"0x{i}",
+                         "url": f"https://x/0x{i}"} for i in range(40)]
     out = stats(trial)
     taker = trade_fee(0.4, 190, multiplier=0.07, maker=False)
     corrected = on_taker_fees(trial["settled"])
@@ -1086,7 +1153,10 @@ def test_the_headline_is_scored_on_corrected_fees_and_publishes_the_old_basis():
 def test_the_sleeve_breakdown_is_corrected_too():
     # A headline on one basis and its own breakdown on another is the failure mode.
     trial = _blank()
-    trial["settled"] = [{**_maker_booked(), "key": f"0x{i}:mets"} for i in range(40)]
+    # Distinct markets AND distinct events: these rows exist to exercise the fee
+    # correction, and 40 copies of one event would collapse to a single opinion first.
+    trial["settled"] = [{**_maker_booked(), "key": f"0x{i}:mets", "market_id": f"0x{i}",
+                         "url": f"https://x/0x{i}"} for i in range(40)]
     out = stats(trial)
     assert out["by_source"]["whale"]["mean_return"] == out["mean_return"]
 

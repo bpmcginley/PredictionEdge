@@ -305,12 +305,11 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
     # on purpose: a resolved market is not a position, so it neither eats event room nor
     # contradicts a new opinion.
     on_event: dict[str, int] = {}
-    held_leg: dict[str, set[str]] = {}
+    held_event: dict[str, str] = {}      # event -> the key already holding it
     for r in trial["open"] + pending:
         ev = _event_of(r)
         on_event[ev] = on_event.get(ev, 0) + _contracts_of(r)
-        held_leg.setdefault(r.get("market_id", ""), set()).add(
-            (r.get("outcome") or "").strip().lower())
+        held_event.setdefault(ev, r.get("key", ""))
     added = 0
     for t in tickets:
         price = float(t.get("entry_price") or 0.0)
@@ -320,28 +319,53 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
         if key in seen:
             continue
 
-        # NEVER BOTH SIDES OF ONE MARKET. `_key` is (market, outcome), so a binary
-        # market's two legs are different keys and both used to be recorded - 40 events
-        # in the live record ended up held on both sides, a median 7.3 hours apart. That
-        # is a guaranteed loss of two fees for a locked payout, and worse as evidence:
-        # the signal contradicting itself was being scored as two independent opinions,
-        # which is 23% of the whale rows. `build_board` already keeps one opinion per
-        # event WITHIN a run; this is the same rule ACROSS runs, which is where every
-        # one of those contradictions actually happened.
-        mid = t.get("market_id", "")
-        side = (t.get("outcome") or "").strip().lower()
-        held = held_leg.get(mid)
-        if held and side not in held:
-            _block(blocked, key, t, now, "opposing side of this market already held",
-                   held=sorted(held))
+        # ONE OPINION PER EVENT, ACROSS RUNS (widened from per-market 2026-08-17).
+        # `_key` is (market, outcome), so every leg of a fixture is a different key and
+        # all of them used to be recorded. The per-market form of this rule caught a
+        # binary held on both sides - 40 events, a median 7.3 hours apart, 23% of the
+        # whale rows - and nothing else. Two shapes walked past it:
+        #
+        #   Disjoint brackets of one question, which are separate markets and mutually
+        #   exclusive. YES on "NYC high 87-88" and YES on "89-90" the same day cannot
+        #   both pay. Four such events on file, all Kalshi temperature ranges, $800
+        #   staked for -$838.30 realised - every leg lost, the worst pattern in the file.
+        #
+        #   Legs that logically contain one another. Arsenal NO at 0.64 beside City YES
+        #   at 0.36 and draw YES at 0.29 is the first bet bought a second time for 1.29;
+        #   a moneyline beside its own spread is the same move in softer form. 51 events,
+        #   122 rows, -$182.96.
+        #
+        # The money is the smaller half of the cost. The deploy gate asks whether
+        # INDEPENDENT draws support an edge: anti-correlated and duplicated legs shrink
+        # the measured variance, inflate `n`, and so inflate the DSR. That is the same
+        # shape of error as the maker-fee discount, pointing the same flattering way.
+        #
+        # `_event_of` is the venue's own event id, so a moneyline and its O/U are one
+        # event and the second is refused even though those two are merely correlated
+        # rather than identical. Deliberately blunt: there is no dependency model here to
+        # be finer with, and the record says the multi-leg families lose. `build_board`
+        # already keeps one ticket per event WITHIN a run; this is that rule ACROSS runs,
+        # which is where all of it happened. Settled rows still do not count - a resolved
+        # event is not a position, and its markets resolve together.
+        ev = _event_of(t)
+        holder = held_event.get(ev)
+        if holder:
+            _block(blocked, key, t, now, "already hold a position on this event",
+                   event=ev, held=holder)
             continue
 
-        ev = _event_of(t)
         bid = float(t.get("bid") or 0.0)
         # Size at what we would actually PAY: the resting bid on a maker-first intent,
         # the ask otherwise. Sizing a limit order off the ask would book contracts we
         # never agreed to buy at a price we never agreed to pay.
         entry = bid if (maker_first and 0.0 < bid < price) else price
+        # A BACKSTOP, not the live rule. With one leg per event the guard above fires
+        # first on anything this could catch, so on a book written under the current
+        # rules `on_event` is always 0 here. It stays for the book that is not: the trial
+        # carries rows opened before that guard existed, several legs deep on one
+        # fixture, and those still have to stop somewhere. The room it computes is also
+        # what `size_position` is handed below, which is where the cap does its real work
+        # now - bounding the single leg we do take.
         if account.max_contracts_per_event - on_event.get(ev, 0) <= 0:
             _block(blocked, key, t, now, "per-event contract cap already full",
                    event=ev, on_event=on_event.get(ev, 0),
@@ -441,7 +465,7 @@ def record(trial: dict, tickets: list[dict], *, stake: float = DEFAULT_STAKE,
         # updating exposure only between runs would let exactly the concentration this
         # is meant to prevent through the door on the first day it happened.
         on_event[ev] = on_event.get(ev, 0) + contracts
-        held_leg.setdefault(mid, set()).add(side)
+        held_event.setdefault(ev, key)
         added += 1
     return added
 
@@ -977,6 +1001,55 @@ def opinion_id(row: dict) -> str:
     return row.get("key") or _key(row.get("market_id", ""), row.get("outcome", ""))
 
 
+def opinion_ids(rows: list[dict]) -> list[str]:
+    """One identity per OPINION, aligned to ``rows``: two rows share an id when they are
+    the same view of the same question.
+
+    TWO RULES, UNIONED RATHER THAN RANKED, because either one alone leaves a gap. The
+    mirror rule (`opinion_id`) misses the legs of a single fixture - different markets,
+    different urls, different titles, one question. The event rule misses a mirror, which
+    by construction lives on a DIFFERENT venue's event page. So a bridged row drags its
+    origin's whole event into one component, which is right: it is the same opinion,
+    reached twice, about a question already bet.
+
+    Union-find rather than a group-by because the relation is transitive and the record
+    walks it - A mirrors B, B sits on C's event, and no single key expresses that all
+    three are one opinion. The root is the smallest member string, so the answer depends
+    on the SET of rows and never on the order they arrive in.
+
+    The event half is new (2026-08-17) and is the score-time counterpart of the guard in
+    `record`: the guard stops the next one, this stops the ones already on file from
+    being counted as evidence they are not. It is a bigger correction than the mirror
+    rule was - 51 events on file carry more than one market, and 59 markets are held on
+    both sides - and it moves the headline, which is the point. Nothing is edited to do
+    it; see `on_taker_fees` for why that rule is the trial's only real claim.
+    """
+    parent: dict[str, str] = {}
+
+    def find(x: str) -> str:
+        parent.setdefault(x, x)
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    def union(a: str, b: str) -> None:
+        ra, rb = find(a), find(b)
+        if ra != rb:
+            lo, hi = (ra, rb) if ra < rb else (rb, ra)
+            parent[hi] = lo
+
+    ids = [opinion_id(r) for r in rows]
+    for oid, row in zip(ids, rows):
+        find(oid)
+        ev = _event_of(row)
+        if ev:
+            # Prefixed so an event can never be confused with a row key, and chosen to
+            # sort AFTER one so the surviving id is a key a reader can look up.
+            union(oid, "~" + ev)
+    return [find(oid) for oid in ids]
+
+
 def per_opinion(rows: list[dict]) -> list[dict]:
     """Score-time COPIES of ``rows``, one per OPINION rather than one per fill.
 
@@ -986,6 +1059,13 @@ def per_opinion(rows: list[dict]) -> list[dict]:
     actually measuring: n feeds the DSR's deflation term and the bootstrap resamples the
     list. 376 headline rows are 263 opinions, so the gate was being handed 113 draws that
     do not exist - not a bigger sample, the same sample counted twice.
+
+    LEGS OF ONE EVENT COLLAPSE TOO (2026-08-17), by the same argument taken seriously.
+    Both sides of a binary, two disjoint brackets of one question, a moneyline beside its
+    own spread: none of these is a second draw, and two of them are not even a second
+    opinion. Netting a two-sided pair to the near-zero return it actually earned is the
+    honest reading of it - the alternative counts a self-contradiction as two independent
+    bets, one of which is guaranteed to win. `opinion_ids` owns which rows group.
 
     A group collapses to what ONE position across both venues would have earned: stakes
     and P&L summed, `pred` stake-weighted, `won` taken from the leg that carried the most
@@ -997,8 +1077,8 @@ def per_opinion(rows: list[dict]) -> list[dict]:
     that rule is the trial's only real claim over a spreadsheet.
     """
     groups: dict[str, list[dict]] = {}
-    for row in rows:
-        groups.setdefault(opinion_id(row), []).append(row)
+    for oid, row in zip(opinion_ids(rows), rows):
+        groups.setdefault(oid, []).append(row)
 
     out: list[dict] = []
     for legs in groups.values():
@@ -1088,6 +1168,18 @@ CHANGE_POINTS: tuple[dict, ...] = (
              "refused 7 of 293 - 28.6% winners, -$375 - but that is a measurement of "
              "the past, not a promise about the future: rows already recorded are "
              "never edited, and only bets opened after this line were filtered by it."},
+    {"key": "oneperevent", "at": 1787011400, "commit": "pending",
+     "label": "one opinion per event",
+     "note": "The trial refused a second bet on a market it already held, but not a "
+             "second bet on the same EVENT. So it recorded two YES bets on disjoint "
+             "temperature brackets for one city and one day - four such events, $800 "
+             "staked, -$838.30, every leg lost - and it recorded a moneyline beside its "
+             "own spread on 51 events across 122 rows. `record` now refuses any leg of "
+             "an event already held, and `opinion_ids` collapses the ones already on "
+             "file into one opinion each at score time. The headline moves because of "
+             "the second: 294 opinions become 231 and mean return per bet goes from "
+             "-0.88% to -2.87%. No money changed - total P&L is $29.24 either way - "
+             "what changed is how many independent draws the gate is told it has."},
 )
 
 
@@ -1137,17 +1229,19 @@ def stats(trial: dict, *, min_n: int = 30) -> dict:
         for r, corrected in zip(trial["settled"] + trial["open"],
                                 on_taker_fees(trial["settled"] + trial["open"]))
         if r.get("key") and "fee_as_recorded" in corrected}
-    # Which rows are the same opinion arriving twice, so the Trial page can collapse its
-    # own windows the way `per_opinion` collapses the headline. Published for the reason
-    # `retired_keys` is: the rule is a classifier, and a copy of it in JavaScript would
-    # be free to disagree with this one - which is exactly how the page came to show
-    # +0.1%/bet while this block said -0.8%. Only rows that actually share an identity
-    # with another row appear; a key absent from this map is alone by definition, so the
-    # map stays a few dozen entries rather than one per row.
-    _ids = [(r["key"], opinion_id(r)) for r in trial["settled"] + trial["open"]
-            if r.get("key")]
-    _mirrored = {i for i, c in Counter(i for _, i in _ids).items() if c > 1}
-    out["opinion_of"] = {k: i for k, i in _ids if i in _mirrored}
+    # Which rows are the same opinion arriving more than once, so the Trial page can
+    # collapse its own windows the way `per_opinion` collapses the headline. Published
+    # for the reason `retired_keys` is: the rule is a classifier, and a copy of it in
+    # JavaScript would be free to disagree with this one - which is exactly how the page
+    # came to show +0.1%/bet while this block said -0.8%. Only rows that actually share
+    # an identity with another row appear; a key absent from this map is alone by
+    # definition. That used to keep it to a few dozen entries; since `opinion_ids` began
+    # unioning the legs of one event it is most of the file, which is the size of the
+    # problem rather than a change in what is published.
+    _rows = [r for r in trial["settled"] + trial["open"] if r.get("key")]
+    _ids = list(zip((r["key"] for r in _rows), opinion_ids(_rows)))
+    _shared = {i for i, c in Counter(i for _, i in _ids).items() if c > 1}
+    out["opinion_of"] = {k: i for k, i in _ids if i in _shared}
     out["open_positions"] = len(live_open)
     out["retired_sources"] = sorted(RETIRED_SOURCES)
     out["retired_classes"] = [name for name, _ in RETIRED_CLASSES]

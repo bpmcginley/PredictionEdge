@@ -176,13 +176,15 @@ const inWin = ts => (WIN.from == null || ts >= WIN.from) &&
 const feeAdj = () => (TRIAL && TRIAL.stats && TRIAL.stats.fee_adjustment) || {};
 const realOf = r => (r.realized || 0) + (feeAdj()[r.key] || 0);
 
-/* One row per OPINION, not per fill. The venue bridge mirrors a single opinion onto a
-   second venue, so the same view of the same question is on file as two rows. Counting
-   both tells you the record has twice the evidence it has — n is what a win rate is an
-   average over, and the deploy gate deflates its Sharpe by it. Which rows are the same
-   opinion is Python's answer, published as `opinion_of`, for the same reason
-   `retired_keys` is: a copy of the rule here would be free to disagree, and that is
-   precisely how this page came to show +0.1% per bet while `stats` said −0.8%.
+/* One row per OPINION, not per fill. Two things put the same view of the same question
+   on file more than once: the venue bridge, which mirrors an opinion onto a second
+   venue, and the board, which used to take several legs of one event — both sides of a
+   binary, two disjoint brackets of one question, a moneyline beside its own spread.
+   Counting each fill tells you the record has more evidence than it has — n is what a
+   win rate is an average over, and the deploy gate deflates its Sharpe by it. Which rows
+   are the same opinion is Python's answer, published as `opinion_of`, for the same
+   reason `retired_keys` is: a copy of the rule here would be free to disagree, and that
+   is precisely how this page came to show +0.1% per bet while `stats` said −0.8%.
 
    The arithmetic is here rather than in Python because the collapse has to happen AFTER
    the window and holdout filters — an opinion whose two legs opened either side of a
@@ -388,10 +390,11 @@ function render() {
     ${heldOut !== 1 ? 'are' : 'is'} listed below but held out of these figures, because
     the bot does not bet ${names.length !== 1 ? 'those markets' : 'that sleeve'}
     tomorrow.`);
-  if (d.rows !== n) notes.push(`${d.rows} settled rows are ${n} opinions: the venue
-    bridge mirrors one view onto a second venue, and the two fills are one bet made
-    twice, not two bets. They are listed separately below and counted once here —
-    stakes and p&l summed, entry price weighted by stake.`);
+  if (d.rows !== n) notes.push(`${d.rows} settled rows are ${n} opinions: fills that
+    mirror one view onto a second venue, or that take several legs of a single event, are
+    one bet made more than once rather than several bets. They are listed separately
+    below and counted once here — stakes and p&l summed, entry price weighted by
+    stake.`);
   if (openN) notes.push(`${openN} position${openN !== 1 ? 's' : ''} opened in this window
     ${openN !== 1 ? 'are' : 'is'} still unresolved, so the figures count only what has
     settled so far — short-horizon markets settle first, which tilts a recent window
