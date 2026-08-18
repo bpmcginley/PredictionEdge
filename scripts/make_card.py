@@ -10,14 +10,14 @@ figures move every fifteen minutes. A record whose whole claim is that it cannot
 quietly edited after the fact should not ship a picture of itself that goes stale and
 stays flattering. The card states what the project IS; the page states what it found.
 
-FONTS. Archivo is vendored at `scripts/fonts/`, under the OFL that ships beside it, so
-the card is set in the same face the site loads rather than in a local lookalike - and
-so it renders identically on a machine that has never installed it. It is the variable
-release, which is why weights are dialled in by axis rather than by picking a file.
+FONTS. All three families the site loads - Archivo, Source Serif 4, JetBrains Mono - are
+vendored at `scripts/fonts/`, each with the OFL its licence requires be carried with it.
+The card is the picture other sites render of this project, so it is set in the project's
+own type rather than in whatever lookalikes the generating machine has installed, and it
+comes out byte-identical on a machine that has installed none of them.
 
-Source Serif and JetBrains Mono are still stood in for by Georgia and Consolas: they set
-two short lines at the foot of the card, where the substitution is invisible, and
-vendoring three families to draw one image is not worth 1.5 MB in the repository.
+They are the variable releases, so a weight is a coordinate rather than a file. Axis
+order is the font's own and differs per family; each loader below states its own.
 
 Pillow is a dev-only dependency and is deliberately not in `requirements.txt` - nothing
 the bot runs needs it.
@@ -31,7 +31,7 @@ import pathlib
 from PIL import Image, ImageDraw, ImageFont
 
 OUT = pathlib.Path(__file__).resolve().parent.parent / "docs" / "card.png"
-FONTS = pathlib.Path("C:/Windows/Fonts")
+FONTS = pathlib.Path(__file__).resolve().parent / "fonts"
 
 W, H = 1200, 630
 PAD = 76
@@ -51,23 +51,32 @@ SUB = "A public, append-only paper trial of a copy-trading strategy."
 URL = "bpmcginley.github.io/PredictionEdge"
 
 
-ARCHIVO = pathlib.Path(__file__).resolve().parent / "fonts" / "Archivo[wdth,wght].ttf"
-
-
-def archivo(size: int, weight: int = 700) -> ImageFont.FreeTypeFont:
-    """Archivo at a given optical weight.
+def _vf(name: str, size: int, axes: list[float]) -> ImageFont.FreeTypeFont:
+    """A variable font placed at an explicit point on its axes.
 
     A fresh object every call: setting a variation mutates the font in place, so a shared
-    instance would silently hand the last caller's weight to the next one.
+    instance would hand the last caller's weight to the next one.
     """
-    f = ImageFont.truetype(str(ARCHIVO), size)
-    f.set_variation_by_axes([weight, 100])   # weight 100-900, width 62-125
+    f = ImageFont.truetype(str(FONTS / name), size)
+    f.set_variation_by_axes(axes)
     return f
 
 
-def font(name: str, size: int) -> ImageFont.FreeTypeFont:
-    """A Windows system face, for the two lines Archivo does not set."""
-    return ImageFont.truetype(str(FONTS / name), size)
+def archivo(size: int, weight: int = 700) -> ImageFont.FreeTypeFont:
+    """Axes: weight 100-900, width 62-125. The default instance is SemiBold, so the
+    weight is always stated rather than left to the file."""
+    return _vf("Archivo[wdth,wght].ttf", size, [weight, 100])
+
+
+def serif(size: int, weight: int = 400) -> ImageFont.FreeTypeFont:
+    """Axes: weight 200-900, optical size 8-60. The optical size is set to the size the
+    text is actually drawn at, which is the entire point of carrying that axis."""
+    return _vf("SourceSerif4-Italic[opsz,wght].ttf", size, [weight, size])
+
+
+def mono(size: int, weight: int = 400) -> ImageFont.FreeTypeFont:
+    """One axis: weight 100-800."""
+    return _vf("JetBrainsMono[wght].ttf", size, [weight])
 
 
 def tracked(d: ImageDraw.ImageDraw, xy, text, f, fill, track: float) -> float:
@@ -135,10 +144,10 @@ def main() -> None:
     by_f = archivo(17, 600)
     tracked(d, (PAD, rule_y + 30), BYLINE, by_f, INK, 2.6)
 
-    sub_f = font("georgiai.ttf", 22)
+    sub_f = serif(22)
     d.text((PAD, rule_y + 62), SUB, font=sub_f, fill=INK2)
 
-    url_f = font("consola.ttf", 17)
+    url_f = mono(17)
     d.text((W - PAD - d.textlength(URL, font=url_f), rule_y + 30),
            URL, font=url_f, fill=INK3)
 
