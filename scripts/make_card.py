@@ -10,10 +10,17 @@ figures move every fifteen minutes. A record whose whole claim is that it cannot
 quietly edited after the fact should not ship a picture of itself that goes stale and
 stays flattering. The card states what the project IS; the page states what it found.
 
-Fonts are Windows system faces, chosen as the nearest local stand-ins for the web fonts
-the site loads: Arial Bold for Archivo (both grotesques), Georgia for Source Serif,
-Consolas for JetBrains Mono. Pillow is a dev-only dependency and is deliberately not in
-`requirements.txt` - nothing the bot runs needs it.
+FONTS. Archivo is vendored at `scripts/fonts/`, under the OFL that ships beside it, so
+the card is set in the same face the site loads rather than in a local lookalike - and
+so it renders identically on a machine that has never installed it. It is the variable
+release, which is why weights are dialled in by axis rather than by picking a file.
+
+Source Serif and JetBrains Mono are still stood in for by Georgia and Consolas: they set
+two short lines at the foot of the card, where the substitution is invisible, and
+vendoring three families to draw one image is not worth 1.5 MB in the repository.
+
+Pillow is a dev-only dependency and is deliberately not in `requirements.txt` - nothing
+the bot runs needs it.
 
     python scripts/make_card.py
 """
@@ -44,7 +51,22 @@ SUB = "A public, append-only paper trial of a copy-trading strategy."
 URL = "bpmcginley.github.io/PredictionEdge"
 
 
+ARCHIVO = pathlib.Path(__file__).resolve().parent / "fonts" / "Archivo[wdth,wght].ttf"
+
+
+def archivo(size: int, weight: int = 700) -> ImageFont.FreeTypeFont:
+    """Archivo at a given optical weight.
+
+    A fresh object every call: setting a variation mutates the font in place, so a shared
+    instance would silently hand the last caller's weight to the next one.
+    """
+    f = ImageFont.truetype(str(ARCHIVO), size)
+    f.set_variation_by_axes([weight, 100])   # weight 100-900, width 62-125
+    return f
+
+
 def font(name: str, size: int) -> ImageFont.FreeTypeFont:
+    """A Windows system face, for the two lines Archivo does not set."""
     return ImageFont.truetype(str(FONTS / name), size)
 
 
@@ -81,7 +103,7 @@ def fit(d: ImageDraw.ImageDraw, text: str, width: int, max_lines: int):
     a fixed frame, so the type is sized to the frame rather than the frame padded to fit
     whatever a chosen size happened to produce."""
     for size in range(92, 39, -2):
-        f = font("arialbd.ttf", size)
+        f = archivo(size, 700)
         lines = wrap(d, text, f, width)
         if len(lines) <= max_lines:
             return f, lines, size
@@ -95,10 +117,10 @@ def main() -> None:
 
     # Kicker: accent mark, then the name, tracked like the site's nav.
     d.rectangle([PAD, PAD + 3, PAD + 11, PAD + 14], fill=ACCENT)
-    tracked(d, (PAD + 26, PAD), KICKER, font("arialbd.ttf", 16), INK, 3.2)
+    tracked(d, (PAD + 26, PAD), KICKER, archivo(16, 600), INK, 3.2)
     d.line([PAD, PAD + 46, W - PAD, PAD + 46], fill=INK, width=2)
 
-    # Headline, optically tightened: Arial's default fit is loose at display sizes.
+    # Headline.
     f, lines, size = fit(d, HEADLINE, inner, 3)
     lead = int(size * 1.06)
     top = PAD + 108
@@ -110,7 +132,7 @@ def main() -> None:
     rule_y = max(top + len(lines) * lead + 46, H - PAD - 96)
     d.line([PAD, rule_y, W - PAD, rule_y], fill=RULE, width=1)
 
-    by_f = font("arialbd.ttf", 17)
+    by_f = archivo(17, 600)
     tracked(d, (PAD, rule_y + 30), BYLINE, by_f, INK, 2.6)
 
     sub_f = font("georgiai.ttf", 22)
