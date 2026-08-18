@@ -127,7 +127,7 @@
     <h2>Filters</h2>
     <div>
       <p class="muted" style="font-size:13px;max-width:var(--measure)">Every signal must
-        survive all of these. The thresholds below are read live from the published board,
+        survive all of these. The thresholds below are read live from the published scan,
         so this page cannot drift out of date with the code.</p>
       <div class="scroll" style="margin-top:var(--s4)"><table>
         <thead><tr><th>Filter</th><th>Rejects</th></tr></thead>
@@ -306,10 +306,6 @@
         <span id="tile-trial-d">Every position, settled and open, with the window slicer and
           the change points.</span>
       </a>
-      <a class="tile" href="board.html">
-        <div class="th">Live board</div>
-        <span id="tile-board-d">What clears the filters right now, with rejection counts.</span>
-      </a>
       <a class="tile" href="research.html">
         <div class="th">Research</div>
         <span>Sources that produce no tickets: consistency constraints, crypto densities,
@@ -363,15 +359,16 @@ function render(){
   if(o.contracts_per_event_per_1k)  $('pere').textContent = o.contracts_per_event_per_1k;
   if(o.per_trade_fraction) $('ptf').textContent = (o.per_trade_fraction*100).toFixed(0)+'%';
 
+  /* The scan still runs whether or not anything clears, and an empty result is the
+     normal case rather than a fault - so the status line reports the count instead of
+     asserting liveness in the abstract. */
   const {live} = splitTickets();
-  $('tile-board-d').textContent = live.length
-    ? `${live.length} ticket${live.length!==1?'s':''} ranked and sized right now.`
-    : 'Nothing clears the filters right now — which is normal, and usually correct.';
-
   const age = dataAgeMin(), dot = $('statusdot'), txt = $('statustext');
   if (age == null){ dot.className='dot bad'; txt.textContent='no data'; }
   else if (age > 90){ dot.className='dot warn'; txt.textContent='data '+fmtDur(age/60)+' old'; }
-  else { dot.className='dot'; txt.textContent='live · scanning every 15 min'; }
+  else { dot.className='dot'; txt.textContent = live.length
+    ? `live · ${live.length} candidate${live.length!==1?'s':''} in the latest scan`
+    : 'live · nothing cleared the latest scan'; }
 }
 function onLoadError(){ $('statusdot').className='dot bad'; $('statustext').textContent='board.json unavailable'; }
 
