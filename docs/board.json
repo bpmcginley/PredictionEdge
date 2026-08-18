@@ -1,25 +1,150 @@
 {
-  "generated": "2026-08-18 00:01:07",
-  "generated_at": 1787011267.9916878,
+  "generated": "2026-08-18 01:52:42",
+  "generated_at": 1787017962.236718,
   "account_size": 100000.0,
   "tickets": [
+    {
+      "market_id": "0xf13284a9605afe362c0ca146dd8e998ac3e4d411625ced4a92f39706bc673a6b",
+      "title": "Will Bitcoin reach $65,000 in August?",
+      "side_label": "YES on: Will Bitcoin reach $65,000 in August?",
+      "outcome": "Yes",
+      "entry_price": 0.81,
+      "whale_price": 0.82,
+      "drift_c": -1.0,
+      "contracts": 776,
+      "cost": 628.56,
+      "max_payout": 776.0,
+      "conviction": 0.629,
+      "hours_to_resolve": 338.1,
+      "n_wallets": 2,
+      "whale_usd": 15580,
+      "minutes_ago": 55,
+      "liquidity": 34704,
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
+      "end_iso": "2026-09-01T04:00:00Z",
+      "event_iso": "",
+      "slug": "will-bitcoin-reach-65k-in-august-2026-from-august-10",
+      "signal_ts": 1787014662.0,
+      "wallet_usd": [
+        [
+          "0xf705fa045201391d9632b7f3cde06a5e24453ca7",
+          8200.0
+        ],
+        [
+          "0xcc500cbcc8b7cf5bd21975ebbea34f21b5644c82",
+          7380.0
+        ]
+      ],
+      "why": [
+        "2 profitable wallets on this side",
+        "$15,580 \u2014 but only 2.5% of their book",
+        "latest buy 55 min ago",
+        "price 1.0c cheaper than they paid",
+        "338h until it resolves"
+      ],
+      "warnings": []
+    },
+    {
+      "market_id": "0xd720d155365c4b147dd4df8c55a3561e520965459a69b36707a053a2021f5253",
+      "title": "Cincinnati Open: Alexandra Eala vs Amanda Anisimova",
+      "side_label": "Alexandra Eala \u2014 Cincinnati Open: Alexandra Eala vs Amanda Anisimova",
+      "outcome": "Alexandra Eala",
+      "entry_price": 0.475,
+      "whale_price": 0.47,
+      "drift_c": 0.5,
+      "contracts": 1147,
+      "cost": 544.82,
+      "max_payout": 1147.0,
+      "conviction": 0.545,
+      "hours_to_resolve": 0.3,
+      "n_wallets": 2,
+      "whale_usd": 12149,
+      "minutes_ago": 60,
+      "liquidity": 326857,
+      "url": "https://polymarket.com/event/wta-eala-anisimo-2026-08-17",
+      "end_iso": "2026-08-24T14:00:00Z",
+      "event_iso": "2026-08-18 02:10:00+00",
+      "slug": "wta-eala-anisimo-2026-08-17",
+      "signal_ts": 1787014359.0,
+      "wallet_usd": [
+        [
+          "0xdb859a551fcf56e49416160911476bea7307152f",
+          8388.59
+        ],
+        [
+          "0xf377b9fb12a4b7507a4f997461a73eb30b564159",
+          3760.0
+        ]
+      ],
+      "why": [
+        "2 profitable wallets on this side",
+        "$12,149 \u2014 but only 19.8% of their book",
+        "latest buy 60 min ago",
+        "still near their entry price",
+        "0h until it resolves",
+        "$326,857 liquidity"
+      ],
+      "warnings": []
+    }
+  ],
+  "probe": [
+    {
+      "market_id": "0xa3b36b2d6104d34af4e6c6215fc818e43352e78a748fbfb0b85e3a35f71dec9a",
+      "title": "Will there be no change in Fed interest rates after the September 2026 meeting?",
+      "side_label": "NO on: Will there be no change in Fed interest rates after the September 2026 meeting?",
+      "outcome": "No",
+      "entry_price": 0.29,
+      "whale_price": 0.29,
+      "drift_c": -0.03,
+      "contracts": 1431,
+      "cost": 414.99,
+      "max_payout": 1431.0,
+      "conviction": 0.415,
+      "hours_to_resolve": 694.1,
+      "n_wallets": 1,
+      "whale_usd": 18389,
+      "minutes_ago": 451,
+      "liquidity": 638034,
+      "url": "https://polymarket.com/event/fed-decision-in-september-762",
+      "end_iso": "2026-09-16T00:00:00Z",
+      "event_iso": "",
+      "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-september-2026-meeting-615",
+      "signal_ts": 1786990873.0,
+      "wallet_usd": [
+        [
+          "0x3a8aa345d5db7ec5138298c8c4f4540259be7699",
+          18389.28
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$18,389 \u2014 but only 0.8% of their book",
+        "latest buy 451 min ago",
+        "still near their entry price",
+        "694h until it resolves",
+        "$638,034 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
     {
       "market_id": "0x2182f29dc74fa806d339b812e387147dc49422fee17cd67252de6c193f86db18",
       "title": "Cincinnati Open: Brandon Nakashima vs Daniil Medvedev",
       "side_label": "Daniil Medvedev \u2014 Cincinnati Open: Brandon Nakashima vs Daniil Medvedev",
       "outcome": "Daniil Medvedev",
-      "entry_price": 0.545,
+      "entry_price": 0.555,
       "whale_price": 0.55,
-      "drift_c": -0.5,
-      "contracts": 913,
-      "cost": 497.59,
-      "max_payout": 913.0,
-      "conviction": 0.498,
-      "hours_to_resolve": 18.5,
+      "drift_c": 0.5,
+      "contracts": 695,
+      "cost": 385.73,
+      "max_payout": 695.0,
+      "conviction": 0.386,
+      "hours_to_resolve": 16.6,
       "n_wallets": 1,
       "whale_usd": 8577,
-      "minutes_ago": 35,
-      "liquidity": 87702,
+      "minutes_ago": 146,
+      "liquidity": 144575,
       "url": "https://polymarket.com/event/atp-nakashi-medvede-2026-08-18",
       "end_iso": "2026-08-25T14:00:00Z",
       "event_iso": "2026-08-18 18:30:00+00",
@@ -34,214 +159,91 @@
       "why": [
         "new wallet with no track record \u2014 pattern signal, not a copy",
         "$8,577, 57% of their own book",
-        "latest buy 35 min ago",
+        "latest buy 146 min ago",
         "still near their entry price",
-        "18h until it resolves",
-        "$87,702 liquidity"
+        "17h until it resolves",
+        "$144,575 liquidity"
       ],
       "warnings": [
         "unproven wallet \u2014 this is a pattern, not a track record"
       ]
     },
     {
-      "market_id": "0x1f336cf49f17b08d7dee4775c8c0c97f3ff1c467cba0016e396281c20f46fa23",
-      "title": "Cincinnati Open: Jiri Lehecka vs Arthur Fils",
-      "side_label": "Arthur Fils \u2014 Cincinnati Open: Jiri Lehecka vs Arthur Fils",
-      "outcome": "Arthur Fils",
-      "entry_price": 0.585,
-      "whale_price": 0.59,
-      "drift_c": -0.5,
-      "contracts": 835,
-      "cost": 488.47,
-      "max_payout": 835.0,
-      "conviction": 0.489,
-      "hours_to_resolve": 0.2,
-      "n_wallets": 1,
-      "whale_usd": 5900,
-      "minutes_ago": 4,
-      "liquidity": 344286,
-      "url": "https://polymarket.com/event/atp-lehecka-fils-2026-08-17",
-      "end_iso": "2026-08-24T14:00:00Z",
-      "event_iso": "2026-08-18 00:15:00+00",
-      "slug": "atp-lehecka-fils-2026-08-17",
-      "signal_ts": 1787011020.0,
-      "wallet_usd": [
-        [
-          "0xf377b9fb12a4b7507a4f997461a73eb30b564159",
-          5900.0
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$5,900 \u2014 but only 19.1% of their book",
-        "latest buy 4 min ago",
-        "still near their entry price",
-        "0h until it resolves",
-        "$344,286 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0xd720d155365c4b147dd4df8c55a3561e520965459a69b36707a053a2021f5253",
-      "title": "Cincinnati Open: Alexandra Eala vs Amanda Anisimova",
-      "side_label": "Alexandra Eala \u2014 Cincinnati Open: Alexandra Eala vs Amanda Anisimova",
-      "outcome": "Alexandra Eala",
-      "entry_price": 0.465,
-      "whale_price": 0.47,
-      "drift_c": -0.5,
-      "contracts": 1021,
-      "cost": 474.77,
-      "max_payout": 1021.0,
-      "conviction": 0.475,
-      "hours_to_resolve": 0.5,
-      "n_wallets": 1,
-      "whale_usd": 3760,
-      "minutes_ago": 3,
-      "liquidity": 316694,
-      "url": "https://polymarket.com/event/wta-eala-anisimo-2026-08-17",
-      "end_iso": "2026-08-24T14:00:00Z",
-      "event_iso": "2026-08-18 00:30:00+00",
-      "slug": "wta-eala-anisimo-2026-08-17",
-      "signal_ts": 1787011057.0,
-      "wallet_usd": [
-        [
-          "0xf377b9fb12a4b7507a4f997461a73eb30b564159",
-          3760.0
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$3,760 \u2014 but only 12.2% of their book",
-        "latest buy 3 min ago",
-        "still near their entry price",
-        "0h until it resolves",
-        "$316,694 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0xfb6aebc7096dd036681802e29b2f28ff6d6c675eda504b672966047ff41cb5c3",
-      "title": "Will Fenerbah\u00e7e SK win on 2026-08-18?",
-      "side_label": "YES on: Will Fenerbah\u00e7e SK win on 2026-08-18?",
-      "outcome": "Yes",
-      "entry_price": 0.49,
-      "whale_price": 0.488,
-      "drift_c": 0.23,
-      "contracts": 918,
-      "cost": 449.82,
-      "max_payout": 918.0,
-      "conviction": 0.45,
-      "hours_to_resolve": 19.0,
-      "n_wallets": 1,
-      "whale_usd": 19661,
-      "minutes_ago": 116,
-      "liquidity": 132475,
-      "url": "https://polymarket.com/event/ucl-fen-lyo-2026-08-18",
-      "end_iso": "2026-08-18T19:00:00Z",
-      "event_iso": "2026-08-18 19:00:00+00",
-      "slug": "ucl-fen-lyo-2026-08-18-fen",
-      "signal_ts": 1787004286.0,
-      "wallet_usd": [
-        [
-          "0x65018f9fc473f6e920b8929a375d39c26a461220",
-          19661.0
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$19,661, 100% of their own book",
-        "latest buy 116 min ago",
-        "still near their entry price",
-        "19h until it resolves",
-        "$132,475 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    }
-  ],
-  "probe": [
-    {
-      "market_id": "0xa3b36b2d6104d34af4e6c6215fc818e43352e78a748fbfb0b85e3a35f71dec9a",
-      "title": "Will there be no change in Fed interest rates after the September 2026 meeting?",
-      "side_label": "YES on: Will there be no change in Fed interest rates after the September 2026 meeting?",
-      "outcome": "Yes",
-      "entry_price": 0.71,
-      "whale_price": 0.7,
+      "market_id": "0x94574217f9e3a4694b3976e89de85c89d8a95363732244198e3abc001bd31fcf",
+      "title": "Will Bitcoin dip to $62,000 August 17-23?",
+      "side_label": "NO on: Will Bitcoin dip to $62,000 August 17-23?",
+      "outcome": "No",
+      "entry_price": 0.73,
+      "whale_price": 0.72,
       "drift_c": 1.0,
-      "contracts": 529,
-      "cost": 375.59,
-      "max_payout": 529.0,
-      "conviction": 0.376,
-      "hours_to_resolve": 696.0,
+      "contracts": 506,
+      "cost": 369.38,
+      "max_payout": 506.0,
+      "conviction": 0.37,
+      "hours_to_resolve": 146.1,
       "n_wallets": 1,
-      "whale_usd": 4900,
-      "minutes_ago": 292,
-      "liquidity": 586009,
-      "url": "https://polymarket.com/event/fed-decision-in-september-762",
-      "end_iso": "2026-09-16T00:00:00Z",
+      "whale_usd": 2151,
+      "minutes_ago": 449,
+      "liquidity": 20278,
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-august-17-23-2026",
+      "end_iso": "2026-08-24T04:00:00Z",
       "event_iso": "",
-      "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-september-2026-meeting-615",
-      "signal_ts": 1786993768.0,
+      "slug": "will-bitcoin-dip-to-62k-august-17-23-2026",
+      "signal_ts": 1786991004.0,
       "wallet_usd": [
         [
-          "0x6d9fc316c3b8377060a44b852ba664adbfd59790",
-          4900.0
+          "0x06dc51826bc524d9a83770e7de9dd7e005b04524",
+          2150.64
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$4,900 \u2014 but only 1.0% of their book",
-        "latest buy 292 min ago",
+        "$2,151 \u2014 but only 0.3% of their book",
+        "latest buy 449 min ago",
         "price up 1.0c since they bought",
-        "696h until it resolves",
-        "$586,009 liquidity"
+        "146h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 310,
+  "considered": 319,
   "rejected": {
-    "market closed": 144,
-    "in-play (event already started)": 23,
-    "fresh wallet: market too liquid for the pattern": 35,
-    "resolves more than 30 days out": 7,
-    "esports (sleeve retired \u2014 see esports_enabled)": 5,
+    "market closed": 167,
+    "fresh wallet: market too liquid for the pattern": 31,
+    "resolves more than 30 days out": 11,
+    "in-play (event already started)": 18,
+    "wallet not new (no track record either)": 41,
     "signal too old for this market's horizon": 5,
-    "already resolved": 19,
-    "wallet not new (no track record either)": 43,
-    "resolves in under 3h": 7,
-    "parlay / combo ticket, not a single market": 11,
-    "price outside tradeable band": 2,
+    "esports (sleeve retired \u2014 see esports_enabled)": 5,
+    "already resolved": 15,
+    "parlay / combo ticket, not a single market": 13,
     "price + fee ran away from the whale's entry": 1,
-    "duplicate event (kept the stronger side)": 3,
-    "below the 0.45 buy bar (recorded, not bought)": 1
+    "no resolution or start time": 1,
+    "resolves in under 3h": 3,
+    "price outside tradeable band": 1,
+    "duplicate event (kept the stronger side)": 2,
+    "below the 0.45 buy bar (recorded, not bought)": 3
   },
   "notes": [],
   "consistency": {
     "ok": true,
     "enabled": true,
-    "events_scanned": 344,
+    "events_scanned": 345,
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 122,
-      "not a ladder: fewer than two live, quoted legs": 94,
-      "not a ladder: group labels are not thresholds or deadlines": 51,
+      "not a ladder: fewer than two live, quoted legs": 95,
+      "not a ladder: group labels are not thresholds or deadlines": 50,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "bracket has too many legs to place by hand": 2,
-      "ladder pair too illiquid to fill": 94,
+      "bracket overround smaller than the spread": 2,
+      "ladder pair too illiquid to fill": 85,
       "ladder inversion smaller than the spread": 4,
       "bracket underround smaller than the spread": 1,
-      "not a ladder: numeric group spans different end dates": 2,
-      "not a ladder: a live leg carries no group label": 4,
+      "not a ladder: numeric group spans different end dates": 1,
+      "not a ladder: a live leg carries no group label": 7,
       "bracket leg too illiquid to fill": 4,
-      "bracket overround smaller than the spread": 1,
       "dominance gap smaller than the spread": 2
     },
     "notes": [],
@@ -262,7 +264,7 @@
         "nowcast_pp": 0.203341742698412,
         "nowcast_as_of": "2026-08-17 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.086pp (x1.87). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.084pp (x1.90). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -273,9 +275,9 @@
           },
           {
             "label": "0.1%",
-            "market_prob": 0.15,
+            "market_prob": 0.135,
             "model_prob": 0.2005,
-            "gap_c": 5.05,
+            "gap_c": 6.55,
             "suspect": false
           },
           {
@@ -287,9 +289,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.215,
+            "market_prob": 0.29,
             "model_prob": 0.2056,
-            "gap_c": -0.94,
+            "gap_c": -8.44,
             "suspect": false
           },
           {
@@ -343,23 +345,23 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.039,
+            "market_prob": 0.038,
             "model_prob": 0.1297,
-            "gap_c": 9.07,
+            "gap_c": 9.17,
             "suspect": false
           },
           {
             "label": "2.3%",
-            "market_prob": 0.345,
+            "market_prob": 0.34,
             "model_prob": 0.215,
-            "gap_c": -13.0,
+            "gap_c": -12.5,
             "suspect": false
           },
           {
             "label": "2.4%",
-            "market_prob": 0.39,
+            "market_prob": 0.395,
             "model_prob": 0.2441,
-            "gap_c": -14.59,
+            "gap_c": -15.09,
             "suspect": false
           },
           {
@@ -371,16 +373,16 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.043,
+            "market_prob": 0.0455,
             "model_prob": 0.1012,
-            "gap_c": 5.82,
+            "gap_c": 5.57,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.048,
+            "market_prob": 0.0455,
             "model_prob": 0.0369,
-            "gap_c": -1.11,
+            "gap_c": -0.86,
             "suspect": false
           },
           {
@@ -413,37 +415,37 @@
         "rows": [
           {
             "label": "\u22642.9%",
-            "market_prob": 0.0215,
+            "market_prob": 0.021,
             "model_prob": 0.005,
-            "gap_c": -1.65,
+            "gap_c": -1.6,
             "suspect": false
           },
           {
             "label": "3.0%",
-            "market_prob": 0.048,
+            "market_prob": 0.0485,
             "model_prob": 0.0206,
-            "gap_c": -2.74,
+            "gap_c": -2.79,
             "suspect": false
           },
           {
             "label": "3.1%",
-            "market_prob": 0.044,
+            "market_prob": 0.0445,
             "model_prob": 0.0671,
-            "gap_c": 2.31,
+            "gap_c": 2.26,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.1,
+            "market_prob": 0.098,
             "model_prob": 0.1495,
-            "gap_c": 4.95,
+            "gap_c": 5.15,
             "suspect": false
           },
           {
             "label": "3.3%",
-            "market_prob": 0.33,
+            "market_prob": 0.335,
             "model_prob": 0.2282,
-            "gap_c": -10.18,
+            "gap_c": -10.68,
             "suspect": false
           },
           {
@@ -455,16 +457,16 @@
           },
           {
             "label": "3.5%",
-            "market_prob": 0.14,
+            "market_prob": 0.135,
             "model_prob": 0.171,
-            "gap_c": 3.1,
+            "gap_c": 3.6,
             "suspect": false
           },
           {
             "label": "3.6%",
-            "market_prob": 0.055,
+            "market_prob": 0.045,
             "model_prob": 0.084,
-            "gap_c": 2.9,
+            "gap_c": 3.9,
             "suspect": false
           },
           {
@@ -518,9 +520,9 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.051,
+            "market_prob": 0.0435,
             "model_prob": 0.0009,
-            "gap_c": -5.01,
+            "gap_c": -4.26,
             "suspect": false
           },
           {
