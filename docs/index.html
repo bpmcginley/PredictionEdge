@@ -4,134 +4,410 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex, nofollow" />
-<meta name="description" content="Prediction-market research board: ranks smart-money signals for manual placement, tested by a public paper trial." />
-<title>PredictionEdge — overview</title>
+<meta name="description" content="A public, append-only paper trial of a prediction-market copy-trading strategy: the method, the corrections found along the way, and the result." />
+<title>PredictionEdge — a paper trial of copy-trading prediction markets</title>
 <link rel="stylesheet" href="assets/app.css" />
 </head>
 <body>
+<a class="skip" href="#result">Skip to result</a>
 <div class="wrap">
 
   <section class="hero">
     <div class="pill"><span class="dot" id="statusdot"></span><span id="statustext">loading…</span></div>
-    <h1>Smart money, filtered down<br />to what's worth placing.</h1>
+    <h1>Does copying smart money on prediction markets actually pay?</h1>
     <p class="lede">
-      PredictionEdge watches profitable Polymarket wallets, throws out everything that
-      can't plausibly still hold an edge, and ranks the handful that survive — with its
-      reasoning attached. You read it, you decide, you place any trade yourself.
+      A research bot watches profitable Polymarket wallets, rejects almost everything they
+      do, and publishes what survives. Every published ticket is then opened as a paper
+      position at the price shown, committed to a public repository the moment it opens,
+      and held to the venue's own settlement. This page is the write-up: the method, the
+      three accounting errors the record caught, and what the trial concluded.
     </p>
+    <div class="by">
+      <b>Bruce McGinley</b>
+      <span id="daterange">—</span>
+      <a href="https://github.com/bpmcginley/PredictionEdge">github.com/bpmcginley/PredictionEdge</a>
+      <!-- TODO: paste the LinkedIn profile URL here, e.g.
+           <a href="https://www.linkedin.com/in/…">LinkedIn</a> -->
+      <a href="mailto:brucepmcginley@gmail.com">brucepmcginley@gmail.com</a>
+    </div>
   </section>
 
-  <div class="card">
-    <div class="stats" id="stats"></div>
-  </div>
+  <!-- ==================================================================== -->
+  <section class="split" id="result">
+    <h2>Result</h2>
+    <div>
+      <div class="stats" id="stats"></div>
+      <div class="card prose" style="margin-top:var(--s4)">
+        <p id="verdict" class="lede">—</p>
+        <p><strong>The honest reading: no edge was found.</strong> The picks win at almost
+          exactly the rate their entry price implied — the calibration gap is a fraction of
+          a percentage point — which is what you would expect from buying at the market's
+          own number. Trading fees then take the rest. The strategy is not losing badly; it
+          is failing to beat the price it pays.</p>
+        <p>The sample is far too small to <em>prove</em> failure — the bootstrap interval
+          on the mean per-bet return still straddles zero in both directions. What can be
+          said is stronger than the P&amp;L suggests: all three accounting errors found
+          during the trial pointed the same way, and every one of them had been making the
+          result look better than it was. A process that only ever errs in its own favour
+          is worth distrusting before its numbers are.</p>
+      </div>
+    </div>
+  </section>
 
-  <div class="cards">
-    <a class="tile" href="board.html">
-      <div class="th" id="tile-board-h"></div>
-      <span id="tile-board-d">Ranked trade tickets with entry price, size, and why.</span>
-    </a>
-    <a class="tile" href="trial.html">
-      <div class="th" id="tile-trial-h"></div>
-      <span id="tile-trial-d">Every published ticket, held to settlement automatically.</span>
-    </a>
-    <a class="tile" href="journal.html">
-      <div class="th" id="tile-journal-h"></div>
-      <span id="tile-journal-d">What you placed, how it ended, and whether the board is any good.</span>
-    </a>
-    <a class="tile" href="method.html">
-      <div class="th" id="tile-method-h"></div>
-      <span>Where signals come from, every filter they pass, and how conviction is scored.</span>
-    </a>
-  </div>
+  <!-- ==================================================================== -->
+  <section class="split">
+    <h2>How it works</h2>
+    <div class="card prose" style="border-top:1px solid var(--rule);padding-top:0">
+      <div class="step"><div class="n">01</div><div>
+        <strong>Watch proven wallets.</strong> Polymarket's public leaderboards across
+        all-time, monthly and weekly windows define who counts as smart money. A wallet
+        qualifies on realized profit <em>and</em> an ROI floor, which excludes churny
+        market-makers who move size without making money. Their large buys come off the
+        public trade feed.
+      </div></div>
+      <div class="step"><div class="n">02</div><div>
+        <strong>Throw most of it away.</strong> Twelve filters reject in-play markets,
+        anything resolving too soon or too far out, stale signals, prices that already ran
+        past the whale's entry, and any second bet on an event already held. Most days
+        nothing survives, and that is the intended outcome.
+      </div></div>
+      <div class="step"><div class="n">03</div><div>
+        <strong>Rank and size what's left.</strong> Conviction blends wallet agreement,
+        size behind the trade, freshness, price drift and time to resolution. Position size
+        respects fixed house caps against current capital.
+      </div></div>
+      <div class="step"><div class="n">04</div><div>
+        <strong>Record it, don't trade it.</strong> There is no execution path. Every
+        surviving ticket is written into the paper trial instead, priced at the ask and
+        charged the venue's taker fee.
+      </div></div>
+    </div>
+  </section>
 
-  <h2>How it works</h2>
-  <div class="card prose">
-    <div class="step"><div class="n">1</div><div>
-      <strong>Watch proven wallets.</strong> Polymarket's public leaderboards across
-      all-time, monthly and weekly windows define who counts as smart money. Their large
-      buys come off the public trade feed.
-    </div></div>
-    <div class="step"><div class="n">2</div><div>
-      <strong>Throw most of it away.</strong> Twelve filters reject in-play markets,
-      anything resolving too soon or too far out, stale signals, prices that already ran
-      past the whale's entry, and duplicate bets on one event.
-    </div></div>
-    <div class="step"><div class="n">3</div><div>
-      <strong>Rank and size what's left.</strong> Conviction blends wallet agreement,
-      size, freshness, price drift and time remaining. Position size respects the house
-      per-market caps against your current capital.
-    </div></div>
-    <div class="step"><div class="n">4</div><div>
-      <strong>You place it.</strong> Nothing here executes a trade.
-      The board's only job is to bring you a short, honest list.
-    </div></div>
-  </div>
+  <!-- ==================================================================== -->
+  <section class="split">
+    <h2>Sources</h2>
+    <div class="card prose" style="border-top:1px solid var(--rule);padding-top:var(--s4)">
+      <p><strong>Polymarket leaderboards.</strong> Top wallets by realized PnL in four
+        categories, over three time windows.</p>
+      <p><strong>Polymarket large-trade feed.</strong> Recent taker buys above a dollar
+        floor, kept only when the buyer is one of those wallets. This is the single source
+        that produces tickets today.</p>
+      <p><strong>Kalshi</strong> is built and runnable as an independent price on the same
+        events, and deliberately does <em>not</em> feed the board. Matching markets by title
+        produced confident false edges — Kalshi's "who will <em>run for</em> the nomination"
+        against Polymarket's "will X <em>win</em> it" is a 48¢ gap that is simply correct.
+        After guarding against those, genuine disagreements among liquid markets came to
+        zero.</p>
+      <p>Three further sources — logical-consistency arbitrage, a crypto risk-neutral
+        density priced off Deribit's option chain, and CPI brackets against the Cleveland
+        Fed nowcast — run in <a href="research.html">research</a> only. They have no settled
+        record, and a source with no record does not get to size a position.</p>
+    </div>
+  </section>
+
+  <!-- ==================================================================== -->
+  <section class="split">
+    <h2>Filters</h2>
+    <div>
+      <p class="muted" style="font-size:13px;max-width:var(--measure)">Every signal must
+        survive all of these. The thresholds below are read live from the published board,
+        so this page cannot drift out of date with the code.</p>
+      <div class="scroll" style="margin-top:var(--s4)"><table>
+        <thead><tr><th>Filter</th><th>Rejects</th></tr></thead>
+        <tbody id="filters"></tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <!-- ==================================================================== -->
+  <section class="split">
+    <h2>Conviction</h2>
+    <div>
+      <div class="scroll"><table>
+        <thead><tr><th>Component</th><th class="num">Weight</th><th>Maxes out at</th></tr></thead>
+        <tbody>
+          <tr><td>Wallet agreement</td><td class="num">30%</td><td class="muted">3 wallets on the same side</td></tr>
+          <tr><td>Size behind it</td><td class="num">25%</td><td class="muted">~$200,000</td></tr>
+          <tr><td>Freshness</td><td class="num">15%</td><td class="muted">decays over 3 hours</td></tr>
+          <tr><td>Price drift</td><td class="num">20%</td><td class="muted">zero at 6¢ past their entry</td></tr>
+          <tr><td>Time to resolve</td><td class="num">10%</td><td class="muted">72 hours</td></tr>
+        </tbody>
+      </table></div>
+      <div class="card prose" style="margin-top:var(--s4)">
+        <p>A weighted blend, deliberately simple enough to check by hand. It ranks ideas
+          against each other; it is <strong>not</strong> a probability of winning. Most live
+          signals come from a single wallet, which caps the first term at a third of its
+          weight, so a lone-wallet ticket rarely scores above about 0.80.</p>
+        <p><strong>A bar, not a quota.</strong> The board used to publish the day's top
+          eight. That answers "how many fit on the page", which is not a fact about any
+          trade: it bought the eighth-best idea on a quiet day and skipped a better one on a
+          busy day. Now every ticket above the conviction bar is published and none below it
+          is, however many that turns out to be.</p>
+        <p><strong>Where the bar sits is a guess, and it is meant to stop being one.</strong>
+          Nothing in the blend was fitted to a result — the weights were chosen, not learned.
+          So tickets in a band <em>below</em> the bar are recorded by the trial without being
+          recommended. Watching only the trades you would have taken tells you nothing about
+          the ones you skipped, and a cutoff you never observe the far side of can never be
+          shown to be wrong.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================================== -->
+  <section class="split">
+    <h2>Sizing</h2>
+    <div class="card prose" style="border-top:1px solid var(--rule);padding-top:var(--s4)">
+      <p>House limits, applied against current account value: every contract must cost at
+        least <code>$0.01</code>, with a cap of <strong id="perm">19</strong> contracts per
+        market and <strong id="pere">38</strong> per event, per $1,000 of account. On top of
+        that the board risks <strong id="ptf">1%</strong> of the account per idea, scaled by
+        conviction. Positions were a flat $100 until 16 August 2026 and are sized by these
+        rules after it, so per-position returns are the comparable figure across that line —
+        not dollars.</p>
+    </div>
+  </section>
+
+  <!-- ==================================================================== -->
+  <section class="split">
+    <h2>How the record is kept</h2>
+    <div class="card prose" style="border-top:1px solid var(--rule);padding-top:var(--s4)">
+      <p>The point of the trial is not the P&amp;L. It is that the P&amp;L cannot be
+        edited afterwards.</p>
+      <p><strong>Append-only.</strong> A position is committed to the public repository at
+        the moment it opens, with its entry price and timestamp, and is never rewritten. The
+        settlement label comes from the venue's own resolution — no hand entry, no
+        discretion, no quietly deleting the bad ones. Anyone can check any row against the
+        commit that created it.</p>
+      <p><strong>Corrections happen at score time, not on the rows.</strong> When the
+        accounting turns out to have been wrong, the rows stay exactly as they were written
+        and the <em>scoring</em> function is fixed, so the headline changes and the history
+        does not. Each such change is stamped as a dated change point, and the record page
+        can be sliced before or since any of them.</p>
+      <p><strong>Blocked signals are recorded too.</strong> Every refusal is logged with its
+        reason, so an empty day is explained rather than mysterious, and so the rejection
+        rules themselves can be audited after the fact.</p>
+    </div>
+  </section>
+
+  <!-- ==================================================================== -->
+  <section class="split">
+    <h2>Corrections</h2>
+    <div>
+      <p class="lede">Three accounting errors surfaced during the trial. Every one of them
+        had been flattering the result — which is the most useful thing the record
+        produced.</p>
+      <div class="scroll" style="margin-top:var(--s4)"><table>
+        <thead><tr><th>What was wrong</th><th>Why it flattered</th><th>Effect on the headline</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Maker fees on taker fills</strong></td>
+            <td class="muted">Every entry is priced at the ask, so it pays the taker fee. 287
+              settled rows had been booked at the maker rate — a quarter of taker.</td>
+            <td class="muted">Mean return per bet fell from <span class="num">+3.1%</span> to
+              <span class="num">+1.3%</span>.</td>
+          </tr>
+          <tr>
+            <td><strong>The fee was outside the bar</strong></td>
+            <td class="muted">The copy sleeve budgeted for price drift past the whale's entry
+              but not for the fee it also paid — money given up just as irreversibly, and
+              largest exactly at mid-book.</td>
+            <td class="muted">Fewer tickets clear; a mid-priced market now gets less room to
+              drift than a lopsided one.</td>
+          </tr>
+          <tr>
+            <td><strong>Mutually exclusive legs scored apart</strong></td>
+            <td class="muted">The trial refused a second bet on a <em>market</em> it held, but
+              not on the same <em>event</em>. It booked YES on a high of 87–88° and YES on
+              89–90°, same city, same day, as two independent opinions. Anti-correlated legs
+              shrink measured variance and inflate the count of independent draws.</td>
+            <td class="muted">Opinions collapsed by roughly a fifth; mean return per bet fell
+              from <span class="num">−0.88%</span> to <span class="num">−2.87%</span>. No
+              money moved — total P&amp;L was identical.</td>
+          </tr>
+        </tbody>
+      </table></div>
+      <p class="muted" style="font-size:13px;margin-top:var(--s3);max-width:var(--measure)">
+        Figures are the headline as it stood when each correction landed. The
+        <a href="trial.html">record</a> can be sliced at every one of these dates.</p>
+    </div>
+  </section>
+
+  <!-- ==================================================================== -->
+  <section class="split">
+    <h2>The gate</h2>
+    <div class="card prose" style="border-top:1px solid var(--rule);padding-top:var(--s4)">
+      <p>Nothing goes live on a good-looking chart. The same deploy gate the backtester
+        applies to any other strategy in this project has to pass three things at once: a
+        deflated Sharpe ratio of at least <strong>0.95</strong>, a positive mean per-bet
+        return, and a block-bootstrap 5% confidence interval on that mean that sits above
+        zero.</p>
+      <p>The deflated Sharpe ratio is the load-bearing one. It penalises a result for how
+        many variants were tried before it appeared, which is the honest answer to a
+        backtest that looks good on the eleventh attempt. It also assumes independent
+        draws — which is precisely why the third correction above mattered more than its
+        P&amp;L impact suggested.</p>
+      <p id="gatewhy" class="muted">—</p>
+    </div>
+  </section>
+
+  <!-- ==================================================================== -->
+  <section class="split">
+    <h2>Why it rejects so much</h2>
+    <div class="card prose" style="border-top:1px solid var(--rule);padding-top:var(--s4)">
+      <p>On 26 June an earlier, automated version placed four live orders. All four were on
+        football matches already in their second half, and two of them were the same opinion
+        twice — YES on one team and NO on the other, in both games.</p>
+      <p>Whales react to a goal faster than any polling loop, so those fills came at the
+        post-event price with the information already gone. The in-play filter, the
+        resolution window, the drift ceiling and the one-ticket-per-event rule all exist
+        because of that afternoon. Replaying those four signals through today's filters
+        produces nothing.</p>
+      <p>That last rule stayed too narrow for a long time, in the way described under
+        Corrections above. It now refuses any leg of an event already held, and the record
+        scores the ones already on file as one opinion apiece.</p>
+    </div>
+  </section>
+
+  <!-- ==================================================================== -->
+  <section class="split">
+    <h2>What this is not</h2>
+    <div class="card prose" style="border-top:1px solid var(--rule);padding-top:var(--s4)">
+      <p>It is not a bot, and it has no execution path — the code that once placed orders
+        now refuses to construct, and going live again would be a separate decision behind
+        its own deploy gate. It is not financial advice, and the conviction score is
+        uncalibrated. Bankroll here is small enough that this phase is about proving
+        process, not income.</p>
+    </div>
+  </section>
+
+  <!-- ==================================================================== -->
+  <section class="split">
+    <h2>Appendix</h2>
+    <div class="cards">
+      <a class="tile" href="trial.html">
+        <div class="th">The record</div>
+        <span id="tile-trial-d">Every position, settled and open, with the window slicer and
+          the change points.</span>
+      </a>
+      <a class="tile" href="board.html">
+        <div class="th">Live board</div>
+        <span id="tile-board-d">What clears the filters right now, with rejection counts.</span>
+      </a>
+      <a class="tile" href="research.html">
+        <div class="th">Research</div>
+        <span>Sources that produce no tickets: consistency constraints, crypto densities,
+          CPI brackets.</span>
+      </a>
+    </div>
+  </section>
 
   <div class="banner">
-    <b>Advisory only.</b> This project has no execution path — nothing here places,
-    cancels, or manages an order. Every trade is placed by hand; the code that once
-    placed orders is disabled at the constructor.
+    <b>Paper, not placed.</b> Nothing in this record was traded. Every entry is priced at
+    the ask and charged the venue's taker fee, because a record that ignores what its own
+    fills cost flatters itself — and this one did exactly that until 17 August 2026.
   </div>
 
   <footer>
-    An empty board is a normal and usually correct outcome — most days nothing clears the
-    filters. Capital and journal are stored only in this browser and are never published.
+    Research runs every 15 minutes in a public CI job. Source, tests and every recorded
+    position are at <a href="https://github.com/bpmcginley/PredictionEdge">github.com/bpmcginley/PredictionEdge</a>.
+    Capital settings are stored only in this browser and are never published.
   </footer>
 </div>
 
 <script src="assets/app.js"></script>
 <script>
 mountNav('index.html');
-$('tile-board-h').innerHTML   = ICON.board   + '<b>Board</b>';
-$('tile-trial-h').innerHTML   = ICON.trial   + '<b>Trial</b>';
-$('tile-journal-h').innerHTML = ICON.journal + '<b>Journal</b>';
-$('tile-method-h').innerHTML  = ICON.method  + '<b>Method</b>';
 
+const pct = (v,d=2) => v==null ? '—' : (v*100).toFixed(d)+'%';
+
+/* board.json: the filter table and the sizing caps, so the prose above cannot claim a
+   threshold the code no longer uses. */
 function render(){
   stampUpdated();
+  const f = DATA.filters||{}, o = DATA.sizing||DATA.omen||{};
+  const n = (v,d)=> v==null? d : v;
+  const rows = [
+    ['Market closed or already resolved','No live book, or the outcome is already known.'],
+    ['In-play','The event has already started — the price has absorbed what happened.'],
+    ['Resolves too soon',`Under ${n(f.min_hours,24)} hours away.`],
+    ['Resolves too far out',`More than ${n(f.max_days,30)} days away — no edge on a distant event.`],
+    ['Stale signal','Older than 20% of the market\'s remaining life (floor 2h, ceiling 48h).'],
+    ['Outcome can\'t be priced','The specific outcome has no identifiable price; never guessed.'],
+    ['Price out of band','Outside roughly 5¢–90¢.'],
+    ['Price ran away',`Drift plus the trading fee is more than ${Math.round(n(f.max_drift_c,4))}¢ past the whale's entry — buying their exhaust. The fee counts because it is spent just as irreversibly, and it peaks near 50¢.`],
+    ['Conviction too low',`Below ${(n(f.min_conviction,0.35)*100).toFixed(0)} out of 100.`],
+    ['No valid size','Capital can\'t buy a single contract within the caps.'],
+    ['Duplicate event','One ticket per event; the stronger side wins.'],
+  ];
+  $('filters').innerHTML = rows.map(([a,b])=>
+    `<tr><td style="white-space:nowrap"><strong>${esc(a)}</strong></td><td class="muted">${esc(b)}</td></tr>`).join('');
+
+  if(o.contracts_per_market_per_1k) $('perm').textContent = o.contracts_per_market_per_1k;
+  if(o.contracts_per_event_per_1k)  $('pere').textContent = o.contracts_per_event_per_1k;
+  if(o.per_trade_fraction) $('ptf').textContent = (o.per_trade_fraction*100).toFixed(0)+'%';
+
   const {live} = splitTickets();
-  const L = ledger();
-  const age = dataAgeMin();
-
-  const dot = $('statusdot'), txt = $('statustext');
-  if (age == null){ dot.className='dot bad'; txt.textContent='no data'; }
-  else if (age > 90){ dot.className='dot warn'; txt.textContent='data '+fmtDur(age/60)+' old — re-check before placing'; }
-  else { dot.className='dot'; txt.textContent='live · scanning every 15 min'; }
-
-  $('stats').innerHTML =
-    stat(live.length,'tickets now')+
-    stat(DATA.considered||0,'signals scanned')+
-    stat(money(L.account),'account value')+
-    stat(signed(L.realized),'realized p&l', L.realized>=0?'pos':'neg')+
-    stat(L.hit==null?'—':(L.hit*100).toFixed(0)+'%','hit rate')+
-    stat(L.openCount,'open positions');
-
   $('tile-board-d').textContent = live.length
     ? `${live.length} ticket${live.length!==1?'s':''} ranked and sized right now.`
-    : 'Nothing clears the filters right now — which is normal.';
-  $('tile-journal-d').textContent = L.taken
-    ? `${L.taken} placed · ${L.won}W/${L.lost}L · ${signed(L.realized)} realized.`
-    : 'Nothing logged yet. Mark tickets as placed to build a record.';
+    : 'Nothing clears the filters right now — which is normal, and usually correct.';
+
+  const age = dataAgeMin(), dot = $('statusdot'), txt = $('statustext');
+  if (age == null){ dot.className='dot bad'; txt.textContent='no data'; }
+  else if (age > 90){ dot.className='dot warn'; txt.textContent='data '+fmtDur(age/60)+' old'; }
+  else { dot.className='dot'; txt.textContent='live · scanning every 15 min'; }
 }
-function stat(v,l,cls){ return `<div class="stat"><b class="${cls||''}">${v}</b><span>${l}</span></div>`; }
 function onLoadError(){ $('statusdot').className='dot bad'; $('statustext').textContent='board.json unavailable'; }
 
-/* The trial is its own file so a board refresh can never rewrite a recorded position.
-   Failing quietly is right here: a missing trial must not blank the overview. */
-function loadTrial(){
-  fetch('trial.json?t='+Date.now()).then(r=>r.ok?r.json():null).then(t=>{
-    if(!t) return;
-    /* open_positions, not open.length: both must count the same thing. The headline
-       covers only what is still ACTIVE, so a retired sleeve's or retired market class's
-       positions - left in the file to settle honestly rather than deleted - would
-       otherwise be counted as open against a settled figure that excludes them. */
-    const s=t.stats||{}, n=s.n||0, o=(s.open_positions ?? (t.open||[]).length);
-    $('tile-trial-d').textContent = n
-      ? `${n} settled · ${(s.win_rate*100).toFixed(0)}% win rate · ${o} still open.`
-      : `${o} paper position${o!==1?'s':''} open. Nothing settled yet, so no verdict yet.`;
-  }).catch(()=>{});
-}
-load(); loadTrial(); setInterval(load, 300000); setInterval(loadTrial, 300000);
+/* trial.json holds the result. It is a separate file from board.json on purpose: a board
+   refresh must never be able to rewrite a recorded position. Failing quietly is right -
+   a missing trial must not blank the write-up. */
+function stat(v,l,cls){ return `<div class="stat"><b class="${cls||''}">${v}</b><span>${l}</span></div>`; }
+
+fetch('trial.json?t='+Date.now()).then(r=>r.ok?r.json():null).then(t=>{
+  if(!t) return;
+  const s = t.stats||{};
+  const gap = s.calibration_gap;
+  const ci = s.bootstrap_ci||[];
+
+  $('stats').innerHTML =
+    stat(s.opinions ?? s.n ?? '—','opinions scored')+
+    stat(pct(s.mean_return), 'mean return / bet', (s.mean_return>=0?'pos':'neg'))+
+    stat(pct(s.win_rate,1),'win rate')+
+    stat(pct(s.avg_predicted,1),'implied by price')+
+    stat((s.dsr==null?'—':s.dsr.toFixed(2)),'deflated sharpe')+
+    stat(s.deploy?'PASS':'NO','deploy gate', s.deploy?'pos':'neg');
+
+  $('verdict').innerHTML =
+    `Over <b class="mono">${(s.trial_days??0).toFixed(1)}</b> days the trial scored `+
+    `<b class="mono">${s.opinions ?? s.n}</b> independent opinions from `+
+    `<b class="mono">${s.settled_rows ?? '—'}</b> settled positions, `+
+    `won <b class="mono">${pct(s.win_rate,1)}</b> of them against an average implied `+
+    `probability of <b class="mono">${pct(s.avg_predicted,1)}</b>, and returned `+
+    `<b class="mono ${s.mean_return>=0?'pos':'neg'}">${pct(s.mean_return)}</b> per bet.`;
+
+  if (Array.isArray(s.reasons) && s.reasons.length)
+    $('gatewhy').innerHTML = 'It currently fails on: ' +
+      s.reasons.map(r=>`<b>${esc(r)}</b>`).join('; ') + '.';
+  else if (s.deploy) $('gatewhy').textContent = 'It currently passes.';
+
+  /* The date range comes from the rows, not from `generated`: a byline that says when
+     the file was written is not the same claim as when the trial ran. */
+  const opened = (t.settled||[]).concat(t.open||[])
+    .map(r=>r.opened_at).filter(v=>typeof v === 'number');
+  if (opened.length){
+    const fmt = ts => new Date(ts*1000)
+      .toLocaleDateString('en-GB',{month:'short',year:'numeric'});
+    const a = fmt(Math.min(...opened)), b = fmt(Math.max(...opened));
+    $('daterange').textContent = 'Paper trial · ' + (a===b ? a : a+' – '+b);
+  }
+
+  const n = s.n||0, o = (s.open_positions ?? (t.open||[]).length);
+  if (n) $('tile-trial-d').textContent =
+    `${n} settled · ${pct(s.win_rate,0)} win rate · ${o} still open.`;
+}).catch(()=>{});
+
+load();
 </script>
 </body>
 </html>

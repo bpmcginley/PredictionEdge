@@ -10,8 +10,10 @@
 <body>
 <div class="wrap">
   <h1>Trade board</h1>
-  <p class="lede">Ranked suggestions, sized against your capital and the house per-market
-    caps. Place them yourself, then log what you did.</p>
+  <p class="lede">What clears the filters right now, ranked and sized against the house
+    per-market caps. This is the live tail of the <a href="index.html">paper trial</a> —
+    every ticket below is recorded there whether or not anyone acts on it. An empty board
+    is a normal and usually correct outcome.</p>
 
   <div class="banner">
     <b>Manual placement only.</b> Nothing here executes a trade.
@@ -23,9 +25,9 @@
 
   <div class="card">
     <div style="display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;
-                padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--line)">
+                padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--rule)">
       <div>
-        <label for="cap" style="display:block;color:var(--muted);font-size:10px;
+        <label for="cap" style="display:block;color:var(--ink3);font-size:10px;
           text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px">Starting capital</label>
         <input type="number" id="cap" min="0" step="100" oninput="setCapital(this.value)" />
       </div>
@@ -44,8 +46,10 @@
   <div id="tickets"></div>
 
   <footer>
-    Capital and journal are stored only in this browser and never published. Account value
-    = starting capital + realized p&amp;l, and it re-sizes every ticket above.
+    Capital and any positions you mark placed are stored only in this browser and are
+    never published. Account value = starting capital + realized p&amp;l, and it re-sizes
+    every ticket above. The public record is the <a href="trial.html">trial</a>, which is
+    kept by the research job and not by this page.
   </footer>
 </div>
 
@@ -93,7 +97,7 @@ function render(keepFocus){
     stat(L.won+'/'+L.lost,'won / lost')+stat(L.skipped,'skipped');
 
   $('openrow').innerHTML = L.openCount
-    ? `<b style="color:var(--txt)">${L.openCount}</b> position${L.openCount!==1?'s':''} still open,
+    ? `<b style="color:var(--ink)">${L.openCount}</b> position${L.openCount!==1?'s':''} still open,
        ${money(L.openExposure)} at risk — mark them Won or Lost as they resolve to keep capital accurate.`
     : '';
 

@@ -27,13 +27,14 @@ const ICON = {
   down: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg>',
 };
 
+/* The site is a case study with an appendix, not a dashboard with tabs. `index.html`
+   carries the method that used to live on its own page; the journal was a private
+   localStorage scratchpad and has no place in a public write-up, so both are gone. */
 const PAGES = [
-  ['index.html', 'Overview', 'home'],
+  ['index.html', 'Case study', 'home'],
+  ['trial.html', 'The record', 'trial'],
   ['board.html', 'Board', 'board'],
   ['research.html', 'Research', 'research'],
-  ['trial.html', 'Trial', 'trial'],
-  ['journal.html', 'Journal', 'journal'],
-  ['method.html', 'Method', 'method'],
 ];
 
 function mountNav(current) {
