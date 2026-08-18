@@ -1146,7 +1146,7 @@ CHANGE_POINTS: tuple[dict, ...] = (
      "note": "Positions are sized by the house rules instead of a flat $100, both "
              "sides of one market can no longer be held at once, and esports is cut. "
              "Dollar P&L does not compare across this line; per-position returns do."},
-    {"key": "takerfees", "at": 1786924800, "commit": "pending",
+    {"key": "takerfees", "at": 1786924800, "commit": "eea8e9c",
      "label": "fees charged as taken",
      "note": "Entries are priced at the ask and were being charged the Kalshi MAKER "
              "fee, a quarter of taker, on fills that crossed the spread by "
@@ -1158,7 +1158,7 @@ CHANGE_POINTS: tuple[dict, ...] = (
              "makes the record worse, which is the point of running it."},
     # The first entry in this list that changes WHICH BETS ARE TAKEN rather than how
     # they are booked, so it is the one the before/since slice was built for.
-    {"key": "copyfeebar", "at": 1786931498, "commit": "pending",
+    {"key": "copyfeebar", "at": 1786931498, "commit": "4c72e28",
      "label": "fee-aware copy bar",
      "note": "The copy sleeve never had a fee test: `find_edge` needs a fair "
              "probability and there is none to give it, so every published row reached "
@@ -1168,7 +1168,7 @@ CHANGE_POINTS: tuple[dict, ...] = (
              "refused 7 of 293 - 28.6% winners, -$375 - but that is a measurement of "
              "the past, not a promise about the future: rows already recorded are "
              "never edited, and only bets opened after this line were filtered by it."},
-    {"key": "oneperevent", "at": 1787011400, "commit": "pending",
+    {"key": "oneperevent", "at": 1787011400, "commit": "3980350",
      "label": "one opinion per event",
      "note": "The trial refused a second bet on a market it already held, but not a "
              "second bet on the same EVENT. So it recorded two YES bets on disjoint "
