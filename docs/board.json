@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-19 13:12:07",
-  "generated_at": 1787145127.0443816,
+  "generated": "2026-08-19 14:00:59",
+  "generated_at": 1787148059.7017734,
   "account_size": 100000.0,
   "tickets": [
     {
@@ -8,18 +8,18 @@
       "title": "Miami Marlins vs. Philadelphia Phillies",
       "side_label": "Philadelphia Phillies \u2014 Miami Marlins vs. Philadelphia Phillies",
       "outcome": "Philadelphia Phillies",
-      "entry_price": 0.555,
+      "entry_price": 0.545,
       "whale_price": 0.549,
-      "drift_c": 0.6,
-      "contracts": 1126,
-      "cost": 624.93,
-      "max_payout": 1126.0,
-      "conviction": 0.625,
-      "hours_to_resolve": 8.9,
+      "drift_c": -0.4,
+      "contracts": 1106,
+      "cost": 602.77,
+      "max_payout": 1106.0,
+      "conviction": 0.603,
+      "hours_to_resolve": 8.1,
       "n_wallets": 2,
       "whale_usd": 23479,
-      "minutes_ago": 3,
-      "liquidity": 273134,
+      "minutes_ago": 52,
+      "liquidity": 275049,
       "url": "https://polymarket.com/event/mlb-mia-phi-2026-08-19",
       "end_iso": "2026-08-26T22:05:00Z",
       "event_iso": "2026-08-19 22:05:00+00",
@@ -38,10 +38,10 @@
       "why": [
         "2 profitable wallets on this side",
         "$23,479, 27% of their own book",
-        "latest buy 3 min ago",
-        "price up 0.6c since they bought",
-        "9h until it resolves",
-        "$273,134 liquidity"
+        "latest buy 52 min ago",
+        "still near their entry price",
+        "8h until it resolves",
+        "$275,049 liquidity"
       ],
       "warnings": []
     },
@@ -50,27 +50,27 @@
       "title": "Will Bitcoin dip to $60,000 in August?",
       "side_label": "NO on: Will Bitcoin dip to $60,000 in August?",
       "outcome": "No",
-      "entry_price": 0.85,
-      "whale_price": 0.833,
-      "drift_c": 1.66,
-      "contracts": 682,
-      "cost": 579.7,
-      "max_payout": 682.0,
-      "conviction": 0.58,
-      "hours_to_resolve": 302.8,
+      "entry_price": 0.86,
+      "whale_price": 0.84,
+      "drift_c": 2.01,
+      "contracts": 672,
+      "cost": 577.92,
+      "max_payout": 672.0,
+      "conviction": 0.578,
+      "hours_to_resolve": 302.0,
       "n_wallets": 2,
-      "whale_usd": 8088,
-      "minutes_ago": 30,
-      "liquidity": 49871,
+      "whale_usd": 13393,
+      "minutes_ago": 29,
+      "liquidity": 50758,
       "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
       "end_iso": "2026-09-01T04:00:00Z",
       "event_iso": "",
       "slug": "will-bitcoin-dip-to-60k-in-august-2026",
-      "signal_ts": 1787143327.0,
+      "signal_ts": 1787146279.0,
       "wallet_usd": [
         [
           "0xf705fa045201391d9632b7f3cde06a5e24453ca7",
-          5460.94
+          10765.92
         ],
         [
           "0x06dc51826bc524d9a83770e7de9dd7e005b04524",
@@ -79,194 +79,31 @@
       ],
       "why": [
         "2 profitable wallets on this side",
-        "$8,088 \u2014 but only 0.8% of their book",
-        "latest buy 30 min ago",
-        "price up 1.7c since they bought",
-        "303h until it resolves"
+        "$13,393 \u2014 but only 1.7% of their book",
+        "latest buy 29 min ago",
+        "price up 2.0c since they bought",
+        "302h until it resolves",
+        "$50,758 liquidity"
       ],
       "warnings": []
-    },
-    {
-      "market_id": "0x4e3000c90abf7cee5df0bbbee2f20ebd64c2f901989fbda806d9ec80e41f28ca",
-      "title": "Cincinnati Open: Thiago Agustin Tirante vs Jakub Mensik",
-      "side_label": "Jakub Mensik \u2014 Cincinnati Open: Thiago Agustin Tirante vs Jakub Mensik",
-      "outcome": "Jakub Mensik",
-      "entry_price": 0.655,
-      "whale_price": 0.66,
-      "drift_c": -0.5,
-      "contracts": 720,
-      "cost": 471.6,
-      "max_payout": 720.0,
-      "conviction": 0.472,
-      "hours_to_resolve": 3.3,
-      "n_wallets": 1,
-      "whale_usd": 5000,
-      "minutes_ago": 10,
-      "liquidity": 219435,
-      "url": "https://polymarket.com/event/atp-tirante-mensik-2026-08-19",
-      "end_iso": "2026-08-26T14:00:00Z",
-      "event_iso": "2026-08-19 16:30:00+00",
-      "slug": "atp-tirante-mensik-2026-08-19",
-      "signal_ts": 1787144527.0,
-      "wallet_usd": [
-        [
-          "0xd0fd38536e7447899e4924963098bf02fe81a7da",
-          5000.0
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$5,000 \u2014 but only 8.4% of their book",
-        "latest buy 10 min ago",
-        "still near their entry price",
-        "3h until it resolves",
-        "$219,435 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    }
-  ],
-  "probe": [
-    {
-      "market_id": "0x02c913fd89ec97f63af1a3b2ce975def0d13163635f451fb0c8226f867daaa00",
-      "title": "Will Club Atl\u00e9tico de Madrid win on 2026-08-19?",
-      "side_label": "YES on: Will Club Atl\u00e9tico de Madrid win on 2026-08-19?",
-      "outcome": "Yes",
-      "entry_price": 0.72,
-      "whale_price": 0.72,
-      "drift_c": 0.0,
-      "contracts": 613,
-      "cost": 441.36,
-      "max_payout": 613.0,
-      "conviction": 0.442,
-      "hours_to_resolve": 5.8,
-      "n_wallets": 1,
-      "whale_usd": 2095,
-      "minutes_ago": 26,
-      "liquidity": 533913,
-      "url": "https://polymarket.com/event/lal-mad-mala-2026-08-19",
-      "end_iso": "2026-08-19T19:00:00Z",
-      "event_iso": "2026-08-19 19:00:00+00",
-      "slug": "lal-mad-mala-2026-08-19-mad",
-      "signal_ts": 1787143551.0,
-      "wallet_usd": [
-        [
-          "0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6",
-          2095.23
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$2,095 \u2014 but only 0.9% of their book",
-        "latest buy 26 min ago",
-        "still near their entry price",
-        "6h until it resolves",
-        "$533,913 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion",
-        "smart money sold $2,066 of this side 19 min ago (1 wallet) \u2014 after the buys above"
-      ]
-    },
-    {
-      "market_id": "0x97ffd7d805b0ed66a2eac08484999851a67682ccc720618d7bd8a0b495f98990",
-      "title": "Will Ethereum reach $2,000 August 17-23?",
-      "side_label": "NO on: Will Ethereum reach $2,000 August 17-23?",
-      "outcome": "No",
-      "entry_price": 0.69,
-      "whale_price": 0.76,
-      "drift_c": -7.0,
-      "contracts": 636,
-      "cost": 438.84,
-      "max_payout": 636.0,
-      "conviction": 0.439,
-      "hours_to_resolve": 110.8,
-      "n_wallets": 1,
-      "whale_usd": 2289,
-      "minutes_ago": 137,
-      "liquidity": 11367,
-      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-august-17-23-2026",
-      "end_iso": "2026-08-24T04:00:00Z",
-      "event_iso": "",
-      "slug": "will-ethereum-reach-2000-august-17-23-2026",
-      "signal_ts": 1787136880.0,
-      "wallet_usd": [
-        [
-          "0x06dc51826bc524d9a83770e7de9dd7e005b04524",
-          2289.12
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$2,289 \u2014 but only 0.3% of their book",
-        "latest buy 137 min ago",
-        "price 7.0c cheaper than they paid",
-        "111h until it resolves"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x67364ab6a1984920bb34473616daef2efcc8c4e83d9af9551f5be42c902aa6fd",
-      "title": "San Diego Padres vs. New York Mets: O/U 8.5",
-      "side_label": "Over \u2014 San Diego Padres vs. New York Mets: O/U 8.5",
-      "outcome": "Over",
-      "entry_price": 0.505,
-      "whale_price": 0.5,
-      "drift_c": 0.5,
-      "contracts": 849,
-      "cost": 428.75,
-      "max_payout": 849.0,
-      "conviction": 0.429,
-      "hours_to_resolve": 4.0,
-      "n_wallets": 1,
-      "whale_usd": 3649,
-      "minutes_ago": 52,
-      "liquidity": 145844,
-      "url": "https://polymarket.com/event/mlb-sd-nym-2026-08-19",
-      "end_iso": "2026-08-19T17:10:00Z",
-      "event_iso": "2026-08-19 17:10:00+00",
-      "slug": "mlb-sd-nym-2026-08-19-total-8pt5",
-      "signal_ts": 1787142013.0,
-      "wallet_usd": [
-        [
-          "0x1d1ade627d0bb0205758580b20d808573e720df6",
-          3648.76
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$3,649, 99% of their own book",
-        "latest buy 52 min ago",
-        "still near their entry price",
-        "4h until it resolves",
-        "$145,844 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
     },
     {
       "market_id": "0x876506d8b2bd7a0d3fa4fe18c024eee6e1dd81ee24c26795dadd6cfe4a7b5d0d",
       "title": "Will the Fed increase interest rates by 25 bps after the September 2026 meeting?",
       "side_label": "NO on: Will the Fed increase interest rates by 25 bps after the September 2026 meeting?",
       "outcome": "No",
-      "entry_price": 0.73,
+      "entry_price": 0.72,
       "whale_price": 0.72,
-      "drift_c": 1.0,
-      "contracts": 573,
-      "cost": 418.29,
-      "max_payout": 573.0,
-      "conviction": 0.419,
-      "hours_to_resolve": 658.8,
+      "drift_c": 0.0,
+      "contracts": 627,
+      "cost": 451.44,
+      "max_payout": 627.0,
+      "conviction": 0.452,
+      "hours_to_resolve": 658.0,
       "n_wallets": 1,
       "whale_usd": 13848,
-      "minutes_ago": 293,
-      "liquidity": 427360,
+      "minutes_ago": 342,
+      "liquidity": 443771,
       "url": "https://polymarket.com/event/fed-decision-in-september-762",
       "end_iso": "2026-09-16T00:00:00Z",
       "event_iso": "",
@@ -281,10 +118,52 @@
       "why": [
         "1 profitable wallet on this side",
         "$13,848 \u2014 but only 12.5% of their book",
-        "latest buy 293 min ago",
-        "price up 1.0c since they bought",
-        "659h until it resolves",
-        "$427,360 liquidity"
+        "latest buy 342 min ago",
+        "still near their entry price",
+        "658h until it resolves",
+        "$443,771 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    }
+  ],
+  "probe": [
+    {
+      "market_id": "0x4e3000c90abf7cee5df0bbbee2f20ebd64c2f901989fbda806d9ec80e41f28ca",
+      "title": "Cincinnati Open: Thiago Agustin Tirante vs Jakub Mensik",
+      "side_label": "Jakub Mensik \u2014 Cincinnati Open: Thiago Agustin Tirante vs Jakub Mensik",
+      "outcome": "Jakub Mensik",
+      "entry_price": 0.655,
+      "whale_price": 0.66,
+      "drift_c": -0.5,
+      "contracts": 656,
+      "cost": 429.68,
+      "max_payout": 656.0,
+      "conviction": 0.43,
+      "hours_to_resolve": 2.5,
+      "n_wallets": 1,
+      "whale_usd": 5000,
+      "minutes_ago": 58,
+      "liquidity": 304540,
+      "url": "https://polymarket.com/event/atp-tirante-mensik-2026-08-19",
+      "end_iso": "2026-08-26T14:00:00Z",
+      "event_iso": "2026-08-19 16:30:00+00",
+      "slug": "atp-tirante-mensik-2026-08-19",
+      "signal_ts": 1787144527.0,
+      "wallet_usd": [
+        [
+          "0xd0fd38536e7447899e4924963098bf02fe81a7da",
+          5000.0
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$5,000 \u2014 but only 8.4% of their book",
+        "latest buy 58 min ago",
+        "still near their entry price",
+        "2h until it resolves",
+        "$304,540 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -295,18 +174,18 @@
       "title": "Will Bitcoin reach $66,000 August 17-23?",
       "side_label": "NO on: Will Bitcoin reach $66,000 August 17-23?",
       "outcome": "No",
-      "entry_price": 0.55,
+      "entry_price": 0.48,
       "whale_price": 0.715,
-      "drift_c": -16.48,
-      "contracts": 739,
-      "cost": 406.45,
-      "max_payout": 739.0,
+      "drift_c": -23.48,
+      "contracts": 847,
+      "cost": 406.56,
+      "max_payout": 847.0,
       "conviction": 0.407,
-      "hours_to_resolve": 110.8,
+      "hours_to_resolve": 110.0,
       "n_wallets": 1,
       "whale_usd": 4642,
-      "minutes_ago": 300,
-      "liquidity": 20473,
+      "minutes_ago": 349,
+      "liquidity": 19548,
       "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-august-17-23-2026",
       "end_iso": "2026-08-24T04:00:00Z",
       "event_iso": "",
@@ -321,11 +200,133 @@
       "why": [
         "1 profitable wallet on this side",
         "$4,642 \u2014 but only 0.6% of their book",
-        "latest buy 300 min ago",
-        "price 16.5c cheaper than they paid",
-        "111h until it resolves"
+        "latest buy 349 min ago",
+        "price 23.5c cheaper than they paid",
+        "110h until it resolves"
       ],
       "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x97ffd7d805b0ed66a2eac08484999851a67682ccc720618d7bd8a0b495f98990",
+      "title": "Will Ethereum reach $2,000 August 17-23?",
+      "side_label": "NO on: Will Ethereum reach $2,000 August 17-23?",
+      "outcome": "No",
+      "entry_price": 0.72,
+      "whale_price": 0.76,
+      "drift_c": -4.0,
+      "contracts": 559,
+      "cost": 402.48,
+      "max_payout": 559.0,
+      "conviction": 0.403,
+      "hours_to_resolve": 110.0,
+      "n_wallets": 1,
+      "whale_usd": 2289,
+      "minutes_ago": 186,
+      "liquidity": 11225,
+      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-august-17-23-2026",
+      "end_iso": "2026-08-24T04:00:00Z",
+      "event_iso": "",
+      "slug": "will-ethereum-reach-2000-august-17-23-2026",
+      "signal_ts": 1787136880.0,
+      "wallet_usd": [
+        [
+          "0x06dc51826bc524d9a83770e7de9dd7e005b04524",
+          2289.12
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,289 \u2014 but only 0.3% of their book",
+        "latest buy 186 min ago",
+        "price 4.0c cheaper than they paid",
+        "110h until it resolves"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x02c913fd89ec97f63af1a3b2ce975def0d13163635f451fb0c8226f867daaa00",
+      "title": "Will Club Atl\u00e9tico de Madrid win on 2026-08-19?",
+      "side_label": "YES on: Will Club Atl\u00e9tico de Madrid win on 2026-08-19?",
+      "outcome": "Yes",
+      "entry_price": 0.72,
+      "whale_price": 0.72,
+      "drift_c": 0.0,
+      "contracts": 555,
+      "cost": 399.6,
+      "max_payout": 555.0,
+      "conviction": 0.4,
+      "hours_to_resolve": 5.0,
+      "n_wallets": 1,
+      "whale_usd": 2095,
+      "minutes_ago": 75,
+      "liquidity": 543778,
+      "url": "https://polymarket.com/event/lal-mad-mala-2026-08-19",
+      "end_iso": "2026-08-19T19:00:00Z",
+      "event_iso": "2026-08-19 19:00:00+00",
+      "slug": "lal-mad-mala-2026-08-19-mad",
+      "signal_ts": 1787143551.0,
+      "wallet_usd": [
+        [
+          "0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6",
+          2095.23
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,095 \u2014 but only 0.9% of their book",
+        "latest buy 75 min ago",
+        "still near their entry price",
+        "5h until it resolves",
+        "$543,778 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion",
+        "smart money sold $2,066 of this side 67 min ago (1 wallet) \u2014 after the buys above"
+      ]
+    },
+    {
+      "market_id": "0x67364ab6a1984920bb34473616daef2efcc8c4e83d9af9551f5be42c902aa6fd",
+      "title": "San Diego Padres vs. New York Mets: O/U 8.5",
+      "side_label": "Over \u2014 San Diego Padres vs. New York Mets: O/U 8.5",
+      "outcome": "Over",
+      "entry_price": 0.505,
+      "whale_price": 0.5,
+      "drift_c": 0.5,
+      "contracts": 768,
+      "cost": 387.84,
+      "max_payout": 768.0,
+      "conviction": 0.388,
+      "hours_to_resolve": 3.2,
+      "n_wallets": 1,
+      "whale_usd": 3649,
+      "minutes_ago": 100,
+      "liquidity": 155774,
+      "url": "https://polymarket.com/event/mlb-sd-nym-2026-08-19",
+      "end_iso": "2026-08-19T17:10:00Z",
+      "event_iso": "2026-08-19 17:10:00+00",
+      "slug": "mlb-sd-nym-2026-08-19-total-8pt5",
+      "signal_ts": 1787142013.0,
+      "wallet_usd": [
+        [
+          "0x1d1ade627d0bb0205758580b20d808573e720df6",
+          3648.76
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$3,649, 99% of their own book",
+        "latest buy 100 min ago",
+        "still near their entry price",
+        "3h until it resolves",
+        "$155,774 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
         "only one wallet \u2014 single opinion"
       ]
     },
@@ -337,15 +338,15 @@
       "entry_price": 0.505,
       "whale_price": 0.51,
       "drift_c": -0.5,
-      "contracts": 792,
-      "cost": 399.96,
-      "max_payout": 792.0,
-      "conviction": 0.4,
-      "hours_to_resolve": 4.5,
+      "contracts": 708,
+      "cost": 357.54,
+      "max_payout": 708.0,
+      "conviction": 0.358,
+      "hours_to_resolve": 3.7,
       "n_wallets": 1,
       "whale_usd": 2109,
-      "minutes_ago": 21,
-      "liquidity": 325394,
+      "minutes_ago": 69,
+      "liquidity": 336036,
       "url": "https://polymarket.com/event/mlb-atl-min-2026-08-19",
       "end_iso": "2026-08-26T17:40:00Z",
       "event_iso": "2026-08-19 17:40:00+00",
@@ -360,10 +361,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$2,109 \u2014 but only 3.8% of their book",
-        "latest buy 21 min ago",
+        "latest buy 69 min ago",
         "still near their entry price",
         "4h until it resolves",
-        "$325,394 liquidity"
+        "$336,036 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion",
@@ -371,20 +372,20 @@
       ]
     }
   ],
-  "considered": 253,
+  "considered": 249,
   "rejected": {
-    "market closed": 121,
-    "esports (sleeve retired \u2014 see esports_enabled)": 62,
-    "fresh wallet: market too liquid for the pattern": 17,
+    "market closed": 108,
+    "esports (sleeve retired \u2014 see esports_enabled)": 65,
+    "fresh wallet: market too liquid for the pattern": 21,
     "resolves more than 30 days out": 4,
-    "wallet not new (no track record either)": 14,
+    "wallet not new (no track record either)": 15,
     "signal too old for this market's horizon": 12,
+    "parlay / combo ticket, not a single market": 6,
     "in-play (event already started)": 3,
-    "parlay / combo ticket, not a single market": 5,
     "already resolved": 1,
     "resolves in under 3h": 3,
     "price + fee ran away from the whale's entry": 1,
-    "price outside tradeable band": 1,
+    "duplicate event (kept the stronger side)": 1,
     "below the 0.45 buy bar (recorded, not bought)": 6
   },
   "notes": [],
@@ -394,10 +395,10 @@
     "events_scanned": 344,
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 124,
-      "not a ladder: fewer than two live, quoted legs": 91,
+      "not a ladder: fewer than two live, quoted legs": 90,
       "not a ladder: group labels are not thresholds or deadlines": 57,
       "not a ladder: duplicate deadlines left too few rungs": 5,
-      "ladder pair too illiquid to fill": 91,
+      "ladder pair too illiquid to fill": 90,
       "bracket has too many legs to place by hand": 1,
       "ladder inversion smaller than the spread": 3,
       "not a ladder: numeric group spans different end dates": 1,
@@ -426,7 +427,7 @@
             "name": "$50M",
             "bid": 0.19,
             "ask": 0.2,
-            "liquidity": 13108.414,
+            "liquidity": 12275.1409,
             "end_iso": "2027-01-01T05:00:00Z",
             "url": "https://polymarket.com/event/puffpaw-fdv-above-one-day-after-launch"
           },
@@ -435,7 +436,7 @@
             "name": "$100M",
             "bid": 0.23,
             "ask": 0.25,
-            "liquidity": 16618.098,
+            "liquidity": 15701.84,
             "end_iso": "2027-01-01T05:00:00Z",
             "url": "https://polymarket.com/event/puffpaw-fdv-above-one-day-after-launch"
           }
@@ -465,7 +466,7 @@
             "name": "<500B",
             "bid": 0.002,
             "ask": 0.009,
-            "liquidity": 6092.08539,
+            "liquidity": 6668.36339,
             "end_iso": "2026-06-30T00:00:00Z",
             "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
           },
@@ -474,7 +475,7 @@
             "name": "500\u2013750B",
             "bid": 0.002,
             "ask": 0.004,
-            "liquidity": 7002.15327,
+            "liquidity": 7592.98827,
             "end_iso": "2026-06-30T00:00:00Z",
             "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
           },
@@ -483,7 +484,7 @@
             "name": "750B\u20131T",
             "bid": 0.043,
             "ask": 0.051,
-            "liquidity": 7047.7247,
+            "liquidity": 7563.12006,
             "end_iso": "2026-06-30T00:00:00Z",
             "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
           },
@@ -492,7 +493,7 @@
             "name": "1T\u20131.25T",
             "bid": 0.032,
             "ask": 0.035,
-            "liquidity": 6742.97866,
+            "liquidity": 7174.93334,
             "end_iso": "2026-06-30T00:00:00Z",
             "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
           },
@@ -501,7 +502,7 @@
             "name": "1.25T\u20131.5T",
             "bid": 0.004,
             "ask": 0.031,
-            "liquidity": 7608.78926,
+            "liquidity": 8139.38926,
             "end_iso": "2026-06-30T00:00:00Z",
             "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
           },
@@ -510,7 +511,7 @@
             "name": "1.5T+",
             "bid": 0.021,
             "ask": 0.055,
-            "liquidity": 6889.53454,
+            "liquidity": 7507.33047,
             "end_iso": "2026-06-30T00:00:00Z",
             "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
           },
@@ -519,7 +520,7 @@
             "name": "No IPO by December 31, 2026",
             "bid": 0.77,
             "ask": 0.79,
-            "liquidity": 28468.4351,
+            "liquidity": 29855.0274,
             "end_iso": "2027-01-01T01:00:00Z",
             "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
           }
@@ -540,7 +541,7 @@
         "ref_month": "2026-8",
         "url": "https://polymarket.com/event/core-cpi-yoy-august-2026-1786474662954",
         "nowcast_pp": 2.38356235342767,
-        "nowcast_as_of": "2026-08-18 00:00",
+        "nowcast_as_of": "2026-08-19 00:00",
         "sigma": 0.16,
         "model_sigma_note": "",
         "rows": [
@@ -560,16 +561,16 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.052,
+            "market_prob": 0.053,
             "model_prob": 0.1297,
-            "gap_c": 7.77,
+            "gap_c": 7.67,
             "suspect": false
           },
           {
             "label": "2.3%",
-            "market_prob": 0.335,
+            "market_prob": 0.34,
             "model_prob": 0.215,
-            "gap_c": -12.0,
+            "gap_c": -12.5,
             "suspect": false
           },
           {
@@ -588,16 +589,16 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.0425,
+            "market_prob": 0.0395,
             "model_prob": 0.1012,
-            "gap_c": 5.87,
+            "gap_c": 6.17,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0465,
+            "market_prob": 0.04,
             "model_prob": 0.0369,
-            "gap_c": -0.96,
+            "gap_c": -0.31,
             "suspect": false
           },
           {
@@ -624,9 +625,9 @@
         "ref_month": "2026-8",
         "url": "https://polymarket.com/event/core-cpi-mom-august-2026-1786474662954",
         "nowcast_pp": 0.203341742698412,
-        "nowcast_as_of": "2026-08-18 00:00",
+        "nowcast_as_of": "2026-08-19 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.089pp (x1.79). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.089pp (x1.80). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -651,16 +652,16 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.26,
+            "market_prob": 0.28,
             "model_prob": 0.2056,
-            "gap_c": -5.44,
+            "gap_c": -7.44,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.028,
+            "market_prob": 0.0255,
             "model_prob": 0.1181,
-            "gap_c": 9.01,
+            "gap_c": 9.26,
             "suspect": false
           },
           {
@@ -686,8 +687,8 @@
         "basis": "mom",
         "ref_month": "2026-8",
         "url": "https://polymarket.com/event/august-inflation-us-monthly-1786474662954",
-        "nowcast_pp": 0.34561713025205,
-        "nowcast_as_of": "2026-08-18 00:00",
+        "nowcast_pp": 0.34733401726308,
+        "nowcast_as_of": "2026-08-19 00:00",
         "sigma": 0.16,
         "model_sigma_note": "",
         "rows": [
@@ -701,57 +702,57 @@
           {
             "label": "-0.2%",
             "market_prob": 0.041,
-            "model_prob": 0.0009,
-            "gap_c": -4.01,
+            "model_prob": 0.0008,
+            "gap_c": -4.02,
             "suspect": false
           },
           {
             "label": "-0.1%",
             "market_prob": 0.0055,
-            "model_prob": 0.0057,
-            "gap_c": 0.02,
+            "model_prob": 0.0056,
+            "gap_c": 0.01,
             "suspect": false
           },
           {
             "label": "0.0%",
             "market_prob": 0.015,
-            "model_prob": 0.0256,
-            "gap_c": 1.06,
+            "model_prob": 0.0251,
+            "gap_c": 1.01,
             "suspect": false
           },
           {
             "label": "0.1%",
             "market_prob": 0.006,
-            "model_prob": 0.0784,
-            "gap_c": 7.24,
+            "model_prob": 0.0772,
+            "gap_c": 7.12,
             "suspect": false
           },
           {
             "label": "0.2%",
             "market_prob": 0.095,
-            "model_prob": 0.1643,
-            "gap_c": 6.93,
+            "model_prob": 0.1628,
+            "gap_c": 6.78,
             "suspect": false
           },
           {
             "label": "0.3%",
             "market_prob": 0.28,
-            "model_prob": 0.2359,
-            "gap_c": -4.41,
+            "model_prob": 0.2352,
+            "gap_c": -4.48,
             "suspect": false
           },
           {
             "label": "0.4%",
             "market_prob": 0.43,
-            "model_prob": 0.232,
-            "gap_c": -19.8,
+            "model_prob": 0.2328,
+            "gap_c": -19.72,
             "suspect": false
           },
           {
             "label": "\u22650.5%",
             "market_prob": 0.195,
-            "model_prob": 0.2571,
-            "gap_c": 6.21,
+            "model_prob": 0.2605,
+            "gap_c": 6.55,
             "suspect": false
           }
         ]
@@ -763,86 +764,86 @@
         "basis": "yoy",
         "ref_month": "2026-8",
         "url": "https://polymarket.com/event/august-inflation-us-annual-1786474662954",
-        "nowcast_pp": 3.36186031425143,
-        "nowcast_as_of": "2026-08-18 00:00",
+        "nowcast_pp": 3.36362988816106,
+        "nowcast_as_of": "2026-08-19 00:00",
         "sigma": 0.16,
         "model_sigma_note": "",
         "rows": [
           {
             "label": "\u22642.9%",
             "market_prob": 0.006,
-            "model_prob": 0.005,
-            "gap_c": -0.1,
+            "model_prob": 0.0049,
+            "gap_c": -0.11,
             "suspect": false
           },
           {
             "label": "3.0%",
             "market_prob": 0.015,
-            "model_prob": 0.0206,
-            "gap_c": 0.56,
+            "model_prob": 0.0201,
+            "gap_c": 0.51,
             "suspect": false
           },
           {
             "label": "3.1%",
             "market_prob": 0.017,
-            "model_prob": 0.0671,
-            "gap_c": 5.01,
+            "model_prob": 0.0659,
+            "gap_c": 4.89,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.0935,
-            "model_prob": 0.1495,
-            "gap_c": 5.6,
+            "market_prob": 0.0925,
+            "model_prob": 0.1479,
+            "gap_c": 5.54,
             "suspect": false
           },
           {
             "label": "3.3%",
             "market_prob": 0.3,
-            "model_prob": 0.2282,
-            "gap_c": -7.18,
+            "model_prob": 0.2273,
+            "gap_c": -7.27,
             "suspect": false
           },
           {
             "label": "3.4%",
             "market_prob": 0.415,
-            "model_prob": 0.2387,
-            "gap_c": -17.63,
+            "model_prob": 0.2393,
+            "gap_c": -17.57,
             "suspect": false
           },
           {
             "label": "3.5%",
             "market_prob": 0.16,
-            "model_prob": 0.171,
-            "gap_c": 1.1,
+            "model_prob": 0.1726,
+            "gap_c": 1.26,
             "suspect": false
           },
           {
             "label": "3.6%",
             "market_prob": 0.05,
-            "model_prob": 0.084,
-            "gap_c": 3.4,
+            "model_prob": 0.0853,
+            "gap_c": 3.53,
             "suspect": false
           },
           {
             "label": "3.7%",
             "market_prob": 0.0295,
-            "model_prob": 0.0282,
-            "gap_c": -0.13,
+            "model_prob": 0.0289,
+            "gap_c": -0.06,
             "suspect": false
           },
           {
             "label": "3.8%",
             "market_prob": 0.034,
-            "model_prob": 0.0065,
-            "gap_c": -2.75,
+            "model_prob": 0.0067,
+            "gap_c": -2.73,
             "suspect": false
           },
           {
             "label": "3.9%",
             "market_prob": 0.0055,
-            "model_prob": 0.001,
-            "gap_c": -0.45,
+            "model_prob": 0.0011,
+            "gap_c": -0.44,
             "suspect": false
           },
           {
@@ -863,20 +864,42 @@
   "gas": [],
   "spxindex": [
     {
-      "market_id": "KXNASDAQ100-26AUG19H1600-B29550",
+      "market_id": "KXINX-26AUG19H1600-B7737",
       "venue": "kalshi",
       "source": "spxindex",
       "outcome": "Yes",
-      "title": "Will the Nasdaq-100 be between 29500 and 29599.9900 at the end of Aug 19, 2026 at 4pm EDT?",
+      "title": "Will the S&P 500 be between 7725 and 7749.9999 on Aug 19, 2026 at 4pm EDT?",
+      "url": "https://kalshi.com/markets/KXINX-26AUG19H1600",
+      "entry_price": 0.32,
+      "model_prob": 0.395,
+      "edge": 0.075,
+      "fair": 0.395,
+      "market_prob": 0.3,
+      "implied_sigma": 0.1341,
+      "spot_used": 7723.38,
+      "chain_ts": "2026-08-19 14:00:34",
+      "vrp_shrink": 0.92,
+      "series": "KXINX",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-08-19T20:00:00+00:00",
+      "event_iso": "2026-08-19T20:00:00+00:00"
+    },
+    {
+      "market_id": "KXNASDAQ100-26AUG19H1600-B29650",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "Yes",
+      "title": "Will the Nasdaq-100 be between 29600 and 29699.9900 at the end of Aug 19, 2026 at 4pm EDT?",
       "url": "https://kalshi.com/markets/KXNASDAQ100-26AUG19H1600",
-      "entry_price": 0.16,
-      "model_prob": 0.3601,
-      "edge": 0.2001,
-      "fair": 0.3601,
-      "market_prob": 0.135,
-      "implied_sigma": 0.3188,
-      "spot_used": 29490.96,
-      "chain_ts": "2026-08-19 13:12:05",
+      "entry_price": 0.12,
+      "model_prob": 0.1919,
+      "edge": 0.0719,
+      "fair": 0.1919,
+      "market_prob": 0.095,
+      "implied_sigma": 0.2574,
+      "spot_used": 29517.28,
+      "chain_ts": "2026-08-19 14:00:08",
       "vrp_shrink": 0.92,
       "series": "KXNASDAQ100",
       "model": "cboe-0dte-density",
@@ -885,20 +908,42 @@
       "event_iso": "2026-08-19T20:00:00+00:00"
     },
     {
-      "market_id": "KXNASDAQ100-26AUG19H1600-B29450",
+      "market_id": "KXNASDAQ100-26AUG19H1600-B29250",
       "venue": "kalshi",
       "source": "spxindex",
       "outcome": "No",
-      "title": "Will the Nasdaq-100 be between 29400 and 29499.9900 at the end of Aug 19, 2026 at 4pm EDT?",
+      "title": "Will the Nasdaq-100 be between 29200 and 29299.9900 at the end of Aug 19, 2026 at 4pm EDT?",
       "url": "https://kalshi.com/markets/KXNASDAQ100-26AUG19H1600",
-      "entry_price": 0.93,
-      "model_prob": 1.0,
-      "edge": 0.07,
-      "fair": 0.0,
-      "market_prob": 0.095,
-      "implied_sigma": 0.3188,
-      "spot_used": 29490.96,
-      "chain_ts": "2026-08-19 13:12:05",
+      "entry_price": 0.88,
+      "model_prob": 0.9319,
+      "edge": 0.0519,
+      "fair": 0.0681,
+      "market_prob": 0.145,
+      "implied_sigma": 0.2574,
+      "spot_used": 29517.28,
+      "chain_ts": "2026-08-19 14:00:08",
+      "vrp_shrink": 0.92,
+      "series": "KXNASDAQ100",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-08-19T20:00:00+00:00",
+      "event_iso": "2026-08-19T20:00:00+00:00"
+    },
+    {
+      "market_id": "KXNASDAQ100-26AUG19H1600-B29350",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "No",
+      "title": "Will the Nasdaq-100 be between 29300 and 29399.9900 at the end of Aug 19, 2026 at 4pm EDT?",
+      "url": "https://kalshi.com/markets/KXNASDAQ100-26AUG19H1600",
+      "entry_price": 0.84,
+      "model_prob": 0.8755,
+      "edge": 0.0355,
+      "fair": 0.1245,
+      "market_prob": 0.18,
+      "implied_sigma": 0.2574,
+      "spot_used": 29517.28,
+      "chain_ts": "2026-08-19 14:00:08",
       "vrp_shrink": 0.92,
       "series": "KXNASDAQ100",
       "model": "cboe-0dte-density",
