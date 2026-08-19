@@ -1,87 +1,43 @@
 {
-  "generated": "2026-08-19 00:00:42",
-  "generated_at": 1787097642.0156674,
+  "generated": "2026-08-19 01:54:48",
+  "generated_at": 1787104488.2897336,
   "account_size": 100000.0,
-  "tickets": [
-    {
-      "market_id": "0x70de0744c8c2d7d31fab0f2d75b44e7d7577807cbff2e39b02ab547c68d81b45",
-      "title": "Chicago White Sox vs. Chicago Cubs",
-      "side_label": "Chicago Cubs \u2014 Chicago White Sox vs. Chicago Cubs",
-      "outcome": "Chicago Cubs",
-      "entry_price": 0.625,
-      "whale_price": 0.62,
-      "drift_c": 0.5,
-      "contracts": 865,
-      "cost": 540.62,
-      "max_payout": 865.0,
-      "conviction": 0.541,
-      "hours_to_resolve": 0.1,
-      "n_wallets": 2,
-      "whale_usd": 25597,
-      "minutes_ago": 57,
-      "liquidity": 510472,
-      "url": "https://polymarket.com/event/mlb-cws-chc-2026-08-18",
-      "end_iso": "2026-08-26T00:05:00Z",
-      "event_iso": "2026-08-19 00:05:00+00",
-      "slug": "mlb-cws-chc-2026-08-18",
-      "signal_ts": 1787094241.0,
-      "wallet_usd": [
-        [
-          "0x3dfb153c197d4c19d3b31c1ecd2c7b6860eeabaf",
-          21876.92
-        ],
-        [
-          "0xc3c3b3ef304ddbea39fa2246e683a71da5d0eec8",
-          3720.0
-        ]
-      ],
-      "why": [
-        "2 profitable wallets on this side",
-        "$25,597 \u2014 but only 7.5% of their book",
-        "latest buy 57 min ago",
-        "still near their entry price",
-        "0h until it resolves",
-        "$510,472 liquidity"
-      ],
-      "warnings": []
-    }
-  ],
+  "tickets": [],
   "probe": [
     {
-      "market_id": "0xcc56c82eae6307b8f931a02876df2bfe30ee5c9c88df5f6805af5a95ac64a9c4",
-      "title": "Washington Nationals vs. Texas Rangers",
-      "side_label": "Washington Nationals \u2014 Washington Nationals vs. Texas Rangers",
-      "outcome": "Washington Nationals",
-      "entry_price": 0.425,
-      "whale_price": 0.42,
-      "drift_c": 0.5,
-      "contracts": 908,
-      "cost": 385.9,
-      "max_payout": 908.0,
-      "conviction": 0.386,
-      "hours_to_resolve": 0.1,
+      "market_id": "0x5bd7f96d38645c7dabffa94c6f48e741f86655ba0dbd48cd4e7f9bbdde2774cc",
+      "title": "Will Bitcoin reach $70,000 in August?",
+      "side_label": "NO on: Will Bitcoin reach $70,000 in August?",
+      "outcome": "No",
+      "entry_price": 0.9,
+      "whale_price": 0.89,
+      "drift_c": 1.0,
+      "contracts": 484,
+      "cost": 435.6,
+      "max_payout": 484.0,
+      "conviction": 0.436,
+      "hours_to_resolve": 314.1,
       "n_wallets": 1,
-      "whale_usd": 8881,
-      "minutes_ago": 98,
-      "liquidity": 563207,
-      "url": "https://polymarket.com/event/mlb-wsh-tex-2026-08-18",
-      "end_iso": "2026-08-26T00:05:00Z",
-      "event_iso": "2026-08-19 00:05:00+00",
-      "slug": "mlb-wsh-tex-2026-08-18",
-      "signal_ts": 1787091759.0,
+      "whale_usd": 7319,
+      "minutes_ago": 112,
+      "liquidity": 28277,
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
+      "end_iso": "2026-09-01T04:00:00Z",
+      "event_iso": "",
+      "slug": "will-bitcoin-reach-70k-in-august-2026",
+      "signal_ts": 1787097769.0,
       "wallet_usd": [
         [
-          "0x56acab44cfca2e88bb9b3406890aea7bfa0cd77e",
-          8881.02
+          "0x56ad6bd05999e0f33ea9c05a48ccb1364a46f13e",
+          7318.55
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$8,881 \u2014 but only 8.5% of their book",
-        "latest buy 98 min ago",
-        "still near their entry price",
-        "0h until it resolves",
-        "$563,207 liquidity"
+        "$7,319 \u2014 but only 1.4% of their book",
+        "latest buy 112 min ago",
+        "price up 1.0c since they bought",
+        "314h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -90,37 +46,38 @@
   ],
   "considered": 264,
   "rejected": {
-    "market closed": 116,
-    "fresh wallet: market too liquid for the pattern": 13,
-    "in-play (event already started)": 33,
+    "in-play (event already started)": 30,
+    "market closed": 117,
+    "fresh wallet: market too liquid for the pattern": 14,
     "resolves more than 30 days out": 5,
-    "already resolved": 28,
-    "esports (sleeve retired \u2014 see esports_enabled)": 14,
-    "wallet not new (no track record either)": 26,
-    "signal too old for this market's horizon": 9,
-    "resolves in under 3h": 10,
-    "parlay / combo ticket, not a single market": 6,
+    "esports (sleeve retired \u2014 see esports_enabled)": 16,
+    "already resolved": 33,
+    "wallet not new (no track record either)": 35,
+    "signal too old for this market's horizon": 2,
+    "parlay / combo ticket, not a single market": 8,
+    "resolves in under 3h": 2,
     "price outside tradeable band": 1,
-    "duplicate event (kept the stronger side)": 1,
     "below the 0.45 buy bar (recorded, not bought)": 1
   },
-  "notes": [],
+  "notes": [
+    "Signals came in but none cleared the filters \u2014 that is a normal, and usually correct, outcome."
+  ],
   "consistency": {
     "ok": true,
     "enabled": true,
-    "events_scanned": 344,
+    "events_scanned": 345,
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 121,
-      "not a ladder: fewer than two live, quoted legs": 94,
+      "not a ladder: fewer than two live, quoted legs": 93,
       "not a ladder: group labels are not thresholds or deadlines": 54,
       "not a ladder: duplicate deadlines left too few rungs": 5,
-      "ladder pair too illiquid to fill": 101,
+      "bracket overround smaller than the spread": 2,
+      "ladder pair too illiquid to fill": 90,
       "bracket has too many legs to place by hand": 1,
       "ladder inversion smaller than the spread": 3,
-      "not a ladder: numeric group spans different end dates": 2,
-      "not a ladder: a live leg carries no group label": 3,
+      "not a ladder: numeric group spans different end dates": 1,
+      "not a ladder: a live leg carries no group label": 7,
       "bracket leg too illiquid to fill": 4,
-      "bracket overround smaller than the spread": 1,
       "dominance gap smaller than the spread": 2
     },
     "notes": [],
@@ -149,7 +106,7 @@
             "name": "<500B",
             "bid": 0.002,
             "ask": 0.009,
-            "liquidity": 8356.31649,
+            "liquidity": 7181.41797,
             "end_iso": "2026-06-30T00:00:00Z",
             "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
           },
@@ -158,7 +115,7 @@
             "name": "500\u2013750B",
             "bid": 0.002,
             "ask": 0.003,
-            "liquidity": 9370.21646,
+            "liquidity": 7709.45763,
             "end_iso": "2026-06-30T00:00:00Z",
             "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
           },
@@ -167,7 +124,7 @@
             "name": "750B\u20131T",
             "bid": 0.043,
             "ask": 0.051,
-            "liquidity": 9398.12468,
+            "liquidity": 7524.99481,
             "end_iso": "2026-06-30T00:00:00Z",
             "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
           },
@@ -176,7 +133,7 @@
             "name": "1T\u20131.25T",
             "bid": 0.032,
             "ask": 0.034,
-            "liquidity": 9307.3142,
+            "liquidity": 7420.04082,
             "end_iso": "2026-06-30T00:00:00Z",
             "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
           },
@@ -185,7 +142,7 @@
             "name": "1.25T\u20131.5T",
             "bid": 0.004,
             "ask": 0.027,
-            "liquidity": 9998.98446,
+            "liquidity": 8257.31306,
             "end_iso": "2026-06-30T00:00:00Z",
             "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
           },
@@ -194,7 +151,7 @@
             "name": "1.5T+",
             "bid": 0.021,
             "ask": 0.055,
-            "liquidity": 9357.53364,
+            "liquidity": 7753.10995,
             "end_iso": "2026-06-30T00:00:00Z",
             "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
           },
@@ -203,7 +160,7 @@
             "name": "No IPO by December 31, 2026",
             "bid": 0.77,
             "ask": 0.79,
-            "liquidity": 30481.7166,
+            "liquidity": 29699.2446,
             "end_iso": "2027-01-01T01:00:00Z",
             "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
           }
@@ -228,7 +185,7 @@
             "name": "$50M",
             "bid": 0.19,
             "ask": 0.2,
-            "liquidity": 12290.4283,
+            "liquidity": 11603.3325,
             "end_iso": "2027-01-01T05:00:00Z",
             "url": "https://polymarket.com/event/puffpaw-fdv-above-one-day-after-launch"
           },
@@ -237,7 +194,7 @@
             "name": "$100M",
             "bid": 0.23,
             "ask": 0.25,
-            "liquidity": 15424.0147,
+            "liquidity": 14658.8467,
             "end_iso": "2027-01-01T05:00:00Z",
             "url": "https://polymarket.com/event/puffpaw-fdv-above-one-day-after-launch"
           }
@@ -341,9 +298,9 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.043,
+            "market_prob": 0.0515,
             "model_prob": 0.1297,
-            "gap_c": 8.67,
+            "gap_c": 7.82,
             "suspect": false
           },
           {
@@ -369,9 +326,9 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.043,
+            "market_prob": 0.04,
             "model_prob": 0.1012,
-            "gap_c": 5.82,
+            "gap_c": 6.12,
             "suspect": false
           },
           {
@@ -383,9 +340,9 @@
           },
           {
             "label": "2.8%",
-            "market_prob": 0.027,
+            "market_prob": 0.0275,
             "model_prob": 0.0092,
-            "gap_c": -1.78,
+            "gap_c": -1.83,
             "suspect": false
           },
           {
@@ -425,30 +382,30 @@
           },
           {
             "label": "3.1%",
-            "market_prob": 0.019,
+            "market_prob": 0.017,
             "model_prob": 0.0671,
-            "gap_c": 4.81,
+            "gap_c": 5.01,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.0945,
+            "market_prob": 0.0915,
             "model_prob": 0.1495,
-            "gap_c": 5.5,
+            "gap_c": 5.8,
             "suspect": false
           },
           {
             "label": "3.3%",
-            "market_prob": 0.305,
+            "market_prob": 0.295,
             "model_prob": 0.2282,
-            "gap_c": -7.68,
+            "gap_c": -6.68,
             "suspect": false
           },
           {
             "label": "3.4%",
-            "market_prob": 0.4,
+            "market_prob": 0.395,
             "model_prob": 0.2387,
-            "gap_c": -16.13,
+            "gap_c": -15.63,
             "suspect": false
           },
           {
@@ -460,9 +417,9 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.0495,
+            "market_prob": 0.051,
             "model_prob": 0.084,
-            "gap_c": 3.45,
+            "gap_c": 3.3,
             "suspect": false
           },
           {
@@ -516,9 +473,9 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.041,
+            "market_prob": 0.0465,
             "model_prob": 0.0009,
-            "gap_c": -4.01,
+            "gap_c": -4.56,
             "suspect": false
           },
           {
@@ -544,9 +501,9 @@
           },
           {
             "label": "0.2%",
-            "market_prob": 0.09,
+            "market_prob": 0.095,
             "model_prob": 0.1643,
-            "gap_c": 7.43,
+            "gap_c": 6.93,
             "suspect": false
           },
           {
