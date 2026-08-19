@@ -1,74 +1,154 @@
 {
-  "generated": "2026-08-19 01:54:48",
-  "generated_at": 1787104488.2897336,
+  "generated": "2026-08-19 03:05:30",
+  "generated_at": 1787108730.72561,
   "account_size": 100000.0,
-  "tickets": [],
-  "probe": [
+  "tickets": [
     {
-      "market_id": "0x5bd7f96d38645c7dabffa94c6f48e741f86655ba0dbd48cd4e7f9bbdde2774cc",
-      "title": "Will Bitcoin reach $70,000 in August?",
-      "side_label": "NO on: Will Bitcoin reach $70,000 in August?",
+      "market_id": "0xe7db5d31d8ce10fad03ffc9ccea14496cf038438e7c26b36300230cf91fc32ec",
+      "title": "Will Bitcoin dip to $62,500 in August?",
+      "side_label": "NO on: Will Bitcoin dip to $62,500 in August?",
       "outcome": "No",
-      "entry_price": 0.9,
-      "whale_price": 0.89,
-      "drift_c": 1.0,
-      "contracts": 484,
-      "cost": 435.6,
-      "max_payout": 484.0,
-      "conviction": 0.436,
-      "hours_to_resolve": 314.1,
+      "entry_price": 0.449,
+      "whale_price": 0.462,
+      "drift_c": -1.3,
+      "contracts": 1242,
+      "cost": 557.66,
+      "max_payout": 1242.0,
+      "conviction": 0.558,
+      "hours_to_resolve": 312.9,
       "n_wallets": 1,
-      "whale_usd": 7319,
-      "minutes_ago": 112,
-      "liquidity": 28277,
+      "whale_usd": 5000,
+      "minutes_ago": 11,
+      "liquidity": 44580,
       "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
       "end_iso": "2026-09-01T04:00:00Z",
       "event_iso": "",
-      "slug": "will-bitcoin-reach-70k-in-august-2026",
-      "signal_ts": 1787097769.0,
+      "slug": "will-bitcoin-dip-to-62pt5k-in-august-2026-from-august-3",
+      "signal_ts": 1787108068.0,
       "wallet_usd": [
         [
-          "0x56ad6bd05999e0f33ea9c05a48ccb1364a46f13e",
-          7318.55
+          "0x1cd24cc49782240413903b4b7e7694779f917f85",
+          5000.0
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$7,319 \u2014 but only 1.4% of their book",
-        "latest buy 112 min ago",
-        "price up 1.0c since they bought",
-        "314h until it resolves"
+        "$5,000 \u2014 but only 3.7% of their book",
+        "latest buy 11 min ago",
+        "price 1.3c cheaper than they paid",
+        "313h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 264,
-  "rejected": {
-    "in-play (event already started)": 30,
-    "market closed": 117,
-    "fresh wallet: market too liquid for the pattern": 14,
-    "resolves more than 30 days out": 5,
-    "esports (sleeve retired \u2014 see esports_enabled)": 16,
-    "already resolved": 33,
-    "wallet not new (no track record either)": 35,
-    "signal too old for this market's horizon": 2,
-    "parlay / combo ticket, not a single market": 8,
-    "resolves in under 3h": 2,
-    "price outside tradeable band": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 1
-  },
-  "notes": [
-    "Signals came in but none cleared the filters \u2014 that is a normal, and usually correct, outcome."
+  "probe": [
+    {
+      "market_id": "0xe32e959a5585ba3bb350c196892252868a69c65c9c00b08e2b3b370949dc5511",
+      "title": "Will Los Angeles Galaxy win on 2026-08-19?",
+      "side_label": "YES on: Will Los Angeles Galaxy win on 2026-08-19?",
+      "outcome": "Yes",
+      "entry_price": 0.43,
+      "whale_price": 0.42,
+      "drift_c": 1.0,
+      "contracts": 995,
+      "cost": 427.85,
+      "max_payout": 995.0,
+      "conviction": 0.428,
+      "hours_to_resolve": 23.4,
+      "n_wallets": 1,
+      "whale_usd": 2570,
+      "minutes_ago": 39,
+      "liquidity": 54960,
+      "url": "https://polymarket.com/event/mls-lag-sje-2026-08-19",
+      "end_iso": "2026-08-20T02:30:00Z",
+      "event_iso": "2026-08-20 02:30:00+00",
+      "slug": "mls-lag-sje-2026-08-19-lag",
+      "signal_ts": 1787106373.0,
+      "wallet_usd": [
+        [
+          "0x076daa87c4fe1a85402a9b6b8e0a866224388d4c",
+          2570.3
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,570 \u2014 but only 3.1% of their book",
+        "latest buy 39 min ago",
+        "price up 1.0c since they bought",
+        "23h until it resolves",
+        "$54,960 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0xa191e00ab4daea82812f89fe66e0f5d67659fa25c062a182be612ecbf9060c34",
+      "title": "Will Los Angeles FC win on 2026-08-19?",
+      "side_label": "YES on: Will Los Angeles FC win on 2026-08-19?",
+      "outcome": "Yes",
+      "entry_price": 0.41,
+      "whale_price": 0.4,
+      "drift_c": 1.0,
+      "contracts": 1036,
+      "cost": 424.76,
+      "max_payout": 1036.0,
+      "conviction": 0.425,
+      "hours_to_resolve": 22.4,
+      "n_wallets": 1,
+      "whale_usd": 2885,
+      "minutes_ago": 39,
+      "liquidity": 74023,
+      "url": "https://polymarket.com/event/mls-col-laf-2026-08-19",
+      "end_iso": "2026-08-20T01:30:00Z",
+      "event_iso": "2026-08-20 01:30:00+00",
+      "slug": "mls-col-laf-2026-08-19-laf",
+      "signal_ts": 1787106367.0,
+      "wallet_usd": [
+        [
+          "0x448861155279dbf833d041b963e3ac854599e319",
+          2884.52
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,885 \u2014 but only 2.1% of their book",
+        "latest buy 39 min ago",
+        "price up 1.0c since they bought",
+        "22h until it resolves",
+        "$74,023 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    }
   ],
+  "considered": 284,
+  "rejected": {
+    "market closed": 178,
+    "fresh wallet: market too liquid for the pattern": 11,
+    "esports (sleeve retired \u2014 see esports_enabled)": 16,
+    "in-play (event already started)": 7,
+    "already resolved": 24,
+    "resolves more than 30 days out": 7,
+    "wallet not new (no track record either)": 27,
+    "parlay / combo ticket, not a single market": 9,
+    "price outside tradeable band": 1,
+    "signal too old for this market's horizon": 1,
+    "below the 0.45 buy bar (recorded, not bought)": 2
+  },
+  "notes": [],
   "consistency": {
     "ok": true,
     "enabled": true,
-    "events_scanned": 345,
+    "events_scanned": 344,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 121,
-      "not a ladder: fewer than two live, quoted legs": 93,
+      "bracket has legs we cannot price (fail closed)": 122,
+      "not a ladder: fewer than two live, quoted legs": 91,
       "not a ladder: group labels are not thresholds or deadlines": 54,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "bracket overround smaller than the spread": 2,
@@ -82,90 +162,6 @@
     },
     "notes": [],
     "violations": [
-      {
-        "family": "bracket",
-        "event_slug": "openai-ipo-closing-market-cap",
-        "constraint": "7 mutually exclusive outcomes offer at 0.9690 total, but exactly one of them pays 1.00",
-        "edge_c": 3.1,
-        "actions": [
-          "BUY YES  <500B  @ 0.009",
-          "BUY YES  500\u2013750B  @ 0.003",
-          "BUY YES  750B\u20131T  @ 0.051",
-          "BUY YES  1T\u20131.25T  @ 0.034",
-          "BUY YES  1.25T\u20131.5T  @ 0.027",
-          "BUY YES  1.5T+  @ 0.055",
-          "BUY YES  No IPO by December 31, 2026  @ 0.790"
-        ],
-        "warnings": [
-          "requires filling all 7 legs - confirm the event page lists exactly 7 outcomes before trusting the sum"
-        ],
-        "url": "https://polymarket.com/event/openai-ipo-closing-market-cap",
-        "legs": [
-          {
-            "question": "Will OpenAI\u2019s market cap be less than $500B at market close on IPO day?",
-            "name": "<500B",
-            "bid": 0.002,
-            "ask": 0.009,
-            "liquidity": 7181.41797,
-            "end_iso": "2026-06-30T00:00:00Z",
-            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
-          },
-          {
-            "question": "Will OpenAI\u2019s market cap be between $500B and $750B at market close on IPO day?",
-            "name": "500\u2013750B",
-            "bid": 0.002,
-            "ask": 0.003,
-            "liquidity": 7709.45763,
-            "end_iso": "2026-06-30T00:00:00Z",
-            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
-          },
-          {
-            "question": "Will OpenAI\u2019s market cap be between $750B and $1T at market close on IPO day?",
-            "name": "750B\u20131T",
-            "bid": 0.043,
-            "ask": 0.051,
-            "liquidity": 7524.99481,
-            "end_iso": "2026-06-30T00:00:00Z",
-            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
-          },
-          {
-            "question": "Will OpenAI\u2019s market cap be between $1T and $1.25T at market close on IPO day?",
-            "name": "1T\u20131.25T",
-            "bid": 0.032,
-            "ask": 0.034,
-            "liquidity": 7420.04082,
-            "end_iso": "2026-06-30T00:00:00Z",
-            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
-          },
-          {
-            "question": "Will OpenAI\u2019s market cap be between $1.25T and $1.5T at market close on IPO day?",
-            "name": "1.25T\u20131.5T",
-            "bid": 0.004,
-            "ask": 0.027,
-            "liquidity": 8257.31306,
-            "end_iso": "2026-06-30T00:00:00Z",
-            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
-          },
-          {
-            "question": "Will OpenAI\u2019s market cap be $1.5T or greater at market close on IPO day?",
-            "name": "1.5T+",
-            "bid": 0.021,
-            "ask": 0.055,
-            "liquidity": 7753.10995,
-            "end_iso": "2026-06-30T00:00:00Z",
-            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
-          },
-          {
-            "question": "Will OpenAI not IPO by December 31, 2026?",
-            "name": "No IPO by December 31, 2026",
-            "bid": 0.77,
-            "ask": 0.79,
-            "liquidity": 29699.2446,
-            "end_iso": "2027-01-01T01:00:00Z",
-            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
-          }
-        ]
-      },
       {
         "family": "ladder",
         "event_slug": "puffpaw-fdv-above-one-day-after-launch",
@@ -185,7 +181,7 @@
             "name": "$50M",
             "bid": 0.19,
             "ask": 0.2,
-            "liquidity": 11603.3325,
+            "liquidity": 13450.7534,
             "end_iso": "2027-01-01T05:00:00Z",
             "url": "https://polymarket.com/event/puffpaw-fdv-above-one-day-after-launch"
           },
@@ -194,9 +190,93 @@
             "name": "$100M",
             "bid": 0.23,
             "ask": 0.25,
-            "liquidity": 14658.8467,
+            "liquidity": 16825.9777,
             "end_iso": "2027-01-01T05:00:00Z",
             "url": "https://polymarket.com/event/puffpaw-fdv-above-one-day-after-launch"
+          }
+        ]
+      },
+      {
+        "family": "bracket",
+        "event_slug": "openai-ipo-closing-market-cap",
+        "constraint": "7 mutually exclusive outcomes offer at 0.9750 total, but exactly one of them pays 1.00",
+        "edge_c": 2.5,
+        "actions": [
+          "BUY YES  <500B  @ 0.009",
+          "BUY YES  500\u2013750B  @ 0.004",
+          "BUY YES  750B\u20131T  @ 0.051",
+          "BUY YES  1T\u20131.25T  @ 0.035",
+          "BUY YES  1.25T\u20131.5T  @ 0.031",
+          "BUY YES  1.5T+  @ 0.055",
+          "BUY YES  No IPO by December 31, 2026  @ 0.790"
+        ],
+        "warnings": [
+          "requires filling all 7 legs - confirm the event page lists exactly 7 outcomes before trusting the sum"
+        ],
+        "url": "https://polymarket.com/event/openai-ipo-closing-market-cap",
+        "legs": [
+          {
+            "question": "Will OpenAI\u2019s market cap be less than $500B at market close on IPO day?",
+            "name": "<500B",
+            "bid": 0.002,
+            "ask": 0.009,
+            "liquidity": 7673.16897,
+            "end_iso": "2026-06-30T00:00:00Z",
+            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
+          },
+          {
+            "question": "Will OpenAI\u2019s market cap be between $500B and $750B at market close on IPO day?",
+            "name": "500\u2013750B",
+            "bid": 0.002,
+            "ask": 0.004,
+            "liquidity": 8101.72589,
+            "end_iso": "2026-06-30T00:00:00Z",
+            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
+          },
+          {
+            "question": "Will OpenAI\u2019s market cap be between $750B and $1T at market close on IPO day?",
+            "name": "750B\u20131T",
+            "bid": 0.043,
+            "ask": 0.051,
+            "liquidity": 7751.27825,
+            "end_iso": "2026-06-30T00:00:00Z",
+            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
+          },
+          {
+            "question": "Will OpenAI\u2019s market cap be between $1T and $1.25T at market close on IPO day?",
+            "name": "1T\u20131.25T",
+            "bid": 0.032,
+            "ask": 0.035,
+            "liquidity": 7945.03579,
+            "end_iso": "2026-06-30T00:00:00Z",
+            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
+          },
+          {
+            "question": "Will OpenAI\u2019s market cap be between $1.25T and $1.5T at market close on IPO day?",
+            "name": "1.25T\u20131.5T",
+            "bid": 0.004,
+            "ask": 0.031,
+            "liquidity": 8694.18225,
+            "end_iso": "2026-06-30T00:00:00Z",
+            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
+          },
+          {
+            "question": "Will OpenAI\u2019s market cap be $1.5T or greater at market close on IPO day?",
+            "name": "1.5T+",
+            "bid": 0.021,
+            "ask": 0.055,
+            "liquidity": 7948.61217,
+            "end_iso": "2026-06-30T00:00:00Z",
+            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
+          },
+          {
+            "question": "Will OpenAI not IPO by December 31, 2026?",
+            "name": "No IPO by December 31, 2026",
+            "bid": 0.77,
+            "ask": 0.79,
+            "liquidity": 30656.1244,
+            "end_iso": "2027-01-01T01:00:00Z",
+            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap"
           }
         ]
       }
@@ -217,7 +297,7 @@
         "nowcast_pp": 0.203341742698412,
         "nowcast_as_of": "2026-08-18 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.089pp (x1.79). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.089pp (x1.80). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -249,9 +329,9 @@
           },
           {
             "label": "0.4%",
-            "market_prob": 0.028,
+            "market_prob": 0.025,
             "model_prob": 0.1181,
-            "gap_c": 9.01,
+            "gap_c": 9.31,
             "suspect": false
           },
           {
@@ -298,9 +378,9 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.0515,
+            "market_prob": 0.048,
             "model_prob": 0.1297,
-            "gap_c": 7.82,
+            "gap_c": 8.17,
             "suspect": false
           },
           {
@@ -326,16 +406,16 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.04,
+            "market_prob": 0.041,
             "model_prob": 0.1012,
-            "gap_c": 6.12,
+            "gap_c": 6.02,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0485,
+            "market_prob": 0.046,
             "model_prob": 0.0369,
-            "gap_c": -1.16,
+            "gap_c": -0.91,
             "suspect": false
           },
           {
@@ -396,9 +476,9 @@
           },
           {
             "label": "3.3%",
-            "market_prob": 0.295,
+            "market_prob": 0.29,
             "model_prob": 0.2282,
-            "gap_c": -6.68,
+            "gap_c": -6.18,
             "suspect": false
           },
           {
@@ -417,9 +497,9 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.051,
+            "market_prob": 0.0505,
             "model_prob": 0.084,
-            "gap_c": 3.3,
+            "gap_c": 3.35,
             "suspect": false
           },
           {
@@ -473,9 +553,9 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.0465,
+            "market_prob": 0.0405,
             "model_prob": 0.0009,
-            "gap_c": -4.56,
+            "gap_c": -3.96,
             "suspect": false
           },
           {
@@ -508,9 +588,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.315,
+            "market_prob": 0.31,
             "model_prob": 0.2359,
-            "gap_c": -7.91,
+            "gap_c": -7.41,
             "suspect": false
           },
           {
@@ -522,9 +602,9 @@
           },
           {
             "label": "\u22650.5%",
-            "market_prob": 0.14,
+            "market_prob": 0.17,
             "model_prob": 0.2571,
-            "gap_c": 11.71,
+            "gap_c": 8.71,
             "suspect": false
           }
         ]
