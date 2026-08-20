@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-20 12:04:47",
+  "generated": "2026-08-20 13:14:13",
   "rows": {
     "KXHIGHCHI:2026-08-11": {
       "city": "Chicago Midway, IL",
@@ -196,9 +196,9 @@
       "first_market_sigma_f": 2.49,
       "first_seen_at": 1787148079.1074069,
       "last_forecast_f": 79.0,
-      "last_market_mu_f": 79.28,
-      "last_market_sigma_f": 1.71,
-      "last_seen_at": 1787227486.13206,
+      "last_market_mu_f": 79.27,
+      "last_market_sigma_f": 1.52,
+      "last_seen_at": 1787231652.1644378,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -371,6 +371,8 @@
       "settles_by": "https://forecast.weather.gov/product.php?site=BOU&product=CLI&issuedby=DEN"
     },
     "KXHIGHDEN:2026-08-19": {
+      "bracket_cap": 91,
+      "bracket_floor": 90,
       "city": "Denver, CO",
       "day": "2026-08-19",
       "event_ticker": "KXHIGHDEN-26AUG19",
@@ -382,9 +384,10 @@
       "last_market_mu_f": 90.41,
       "last_market_sigma_f": 0.81,
       "last_seen_at": 1787206628.5728726,
-      "observed_bracket": null,
-      "observed_f": null,
-      "resolved_at": null,
+      "observed_bracket": "90\u00b0 to 91\u00b0",
+      "observed_f": 91.0,
+      "observed_src": "cli",
+      "resolved_at": 1787231653.5148041,
       "series": "KXHIGHDEN",
       "settles_by": "https://forecast.weather.gov/product.php?site=BOU&product=CLI&issuedby=DEN"
     },
@@ -397,9 +400,9 @@
       "first_market_sigma_f": 2.65,
       "first_seen_at": 1787148079.1074069,
       "last_forecast_f": 93.0,
-      "last_market_mu_f": 93.32,
-      "last_market_sigma_f": 1.53,
-      "last_seen_at": 1787227486.13206,
+      "last_market_mu_f": 93.17,
+      "last_market_sigma_f": 1.42,
+      "last_seen_at": 1787231652.1644378,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -601,9 +604,9 @@
       "first_market_sigma_f": null,
       "first_seen_at": 1787148079.1074069,
       "last_forecast_f": 93.0,
-      "last_market_mu_f": 94.01,
-      "last_market_sigma_f": 1.73,
-      "last_seen_at": 1787227486.13206,
+      "last_market_mu_f": 94.04,
+      "last_market_sigma_f": 1.64,
+      "last_seen_at": 1787231652.1644378,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -806,9 +809,9 @@
       "first_market_sigma_f": 2.94,
       "first_seen_at": 1787148079.1074069,
       "last_forecast_f": 82.0,
-      "last_market_mu_f": 83.05,
-      "last_market_sigma_f": 1.65,
-      "last_seen_at": 1787227486.13206,
+      "last_market_mu_f": 83.06,
+      "last_market_sigma_f": 1.52,
+      "last_seen_at": 1787231652.1644378,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -825,11 +828,11 @@
       "sigma_f": 2.03
     },
     "KXHIGHDEN": {
-      "bias_f": -0.31,
+      "bias_f": -0.5,
       "city": "Denver, CO",
       "mae_f": 2.06,
-      "n": 8,
-      "sigma_f": 2.66
+      "n": 9,
+      "sigma_f": 2.55
     },
     "KXHIGHMIA": {
       "bias_f": -1.17,
