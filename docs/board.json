@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-20 22:03:16",
-  "generated_at": 1787263396.6364608,
+  "generated": "2026-08-20 22:47:39",
+  "generated_at": 1787266059.2525938,
   "account_size": 100000.0,
   "tickets": [
     {
@@ -11,15 +11,15 @@
       "entry_price": 0.625,
       "whale_price": 0.62,
       "drift_c": 0.5,
-      "contracts": 1115,
-      "cost": 696.88,
-      "max_payout": 1115.0,
-      "conviction": 0.697,
-      "hours_to_resolve": 2.0,
+      "contracts": 1054,
+      "cost": 658.75,
+      "max_payout": 1054.0,
+      "conviction": 0.659,
+      "hours_to_resolve": 1.3,
       "n_wallets": 2,
       "whale_usd": 117835,
-      "minutes_ago": 38,
-      "liquidity": 667107,
+      "minutes_ago": 82,
+      "liquidity": 698341,
       "url": "https://polymarket.com/event/mlb-wsh-tex-2026-08-20",
       "end_iso": "2026-08-28T00:05:00Z",
       "event_iso": "2026-08-21 00:05:00+00",
@@ -38,10 +38,10 @@
       "why": [
         "2 profitable wallets on this side",
         "$117,835, 85% of their own book",
-        "latest buy 38 min ago",
+        "latest buy 82 min ago",
         "still near their entry price",
-        "2h until it resolves",
-        "$667,107 liquidity"
+        "1h until it resolves",
+        "$698,341 liquidity"
       ],
       "warnings": []
     },
@@ -51,27 +51,23 @@
       "side_label": "Elena Rybakina \u2014 Cincinnati Open: Iga Swiatek vs Elena Rybakina",
       "outcome": "Elena Rybakina",
       "entry_price": 0.405,
-      "whale_price": 0.418,
-      "drift_c": -1.26,
-      "contracts": 1476,
-      "cost": 597.78,
-      "max_payout": 1476.0,
-      "conviction": 0.598,
-      "hours_to_resolve": 0.9,
-      "n_wallets": 3,
-      "whale_usd": 22580,
-      "minutes_ago": 45,
-      "liquidity": 352649,
+      "whale_price": 0.413,
+      "drift_c": -0.81,
+      "contracts": 1165,
+      "cost": 471.83,
+      "max_payout": 1165.0,
+      "conviction": 0.472,
+      "hours_to_resolve": 0.3,
+      "n_wallets": 2,
+      "whale_usd": 7896,
+      "minutes_ago": 90,
+      "liquidity": 395408,
       "url": "https://polymarket.com/event/wta-swiatek-rybakin-2026-08-20",
       "end_iso": "2026-08-27T23:00:00Z",
-      "event_iso": "2026-08-20 23:00:00+00",
+      "event_iso": "2026-08-20 23:05:00+00",
       "slug": "wta-swiatek-rybakin-2026-08-20",
       "signal_ts": 1787260681.0,
       "wallet_usd": [
-        [
-          "0x79ae097215202b5d01f98e4479fb219102469a4a",
-          14684.75
-        ],
         [
           "0x56acab44cfca2e88bb9b3406890aea7bfa0cd77e",
           5375.51
@@ -82,32 +78,34 @@
         ]
       ],
       "why": [
-        "3 profitable wallets on this side",
-        "$22,580, 69% of their own book",
-        "latest buy 45 min ago",
-        "price 1.3c cheaper than they paid",
-        "1h until it resolves",
-        "$352,649 liquidity"
+        "2 profitable wallets on this side",
+        "$7,896 \u2014 but only 17.2% of their book",
+        "latest buy 90 min ago",
+        "price 0.8c cheaper than they paid",
+        "0h until it resolves",
+        "$395,408 liquidity"
       ],
       "warnings": []
-    },
+    }
+  ],
+  "probe": [
     {
       "market_id": "0x1c38a64c494e01c9bd81362cfadeadb3b87023d1d9ffae1df5a428c03152fc74",
       "title": "Iran-Oman Hormuz Agreement by August 31?",
       "side_label": "NO on: Iran-Oman Hormuz Agreement by August 31?",
       "outcome": "No",
-      "entry_price": 0.89,
+      "entry_price": 0.88,
       "whale_price": 0.874,
-      "drift_c": 1.62,
-      "contracts": 505,
-      "cost": 449.45,
-      "max_payout": 505.0,
-      "conviction": 0.45,
-      "hours_to_resolve": 265.9,
+      "drift_c": 0.62,
+      "contracts": 507,
+      "cost": 446.16,
+      "max_payout": 507.0,
+      "conviction": 0.447,
+      "hours_to_resolve": 265.2,
       "n_wallets": 1,
       "whale_usd": 10151,
-      "minutes_ago": 106,
-      "liquidity": 28066,
+      "minutes_ago": 150,
+      "liquidity": 27453,
       "url": "https://polymarket.com/event/iran-oman-hormuz-management-agreement-byptptpt-20260804222725871",
       "end_iso": "2026-08-31T23:59:00Z",
       "event_iso": "",
@@ -122,16 +120,54 @@
       "why": [
         "1 profitable wallet on this side",
         "$10,151 \u2014 but only 11.3% of their book",
-        "latest buy 106 min ago",
-        "price up 1.6c since they bought",
-        "266h until it resolves"
+        "latest buy 150 min ago",
+        "price up 0.6c since they bought",
+        "265h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
-    }
-  ],
-  "probe": [
+    },
+    {
+      "market_id": "0xa3b36b2d6104d34af4e6c6215fc818e43352e78a748fbfb0b85e3a35f71dec9a",
+      "title": "Will there be no change in Fed interest rates after the September 2026 meeting?",
+      "side_label": "NO on: Will there be no change in Fed interest rates after the September 2026 meeting?",
+      "outcome": "No",
+      "entry_price": 0.3,
+      "whale_price": 0.29,
+      "drift_c": 1.0,
+      "contracts": 1370,
+      "cost": 411.0,
+      "max_payout": 1370.0,
+      "conviction": 0.411,
+      "hours_to_resolve": 625.2,
+      "n_wallets": 1,
+      "whale_usd": 6325,
+      "minutes_ago": 228,
+      "liquidity": 679241,
+      "url": "https://polymarket.com/event/fed-decision-in-september-762",
+      "end_iso": "2026-09-16T00:00:00Z",
+      "event_iso": "",
+      "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-september-2026-meeting-615",
+      "signal_ts": 1787252400.0,
+      "wallet_usd": [
+        [
+          "0x58b3380f71bd6c706dd398a5e60bde55fa3a653c",
+          6325.45
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$6,325, 49% of their own book",
+        "latest buy 228 min ago",
+        "price up 1.0c since they bought",
+        "625h until it resolves",
+        "$679,241 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
     {
       "market_id": "0x0d44fe63b8210e1cefb5e9662e8bb2dbd216cb17194f8f23719ac9296c991f2b",
       "title": "Cincinnati Open: Thiago Agustin Tirante vs Arthur Fils",
@@ -140,15 +176,15 @@
       "entry_price": 0.245,
       "whale_price": 0.25,
       "drift_c": -0.5,
-      "contracts": 1787,
-      "cost": 437.81,
-      "max_payout": 1787.0,
-      "conviction": 0.438,
-      "hours_to_resolve": 2.4,
+      "contracts": 1632,
+      "cost": 399.84,
+      "max_payout": 1632.0,
+      "conviction": 0.4,
+      "hours_to_resolve": 1.7,
       "n_wallets": 1,
       "whale_usd": 4505,
-      "minutes_ago": 45,
-      "liquidity": 290167,
+      "minutes_ago": 89,
+      "liquidity": 272465,
       "url": "https://polymarket.com/event/atp-tirante-fils-2026-08-21",
       "end_iso": "2026-08-28T15:00:00Z",
       "event_iso": "2026-08-21 00:30:00+00",
@@ -163,10 +199,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$4,505 \u2014 but only 6.8% of their book",
-        "latest buy 45 min ago",
+        "latest buy 89 min ago",
         "still near their entry price",
         "2h until it resolves",
-        "$290,167 liquidity"
+        "$272,465 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -180,18 +216,18 @@
       "entry_price": 0.685,
       "whale_price": 0.68,
       "drift_c": 0.5,
-      "contracts": 635,
-      "cost": 434.98,
-      "max_payout": 635.0,
-      "conviction": 0.435,
-      "hours_to_resolve": 0.9,
+      "contracts": 581,
+      "cost": 397.99,
+      "max_payout": 581.0,
+      "conviction": 0.398,
+      "hours_to_resolve": 0.5,
       "n_wallets": 1,
       "whale_usd": 7876,
-      "minutes_ago": 45,
-      "liquidity": 344918,
+      "minutes_ago": 90,
+      "liquidity": 345533,
       "url": "https://polymarket.com/event/atp-safiull-wawrink-2026-08-20",
       "end_iso": "2026-08-27T21:00:00Z",
-      "event_iso": "2026-08-20 23:00:00+00",
+      "event_iso": "2026-08-20 23:15:00+00",
       "slug": "atp-safiull-wawrink-2026-08-20",
       "signal_ts": 1787260680.0,
       "wallet_usd": [
@@ -203,10 +239,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$7,876 \u2014 but only 11.9% of their book",
-        "latest buy 45 min ago",
+        "latest buy 90 min ago",
         "still near their entry price",
-        "1h until it resolves",
-        "$344,918 liquidity"
+        "0h until it resolves",
+        "$345,533 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -220,15 +256,15 @@
       "entry_price": 0.795,
       "whale_price": 0.8,
       "drift_c": -0.5,
-      "contracts": 532,
-      "cost": 422.94,
-      "max_payout": 532.0,
-      "conviction": 0.423,
-      "hours_to_resolve": 3.9,
+      "contracts": 484,
+      "cost": 384.78,
+      "max_payout": 484.0,
+      "conviction": 0.385,
+      "hours_to_resolve": 3.2,
       "n_wallets": 1,
       "whale_usd": 3286,
-      "minutes_ago": 74,
-      "liquidity": 135032,
+      "minutes_ago": 119,
+      "liquidity": 136571,
       "url": "https://polymarket.com/event/wnba-atl-la-2026-08-20",
       "end_iso": "2026-08-21T02:00:00Z",
       "event_iso": "2026-08-21 02:00:00+00",
@@ -243,10 +279,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$3,286 \u2014 but only 16.7% of their book",
-        "latest buy 74 min ago",
+        "latest buy 119 min ago",
         "still near their entry price",
-        "4h until it resolves",
-        "$135,032 liquidity"
+        "3h until it resolves",
+        "$136,571 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
@@ -254,102 +290,22 @@
       ]
     },
     {
-      "market_id": "0xcd6c66b11ed8fdbdc1183fb761cf22959c6b481e843a715a7a9f53e22b90d420",
-      "title": "NATO x Russia military clash by August 31, 2026?",
-      "side_label": "NO on: NATO x Russia military clash by August 31, 2026?",
-      "outcome": "No",
-      "entry_price": 0.66,
-      "whale_price": 0.707,
-      "drift_c": -4.73,
-      "contracts": 630,
-      "cost": 415.8,
-      "max_payout": 630.0,
-      "conviction": 0.416,
-      "hours_to_resolve": 241.9,
-      "n_wallets": 1,
-      "whale_usd": 8799,
-      "minutes_ago": 218,
-      "liquidity": 101368,
-      "url": "https://polymarket.com/event/nato-x-russia-military-clash-in-2025",
-      "end_iso": "2026-08-31T00:00:00Z",
-      "event_iso": "",
-      "slug": "nato-x-russia-military-clash-by-august-31-2026",
-      "signal_ts": 1787250310.0,
-      "wallet_usd": [
-        [
-          "0x000d257d2dc7616feaef4ae0f14600fdf50a758e",
-          8799.27
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$8,799 \u2014 but only 1.9% of their book",
-        "latest buy 218 min ago",
-        "price 4.7c cheaper than they paid",
-        "242h until it resolves",
-        "$101,368 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x3b0a99159a31a5a572499c9a26ff17a6e8838e8ea30c9d04fcd51fcf5974414d",
-      "title": "Will Ethereum reach $2,400 in August?",
-      "side_label": "YES on: Will Ethereum reach $2,400 in August?",
-      "outcome": "Yes",
-      "entry_price": 0.73,
-      "whale_price": 0.779,
-      "drift_c": -4.88,
-      "contracts": 557,
-      "cost": 406.61,
-      "max_payout": 557.0,
-      "conviction": 0.407,
-      "hours_to_resolve": 269.9,
-      "n_wallets": 1,
-      "whale_usd": 2040,
-      "minutes_ago": 320,
-      "liquidity": 19429,
-      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-august-2026",
-      "end_iso": "2026-09-01T04:00:00Z",
-      "event_iso": "",
-      "slug": "will-ethereum-reach-2400-in-august-2026",
-      "signal_ts": 1787244213.0,
-      "wallet_usd": [
-        [
-          "0x252d7bae5ec87553dcafb23e275c202ac0d3c456",
-          2039.78
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$2,040 \u2014 but only 1.5% of their book",
-        "latest buy 320 min ago",
-        "price 4.9c cheaper than they paid",
-        "270h until it resolves"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion",
-        "smart money sold $3,700 of this side 210 min ago (1 wallet) \u2014 after the buys above"
-      ]
-    },
-    {
       "market_id": "0x6c46b9c2fecf84cef94088bacaf3a9cbf5fb717a92dd78aa668f61d025dddb4a",
       "title": "Will the price of XRP be above $1.30 on August 22?",
       "side_label": "YES on: Will the price of XRP be above $1.30 on August 22?",
       "outcome": "Yes",
-      "entry_price": 0.33,
+      "entry_price": 0.328,
       "whale_price": 0.481,
-      "drift_c": -15.1,
-      "contracts": 1142,
-      "cost": 376.86,
-      "max_payout": 1142.0,
-      "conviction": 0.377,
-      "hours_to_resolve": 41.9,
+      "drift_c": -15.3,
+      "contracts": 1146,
+      "cost": 375.89,
+      "max_payout": 1146.0,
+      "conviction": 0.376,
+      "hours_to_resolve": 41.2,
       "n_wallets": 1,
       "whale_usd": 2405,
-      "minutes_ago": 295,
-      "liquidity": 17472,
+      "minutes_ago": 340,
+      "liquidity": 17461,
       "url": "https://polymarket.com/event/xrp-above-on-august-22-2026",
       "end_iso": "2026-08-22T16:00:00Z",
       "event_iso": "",
@@ -364,29 +320,70 @@
       "why": [
         "1 profitable wallet on this side",
         "$2,405 \u2014 but only 9.0% of their book",
-        "latest buy 295 min ago",
-        "price 15.1c cheaper than they paid",
-        "42h until it resolves"
+        "latest buy 340 min ago",
+        "price 15.3c cheaper than they paid",
+        "41h until it resolves"
       ],
       "warnings": [
         "resolves within 2 days",
         "only one wallet \u2014 single opinion"
       ]
+    },
+    {
+      "market_id": "0xcd6c66b11ed8fdbdc1183fb761cf22959c6b481e843a715a7a9f53e22b90d420",
+      "title": "NATO x Russia military clash by August 31, 2026?",
+      "side_label": "NO on: NATO x Russia military clash by August 31, 2026?",
+      "outcome": "No",
+      "entry_price": 0.72,
+      "whale_price": 0.707,
+      "drift_c": 1.27,
+      "contracts": 519,
+      "cost": 373.68,
+      "max_payout": 519.0,
+      "conviction": 0.374,
+      "hours_to_resolve": 241.2,
+      "n_wallets": 1,
+      "whale_usd": 8799,
+      "minutes_ago": 262,
+      "liquidity": 99852,
+      "url": "https://polymarket.com/event/nato-x-russia-military-clash-in-2025",
+      "end_iso": "2026-08-31T00:00:00Z",
+      "event_iso": "",
+      "slug": "nato-x-russia-military-clash-by-august-31-2026",
+      "signal_ts": 1787250310.0,
+      "wallet_usd": [
+        [
+          "0x000d257d2dc7616feaef4ae0f14600fdf50a758e",
+          8799.27
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$8,799 \u2014 but only 1.9% of their book",
+        "latest buy 262 min ago",
+        "price up 1.3c since they bought",
+        "241h until it resolves",
+        "$99,852 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
     }
   ],
-  "considered": 272,
+  "considered": 282,
   "rejected": {
-    "esports (sleeve retired \u2014 see esports_enabled)": 30,
-    "in-play (event already started)": 3,
-    "market closed": 136,
-    "wallet not new (no track record either)": 22,
+    "esports (sleeve retired \u2014 see esports_enabled)": 32,
+    "market closed": 152,
+    "wallet not new (no track record either)": 23,
     "fresh wallet: market too liquid for the pattern": 32,
-    "already resolved": 23,
-    "resolves in under 3h": 5,
-    "resolves more than 30 days out": 7,
+    "already resolved": 21,
+    "resolves in under 3h": 3,
+    "in-play (event already started)": 1,
+    "resolves more than 30 days out": 6,
+    "signal too old for this market's horizon": 1,
     "price + fee ran away from the whale's entry": 1,
-    "duplicate event (kept the stronger side)": 4,
-    "below the 0.45 buy bar (recorded, not bought)": 6
+    "duplicate event (kept the stronger side)": 1,
+    "below the 0.45 buy bar (recorded, not bought)": 7
   },
   "notes": [],
   "consistency": {
@@ -395,16 +392,16 @@
     "events_scanned": 344,
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 123,
-      "not a ladder: fewer than two live, quoted legs": 90,
-      "not a ladder: group labels are not thresholds or deadlines": 60,
+      "not a ladder: fewer than two live, quoted legs": 88,
+      "not a ladder: group labels are not thresholds or deadlines": 61,
       "not a ladder: duplicate deadlines left too few rungs": 5,
-      "ladder pair too illiquid to fill": 102,
+      "ladder pair too illiquid to fill": 104,
       "bracket has too many legs to place by hand": 1,
-      "not a ladder: a live leg carries no group label": 3,
-      "ladder inversion smaller than the spread": 1,
+      "ladder inversion smaller than the spread": 2,
       "bracket underround smaller than the spread": 1,
       "not a ladder: numeric group spans different end dates": 1,
-      "bracket leg too illiquid to fill": 3,
+      "not a ladder: a live leg carries no group label": 2,
+      "bracket leg too illiquid to fill": 4,
       "dominance gap smaller than the spread": 3
     },
     "notes": [],
@@ -436,23 +433,23 @@
           },
           {
             "label": "2.1%",
-            "market_prob": 0.005,
+            "market_prob": 0.0145,
             "model_prob": 0.0536,
-            "gap_c": 4.86,
+            "gap_c": 3.91,
             "suspect": false
           },
           {
             "label": "2.2%",
-            "market_prob": 0.043,
+            "market_prob": 0.041,
             "model_prob": 0.1297,
-            "gap_c": 8.67,
+            "gap_c": 8.87,
             "suspect": false
           },
           {
             "label": "2.3%",
-            "market_prob": 0.345,
+            "market_prob": 0.34,
             "model_prob": 0.215,
-            "gap_c": -13.0,
+            "gap_c": -12.5,
             "suspect": false
           },
           {
@@ -471,16 +468,16 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.048,
+            "market_prob": 0.041,
             "model_prob": 0.1012,
-            "gap_c": 5.32,
+            "gap_c": 6.02,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0395,
+            "market_prob": 0.039,
             "model_prob": 0.0369,
-            "gap_c": -0.26,
+            "gap_c": -0.21,
             "suspect": false
           },
           {
@@ -576,16 +573,16 @@
         "rows": [
           {
             "label": "\u22642.9%",
-            "market_prob": 0.0055,
+            "market_prob": 0.014,
             "model_prob": 0.0049,
-            "gap_c": -0.06,
+            "gap_c": -0.91,
             "suspect": false
           },
           {
             "label": "3.0%",
-            "market_prob": 0.008,
+            "market_prob": 0.0115,
             "model_prob": 0.0201,
-            "gap_c": 1.21,
+            "gap_c": 0.86,
             "suspect": false
           },
           {
@@ -625,9 +622,9 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.042,
+            "market_prob": 0.039,
             "model_prob": 0.0853,
-            "gap_c": 4.33,
+            "gap_c": 4.63,
             "suspect": false
           },
           {
@@ -646,9 +643,9 @@
           },
           {
             "label": "3.9%",
-            "market_prob": 0.005,
+            "market_prob": 0.0055,
             "model_prob": 0.0011,
-            "gap_c": -0.39,
+            "gap_c": -0.44,
             "suspect": false
           },
           {
@@ -681,16 +678,16 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.0405,
+            "market_prob": 0.036,
             "model_prob": 0.0008,
-            "gap_c": -3.97,
+            "gap_c": -3.52,
             "suspect": false
           },
           {
             "label": "-0.1%",
-            "market_prob": 0.0055,
+            "market_prob": 0.006,
             "model_prob": 0.0056,
-            "gap_c": 0.01,
+            "gap_c": -0.04,
             "suspect": false
           },
           {
@@ -716,23 +713,23 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.265,
+            "market_prob": 0.27,
             "model_prob": 0.2352,
-            "gap_c": -2.98,
+            "gap_c": -3.48,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.435,
+            "market_prob": 0.43,
             "model_prob": 0.2328,
-            "gap_c": -20.22,
+            "gap_c": -19.72,
             "suspect": false
           },
           {
             "label": "\u22650.5%",
-            "market_prob": 0.225,
+            "market_prob": 0.22,
             "model_prob": 0.2605,
-            "gap_c": 3.55,
+            "gap_c": 4.05,
             "suspect": false
           }
         ]
