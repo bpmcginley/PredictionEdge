@@ -1,8 +1,47 @@
 {
-  "generated": "2026-08-20 13:13:43",
-  "generated_at": 1787231623.902825,
+  "generated": "2026-08-20 14:04:01",
+  "generated_at": 1787234641.2320402,
   "account_size": 100000.0,
   "tickets": [
+    {
+      "market_id": "0x787c566f29ed62ea0c68a93cf38ce1291a10038d0aa37757c3a5fe99ff0ecb70",
+      "title": "Will Paris Saint-Germain FC win on 2026-08-23?",
+      "side_label": "NO on: Will Paris Saint-Germain FC win on 2026-08-23?",
+      "outcome": "No",
+      "entry_price": 0.38,
+      "whale_price": 0.46,
+      "drift_c": -7.96,
+      "contracts": 1421,
+      "cost": 539.98,
+      "max_payout": 1421.0,
+      "conviction": 0.54,
+      "hours_to_resolve": 76.7,
+      "n_wallets": 1,
+      "whale_usd": 2001,
+      "minutes_ago": 21,
+      "liquidity": 20088,
+      "url": "https://polymarket.com/event/fl1-psg-ren-2026-08-23",
+      "end_iso": "2026-08-23T18:45:00Z",
+      "event_iso": "2026-08-23 18:45:00+00",
+      "slug": "fl1-psg-ren-2026-08-23-psg",
+      "signal_ts": 1787233347.0,
+      "wallet_usd": [
+        [
+          "0x7e5972bfc25819775ee5a9d4f191919375487b8b",
+          2001.4
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,001 \u2014 but only 1.8% of their book",
+        "latest buy 21 min ago",
+        "price 8.0c cheaper than they paid",
+        "77h until it resolves"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
     {
       "market_id": "0x9359698aab64d2cf210dbee9926d01188cb5277a3442dcf0552855842c44dce0",
       "title": "Will Tottenham Hotspur FC win on 2026-08-22?",
@@ -11,15 +50,15 @@
       "entry_price": 0.65,
       "whale_price": 0.65,
       "drift_c": 0.0,
-      "contracts": 787,
-      "cost": 511.55,
-      "max_payout": 787.0,
-      "conviction": 0.512,
-      "hours_to_resolve": 51.3,
+      "contracts": 721,
+      "cost": 468.65,
+      "max_payout": 721.0,
+      "conviction": 0.469,
+      "hours_to_resolve": 50.4,
       "n_wallets": 1,
       "whale_usd": 2567,
-      "minutes_ago": 20,
-      "liquidity": 310054,
+      "minutes_ago": 70,
+      "liquidity": 317025,
       "url": "https://polymarket.com/event/epl-bre-tot-2026-08-22",
       "end_iso": "2026-08-22T16:30:00Z",
       "event_iso": "2026-08-22 16:30:00+00",
@@ -34,10 +73,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$2,567 \u2014 but only 1.3% of their book",
-        "latest buy 20 min ago",
+        "latest buy 70 min ago",
         "still near their entry price",
-        "51h until it resolves",
-        "$310,054 liquidity"
+        "50h until it resolves",
+        "$317,025 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -48,18 +87,18 @@
       "title": "Will Bitcoin dip to $65,000 in August?",
       "side_label": "NO on: Will Bitcoin dip to $65,000 in August?",
       "outcome": "No",
-      "entry_price": 0.86,
+      "entry_price": 0.84,
       "whale_price": 0.87,
-      "drift_c": -1.0,
-      "contracts": 574,
-      "cost": 493.64,
-      "max_payout": 574.0,
-      "conviction": 0.494,
-      "hours_to_resolve": 278.8,
+      "drift_c": -3.0,
+      "contracts": 536,
+      "cost": 450.24,
+      "max_payout": 536.0,
+      "conviction": 0.451,
+      "hours_to_resolve": 277.9,
       "n_wallets": 1,
       "whale_usd": 6592,
-      "minutes_ago": 79,
-      "liquidity": 28664,
+      "minutes_ago": 129,
+      "liquidity": 25067,
       "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
       "end_iso": "2026-09-01T04:00:00Z",
       "event_iso": "",
@@ -73,95 +112,94 @@
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$6,592 \u2014 but only 1.0% of their book",
-        "latest buy 79 min ago",
-        "price 1.0c cheaper than they paid",
-        "279h until it resolves"
+        "$6,592 \u2014 but only 0.8% of their book",
+        "latest buy 129 min ago",
+        "price 3.0c cheaper than they paid",
+        "278h until it resolves"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    }
+  ],
+  "probe": [
+    {
+      "market_id": "0x9f250ad26e602f713ac1dd8e2cb98914fc1d008f080acad56930fe86abe0c75a",
+      "title": "Cincinnati Open: Amanda Anisimova vs Jessica Pegula",
+      "side_label": "Amanda Anisimova \u2014 Cincinnati Open: Amanda Anisimova vs Jessica Pegula",
+      "outcome": "Amanda Anisimova",
+      "entry_price": 0.455,
+      "whale_price": 0.46,
+      "drift_c": -0.5,
+      "contracts": 975,
+      "cost": 443.62,
+      "max_payout": 975.0,
+      "conviction": 0.444,
+      "hours_to_resolve": 2.9,
+      "n_wallets": 1,
+      "whale_usd": 2447,
+      "minutes_ago": 45,
+      "liquidity": 302657,
+      "url": "https://polymarket.com/event/wta-anisimo-pegula-2026-08-21",
+      "end_iso": "2026-08-28T15:00:00Z",
+      "event_iso": "2026-08-20 17:00:00+00",
+      "slug": "wta-anisimo-pegula-2026-08-21",
+      "signal_ts": 1787231931.0,
+      "wallet_usd": [
+        [
+          "0xf3a1493cf87d23177107b5b3f737f0c586f1bf4b",
+          2446.8
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,447, 100% of their own book",
+        "latest buy 45 min ago",
+        "still near their entry price",
+        "3h until it resolves",
+        "$302,657 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     },
     {
-      "market_id": "0x9debfc089457bbcd81a61eb8948c1d0ff35108225ca4589cb99674e9de45c849",
-      "title": "Quebec City: Rei Sakamoto vs Luca Van Assche",
-      "side_label": "Luca Van Assche \u2014 Quebec City: Rei Sakamoto vs Luca Van Assche",
-      "outcome": "Luca Van Assche",
-      "entry_price": 0.615,
-      "whale_price": 0.615,
-      "drift_c": -0.04,
-      "contracts": 790,
-      "cost": 485.85,
-      "max_payout": 790.0,
-      "conviction": 0.486,
-      "hours_to_resolve": 3.3,
+      "market_id": "0xe334d832e5667fd19a4b69c55632745fbccd94e1d6b371bda77ce95908aea213",
+      "title": "San Francisco Giants vs. Cleveland Guardians",
+      "side_label": "Cleveland Guardians \u2014 San Francisco Giants vs. Cleveland Guardians",
+      "outcome": "Cleveland Guardians",
+      "entry_price": 0.655,
+      "whale_price": 0.65,
+      "drift_c": 0.5,
+      "contracts": 662,
+      "cost": 433.61,
+      "max_payout": 662.0,
+      "conviction": 0.434,
+      "hours_to_resolve": 3.1,
       "n_wallets": 1,
-      "whale_usd": 7939,
-      "minutes_ago": 22,
-      "liquidity": 152147,
-      "url": "https://polymarket.com/event/atp-sakamot-assche-2026-08-20",
-      "end_iso": "2026-08-27T15:00:00Z",
-      "event_iso": "2026-08-20 16:30:00+00",
-      "slug": "atp-sakamot-assche-2026-08-20",
-      "signal_ts": 1787230299.0,
+      "whale_usd": 3851,
+      "minutes_ago": 30,
+      "liquidity": 452926,
+      "url": "https://polymarket.com/event/mlb-sf-cle-2026-08-20",
+      "end_iso": "2026-08-27T17:10:00Z",
+      "event_iso": "2026-08-20 17:10:00+00",
+      "slug": "mlb-sf-cle-2026-08-20",
+      "signal_ts": 1787232813.0,
       "wallet_usd": [
         [
-          "0x8606aa65253b257644e7945a6faf5332e2d9db26",
-          7939.0
-        ]
-      ],
-      "why": [
-        "new wallet with no track record \u2014 pattern signal, not a copy",
-        "$7,939, 95% of their own book",
-        "latest buy 22 min ago",
-        "still near their entry price",
-        "3h until it resolves",
-        "$152,147 liquidity"
-      ],
-      "warnings": [
-        "unproven wallet \u2014 this is a pattern, not a track record"
-      ]
-    }
-  ],
-  "probe": [
-    {
-      "market_id": "0xf711331851c7731998ac76958b82242481cb08e8c6b3b718daf703c95f858ec4",
-      "title": "St. Louis Cardinals vs. Cincinnati Reds: O/U 8.5",
-      "side_label": "Under \u2014 St. Louis Cardinals vs. Cincinnati Reds: O/U 8.5",
-      "outcome": "Under",
-      "entry_price": 0.455,
-      "whale_price": 0.46,
-      "drift_c": -0.5,
-      "contracts": 964,
-      "cost": 438.62,
-      "max_payout": 964.0,
-      "conviction": 0.439,
-      "hours_to_resolve": 3.4,
-      "n_wallets": 1,
-      "whale_usd": 6332,
-      "minutes_ago": 43,
-      "liquidity": 116361,
-      "url": "https://polymarket.com/event/mlb-stl-cin-2026-08-20",
-      "end_iso": "2026-08-20T16:40:00Z",
-      "event_iso": "2026-08-20 16:40:00+00",
-      "slug": "mlb-stl-cin-2026-08-20-total-8pt5",
-      "signal_ts": 1787229043.0,
-      "wallet_usd": [
-        [
-          "0x16bb9951a36fce71e2ef57890b786145e0ba8492",
-          6331.96
+          "0x56acab44cfca2e88bb9b3406890aea7bfa0cd77e",
+          3851.38
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$6,332 \u2014 but only 3.9% of their book",
-        "latest buy 43 min ago",
+        "$3,851 \u2014 but only 7.7% of their book",
+        "latest buy 30 min ago",
         "still near their entry price",
         "3h until it resolves",
-        "$116,361 liquidity"
+        "$452,926 liquidity"
       ],
       "warnings": [
-        "resolves within 2 days",
         "only one wallet \u2014 single opinion"
       ]
     },
@@ -172,16 +210,16 @@
       "outcome": "No",
       "entry_price": 0.81,
       "whale_price": 0.81,
-      "drift_c": -0.01,
-      "contracts": 520,
-      "cost": 421.2,
-      "max_payout": 520.0,
-      "conviction": 0.422,
-      "hours_to_resolve": 278.8,
+      "drift_c": 0.0,
+      "contracts": 512,
+      "cost": 414.72,
+      "max_payout": 512.0,
+      "conviction": 0.415,
+      "hours_to_resolve": 277.9,
       "n_wallets": 1,
-      "whale_usd": 13985,
-      "minutes_ago": 203,
-      "liquidity": 16744,
+      "whale_usd": 10682,
+      "minutes_ago": 253,
+      "liquidity": 16524,
       "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-august-2026",
       "end_iso": "2026-09-01T04:00:00Z",
       "event_iso": "",
@@ -190,15 +228,15 @@
       "wallet_usd": [
         [
           "0xf705fa045201391d9632b7f3cde06a5e24453ca7",
-          13984.77
+          10681.77
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$13,985 \u2014 but only 2.2% of their book",
-        "latest buy 203 min ago",
+        "$10,682 \u2014 but only 1.3% of their book",
+        "latest buy 253 min ago",
         "still near their entry price",
-        "279h until it resolves"
+        "278h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -209,18 +247,18 @@
       "title": "Will Bitcoin reach $74,000 August 17-23?",
       "side_label": "YES on: Will Bitcoin reach $74,000 August 17-23?",
       "outcome": "Yes",
-      "entry_price": 0.468,
+      "entry_price": 0.42,
       "whale_price": 0.465,
-      "drift_c": 0.3,
-      "contracts": 865,
-      "cost": 404.82,
-      "max_payout": 865.0,
-      "conviction": 0.405,
-      "hours_to_resolve": 86.8,
+      "drift_c": -4.5,
+      "contracts": 988,
+      "cost": 414.96,
+      "max_payout": 988.0,
+      "conviction": 0.415,
+      "hours_to_resolve": 85.9,
       "n_wallets": 1,
       "whale_usd": 5652,
-      "minutes_ago": 191,
-      "liquidity": 26316,
+      "minutes_ago": 242,
+      "liquidity": 24542,
       "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-august-17-23-2026",
       "end_iso": "2026-08-24T04:00:00Z",
       "event_iso": "",
@@ -235,29 +273,29 @@
       "why": [
         "1 profitable wallet on this side",
         "$5,652 \u2014 but only 2.4% of their book",
-        "latest buy 191 min ago",
-        "still near their entry price",
-        "87h until it resolves"
+        "latest buy 242 min ago",
+        "price 4.5c cheaper than they paid",
+        "86h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 216,
+  "considered": 220,
   "rejected": {
-    "esports (sleeve retired \u2014 see esports_enabled)": 133,
-    "market closed": 45,
-    "fresh wallet: market too liquid for the pattern": 7,
+    "esports (sleeve retired \u2014 see esports_enabled)": 141,
+    "market closed": 32,
+    "wallet not new (no track record either)": 12,
     "resolves more than 30 days out": 5,
-    "wallet not new (no track record either)": 8,
-    "signal too old for this market's horizon": 3,
+    "resolves in under 3h": 3,
+    "fresh wallet: market too liquid for the pattern": 7,
+    "signal too old for this market's horizon": 4,
     "parlay / combo ticket, not a single market": 2,
-    "resolves in under 3h": 1,
-    "in-play (event already started)": 2,
+    "in-play (event already started)": 5,
     "price + fee ran away from the whale's entry": 1,
-    "duplicate event (kept the stronger side)": 3,
-    "below the 0.45 buy bar (recorded, not bought)": 3
+    "duplicate event (kept the stronger side)": 1,
+    "below the 0.45 buy bar (recorded, not bought)": 4
   },
   "notes": [],
   "consistency": {
@@ -265,14 +303,13 @@
     "enabled": true,
     "events_scanned": 344,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 122,
+      "bracket has legs we cannot price (fail closed)": 121,
       "not a ladder: fewer than two live, quoted legs": 89,
-      "not a ladder: group labels are not thresholds or deadlines": 62,
+      "not a ladder: group labels are not thresholds or deadlines": 63,
       "not a ladder: duplicate deadlines left too few rungs": 5,
-      "ladder pair too illiquid to fill": 91,
+      "ladder pair too illiquid to fill": 90,
       "bracket has too many legs to place by hand": 1,
-      "ladder inversion smaller than the spread": 2,
-      "bracket overround smaller than the spread": 1,
+      "ladder inversion smaller than the spread": 1,
       "bracket underround smaller than the spread": 1,
       "not a ladder: numeric group spans different end dates": 1,
       "not a ladder: a live leg carries no group label": 2,
@@ -295,7 +332,7 @@
         "ref_month": "2026-8",
         "url": "https://polymarket.com/event/core-cpi-yoy-august-2026-1786474662954",
         "nowcast_pp": 2.38356235342767,
-        "nowcast_as_of": "2026-08-19 00:00",
+        "nowcast_as_of": "2026-08-20 00:00",
         "sigma": 0.16,
         "model_sigma_note": "",
         "rows": [
@@ -315,9 +352,9 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.045,
+            "market_prob": 0.0435,
             "model_prob": 0.1297,
-            "gap_c": 8.47,
+            "gap_c": 8.62,
             "suspect": false
           },
           {
@@ -343,16 +380,16 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.0415,
+            "market_prob": 0.0395,
             "model_prob": 0.1012,
-            "gap_c": 5.97,
+            "gap_c": 6.17,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0475,
+            "market_prob": 0.047,
             "model_prob": 0.0369,
-            "gap_c": -1.06,
+            "gap_c": -1.01,
             "suspect": false
           },
           {
@@ -379,7 +416,7 @@
         "ref_month": "2026-8",
         "url": "https://polymarket.com/event/core-cpi-mom-august-2026-1786474662954",
         "nowcast_pp": 0.203341742698412,
-        "nowcast_as_of": "2026-08-19 00:00",
+        "nowcast_as_of": "2026-08-20 00:00",
         "sigma": 0.16,
         "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.089pp (x1.80). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
@@ -442,7 +479,7 @@
         "ref_month": "2026-8",
         "url": "https://polymarket.com/event/august-inflation-us-annual-1786474662954",
         "nowcast_pp": 3.36362988816106,
-        "nowcast_as_of": "2026-08-19 00:00",
+        "nowcast_as_of": "2026-08-20 00:00",
         "sigma": 0.16,
         "model_sigma_note": "",
         "rows": [
@@ -462,16 +499,16 @@
           },
           {
             "label": "3.1%",
-            "market_prob": 0.0155,
+            "market_prob": 0.0105,
             "model_prob": 0.0659,
-            "gap_c": 5.04,
+            "gap_c": 5.54,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.0945,
+            "market_prob": 0.1,
             "model_prob": 0.1479,
-            "gap_c": 5.34,
+            "gap_c": 4.79,
             "suspect": false
           },
           {
@@ -483,9 +520,9 @@
           },
           {
             "label": "3.4%",
-            "market_prob": 0.42,
+            "market_prob": 0.415,
             "model_prob": 0.2393,
-            "gap_c": -18.07,
+            "gap_c": -17.57,
             "suspect": false
           },
           {
@@ -497,9 +534,9 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.0545,
+            "market_prob": 0.0495,
             "model_prob": 0.0853,
-            "gap_c": 3.08,
+            "gap_c": 3.58,
             "suspect": false
           },
           {
@@ -511,9 +548,9 @@
           },
           {
             "label": "3.8%",
-            "market_prob": 0.0305,
+            "market_prob": 0.026,
             "model_prob": 0.0067,
-            "gap_c": -2.38,
+            "gap_c": -1.93,
             "suspect": false
           },
           {
@@ -540,7 +577,7 @@
         "ref_month": "2026-8",
         "url": "https://polymarket.com/event/august-inflation-us-monthly-1786474662954",
         "nowcast_pp": 0.34733401726308,
-        "nowcast_as_of": "2026-08-19 00:00",
+        "nowcast_as_of": "2026-08-20 00:00",
         "sigma": 0.16,
         "model_sigma_note": "",
         "rows": [
@@ -553,9 +590,9 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.035,
+            "market_prob": 0.0275,
             "model_prob": 0.0008,
-            "gap_c": -3.42,
+            "gap_c": -2.67,
             "suspect": false
           },
           {
@@ -618,110 +655,22 @@
   "gas": [],
   "spxindex": [
     {
-      "market_id": "KXNASDAQ100-26AUG20H1600-B29650",
+      "market_id": "KXINX-26AUG20H1600-B7712",
       "venue": "kalshi",
       "source": "spxindex",
       "outcome": "Yes",
-      "title": "Will the Nasdaq-100 be between 29600 and 29699.9900 at the end of Aug 20, 2026 at 4pm EDT?",
-      "url": "https://kalshi.com/markets/KXNASDAQ100-26AUG20H1600",
-      "entry_price": 0.08,
-      "model_prob": 0.1321,
-      "edge": 0.0521,
-      "fair": 0.1321,
-      "market_prob": 0.055,
-      "implied_sigma": 0.3045,
-      "spot_used": 29426.02,
-      "chain_ts": "2026-08-20 13:13:04",
+      "title": "Will the S&P 500 be between 7700 and 7724.9999 on Aug 20, 2026 at 4pm EDT?",
+      "url": "https://kalshi.com/markets/KXINX-26AUG20H1600",
+      "entry_price": 0.24,
+      "model_prob": 0.2926,
+      "edge": 0.0526,
+      "fair": 0.2926,
+      "market_prob": 0.22,
+      "implied_sigma": 0.1587,
+      "spot_used": 7690.4,
+      "chain_ts": "2026-08-20 14:03:23",
       "vrp_shrink": 0.92,
-      "series": "KXNASDAQ100",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-08-20T20:00:00+00:00",
-      "event_iso": "2026-08-20T20:00:00+00:00"
-    },
-    {
-      "market_id": "KXNASDAQ100-26AUG20H1600-B29550",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "Yes",
-      "title": "Will the Nasdaq-100 be between 29500 and 29599.9900 at the end of Aug 20, 2026 at 4pm EDT?",
-      "url": "https://kalshi.com/markets/KXNASDAQ100-26AUG20H1600",
-      "entry_price": 0.12,
-      "model_prob": 0.171,
-      "edge": 0.051,
-      "fair": 0.171,
-      "market_prob": 0.095,
-      "implied_sigma": 0.3045,
-      "spot_used": 29426.02,
-      "chain_ts": "2026-08-20 13:13:04",
-      "vrp_shrink": 0.92,
-      "series": "KXNASDAQ100",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-08-20T20:00:00+00:00",
-      "event_iso": "2026-08-20T20:00:00+00:00"
-    },
-    {
-      "market_id": "KXNASDAQ100-26AUG20H1600-B29250",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "No",
-      "title": "Will the Nasdaq-100 be between 29200 and 29299.9900 at the end of Aug 20, 2026 at 4pm EDT?",
-      "url": "https://kalshi.com/markets/KXNASDAQ100-26AUG20H1600",
-      "entry_price": 0.86,
-      "model_prob": 0.9048,
-      "edge": 0.0448,
-      "fair": 0.0952,
-      "market_prob": 0.165,
-      "implied_sigma": 0.3045,
-      "spot_used": 29426.02,
-      "chain_ts": "2026-08-20 13:13:04",
-      "vrp_shrink": 0.92,
-      "series": "KXNASDAQ100",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-08-20T20:00:00+00:00",
-      "event_iso": "2026-08-20T20:00:00+00:00"
-    },
-    {
-      "market_id": "KXNASDAQ100-26AUG20H1600-B29350",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "No",
-      "title": "Will the Nasdaq-100 be between 29300 and 29399.9900 at the end of Aug 20, 2026 at 4pm EDT?",
-      "url": "https://kalshi.com/markets/KXNASDAQ100-26AUG20H1600",
-      "entry_price": 0.84,
-      "model_prob": 0.8808,
-      "edge": 0.0408,
-      "fair": 0.1192,
-      "market_prob": 0.18,
-      "implied_sigma": 0.3045,
-      "spot_used": 29426.02,
-      "chain_ts": "2026-08-20 13:13:04",
-      "vrp_shrink": 0.92,
-      "series": "KXNASDAQ100",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-08-20T20:00:00+00:00",
-      "event_iso": "2026-08-20T20:00:00+00:00"
-    },
-    {
-      "market_id": "KXNASDAQ100-26AUG20H1600-B29050",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "No",
-      "title": "Will the Nasdaq-100 be between 29000 and 29099.9900 at the end of Aug 20, 2026 at 4pm EDT?",
-      "url": "https://kalshi.com/markets/KXNASDAQ100-26AUG20H1600",
-      "entry_price": 0.94,
-      "model_prob": 0.9726,
-      "edge": 0.0326,
-      "fair": 0.0274,
-      "market_prob": 0.085,
-      "implied_sigma": 0.3045,
-      "spot_used": 29426.02,
-      "chain_ts": "2026-08-20 13:13:04",
-      "vrp_shrink": 0.92,
-      "series": "KXNASDAQ100",
+      "series": "KXINX",
       "model": "cboe-0dte-density",
       "validated": false,
       "end_iso": "2026-08-20T20:00:00+00:00",
