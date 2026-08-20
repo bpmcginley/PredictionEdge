@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-19 23:40:38",
-  "generated_at": 1787182838.4120562,
+  "generated": "2026-08-20 00:01:37",
+  "generated_at": 1787184097.7402608,
   "account_size": 100000.0,
   "tickets": [
     {
@@ -11,15 +11,15 @@
       "entry_price": 0.645,
       "whale_price": 0.654,
       "drift_c": -0.87,
-      "contracts": 1209,
-      "cost": 779.81,
-      "max_payout": 1209.0,
-      "conviction": 0.78,
-      "hours_to_resolve": 1.0,
+      "contracts": 1182,
+      "cost": 762.39,
+      "max_payout": 1182.0,
+      "conviction": 0.763,
+      "hours_to_resolve": 0.6,
       "n_wallets": 3,
       "whale_usd": 146298,
-      "minutes_ago": 42,
-      "liquidity": 553828,
+      "minutes_ago": 63,
+      "liquidity": 544937,
       "url": "https://polymarket.com/event/mlb-lad-col-2026-08-19",
       "end_iso": "2026-08-27T00:40:00Z",
       "event_iso": "2026-08-20 00:40:00+00",
@@ -42,55 +42,134 @@
       "why": [
         "3 profitable wallets on this side",
         "$146,298, 81% of their own book",
-        "latest buy 42 min ago",
+        "latest buy 63 min ago",
         "price 0.9c cheaper than they paid",
         "1h until it resolves",
-        "$553,828 liquidity"
+        "$544,937 liquidity"
       ],
       "warnings": []
     },
     {
       "market_id": "0x006d983c68aceeff2568f60f4b681de4f6435c78aa435ab2cb3b88f9d05802d5",
       "title": "Will Bitcoin reach $72,000 August 17-23?",
-      "side_label": "YES on: Will Bitcoin reach $72,000 August 17-23?",
-      "outcome": "Yes",
-      "entry_price": 0.299,
-      "whale_price": 0.44,
-      "drift_c": -14.1,
-      "contracts": 1571,
-      "cost": 469.73,
-      "max_payout": 1571.0,
-      "conviction": 0.47,
-      "hours_to_resolve": 100.3,
+      "side_label": "NO on: Will Bitcoin reach $72,000 August 17-23?",
+      "outcome": "No",
+      "entry_price": 0.721,
+      "whale_price": 0.725,
+      "drift_c": -0.4,
+      "contracts": 753,
+      "cost": 542.91,
+      "max_payout": 753.0,
+      "conviction": 0.543,
+      "hours_to_resolve": 100.0,
       "n_wallets": 1,
-      "whale_usd": 2891,
-      "minutes_ago": 100,
-      "liquidity": 18900,
+      "whale_usd": 2037,
+      "minutes_ago": 12,
+      "liquidity": 17083,
       "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-august-17-23-2026",
       "end_iso": "2026-08-24T04:00:00Z",
       "event_iso": "",
       "slug": "will-bitcoin-reach-72k-august-17-23-2026",
-      "signal_ts": 1787176804.0,
+      "signal_ts": 1787183388.0,
       "wallet_usd": [
         [
           "0x06dc51826bc524d9a83770e7de9dd7e005b04524",
-          2890.8
+          2037.25
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$2,891 \u2014 but only 0.4% of their book",
-        "latest buy 100 min ago",
-        "price 14.1c cheaper than they paid",
+        "$2,037 \u2014 but only 0.3% of their book",
+        "latest buy 12 min ago",
+        "still near their entry price",
         "100h until it resolves"
       ],
       "warnings": [
-        "only one wallet \u2014 single opinion",
-        "smart money sold $2,205 of this side 74 min ago (1 wallet) \u2014 after the buys above"
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x1821330c11e4d8d638e485391dbf6af3edb96f84bb4c78f86237ed9eac447895",
+      "title": "Cincinnati Open: Frances Tiafoe vs Felix Auger-Aliassime",
+      "side_label": "Frances Tiafoe \u2014 Cincinnati Open: Frances Tiafoe vs Felix Auger-Aliassime",
+      "outcome": "Frances Tiafoe",
+      "entry_price": 0.345,
+      "whale_price": 0.35,
+      "drift_c": -0.5,
+      "contracts": 1440,
+      "cost": 496.8,
+      "max_payout": 1440.0,
+      "conviction": 0.497,
+      "hours_to_resolve": 0.5,
+      "n_wallets": 1,
+      "whale_usd": 8448,
+      "minutes_ago": 6,
+      "liquidity": 324342,
+      "url": "https://polymarket.com/event/atp-tiafoe-augeral-2026-08-19",
+      "end_iso": "2026-08-27T00:30:00Z",
+      "event_iso": "2026-08-20 00:30:00+00",
+      "slug": "atp-tiafoe-augeral-2026-08-19",
+      "signal_ts": 1787183743.0,
+      "wallet_usd": [
+        [
+          "0x0e604be17c231a33dc01e38a722c7fe3984e3bad",
+          8448.44
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$8,448, 100% of their own book",
+        "latest buy 6 min ago",
+        "still near their entry price",
+        "0h until it resolves",
+        "$324,342 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
       ]
     }
   ],
   "probe": [
+    {
+      "market_id": "0xfd13c67069e83a4a8ba1ba425f259185bcbae282c4f91074646e3c5cf97b7ae3",
+      "title": "Will Bitcoin reach $72,500 in August?",
+      "side_label": "YES on: Will Bitcoin reach $72,500 in August?",
+      "outcome": "Yes",
+      "entry_price": 0.467,
+      "whale_price": 0.47,
+      "drift_c": -0.3,
+      "contracts": 933,
+      "cost": 435.71,
+      "max_payout": 933.0,
+      "conviction": 0.436,
+      "hours_to_resolve": 292.0,
+      "n_wallets": 1,
+      "whale_usd": 2057,
+      "minutes_ago": 140,
+      "liquidity": 37938,
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
+      "end_iso": "2026-09-01T04:00:00Z",
+      "event_iso": "",
+      "slug": "will-bitcoin-reach-72pt5k-in-august-2026",
+      "signal_ts": 1787175678.0,
+      "wallet_usd": [
+        [
+          "0x06dc51826bc524d9a83770e7de9dd7e005b04524",
+          2057.19
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,057 \u2014 but only 0.3% of their book",
+        "latest buy 140 min ago",
+        "still near their entry price",
+        "292h until it resolves"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion",
+        "smart money sold $2,266 of this side 129 min ago (1 wallet) \u2014 after the buys above"
+      ]
+    },
     {
       "market_id": "0xfa5f03449a7c747c4aa1cfbf29cb57c9f210182e1daeb121ec63b78bd5f75b4b",
       "title": "Will FC Midtjylland win on 2026-08-20?",
@@ -99,15 +178,15 @@
       "entry_price": 0.63,
       "whale_price": 0.637,
       "drift_c": -0.7,
-      "contracts": 690,
-      "cost": 434.7,
-      "max_payout": 690.0,
-      "conviction": 0.435,
-      "hours_to_resolve": 17.3,
+      "contracts": 661,
+      "cost": 416.43,
+      "max_payout": 661.0,
+      "conviction": 0.417,
+      "hours_to_resolve": 17.0,
       "n_wallets": 1,
       "whale_usd": 4862,
-      "minutes_ago": 79,
-      "liquidity": 42529,
+      "minutes_ago": 100,
+      "liquidity": 42292,
       "url": "https://polymarket.com/event/col-mid-rij-2026-08-20",
       "end_iso": "2026-08-20T17:00:00Z",
       "event_iso": "2026-08-20 17:00:00+00",
@@ -122,91 +201,12 @@
       "why": [
         "1 profitable wallet on this side",
         "$4,862 \u2014 but only 9.1% of their book",
-        "latest buy 79 min ago",
+        "latest buy 100 min ago",
         "price 0.7c cheaper than they paid",
         "17h until it resolves"
       ],
       "warnings": [
         "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0xc4bde1d397625e1990fec7f787b9eb2e5727c666d0480c4e9c96b0dbd12602c6",
-      "title": "Will Bitcoin reach $75,000 in August?",
-      "side_label": "NO on: Will Bitcoin reach $75,000 in August?",
-      "outcome": "No",
-      "entry_price": 0.778,
-      "whale_price": 0.806,
-      "drift_c": -2.8,
-      "contracts": 555,
-      "cost": 431.79,
-      "max_payout": 555.0,
-      "conviction": 0.432,
-      "hours_to_resolve": 292.3,
-      "n_wallets": 1,
-      "whale_usd": 5940,
-      "minutes_ago": 152,
-      "liquidity": 41165,
-      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
-      "end_iso": "2026-09-01T04:00:00Z",
-      "event_iso": "",
-      "slug": "will-bitcoin-reach-75k-in-august-2026",
-      "signal_ts": 1787173728.0,
-      "wallet_usd": [
-        [
-          "0x06dc51826bc524d9a83770e7de9dd7e005b04524",
-          5940.22
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$5,940 \u2014 but only 0.7% of their book",
-        "latest buy 152 min ago",
-        "price 2.8c cheaper than they paid",
-        "292h until it resolves"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0xd13611826e213e4799922c893edb1057e19f30f96162b1faa992de96a77fe421",
-      "title": "Cincinnati Open: Jaime Faria vs Lorenzo Musetti",
-      "side_label": "Lorenzo Musetti \u2014 Cincinnati Open: Jaime Faria vs Lorenzo Musetti",
-      "outcome": "Lorenzo Musetti",
-      "entry_price": 0.735,
-      "whale_price": 0.74,
-      "drift_c": -0.5,
-      "contracts": 557,
-      "cost": 409.39,
-      "max_payout": 557.0,
-      "conviction": 0.41,
-      "hours_to_resolve": 0.4,
-      "n_wallets": 1,
-      "whale_usd": 11100,
-      "minutes_ago": 119,
-      "liquidity": 451913,
-      "url": "https://polymarket.com/event/atp-faria-musetti-2026-08-19",
-      "end_iso": "2026-08-26T21:00:00Z",
-      "event_iso": "2026-08-20 00:05:00+00",
-      "slug": "atp-faria-musetti-2026-08-19",
-      "signal_ts": 1787175661.0,
-      "wallet_usd": [
-        [
-          "0x0353aaf82abbd3e69c00059df0a825bc198fc2ff",
-          11100.0
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$11,100, 21% of their own book",
-        "latest buy 119 min ago",
-        "still near their entry price",
-        "0h until it resolves",
-        "$451,913 liquidity"
-      ],
-      "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     },
@@ -222,11 +222,11 @@
       "cost": 407.55,
       "max_payout": 858.0,
       "conviction": 0.408,
-      "hours_to_resolve": 69.3,
+      "hours_to_resolve": 69.0,
       "n_wallets": 1,
       "whale_usd": 3832,
-      "minutes_ago": 315,
-      "liquidity": 33659,
+      "minutes_ago": 335,
+      "liquidity": 35387,
       "url": "https://polymarket.com/event/ufc-chr52-nas-2026-08-22",
       "end_iso": "2026-08-23T03:59:59.999Z",
       "event_iso": "2026-08-22 21:00:00+00",
@@ -241,7 +241,7 @@
       "why": [
         "1 profitable wallet on this side",
         "$3,832 \u2014 but only 2.3% of their book",
-        "latest buy 315 min ago",
+        "latest buy 335 min ago",
         "still near their entry price",
         "69h until it resolves"
       ],
@@ -254,18 +254,18 @@
       "title": "Will the price of Ethereum be above $2,200 on August 21?",
       "side_label": "YES on: Will the price of Ethereum be above $2,200 on August 21?",
       "outcome": "Yes",
-      "entry_price": 0.7,
+      "entry_price": 0.708,
       "whale_price": 0.723,
-      "drift_c": -2.3,
-      "contracts": 574,
-      "cost": 401.8,
-      "max_payout": 574.0,
-      "conviction": 0.402,
-      "hours_to_resolve": 40.3,
+      "drift_c": -1.5,
+      "contracts": 542,
+      "cost": 383.74,
+      "max_payout": 542.0,
+      "conviction": 0.384,
+      "hours_to_resolve": 40.0,
       "n_wallets": 1,
       "whale_usd": 7234,
-      "minutes_ago": 139,
-      "liquidity": 18768,
+      "minutes_ago": 160,
+      "liquidity": 18807,
       "url": "https://polymarket.com/event/ethereum-above-on-august-21-2026",
       "end_iso": "2026-08-21T16:00:00Z",
       "event_iso": "",
@@ -280,8 +280,8 @@
       "why": [
         "1 profitable wallet on this side",
         "$7,234 \u2014 but only 1.4% of their book",
-        "latest buy 139 min ago",
-        "price 2.3c cheaper than they paid",
+        "latest buy 160 min ago",
+        "price 1.5c cheaper than they paid",
         "40h until it resolves"
       ],
       "warnings": [
@@ -290,38 +290,38 @@
       ]
     }
   ],
-  "considered": 314,
+  "considered": 318,
   "rejected": {
-    "market closed": 116,
+    "market closed": 123,
     "already resolved": 53,
-    "wallet not new (no track record either)": 44,
-    "fresh wallet: market too liquid for the pattern": 34,
+    "wallet not new (no track record either)": 46,
+    "fresh wallet: market too liquid for the pattern": 23,
     "in-play (event already started)": 19,
-    "esports (sleeve retired \u2014 see esports_enabled)": 13,
-    "resolves in under 3h": 10,
-    "resolves more than 30 days out": 7,
-    "signal too old for this market's horizon": 2,
+    "esports (sleeve retired \u2014 see esports_enabled)": 14,
+    "resolves in under 3h": 12,
+    "resolves more than 30 days out": 8,
+    "signal too old for this market's horizon": 3,
     "parlay / combo ticket, not a single market": 4,
     "price outside tradeable band": 1,
     "price + fee ran away from the whale's entry": 1,
-    "duplicate event (kept the stronger side)": 3,
-    "below the 0.45 buy bar (recorded, not bought)": 5
+    "duplicate event (kept the stronger side)": 4,
+    "below the 0.45 buy bar (recorded, not bought)": 4
   },
   "notes": [],
   "consistency": {
     "ok": true,
     "enabled": true,
-    "events_scanned": 344,
+    "events_scanned": 345,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 122,
-      "not a ladder: fewer than two live, quoted legs": 90,
-      "not a ladder: group labels are not thresholds or deadlines": 54,
+      "bracket has legs we cannot price (fail closed)": 123,
+      "not a ladder: fewer than two live, quoted legs": 91,
+      "not a ladder: group labels are not thresholds or deadlines": 55,
       "not a ladder: duplicate deadlines left too few rungs": 5,
-      "ladder pair too illiquid to fill": 92,
+      "ladder pair too illiquid to fill": 91,
       "bracket has too many legs to place by hand": 1,
       "ladder inversion smaller than the spread": 1,
       "not a ladder: numeric group spans different end dates": 1,
-      "not a ladder: a live leg carries no group label": 9,
+      "not a ladder: a live leg carries no group label": 8,
       "bracket leg too illiquid to fill": 3,
       "dominance gap smaller than the spread": 2
     },
@@ -424,9 +424,9 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.042,
+            "market_prob": 0.0515,
             "model_prob": 0.1297,
-            "gap_c": 8.77,
+            "gap_c": 7.82,
             "suspect": false
           },
           {
@@ -452,16 +452,16 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.0395,
+            "market_prob": 0.0405,
             "model_prob": 0.1012,
-            "gap_c": 6.17,
+            "gap_c": 6.07,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0485,
+            "market_prob": 0.0595,
             "model_prob": 0.0369,
-            "gap_c": -1.16,
+            "gap_c": -2.26,
             "suspect": false
           },
           {
@@ -508,16 +508,16 @@
           },
           {
             "label": "3.1%",
-            "market_prob": 0.018,
+            "market_prob": 0.0075,
             "model_prob": 0.0659,
-            "gap_c": 4.79,
+            "gap_c": 5.84,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.0915,
+            "market_prob": 0.091,
             "model_prob": 0.1479,
-            "gap_c": 5.64,
+            "gap_c": 5.69,
             "suspect": false
           },
           {
@@ -641,9 +641,9 @@
           },
           {
             "label": "0.4%",
-            "market_prob": 0.435,
+            "market_prob": 0.43,
             "model_prob": 0.2328,
-            "gap_c": -20.22,
+            "gap_c": -19.72,
             "suspect": false
           },
           {
