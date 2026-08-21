@@ -1,46 +1,49 @@
 {
-  "generated": "2026-08-21 00:01:37",
-  "generated_at": 1787270497.4868994,
+  "generated": "2026-08-21 01:59:50",
+  "generated_at": 1787277590.0322013,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [
     {
-      "market_id": "0x1c38a64c494e01c9bd81362cfadeadb3b87023d1d9ffae1df5a428c03152fc74",
-      "title": "Iran-Oman Hormuz Agreement by August 31?",
-      "side_label": "NO on: Iran-Oman Hormuz Agreement by August 31?",
-      "outcome": "No",
-      "entry_price": 0.88,
-      "whale_price": 0.88,
-      "drift_c": 0.0,
-      "contracts": 472,
-      "cost": 415.36,
-      "max_payout": 472.0,
+      "market_id": "0x0fe35bcc0cc6b525b1a290a2496441deb143f7e040a05411b07c02f3731a5d59",
+      "title": "Sachsen-Anhalt Parliamentary Election: Linke Over/Under 12%?",
+      "side_label": "Over \u2014 Sachsen-Anhalt Parliamentary Election: Linke Over/Under 12%?",
+      "outcome": "Over",
+      "entry_price": 0.59,
+      "whale_price": 0.596,
+      "drift_c": -0.62,
+      "contracts": 705,
+      "cost": 415.95,
+      "max_payout": 705.0,
       "conviction": 0.416,
-      "hours_to_resolve": 264.0,
+      "hours_to_resolve": 406.0,
       "n_wallets": 1,
-      "whale_usd": 3898,
-      "minutes_ago": 224,
-      "liquidity": 27618,
-      "url": "https://polymarket.com/event/iran-oman-hormuz-management-agreement-byptptpt-20260804222725871",
-      "end_iso": "2026-08-31T23:59:00Z",
+      "whale_usd": 3192,
+      "minutes_ago": 106,
+      "liquidity": 695,
+      "url": "https://polymarket.com/event/sachsen-anhalt-parliamentary-election-linke-over-under-12-percent",
+      "end_iso": "2026-09-06T23:59:00Z",
       "event_iso": "",
-      "slug": "us-iran-hormuz-agreement-by-august-31-20260804222025507-868-993",
-      "signal_ts": 1787257035.0,
+      "slug": "sachsen-anhalt-parliamentary-election-linke-over-under-12-percent",
+      "signal_ts": 1787271243.0,
       "wallet_usd": [
         [
-          "0x879247bf7570a40d193dd3bb9118820e0b194174",
-          3898.4
+          "0xb1ca909e848cc24ec4e220ce1c453bc290c51705",
+          3191.98
         ]
       ],
       "why": [
+        "election market and 100% of this is one wallet \u2014 concentration here can move the price rather than confirm it",
         "1 profitable wallet on this side",
-        "$3,898 \u2014 but only 4.4% of their book",
-        "latest buy 224 min ago",
-        "still near their entry price",
-        "264h until it resolves"
+        "$3,192 \u2014 but only 0.3% of their book",
+        "latest buy 106 min ago",
+        "price 0.6c cheaper than they paid",
+        "406h until it resolves"
       ],
       "warnings": [
-        "only one wallet \u2014 single opinion"
+        "thin liquidity \u2014 expect slippage",
+        "only one wallet \u2014 single opinion",
+        "100% of this signal is a single wallet on an election market \u2014 that is the shape that distorted 2024 pricing"
       ]
     },
     {
@@ -55,11 +58,11 @@
       "cost": 411.0,
       "max_payout": 1370.0,
       "conviction": 0.411,
-      "hours_to_resolve": 624.0,
+      "hours_to_resolve": 622.0,
       "n_wallets": 1,
       "whale_usd": 6325,
-      "minutes_ago": 302,
-      "liquidity": 723055,
+      "minutes_ago": 420,
+      "liquidity": 773738,
       "url": "https://polymarket.com/event/fed-decision-in-september-762",
       "end_iso": "2026-09-16T00:00:00Z",
       "event_iso": "",
@@ -74,31 +77,68 @@
       "why": [
         "1 profitable wallet on this side",
         "$6,325, 49% of their own book",
-        "latest buy 302 min ago",
+        "latest buy 420 min ago",
         "price up 1.0c since they bought",
-        "624h until it resolves",
-        "$723,055 liquidity"
+        "622h until it resolves",
+        "$773,738 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x1c38a64c494e01c9bd81362cfadeadb3b87023d1d9ffae1df5a428c03152fc74",
+      "title": "Iran-Oman Hormuz Agreement by August 31?",
+      "side_label": "NO on: Iran-Oman Hormuz Agreement by August 31?",
+      "outcome": "No",
+      "entry_price": 0.89,
+      "whale_price": 0.88,
+      "drift_c": 1.0,
+      "contracts": 430,
+      "cost": 382.7,
+      "max_payout": 430.0,
+      "conviction": 0.383,
+      "hours_to_resolve": 262.0,
+      "n_wallets": 1,
+      "whale_usd": 3898,
+      "minutes_ago": 342,
+      "liquidity": 25952,
+      "url": "https://polymarket.com/event/iran-oman-hormuz-management-agreement-byptptpt-20260804222725871",
+      "end_iso": "2026-08-31T23:59:00Z",
+      "event_iso": "",
+      "slug": "us-iran-hormuz-agreement-by-august-31-20260804222025507-868-993",
+      "signal_ts": 1787257035.0,
+      "wallet_usd": [
+        [
+          "0x879247bf7570a40d193dd3bb9118820e0b194174",
+          3898.4
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$3,898 \u2014 but only 4.4% of their book",
+        "latest buy 342 min ago",
+        "price up 1.0c since they bought",
+        "262h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 290,
+  "considered": 289,
   "rejected": {
-    "esports (sleeve retired \u2014 see esports_enabled)": 34,
-    "market closed": 131,
-    "in-play (event already started)": 6,
-    "signal too old for this market's horizon": 2,
-    "fresh wallet: market too liquid for the pattern": 52,
-    "wallet not new (no track record either)": 25,
-    "already resolved": 21,
-    "resolves in under 3h": 5,
-    "price outside tradeable band": 1,
+    "esports (sleeve retired \u2014 see esports_enabled)": 37,
+    "in-play (event already started)": 14,
+    "market closed": 117,
+    "fresh wallet: market too liquid for the pattern": 27,
+    "wallet not new (no track record either)": 49,
+    "already resolved": 27,
+    "resolves more than 30 days out": 9,
     "parlay / combo ticket, not a single market": 2,
-    "resolves more than 30 days out": 8,
+    "resolves in under 3h": 3,
     "price + fee ran away from the whale's entry": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 2
+    "below the 0.45 buy bar (recorded, not bought)": 3
   },
   "notes": [
     "Signals came in but none cleared the filters \u2014 that is a normal, and usually correct, outcome."
@@ -109,13 +149,13 @@
     "events_scanned": 344,
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 122,
-      "not a ladder: fewer than two live, quoted legs": 89,
-      "not a ladder: group labels are not thresholds or deadlines": 60,
+      "not a ladder: fewer than two live, quoted legs": 88,
+      "not a ladder: group labels are not thresholds or deadlines": 58,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "ladder pair too illiquid to fill": 105,
       "bracket has too many legs to place by hand": 1,
       "ladder inversion smaller than the spread": 2,
-      "not a ladder: a live leg carries no group label": 3,
+      "not a ladder: a live leg carries no group label": 7,
       "bracket underround smaller than the spread": 1,
       "not a ladder: numeric group spans different end dates": 1,
       "bracket leg too illiquid to fill": 4,
@@ -157,9 +197,9 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.039,
+            "market_prob": 0.044,
             "model_prob": 0.1297,
-            "gap_c": 9.07,
+            "gap_c": 8.57,
             "suspect": false
           },
           {
@@ -185,16 +225,16 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.0455,
+            "market_prob": 0.0395,
             "model_prob": 0.1012,
-            "gap_c": 5.57,
+            "gap_c": 6.17,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.038,
+            "market_prob": 0.041,
             "model_prob": 0.0369,
-            "gap_c": -0.11,
+            "gap_c": -0.41,
             "suspect": false
           },
           {
@@ -223,7 +263,7 @@
         "nowcast_pp": 0.203341742698412,
         "nowcast_as_of": "2026-08-20 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.089pp (x1.79). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.089pp (x1.80). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -248,9 +288,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.25,
+            "market_prob": 0.265,
             "model_prob": 0.2056,
-            "gap_c": -4.44,
+            "gap_c": -5.94,
             "suspect": false
           },
           {
@@ -269,9 +309,9 @@
           },
           {
             "label": "0.6%+",
-            "market_prob": 0.0245,
+            "market_prob": 0.0235,
             "model_prob": 0.0151,
-            "gap_c": -0.94,
+            "gap_c": -0.84,
             "suspect": false
           }
         ]
@@ -318,16 +358,16 @@
           },
           {
             "label": "3.3%",
-            "market_prob": 0.285,
+            "market_prob": 0.175,
             "model_prob": 0.2273,
-            "gap_c": -5.77,
+            "gap_c": 5.23,
             "suspect": false
           },
           {
             "label": "3.4%",
-            "market_prob": 0.415,
+            "market_prob": 0.43,
             "model_prob": 0.2393,
-            "gap_c": -17.57,
+            "gap_c": -19.07,
             "suspect": false
           },
           {
@@ -339,9 +379,9 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.046,
+            "market_prob": 0.05,
             "model_prob": 0.0853,
-            "gap_c": 3.93,
+            "gap_c": 3.53,
             "suspect": false
           },
           {
@@ -353,9 +393,9 @@
           },
           {
             "label": "3.8%",
-            "market_prob": 0.026,
+            "market_prob": 0.024,
             "model_prob": 0.0067,
-            "gap_c": -1.93,
+            "gap_c": -1.73,
             "suspect": false
           },
           {
@@ -430,9 +470,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.265,
+            "market_prob": 0.26,
             "model_prob": 0.2352,
-            "gap_c": -2.98,
+            "gap_c": -2.48,
             "suspect": false
           },
           {
@@ -444,9 +484,9 @@
           },
           {
             "label": "\u22650.5%",
-            "market_prob": 0.22,
+            "market_prob": 0.215,
             "model_prob": 0.2605,
-            "gap_c": 4.05,
+            "gap_c": 4.55,
             "suspect": false
           }
         ]
