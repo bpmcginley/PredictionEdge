@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-20 23:32:48",
-  "generated_at": 1787268768.092797,
+  "generated": "2026-08-21 00:01:37",
+  "generated_at": 1787270497.4868994,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [
@@ -10,17 +10,17 @@
       "side_label": "NO on: Iran-Oman Hormuz Agreement by August 31?",
       "outcome": "No",
       "entry_price": 0.88,
-      "whale_price": 0.874,
-      "drift_c": 0.62,
-      "contracts": 479,
-      "cost": 421.52,
-      "max_payout": 479.0,
-      "conviction": 0.422,
-      "hours_to_resolve": 264.4,
+      "whale_price": 0.88,
+      "drift_c": 0.0,
+      "contracts": 472,
+      "cost": 415.36,
+      "max_payout": 472.0,
+      "conviction": 0.416,
+      "hours_to_resolve": 264.0,
       "n_wallets": 1,
-      "whale_usd": 10151,
-      "minutes_ago": 195,
-      "liquidity": 26939,
+      "whale_usd": 3898,
+      "minutes_ago": 224,
+      "liquidity": 27618,
       "url": "https://polymarket.com/event/iran-oman-hormuz-management-agreement-byptptpt-20260804222725871",
       "end_iso": "2026-08-31T23:59:00Z",
       "event_iso": "",
@@ -29,14 +29,14 @@
       "wallet_usd": [
         [
           "0x879247bf7570a40d193dd3bb9118820e0b194174",
-          10150.92
+          3898.4
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$10,151 \u2014 but only 11.3% of their book",
-        "latest buy 195 min ago",
-        "price up 0.6c since they bought",
+        "$3,898 \u2014 but only 4.4% of their book",
+        "latest buy 224 min ago",
+        "still near their entry price",
         "264h until it resolves"
       ],
       "warnings": [
@@ -55,11 +55,11 @@
       "cost": 411.0,
       "max_payout": 1370.0,
       "conviction": 0.411,
-      "hours_to_resolve": 624.5,
+      "hours_to_resolve": 624.0,
       "n_wallets": 1,
       "whale_usd": 6325,
-      "minutes_ago": 273,
-      "liquidity": 712939,
+      "minutes_ago": 302,
+      "liquidity": 723055,
       "url": "https://polymarket.com/event/fed-decision-in-september-762",
       "end_iso": "2026-09-16T00:00:00Z",
       "event_iso": "",
@@ -74,70 +74,31 @@
       "why": [
         "1 profitable wallet on this side",
         "$6,325, 49% of their own book",
-        "latest buy 273 min ago",
+        "latest buy 302 min ago",
         "price up 1.0c since they bought",
         "624h until it resolves",
-        "$712,939 liquidity"
+        "$723,055 liquidity"
       ],
       "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0xcd6c66b11ed8fdbdc1183fb761cf22959c6b481e843a715a7a9f53e22b90d420",
-      "title": "NATO x Russia military clash by August 31, 2026?",
-      "side_label": "NO on: NATO x Russia military clash by August 31, 2026?",
-      "outcome": "No",
-      "entry_price": 0.729,
-      "whale_price": 0.707,
-      "drift_c": 2.17,
-      "contracts": 471,
-      "cost": 343.36,
-      "max_payout": 471.0,
-      "conviction": 0.344,
-      "hours_to_resolve": 240.5,
-      "n_wallets": 1,
-      "whale_usd": 8799,
-      "minutes_ago": 308,
-      "liquidity": 982,
-      "url": "https://polymarket.com/event/nato-x-russia-military-clash-in-2025",
-      "end_iso": "2026-08-31T00:00:00Z",
-      "event_iso": "",
-      "slug": "nato-x-russia-military-clash-by-august-31-2026",
-      "signal_ts": 1787250310.0,
-      "wallet_usd": [
-        [
-          "0x000d257d2dc7616feaef4ae0f14600fdf50a758e",
-          8799.27
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$8,799 \u2014 but only 1.9% of their book",
-        "latest buy 308 min ago",
-        "price up 2.2c since they bought",
-        "240h until it resolves"
-      ],
-      "warnings": [
-        "thin liquidity \u2014 expect slippage",
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 288,
+  "considered": 290,
   "rejected": {
-    "esports (sleeve retired \u2014 see esports_enabled)": 35,
-    "market closed": 142,
-    "in-play (event already started)": 8,
-    "signal too old for this market's horizon": 3,
-    "wallet not new (no track record either)": 28,
-    "fresh wallet: market too liquid for the pattern": 36,
-    "already resolved": 14,
-    "resolves in under 3h": 9,
+    "esports (sleeve retired \u2014 see esports_enabled)": 34,
+    "market closed": 131,
+    "in-play (event already started)": 6,
+    "signal too old for this market's horizon": 2,
+    "fresh wallet: market too liquid for the pattern": 52,
+    "wallet not new (no track record either)": 25,
+    "already resolved": 21,
+    "resolves in under 3h": 5,
+    "price outside tradeable band": 1,
+    "parlay / combo ticket, not a single market": 2,
     "resolves more than 30 days out": 8,
-    "parlay / combo ticket, not a single market": 1,
     "price + fee ran away from the whale's entry": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 3
+    "below the 0.45 buy bar (recorded, not bought)": 2
   },
   "notes": [
     "Signals came in but none cleared the filters \u2014 that is a normal, and usually correct, outcome."
@@ -148,14 +109,15 @@
     "events_scanned": 344,
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 122,
-      "not a ladder: fewer than two live, quoted legs": 88,
-      "not a ladder: group labels are not thresholds or deadlines": 61,
+      "not a ladder: fewer than two live, quoted legs": 89,
+      "not a ladder: group labels are not thresholds or deadlines": 60,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "ladder pair too illiquid to fill": 105,
       "bracket has too many legs to place by hand": 1,
       "ladder inversion smaller than the spread": 2,
-      "not a ladder: numeric group spans different end dates": 1,
       "not a ladder: a live leg carries no group label": 3,
+      "bracket underround smaller than the spread": 1,
+      "not a ladder: numeric group spans different end dates": 1,
       "bracket leg too illiquid to fill": 4,
       "dominance gap smaller than the spread": 3
     },
@@ -188,9 +150,9 @@
           },
           {
             "label": "2.1%",
-            "market_prob": 0.0145,
+            "market_prob": 0.011,
             "model_prob": 0.0536,
-            "gap_c": 3.91,
+            "gap_c": 4.26,
             "suspect": false
           },
           {
@@ -202,9 +164,9 @@
           },
           {
             "label": "2.3%",
-            "market_prob": 0.335,
+            "market_prob": 0.34,
             "model_prob": 0.215,
-            "gap_c": -12.0,
+            "gap_c": -12.5,
             "suspect": false
           },
           {
@@ -223,9 +185,9 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.0385,
+            "market_prob": 0.0455,
             "model_prob": 0.1012,
-            "gap_c": 6.27,
+            "gap_c": 5.57,
             "suspect": false
           },
           {
@@ -328,16 +290,16 @@
         "rows": [
           {
             "label": "\u22642.9%",
-            "market_prob": 0.014,
+            "market_prob": 0.0095,
             "model_prob": 0.0049,
-            "gap_c": -0.91,
+            "gap_c": -0.46,
             "suspect": false
           },
           {
             "label": "3.0%",
-            "market_prob": 0.0115,
+            "market_prob": 0.008,
             "model_prob": 0.0201,
-            "gap_c": 0.86,
+            "gap_c": 1.21,
             "suspect": false
           },
           {
@@ -349,9 +311,9 @@
           },
           {
             "label": "3.2%",
-            "market_prob": 0.097,
+            "market_prob": 0.096,
             "model_prob": 0.1479,
-            "gap_c": 5.09,
+            "gap_c": 5.19,
             "suspect": false
           },
           {
@@ -398,9 +360,9 @@
           },
           {
             "label": "3.9%",
-            "market_prob": 0.0055,
+            "market_prob": 0.005,
             "model_prob": 0.0011,
-            "gap_c": -0.44,
+            "gap_c": -0.39,
             "suspect": false
           },
           {
@@ -440,9 +402,9 @@
           },
           {
             "label": "-0.1%",
-            "market_prob": 0.006,
+            "market_prob": 0.0055,
             "model_prob": 0.0056,
-            "gap_c": -0.04,
+            "gap_c": 0.01,
             "suspect": false
           },
           {
@@ -468,9 +430,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.27,
+            "market_prob": 0.265,
             "model_prob": 0.2352,
-            "gap_c": -3.48,
+            "gap_c": -2.98,
             "suspect": false
           },
           {
