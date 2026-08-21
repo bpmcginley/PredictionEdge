@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-21 01:59:50",
-  "generated_at": 1787277590.0322013,
+  "generated": "2026-08-21 03:12:37",
+  "generated_at": 1787281957.465959,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [
@@ -12,15 +12,15 @@
       "entry_price": 0.59,
       "whale_price": 0.596,
       "drift_c": -0.62,
-      "contracts": 705,
-      "cost": 415.95,
-      "max_payout": 705.0,
-      "conviction": 0.416,
-      "hours_to_resolve": 406.0,
+      "contracts": 601,
+      "cost": 354.59,
+      "max_payout": 601.0,
+      "conviction": 0.355,
+      "hours_to_resolve": 404.8,
       "n_wallets": 1,
       "whale_usd": 3192,
-      "minutes_ago": 106,
-      "liquidity": 695,
+      "minutes_ago": 178,
+      "liquidity": 752,
       "url": "https://polymarket.com/event/sachsen-anhalt-parliamentary-election-linke-over-under-12-percent",
       "end_iso": "2026-09-06T23:59:00Z",
       "event_iso": "",
@@ -36,9 +36,9 @@
         "election market and 100% of this is one wallet \u2014 concentration here can move the price rather than confirm it",
         "1 profitable wallet on this side",
         "$3,192 \u2014 but only 0.3% of their book",
-        "latest buy 106 min ago",
+        "latest buy 178 min ago",
         "price 0.6c cheaper than they paid",
-        "406h until it resolves"
+        "405h until it resolves"
       ],
       "warnings": [
         "thin liquidity \u2014 expect slippage",
@@ -47,62 +47,22 @@
       ]
     },
     {
-      "market_id": "0xa3b36b2d6104d34af4e6c6215fc818e43352e78a748fbfb0b85e3a35f71dec9a",
-      "title": "Will there be no change in Fed interest rates after the September 2026 meeting?",
-      "side_label": "NO on: Will there be no change in Fed interest rates after the September 2026 meeting?",
-      "outcome": "No",
-      "entry_price": 0.3,
-      "whale_price": 0.29,
-      "drift_c": 1.0,
-      "contracts": 1370,
-      "cost": 411.0,
-      "max_payout": 1370.0,
-      "conviction": 0.411,
-      "hours_to_resolve": 622.0,
-      "n_wallets": 1,
-      "whale_usd": 6325,
-      "minutes_ago": 420,
-      "liquidity": 773738,
-      "url": "https://polymarket.com/event/fed-decision-in-september-762",
-      "end_iso": "2026-09-16T00:00:00Z",
-      "event_iso": "",
-      "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-september-2026-meeting-615",
-      "signal_ts": 1787252400.0,
-      "wallet_usd": [
-        [
-          "0x58b3380f71bd6c706dd398a5e60bde55fa3a653c",
-          6325.45
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$6,325, 49% of their own book",
-        "latest buy 420 min ago",
-        "price up 1.0c since they bought",
-        "622h until it resolves",
-        "$773,738 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
       "market_id": "0x1c38a64c494e01c9bd81362cfadeadb3b87023d1d9ffae1df5a428c03152fc74",
       "title": "Iran-Oman Hormuz Agreement by August 31?",
       "side_label": "NO on: Iran-Oman Hormuz Agreement by August 31?",
       "outcome": "No",
-      "entry_price": 0.89,
+      "entry_price": 0.9,
       "whale_price": 0.88,
-      "drift_c": 1.0,
-      "contracts": 430,
-      "cost": 382.7,
-      "max_payout": 430.0,
-      "conviction": 0.383,
-      "hours_to_resolve": 262.0,
+      "drift_c": 2.0,
+      "contracts": 388,
+      "cost": 349.2,
+      "max_payout": 388.0,
+      "conviction": 0.35,
+      "hours_to_resolve": 260.8,
       "n_wallets": 1,
       "whale_usd": 3898,
-      "minutes_ago": 342,
-      "liquidity": 25952,
+      "minutes_ago": 415,
+      "liquidity": 25603,
       "url": "https://polymarket.com/event/iran-oman-hormuz-management-agreement-byptptpt-20260804222725871",
       "end_iso": "2026-08-31T23:59:00Z",
       "event_iso": "",
@@ -117,28 +77,28 @@
       "why": [
         "1 profitable wallet on this side",
         "$3,898 \u2014 but only 4.4% of their book",
-        "latest buy 342 min ago",
-        "price up 1.0c since they bought",
-        "262h until it resolves"
+        "latest buy 415 min ago",
+        "price up 2.0c since they bought",
+        "261h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 289,
+  "considered": 268,
   "rejected": {
-    "esports (sleeve retired \u2014 see esports_enabled)": 37,
-    "in-play (event already started)": 14,
-    "market closed": 117,
-    "fresh wallet: market too liquid for the pattern": 27,
-    "wallet not new (no track record either)": 49,
-    "already resolved": 27,
+    "esports (sleeve retired \u2014 see esports_enabled)": 45,
+    "market closed": 148,
+    "wallet not new (no track record either)": 24,
+    "already resolved": 16,
+    "fresh wallet: market too liquid for the pattern": 17,
     "resolves more than 30 days out": 9,
+    "in-play (event already started)": 3,
     "parlay / combo ticket, not a single market": 2,
-    "resolves in under 3h": 3,
+    "signal too old for this market's horizon": 1,
     "price + fee ran away from the whale's entry": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 3
+    "below the 0.45 buy bar (recorded, not bought)": 2
   },
   "notes": [
     "Signals came in but none cleared the filters \u2014 that is a normal, and usually correct, outcome."
@@ -149,15 +109,15 @@
     "events_scanned": 344,
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 122,
-      "not a ladder: fewer than two live, quoted legs": 88,
+      "not a ladder: fewer than two live, quoted legs": 89,
       "not a ladder: group labels are not thresholds or deadlines": 58,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "ladder pair too illiquid to fill": 105,
       "bracket has too many legs to place by hand": 1,
       "ladder inversion smaller than the spread": 2,
-      "not a ladder: a live leg carries no group label": 7,
       "bracket underround smaller than the spread": 1,
       "not a ladder: numeric group spans different end dates": 1,
+      "not a ladder: a live leg carries no group label": 5,
       "bracket leg too illiquid to fill": 4,
       "dominance gap smaller than the spread": 3
     },
@@ -197,23 +157,23 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.044,
+            "market_prob": 0.038,
             "model_prob": 0.1297,
-            "gap_c": 8.57,
+            "gap_c": 9.17,
             "suspect": false
           },
           {
             "label": "2.3%",
-            "market_prob": 0.34,
+            "market_prob": 0.335,
             "model_prob": 0.215,
-            "gap_c": -12.5,
+            "gap_c": -12.0,
             "suspect": false
           },
           {
             "label": "2.4%",
-            "market_prob": 0.4,
+            "market_prob": 0.415,
             "model_prob": 0.2441,
-            "gap_c": -15.59,
+            "gap_c": -17.09,
             "suspect": false
           },
           {
@@ -225,16 +185,16 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.0395,
+            "market_prob": 0.0405,
             "model_prob": 0.1012,
-            "gap_c": 6.17,
+            "gap_c": 6.07,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.041,
+            "market_prob": 0.0395,
             "model_prob": 0.0369,
-            "gap_c": -0.41,
+            "gap_c": -0.26,
             "suspect": false
           },
           {
@@ -263,7 +223,7 @@
         "nowcast_pp": 0.203341742698412,
         "nowcast_as_of": "2026-08-20 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.089pp (x1.80). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.088pp (x1.82). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -274,9 +234,9 @@
           },
           {
             "label": "0.1%",
-            "market_prob": 0.195,
+            "market_prob": 0.17,
             "model_prob": 0.2005,
-            "gap_c": 0.55,
+            "gap_c": 3.05,
             "suspect": false
           },
           {
@@ -288,9 +248,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.265,
+            "market_prob": 0.275,
             "model_prob": 0.2056,
-            "gap_c": -5.94,
+            "gap_c": -6.94,
             "suspect": false
           },
           {
@@ -309,9 +269,9 @@
           },
           {
             "label": "0.6%+",
-            "market_prob": 0.0235,
+            "market_prob": 0.0245,
             "model_prob": 0.0151,
-            "gap_c": -0.84,
+            "gap_c": -0.94,
             "suspect": false
           }
         ]
@@ -337,9 +297,9 @@
           },
           {
             "label": "3.0%",
-            "market_prob": 0.008,
+            "market_prob": 0.0115,
             "model_prob": 0.0201,
-            "gap_c": 1.21,
+            "gap_c": 0.86,
             "suspect": false
           },
           {
@@ -358,9 +318,9 @@
           },
           {
             "label": "3.3%",
-            "market_prob": 0.175,
+            "market_prob": 0.21,
             "model_prob": 0.2273,
-            "gap_c": 5.23,
+            "gap_c": 1.73,
             "suspect": false
           },
           {
@@ -372,9 +332,9 @@
           },
           {
             "label": "3.5%",
-            "market_prob": 0.175,
+            "market_prob": 0.18,
             "model_prob": 0.1726,
-            "gap_c": -0.24,
+            "gap_c": -0.74,
             "suspect": false
           },
           {
@@ -435,9 +395,9 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.0305,
+            "market_prob": 0.03,
             "model_prob": 0.0008,
-            "gap_c": -2.97,
+            "gap_c": -2.92,
             "suspect": false
           },
           {
@@ -484,9 +444,9 @@
           },
           {
             "label": "\u22650.5%",
-            "market_prob": 0.215,
+            "market_prob": 0.225,
             "model_prob": 0.2605,
-            "gap_c": 4.55,
+            "gap_c": 3.55,
             "suspect": false
           }
         ]
