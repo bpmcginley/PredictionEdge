@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-22 08:02:40",
-  "generated_at": 1787385760.3519032,
+  "generated": "2026-08-22 08:50:17",
+  "generated_at": 1787388617.9085937,
   "account_size": 100000.0,
   "tickets": [
     {
@@ -8,85 +8,47 @@
       "title": "Will FC Internazionale Milano win on 2026-08-22?",
       "side_label": "YES on: Will FC Internazionale Milano win on 2026-08-22?",
       "outcome": "Yes",
-      "entry_price": 0.82,
+      "entry_price": 0.83,
       "whale_price": 0.82,
-      "drift_c": 0.0,
-      "contracts": 680,
-      "cost": 557.6,
-      "max_payout": 680.0,
-      "conviction": 0.558,
-      "hours_to_resolve": 8.5,
+      "drift_c": 1.0,
+      "contracts": 679,
+      "cost": 563.57,
+      "max_payout": 679.0,
+      "conviction": 0.564,
+      "hours_to_resolve": 7.7,
       "n_wallets": 2,
-      "whale_usd": 13103,
-      "minutes_ago": 26,
-      "liquidity": 240378,
+      "whale_usd": 31773,
+      "minutes_ago": 6,
+      "liquidity": 235288,
       "url": "https://polymarket.com/event/sea-int-mon-2026-08-22",
       "end_iso": "2026-08-22T16:30:00Z",
       "event_iso": "2026-08-22 16:30:00+00",
       "slug": "sea-int-mon-2026-08-22-int",
-      "signal_ts": 1787384172.0,
+      "signal_ts": 1787388237.0,
       "wallet_usd": [
+        [
+          "0x204f72f35326db932158cba6adff0b9a1da95e14",
+          21537.74
+        ],
         [
           "0xdc41c39b95453c943174f369926018f6963bdd7e",
           10235.24
-        ],
-        [
-          "0x204f72f35326db932158cba6adff0b9a1da95e14",
-          2867.56
         ]
       ],
       "why": [
         "2 profitable wallets on this side",
-        "$13,103 \u2014 but only 1.6% of their book",
-        "latest buy 26 min ago",
-        "still near their entry price",
+        "$31,773 \u2014 but only 3.5% of their book",
+        "latest buy 6 min ago",
+        "price up 1.0c since they bought",
         "8h until it resolves",
-        "$240,378 liquidity"
+        "$235,288 liquidity"
       ],
       "warnings": [
         "resolves within 2 days"
       ]
-    },
-    {
-      "market_id": "0x708368f2a762de68e9a0aec8dacbf0121746d40696a3ddad8d0dd49715f428c9",
-      "title": "Games Total: O/U 2.5",
-      "side_label": "Over \u2014 Games Total: O/U 2.5",
-      "outcome": "Over",
-      "entry_price": 0.44,
-      "whale_price": 0.45,
-      "drift_c": -1.0,
-      "contracts": 1100,
-      "cost": 484.0,
-      "max_payout": 1100.0,
-      "conviction": 0.484,
-      "hours_to_resolve": 0.5,
-      "n_wallets": 1,
-      "whale_usd": 6508,
-      "minutes_ago": 3,
-      "liquidity": 44778,
-      "url": "https://polymarket.com/event/dota2-vsn2-ty-2026-08-22",
-      "end_iso": "2026-08-22T14:00:00Z",
-      "event_iso": "2026-08-22 08:30:00+00",
-      "slug": "dota2-vsn2-ty-2026-08-22-total-games-2pt5",
-      "signal_ts": 1787385595.0,
-      "wallet_usd": [
-        [
-          "0x31706006a0ef88b2b8f6d093efbc83b359fbc6a0",
-          6508.43
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$6,508 \u2014 but only 12.3% of their book",
-        "latest buy 3 min ago",
-        "price 1.0c cheaper than they paid",
-        "0h until it resolves"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    },
+    }
+  ],
+  "probe": [
     {
       "market_id": "0x03c4691788e32ba38982c2f1fcba4272ab8f4a59b3ffaa80e57da2e73733a955",
       "title": "Cincinnati Open: Flavio Cobolli vs Arthur Fils",
@@ -95,15 +57,15 @@
       "entry_price": 0.705,
       "whale_price": 0.71,
       "drift_c": -0.5,
-      "contracts": 673,
-      "cost": 474.46,
-      "max_payout": 673.0,
-      "conviction": 0.475,
-      "hours_to_resolve": 9.5,
+      "contracts": 615,
+      "cost": 433.57,
+      "max_payout": 615.0,
+      "conviction": 0.434,
+      "hours_to_resolve": 8.7,
       "n_wallets": 1,
       "whale_usd": 8024,
-      "minutes_ago": 24,
-      "liquidity": 117700,
+      "minutes_ago": 71,
+      "liquidity": 116444,
       "url": "https://polymarket.com/event/atp-cobolli-fils-2026-08-22",
       "end_iso": "2026-08-29T16:00:00Z",
       "event_iso": "2026-08-22 17:30:00+00",
@@ -118,96 +80,12 @@
       "why": [
         "1 profitable wallet on this side",
         "$8,024 \u2014 but only 7.8% of their book",
-        "latest buy 24 min ago",
+        "latest buy 71 min ago",
         "still near their entry price",
         "9h until it resolves",
-        "$117,700 liquidity"
+        "$116,444 liquidity"
       ],
       "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    }
-  ],
-  "probe": [
-    {
-      "market_id": "0x3b5ae790dba3585e0775d7937a0b23849a3d2f6b70b76dd853cf14a17cb4d933",
-      "title": "Nottingham Forest FC vs. Leeds United FC: O/U 2.5",
-      "side_label": "Over \u2014 Nottingham Forest FC vs. Leeds United FC: O/U 2.5",
-      "outcome": "Over",
-      "entry_price": 0.465,
-      "whale_price": 0.47,
-      "drift_c": -0.5,
-      "contracts": 922,
-      "cost": 428.73,
-      "max_payout": 922.0,
-      "conviction": 0.429,
-      "hours_to_resolve": 6.0,
-      "n_wallets": 1,
-      "whale_usd": 4084,
-      "minutes_ago": 54,
-      "liquidity": 268615,
-      "url": "https://polymarket.com/event/epl-not-lee-2026-08-22-more-markets",
-      "end_iso": "2026-08-22T14:00:00Z",
-      "event_iso": "2026-08-22 14:00:00+00",
-      "slug": "epl-not-lee-2026-08-22-total-2pt5",
-      "signal_ts": 1787382505.0,
-      "wallet_usd": [
-        [
-          "0x56acab44cfca2e88bb9b3406890aea7bfa0cd77e",
-          4083.83
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$4,084 \u2014 but only 4.0% of their book",
-        "latest buy 54 min ago",
-        "still near their entry price",
-        "6h until it resolves",
-        "$268,615 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x91d9274c9ae48c1da144fe369edf65041d9fe2c0577e6f66a5fbf17c1df79380",
-      "title": "Spread: Manchester United FC (-1.5)",
-      "side_label": "Manchester United FC \u2014 Spread: Manchester United FC (-1.5)",
-      "outcome": "Manchester United FC",
-      "entry_price": 0.495,
-      "whale_price": 0.5,
-      "drift_c": -0.5,
-      "contracts": 848,
-      "cost": 419.76,
-      "max_payout": 848.0,
-      "conviction": 0.42,
-      "hours_to_resolve": 3.5,
-      "n_wallets": 1,
-      "whale_usd": 4632,
-      "minutes_ago": 52,
-      "liquidity": 323921,
-      "url": "https://polymarket.com/event/epl-hul-mun-2026-08-22-more-markets",
-      "end_iso": "2026-08-22T11:30:00Z",
-      "event_iso": "2026-08-22 11:30:00+00",
-      "slug": "epl-hul-mun-2026-08-22-spread-away-1pt5",
-      "signal_ts": 1787382652.0,
-      "wallet_usd": [
-        [
-          "0xdc41c39b95453c943174f369926018f6963bdd7e",
-          4631.5
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$4,632 \u2014 but only 0.9% of their book",
-        "latest buy 52 min ago",
-        "still near their entry price",
-        "3h until it resolves",
-        "$323,921 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
         "only one wallet \u2014 single opinion"
       ]
     },
@@ -219,15 +97,15 @@
       "entry_price": 0.34,
       "whale_price": 0.38,
       "drift_c": -4.0,
-      "contracts": 1214,
-      "cost": 412.76,
-      "max_payout": 1214.0,
-      "conviction": 0.413,
-      "hours_to_resolve": 236.0,
+      "contracts": 1194,
+      "cost": 405.96,
+      "max_payout": 1194.0,
+      "conviction": 0.406,
+      "hours_to_resolve": 235.2,
       "n_wallets": 1,
       "whale_usd": 2280,
-      "minutes_ago": 172,
-      "liquidity": 27346,
+      "minutes_ago": 219,
+      "liquidity": 30039,
       "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
       "end_iso": "2026-09-01T04:00:00Z",
       "event_iso": "",
@@ -242,91 +120,52 @@
       "why": [
         "1 profitable wallet on this side",
         "$2,280 \u2014 but only 1.0% of their book",
-        "latest buy 172 min ago",
+        "latest buy 219 min ago",
         "price 4.0c cheaper than they paid",
-        "236h until it resolves"
+        "235h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     },
     {
-      "market_id": "0x1f81531d74cd9adc1b1f3d5cb09a749530581483dd18fdc89dfca4036aa6e72d",
-      "title": "Will Ethereum reach $2,600 in August?",
-      "side_label": "YES on: Will Ethereum reach $2,600 in August?",
-      "outcome": "Yes",
-      "entry_price": 0.5,
-      "whale_price": 0.841,
-      "drift_c": -34.14,
-      "contracts": 822,
-      "cost": 411.0,
-      "max_payout": 822.0,
-      "conviction": 0.411,
-      "hours_to_resolve": 236.0,
+      "market_id": "0x3b5ae790dba3585e0775d7937a0b23849a3d2f6b70b76dd853cf14a17cb4d933",
+      "title": "Nottingham Forest FC vs. Leeds United FC: O/U 2.5",
+      "side_label": "Over \u2014 Nottingham Forest FC vs. Leeds United FC: O/U 2.5",
+      "outcome": "Over",
+      "entry_price": 0.465,
+      "whale_price": 0.47,
+      "drift_c": -0.5,
+      "contracts": 834,
+      "cost": 387.81,
+      "max_payout": 834.0,
+      "conviction": 0.388,
+      "hours_to_resolve": 5.2,
       "n_wallets": 1,
-      "whale_usd": 16751,
-      "minutes_ago": 521,
-      "liquidity": 38423,
-      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-august-2026",
-      "end_iso": "2026-09-01T04:00:00Z",
-      "event_iso": "",
-      "slug": "will-ethereum-reach-2600-in-august-2026",
-      "signal_ts": 1787354509.0,
-      "wallet_usd": [
-        [
-          "0x1465b79bff7992bc703e1aafb3683b1089647072",
-          16751.04
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$16,751 \u2014 but only 0.4% of their book",
-        "latest buy 521 min ago",
-        "price 34.1c cheaper than they paid",
-        "236h until it resolves"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion",
-        "smart money sold $3,868 of this side 491 min ago (1 wallet) \u2014 after the buys above"
-      ]
-    },
-    {
-      "market_id": "0x85565bab4875d7304e9b82c10249a2057f18f54041cf45221c398d05ec467756",
-      "title": "Prague 2: Chun-Hsin Tseng vs Jan Kumstat",
-      "side_label": "Jan Kumstat \u2014 Prague 2: Chun-Hsin Tseng vs Jan Kumstat",
-      "outcome": "Jan Kumstat",
-      "entry_price": 0.665,
-      "whale_price": 0.65,
-      "drift_c": 1.5,
-      "contracts": 590,
-      "cost": 392.35,
-      "max_payout": 590.0,
-      "conviction": 0.393,
-      "hours_to_resolve": 3.0,
-      "n_wallets": 1,
-      "whale_usd": 5384,
-      "minutes_ago": 39,
-      "liquidity": 157914,
-      "url": "https://polymarket.com/event/atp-tseng-kumstat-2026-08-22",
-      "end_iso": "2026-08-29T11:00:00Z",
-      "event_iso": "2026-08-22 11:00:00+00",
-      "slug": "atp-tseng-kumstat-2026-08-22",
-      "signal_ts": 1787383434.0,
+      "whale_usd": 4084,
+      "minutes_ago": 102,
+      "liquidity": 259084,
+      "url": "https://polymarket.com/event/epl-not-lee-2026-08-22-more-markets",
+      "end_iso": "2026-08-22T14:00:00Z",
+      "event_iso": "2026-08-22 14:00:00+00",
+      "slug": "epl-not-lee-2026-08-22-total-2pt5",
+      "signal_ts": 1787382505.0,
       "wallet_usd": [
         [
           "0x56acab44cfca2e88bb9b3406890aea7bfa0cd77e",
-          5384.42
+          4083.83
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$5,384 \u2014 but only 5.2% of their book",
-        "latest buy 39 min ago",
-        "price up 1.5c since they bought",
-        "3h until it resolves",
-        "$157,914 liquidity"
+        "$4,084 \u2014 but only 4.0% of their book",
+        "latest buy 102 min ago",
+        "still near their entry price",
+        "5h until it resolves",
+        "$259,084 liquidity"
       ],
       "warnings": [
+        "resolves within 2 days",
         "only one wallet \u2014 single opinion"
       ]
     },
@@ -335,18 +174,18 @@
       "title": "Will Tottenham Hotspur FC win on 2026-08-22?",
       "side_label": "NO on: Will Tottenham Hotspur FC win on 2026-08-22?",
       "outcome": "No",
-      "entry_price": 0.73,
+      "entry_price": 0.72,
       "whale_price": 0.71,
-      "drift_c": 2.0,
-      "contracts": 535,
-      "cost": 390.55,
-      "max_payout": 535.0,
-      "conviction": 0.391,
-      "hours_to_resolve": 8.5,
+      "drift_c": 1.0,
+      "contracts": 531,
+      "cost": 382.32,
+      "max_payout": 531.0,
+      "conviction": 0.383,
+      "hours_to_resolve": 7.7,
       "n_wallets": 1,
       "whale_usd": 6435,
-      "minutes_ago": 19,
-      "liquidity": 675867,
+      "minutes_ago": 66,
+      "liquidity": 695633,
       "url": "https://polymarket.com/event/epl-bre-tot-2026-08-22",
       "end_iso": "2026-08-22T16:30:00Z",
       "event_iso": "2026-08-22 16:30:00+00",
@@ -361,10 +200,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$6,435 \u2014 but only 1.3% of their book",
-        "latest buy 19 min ago",
-        "price up 2.0c since they bought",
+        "latest buy 66 min ago",
+        "price up 1.0c since they bought",
         "8h until it resolves",
-        "$675,867 liquidity"
+        "$695,633 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
@@ -372,20 +211,22 @@
       ]
     }
   ],
-  "considered": 310,
+  "considered": 297,
   "rejected": {
-    "esports (sleeve retired \u2014 see esports_enabled)": 56,
-    "fresh wallet: market too liquid for the pattern": 16,
-    "market closed": 185,
-    "wallet not new (no track record either)": 14,
-    "already resolved": 3,
+    "esports (sleeve retired \u2014 see esports_enabled)": 64,
+    "market closed": 167,
+    "fresh wallet: market too liquid for the pattern": 17,
+    "wallet not new (no track record either)": 16,
     "no resolution or start time": 3,
-    "signal too old for this market's horizon": 8,
-    "resolves more than 30 days out": 12,
-    "resolves in under 3h": 2,
+    "resolves more than 30 days out": 4,
+    "signal too old for this market's horizon": 6,
+    "resolves in under 3h": 6,
+    "in-play (event already started)": 1,
+    "price + fee ran away from the whale's entry": 4,
+    "already resolved": 2,
     "price outside tradeable band": 1,
-    "price + fee ran away from the whale's entry": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 6
+    "sports market with no event start time": 1,
+    "below the 0.45 buy bar (recorded, not bought)": 4
   },
   "notes": [],
   "consistency": {
@@ -397,7 +238,7 @@
       "not a ladder: fewer than two live, quoted legs": 90,
       "not a ladder: group labels are not thresholds or deadlines": 61,
       "not a ladder: duplicate deadlines left too few rungs": 5,
-      "ladder pair too illiquid to fill": 94,
+      "ladder pair too illiquid to fill": 101,
       "bracket underround smaller than the spread": 1,
       "bracket has too many legs to place by hand": 1,
       "ladder inversion smaller than the spread": 2,
@@ -407,7 +248,144 @@
       "dominance gap smaller than the spread": 3
     },
     "notes": [],
-    "violations": []
+    "violations": [
+      {
+        "family": "ladder",
+        "event_slug": "metamask-fdv-above-one-day-after-launch",
+        "constraint": "P($4B) must be <= P($700M), but $4B bids 0.112 while $700M offers 0.079",
+        "edge_c": 3.3,
+        "actions": [
+          "BUY YES  $700M  @ 0.079",
+          "BUY NO   $4B  @ 0.888"
+        ],
+        "warnings": [
+          "both legs settle on the same event page - confirm the two rule texts differ only in the threshold"
+        ],
+        "url": "https://polymarket.com/event/metamask-fdv-above-one-day-after-launch",
+        "legs": [
+          {
+            "question": "Metamask FDV above $700M one day after launch?",
+            "name": "$700M",
+            "bid": 0.033,
+            "ask": 0.079,
+            "liquidity": 28981.87754,
+            "end_iso": "2027-01-01T05:00:00Z",
+            "url": "https://polymarket.com/event/metamask-fdv-above-one-day-after-launch"
+          },
+          {
+            "question": "Metamask FDV above $4B one day after launch?",
+            "name": "$4B",
+            "bid": 0.112,
+            "ask": 0.154,
+            "liquidity": 10936.07377,
+            "end_iso": "2027-01-01T05:00:00Z",
+            "url": "https://polymarket.com/event/metamask-fdv-above-one-day-after-launch"
+          }
+        ]
+      },
+      {
+        "family": "ladder",
+        "event_slug": "metamask-fdv-above-one-day-after-launch",
+        "constraint": "P($4B) must be <= P($1B), but $4B bids 0.112 while $1B offers 0.080",
+        "edge_c": 3.2,
+        "actions": [
+          "BUY YES  $1B  @ 0.080",
+          "BUY NO   $4B  @ 0.888"
+        ],
+        "warnings": [
+          "both legs settle on the same event page - confirm the two rule texts differ only in the threshold"
+        ],
+        "url": "https://polymarket.com/event/metamask-fdv-above-one-day-after-launch",
+        "legs": [
+          {
+            "question": "Metamask FDV above $1B one day after launch?",
+            "name": "$1B",
+            "bid": 0.06,
+            "ask": 0.08,
+            "liquidity": 21138.2461,
+            "end_iso": "2027-01-01T05:00:00Z",
+            "url": "https://polymarket.com/event/metamask-fdv-above-one-day-after-launch"
+          },
+          {
+            "question": "Metamask FDV above $4B one day after launch?",
+            "name": "$4B",
+            "bid": 0.112,
+            "ask": 0.154,
+            "liquidity": 10936.07377,
+            "end_iso": "2027-01-01T05:00:00Z",
+            "url": "https://polymarket.com/event/metamask-fdv-above-one-day-after-launch"
+          }
+        ]
+      },
+      {
+        "family": "ladder",
+        "event_slug": "metamask-fdv-above-one-day-after-launch",
+        "constraint": "P($4B) must be <= P($2B), but $4B bids 0.112 while $2B offers 0.085",
+        "edge_c": 2.7,
+        "actions": [
+          "BUY YES  $2B  @ 0.085",
+          "BUY NO   $4B  @ 0.888"
+        ],
+        "warnings": [
+          "both legs settle on the same event page - confirm the two rule texts differ only in the threshold"
+        ],
+        "url": "https://polymarket.com/event/metamask-fdv-above-one-day-after-launch",
+        "legs": [
+          {
+            "question": "Metamask FDV above $2B one day after launch?",
+            "name": "$2B",
+            "bid": 0.058,
+            "ask": 0.085,
+            "liquidity": 12071.27286,
+            "end_iso": "2027-01-01T05:00:00Z",
+            "url": "https://polymarket.com/event/metamask-fdv-above-one-day-after-launch"
+          },
+          {
+            "question": "Metamask FDV above $4B one day after launch?",
+            "name": "$4B",
+            "bid": 0.112,
+            "ask": 0.154,
+            "liquidity": 10936.07377,
+            "end_iso": "2027-01-01T05:00:00Z",
+            "url": "https://polymarket.com/event/metamask-fdv-above-one-day-after-launch"
+          }
+        ]
+      },
+      {
+        "family": "ladder",
+        "event_slug": "metamask-fdv-above-one-day-after-launch",
+        "constraint": "P($4B) must be <= P($500M), but $4B bids 0.112 while $500M offers 0.090",
+        "edge_c": 2.2,
+        "actions": [
+          "BUY YES  $500M  @ 0.090",
+          "BUY NO   $4B  @ 0.888"
+        ],
+        "warnings": [
+          "both legs settle on the same event page - confirm the two rule texts differ only in the threshold"
+        ],
+        "url": "https://polymarket.com/event/metamask-fdv-above-one-day-after-launch",
+        "legs": [
+          {
+            "question": "Metamask FDV above $500M one day after launch?",
+            "name": "$500M",
+            "bid": 0.07,
+            "ask": 0.09,
+            "liquidity": 13705.2492,
+            "end_iso": "2027-01-01T05:00:00Z",
+            "url": "https://polymarket.com/event/metamask-fdv-above-one-day-after-launch"
+          },
+          {
+            "question": "Metamask FDV above $4B one day after launch?",
+            "name": "$4B",
+            "bid": 0.112,
+            "ask": 0.154,
+            "liquidity": 10936.07377,
+            "end_iso": "2027-01-01T05:00:00Z",
+            "url": "https://polymarket.com/event/metamask-fdv-above-one-day-after-launch"
+          }
+        ]
+      }
+    ]
   },
   "macro": {
     "ok": true,
@@ -442,9 +420,9 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.0265,
+            "market_prob": 0.024,
             "model_prob": 0.1297,
-            "gap_c": 10.32,
+            "gap_c": 10.57,
             "suspect": false
           },
           {
@@ -470,16 +448,16 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.0315,
+            "market_prob": 0.028,
             "model_prob": 0.1012,
-            "gap_c": 6.97,
+            "gap_c": 7.32,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.041,
+            "market_prob": 0.042,
             "model_prob": 0.0369,
-            "gap_c": -0.41,
+            "gap_c": -0.51,
             "suspect": false
           },
           {
@@ -508,7 +486,7 @@
         "nowcast_pp": 0.203341742698412,
         "nowcast_as_of": "2026-08-21 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.087pp (x1.84). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.088pp (x1.81). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -519,23 +497,23 @@
           },
           {
             "label": "0.1%",
-            "market_prob": 0.17,
+            "market_prob": 0.185,
             "model_prob": 0.2005,
-            "gap_c": 3.05,
+            "gap_c": 1.55,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.43,
+            "market_prob": 0.425,
             "model_prob": 0.2453,
-            "gap_c": -18.47,
+            "gap_c": -17.97,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.32,
+            "market_prob": 0.28,
             "model_prob": 0.2056,
-            "gap_c": -11.44,
+            "gap_c": -7.44,
             "suspect": false
           },
           {
@@ -582,23 +560,23 @@
           },
           {
             "label": "3.0%",
-            "market_prob": 0.0075,
+            "market_prob": 0.011,
             "model_prob": 0.0201,
-            "gap_c": 1.26,
+            "gap_c": 0.91,
             "suspect": false
           },
           {
             "label": "3.1%",
-            "market_prob": 0.0245,
+            "market_prob": 0.018,
             "model_prob": 0.0659,
-            "gap_c": 4.14,
+            "gap_c": 4.79,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.083,
+            "market_prob": 0.088,
             "model_prob": 0.1479,
-            "gap_c": 6.49,
+            "gap_c": 5.99,
             "suspect": false
           },
           {
@@ -624,9 +602,9 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.0515,
+            "market_prob": 0.067,
             "model_prob": 0.0853,
-            "gap_c": 3.38,
+            "gap_c": 1.83,
             "suspect": false
           },
           {
