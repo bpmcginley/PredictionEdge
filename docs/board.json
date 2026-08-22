@@ -1,36 +1,241 @@
 {
-  "generated": "2026-08-22 16:36:26",
-  "generated_at": 1787416586.6121469,
+  "generated": "2026-08-22 17:01:58",
+  "generated_at": 1787418118.4643357,
   "account_size": 100000.0,
-  "tickets": [],
-  "probe": [],
-  "considered": 308,
+  "tickets": [
+    {
+      "market_id": "0x2258ad30047621fe9cf1f52a903e1de06e7c9207f1e01e870214a6daaad06ed3",
+      "title": "Will Solana dip to $80 in August?",
+      "side_label": "NO on: Will Solana dip to $80 in August?",
+      "outcome": "No",
+      "entry_price": 0.82,
+      "whale_price": 0.82,
+      "drift_c": 0.0,
+      "contracts": 663,
+      "cost": 543.66,
+      "max_payout": 663.0,
+      "conviction": 0.544,
+      "hours_to_resolve": 227.0,
+      "n_wallets": 1,
+      "whale_usd": 8200,
+      "minutes_ago": 21,
+      "liquidity": 28765,
+      "url": "https://polymarket.com/event/what-price-will-solana-hit-in-august-2026",
+      "end_iso": "2026-09-01T04:00:00Z",
+      "event_iso": "",
+      "slug": "will-solana-dip-to-80-in-august-2026",
+      "signal_ts": 1787416830.0,
+      "wallet_usd": [
+        [
+          "0xf705fa045201391d9632b7f3cde06a5e24453ca7",
+          8200.0
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$8,200 \u2014 but only 1.0% of their book",
+        "latest buy 21 min ago",
+        "still near their entry price",
+        "227h until it resolves"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0xd918ffb1aa137a718494ee2537e0bd7bc83c723c45023ba9beeb8e167e791b47",
+      "title": "Toronto Blue Jays vs. New York Yankees",
+      "side_label": "New York Yankees \u2014 Toronto Blue Jays vs. New York Yankees",
+      "outcome": "New York Yankees",
+      "entry_price": 0.495,
+      "whale_price": 0.5,
+      "drift_c": -0.5,
+      "contracts": 1058,
+      "cost": 523.71,
+      "max_payout": 1058.0,
+      "conviction": 0.524,
+      "hours_to_resolve": 0.6,
+      "n_wallets": 1,
+      "whale_usd": 20000,
+      "minutes_ago": 7,
+      "liquidity": 695714,
+      "url": "https://polymarket.com/event/mlb-tor-nyy-2026-08-22",
+      "end_iso": "2026-08-29T17:35:00Z",
+      "event_iso": "2026-08-22 17:35:00+00",
+      "slug": "mlb-tor-nyy-2026-08-22",
+      "signal_ts": 1787417695.0,
+      "wallet_usd": [
+        [
+          "0x31706006a0ef88b2b8f6d093efbc83b359fbc6a0",
+          20000.0
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$20,000, 82% of their own book",
+        "latest buy 7 min ago",
+        "still near their entry price",
+        "1h until it resolves",
+        "$695,714 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0xabb585d7cacca7eab92e4ce68fd6e2bd05e1c8fcfa090ccb8b69189ea2003643",
+      "title": "Atlanta Braves vs. Milwaukee Brewers",
+      "side_label": "Atlanta Braves \u2014 Atlanta Braves vs. Milwaukee Brewers",
+      "outcome": "Atlanta Braves",
+      "entry_price": 0.405,
+      "whale_price": 0.392,
+      "drift_c": 1.34,
+      "contracts": 1222,
+      "cost": 494.91,
+      "max_payout": 1222.0,
+      "conviction": 0.495,
+      "hours_to_resolve": 1.1,
+      "n_wallets": 2,
+      "whale_usd": 12582,
+      "minutes_ago": 17,
+      "liquidity": 608979,
+      "url": "https://polymarket.com/event/mlb-atl-mil-2026-08-22",
+      "end_iso": "2026-08-29T18:10:00Z",
+      "event_iso": "2026-08-22 18:10:00+00",
+      "slug": "mlb-atl-mil-2026-08-22",
+      "signal_ts": 1787417074.0,
+      "wallet_usd": [
+        [
+          "0x684baa57c338c2549aec0aa3f034f695d72a8409",
+          10582.31
+        ],
+        [
+          "0x448861155279dbf833d041b963e3ac854599e319",
+          2000.0
+        ]
+      ],
+      "why": [
+        "2 profitable wallets on this side",
+        "$12,582 \u2014 but only 14.3% of their book",
+        "latest buy 17 min ago",
+        "price up 1.3c since they bought",
+        "1h until it resolves",
+        "$608,979 liquidity"
+      ],
+      "warnings": []
+    },
+    {
+      "market_id": "0x54401e6564e7a04a8d3bb33578f1f6a4ed0046a560cbbe68128b413bd90a5c8e",
+      "title": "Bitcoin Up or Down on August 23?",
+      "side_label": "Up \u2014 Bitcoin Up or Down on August 23?",
+      "outcome": "Up",
+      "entry_price": 0.615,
+      "whale_price": 0.61,
+      "drift_c": 0.5,
+      "contracts": 800,
+      "cost": 492.0,
+      "max_payout": 800.0,
+      "conviction": 0.492,
+      "hours_to_resolve": 23.0,
+      "n_wallets": 1,
+      "whale_usd": 6100,
+      "minutes_ago": 16,
+      "liquidity": 50818,
+      "url": "https://polymarket.com/event/bitcoin-up-or-down-on-august-23-2026",
+      "end_iso": "2026-08-23T16:00:00Z",
+      "event_iso": "",
+      "slug": "bitcoin-up-or-down-on-august-23-2026",
+      "signal_ts": 1787417170.0,
+      "wallet_usd": [
+        [
+          "0x71a70f24538d885d1b45f9cea158a2cdf2e56fcf",
+          6100.0
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$6,100 \u2014 but only 16.3% of their book",
+        "latest buy 16 min ago",
+        "still near their entry price",
+        "23h until it resolves",
+        "$50,818 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    }
+  ],
+  "probe": [
+    {
+      "market_id": "0x816b4850d220fe8dfb88a5a34055b42625ca1dd891ad5132ea3a1694d1f2993e",
+      "title": "Spread: Houston Astros (-1.5)",
+      "side_label": "Houston Astros \u2014 Spread: Houston Astros (-1.5)",
+      "outcome": "Houston Astros",
+      "entry_price": 0.505,
+      "whale_price": 0.5,
+      "drift_c": 0.5,
+      "contracts": 879,
+      "cost": 443.89,
+      "max_payout": 879.0,
+      "conviction": 0.444,
+      "hours_to_resolve": 6.1,
+      "n_wallets": 1,
+      "whale_usd": 3997,
+      "minutes_ago": 21,
+      "liquidity": 146816,
+      "url": "https://polymarket.com/event/mlb-oak-hou-2026-08-22",
+      "end_iso": "2026-08-22T23:10:00Z",
+      "event_iso": "2026-08-22 23:10:00+00",
+      "slug": "mlb-oak-hou-2026-08-22-spread-home-1pt5",
+      "signal_ts": 1787416827.0,
+      "wallet_usd": [
+        [
+          "0x16bb9951a36fce71e2ef57890b786145e0ba8492",
+          3996.93
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$3,997 \u2014 but only 6.6% of their book",
+        "latest buy 21 min ago",
+        "still near their entry price",
+        "6h until it resolves",
+        "$146,816 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    }
+  ],
+  "considered": 309,
   "rejected": {
-    "esports (sleeve retired \u2014 see esports_enabled)": 82,
-    "already resolved": 42,
-    "resolves in under 3h": 11,
-    "fresh wallet: market too liquid for the pattern": 25,
-    "market closed": 77,
-    "wallet not new (no track record either)": 55,
-    "signal too old for this market's horizon": 9,
-    "resolves more than 30 days out": 2,
+    "esports (sleeve retired \u2014 see esports_enabled)": 86,
+    "already resolved": 47,
+    "resolves in under 3h": 5,
+    "market closed": 63,
+    "wallet not new (no track record either)": 62,
+    "signal too old for this market's horizon": 6,
+    "fresh wallet: market too liquid for the pattern": 26,
+    "resolves more than 30 days out": 3,
     "price + fee ran away from the whale's entry": 3,
     "parlay / combo ticket, not a single market": 1,
-    "price outside tradeable band": 1
+    "price outside tradeable band": 1,
+    "in-play (event already started)": 1,
+    "below the 0.45 buy bar (recorded, not bought)": 1
   },
-  "notes": [
-    "Signals came in but none cleared the filters \u2014 that is a normal, and usually correct, outcome."
-  ],
+  "notes": [],
   "consistency": {
     "ok": true,
     "enabled": true,
-    "events_scanned": 347,
+    "events_scanned": 346,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 126,
-      "not a ladder: fewer than two live, quoted legs": 86,
-      "not a ladder: group labels are not thresholds or deadlines": 63,
+      "bracket has legs we cannot price (fail closed)": 125,
+      "not a ladder: fewer than two live, quoted legs": 88,
+      "not a ladder: group labels are not thresholds or deadlines": 62,
       "not a ladder: duplicate deadlines left too few rungs": 5,
-      "ladder pair too illiquid to fill": 91,
+      "ladder pair too illiquid to fill": 90,
       "bracket underround smaller than the spread": 1,
       "bracket has too many legs to place by hand": 1,
       "ladder inversion smaller than the spread": 2,
@@ -58,7 +263,7 @@
         "nowcast_pp": 0.203341742698412,
         "nowcast_as_of": "2026-08-21 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.087pp (x1.84). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.087pp (x1.83). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -69,9 +274,9 @@
           },
           {
             "label": "0.1%",
-            "market_prob": 0.175,
+            "market_prob": 0.18,
             "model_prob": 0.2005,
-            "gap_c": 2.55,
+            "gap_c": 2.05,
             "suspect": false
           },
           {
@@ -83,9 +288,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.315,
+            "market_prob": 0.31,
             "model_prob": 0.2056,
-            "gap_c": -10.94,
+            "gap_c": -10.44,
             "suspect": false
           },
           {
@@ -139,9 +344,9 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.032,
+            "market_prob": 0.03,
             "model_prob": 0.1297,
-            "gap_c": 9.77,
+            "gap_c": 9.97,
             "suspect": false
           },
           {
@@ -167,16 +372,16 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.0295,
+            "market_prob": 0.0415,
             "model_prob": 0.1012,
-            "gap_c": 7.17,
+            "gap_c": 5.97,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0405,
+            "market_prob": 0.039,
             "model_prob": 0.0369,
-            "gap_c": -0.36,
+            "gap_c": -0.21,
             "suspect": false
           },
           {
@@ -209,37 +414,37 @@
         "rows": [
           {
             "label": "\u22642.9%",
-            "market_prob": 0.0085,
+            "market_prob": 0.006,
             "model_prob": 0.0049,
-            "gap_c": -0.36,
+            "gap_c": -0.11,
             "suspect": false
           },
           {
             "label": "3.0%",
-            "market_prob": 0.011,
+            "market_prob": 0.0105,
             "model_prob": 0.0201,
-            "gap_c": 0.91,
+            "gap_c": 0.96,
             "suspect": false
           },
           {
             "label": "3.1%",
-            "market_prob": 0.018,
+            "market_prob": 0.025,
             "model_prob": 0.0659,
-            "gap_c": 4.79,
+            "gap_c": 4.09,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.091,
+            "market_prob": 0.0825,
             "model_prob": 0.1479,
-            "gap_c": 5.69,
+            "gap_c": 6.54,
             "suspect": false
           },
           {
             "label": "3.3%",
-            "market_prob": 0.27,
+            "market_prob": 0.255,
             "model_prob": 0.2273,
-            "gap_c": -4.27,
+            "gap_c": -2.77,
             "suspect": false
           },
           {
@@ -251,16 +456,16 @@
           },
           {
             "label": "3.5%",
-            "market_prob": 0.225,
+            "market_prob": 0.21,
             "model_prob": 0.1726,
-            "gap_c": -5.24,
+            "gap_c": -3.74,
             "suspect": false
           },
           {
             "label": "3.6%",
-            "market_prob": 0.0495,
+            "market_prob": 0.0585,
             "model_prob": 0.0853,
-            "gap_c": 3.58,
+            "gap_c": 2.68,
             "suspect": false
           },
           {
@@ -272,9 +477,9 @@
           },
           {
             "label": "3.8%",
-            "market_prob": 0.021,
+            "market_prob": 0.022,
             "model_prob": 0.0067,
-            "gap_c": -1.43,
+            "gap_c": -1.53,
             "suspect": false
           },
           {
@@ -314,9 +519,9 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.038,
+            "market_prob": 0.041,
             "model_prob": 0.0008,
-            "gap_c": -3.72,
+            "gap_c": -4.02,
             "suspect": false
           },
           {
@@ -349,9 +554,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.225,
+            "market_prob": 0.24,
             "model_prob": 0.2352,
-            "gap_c": 1.02,
+            "gap_c": -0.48,
             "suspect": false
           },
           {
