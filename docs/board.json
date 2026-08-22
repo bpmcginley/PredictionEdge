@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-22 09:34:40",
-  "generated_at": 1787391280.932667,
+  "generated": "2026-08-22 10:01:22",
+  "generated_at": 1787392882.1639764,
   "account_size": 100000.0,
   "tickets": [
     {
@@ -11,15 +11,15 @@
       "entry_price": 0.83,
       "whale_price": 0.82,
       "drift_c": 1.0,
-      "contracts": 638,
-      "cost": 529.54,
-      "max_payout": 638.0,
-      "conviction": 0.53,
-      "hours_to_resolve": 6.9,
+      "contracts": 610,
+      "cost": 506.3,
+      "max_payout": 610.0,
+      "conviction": 0.507,
+      "hours_to_resolve": 6.5,
       "n_wallets": 2,
       "whale_usd": 31773,
-      "minutes_ago": 51,
-      "liquidity": 227482,
+      "minutes_ago": 77,
+      "liquidity": 176429,
       "url": "https://polymarket.com/event/sea-int-mon-2026-08-22",
       "end_iso": "2026-08-22T16:30:00Z",
       "event_iso": "2026-08-22 16:30:00+00",
@@ -38,154 +38,72 @@
       "why": [
         "2 profitable wallets on this side",
         "$31,773 \u2014 but only 4.2% of their book",
-        "latest buy 51 min ago",
+        "latest buy 77 min ago",
         "price up 1.0c since they bought",
-        "7h until it resolves",
-        "$227,482 liquidity"
+        "6h until it resolves",
+        "$176,429 liquidity"
       ],
       "warnings": [
         "resolves within 2 days"
       ]
-    }
-  ],
-  "probe": [
+    },
     {
       "market_id": "0x45dbcfc223f5495d25c24c2729143e21e919eb9ccca00566a37cfdfc94b77b8f",
       "title": "Will Bitcoin dip to $72,500 in August?",
-      "side_label": "YES on: Will Bitcoin dip to $72,500 in August?",
-      "outcome": "Yes",
-      "entry_price": 0.35,
-      "whale_price": 0.38,
-      "drift_c": -3.0,
-      "contracts": 1160,
-      "cost": 406.0,
-      "max_payout": 1160.0,
-      "conviction": 0.406,
-      "hours_to_resolve": 234.4,
+      "side_label": "NO on: Will Bitcoin dip to $72,500 in August?",
+      "outcome": "No",
+      "entry_price": 0.65,
+      "whale_price": 0.64,
+      "drift_c": 1.0,
+      "contracts": 707,
+      "cost": 459.55,
+      "max_payout": 707.0,
+      "conviction": 0.46,
+      "hours_to_resolve": 234.0,
       "n_wallets": 1,
-      "whale_usd": 2280,
-      "minutes_ago": 264,
-      "liquidity": 27256,
+      "whale_usd": 3290,
+      "minutes_ago": 78,
+      "liquidity": 29986,
       "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
       "end_iso": "2026-09-01T04:00:00Z",
       "event_iso": "",
       "slug": "will-bitcoin-dip-to-72pt5k-in-august-2026",
-      "signal_ts": 1787375455.0,
+      "signal_ts": 1787388171.0,
       "wallet_usd": [
         [
           "0xcc500cbcc8b7cf5bd21975ebbea34f21b5644c82",
-          2280.0
+          3289.6
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$2,280 \u2014 but only 1.0% of their book",
-        "latest buy 264 min ago",
-        "price 3.0c cheaper than they paid",
+        "$3,290 \u2014 but only 1.4% of their book",
+        "latest buy 78 min ago",
+        "price up 1.0c since they bought",
         "234h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
-    },
-    {
-      "market_id": "0x03c4691788e32ba38982c2f1fcba4272ab8f4a59b3ffaa80e57da2e73733a955",
-      "title": "Cincinnati Open: Flavio Cobolli vs Arthur Fils",
-      "side_label": "Arthur Fils \u2014 Cincinnati Open: Flavio Cobolli vs Arthur Fils",
-      "outcome": "Arthur Fils",
-      "entry_price": 0.705,
-      "whale_price": 0.71,
-      "drift_c": -0.5,
-      "contracts": 561,
-      "cost": 395.5,
-      "max_payout": 561.0,
-      "conviction": 0.396,
-      "hours_to_resolve": 7.9,
-      "n_wallets": 1,
-      "whale_usd": 8024,
-      "minutes_ago": 116,
-      "liquidity": 126009,
-      "url": "https://polymarket.com/event/atp-cobolli-fils-2026-08-22",
-      "end_iso": "2026-08-29T16:00:00Z",
-      "event_iso": "2026-08-22 17:30:00+00",
-      "slug": "atp-cobolli-fils-2026-08-22",
-      "signal_ts": 1787384332.0,
-      "wallet_usd": [
-        [
-          "0x56acab44cfca2e88bb9b3406890aea7bfa0cd77e",
-          8024.42
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$8,024 \u2014 but only 7.8% of their book",
-        "latest buy 116 min ago",
-        "still near their entry price",
-        "8h until it resolves",
-        "$126,009 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x9359698aab64d2cf210dbee9926d01188cb5277a3442dcf0552855842c44dce0",
-      "title": "Will Tottenham Hotspur FC win on 2026-08-22?",
-      "side_label": "NO on: Will Tottenham Hotspur FC win on 2026-08-22?",
-      "outcome": "No",
-      "entry_price": 0.72,
-      "whale_price": 0.71,
-      "drift_c": 1.0,
-      "contracts": 479,
-      "cost": 344.88,
-      "max_payout": 479.0,
-      "conviction": 0.345,
-      "hours_to_resolve": 6.9,
-      "n_wallets": 1,
-      "whale_usd": 6435,
-      "minutes_ago": 111,
-      "liquidity": 649999,
-      "url": "https://polymarket.com/event/epl-bre-tot-2026-08-22",
-      "end_iso": "2026-08-22T16:30:00Z",
-      "event_iso": "2026-08-22 16:30:00+00",
-      "slug": "epl-bre-tot-2026-08-22-tot",
-      "signal_ts": 1787384625.0,
-      "wallet_usd": [
-        [
-          "0x204f72f35326db932158cba6adff0b9a1da95e14",
-          6435.2
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$6,435 \u2014 but only 1.3% of their book",
-        "latest buy 111 min ago",
-        "price up 1.0c since they bought",
-        "7h until it resolves",
-        "$649,999 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
     }
   ],
-  "considered": 291,
+  "probe": [],
+  "considered": 290,
   "rejected": {
-    "esports (sleeve retired \u2014 see esports_enabled)": 88,
-    "market closed": 130,
-    "fresh wallet: market too liquid for the pattern": 19,
-    "wallet not new (no track record either)": 12,
+    "esports (sleeve retired \u2014 see esports_enabled)": 103,
+    "market closed": 108,
+    "fresh wallet: market too liquid for the pattern": 16,
+    "wallet not new (no track record either)": 20,
     "no resolution or start time": 3,
     "resolves more than 30 days out": 12,
-    "signal too old for this market's horizon": 8,
-    "already resolved": 5,
-    "resolves in under 3h": 5,
+    "signal too old for this market's horizon": 10,
+    "already resolved": 7,
+    "resolves in under 3h": 4,
     "in-play (event already started)": 1,
-    "price + fee ran away from the whale's entry": 2,
+    "price + fee ran away from the whale's entry": 1,
     "price outside tradeable band": 1,
     "sports market with no event start time": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 3
+    "duplicate event (kept the stronger side)": 1
   },
   "notes": [],
   "consistency": {
@@ -197,17 +115,52 @@
       "not a ladder: fewer than two live, quoted legs": 90,
       "not a ladder: group labels are not thresholds or deadlines": 61,
       "not a ladder: duplicate deadlines left too few rungs": 5,
-      "ladder pair too illiquid to fill": 101,
+      "ladder pair too illiquid to fill": 100,
       "bracket underround smaller than the spread": 1,
       "bracket has too many legs to place by hand": 1,
-      "ladder inversion smaller than the spread": 2,
+      "ladder inversion smaller than the spread": 1,
       "not a ladder: numeric group spans different end dates": 1,
       "not a ladder: a live leg carries no group label": 1,
       "bracket leg too illiquid to fill": 4,
       "dominance gap smaller than the spread": 3
     },
     "notes": [],
-    "violations": []
+    "violations": [
+      {
+        "family": "ladder",
+        "event_slug": "puffpaw-fdv-above-one-day-after-launch",
+        "constraint": "P($100M) must be <= P($50M), but $100M bids 0.290 while $50M offers 0.270",
+        "edge_c": 2.0,
+        "actions": [
+          "BUY YES  $50M  @ 0.270",
+          "BUY NO   $100M  @ 0.710"
+        ],
+        "warnings": [
+          "both legs settle on the same event page - confirm the two rule texts differ only in the threshold"
+        ],
+        "url": "https://polymarket.com/event/puffpaw-fdv-above-one-day-after-launch",
+        "legs": [
+          {
+            "question": "Puffpaw FDV above $50M one day after launch?",
+            "name": "$50M",
+            "bid": 0.24,
+            "ask": 0.27,
+            "liquidity": 18994.3379,
+            "end_iso": "2027-01-01T05:00:00Z",
+            "url": "https://polymarket.com/event/puffpaw-fdv-above-one-day-after-launch"
+          },
+          {
+            "question": "Puffpaw FDV above $100M one day after launch?",
+            "name": "$100M",
+            "bid": 0.29,
+            "ask": 0.32,
+            "liquidity": 25161.6888,
+            "end_iso": "2027-01-01T05:00:00Z",
+            "url": "https://polymarket.com/event/puffpaw-fdv-above-one-day-after-launch"
+          }
+        ]
+      }
+    ]
   },
   "macro": {
     "ok": true,
@@ -242,9 +195,9 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.033,
+            "market_prob": 0.037,
             "model_prob": 0.1297,
-            "gap_c": 9.67,
+            "gap_c": 9.27,
             "suspect": false
           },
           {
@@ -270,16 +223,16 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.026,
+            "market_prob": 0.0265,
             "model_prob": 0.1012,
-            "gap_c": 7.52,
+            "gap_c": 7.47,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0385,
+            "market_prob": 0.046,
             "model_prob": 0.0369,
-            "gap_c": -0.16,
+            "gap_c": -0.91,
             "suspect": false
           },
           {
@@ -308,7 +261,7 @@
         "nowcast_pp": 0.203341742698412,
         "nowcast_as_of": "2026-08-21 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.089pp (x1.80). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.089pp (x1.81). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -326,16 +279,16 @@
           },
           {
             "label": "0.2%",
-            "market_prob": 0.43,
+            "market_prob": 0.435,
             "model_prob": 0.2453,
-            "gap_c": -18.47,
+            "gap_c": -18.97,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.275,
+            "market_prob": 0.28,
             "model_prob": 0.2056,
-            "gap_c": -6.94,
+            "gap_c": -7.44,
             "suspect": false
           },
           {
@@ -389,16 +342,16 @@
           },
           {
             "label": "3.1%",
-            "market_prob": 0.018,
+            "market_prob": 0.025,
             "model_prob": 0.0659,
-            "gap_c": 4.79,
+            "gap_c": 4.09,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.086,
+            "market_prob": 0.0875,
             "model_prob": 0.1479,
-            "gap_c": 6.19,
+            "gap_c": 6.04,
             "suspect": false
           },
           {
@@ -424,9 +377,9 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.068,
+            "market_prob": 0.0365,
             "model_prob": 0.0853,
-            "gap_c": 1.73,
+            "gap_c": 4.88,
             "suspect": false
           },
           {
