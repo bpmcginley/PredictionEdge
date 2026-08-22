@@ -1,26 +1,149 @@
 {
-  "generated": "2026-08-22 03:59:00",
-  "generated_at": 1787371140.3132386,
+  "generated": "2026-08-22 04:43:16",
+  "generated_at": 1787373796.2592316,
   "account_size": 100000.0,
-  "tickets": [],
+  "tickets": [
+    {
+      "market_id": "0x95959560144520f539cadad1509aaa3fc47e95aaeb1ade1849987ad5f1f6b58f",
+      "title": "Cincinnati Open: Jessica Pegula vs Iga Swiatek",
+      "side_label": "Iga Swiatek \u2014 Cincinnati Open: Jessica Pegula vs Iga Swiatek",
+      "outcome": "Iga Swiatek",
+      "entry_price": 0.685,
+      "whale_price": 0.69,
+      "drift_c": -0.5,
+      "contracts": 737,
+      "cost": 504.85,
+      "max_payout": 737.0,
+      "conviction": 0.505,
+      "hours_to_resolve": 14.3,
+      "n_wallets": 1,
+      "whale_usd": 10350,
+      "minutes_ago": 26,
+      "liquidity": 147129,
+      "url": "https://polymarket.com/event/wta-pegula-swiatek-2026-08-22",
+      "end_iso": "2026-08-29T16:00:00Z",
+      "event_iso": "2026-08-22 19:00:00+00",
+      "slug": "wta-pegula-swiatek-2026-08-22",
+      "signal_ts": 1787372239.0,
+      "wallet_usd": [
+        [
+          "0x0353aaf82abbd3e69c00059df0a825bc198fc2ff",
+          10350.0
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$10,350, 99% of their own book",
+        "latest buy 26 min ago",
+        "still near their entry price",
+        "14h until it resolves",
+        "$147,129 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0xe136618363af87f056a210531ac8f88d2282e8ffe4b9660b203df135d57bbb8b",
+      "title": "Ipswich Town FC vs. Sunderland AFC: O/U 2.5",
+      "side_label": "Over \u2014 Ipswich Town FC vs. Sunderland AFC: O/U 2.5",
+      "outcome": "Over",
+      "entry_price": 0.455,
+      "whale_price": 0.46,
+      "drift_c": -0.5,
+      "contracts": 1048,
+      "cost": 476.84,
+      "max_payout": 1048.0,
+      "conviction": 0.477,
+      "hours_to_resolve": 9.3,
+      "n_wallets": 1,
+      "whale_usd": 4437,
+      "minutes_ago": 4,
+      "liquidity": 198167,
+      "url": "https://polymarket.com/event/epl-ips-sun-2026-08-22-more-markets",
+      "end_iso": "2026-08-22T14:00:00Z",
+      "event_iso": "2026-08-22 14:00:00+00",
+      "slug": "epl-ips-sun-2026-08-22-total-2pt5",
+      "signal_ts": 1787373547.0,
+      "wallet_usd": [
+        [
+          "0x56acab44cfca2e88bb9b3406890aea7bfa0cd77e",
+          4436.7
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$4,437 \u2014 but only 4.3% of their book",
+        "latest buy 4 min ago",
+        "still near their entry price",
+        "9h until it resolves",
+        "$198,167 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    }
+  ],
   "probe": [
+    {
+      "market_id": "0x7c6cd7a3bc858e069d886098c7909b2c733a7f8f586f72a012eb56f7a6686fcb",
+      "title": "Will Brentford FC win on 2026-08-22?",
+      "side_label": "NO on: Will Brentford FC win on 2026-08-22?",
+      "outcome": "No",
+      "entry_price": 0.55,
+      "whale_price": 0.54,
+      "drift_c": 1.0,
+      "contracts": 778,
+      "cost": 427.9,
+      "max_payout": 778.0,
+      "conviction": 0.428,
+      "hours_to_resolve": 11.8,
+      "n_wallets": 1,
+      "whale_usd": 2319,
+      "minutes_ago": 11,
+      "liquidity": 343755,
+      "url": "https://polymarket.com/event/epl-bre-tot-2026-08-22",
+      "end_iso": "2026-08-22T16:30:00Z",
+      "event_iso": "2026-08-22 16:30:00+00",
+      "slug": "epl-bre-tot-2026-08-22-bre",
+      "signal_ts": 1787373141.0,
+      "wallet_usd": [
+        [
+          "0x204f72f35326db932158cba6adff0b9a1da95e14",
+          2318.56
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,319 \u2014 but only 0.5% of their book",
+        "latest buy 11 min ago",
+        "price up 1.0c since they bought",
+        "12h until it resolves",
+        "$343,755 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
     {
       "market_id": "0xe65a8561482e6ac8818a5e3e2b253f5aa5389999e0f3de424ac0240a8a8d13dd",
       "title": "Will Solana reach $120 in August?",
       "side_label": "NO on: Will Solana reach $120 in August?",
       "outcome": "No",
-      "entry_price": 0.887,
+      "entry_price": 0.78,
       "whale_price": 0.89,
-      "drift_c": -0.25,
-      "contracts": 464,
-      "cost": 411.57,
-      "max_payout": 464.0,
+      "drift_c": -10.95,
+      "contracts": 528,
+      "cost": 411.84,
+      "max_payout": 528.0,
       "conviction": 0.412,
-      "hours_to_resolve": 240.0,
+      "hours_to_resolve": 239.3,
       "n_wallets": 1,
       "whale_usd": 8289,
-      "minutes_ago": 315,
-      "liquidity": 48660,
+      "minutes_ago": 359,
+      "liquidity": 54140,
       "url": "https://polymarket.com/event/what-price-will-solana-hit-in-august-2026",
       "end_iso": "2026-09-01T04:00:00Z",
       "event_iso": "",
@@ -35,9 +158,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$8,289 \u2014 but only 1.0% of their book",
-        "latest buy 315 min ago",
-        "still near their entry price",
-        "240h until it resolves"
+        "latest buy 359 min ago",
+        "price 10.9c cheaper than they paid",
+        "239h until it resolves",
+        "$54,140 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -48,18 +172,18 @@
       "title": "Will Ethereum reach $2,600 in August?",
       "side_label": "YES on: Will Ethereum reach $2,600 in August?",
       "outcome": "Yes",
-      "entry_price": 0.762,
+      "entry_price": 0.779,
       "whale_price": 0.841,
-      "drift_c": -7.94,
-      "contracts": 539,
-      "cost": 410.72,
-      "max_payout": 539.0,
+      "drift_c": -6.24,
+      "contracts": 527,
+      "cost": 410.53,
+      "max_payout": 527.0,
       "conviction": 0.411,
-      "hours_to_resolve": 240.0,
+      "hours_to_resolve": 239.3,
       "n_wallets": 1,
       "whale_usd": 16751,
-      "minutes_ago": 277,
-      "liquidity": 56771,
+      "minutes_ago": 321,
+      "liquidity": 54459,
       "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-august-2026",
       "end_iso": "2026-09-01T04:00:00Z",
       "event_iso": "",
@@ -74,50 +198,48 @@
       "why": [
         "1 profitable wallet on this side",
         "$16,751 \u2014 but only 0.4% of their book",
-        "latest buy 277 min ago",
-        "price 7.9c cheaper than they paid",
-        "240h until it resolves",
-        "$56,771 liquidity"
+        "latest buy 321 min ago",
+        "price 6.2c cheaper than they paid",
+        "239h until it resolves",
+        "$54,459 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion",
-        "smart money sold $3,868 of this side 248 min ago (1 wallet) \u2014 after the buys above"
+        "smart money sold $3,868 of this side 292 min ago (1 wallet) \u2014 after the buys above"
       ]
     }
   ],
-  "considered": 297,
+  "considered": 294,
   "rejected": {
-    "esports (sleeve retired \u2014 see esports_enabled)": 34,
-    "market closed": 184,
-    "already resolved": 21,
+    "esports (sleeve retired \u2014 see esports_enabled)": 33,
+    "fresh wallet: market too liquid for the pattern": 13,
+    "already resolved": 16,
     "in-play (event already started)": 8,
-    "fresh wallet: market too liquid for the pattern": 11,
-    "wallet not new (no track record either)": 25,
+    "market closed": 164,
+    "wallet not new (no track record either)": 37,
     "parlay / combo ticket, not a single market": 1,
+    "resolves more than 30 days out": 11,
     "signal too old for this market's horizon": 4,
-    "resolves more than 30 days out": 5,
     "no resolution or start time": 1,
     "price + fee ran away from the whale's entry": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 2
+    "below the 0.45 buy bar (recorded, not bought)": 3
   },
-  "notes": [
-    "Signals came in but none cleared the filters \u2014 that is a normal, and usually correct, outcome."
-  ],
+  "notes": [],
   "consistency": {
     "ok": true,
     "enabled": true,
     "events_scanned": 346,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 121,
-      "not a ladder: fewer than two live, quoted legs": 91,
-      "not a ladder: group labels are not thresholds or deadlines": 61,
+      "bracket has legs we cannot price (fail closed)": 122,
+      "not a ladder: fewer than two live, quoted legs": 89,
+      "not a ladder: group labels are not thresholds or deadlines": 60,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "ladder pair too illiquid to fill": 93,
       "bracket underround smaller than the spread": 2,
       "bracket has too many legs to place by hand": 1,
-      "ladder inversion smaller than the spread": 2,
+      "ladder inversion smaller than the spread": 3,
       "not a ladder: numeric group spans different end dates": 1,
-      "not a ladder: a live leg carries no group label": 2,
+      "not a ladder: a live leg carries no group label": 4,
       "bracket leg too illiquid to fill": 4,
       "dominance gap smaller than the spread": 3
     },
@@ -157,16 +279,16 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.032,
+            "market_prob": 0.0335,
             "model_prob": 0.1297,
-            "gap_c": 9.77,
+            "gap_c": 9.62,
             "suspect": false
           },
           {
             "label": "2.3%",
-            "market_prob": 0.335,
+            "market_prob": 0.33,
             "model_prob": 0.215,
-            "gap_c": -12.0,
+            "gap_c": -11.5,
             "suspect": false
           },
           {
@@ -185,9 +307,9 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.0275,
+            "market_prob": 0.028,
             "model_prob": 0.1012,
-            "gap_c": 7.37,
+            "gap_c": 7.32,
             "suspect": false
           },
           {
@@ -199,9 +321,9 @@
           },
           {
             "label": "2.8%",
-            "market_prob": 0.027,
+            "market_prob": 0.0225,
             "model_prob": 0.0092,
-            "gap_c": -1.78,
+            "gap_c": -1.33,
             "suspect": false
           },
           {
@@ -223,7 +345,7 @@
         "nowcast_pp": 0.203341742698412,
         "nowcast_as_of": "2026-08-21 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.088pp (x1.82). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.088pp (x1.83). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -234,9 +356,9 @@
           },
           {
             "label": "0.1%",
-            "market_prob": 0.18,
+            "market_prob": 0.175,
             "model_prob": 0.2005,
-            "gap_c": 2.05,
+            "gap_c": 2.55,
             "suspect": false
           },
           {
@@ -297,16 +419,16 @@
           },
           {
             "label": "3.0%",
-            "market_prob": 0.0075,
+            "market_prob": 0.011,
             "model_prob": 0.0201,
-            "gap_c": 1.26,
+            "gap_c": 0.91,
             "suspect": false
           },
           {
             "label": "3.1%",
-            "market_prob": 0.012,
+            "market_prob": 0.0165,
             "model_prob": 0.0659,
-            "gap_c": 5.39,
+            "gap_c": 4.94,
             "suspect": false
           },
           {
@@ -339,9 +461,9 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.052,
+            "market_prob": 0.0505,
             "model_prob": 0.0853,
-            "gap_c": 3.33,
+            "gap_c": 3.48,
             "suspect": false
           },
           {
@@ -437,9 +559,9 @@
           },
           {
             "label": "0.4%",
-            "market_prob": 0.43,
+            "market_prob": 0.435,
             "model_prob": 0.2328,
-            "gap_c": -19.72,
+            "gap_c": -20.22,
             "suspect": false
           },
           {
