@@ -1,8 +1,89 @@
 {
-  "generated": "2026-08-22 05:47:10",
-  "generated_at": 1787377630.4993677,
+  "generated": "2026-08-22 06:53:00",
+  "generated_at": 1787381580.5097923,
   "account_size": 100000.0,
   "tickets": [
+    {
+      "market_id": "0x45dbcfc223f5495d25c24c2729143e21e919eb9ccca00566a37cfdfc94b77b8f",
+      "title": "Will Bitcoin dip to $72,500 in August?",
+      "side_label": "YES on: Will Bitcoin dip to $72,500 in August?",
+      "outcome": "Yes",
+      "entry_price": 0.34,
+      "whale_price": 0.38,
+      "drift_c": -4.0,
+      "contracts": 1385,
+      "cost": 470.9,
+      "max_payout": 1385.0,
+      "conviction": 0.471,
+      "hours_to_resolve": 237.1,
+      "n_wallets": 1,
+      "whale_usd": 2280,
+      "minutes_ago": 102,
+      "liquidity": 27540,
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
+      "end_iso": "2026-09-01T04:00:00Z",
+      "event_iso": "",
+      "slug": "will-bitcoin-dip-to-72pt5k-in-august-2026",
+      "signal_ts": 1787375455.0,
+      "wallet_usd": [
+        [
+          "0xcc500cbcc8b7cf5bd21975ebbea34f21b5644c82",
+          2280.0
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,280 \u2014 but only 1.0% of their book",
+        "latest buy 102 min ago",
+        "price 4.0c cheaper than they paid",
+        "237h until it resolves"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x876506d8b2bd7a0d3fa4fe18c024eee6e1dd81ee24c26795dadd6cfe4a7b5d0d",
+      "title": "Will the Fed increase interest rates by 25 bps after the September 2026 meeting?",
+      "side_label": "NO on: Will the Fed increase interest rates by 25 bps after the September 2026 meeting?",
+      "outcome": "No",
+      "entry_price": 0.7,
+      "whale_price": 0.69,
+      "drift_c": 1.0,
+      "contracts": 652,
+      "cost": 456.4,
+      "max_payout": 652.0,
+      "conviction": 0.457,
+      "hours_to_resolve": 593.1,
+      "n_wallets": 1,
+      "whale_usd": 26329,
+      "minutes_ago": 488,
+      "liquidity": 772576,
+      "url": "https://polymarket.com/event/fed-decision-in-september-762",
+      "end_iso": "2026-09-16T00:00:00Z",
+      "event_iso": "",
+      "slug": "will-the-fed-increase-interest-rates-by-25-bps-after-the-september-2026-meeting-649",
+      "signal_ts": 1787352271.0,
+      "wallet_usd": [
+        [
+          "0x58b3380f71bd6c706dd398a5e60bde55fa3a653c",
+          26328.56
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$26,329, 100% of their own book",
+        "latest buy 488 min ago",
+        "price up 1.0c since they bought",
+        "593h until it resolves",
+        "$772,576 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    }
+  ],
+  "probe": [
     {
       "market_id": "0xf9f9d5dbb11325553eaadfed209c69846d0c42de2d99d39d275f4940c19f7eda",
       "title": "Will RCD Espanyol de Barcelona win on 2026-08-22?",
@@ -11,15 +92,15 @@
       "entry_price": 0.88,
       "whale_price": 0.88,
       "drift_c": 0.0,
-      "contracts": 542,
-      "cost": 476.96,
-      "max_payout": 542.0,
-      "conviction": 0.477,
-      "hours_to_resolve": 13.7,
+      "contracts": 478,
+      "cost": 420.64,
+      "max_payout": 478.0,
+      "conviction": 0.421,
+      "hours_to_resolve": 12.6,
       "n_wallets": 1,
       "whale_usd": 8800,
-      "minutes_ago": 12,
-      "liquidity": 308604,
+      "minutes_ago": 78,
+      "liquidity": 313727,
       "url": "https://polymarket.com/event/lal-esp-rea-2026-08-22",
       "end_iso": "2026-08-22T19:30:00Z",
       "event_iso": "2026-08-22 19:30:00+00",
@@ -34,178 +115,14 @@
       "why": [
         "1 profitable wallet on this side",
         "$8,800 \u2014 but only 2.4% of their book",
-        "latest buy 12 min ago",
+        "latest buy 78 min ago",
         "still near their entry price",
-        "14h until it resolves",
-        "$308,604 liquidity"
+        "13h until it resolves",
+        "$313,727 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
         "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x8a24f97a20f511de4e6d13d8317e78d95ec7753e3f359434e4ac6e3f7bb13a9b",
-      "title": "Will FC Internazionale Milano win on 2026-08-22?",
-      "side_label": "YES on: Will FC Internazionale Milano win on 2026-08-22?",
-      "outcome": "Yes",
-      "entry_price": 0.82,
-      "whale_price": 0.82,
-      "drift_c": 0.0,
-      "contracts": 562,
-      "cost": 460.84,
-      "max_payout": 562.0,
-      "conviction": 0.461,
-      "hours_to_resolve": 10.7,
-      "n_wallets": 1,
-      "whale_usd": 10235,
-      "minutes_ago": 25,
-      "liquidity": 168041,
-      "url": "https://polymarket.com/event/sea-int-mon-2026-08-22",
-      "end_iso": "2026-08-22T16:30:00Z",
-      "event_iso": "2026-08-22 16:30:00+00",
-      "slug": "sea-int-mon-2026-08-22-int",
-      "signal_ts": 1787376106.0,
-      "wallet_usd": [
-        [
-          "0xdc41c39b95453c943174f369926018f6963bdd7e",
-          10235.24
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$10,235 \u2014 but only 1.9% of their book",
-        "latest buy 25 min ago",
-        "still near their entry price",
-        "11h until it resolves",
-        "$168,041 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x45dbcfc223f5495d25c24c2729143e21e919eb9ccca00566a37cfdfc94b77b8f",
-      "title": "Will Bitcoin dip to $72,500 in August?",
-      "side_label": "YES on: Will Bitcoin dip to $72,500 in August?",
-      "outcome": "Yes",
-      "entry_price": 0.4,
-      "whale_price": 0.38,
-      "drift_c": 2.0,
-      "contracts": 1147,
-      "cost": 458.8,
-      "max_payout": 1147.0,
-      "conviction": 0.459,
-      "hours_to_resolve": 238.2,
-      "n_wallets": 1,
-      "whale_usd": 2280,
-      "minutes_ago": 36,
-      "liquidity": 31132,
-      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
-      "end_iso": "2026-09-01T04:00:00Z",
-      "event_iso": "",
-      "slug": "will-bitcoin-dip-to-72pt5k-in-august-2026",
-      "signal_ts": 1787375455.0,
-      "wallet_usd": [
-        [
-          "0xcc500cbcc8b7cf5bd21975ebbea34f21b5644c82",
-          2280.0
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$2,280 \u2014 but only 0.9% of their book",
-        "latest buy 36 min ago",
-        "price up 2.0c since they bought",
-        "238h until it resolves"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x51ed2b896f4ac289153109ea9860eb15fc885db2618a22ed104b3d4f81828ad1",
-      "title": "Will Como 1907 win on 2026-08-22?",
-      "side_label": "YES on: Will Como 1907 win on 2026-08-22?",
-      "outcome": "Yes",
-      "entry_price": 0.54,
-      "whale_price": 0.53,
-      "drift_c": 1.0,
-      "contracts": 846,
-      "cost": 456.84,
-      "max_payout": 846.0,
-      "conviction": 0.457,
-      "hours_to_resolve": 10.7,
-      "n_wallets": 1,
-      "whale_usd": 5471,
-      "minutes_ago": 19,
-      "liquidity": 266551,
-      "url": "https://polymarket.com/event/sea-udi-com-2026-08-22",
-      "end_iso": "2026-08-22T16:30:00Z",
-      "event_iso": "2026-08-22 16:30:00+00",
-      "slug": "sea-udi-com-2026-08-22-com",
-      "signal_ts": 1787376477.0,
-      "wallet_usd": [
-        [
-          "0x86dab59a8a6e7f9947282d2117aab3429b706428",
-          5470.76
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$5,471, 94% of their own book",
-        "latest buy 19 min ago",
-        "price up 1.0c since they bought",
-        "11h until it resolves",
-        "$266,551 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    }
-  ],
-  "probe": [
-    {
-      "market_id": "0x7c6cd7a3bc858e069d886098c7909b2c733a7f8f586f72a012eb56f7a6686fcb",
-      "title": "Will Brentford FC win on 2026-08-22?",
-      "side_label": "NO on: Will Brentford FC win on 2026-08-22?",
-      "outcome": "No",
-      "entry_price": 0.55,
-      "whale_price": 0.56,
-      "drift_c": -1.0,
-      "contracts": 772,
-      "cost": 424.6,
-      "max_payout": 772.0,
-      "conviction": 0.425,
-      "hours_to_resolve": 10.7,
-      "n_wallets": 1,
-      "whale_usd": 8036,
-      "minutes_ago": 107,
-      "liquidity": 237591,
-      "url": "https://polymarket.com/event/epl-bre-tot-2026-08-22",
-      "end_iso": "2026-08-22T16:30:00Z",
-      "event_iso": "2026-08-22 16:30:00+00",
-      "slug": "epl-bre-tot-2026-08-22-bre",
-      "signal_ts": 1787371173.0,
-      "wallet_usd": [
-        [
-          "0x37081c40bfe641679bfff041357f31dfa620b397",
-          8036.0
-        ]
-      ],
-      "why": [
-        "new wallet with no track record \u2014 pattern signal, not a copy",
-        "$8,036, 89% of their own book",
-        "latest buy 107 min ago",
-        "price 1.0c cheaper than they paid",
-        "11h until it resolves",
-        "$237,591 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "unproven wallet \u2014 this is a pattern, not a track record"
       ]
     },
     {
@@ -220,11 +137,11 @@
       "cost": 410.94,
       "max_payout": 771.0,
       "conviction": 0.411,
-      "hours_to_resolve": 238.2,
+      "hours_to_resolve": 237.1,
       "n_wallets": 1,
       "whale_usd": 16751,
-      "minutes_ago": 385,
-      "liquidity": 39527,
+      "minutes_ago": 451,
+      "liquidity": 41620,
       "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-august-2026",
       "end_iso": "2026-09-01T04:00:00Z",
       "event_iso": "",
@@ -239,32 +156,152 @@
       "why": [
         "1 profitable wallet on this side",
         "$16,751 \u2014 but only 0.4% of their book",
-        "latest buy 385 min ago",
+        "latest buy 451 min ago",
         "price 30.8c cheaper than they paid",
-        "238h until it resolves"
+        "237h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion",
-        "smart money sold $3,868 of this side 356 min ago (1 wallet) \u2014 after the buys above"
+        "smart money sold $3,868 of this side 422 min ago (1 wallet) \u2014 after the buys above"
+      ]
+    },
+    {
+      "market_id": "0x8a24f97a20f511de4e6d13d8317e78d95ec7753e3f359434e4ac6e3f7bb13a9b",
+      "title": "Will FC Internazionale Milano win on 2026-08-22?",
+      "side_label": "YES on: Will FC Internazionale Milano win on 2026-08-22?",
+      "outcome": "Yes",
+      "entry_price": 0.82,
+      "whale_price": 0.82,
+      "drift_c": 0.0,
+      "contracts": 493,
+      "cost": 404.26,
+      "max_payout": 493.0,
+      "conviction": 0.405,
+      "hours_to_resolve": 9.6,
+      "n_wallets": 1,
+      "whale_usd": 10235,
+      "minutes_ago": 91,
+      "liquidity": 236968,
+      "url": "https://polymarket.com/event/sea-int-mon-2026-08-22",
+      "end_iso": "2026-08-22T16:30:00Z",
+      "event_iso": "2026-08-22 16:30:00+00",
+      "slug": "sea-int-mon-2026-08-22-int",
+      "signal_ts": 1787376106.0,
+      "wallet_usd": [
+        [
+          "0xdc41c39b95453c943174f369926018f6963bdd7e",
+          10235.24
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$10,235 \u2014 but only 1.9% of their book",
+        "latest buy 91 min ago",
+        "still near their entry price",
+        "10h until it resolves",
+        "$236,968 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x51ed2b896f4ac289153109ea9860eb15fc885db2618a22ed104b3d4f81828ad1",
+      "title": "Will Como 1907 win on 2026-08-22?",
+      "side_label": "YES on: Will Como 1907 win on 2026-08-22?",
+      "outcome": "Yes",
+      "entry_price": 0.54,
+      "whale_price": 0.53,
+      "drift_c": 1.0,
+      "contracts": 742,
+      "cost": 400.68,
+      "max_payout": 742.0,
+      "conviction": 0.401,
+      "hours_to_resolve": 9.6,
+      "n_wallets": 1,
+      "whale_usd": 5471,
+      "minutes_ago": 85,
+      "liquidity": 307151,
+      "url": "https://polymarket.com/event/sea-udi-com-2026-08-22",
+      "end_iso": "2026-08-22T16:30:00Z",
+      "event_iso": "2026-08-22 16:30:00+00",
+      "slug": "sea-udi-com-2026-08-22-com",
+      "signal_ts": 1787376477.0,
+      "wallet_usd": [
+        [
+          "0x86dab59a8a6e7f9947282d2117aab3429b706428",
+          5470.76
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$5,471, 94% of their own book",
+        "latest buy 85 min ago",
+        "price up 1.0c since they bought",
+        "10h until it resolves",
+        "$307,151 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0xbd6dd468a202bde0069324895063508f79dc441e97642a789a0fb73327190f55",
+      "title": "Will UD Las Palmas win on 2026-08-22?",
+      "side_label": "NO on: Will UD Las Palmas win on 2026-08-22?",
+      "outcome": "No",
+      "entry_price": 0.62,
+      "whale_price": 0.61,
+      "drift_c": 1.0,
+      "contracts": 595,
+      "cost": 368.9,
+      "max_payout": 595.0,
+      "conviction": 0.369,
+      "hours_to_resolve": 10.1,
+      "n_wallets": 1,
+      "whale_usd": 2206,
+      "minutes_ago": 84,
+      "liquidity": 40203,
+      "url": "https://polymarket.com/event/es2-ceu-lpm-2026-08-22",
+      "end_iso": "2026-08-22T17:00:00Z",
+      "event_iso": "2026-08-22 17:00:00+00",
+      "slug": "es2-ceu-lpm-2026-08-22-lpm",
+      "signal_ts": 1787376537.0,
+      "wallet_usd": [
+        [
+          "0x56acab44cfca2e88bb9b3406890aea7bfa0cd77e",
+          2206.37
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,206 \u2014 but only 2.1% of their book",
+        "latest buy 84 min ago",
+        "price up 1.0c since they bought",
+        "10h until it resolves"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 296,
+  "considered": 307,
   "rejected": {
-    "market closed": 202,
-    "esports (sleeve retired \u2014 see esports_enabled)": 26,
-    "wallet not new (no track record either)": 19,
-    "in-play (event already started)": 2,
-    "fresh wallet: market too liquid for the pattern": 18,
-    "already resolved": 6,
+    "market closed": 213,
+    "esports (sleeve retired \u2014 see esports_enabled)": 37,
+    "fresh wallet: market too liquid for the pattern": 11,
+    "wallet not new (no track record either)": 15,
+    "already resolved": 5,
     "parlay / combo ticket, not a single market": 1,
     "price outside tradeable band": 1,
+    "signal too old for this market's horizon": 5,
     "resolves more than 30 days out": 10,
-    "signal too old for this market's horizon": 2,
     "no resolution or start time": 1,
     "price + fee ran away from the whale's entry": 1,
-    "duplicate event (kept the stronger side)": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 2
+    "below the 0.45 buy bar (recorded, not bought)": 5
   },
   "notes": [],
   "consistency": {
@@ -273,15 +310,15 @@
     "events_scanned": 346,
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 124,
-      "not a ladder: fewer than two live, quoted legs": 89,
-      "not a ladder: group labels are not thresholds or deadlines": 60,
+      "not a ladder: fewer than two live, quoted legs": 90,
+      "not a ladder: group labels are not thresholds or deadlines": 59,
       "not a ladder: duplicate deadlines left too few rungs": 5,
-      "ladder pair too illiquid to fill": 96,
+      "ladder pair too illiquid to fill": 97,
       "bracket underround smaller than the spread": 2,
       "bracket has too many legs to place by hand": 1,
       "ladder inversion smaller than the spread": 2,
-      "not a ladder: numeric group spans different end dates": 1,
-      "not a ladder: a live leg carries no group label": 2,
+      "not a ladder: numeric group spans different end dates": 2,
+      "not a ladder: a live leg carries no group label": 1,
       "bracket leg too illiquid to fill": 4,
       "dominance gap smaller than the spread": 3
     },
@@ -321,16 +358,16 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.031,
+            "market_prob": 0.0295,
             "model_prob": 0.1297,
-            "gap_c": 9.87,
+            "gap_c": 10.02,
             "suspect": false
           },
           {
             "label": "2.3%",
-            "market_prob": 0.34,
+            "market_prob": 0.335,
             "model_prob": 0.215,
-            "gap_c": -12.5,
+            "gap_c": -12.0,
             "suspect": false
           },
           {
@@ -349,23 +386,23 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.028,
+            "market_prob": 0.032,
             "model_prob": 0.1012,
-            "gap_c": 7.32,
+            "gap_c": 6.92,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.043,
+            "market_prob": 0.041,
             "model_prob": 0.0369,
-            "gap_c": -0.61,
+            "gap_c": -0.41,
             "suspect": false
           },
           {
             "label": "2.8%",
-            "market_prob": 0.0255,
+            "market_prob": 0.025,
             "model_prob": 0.0092,
-            "gap_c": -1.63,
+            "gap_c": -1.58,
             "suspect": false
           },
           {
@@ -387,7 +424,7 @@
         "nowcast_pp": 0.203341742698412,
         "nowcast_as_of": "2026-08-21 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.088pp (x1.83). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.088pp (x1.81). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -398,9 +435,9 @@
           },
           {
             "label": "0.1%",
-            "market_prob": 0.175,
+            "market_prob": 0.195,
             "model_prob": 0.2005,
-            "gap_c": 2.55,
+            "gap_c": 0.55,
             "suspect": false
           },
           {
@@ -412,9 +449,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.295,
+            "market_prob": 0.305,
             "model_prob": 0.2056,
-            "gap_c": -8.94,
+            "gap_c": -9.94,
             "suspect": false
           },
           {
@@ -468,9 +505,9 @@
           },
           {
             "label": "3.1%",
-            "market_prob": 0.0115,
+            "market_prob": 0.025,
             "model_prob": 0.0659,
-            "gap_c": 5.44,
+            "gap_c": 4.09,
             "suspect": false
           },
           {
@@ -496,16 +533,16 @@
           },
           {
             "label": "3.5%",
-            "market_prob": 0.215,
+            "market_prob": 0.22,
             "model_prob": 0.1726,
-            "gap_c": -4.24,
+            "gap_c": -4.74,
             "suspect": false
           },
           {
             "label": "3.6%",
-            "market_prob": 0.0575,
+            "market_prob": 0.064,
             "model_prob": 0.0853,
-            "gap_c": 2.78,
+            "gap_c": 2.13,
             "suspect": false
           },
           {
@@ -517,9 +554,9 @@
           },
           {
             "label": "3.8%",
-            "market_prob": 0.0135,
+            "market_prob": 0.01,
             "model_prob": 0.0067,
-            "gap_c": -0.68,
+            "gap_c": -0.33,
             "suspect": false
           },
           {
