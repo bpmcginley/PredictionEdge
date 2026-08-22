@@ -1,26 +1,108 @@
 {
-  "generated": "2026-08-22 11:02:20",
-  "generated_at": 1787396540.6858547,
+  "generated": "2026-08-22 11:38:13",
+  "generated_at": 1787398693.1172304,
   "account_size": 100000.0,
-  "tickets": [],
+  "tickets": [
+    {
+      "market_id": "0x75f93656ed24b1b6b05c99d8e3b9f8393d8ff18f7e926ed02b3f82458da51fe8",
+      "title": "Fluminense FC vs. Clube do Remo: O/U 2.5",
+      "side_label": "Over \u2014 Fluminense FC vs. Clube do Remo: O/U 2.5",
+      "outcome": "Over",
+      "entry_price": 0.495,
+      "whale_price": 0.497,
+      "drift_c": -0.22,
+      "contracts": 979,
+      "cost": 484.61,
+      "max_payout": 979.0,
+      "conviction": 0.485,
+      "hours_to_resolve": 7.4,
+      "n_wallets": 1,
+      "whale_usd": 7869,
+      "minutes_ago": 30,
+      "liquidity": 45849,
+      "url": "https://polymarket.com/event/bra-flu-cre-2026-08-22-more-markets",
+      "end_iso": "2026-08-22T19:00:00Z",
+      "event_iso": "2026-08-22 19:00:00+00",
+      "slug": "bra-flu-cre-2026-08-22-total-2pt5",
+      "signal_ts": 1787396875.0,
+      "wallet_usd": [
+        [
+          "0xffcac2ab464e73c7a16bea54134a2dc2f36ab04c",
+          7868.7
+        ]
+      ],
+      "why": [
+        "new wallet with no track record \u2014 pattern signal, not a copy",
+        "$7,869, 100% of their own book",
+        "latest buy 30 min ago",
+        "still near their entry price",
+        "7h until it resolves"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "unproven wallet \u2014 this is a pattern, not a track record"
+      ]
+    }
+  ],
   "probe": [
+    {
+      "market_id": "0x85565bab4875d7304e9b82c10249a2057f18f54041cf45221c398d05ec467756",
+      "title": "Prague 2: Chun-Hsin Tseng vs Jan Kumstat",
+      "side_label": "Chun-Hsin Tseng \u2014 Prague 2: Chun-Hsin Tseng vs Jan Kumstat",
+      "outcome": "Chun-Hsin Tseng",
+      "entry_price": 0.215,
+      "whale_price": 0.31,
+      "drift_c": -9.5,
+      "contracts": 1900,
+      "cost": 408.5,
+      "max_payout": 1900.0,
+      "conviction": 0.424,
+      "hours_to_resolve": 0.4,
+      "n_wallets": 1,
+      "whale_usd": 2568,
+      "minutes_ago": 44,
+      "liquidity": 149937,
+      "url": "https://polymarket.com/event/atp-tseng-kumstat-2026-08-22",
+      "end_iso": "2026-08-29T11:00:00Z",
+      "event_iso": "2026-08-22 12:00:00+00",
+      "slug": "atp-tseng-kumstat-2026-08-22",
+      "signal_ts": 1787396026.0,
+      "wallet_usd": [
+        [
+          "0x56acab44cfca2e88bb9b3406890aea7bfa0cd77e",
+          2567.73
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,568 \u2014 but only 2.5% of their book",
+        "latest buy 44 min ago",
+        "price 9.5c cheaper than they paid",
+        "0h until it resolves",
+        "$149,937 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion",
+        "size capped by the per-market contract limit"
+      ]
+    },
     {
       "market_id": "0x45dbcfc223f5495d25c24c2729143e21e919eb9ccca00566a37cfdfc94b77b8f",
       "title": "Will Bitcoin dip to $72,500 in August?",
       "side_label": "NO on: Will Bitcoin dip to $72,500 in August?",
       "outcome": "No",
-      "entry_price": 0.62,
+      "entry_price": 0.63,
       "whale_price": 0.64,
-      "drift_c": -2.0,
-      "contracts": 712,
-      "cost": 441.44,
-      "max_payout": 712.0,
-      "conviction": 0.442,
-      "hours_to_resolve": 233.0,
+      "drift_c": -1.0,
+      "contracts": 653,
+      "cost": 411.39,
+      "max_payout": 653.0,
+      "conviction": 0.412,
+      "hours_to_resolve": 232.4,
       "n_wallets": 1,
       "whale_usd": 3290,
-      "minutes_ago": 139,
-      "liquidity": 30288,
+      "minutes_ago": 175,
+      "liquidity": 27077,
       "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
       "end_iso": "2026-09-01T04:00:00Z",
       "event_iso": "",
@@ -35,9 +117,9 @@
       "why": [
         "1 profitable wallet on this side",
         "$3,290 \u2014 but only 1.4% of their book",
-        "latest buy 139 min ago",
-        "price 2.0c cheaper than they paid",
-        "233h until it resolves"
+        "latest buy 175 min ago",
+        "price 1.0c cheaper than they paid",
+        "232h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -51,15 +133,15 @@
       "entry_price": 0.53,
       "whale_price": 0.51,
       "drift_c": 2.0,
-      "contracts": 703,
-      "cost": 372.59,
-      "max_payout": 703.0,
-      "conviction": 0.373,
-      "hours_to_resolve": 12.5,
+      "contracts": 647,
+      "cost": 342.91,
+      "max_payout": 647.0,
+      "conviction": 0.343,
+      "hours_to_resolve": 11.9,
       "n_wallets": 1,
       "whale_usd": 5353,
-      "minutes_ago": 57,
-      "liquidity": 147092,
+      "minutes_ago": 93,
+      "liquidity": 147840,
       "url": "https://polymarket.com/event/mls-orl-rsl-2026-08-22",
       "end_iso": "2026-08-22T23:30:00Z",
       "event_iso": "2026-08-22 23:30:00+00",
@@ -74,10 +156,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$5,353 \u2014 but only 4.8% of their book",
-        "latest buy 57 min ago",
+        "latest buy 93 min ago",
         "price up 2.0c since they bought",
         "12h until it resolves",
-        "$147,092 liquidity"
+        "$147,840 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
@@ -85,27 +167,23 @@
       ]
     }
   ],
-  "considered": 284,
+  "considered": 279,
   "rejected": {
-    "esports (sleeve retired \u2014 see esports_enabled)": 118,
-    "market closed": 80,
-    "fresh wallet: market too liquid for the pattern": 24,
-    "signal too old for this market's horizon": 8,
-    "wallet not new (no track record either)": 19,
+    "esports (sleeve retired \u2014 see esports_enabled)": 120,
+    "market closed": 71,
+    "fresh wallet: market too liquid for the pattern": 11,
+    "wallet not new (no track record either)": 29,
+    "already resolved": 25,
+    "signal too old for this market's horizon": 7,
     "no resolution or start time": 2,
-    "resolves in under 3h": 11,
-    "already resolved": 10,
-    "resolves more than 30 days out": 3,
-    "in-play (event already started)": 3,
+    "resolves more than 30 days out": 5,
+    "in-play (event already started)": 1,
+    "resolves in under 3h": 2,
     "price + fee ran away from the whale's entry": 1,
-    "price outside tradeable band": 1,
     "sports market with no event start time": 1,
-    "duplicate event (kept the stronger side)": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 2
+    "below the 0.45 buy bar (recorded, not bought)": 3
   },
-  "notes": [
-    "Signals came in but none cleared the filters \u2014 that is a normal, and usually correct, outcome."
-  ],
+  "notes": [],
   "consistency": {
     "ok": true,
     "enabled": true,
@@ -113,9 +191,9 @@
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 123,
       "not a ladder: fewer than two live, quoted legs": 89,
-      "not a ladder: group labels are not thresholds or deadlines": 61,
+      "not a ladder: group labels are not thresholds or deadlines": 62,
       "not a ladder: duplicate deadlines left too few rungs": 5,
-      "ladder pair too illiquid to fill": 101,
+      "ladder pair too illiquid to fill": 98,
       "bracket underround smaller than the spread": 1,
       "bracket has too many legs to place by hand": 1,
       "ladder inversion smaller than the spread": 1,
@@ -160,9 +238,9 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.032,
+            "market_prob": 0.0305,
             "model_prob": 0.1297,
-            "gap_c": 9.77,
+            "gap_c": 9.92,
             "suspect": false
           },
           {
@@ -188,16 +266,16 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.0295,
+            "market_prob": 0.0265,
             "model_prob": 0.1012,
-            "gap_c": 7.17,
+            "gap_c": 7.47,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.041,
+            "market_prob": 0.0415,
             "model_prob": 0.0369,
-            "gap_c": -0.41,
+            "gap_c": -0.46,
             "suspect": false
           },
           {
@@ -226,7 +304,7 @@
         "nowcast_pp": 0.203341742698412,
         "nowcast_as_of": "2026-08-21 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.088pp (x1.81). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.089pp (x1.81). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -237,9 +315,9 @@
           },
           {
             "label": "0.1%",
-            "market_prob": 0.195,
+            "market_prob": 0.2,
             "model_prob": 0.2005,
-            "gap_c": 0.55,
+            "gap_c": 0.05,
             "suspect": false
           },
           {
@@ -251,9 +329,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.275,
+            "market_prob": 0.28,
             "model_prob": 0.2056,
-            "gap_c": -6.94,
+            "gap_c": -7.44,
             "suspect": false
           },
           {
@@ -307,16 +385,16 @@
           },
           {
             "label": "3.1%",
-            "market_prob": 0.0165,
+            "market_prob": 0.017,
             "model_prob": 0.0659,
-            "gap_c": 4.94,
+            "gap_c": 4.89,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.078,
+            "market_prob": 0.082,
             "model_prob": 0.1479,
-            "gap_c": 6.99,
+            "gap_c": 6.59,
             "suspect": false
           },
           {
@@ -342,9 +420,9 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.066,
+            "market_prob": 0.067,
             "model_prob": 0.0853,
-            "gap_c": 1.93,
+            "gap_c": 1.83,
             "suspect": false
           },
           {
