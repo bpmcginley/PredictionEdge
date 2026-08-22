@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-22 10:01:22",
-  "generated_at": 1787392882.1639764,
+  "generated": "2026-08-22 10:42:49",
+  "generated_at": 1787395369.9098961,
   "account_size": 100000.0,
   "tickets": [
     {
@@ -11,15 +11,15 @@
       "entry_price": 0.83,
       "whale_price": 0.82,
       "drift_c": 1.0,
-      "contracts": 610,
-      "cost": 506.3,
-      "max_payout": 610.0,
-      "conviction": 0.507,
-      "hours_to_resolve": 6.5,
+      "contracts": 568,
+      "cost": 471.44,
+      "max_payout": 568.0,
+      "conviction": 0.472,
+      "hours_to_resolve": 5.8,
       "n_wallets": 2,
       "whale_usd": 31773,
-      "minutes_ago": 77,
-      "liquidity": 176429,
+      "minutes_ago": 119,
+      "liquidity": 286736,
       "url": "https://polymarket.com/event/sea-int-mon-2026-08-22",
       "end_iso": "2026-08-22T16:30:00Z",
       "event_iso": "2026-08-22 16:30:00+00",
@@ -38,15 +38,17 @@
       "why": [
         "2 profitable wallets on this side",
         "$31,773 \u2014 but only 4.2% of their book",
-        "latest buy 77 min ago",
+        "latest buy 119 min ago",
         "price up 1.0c since they bought",
         "6h until it resolves",
-        "$176,429 liquidity"
+        "$286,736 liquidity"
       ],
       "warnings": [
         "resolves within 2 days"
       ]
-    },
+    }
+  ],
+  "probe": [
     {
       "market_id": "0x45dbcfc223f5495d25c24c2729143e21e919eb9ccca00566a37cfdfc94b77b8f",
       "title": "Will Bitcoin dip to $72,500 in August?",
@@ -55,15 +57,15 @@
       "entry_price": 0.65,
       "whale_price": 0.64,
       "drift_c": 1.0,
-      "contracts": 707,
-      "cost": 459.55,
-      "max_payout": 707.0,
-      "conviction": 0.46,
-      "hours_to_resolve": 234.0,
+      "contracts": 653,
+      "cost": 424.45,
+      "max_payout": 653.0,
+      "conviction": 0.425,
+      "hours_to_resolve": 233.3,
       "n_wallets": 1,
       "whale_usd": 3290,
-      "minutes_ago": 78,
-      "liquidity": 29986,
+      "minutes_ago": 120,
+      "liquidity": 27035,
       "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
       "end_iso": "2026-09-01T04:00:00Z",
       "event_iso": "",
@@ -78,32 +80,73 @@
       "why": [
         "1 profitable wallet on this side",
         "$3,290 \u2014 but only 1.4% of their book",
-        "latest buy 78 min ago",
+        "latest buy 120 min ago",
         "price up 1.0c since they bought",
-        "234h until it resolves"
+        "233h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
+    },
+    {
+      "market_id": "0x544ad971fa6e6fe217544a09593d288b14de2fca8818a631b7428889c2430fb0",
+      "title": "Will Orlando City SC win on 2026-08-22?",
+      "side_label": "NO on: Will Orlando City SC win on 2026-08-22?",
+      "outcome": "No",
+      "entry_price": 0.53,
+      "whale_price": 0.51,
+      "drift_c": 2.0,
+      "contracts": 735,
+      "cost": 389.55,
+      "max_payout": 735.0,
+      "conviction": 0.39,
+      "hours_to_resolve": 12.8,
+      "n_wallets": 1,
+      "whale_usd": 5353,
+      "minutes_ago": 37,
+      "liquidity": 143165,
+      "url": "https://polymarket.com/event/mls-orl-rsl-2026-08-22",
+      "end_iso": "2026-08-22T23:30:00Z",
+      "event_iso": "2026-08-22 23:30:00+00",
+      "slug": "mls-orl-rsl-2026-08-22-orl",
+      "signal_ts": 1787393128.0,
+      "wallet_usd": [
+        [
+          "0x076daa87c4fe1a85402a9b6b8e0a866224388d4c",
+          5352.79
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$5,353 \u2014 but only 4.8% of their book",
+        "latest buy 37 min ago",
+        "price up 2.0c since they bought",
+        "13h until it resolves",
+        "$143,165 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
     }
   ],
-  "probe": [],
-  "considered": 290,
+  "considered": 287,
   "rejected": {
-    "esports (sleeve retired \u2014 see esports_enabled)": 103,
-    "market closed": 108,
-    "fresh wallet: market too liquid for the pattern": 16,
-    "wallet not new (no track record either)": 20,
-    "no resolution or start time": 3,
-    "resolves more than 30 days out": 12,
+    "esports (sleeve retired \u2014 see esports_enabled)": 115,
+    "market closed": 93,
+    "fresh wallet: market too liquid for the pattern": 25,
+    "wallet not new (no track record either)": 16,
+    "no resolution or start time": 2,
     "signal too old for this market's horizon": 10,
-    "already resolved": 7,
-    "resolves in under 3h": 4,
+    "already resolved": 10,
+    "resolves more than 30 days out": 3,
+    "resolves in under 3h": 5,
     "in-play (event already started)": 1,
     "price + fee ran away from the whale's entry": 1,
     "price outside tradeable band": 1,
     "sports market with no event start time": 1,
-    "duplicate event (kept the stronger side)": 1
+    "duplicate event (kept the stronger side)": 1,
+    "below the 0.45 buy bar (recorded, not bought)": 2
   },
   "notes": [],
   "consistency": {
@@ -112,55 +155,20 @@
     "events_scanned": 346,
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 123,
-      "not a ladder: fewer than two live, quoted legs": 90,
-      "not a ladder: group labels are not thresholds or deadlines": 61,
+      "not a ladder: fewer than two live, quoted legs": 89,
+      "not a ladder: group labels are not thresholds or deadlines": 62,
       "not a ladder: duplicate deadlines left too few rungs": 5,
-      "ladder pair too illiquid to fill": 100,
+      "ladder pair too illiquid to fill": 103,
       "bracket underround smaller than the spread": 1,
       "bracket has too many legs to place by hand": 1,
-      "ladder inversion smaller than the spread": 1,
+      "ladder inversion smaller than the spread": 4,
       "not a ladder: numeric group spans different end dates": 1,
       "not a ladder: a live leg carries no group label": 1,
       "bracket leg too illiquid to fill": 4,
       "dominance gap smaller than the spread": 3
     },
     "notes": [],
-    "violations": [
-      {
-        "family": "ladder",
-        "event_slug": "puffpaw-fdv-above-one-day-after-launch",
-        "constraint": "P($100M) must be <= P($50M), but $100M bids 0.290 while $50M offers 0.270",
-        "edge_c": 2.0,
-        "actions": [
-          "BUY YES  $50M  @ 0.270",
-          "BUY NO   $100M  @ 0.710"
-        ],
-        "warnings": [
-          "both legs settle on the same event page - confirm the two rule texts differ only in the threshold"
-        ],
-        "url": "https://polymarket.com/event/puffpaw-fdv-above-one-day-after-launch",
-        "legs": [
-          {
-            "question": "Puffpaw FDV above $50M one day after launch?",
-            "name": "$50M",
-            "bid": 0.24,
-            "ask": 0.27,
-            "liquidity": 18994.3379,
-            "end_iso": "2027-01-01T05:00:00Z",
-            "url": "https://polymarket.com/event/puffpaw-fdv-above-one-day-after-launch"
-          },
-          {
-            "question": "Puffpaw FDV above $100M one day after launch?",
-            "name": "$100M",
-            "bid": 0.29,
-            "ask": 0.32,
-            "liquidity": 25161.6888,
-            "end_iso": "2027-01-01T05:00:00Z",
-            "url": "https://polymarket.com/event/puffpaw-fdv-above-one-day-after-launch"
-          }
-        ]
-      }
-    ]
+    "violations": []
   },
   "macro": {
     "ok": true,
@@ -195,9 +203,9 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.037,
+            "market_prob": 0.0325,
             "model_prob": 0.1297,
-            "gap_c": 9.27,
+            "gap_c": 9.72,
             "suspect": false
           },
           {
@@ -223,16 +231,16 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.0265,
+            "market_prob": 0.0285,
             "model_prob": 0.1012,
-            "gap_c": 7.47,
+            "gap_c": 7.27,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.046,
+            "market_prob": 0.042,
             "model_prob": 0.0369,
-            "gap_c": -0.91,
+            "gap_c": -0.51,
             "suspect": false
           },
           {
@@ -261,7 +269,7 @@
         "nowcast_pp": 0.203341742698412,
         "nowcast_as_of": "2026-08-21 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.089pp (x1.81). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.088pp (x1.81). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -272,9 +280,9 @@
           },
           {
             "label": "0.1%",
-            "market_prob": 0.2,
+            "market_prob": 0.195,
             "model_prob": 0.2005,
-            "gap_c": 0.05,
+            "gap_c": 0.55,
             "suspect": false
           },
           {
@@ -335,9 +343,9 @@
           },
           {
             "label": "3.0%",
-            "market_prob": 0.011,
+            "market_prob": 0.0075,
             "model_prob": 0.0201,
-            "gap_c": 0.91,
+            "gap_c": 1.26,
             "suspect": false
           },
           {
@@ -349,9 +357,9 @@
           },
           {
             "label": "3.2%",
-            "market_prob": 0.0875,
+            "market_prob": 0.088,
             "model_prob": 0.1479,
-            "gap_c": 6.04,
+            "gap_c": 5.99,
             "suspect": false
           },
           {
@@ -377,9 +385,9 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.0365,
+            "market_prob": 0.036,
             "model_prob": 0.0853,
-            "gap_c": 4.88,
+            "gap_c": 4.93,
             "suspect": false
           },
           {
