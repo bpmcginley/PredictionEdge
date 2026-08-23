@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-23 12:01:39",
+  "generated": "2026-08-23 13:04:51",
   "rows": {
     "KXHIGHCHI:2026-08-11": {
       "city": "Chicago Midway, IL",
@@ -230,6 +230,8 @@
       "settles_by": "https://forecast.weather.gov/product.php?site=LOT&product=CLI&issuedby=MDW"
     },
     "KXHIGHCHI:2026-08-22": {
+      "bracket_cap": 83,
+      "bracket_floor": 82,
       "city": "Chicago Midway, IL",
       "day": "2026-08-22",
       "event_ticker": "KXHIGHCHI-26AUG22",
@@ -241,9 +243,10 @@
       "last_market_mu_f": 82.47,
       "last_market_sigma_f": 0.65,
       "last_seen_at": 1787463435.7439637,
-      "observed_bracket": null,
-      "observed_f": null,
-      "resolved_at": null,
+      "observed_bracket": "82\u00b0 to 83\u00b0",
+      "observed_f": 82.0,
+      "observed_src": "cli",
+      "resolved_at": 1787490290.157488,
       "series": "KXHIGHCHI",
       "settles_by": "https://forecast.weather.gov/product.php?site=LOT&product=CLI&issuedby=MDW"
     },
@@ -257,8 +260,8 @@
       "first_seen_at": 1787407286.0402677,
       "last_forecast_f": 77.0,
       "last_market_mu_f": 77.9,
-      "last_market_sigma_f": 1.35,
-      "last_seen_at": 1787486498.4201183,
+      "last_market_sigma_f": 1.27,
+      "last_seen_at": 1787490288.7936907,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -494,6 +497,8 @@
       "settles_by": "https://forecast.weather.gov/product.php?site=BOU&product=CLI&issuedby=DEN"
     },
     "KXHIGHDEN:2026-08-22": {
+      "bracket_cap": 93,
+      "bracket_floor": 92,
       "city": "Denver, CO",
       "day": "2026-08-22",
       "event_ticker": "KXHIGHDEN-26AUG22",
@@ -505,9 +510,10 @@
       "last_market_mu_f": 92.47,
       "last_market_sigma_f": 0.65,
       "last_seen_at": 1787465109.2591596,
-      "observed_bracket": null,
-      "observed_f": null,
-      "resolved_at": null,
+      "observed_bracket": "92\u00b0 to 93\u00b0",
+      "observed_f": 92.0,
+      "observed_src": "cli",
+      "resolved_at": 1787490290.157488,
       "series": "KXHIGHDEN",
       "settles_by": "https://forecast.weather.gov/product.php?site=BOU&product=CLI&issuedby=DEN"
     },
@@ -520,9 +526,9 @@
       "first_market_sigma_f": 2.34,
       "first_seen_at": 1787407286.0402677,
       "last_forecast_f": 93.0,
-      "last_market_mu_f": 92.52,
-      "last_market_sigma_f": 2.05,
-      "last_seen_at": 1787486498.4201183,
+      "last_market_mu_f": 92.53,
+      "last_market_sigma_f": 1.89,
+      "last_seen_at": 1787490288.7936907,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -787,9 +793,9 @@
       "first_market_sigma_f": null,
       "first_seen_at": 1787407286.0402677,
       "last_forecast_f": 92.0,
-      "last_market_mu_f": 92.25,
-      "last_market_sigma_f": 1.68,
-      "last_seen_at": 1787486498.4201183,
+      "last_market_mu_f": 92.37,
+      "last_market_sigma_f": 1.55,
+      "last_seen_at": 1787490288.7936907,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -1055,9 +1061,9 @@
       "first_market_sigma_f": 2.66,
       "first_seen_at": 1787407286.0402677,
       "last_forecast_f": 81.0,
-      "last_market_mu_f": 80.53,
-      "last_market_sigma_f": 1.89,
-      "last_seen_at": 1787486498.4201183,
+      "last_market_mu_f": 80.67,
+      "last_market_sigma_f": 1.94,
+      "last_seen_at": 1787490288.7936907,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -1067,18 +1073,18 @@
   },
   "summary": {
     "KXHIGHCHI": {
-      "bias_f": 0.14,
+      "bias_f": -0.04,
       "city": "Chicago Midway, IL",
-      "mae_f": 1.68,
-      "n": 11,
-      "sigma_f": 1.95
+      "mae_f": 1.71,
+      "n": 12,
+      "sigma_f": 1.96
     },
     "KXHIGHDEN": {
-      "bias_f": -0.64,
+      "bias_f": -0.5,
       "city": "Denver, CO",
-      "mae_f": 2.09,
-      "n": 11,
-      "sigma_f": 2.51
+      "mae_f": 2.0,
+      "n": 12,
+      "sigma_f": 2.44
     },
     "KXHIGHMIA": {
       "bias_f": -1.21,
