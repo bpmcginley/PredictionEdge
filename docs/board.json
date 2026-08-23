@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-23 16:00:33",
-  "generated_at": 1787500833.6838443,
+  "generated": "2026-08-23 16:45:08",
+  "generated_at": 1787503508.2707188,
   "account_size": 100000.0,
   "tickets": [
     {
@@ -8,18 +8,18 @@
       "title": "Houthis successfully target shipping by August 31, 2026?",
       "side_label": "NO on: Houthis successfully target shipping by August 31, 2026?",
       "outcome": "No",
-      "entry_price": 0.7,
+      "entry_price": 0.62,
       "whale_price": 0.73,
-      "drift_c": -3.0,
-      "contracts": 738,
-      "cost": 516.6,
-      "max_payout": 738.0,
-      "conviction": 0.517,
-      "hours_to_resolve": 200.0,
+      "drift_c": -11.0,
+      "contracts": 774,
+      "cost": 479.88,
+      "max_payout": 774.0,
+      "conviction": 0.48,
+      "hours_to_resolve": 199.2,
       "n_wallets": 1,
       "whale_usd": 5582,
-      "minutes_ago": 89,
-      "liquidity": 1236,
+      "minutes_ago": 134,
+      "liquidity": 859,
       "url": "https://polymarket.com/event/houthis-successfully-target-shipping-byptptpt",
       "end_iso": "2026-08-31T23:59:00Z",
       "event_iso": "",
@@ -34,32 +34,34 @@
       "why": [
         "new wallet with no track record \u2014 pattern signal, not a copy",
         "$5,582, 100% of their own book",
-        "latest buy 89 min ago",
-        "price 3.0c cheaper than they paid",
-        "200h until it resolves"
+        "latest buy 134 min ago",
+        "price 11.0c cheaper than they paid",
+        "199h until it resolves"
       ],
       "warnings": [
         "thin liquidity \u2014 expect slippage",
         "unproven wallet \u2014 this is a pattern, not a track record"
       ]
-    },
+    }
+  ],
+  "probe": [
     {
       "market_id": "0x535d97a1668d37434151bc020a316acad256bc1ef49b185c37236138bace8020",
       "title": "Will Ethereum dip to $2,200 in August?",
       "side_label": "NO on: Will Ethereum dip to $2,200 in August?",
       "outcome": "No",
-      "entry_price": 0.77,
+      "entry_price": 0.78,
       "whale_price": 0.76,
-      "drift_c": 1.0,
-      "contracts": 640,
-      "cost": 492.8,
-      "max_payout": 640.0,
-      "conviction": 0.493,
-      "hours_to_resolve": 204.0,
+      "drift_c": 2.0,
+      "contracts": 541,
+      "cost": 421.98,
+      "max_payout": 541.0,
+      "conviction": 0.422,
+      "hours_to_resolve": 203.3,
       "n_wallets": 1,
       "whale_usd": 4560,
-      "minutes_ago": 32,
-      "liquidity": 51898,
+      "minutes_ago": 77,
+      "liquidity": 50654,
       "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-august-2026",
       "end_iso": "2026-09-01T04:00:00Z",
       "event_iso": "",
@@ -74,71 +76,28 @@
       "why": [
         "1 profitable wallet on this side",
         "$4,560 \u2014 but only 0.1% of their book",
-        "latest buy 32 min ago",
-        "price up 1.0c since they bought",
-        "204h until it resolves",
-        "$51,898 liquidity"
+        "latest buy 77 min ago",
+        "price up 2.0c since they bought",
+        "203h until it resolves",
+        "$50,654 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "probe": [
-    {
-      "market_id": "0x057820bd1c3f9aa34a537988fce57dcdd7e81d6ce508c9c11e5541bcb1fbb93e",
-      "title": "Minnesota Twins vs. San Diego Padres: O/U 8.5",
-      "side_label": "Over \u2014 Minnesota Twins vs. San Diego Padres: O/U 8.5",
-      "outcome": "Over",
-      "entry_price": 0.525,
-      "whale_price": 0.53,
-      "drift_c": -0.5,
-      "contracts": 780,
-      "cost": 409.5,
-      "max_payout": 780.0,
-      "conviction": 0.41,
-      "hours_to_resolve": 4.2,
-      "n_wallets": 1,
-      "whale_usd": 7324,
-      "minutes_ago": 113,
-      "liquidity": 175505,
-      "url": "https://polymarket.com/event/mlb-min-sd-2026-08-23",
-      "end_iso": "2026-08-23T20:10:00Z",
-      "event_iso": "2026-08-23 20:10:00+00",
-      "slug": "mlb-min-sd-2026-08-23-total-8pt5",
-      "signal_ts": 1787494065.0,
-      "wallet_usd": [
-        [
-          "0x1d1ade627d0bb0205758580b20d808573e720df6",
-          7323.93
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$7,324, 80% of their own book",
-        "latest buy 113 min ago",
-        "still near their entry price",
-        "4h until it resolves",
-        "$175,505 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    }
-  ],
-  "considered": 256,
+  "considered": 261,
   "rejected": {
-    "already resolved": 45,
-    "esports (sleeve retired \u2014 see esports_enabled)": 46,
-    "resolves in under 3h": 11,
-    "market closed": 67,
-    "wallet not new (no track record either)": 38,
-    "fresh wallet: market too liquid for the pattern": 32,
-    "signal too old for this market's horizon": 7,
-    "resolves more than 30 days out": 4,
+    "already resolved": 59,
+    "esports (sleeve retired \u2014 see esports_enabled)": 40,
+    "market closed": 53,
+    "resolves in under 3h": 12,
+    "wallet not new (no track record either)": 51,
+    "fresh wallet: market too liquid for the pattern": 28,
+    "resolves more than 30 days out": 6,
     "fresh wallet: age unavailable": 2,
-    "price + fee ran away from the whale's entry": 1,
+    "signal too old for this market's horizon": 7,
+    "in-play (event already started)": 1,
     "below the 0.45 buy bar (recorded, not bought)": 1
   },
   "notes": [],
@@ -149,11 +108,11 @@
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 123,
       "not a ladder: fewer than two live, quoted legs": 91,
-      "not a ladder: group labels are not thresholds or deadlines": 59,
+      "not a ladder: group labels are not thresholds or deadlines": 60,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "ladder pair too illiquid to fill": 84,
       "bracket has too many legs to place by hand": 1,
-      "ladder inversion smaller than the spread": 3,
+      "ladder inversion smaller than the spread": 2,
       "not a ladder: numeric group spans different end dates": 1,
       "not a ladder: a live leg carries no group label": 1,
       "bracket leg too illiquid to fill": 3,
@@ -168,69 +127,6 @@
     "enabled": true,
     "notes": [],
     "cpi": [
-      {
-        "slug": "core-cpi-mom-august-2026-1786474662954",
-        "title": "Core CPI MoM - August 2026",
-        "series": "core_cpi",
-        "basis": "mom",
-        "ref_month": "2026-8",
-        "url": "https://polymarket.com/event/core-cpi-mom-august-2026-1786474662954",
-        "nowcast_pp": 0.203341742698412,
-        "nowcast_as_of": "2026-08-21 00:00",
-        "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.086pp (x1.86). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
-        "rows": [
-          {
-            "label": "\u22640.0%",
-            "market_prob": 0.055,
-            "model_prob": 0.1689,
-            "gap_c": 11.39,
-            "suspect": false
-          },
-          {
-            "label": "0.1%",
-            "market_prob": 0.155,
-            "model_prob": 0.2005,
-            "gap_c": 4.55,
-            "suspect": false
-          },
-          {
-            "label": "0.2%",
-            "market_prob": 0.435,
-            "model_prob": 0.2453,
-            "gap_c": -18.97,
-            "suspect": false
-          },
-          {
-            "label": "0.3%",
-            "market_prob": 0.315,
-            "model_prob": 0.2056,
-            "gap_c": -10.94,
-            "suspect": false
-          },
-          {
-            "label": "0.4%",
-            "market_prob": 0.025,
-            "model_prob": 0.1181,
-            "gap_c": 9.31,
-            "suspect": false
-          },
-          {
-            "label": "0.5%",
-            "market_prob": 0.0245,
-            "model_prob": 0.0465,
-            "gap_c": 2.2,
-            "suspect": false
-          },
-          {
-            "label": "0.6%+",
-            "market_prob": 0.0245,
-            "model_prob": 0.0151,
-            "gap_c": -0.94,
-            "suspect": false
-          }
-        ]
-      },
       {
         "slug": "core-cpi-yoy-august-2026-1786474662954",
         "title": "Core CPI YoY - August 2026",
@@ -259,16 +155,16 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.0305,
+            "market_prob": 0.031,
             "model_prob": 0.1297,
-            "gap_c": 9.92,
+            "gap_c": 9.87,
             "suspect": false
           },
           {
             "label": "2.3%",
-            "market_prob": 0.33,
+            "market_prob": 0.335,
             "model_prob": 0.215,
-            "gap_c": -11.5,
+            "gap_c": -12.0,
             "suspect": false
           },
           {
@@ -287,23 +183,23 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.0295,
+            "market_prob": 0.033,
             "model_prob": 0.1012,
-            "gap_c": 7.17,
+            "gap_c": 6.82,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0425,
+            "market_prob": 0.038,
             "model_prob": 0.0369,
-            "gap_c": -0.56,
+            "gap_c": -0.11,
             "suspect": false
           },
           {
             "label": "2.8%",
-            "market_prob": 0.026,
+            "market_prob": 0.0215,
             "model_prob": 0.0092,
-            "gap_c": -1.68,
+            "gap_c": -1.23,
             "suspect": false
           },
           {
@@ -311,6 +207,69 @@
             "market_prob": 0.007,
             "model_prob": 0.0018,
             "gap_c": -0.52,
+            "suspect": false
+          }
+        ]
+      },
+      {
+        "slug": "core-cpi-mom-august-2026-1786474662954",
+        "title": "Core CPI MoM - August 2026",
+        "series": "core_cpi",
+        "basis": "mom",
+        "ref_month": "2026-8",
+        "url": "https://polymarket.com/event/core-cpi-mom-august-2026-1786474662954",
+        "nowcast_pp": 0.203341742698412,
+        "nowcast_as_of": "2026-08-21 00:00",
+        "sigma": 0.16,
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.087pp (x1.84). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "rows": [
+          {
+            "label": "\u22640.0%",
+            "market_prob": 0.055,
+            "model_prob": 0.1689,
+            "gap_c": 11.39,
+            "suspect": false
+          },
+          {
+            "label": "0.1%",
+            "market_prob": 0.17,
+            "model_prob": 0.2005,
+            "gap_c": 3.05,
+            "suspect": false
+          },
+          {
+            "label": "0.2%",
+            "market_prob": 0.435,
+            "model_prob": 0.2453,
+            "gap_c": -18.97,
+            "suspect": false
+          },
+          {
+            "label": "0.3%",
+            "market_prob": 0.31,
+            "model_prob": 0.2056,
+            "gap_c": -10.44,
+            "suspect": false
+          },
+          {
+            "label": "0.4%",
+            "market_prob": 0.025,
+            "model_prob": 0.1181,
+            "gap_c": 9.31,
+            "suspect": false
+          },
+          {
+            "label": "0.5%",
+            "market_prob": 0.0245,
+            "model_prob": 0.0465,
+            "gap_c": 2.2,
+            "suspect": false
+          },
+          {
+            "label": "0.6%+",
+            "market_prob": 0.0245,
+            "model_prob": 0.0151,
+            "gap_c": -0.94,
             "suspect": false
           }
         ]
@@ -343,16 +302,16 @@
           },
           {
             "label": "3.1%",
-            "market_prob": 0.015,
+            "market_prob": 0.0165,
             "model_prob": 0.0659,
-            "gap_c": 5.09,
+            "gap_c": 4.94,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.0865,
+            "market_prob": 0.091,
             "model_prob": 0.1479,
-            "gap_c": 6.14,
+            "gap_c": 5.69,
             "suspect": false
           },
           {
@@ -371,16 +330,16 @@
           },
           {
             "label": "3.5%",
-            "market_prob": 0.235,
+            "market_prob": 0.23,
             "model_prob": 0.1726,
-            "gap_c": -6.24,
+            "gap_c": -5.74,
             "suspect": false
           },
           {
             "label": "3.6%",
-            "market_prob": 0.031,
+            "market_prob": 0.0295,
             "model_prob": 0.0853,
-            "gap_c": 5.43,
+            "gap_c": 5.58,
             "suspect": false
           },
           {
@@ -469,9 +428,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.26,
+            "market_prob": 0.265,
             "model_prob": 0.2352,
-            "gap_c": -2.48,
+            "gap_c": -2.98,
             "suspect": false
           },
           {
