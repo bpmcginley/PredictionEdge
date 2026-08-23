@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-23 15:02:05",
-  "generated_at": 1787497325.617278,
+  "generated": "2026-08-23 15:40:14",
+  "generated_at": 1787499614.8614116,
   "account_size": 100000.0,
   "tickets": [
     {
@@ -8,18 +8,18 @@
       "title": "Houthis successfully target shipping by August 31, 2026?",
       "side_label": "NO on: Houthis successfully target shipping by August 31, 2026?",
       "outcome": "No",
-      "entry_price": 0.74,
+      "entry_price": 0.73,
       "whale_price": 0.73,
-      "drift_c": 1.0,
-      "contracts": 720,
-      "cost": 532.8,
-      "max_payout": 720.0,
-      "conviction": 0.533,
-      "hours_to_resolve": 201.0,
+      "drift_c": 0.0,
+      "contracts": 731,
+      "cost": 533.63,
+      "max_payout": 731.0,
+      "conviction": 0.534,
+      "hours_to_resolve": 200.3,
       "n_wallets": 1,
       "whale_usd": 5582,
-      "minutes_ago": 31,
-      "liquidity": 1184,
+      "minutes_ago": 69,
+      "liquidity": 1192,
       "url": "https://polymarket.com/event/houthis-successfully-target-shipping-byptptpt",
       "end_iso": "2026-08-31T23:59:00Z",
       "event_iso": "",
@@ -34,15 +34,57 @@
       "why": [
         "new wallet with no track record \u2014 pattern signal, not a copy",
         "$5,582, 100% of their own book",
-        "latest buy 31 min ago",
-        "price up 1.0c since they bought",
-        "201h until it resolves"
+        "latest buy 69 min ago",
+        "still near their entry price",
+        "200h until it resolves"
       ],
       "warnings": [
         "thin liquidity \u2014 expect slippage",
         "unproven wallet \u2014 this is a pattern, not a track record"
       ]
     },
+    {
+      "market_id": "0x535d97a1668d37434151bc020a316acad256bc1ef49b185c37236138bace8020",
+      "title": "Will Ethereum dip to $2,200 in August?",
+      "side_label": "NO on: Will Ethereum dip to $2,200 in August?",
+      "outcome": "No",
+      "entry_price": 0.77,
+      "whale_price": 0.76,
+      "drift_c": 1.0,
+      "contracts": 662,
+      "cost": 509.74,
+      "max_payout": 662.0,
+      "conviction": 0.51,
+      "hours_to_resolve": 204.3,
+      "n_wallets": 1,
+      "whale_usd": 4560,
+      "minutes_ago": 12,
+      "liquidity": 54425,
+      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-august-2026",
+      "end_iso": "2026-09-01T04:00:00Z",
+      "event_iso": "",
+      "slug": "will-ethereum-dip-to-2200-in-august-2026",
+      "signal_ts": 1787498893.0,
+      "wallet_usd": [
+        [
+          "0x1465b79bff7992bc703e1aafb3683b1089647072",
+          4560.0
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$4,560 \u2014 but only 0.1% of their book",
+        "latest buy 12 min ago",
+        "price up 1.0c since they bought",
+        "204h until it resolves",
+        "$54,425 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    }
+  ],
+  "probe": [
     {
       "market_id": "0x057820bd1c3f9aa34a537988fce57dcdd7e81d6ce508c9c11e5541bcb1fbb93e",
       "title": "Minnesota Twins vs. San Diego Padres: O/U 8.5",
@@ -51,15 +93,15 @@
       "entry_price": 0.525,
       "whale_price": 0.53,
       "drift_c": -0.5,
-      "contracts": 876,
-      "cost": 459.9,
-      "max_payout": 876.0,
-      "conviction": 0.46,
-      "hours_to_resolve": 5.1,
+      "contracts": 813,
+      "cost": 426.83,
+      "max_payout": 813.0,
+      "conviction": 0.427,
+      "hours_to_resolve": 4.5,
       "n_wallets": 1,
       "whale_usd": 7324,
-      "minutes_ago": 54,
-      "liquidity": 143529,
+      "minutes_ago": 92,
+      "liquidity": 162852,
       "url": "https://polymarket.com/event/mlb-min-sd-2026-08-23",
       "end_iso": "2026-08-23T20:10:00Z",
       "event_iso": "2026-08-23 20:10:00+00",
@@ -74,235 +116,30 @@
       "why": [
         "1 profitable wallet on this side",
         "$7,324, 80% of their own book",
-        "latest buy 54 min ago",
+        "latest buy 92 min ago",
         "still near their entry price",
-        "5h until it resolves",
-        "$143,529 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    }
-  ],
-  "probe": [
-    {
-      "market_id": "0x64828149b16d58d0ae36a94197eddff98b8930817a0593f293ae4d0418ab2a69",
-      "title": "New York Mets vs. Chicago White Sox",
-      "side_label": "Chicago White Sox \u2014 New York Mets vs. Chicago White Sox",
-      "outcome": "Chicago White Sox",
-      "entry_price": 0.505,
-      "whale_price": 0.5,
-      "drift_c": 0.5,
-      "contracts": 778,
-      "cost": 392.89,
-      "max_payout": 778.0,
-      "conviction": 0.393,
-      "hours_to_resolve": 3.1,
-      "n_wallets": 1,
-      "whale_usd": 9116,
-      "minutes_ago": 117,
-      "liquidity": 408709,
-      "url": "https://polymarket.com/event/mlb-nym-cws-2026-08-23",
-      "end_iso": "2026-08-30T18:10:00Z",
-      "event_iso": "2026-08-23 18:10:00+00",
-      "slug": "mlb-nym-cws-2026-08-23",
-      "signal_ts": 1787490277.0,
-      "wallet_usd": [
-        [
-          "0x27f738fe203827445690339104aae35b20bc44b0",
-          9116.5
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$9,116, 38% of their own book",
-        "latest buy 117 min ago",
-        "still near their entry price",
-        "3h until it resolves",
-        "$408,709 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x730888b6e0c6ff7a4c2e96daa59576b7066f3f27f90f22fccc3ee1421c7117a2",
-      "title": "Seattle Storm vs. Dallas Wings",
-      "side_label": "Dallas Wings \u2014 Seattle Storm vs. Dallas Wings",
-      "outcome": "Dallas Wings",
-      "entry_price": 0.765,
-      "whale_price": 0.766,
-      "drift_c": -0.14,
-      "contracts": 505,
-      "cost": 386.32,
-      "max_payout": 505.0,
-      "conviction": 0.387,
-      "hours_to_resolve": 5.0,
-      "n_wallets": 1,
-      "whale_usd": 4966,
-      "minutes_ago": 96,
-      "liquidity": 118925,
-      "url": "https://polymarket.com/event/wnba-sea-dal-2026-08-23",
-      "end_iso": "2026-08-23T20:00:00Z",
-      "event_iso": "2026-08-23 20:00:00+00",
-      "slug": "wnba-sea-dal-2026-08-23",
-      "signal_ts": 1787491569.0,
-      "wallet_usd": [
-        [
-          "0xdc41c39b95453c943174f369926018f6963bdd7e",
-          4965.65
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$4,966 \u2014 but only 1.3% of their book",
-        "latest buy 96 min ago",
-        "still near their entry price",
-        "5h until it resolves",
-        "$118,925 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0xd05396a0b40ea21dfdcbde2403c898fd02f19a8521c64ddefce97e83da795dcc",
-      "title": "Will FC Barcelona win on 2026-08-23?",
-      "side_label": "YES on: Will FC Barcelona win on 2026-08-23?",
-      "outcome": "Yes",
-      "entry_price": 0.73,
-      "whale_price": 0.72,
-      "drift_c": 1.0,
-      "contracts": 526,
-      "cost": 383.98,
-      "max_payout": 526.0,
-      "conviction": 0.384,
-      "hours_to_resolve": 4.5,
-      "n_wallets": 1,
-      "whale_usd": 13641,
-      "minutes_ago": 84,
-      "liquidity": 356539,
-      "url": "https://polymarket.com/event/lal-elc-bar-2026-08-23",
-      "end_iso": "2026-08-23T19:30:00Z",
-      "event_iso": "2026-08-23 19:30:00+00",
-      "slug": "lal-elc-bar-2026-08-23-bar",
-      "signal_ts": 1787492295.0,
-      "wallet_usd": [
-        [
-          "0x2a69660046d7acc4ab204d7cc5ba78b0776cd2f7",
-          13640.76
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$13,641 \u2014 but only 4.4% of their book",
-        "latest buy 84 min ago",
-        "price up 1.0c since they bought",
         "4h until it resolves",
-        "$356,539 liquidity"
+        "$162,852 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x63dea494f526fd9cf526c7e476b2addb06c8de7a84ae247484baf02c4cd5dc0a",
-      "title": "Spread: Arizona Diamondbacks (-1.5)",
-      "side_label": "Arizona Diamondbacks \u2014 Spread: Arizona Diamondbacks (-1.5)",
-      "outcome": "Arizona Diamondbacks",
-      "entry_price": 0.375,
-      "whale_price": 0.38,
-      "drift_c": -0.5,
-      "contracts": 1018,
-      "cost": 381.75,
-      "max_payout": 1018.0,
-      "conviction": 0.382,
-      "hours_to_resolve": 5.2,
-      "n_wallets": 1,
-      "whale_usd": 6510,
-      "minutes_ago": 116,
-      "liquidity": 156422,
-      "url": "https://polymarket.com/event/mlb-cin-ari-2026-08-23",
-      "end_iso": "2026-08-23T20:15:00Z",
-      "event_iso": "2026-08-23 20:15:00+00",
-      "slug": "mlb-cin-ari-2026-08-23-spread-home-1pt5",
-      "signal_ts": 1787490343.0,
-      "wallet_usd": [
-        [
-          "0x16bb9951a36fce71e2ef57890b786145e0ba8492",
-          6509.73
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$6,510 \u2014 but only 4.8% of their book",
-        "latest buy 116 min ago",
-        "still near their entry price",
-        "5h until it resolves",
-        "$156,422 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0xa1aaa21d195df199164c3a61cc1a938cd342effe5a58490bea35c05397c38b61",
-      "title": "Atlanta Braves vs. Milwaukee Brewers",
-      "side_label": "Milwaukee Brewers \u2014 Atlanta Braves vs. Milwaukee Brewers",
-      "outcome": "Milwaukee Brewers",
-      "entry_price": 0.535,
-      "whale_price": 0.54,
-      "drift_c": -0.5,
-      "contracts": 700,
-      "cost": 374.5,
-      "max_payout": 700.0,
-      "conviction": 0.375,
-      "hours_to_resolve": 8.1,
-      "n_wallets": 1,
-      "whale_usd": 3379,
-      "minutes_ago": 117,
-      "liquidity": 324502,
-      "url": "https://polymarket.com/event/mlb-atl-mil-2026-08-23",
-      "end_iso": "2026-08-30T23:10:00Z",
-      "event_iso": "2026-08-23 23:10:00+00",
-      "slug": "mlb-atl-mil-2026-08-23",
-      "signal_ts": 1787490273.0,
-      "wallet_usd": [
-        [
-          "0x16bb9951a36fce71e2ef57890b786145e0ba8492",
-          3379.48
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$3,379 \u2014 but only 2.5% of their book",
-        "latest buy 117 min ago",
-        "still near their entry price",
-        "8h until it resolves",
-        "$324,502 liquidity"
-      ],
-      "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 245,
+  "considered": 251,
   "rejected": {
-    "esports (sleeve retired \u2014 see esports_enabled)": 63,
-    "resolves in under 3h": 11,
-    "already resolved": 39,
-    "market closed": 46,
-    "fresh wallet: market too liquid for the pattern": 49,
-    "signal too old for this market's horizon": 5,
-    "wallet not new (no track record either)": 17,
+    "already resolved": 34,
+    "esports (sleeve retired \u2014 see esports_enabled)": 45,
+    "market closed": 77,
+    "resolves in under 3h": 19,
+    "wallet not new (no track record either)": 36,
+    "fresh wallet: market too liquid for the pattern": 22,
+    "signal too old for this market's horizon": 7,
     "resolves more than 30 days out": 4,
-    "parlay / combo ticket, not a single market": 2,
+    "fresh wallet: age unavailable": 2,
     "price + fee ran away from the whale's entry": 2,
-    "below the 0.45 buy bar (recorded, not bought)": 5
+    "below the 0.45 buy bar (recorded, not bought)": 1
   },
   "notes": [],
   "consistency": {
@@ -310,13 +147,13 @@
     "enabled": true,
     "events_scanned": 346,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 124,
-      "not a ladder: fewer than two live, quoted legs": 91,
-      "not a ladder: group labels are not thresholds or deadlines": 60,
+      "bracket has legs we cannot price (fail closed)": 123,
+      "not a ladder: fewer than two live, quoted legs": 93,
+      "not a ladder: group labels are not thresholds or deadlines": 58,
       "not a ladder: duplicate deadlines left too few rungs": 5,
-      "ladder pair too illiquid to fill": 90,
+      "ladder pair too illiquid to fill": 84,
       "bracket has too many legs to place by hand": 1,
-      "ladder inversion smaller than the spread": 2,
+      "ladder inversion smaller than the spread": 3,
       "not a ladder: numeric group spans different end dates": 1,
       "not a ladder: a live leg carries no group label": 1,
       "bracket leg too illiquid to fill": 3,
@@ -324,7 +161,52 @@
       "dominance gap smaller than the spread": 2
     },
     "notes": [],
-    "violations": []
+    "violations": [
+      {
+        "family": "bracket",
+        "event_slug": "epl-new-liv-2026-08-23",
+        "constraint": "3 mutually exclusive outcomes offer at 0.8400 total, but exactly one of them pays 1.00",
+        "edge_c": 16.0,
+        "actions": [
+          "BUY YES  Newcastle United FC  @ 0.240",
+          "BUY YES  Draw (Newcastle United FC vs. Liverpool FC)  @ 0.250",
+          "BUY YES  Liverpool FC  @ 0.350"
+        ],
+        "warnings": [
+          "requires filling all 3 legs - confirm the event page lists exactly 3 outcomes before trusting the sum"
+        ],
+        "url": "https://polymarket.com/event/epl-new-liv-2026-08-23",
+        "legs": [
+          {
+            "question": "Will Newcastle United FC win on 2026-08-23?",
+            "name": "Newcastle United FC",
+            "bid": 0.23,
+            "ask": 0.24,
+            "liquidity": 261739.3924,
+            "end_iso": "2026-08-23T15:30:00Z",
+            "url": "https://polymarket.com/event/epl-new-liv-2026-08-23"
+          },
+          {
+            "question": "Will Newcastle United FC vs. Liverpool FC end in a draw?",
+            "name": "Draw (Newcastle United FC vs. Liverpool FC)",
+            "bid": 0.24,
+            "ask": 0.25,
+            "liquidity": 181033.9727,
+            "end_iso": "2026-08-23T15:30:00Z",
+            "url": "https://polymarket.com/event/epl-new-liv-2026-08-23"
+          },
+          {
+            "question": "Will Liverpool FC win on 2026-08-23?",
+            "name": "Liverpool FC",
+            "bid": 0.34,
+            "ask": 0.35,
+            "liquidity": 185797.5366,
+            "end_iso": "2026-08-23T15:30:00Z",
+            "url": "https://polymarket.com/event/epl-new-liv-2026-08-23"
+          }
+        ]
+      }
+    ]
   },
   "macro": {
     "ok": true,
@@ -341,7 +223,7 @@
         "nowcast_pp": 0.203341742698412,
         "nowcast_as_of": "2026-08-21 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.087pp (x1.84). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.086pp (x1.85). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -352,9 +234,9 @@
           },
           {
             "label": "0.1%",
-            "market_prob": 0.17,
+            "market_prob": 0.16,
             "model_prob": 0.2005,
-            "gap_c": 3.05,
+            "gap_c": 4.05,
             "suspect": false
           },
           {
@@ -366,9 +248,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.295,
+            "market_prob": 0.315,
             "model_prob": 0.2056,
-            "gap_c": -8.94,
+            "gap_c": -10.94,
             "suspect": false
           },
           {
@@ -422,9 +304,9 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.035,
+            "market_prob": 0.0335,
             "model_prob": 0.1297,
-            "gap_c": 9.47,
+            "gap_c": 9.62,
             "suspect": false
           },
           {
@@ -450,23 +332,23 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.0285,
+            "market_prob": 0.025,
             "model_prob": 0.1012,
-            "gap_c": 7.27,
+            "gap_c": 7.62,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.046,
+            "market_prob": 0.044,
             "model_prob": 0.0369,
-            "gap_c": -0.91,
+            "gap_c": -0.71,
             "suspect": false
           },
           {
             "label": "2.8%",
-            "market_prob": 0.025,
+            "market_prob": 0.024,
             "model_prob": 0.0092,
-            "gap_c": -1.58,
+            "gap_c": -1.48,
             "suspect": false
           },
           {
@@ -506,23 +388,23 @@
           },
           {
             "label": "3.1%",
-            "market_prob": 0.0175,
+            "market_prob": 0.018,
             "model_prob": 0.0659,
-            "gap_c": 4.84,
+            "gap_c": 4.79,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.081,
+            "market_prob": 0.077,
             "model_prob": 0.1479,
-            "gap_c": 6.69,
+            "gap_c": 7.09,
             "suspect": false
           },
           {
             "label": "3.3%",
-            "market_prob": 0.255,
+            "market_prob": 0.26,
             "model_prob": 0.2273,
-            "gap_c": -2.77,
+            "gap_c": -3.27,
             "suspect": false
           },
           {
@@ -541,9 +423,9 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.0235,
+            "market_prob": 0.023,
             "model_prob": 0.0853,
-            "gap_c": 6.18,
+            "gap_c": 6.23,
             "suspect": false
           },
           {
@@ -597,9 +479,9 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.04,
+            "market_prob": 0.041,
             "model_prob": 0.0008,
-            "gap_c": -3.92,
+            "gap_c": -4.02,
             "suspect": false
           },
           {
@@ -639,9 +521,9 @@
           },
           {
             "label": "0.4%",
-            "market_prob": 0.44,
+            "market_prob": 0.445,
             "model_prob": 0.2328,
-            "gap_c": -20.72,
+            "gap_c": -21.22,
             "suspect": false
           },
           {
