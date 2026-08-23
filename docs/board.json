@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-23 23:37:58",
-  "generated_at": 1787528278.6360755,
+  "generated": "2026-08-23 23:59:15",
+  "generated_at": 1787529555.138063,
   "account_size": 100000.0,
   "tickets": [
     {
@@ -11,15 +11,15 @@
       "entry_price": 0.33,
       "whale_price": 0.32,
       "drift_c": 1.0,
-      "contracts": 1542,
-      "cost": 508.86,
-      "max_payout": 1542.0,
-      "conviction": 0.509,
-      "hours_to_resolve": 552.4,
+      "contracts": 1487,
+      "cost": 490.71,
+      "max_payout": 1487.0,
+      "conviction": 0.491,
+      "hours_to_resolve": 552.0,
       "n_wallets": 1,
       "whale_usd": 46983,
-      "minutes_ago": 125,
-      "liquidity": 472883,
+      "minutes_ago": 146,
+      "liquidity": 512076,
       "url": "https://polymarket.com/event/fed-decision-in-september-762",
       "end_iso": "2026-09-16T00:00:00Z",
       "event_iso": "",
@@ -34,10 +34,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$46,983 \u2014 but only 12.6% of their book",
-        "latest buy 125 min ago",
+        "latest buy 146 min ago",
         "price up 1.0c since they bought",
         "552h until it resolves",
-        "$472,883 liquidity"
+        "$512,076 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -53,15 +53,15 @@
       "entry_price": 0.9,
       "whale_price": 0.88,
       "drift_c": 2.0,
-      "contracts": 402,
-      "cost": 361.8,
-      "max_payout": 402.0,
-      "conviction": 0.362,
-      "hours_to_resolve": 196.4,
+      "contracts": 383,
+      "cost": 344.7,
+      "max_payout": 383.0,
+      "conviction": 0.345,
+      "hours_to_resolve": 196.0,
       "n_wallets": 1,
       "whale_usd": 6845,
-      "minutes_ago": 156,
-      "liquidity": 5708,
+      "minutes_ago": 177,
+      "liquidity": 20427,
       "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-august-2026",
       "end_iso": "2026-09-01T04:00:00Z",
       "event_iso": "",
@@ -76,26 +76,26 @@
       "why": [
         "1 profitable wallet on this side",
         "$6,845 \u2014 but only 0.7% of their book",
-        "latest buy 156 min ago",
+        "latest buy 177 min ago",
         "price up 2.0c since they bought",
         "196h until it resolves"
       ],
       "warnings": [
-        "thin liquidity \u2014 expect slippage",
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 309,
+  "considered": 316,
   "rejected": {
-    "market closed": 215,
-    "fresh wallet: market too liquid for the pattern": 29,
-    "already resolved": 19,
-    "in-play (event already started)": 10,
+    "market closed": 212,
+    "fresh wallet: market too liquid for the pattern": 30,
+    "already resolved": 25,
     "resolves in under 3h": 2,
-    "wallet not new (no track record either)": 21,
-    "resolves more than 30 days out": 3,
-    "esports (sleeve retired \u2014 see esports_enabled)": 6,
+    "wallet not new (no track record either)": 23,
+    "in-play (event already started)": 8,
+    "esports (sleeve retired \u2014 see esports_enabled)": 7,
+    "resolves more than 30 days out": 4,
+    "parlay / combo ticket, not a single market": 1,
     "signal too old for this market's horizon": 1,
     "no resolution or start time": 1,
     "below the 0.45 buy bar (recorded, not bought)": 1
@@ -106,14 +106,15 @@
     "enabled": true,
     "events_scanned": 346,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 122,
+      "bracket has legs we cannot price (fail closed)": 121,
       "not a ladder: fewer than two live, quoted legs": 92,
       "not a ladder: group labels are not thresholds or deadlines": 59,
       "not a ladder: duplicate deadlines left too few rungs": 5,
-      "ladder pair too illiquid to fill": 101,
+      "ladder pair too illiquid to fill": 81,
       "bracket has too many legs to place by hand": 1,
+      "ladder inversion smaller than the spread": 2,
       "not a ladder: numeric group spans different end dates": 1,
-      "not a ladder: a live leg carries no group label": 4,
+      "not a ladder: a live leg carries no group label": 5,
       "bracket leg too illiquid to fill": 4,
       "bracket overround smaller than the spread": 1,
       "dominance gap smaller than the spread": 2
@@ -182,16 +183,16 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.03,
+            "market_prob": 0.0305,
             "model_prob": 0.1012,
-            "gap_c": 7.12,
+            "gap_c": 7.07,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.051,
+            "market_prob": 0.0395,
             "model_prob": 0.0369,
-            "gap_c": -1.41,
+            "gap_c": -0.26,
             "suspect": false
           },
           {
@@ -308,9 +309,9 @@
           },
           {
             "label": "3.2%",
-            "market_prob": 0.089,
+            "market_prob": 0.0885,
             "model_prob": 0.1479,
-            "gap_c": 5.89,
+            "gap_c": 5.94,
             "suspect": false
           },
           {
@@ -336,9 +337,9 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.0435,
+            "market_prob": 0.049,
             "model_prob": 0.0853,
-            "gap_c": 4.18,
+            "gap_c": 3.63,
             "suspect": false
           },
           {
@@ -392,9 +393,9 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.038,
+            "market_prob": 0.041,
             "model_prob": 0.0008,
-            "gap_c": -3.72,
+            "gap_c": -4.02,
             "suspect": false
           },
           {
@@ -427,9 +428,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.27,
+            "market_prob": 0.26,
             "model_prob": 0.2352,
-            "gap_c": -3.48,
+            "gap_c": -2.48,
             "suspect": false
           },
           {
