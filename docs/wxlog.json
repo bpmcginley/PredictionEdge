@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-24 10:56:46",
+  "generated": "2026-08-24 11:37:29",
   "rows": {
     "KXHIGHCHI:2026-08-11": {
       "city": "Chicago Midway, IL",
@@ -277,9 +277,9 @@
       "first_market_sigma_f": 2.1,
       "first_seen_at": 1787495455.91171,
       "last_forecast_f": 77.0,
-      "last_market_mu_f": 77.85,
-      "last_market_sigma_f": 1.63,
-      "last_seen_at": 1787569004.5508683,
+      "last_market_mu_f": 77.83,
+      "last_market_sigma_f": 1.59,
+      "last_seen_at": 1787571448.0515153,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -562,9 +562,9 @@
       "first_market_sigma_f": 2.55,
       "first_seen_at": 1787495455.91171,
       "last_forecast_f": 93.0,
-      "last_market_mu_f": 91.82,
-      "last_market_sigma_f": 1.69,
-      "last_seen_at": 1787569004.5508683,
+      "last_market_mu_f": 91.87,
+      "last_market_sigma_f": 1.72,
+      "last_seen_at": 1787571448.0515153,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -821,6 +821,8 @@
       "settles_by": "https://forecast.weather.gov/product.php?site=MFL&product=CLI&issuedby=MIA"
     },
     "KXHIGHMIA:2026-08-23": {
+      "bracket_cap": 93,
+      "bracket_floor": 92,
       "city": "Miami International Airport",
       "day": "2026-08-23",
       "event_ticker": "KXHIGHMIA-26AUG23",
@@ -832,9 +834,10 @@
       "last_market_mu_f": 92.47,
       "last_market_sigma_f": 0.65,
       "last_seen_at": 1787544589.2840004,
-      "observed_bracket": null,
-      "observed_f": null,
-      "resolved_at": null,
+      "observed_bracket": "92\u00b0 to 93\u00b0",
+      "observed_f": 93.0,
+      "observed_src": "cli",
+      "resolved_at": 1787571448.969581,
       "series": "KXHIGHMIA",
       "settles_by": "https://forecast.weather.gov/product.php?site=MFL&product=CLI&issuedby=MIA"
     },
@@ -847,9 +850,9 @@
       "first_market_sigma_f": 1.89,
       "first_seen_at": 1787495455.91171,
       "last_forecast_f": 91.0,
-      "last_market_mu_f": 92.06,
-      "last_market_sigma_f": 1.47,
-      "last_seen_at": 1787569004.5508683,
+      "last_market_mu_f": 92.0,
+      "last_market_sigma_f": 1.5,
+      "last_seen_at": 1787571448.0515153,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -1107,6 +1110,8 @@
       "settles_by": "https://forecast.weather.gov/product.php?site=OKX&product=CLI&issuedby=NYC"
     },
     "KXHIGHNY:2026-08-23": {
+      "bracket_cap": 81,
+      "bracket_floor": 80,
       "city": "Central Park, New York",
       "day": "2026-08-23",
       "event_ticker": "KXHIGHNY-26AUG23",
@@ -1118,9 +1123,10 @@
       "last_market_mu_f": 80.59,
       "last_market_sigma_f": 0.81,
       "last_seen_at": 1787544589.2840004,
-      "observed_bracket": null,
-      "observed_f": null,
-      "resolved_at": null,
+      "observed_bracket": "80\u00b0 to 81\u00b0",
+      "observed_f": 80.0,
+      "observed_src": "cli",
+      "resolved_at": 1787571448.969581,
       "series": "KXHIGHNY",
       "settles_by": "https://forecast.weather.gov/product.php?site=OKX&product=CLI&issuedby=NYC"
     },
@@ -1133,9 +1139,9 @@
       "first_market_sigma_f": 2.17,
       "first_seen_at": 1787495455.91171,
       "last_forecast_f": 81.0,
-      "last_market_mu_f": 79.91,
-      "last_market_sigma_f": 1.47,
-      "last_seen_at": 1787569004.5508683,
+      "last_market_mu_f": 80.07,
+      "last_market_sigma_f": 1.49,
+      "last_seen_at": 1787571448.0515153,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -1159,18 +1165,18 @@
       "sigma_f": 2.44
     },
     "KXHIGHMIA": {
-      "bias_f": -1.21,
+      "bias_f": -1.12,
       "city": "Miami International Airport",
-      "mae_f": 1.46,
-      "n": 12,
-      "sigma_f": 1.27
+      "mae_f": 1.35,
+      "n": 13,
+      "sigma_f": 1.26
     },
     "KXHIGHNY": {
-      "bias_f": 0.75,
+      "bias_f": 0.77,
       "city": "Central Park, New York",
-      "mae_f": 1.92,
-      "n": 12,
-      "sigma_f": 2.3
+      "mae_f": 1.85,
+      "n": 13,
+      "sigma_f": 2.2
     }
   }
 }
