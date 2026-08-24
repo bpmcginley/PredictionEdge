@@ -1,83 +1,87 @@
 {
-  "generated": "2026-08-24 12:04:24",
-  "generated_at": 1787573064.1679292,
+  "generated": "2026-08-24 13:16:01",
+  "generated_at": 1787577361.3951252,
   "account_size": 100000.0,
   "tickets": [
+    {
+      "market_id": "0x4db625c162e1de724ed434474b6dd17958f5c7f9b83fb163624bb0ff092e3c84",
+      "title": "Spread: Chelsea FC (-2.5)",
+      "side_label": "Fulham FC \u2014 Spread: Chelsea FC (-2.5)",
+      "outcome": "Fulham FC",
+      "entry_price": 0.885,
+      "whale_price": 0.884,
+      "drift_c": 0.05,
+      "contracts": 589,
+      "cost": 521.26,
+      "max_payout": 589.0,
+      "conviction": 0.522,
+      "hours_to_resolve": 5.7,
+      "n_wallets": 2,
+      "whale_usd": 4826,
+      "minutes_ago": 58,
+      "liquidity": 109191,
+      "url": "https://polymarket.com/event/epl-ful-che-2026-08-24-more-markets",
+      "end_iso": "2026-08-24T19:00:00Z",
+      "event_iso": "2026-08-24 19:00:00+00",
+      "slug": "epl-ful-che-2026-08-24-spread-away-2pt5",
+      "signal_ts": 1787573845.0,
+      "wallet_usd": [
+        [
+          "0x204f72f35326db932158cba6adff0b9a1da95e14",
+          2649.46
+        ],
+        [
+          "0xdc41c39b95453c943174f369926018f6963bdd7e",
+          2176.94
+        ]
+      ],
+      "why": [
+        "2 profitable wallets on this side",
+        "$4,826 \u2014 but only 2.6% of their book",
+        "latest buy 58 min ago",
+        "still near their entry price",
+        "6h until it resolves",
+        "$109,191 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days"
+      ]
+    },
     {
       "market_id": "0x5c661c21175bc9d17e40368caaf5a835daffd47b70a0e0c4504dde970e6b0d3f",
       "title": "Will Bitcoin dip to $75,000 in August?",
       "side_label": "YES on: Will Bitcoin dip to $75,000 in August?",
       "outcome": "Yes",
-      "entry_price": 0.52,
-      "whale_price": 0.58,
-      "drift_c": -6.0,
-      "contracts": 965,
-      "cost": 501.8,
-      "max_payout": 965.0,
-      "conviction": 0.502,
-      "hours_to_resolve": 183.9,
+      "entry_price": 0.43,
+      "whale_price": 0.554,
+      "drift_c": -12.4,
+      "contracts": 1195,
+      "cost": 513.85,
+      "max_payout": 1195.0,
+      "conviction": 0.514,
+      "hours_to_resolve": 182.7,
       "n_wallets": 1,
-      "whale_usd": 3067,
-      "minutes_ago": 67,
-      "liquidity": 63996,
+      "whale_usd": 5163,
+      "minutes_ago": 60,
+      "liquidity": 69939,
       "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
       "end_iso": "2026-09-01T04:00:00Z",
       "event_iso": "",
       "slug": "will-bitcoin-dip-to-75k-in-august-2026",
-      "signal_ts": 1787569045.0,
+      "signal_ts": 1787573779.0,
       "wallet_usd": [
         [
           "0xcc500cbcc8b7cf5bd21975ebbea34f21b5644c82",
-          3067.0
+          5163.36
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$3,067 \u2014 but only 1.3% of their book",
-        "latest buy 67 min ago",
-        "price 6.0c cheaper than they paid",
-        "184h until it resolves",
-        "$63,996 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x4585d42c76dd35f423cf2534203ae4b9155e47b4471d725e7f964bf16829a3fa",
-      "title": "Winston-Salem Open: Quinn Vandecasteele vs James Duckworth",
-      "side_label": "James Duckworth \u2014 Winston-Salem Open: Quinn Vandecasteele vs James Duckworth",
-      "outcome": "James Duckworth",
-      "entry_price": 0.735,
-      "whale_price": 0.75,
-      "drift_c": -1.5,
-      "contracts": 674,
-      "cost": 495.39,
-      "max_payout": 674.0,
-      "conviction": 0.496,
-      "hours_to_resolve": 5.9,
-      "n_wallets": 1,
-      "whale_usd": 9853,
-      "minutes_ago": 19,
-      "liquidity": 116005,
-      "url": "https://polymarket.com/event/atp-vandeca-duckwor-2026-08-24",
-      "end_iso": "2026-08-31T18:00:00Z",
-      "event_iso": "2026-08-24 18:00:00+00",
-      "slug": "atp-vandeca-duckwor-2026-08-24",
-      "signal_ts": 1787571907.0,
-      "wallet_usd": [
-        [
-          "0xfe787d2da716d60e8acff57fb87eb13cd4d10319",
-          9852.83
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$9,853 \u2014 but only 19.0% of their book",
-        "latest buy 19 min ago",
-        "price 1.5c cheaper than they paid",
-        "6h until it resolves",
-        "$116,005 liquidity"
+        "$5,163 \u2014 but only 2.2% of their book",
+        "latest buy 60 min ago",
+        "price 12.4c cheaper than they paid",
+        "183h until it resolves",
+        "$69,939 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -95,11 +99,11 @@
       "cost": 486.75,
       "max_payout": 1475.0,
       "conviction": 0.487,
-      "hours_to_resolve": 539.9,
+      "hours_to_resolve": 538.7,
       "n_wallets": 1,
       "whale_usd": 46983,
-      "minutes_ago": 871,
-      "liquidity": 404725,
+      "minutes_ago": 943,
+      "liquidity": 388620,
       "url": "https://polymarket.com/event/fed-decision-in-september-762",
       "end_iso": "2026-09-16T00:00:00Z",
       "event_iso": "",
@@ -114,12 +118,135 @@
       "why": [
         "1 profitable wallet on this side",
         "$46,983 \u2014 but only 19.8% of their book",
-        "latest buy 871 min ago",
+        "latest buy 943 min ago",
         "price up 1.0c since they bought",
-        "540h until it resolves",
-        "$404,725 liquidity"
+        "539h until it resolves",
+        "$388,620 liquidity"
       ],
       "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x4585d42c76dd35f423cf2534203ae4b9155e47b4471d725e7f964bf16829a3fa",
+      "title": "Winston-Salem Open: Quinn Vandecasteele vs James Duckworth",
+      "side_label": "James Duckworth \u2014 Winston-Salem Open: Quinn Vandecasteele vs James Duckworth",
+      "outcome": "James Duckworth",
+      "entry_price": 0.745,
+      "whale_price": 0.747,
+      "drift_c": -0.21,
+      "contracts": 632,
+      "cost": 470.84,
+      "max_payout": 632.0,
+      "conviction": 0.471,
+      "hours_to_resolve": 4.7,
+      "n_wallets": 1,
+      "whale_usd": 13895,
+      "minutes_ago": 62,
+      "liquidity": 140203,
+      "url": "https://polymarket.com/event/atp-vandeca-duckwor-2026-08-24",
+      "end_iso": "2026-08-31T18:00:00Z",
+      "event_iso": "2026-08-24 18:00:00+00",
+      "slug": "atp-vandeca-duckwor-2026-08-24",
+      "signal_ts": 1787573613.0,
+      "wallet_usd": [
+        [
+          "0xfe787d2da716d60e8acff57fb87eb13cd4d10319",
+          13894.72
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$13,895, 27% of their own book",
+        "latest buy 62 min ago",
+        "still near their entry price",
+        "5h until it resolves",
+        "$140,203 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x9c79aa5db85353e1b90ece28ed2bcbdee6d67d6acea8e2ebdd5be97ce4fd7ebd",
+      "title": "Tampa Bay Rays vs. Detroit Tigers",
+      "side_label": "Detroit Tigers \u2014 Tampa Bay Rays vs. Detroit Tigers",
+      "outcome": "Detroit Tigers",
+      "entry_price": 0.445,
+      "whale_price": 0.44,
+      "drift_c": 0.5,
+      "contracts": 1022,
+      "cost": 454.79,
+      "max_payout": 1022.0,
+      "conviction": 0.455,
+      "hours_to_resolve": 9.4,
+      "n_wallets": 1,
+      "whale_usd": 3198,
+      "minutes_ago": 15,
+      "liquidity": 264683,
+      "url": "https://polymarket.com/event/mlb-tb-det-2026-08-24",
+      "end_iso": "2026-08-31T22:40:00Z",
+      "event_iso": "2026-08-24 22:40:00+00",
+      "slug": "mlb-tb-det-2026-08-24",
+      "signal_ts": 1787576434.0,
+      "wallet_usd": [
+        [
+          "0x16bb9951a36fce71e2ef57890b786145e0ba8492",
+          3197.66
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$3,198 \u2014 but only 8.8% of their book",
+        "latest buy 15 min ago",
+        "still near their entry price",
+        "9h until it resolves",
+        "$264,683 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    }
+  ],
+  "probe": [
+    {
+      "market_id": "0x61ceaeb06cc12ad4528791164cb56f1b8dbaa80f9b154216e9755687af027a0e",
+      "title": "Boston Red Sox vs. Miami Marlins: O/U 7.5",
+      "side_label": "Over \u2014 Boston Red Sox vs. Miami Marlins: O/U 7.5",
+      "outcome": "Over",
+      "entry_price": 0.475,
+      "whale_price": 0.48,
+      "drift_c": -0.5,
+      "contracts": 938,
+      "cost": 445.55,
+      "max_payout": 938.0,
+      "conviction": 0.446,
+      "hours_to_resolve": 9.4,
+      "n_wallets": 1,
+      "whale_usd": 2664,
+      "minutes_ago": 28,
+      "liquidity": 104335,
+      "url": "https://polymarket.com/event/mlb-bos-mia-2026-08-24",
+      "end_iso": "2026-08-24T22:40:00Z",
+      "event_iso": "2026-08-24 22:40:00+00",
+      "slug": "mlb-bos-mia-2026-08-24-total-7pt5",
+      "signal_ts": 1787575669.0,
+      "wallet_usd": [
+        [
+          "0x56acab44cfca2e88bb9b3406890aea7bfa0cd77e",
+          2664.36
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,664 \u2014 but only 1.1% of their book",
+        "latest buy 28 min ago",
+        "still near their entry price",
+        "9h until it resolves",
+        "$104,335 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
         "only one wallet \u2014 single opinion"
       ]
     },
@@ -131,15 +258,15 @@
       "entry_price": 0.565,
       "whale_price": 0.57,
       "drift_c": -0.5,
-      "contracts": 849,
-      "cost": 479.68,
-      "max_payout": 849.0,
-      "conviction": 0.48,
-      "hours_to_resolve": 6.9,
+      "contracts": 739,
+      "cost": 417.53,
+      "max_payout": 739.0,
+      "conviction": 0.418,
+      "hours_to_resolve": 5.7,
       "n_wallets": 1,
       "whale_usd": 2850,
-      "minutes_ago": 12,
-      "liquidity": 24866,
+      "minutes_ago": 83,
+      "liquidity": 32490,
       "url": "https://polymarket.com/event/epl-ful-che-2026-08-24-total-corners",
       "end_iso": "2026-08-24T19:00:00Z",
       "event_iso": "2026-08-24 19:00:00+00",
@@ -154,92 +281,9 @@
       "why": [
         "1 profitable wallet on this side",
         "$2,850, 100% of their own book",
-        "latest buy 12 min ago",
+        "latest buy 83 min ago",
         "still near their entry price",
-        "7h until it resolves"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    }
-  ],
-  "probe": [
-    {
-      "market_id": "0x0157bc01000e68ac74a46875cfc5b2dcadf0d360b28b7305e4022da5e40c98ee",
-      "title": "Monterrey Open: Clara Tauson vs Renata Zarazua",
-      "side_label": "Clara Tauson \u2014 Monterrey Open: Clara Tauson vs Renata Zarazua",
-      "outcome": "Clara Tauson",
-      "entry_price": 0.745,
-      "whale_price": 0.74,
-      "drift_c": 0.5,
-      "contracts": 597,
-      "cost": 444.76,
-      "max_payout": 597.0,
-      "conviction": 0.445,
-      "hours_to_resolve": 13.4,
-      "n_wallets": 1,
-      "whale_usd": 3575,
-      "minutes_ago": 32,
-      "liquidity": 61721,
-      "url": "https://polymarket.com/event/wta-tauson-zarazua-2026-08-24",
-      "end_iso": "2026-08-31T16:00:00Z",
-      "event_iso": "2026-08-25 01:30:00+00",
-      "slug": "wta-tauson-zarazua-2026-08-24",
-      "signal_ts": 1787571144.0,
-      "wallet_usd": [
-        [
-          "0xfe787d2da716d60e8acff57fb87eb13cd4d10319",
-          3574.93
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$3,575 \u2014 but only 6.9% of their book",
-        "latest buy 32 min ago",
-        "still near their entry price",
-        "13h until it resolves",
-        "$61,721 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x347dd39693f154644d9e1496d4ea70c20d3e39cce7bcb2d4ca743c15ccb9cdd5",
-      "title": "Spread: Chelsea FC (-1.5)",
-      "side_label": "Fulham FC \u2014 Spread: Chelsea FC (-1.5)",
-      "outcome": "Fulham FC",
-      "entry_price": 0.735,
-      "whale_price": 0.725,
-      "drift_c": 1.0,
-      "contracts": 565,
-      "cost": 415.27,
-      "max_payout": 565.0,
-      "conviction": 0.416,
-      "hours_to_resolve": 6.9,
-      "n_wallets": 1,
-      "whale_usd": 7250,
-      "minutes_ago": 69,
-      "liquidity": 191043,
-      "url": "https://polymarket.com/event/epl-ful-che-2026-08-24-more-markets",
-      "end_iso": "2026-08-24T19:00:00Z",
-      "event_iso": "2026-08-24 19:00:00+00",
-      "slug": "epl-ful-che-2026-08-24-spread-away-1pt5",
-      "signal_ts": 1787568901.0,
-      "wallet_usd": [
-        [
-          "0x2005d16a84ceefa912d4e380cd32e7ff827875ea",
-          7250.0
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$7,250, 25% of their own book",
-        "latest buy 69 min ago",
-        "price up 1.0c since they bought",
-        "7h until it resolves",
-        "$191,043 liquidity"
+        "6h until it resolves"
       ],
       "warnings": [
         "resolves within 2 days",
@@ -251,18 +295,18 @@
       "title": "Will the total domestic gross for Spider-Man: Brand New Day be at least 900m by August 31?",
       "side_label": "YES on: Will the total domestic gross for Spider-Man: Brand New Day be at least 900m by August 31?",
       "outcome": "Yes",
-      "entry_price": 0.236,
+      "entry_price": 0.245,
       "whale_price": 0.318,
-      "drift_c": -8.16,
-      "contracts": 1728,
-      "cost": 407.81,
-      "max_payout": 1728.0,
+      "drift_c": -7.26,
+      "contracts": 1665,
+      "cost": 407.93,
+      "max_payout": 1665.0,
       "conviction": 0.408,
-      "hours_to_resolve": 179.9,
+      "hours_to_resolve": 178.7,
       "n_wallets": 1,
       "whale_usd": 6561,
-      "minutes_ago": 611,
-      "liquidity": 26298,
+      "minutes_ago": 682,
+      "liquidity": 24843,
       "url": "https://polymarket.com/event/spider-man-brand-new-day-total-domestic-gross-by-august-31-20260716181307512",
       "end_iso": "2026-08-31T23:59:00Z",
       "event_iso": "",
@@ -277,48 +321,89 @@
       "why": [
         "1 profitable wallet on this side",
         "$6,561 \u2014 but only 0.6% of their book",
-        "latest buy 611 min ago",
-        "price 8.2c cheaper than they paid",
-        "180h until it resolves"
+        "latest buy 682 min ago",
+        "price 7.3c cheaper than they paid",
+        "179h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     },
     {
-      "market_id": "0x760eda8f785bfa48cd2bb5918785f9a950497c0bf3933fc7240845f9f8992715",
-      "title": "Bitcoin Up or Down on August 24?",
-      "side_label": "Up \u2014 Bitcoin Up or Down on August 24?",
-      "outcome": "Up",
-      "entry_price": 0.825,
-      "whale_price": 0.8,
-      "drift_c": 2.5,
-      "contracts": 441,
-      "cost": 363.82,
-      "max_payout": 441.0,
-      "conviction": 0.364,
-      "hours_to_resolve": 3.9,
+      "market_id": "0x0157bc01000e68ac74a46875cfc5b2dcadf0d360b28b7305e4022da5e40c98ee",
+      "title": "Monterrey Open: Clara Tauson vs Renata Zarazua",
+      "side_label": "Clara Tauson \u2014 Monterrey Open: Clara Tauson vs Renata Zarazua",
+      "outcome": "Clara Tauson",
+      "entry_price": 0.745,
+      "whale_price": 0.74,
+      "drift_c": 0.5,
+      "contracts": 515,
+      "cost": 383.68,
+      "max_payout": 515.0,
+      "conviction": 0.384,
+      "hours_to_resolve": 12.2,
       "n_wallets": 1,
-      "whale_usd": 3796,
-      "minutes_ago": 29,
-      "liquidity": 34220,
-      "url": "https://polymarket.com/event/bitcoin-up-or-down-on-august-24-2026",
-      "end_iso": "2026-08-24T16:00:00Z",
-      "event_iso": "",
-      "slug": "bitcoin-up-or-down-on-august-24-2026",
-      "signal_ts": 1787571298.0,
+      "whale_usd": 3575,
+      "minutes_ago": 103,
+      "liquidity": 64821,
+      "url": "https://polymarket.com/event/wta-tauson-zarazua-2026-08-24",
+      "end_iso": "2026-08-31T16:00:00Z",
+      "event_iso": "2026-08-25 01:30:00+00",
+      "slug": "wta-tauson-zarazua-2026-08-24",
+      "signal_ts": 1787571144.0,
       "wallet_usd": [
         [
-          "0x55be7aa03ecfbe37aa5460db791205f7ac9ddca3",
-          3796.17
+          "0xfe787d2da716d60e8acff57fb87eb13cd4d10319",
+          3574.93
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$3,796 \u2014 but only 4.6% of their book",
-        "latest buy 29 min ago",
-        "price up 2.5c since they bought",
-        "4h until it resolves"
+        "$3,575 \u2014 but only 6.9% of their book",
+        "latest buy 103 min ago",
+        "still near their entry price",
+        "12h until it resolves",
+        "$64,821 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x2e42624b98724cbd2ce282870edeee56419f75eb2c27c96c8206eb3bc7b59216",
+      "title": "Will M\u00e1laga CF vs. RC Deportivo A Coru\u00f1a end in a draw?",
+      "side_label": "NO on: Will M\u00e1laga CF vs. RC Deportivo A Coru\u00f1a end in a draw?",
+      "outcome": "No",
+      "entry_price": 0.69,
+      "whale_price": 0.68,
+      "drift_c": 1.0,
+      "contracts": 543,
+      "cost": 374.67,
+      "max_payout": 543.0,
+      "conviction": 0.375,
+      "hours_to_resolve": 6.2,
+      "n_wallets": 1,
+      "whale_usd": 2165,
+      "minutes_ago": 71,
+      "liquidity": 319130,
+      "url": "https://polymarket.com/event/lal-mala-dep-2026-08-24",
+      "end_iso": "2026-08-24T19:30:00Z",
+      "event_iso": "2026-08-24 19:30:00+00",
+      "slug": "lal-mala-dep-2026-08-24-draw",
+      "signal_ts": 1787573065.0,
+      "wallet_usd": [
+        [
+          "0x204f72f35326db932158cba6adff0b9a1da95e14",
+          2165.48
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,165 \u2014 but only 2.6% of their book",
+        "latest buy 71 min ago",
+        "price up 1.0c since they bought",
+        "6h until it resolves",
+        "$319,130 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
@@ -326,21 +411,22 @@
       ]
     }
   ],
-  "considered": 267,
+  "considered": 263,
   "rejected": {
     "resolves more than 30 days out": 9,
-    "market closed": 168,
-    "signal too old for this market's horizon": 14,
-    "fresh wallet: market too liquid for the pattern": 18,
-    "esports (sleeve retired \u2014 see esports_enabled)": 18,
-    "in-play (event already started)": 3,
-    "wallet not new (no track record either)": 17,
-    "price outside tradeable band": 1,
+    "market closed": 150,
+    "signal too old for this market's horizon": 17,
+    "fresh wallet: market too liquid for the pattern": 22,
+    "in-play (event already started)": 4,
+    "esports (sleeve retired \u2014 see esports_enabled)": 17,
+    "wallet not new (no track record either)": 21,
     "parlay / combo ticket, not a single market": 1,
-    "price + fee ran away from the whale's entry": 8,
-    "sports market with no event start time": 1,
+    "price outside tradeable band": 1,
+    "resolves in under 3h": 3,
+    "price + fee ran away from the whale's entry": 5,
+    "sports market with no event start time": 2,
     "duplicate event (kept the stronger side)": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 4
+    "below the 0.45 buy bar (recorded, not bought)": 5
   },
   "notes": [],
   "consistency": {
@@ -354,6 +440,7 @@
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "ladder pair too illiquid to fill": 88,
       "bracket has too many legs to place by hand": 1,
+      "ladder inversion smaller than the spread": 3,
       "not a ladder: numeric group spans different end dates": 1,
       "not a ladder: a live leg carries no group label": 1,
       "bracket leg too illiquid to fill": 4,
@@ -378,7 +465,7 @@
         "nowcast_pp": 2.38356235342767,
         "nowcast_as_of": "2026-08-21 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.117pp (x1.36). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
         "rows": [
           {
             "label": "\u22642.0%",
@@ -396,51 +483,51 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.031,
+            "market_prob": 0.025,
             "model_prob": 0.1297,
-            "gap_c": 9.87,
+            "gap_c": 10.47,
             "suspect": false
           },
           {
             "label": "2.3%",
-            "market_prob": 0.33,
+            "market_prob": 0.325,
             "model_prob": 0.215,
-            "gap_c": -11.5,
+            "gap_c": -11.0,
             "suspect": false
           },
           {
             "label": "2.4%",
-            "market_prob": 0.415,
+            "market_prob": 0.405,
             "model_prob": 0.2441,
-            "gap_c": -17.09,
+            "gap_c": -16.09,
             "suspect": false
           },
           {
             "label": "2.5%",
-            "market_prob": 0.21,
+            "market_prob": 0.205,
             "model_prob": 0.1899,
-            "gap_c": -2.01,
+            "gap_c": -1.51,
             "suspect": false
           },
           {
             "label": "2.6%",
-            "market_prob": 0.0315,
+            "market_prob": 0.022,
             "model_prob": 0.1012,
-            "gap_c": 6.97,
+            "gap_c": 7.92,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0745,
+            "market_prob": 0.035,
             "model_prob": 0.0369,
-            "gap_c": -3.76,
+            "gap_c": 0.19,
             "suspect": false
           },
           {
             "label": "2.8%",
-            "market_prob": 0.023,
+            "market_prob": 0.02,
             "model_prob": 0.0092,
-            "gap_c": -1.38,
+            "gap_c": -1.08,
             "suspect": false
           },
           {
@@ -462,7 +549,7 @@
         "nowcast_pp": 0.203341742698412,
         "nowcast_as_of": "2026-08-21 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.088pp (x1.83). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.087pp (x1.84). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -480,9 +567,9 @@
           },
           {
             "label": "0.2%",
-            "market_prob": 0.435,
+            "market_prob": 0.45,
             "model_prob": 0.2453,
-            "gap_c": -18.97,
+            "gap_c": -20.47,
             "suspect": false
           },
           {
@@ -525,7 +612,7 @@
         "nowcast_pp": 3.36362988816106,
         "nowcast_as_of": "2026-08-21 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.118pp (x1.36). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
+        "model_sigma_note": "",
         "rows": [
           {
             "label": "\u22642.9%",
@@ -550,16 +637,16 @@
           },
           {
             "label": "3.2%",
-            "market_prob": 0.0775,
+            "market_prob": 0.0825,
             "model_prob": 0.1479,
-            "gap_c": 7.04,
+            "gap_c": 6.54,
             "suspect": false
           },
           {
             "label": "3.3%",
-            "market_prob": 0.295,
+            "market_prob": 0.285,
             "model_prob": 0.2273,
-            "gap_c": -6.77,
+            "gap_c": -5.77,
             "suspect": false
           },
           {
@@ -578,9 +665,9 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.032,
+            "market_prob": 0.037,
             "model_prob": 0.0853,
-            "gap_c": 5.33,
+            "gap_c": 4.83,
             "suspect": false
           },
           {
@@ -669,9 +756,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.26,
+            "market_prob": 0.265,
             "model_prob": 0.2352,
-            "gap_c": -2.48,
+            "gap_c": -2.98,
             "suspect": false
           },
           {
@@ -705,14 +792,14 @@
       "outcome": "Yes",
       "title": "Will the Nasdaq-100 be between 29300 and 29399.9900 at the end of Aug 24, 2026 at 4pm EDT?",
       "url": "https://kalshi.com/markets/KXNASDAQ100-26AUG24H1600",
-      "entry_price": 0.19,
+      "entry_price": 0.14,
       "model_prob": 0.3385,
-      "edge": 0.1485,
+      "edge": 0.1985,
       "fair": 0.3385,
-      "market_prob": 0.11,
-      "implied_sigma": 0.2802,
+      "market_prob": 0.125,
+      "implied_sigma": 0.3041,
       "spot_used": 29308.86,
-      "chain_ts": "2026-08-24 11:59:36",
+      "chain_ts": "2026-08-24 13:15:05",
       "vrp_shrink": 0.92,
       "series": "KXNASDAQ100",
       "model": "cboe-0dte-density",
@@ -727,14 +814,102 @@
       "outcome": "No",
       "title": "Will the Nasdaq-100 be between 29200 and 29299.9900 at the end of Aug 24, 2026 at 4pm EDT?",
       "url": "https://kalshi.com/markets/KXNASDAQ100-26AUG24H1600",
-      "entry_price": 0.94,
+      "entry_price": 0.83,
       "model_prob": 1.0,
-      "edge": 0.06,
+      "edge": 0.17,
       "fair": 0.0,
-      "market_prob": 0.125,
-      "implied_sigma": 0.2802,
+      "market_prob": 0.18,
+      "implied_sigma": 0.3041,
       "spot_used": 29308.86,
-      "chain_ts": "2026-08-24 11:59:36",
+      "chain_ts": "2026-08-24 13:15:05",
+      "vrp_shrink": 0.92,
+      "series": "KXNASDAQ100",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-08-24T20:00:00+00:00",
+      "event_iso": "2026-08-24T20:00:00+00:00"
+    },
+    {
+      "market_id": "KXNASDAQ100-26AUG24H1600-B29150",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "No",
+      "title": "Will the Nasdaq-100 be between 29100 and 29199.9900 at the end of Aug 24, 2026 at 4pm EDT?",
+      "url": "https://kalshi.com/markets/KXNASDAQ100-26AUG24H1600",
+      "entry_price": 0.81,
+      "model_prob": 0.8939,
+      "edge": 0.0839,
+      "fair": 0.1061,
+      "market_prob": 0.195,
+      "implied_sigma": 0.3041,
+      "spot_used": 29308.86,
+      "chain_ts": "2026-08-24 13:15:05",
+      "vrp_shrink": 0.92,
+      "series": "KXNASDAQ100",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-08-24T20:00:00+00:00",
+      "event_iso": "2026-08-24T20:00:00+00:00"
+    },
+    {
+      "market_id": "KXNASDAQ100-26AUG24H1600-B29450",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "Yes",
+      "title": "Will the Nasdaq-100 be between 29400 and 29499.9900 at the end of Aug 24, 2026 at 4pm EDT?",
+      "url": "https://kalshi.com/markets/KXNASDAQ100-26AUG24H1600",
+      "entry_price": 0.08,
+      "model_prob": 0.1558,
+      "edge": 0.0758,
+      "fair": 0.1558,
+      "market_prob": 0.065,
+      "implied_sigma": 0.3041,
+      "spot_used": 29308.86,
+      "chain_ts": "2026-08-24 13:15:05",
+      "vrp_shrink": 0.92,
+      "series": "KXNASDAQ100",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-08-24T20:00:00+00:00",
+      "event_iso": "2026-08-24T20:00:00+00:00"
+    },
+    {
+      "market_id": "KXNASDAQ100-26AUG24H1600-B28950",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "No",
+      "title": "Will the Nasdaq-100 be between 28900 and 28999.9900 at the end of Aug 24, 2026 at 4pm EDT?",
+      "url": "https://kalshi.com/markets/KXNASDAQ100-26AUG24H1600",
+      "entry_price": 0.9,
+      "model_prob": 0.9739,
+      "edge": 0.0739,
+      "fair": 0.0261,
+      "market_prob": 0.115,
+      "implied_sigma": 0.3041,
+      "spot_used": 29308.86,
+      "chain_ts": "2026-08-24 13:15:05",
+      "vrp_shrink": 0.92,
+      "series": "KXNASDAQ100",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-08-24T20:00:00+00:00",
+      "event_iso": "2026-08-24T20:00:00+00:00"
+    },
+    {
+      "market_id": "KXNASDAQ100-26AUG24H1600-B29050",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "No",
+      "title": "Will the Nasdaq-100 be between 29000 and 29099.9900 at the end of Aug 24, 2026 at 4pm EDT?",
+      "url": "https://kalshi.com/markets/KXNASDAQ100-26AUG24H1600",
+      "entry_price": 0.85,
+      "model_prob": 0.9151,
+      "edge": 0.0651,
+      "fair": 0.0849,
+      "market_prob": 0.17,
+      "implied_sigma": 0.3041,
+      "spot_used": 29308.86,
+      "chain_ts": "2026-08-24 13:15:05",
       "vrp_shrink": 0.92,
       "series": "KXNASDAQ100",
       "model": "cboe-0dte-density",
