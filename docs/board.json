@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-24 05:55:48",
-  "generated_at": 1787550948.2550347,
+  "generated": "2026-08-24 07:13:40",
+  "generated_at": 1787555620.916556,
   "account_size": 100000.0,
   "tickets": [
     {
@@ -9,35 +9,80 @@
       "side_label": "YES on: Will M\u00e1laga CF win on 2026-08-24?",
       "outcome": "Yes",
       "entry_price": 0.41,
-      "whale_price": 0.408,
-      "drift_c": 0.22,
-      "contracts": 1473,
-      "cost": 603.93,
-      "max_payout": 1473.0,
-      "conviction": 0.604,
-      "hours_to_resolve": 13.6,
-      "n_wallets": 1,
-      "whale_usd": 67861,
-      "minutes_ago": 4,
-      "liquidity": 252871,
+      "whale_price": 0.409,
+      "drift_c": 0.08,
+      "contracts": 1900,
+      "cost": 779.0,
+      "max_payout": 1900.0,
+      "conviction": 0.787,
+      "hours_to_resolve": 12.3,
+      "n_wallets": 2,
+      "whale_usd": 166311,
+      "minutes_ago": 6,
+      "liquidity": 304986,
       "url": "https://polymarket.com/event/lal-mala-dep-2026-08-24",
       "end_iso": "2026-08-24T19:30:00Z",
       "event_iso": "2026-08-24 19:30:00+00",
       "slug": "lal-mala-dep-2026-08-24-mala",
-      "signal_ts": 1787550711.0,
+      "signal_ts": 1787555239.0,
       "wallet_usd": [
         [
           "0x4d3079bd4c73bc0e8f7d9f64a9f64fadbd17a42d",
-          67860.81
+          162160.81
+        ],
+        [
+          "0x0353aaf82abbd3e69c00059df0a825bc198fc2ff",
+          4149.78
+        ]
+      ],
+      "why": [
+        "2 profitable wallets on this side",
+        "$166,311, 98% of their own book",
+        "latest buy 6 min ago",
+        "still near their entry price",
+        "12h until it resolves",
+        "$304,986 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "size capped by the per-market contract limit"
+      ]
+    },
+    {
+      "market_id": "0xef9f2245a2aa930c04465e73bbcb483810d67660568ebcd18d2437397ba1245c",
+      "title": "Will CA Osasuna win on 2026-08-24?",
+      "side_label": "NO on: Will CA Osasuna win on 2026-08-24?",
+      "outcome": "No",
+      "entry_price": 0.5,
+      "whale_price": 0.492,
+      "drift_c": 0.79,
+      "contracts": 1096,
+      "cost": 548.0,
+      "max_payout": 1096.0,
+      "conviction": 0.548,
+      "hours_to_resolve": 10.3,
+      "n_wallets": 1,
+      "whale_usd": 72295,
+      "minutes_ago": 48,
+      "liquidity": 317456,
+      "url": "https://polymarket.com/event/lal-osa-lev-2026-08-24",
+      "end_iso": "2026-08-24T17:30:00Z",
+      "event_iso": "2026-08-24 17:30:00+00",
+      "slug": "lal-osa-lev-2026-08-24-osa",
+      "signal_ts": 1787552727.0,
+      "wallet_usd": [
+        [
+          "0x4d3079bd4c73bc0e8f7d9f64a9f64fadbd17a42d",
+          72295.0
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$67,861, 53% of their own book",
-        "latest buy 4 min ago",
-        "still near their entry price",
-        "14h until it resolves",
-        "$252,871 liquidity"
+        "$72,295, 57% of their own book",
+        "latest buy 48 min ago",
+        "price up 0.8c since they bought",
+        "10h until it resolves",
+        "$317,456 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
@@ -52,15 +97,15 @@
       "entry_price": 0.49,
       "whale_price": 0.48,
       "drift_c": 1.0,
-      "contracts": 1171,
-      "cost": 573.79,
-      "max_payout": 1171.0,
-      "conviction": 0.574,
-      "hours_to_resolve": 13.1,
+      "contracts": 1034,
+      "cost": 506.66,
+      "max_payout": 1034.0,
+      "conviction": 0.507,
+      "hours_to_resolve": 11.8,
       "n_wallets": 1,
       "whale_usd": 110390,
-      "minutes_ago": 56,
-      "liquidity": 1358131,
+      "minutes_ago": 134,
+      "liquidity": 1375781,
       "url": "https://polymarket.com/event/epl-ful-che-2026-08-24",
       "end_iso": "2026-08-24T19:00:00Z",
       "event_iso": "2026-08-24 19:00:00+00",
@@ -75,133 +120,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$110,390, 87% of their own book",
-        "latest buy 56 min ago",
+        "latest buy 134 min ago",
         "price up 1.0c since they bought",
-        "13h until it resolves",
-        "$1,358,131 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0xef9f2245a2aa930c04465e73bbcb483810d67660568ebcd18d2437397ba1245c",
-      "title": "Will CA Osasuna win on 2026-08-24?",
-      "side_label": "NO on: Will CA Osasuna win on 2026-08-24?",
-      "outcome": "No",
-      "entry_price": 0.5,
-      "whale_price": 0.488,
-      "drift_c": 1.2,
-      "contracts": 1090,
-      "cost": 545.0,
-      "max_payout": 1090.0,
-      "conviction": 0.545,
-      "hours_to_resolve": 11.6,
-      "n_wallets": 1,
-      "whale_usd": 47306,
-      "minutes_ago": 3,
-      "liquidity": 332858,
-      "url": "https://polymarket.com/event/lal-osa-lev-2026-08-24",
-      "end_iso": "2026-08-24T17:30:00Z",
-      "event_iso": "2026-08-24 17:30:00+00",
-      "slug": "lal-osa-lev-2026-08-24-osa",
-      "signal_ts": 1787550751.0,
-      "wallet_usd": [
-        [
-          "0x4d3079bd4c73bc0e8f7d9f64a9f64fadbd17a42d",
-          47305.97
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$47,306, 37% of their own book",
-        "latest buy 3 min ago",
-        "price up 1.2c since they bought",
         "12h until it resolves",
-        "$332,858 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0xabf2c2af7cc9429149a7186468d09b32557fc0e04233a4d867092c6e535659f2",
-      "title": "M\u00e1laga CF vs. RC Deportivo A Coru\u00f1a: O/U 2.5",
-      "side_label": "Over \u2014 M\u00e1laga CF vs. RC Deportivo A Coru\u00f1a: O/U 2.5",
-      "outcome": "Over",
-      "entry_price": 0.385,
-      "whale_price": 0.388,
-      "drift_c": -0.32,
-      "contracts": 1332,
-      "cost": 512.82,
-      "max_payout": 1332.0,
-      "conviction": 0.513,
-      "hours_to_resolve": 13.6,
-      "n_wallets": 1,
-      "whale_usd": 19380,
-      "minutes_ago": 28,
-      "liquidity": 155138,
-      "url": "https://polymarket.com/event/lal-mala-dep-2026-08-24-more-markets",
-      "end_iso": "2026-08-24T19:30:00Z",
-      "event_iso": "2026-08-24 19:30:00+00",
-      "slug": "lal-mala-dep-2026-08-24-total-2pt5",
-      "signal_ts": 1787549232.0,
-      "wallet_usd": [
-        [
-          "0x4d3079bd4c73bc0e8f7d9f64a9f64fadbd17a42d",
-          19380.42
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$19,380 \u2014 but only 15.2% of their book",
-        "latest buy 28 min ago",
-        "still near their entry price",
-        "14h until it resolves",
-        "$155,138 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x6085c9bf79162aeb417e9d0443d85575e5278c1eeb66102e6a4074ed68a9933f",
-      "title": "Will AS Roma win on 2026-08-24?",
-      "side_label": "YES on: Will AS Roma win on 2026-08-24?",
-      "outcome": "Yes",
-      "entry_price": 0.59,
-      "whale_price": 0.58,
-      "drift_c": 1.0,
-      "contracts": 811,
-      "cost": 478.49,
-      "max_payout": 811.0,
-      "conviction": 0.479,
-      "hours_to_resolve": 12.8,
-      "n_wallets": 1,
-      "whale_usd": 23820,
-      "minutes_ago": 47,
-      "liquidity": 288177,
-      "url": "https://polymarket.com/event/sea-rom-fio-2026-08-24",
-      "end_iso": "2026-08-24T18:45:00Z",
-      "event_iso": "2026-08-24 18:45:00+00",
-      "slug": "sea-rom-fio-2026-08-24-rom",
-      "signal_ts": 1787548131.0,
-      "wallet_usd": [
-        [
-          "0x4d3079bd4c73bc0e8f7d9f64a9f64fadbd17a42d",
-          23819.93
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$23,820 \u2014 but only 18.7% of their book",
-        "latest buy 47 min ago",
-        "price up 1.0c since they bought",
-        "13h until it resolves",
-        "$288,177 liquidity"
+        "$1,375,781 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
@@ -220,11 +142,11 @@
       "cost": 462.99,
       "max_payout": 1403.0,
       "conviction": 0.463,
-      "hours_to_resolve": 546.1,
+      "hours_to_resolve": 544.8,
       "n_wallets": 1,
       "whale_usd": 46983,
-      "minutes_ago": 502,
-      "liquidity": 889597,
+      "minutes_ago": 580,
+      "liquidity": 775169,
       "url": "https://polymarket.com/event/fed-decision-in-september-762",
       "end_iso": "2026-09-16T00:00:00Z",
       "event_iso": "",
@@ -239,95 +161,96 @@
       "why": [
         "1 profitable wallet on this side",
         "$46,983 \u2014 but only 12.6% of their book",
-        "latest buy 502 min ago",
+        "latest buy 580 min ago",
         "price up 1.0c since they bought",
-        "546h until it resolves",
-        "$889,597 liquidity"
+        "545h until it resolves",
+        "$775,169 liquidity"
       ],
       "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x786f070d6094c3269946a37274c0dc31f22550405e3689be0cdc358745fa1714",
-      "title": "Fulham FC vs. Chelsea FC: O/U 2.5",
-      "side_label": "Under \u2014 Fulham FC vs. Chelsea FC: O/U 2.5",
-      "outcome": "Under",
-      "entry_price": 0.425,
-      "whale_price": 0.43,
-      "drift_c": -0.5,
-      "contracts": 1068,
-      "cost": 453.9,
-      "max_payout": 1068.0,
-      "conviction": 0.454,
-      "hours_to_resolve": 13.1,
-      "n_wallets": 1,
-      "whale_usd": 3870,
-      "minutes_ago": 34,
-      "liquidity": 162444,
-      "url": "https://polymarket.com/event/epl-ful-che-2026-08-24-more-markets",
-      "end_iso": "2026-08-24T19:00:00Z",
-      "event_iso": "2026-08-24 19:00:00+00",
-      "slug": "epl-ful-che-2026-08-24-total-2pt5",
-      "signal_ts": 1787548918.0,
-      "wallet_usd": [
-        [
-          "0x4d3079bd4c73bc0e8f7d9f64a9f64fadbd17a42d",
-          3870.0
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$3,870 \u2014 but only 3.0% of their book",
-        "latest buy 34 min ago",
-        "still near their entry price",
-        "13h until it resolves",
-        "$162,444 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
   "probe": [
     {
-      "market_id": "0x45dbcfc223f5495d25c24c2729143e21e919eb9ccca00566a37cfdfc94b77b8f",
-      "title": "Will Bitcoin dip to $72,500 in August?",
-      "side_label": "NO on: Will Bitcoin dip to $72,500 in August?",
-      "outcome": "No",
-      "entry_price": 0.66,
-      "whale_price": 0.69,
-      "drift_c": -3.0,
-      "contracts": 625,
-      "cost": 412.5,
-      "max_payout": 625.0,
-      "conviction": 0.413,
-      "hours_to_resolve": 190.1,
+      "market_id": "0x6085c9bf79162aeb417e9d0443d85575e5278c1eeb66102e6a4074ed68a9933f",
+      "title": "Will AS Roma win on 2026-08-24?",
+      "side_label": "YES on: Will AS Roma win on 2026-08-24?",
+      "outcome": "Yes",
+      "entry_price": 0.58,
+      "whale_price": 0.58,
+      "drift_c": 0.0,
+      "contracts": 768,
+      "cost": 445.44,
+      "max_payout": 768.0,
+      "conviction": 0.446,
+      "hours_to_resolve": 11.5,
       "n_wallets": 1,
-      "whale_usd": 2256,
-      "minutes_ago": 170,
-      "liquidity": 60829,
-      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
-      "end_iso": "2026-09-01T04:00:00Z",
-      "event_iso": "",
-      "slug": "will-bitcoin-dip-to-72pt5k-in-august-2026",
-      "signal_ts": 1787540758.0,
+      "whale_usd": 23820,
+      "minutes_ago": 125,
+      "liquidity": 301979,
+      "url": "https://polymarket.com/event/sea-rom-fio-2026-08-24",
+      "end_iso": "2026-08-24T18:45:00Z",
+      "event_iso": "2026-08-24 18:45:00+00",
+      "slug": "sea-rom-fio-2026-08-24-rom",
+      "signal_ts": 1787548131.0,
       "wallet_usd": [
         [
-          "0x6db983ff1cbc85249e64e6ccd101aaa613ba4ab5",
-          2256.07
+          "0x4d3079bd4c73bc0e8f7d9f64a9f64fadbd17a42d",
+          23819.93
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$2,256 \u2014 but only 0.5% of their book",
-        "latest buy 170 min ago",
-        "price 3.0c cheaper than they paid",
-        "190h until it resolves",
-        "$60,829 liquidity"
+        "$23,820 \u2014 but only 18.7% of their book",
+        "latest buy 125 min ago",
+        "still near their entry price",
+        "12h until it resolves",
+        "$301,979 liquidity"
       ],
       "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0xabf2c2af7cc9429149a7186468d09b32557fc0e04233a4d867092c6e535659f2",
+      "title": "M\u00e1laga CF vs. RC Deportivo A Coru\u00f1a: O/U 2.5",
+      "side_label": "Over \u2014 M\u00e1laga CF vs. RC Deportivo A Coru\u00f1a: O/U 2.5",
+      "outcome": "Over",
+      "entry_price": 0.385,
+      "whale_price": 0.388,
+      "drift_c": -0.32,
+      "contracts": 1158,
+      "cost": 445.83,
+      "max_payout": 1158.0,
+      "conviction": 0.446,
+      "hours_to_resolve": 12.3,
+      "n_wallets": 1,
+      "whale_usd": 19380,
+      "minutes_ago": 106,
+      "liquidity": 191218,
+      "url": "https://polymarket.com/event/lal-mala-dep-2026-08-24-more-markets",
+      "end_iso": "2026-08-24T19:30:00Z",
+      "event_iso": "2026-08-24 19:30:00+00",
+      "slug": "lal-mala-dep-2026-08-24-total-2pt5",
+      "signal_ts": 1787549232.0,
+      "wallet_usd": [
+        [
+          "0x4d3079bd4c73bc0e8f7d9f64a9f64fadbd17a42d",
+          19380.42
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$19,380 \u2014 but only 15.2% of their book",
+        "latest buy 106 min ago",
+        "still near their entry price",
+        "12h until it resolves",
+        "$191,218 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
         "only one wallet \u2014 single opinion"
       ]
     },
@@ -336,18 +259,18 @@
       "title": "Will the total domestic gross for Spider-Man: Brand New Day be at least 900m by August 31?",
       "side_label": "YES on: Will the total domestic gross for Spider-Man: Brand New Day be at least 900m by August 31?",
       "outcome": "Yes",
-      "entry_price": 0.326,
+      "entry_price": 0.256,
       "whale_price": 0.318,
-      "drift_c": 0.84,
-      "contracts": 1165,
-      "cost": 379.79,
-      "max_payout": 1165.0,
-      "conviction": 0.38,
-      "hours_to_resolve": 186.1,
+      "drift_c": -6.16,
+      "contracts": 1593,
+      "cost": 407.81,
+      "max_payout": 1593.0,
+      "conviction": 0.408,
+      "hours_to_resolve": 184.8,
       "n_wallets": 1,
       "whale_usd": 6561,
-      "minutes_ago": 242,
-      "liquidity": 57415,
+      "minutes_ago": 320,
+      "liquidity": 44002,
       "url": "https://polymarket.com/event/spider-man-brand-new-day-total-domestic-gross-by-august-31-20260716181307512",
       "end_iso": "2026-08-31T23:59:00Z",
       "event_iso": "",
@@ -362,70 +285,111 @@
       "why": [
         "1 profitable wallet on this side",
         "$6,561 \u2014 but only 0.6% of their book",
-        "latest buy 242 min ago",
-        "price up 0.8c since they bought",
-        "186h until it resolves",
-        "$57,415 liquidity"
+        "latest buy 320 min ago",
+        "price 6.2c cheaper than they paid",
+        "185h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     },
     {
-      "market_id": "0x858d332e90d1e1e2df9722cc8c95d1fd05511f058826a2672c51527dbafc5439",
-      "title": "Will Ethereum dip to $2,100 in August?",
-      "side_label": "NO on: Will Ethereum dip to $2,100 in August?",
-      "outcome": "No",
-      "entry_price": 0.9,
-      "whale_price": 0.88,
-      "drift_c": 2.0,
-      "contracts": 387,
-      "cost": 348.3,
-      "max_payout": 387.0,
-      "conviction": 0.349,
-      "hours_to_resolve": 190.1,
+      "market_id": "0x55ae2f91bba959ea0ab4ecbbfa2eb3501a12fd5f7107f0d71415e76cbf9a7d11",
+      "title": "Will Bitcoin reach $82,500 in August?",
+      "side_label": "YES on: Will Bitcoin reach $82,500 in August?",
+      "outcome": "Yes",
+      "entry_price": 0.35,
+      "whale_price": 0.352,
+      "drift_c": -0.2,
+      "contracts": 1157,
+      "cost": 404.95,
+      "max_payout": 1157.0,
+      "conviction": 0.405,
+      "hours_to_resolve": 188.8,
       "n_wallets": 1,
-      "whale_usd": 12177,
-      "minutes_ago": 322,
-      "liquidity": 23596,
-      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-august-2026",
+      "whale_usd": 4231,
+      "minutes_ago": 610,
+      "liquidity": 57335,
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
       "end_iso": "2026-09-01T04:00:00Z",
       "event_iso": "",
-      "slug": "will-ethereum-dip-to-2100-in-august-2026",
-      "signal_ts": 1787531635.0,
+      "slug": "will-bitcoin-reach-82pt5k-in-august-2026",
+      "signal_ts": 1787519032.0,
       "wallet_usd": [
         [
-          "0xf705fa045201391d9632b7f3cde06a5e24453ca7",
-          12177.44
+          "0x06dc51826bc524d9a83770e7de9dd7e005b04524",
+          4231.04
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$12,177 \u2014 but only 1.3% of their book",
-        "latest buy 322 min ago",
-        "price up 2.0c since they bought",
-        "190h until it resolves"
+        "$4,231 \u2014 but only 0.4% of their book",
+        "latest buy 610 min ago",
+        "still near their entry price",
+        "189h until it resolves",
+        "$57,335 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
+    },
+    {
+      "market_id": "0x786f070d6094c3269946a37274c0dc31f22550405e3689be0cdc358745fa1714",
+      "title": "Fulham FC vs. Chelsea FC: O/U 2.5",
+      "side_label": "Under \u2014 Fulham FC vs. Chelsea FC: O/U 2.5",
+      "outcome": "Under",
+      "entry_price": 0.425,
+      "whale_price": 0.43,
+      "drift_c": -0.5,
+      "contracts": 910,
+      "cost": 386.75,
+      "max_payout": 910.0,
+      "conviction": 0.387,
+      "hours_to_resolve": 11.8,
+      "n_wallets": 1,
+      "whale_usd": 3870,
+      "minutes_ago": 112,
+      "liquidity": 182020,
+      "url": "https://polymarket.com/event/epl-ful-che-2026-08-24-more-markets",
+      "end_iso": "2026-08-24T19:00:00Z",
+      "event_iso": "2026-08-24 19:00:00+00",
+      "slug": "epl-ful-che-2026-08-24-total-2pt5",
+      "signal_ts": 1787548918.0,
+      "wallet_usd": [
+        [
+          "0x4d3079bd4c73bc0e8f7d9f64a9f64fadbd17a42d",
+          3870.0
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$3,870 \u2014 but only 3.0% of their book",
+        "latest buy 112 min ago",
+        "still near their entry price",
+        "12h until it resolves",
+        "$182,020 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
     }
   ],
-  "considered": 289,
+  "considered": 283,
   "rejected": {
-    "market closed": 252,
-    "esports (sleeve retired \u2014 see esports_enabled)": 4,
+    "market closed": 235,
+    "esports (sleeve retired \u2014 see esports_enabled)": 8,
     "in-play (event already started)": 1,
-    "wallet not new (no track record either)": 6,
-    "resolves more than 30 days out": 3,
-    "fresh wallet: market too liquid for the pattern": 6,
+    "wallet not new (no track record either)": 7,
+    "resolves more than 30 days out": 5,
+    "fresh wallet: market too liquid for the pattern": 7,
+    "price outside tradeable band": 1,
     "parlay / combo ticket, not a single market": 1,
     "signal too old for this market's horizon": 1,
     "sports market with no event start time": 1,
-    "no resolution or start time": 1,
-    "price + fee ran away from the whale's entry": 1,
-    "duplicate event (kept the stronger side)": 2,
-    "below the 0.45 buy bar (recorded, not bought)": 3
+    "price + fee ran away from the whale's entry": 2,
+    "duplicate event (kept the stronger side)": 5,
+    "below the 0.45 buy bar (recorded, not bought)": 5
   },
   "notes": [],
   "consistency": {
@@ -433,13 +397,13 @@
     "enabled": true,
     "events_scanned": 345,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 123,
-      "not a ladder: fewer than two live, quoted legs": 93,
+      "bracket has legs we cannot price (fail closed)": 124,
+      "not a ladder: fewer than two live, quoted legs": 92,
       "not a ladder: group labels are not thresholds or deadlines": 58,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "ladder pair too illiquid to fill": 88,
       "bracket has too many legs to place by hand": 1,
-      "ladder inversion smaller than the spread": 4,
+      "ladder inversion smaller than the spread": 7,
       "not a ladder: numeric group spans different end dates": 1,
       "not a ladder: a live leg carries no group label": 1,
       "bracket leg too illiquid to fill": 4,
@@ -482,9 +446,9 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.0295,
+            "market_prob": 0.0335,
             "model_prob": 0.1297,
-            "gap_c": 10.02,
+            "gap_c": 9.62,
             "suspect": false
           },
           {
@@ -510,23 +474,23 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.0325,
+            "market_prob": 0.031,
             "model_prob": 0.1012,
-            "gap_c": 6.87,
+            "gap_c": 7.02,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.039,
+            "market_prob": 0.0385,
             "model_prob": 0.0369,
-            "gap_c": -0.21,
+            "gap_c": -0.16,
             "suspect": false
           },
           {
             "label": "2.8%",
-            "market_prob": 0.0265,
+            "market_prob": 0.0235,
             "model_prob": 0.0092,
-            "gap_c": -1.73,
+            "gap_c": -1.43,
             "suspect": false
           },
           {
@@ -548,7 +512,7 @@
         "nowcast_pp": 0.203341742698412,
         "nowcast_as_of": "2026-08-21 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.087pp (x1.83). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.088pp (x1.83). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -573,9 +537,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.305,
+            "market_prob": 0.28,
             "model_prob": 0.2056,
-            "gap_c": -9.94,
+            "gap_c": -7.44,
             "suspect": false
           },
           {
@@ -629,23 +593,23 @@
           },
           {
             "label": "3.1%",
-            "market_prob": 0.017,
+            "market_prob": 0.0165,
             "model_prob": 0.0659,
-            "gap_c": 4.89,
+            "gap_c": 4.94,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.0905,
+            "market_prob": 0.095,
             "model_prob": 0.1479,
-            "gap_c": 5.74,
+            "gap_c": 5.29,
             "suspect": false
           },
           {
             "label": "3.3%",
-            "market_prob": 0.265,
+            "market_prob": 0.27,
             "model_prob": 0.2273,
-            "gap_c": -3.77,
+            "gap_c": -4.27,
             "suspect": false
           },
           {
@@ -664,9 +628,9 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.0485,
+            "market_prob": 0.0465,
             "model_prob": 0.0853,
-            "gap_c": 3.68,
+            "gap_c": 3.88,
             "suspect": false
           },
           {
@@ -720,9 +684,9 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.041,
+            "market_prob": 0.04,
             "model_prob": 0.0008,
-            "gap_c": -4.02,
+            "gap_c": -3.92,
             "suspect": false
           },
           {
@@ -795,10 +759,10 @@
       "model_prob": 0.3385,
       "edge": 0.1385,
       "fair": 0.3385,
-      "market_prob": 0.125,
-      "implied_sigma": 0.2103,
+      "market_prob": 0.115,
+      "implied_sigma": 0.2207,
       "spot_used": 29308.86,
-      "chain_ts": "2026-08-24 05:47:12",
+      "chain_ts": "2026-08-24 07:08:16",
       "vrp_shrink": 0.92,
       "series": "KXNASDAQ100",
       "model": "cboe-0dte-density",
@@ -807,20 +771,42 @@
       "event_iso": "2026-08-24T20:00:00+00:00"
     },
     {
-      "market_id": "KXNASDAQ100-26AUG24H1600-B29250",
+      "market_id": "KXINX-26AUG24H1600-B7737",
       "venue": "kalshi",
       "source": "spxindex",
       "outcome": "No",
-      "title": "Will the Nasdaq-100 be between 29200 and 29299.9900 at the end of Aug 24, 2026 at 4pm EDT?",
+      "title": "Will the S&P 500 be between 7725 and 7749.9999 on Aug 24, 2026 at 4pm EDT?",
+      "url": "https://kalshi.com/markets/KXINX-26AUG24H1600",
+      "entry_price": 0.95,
+      "model_prob": 0.9852,
+      "edge": 0.0352,
+      "fair": 0.0148,
+      "market_prob": 0.07,
+      "implied_sigma": 0.0868,
+      "spot_used": 7674.37,
+      "chain_ts": "2026-08-24 07:13:06",
+      "vrp_shrink": 0.92,
+      "series": "KXINX",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-08-24T20:00:00+00:00",
+      "event_iso": "2026-08-24T20:00:00+00:00"
+    },
+    {
+      "market_id": "KXNASDAQ100-26AUG24H1600-B28950",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "No",
+      "title": "Will the Nasdaq-100 be between 28900 and 28999.9900 at the end of Aug 24, 2026 at 4pm EDT?",
       "url": "https://kalshi.com/markets/KXNASDAQ100-26AUG24H1600",
-      "entry_price": 0.93,
-      "model_prob": 1.0,
-      "edge": 0.07,
-      "fair": 0.0,
-      "market_prob": 0.135,
-      "implied_sigma": 0.2103,
+      "entry_price": 0.94,
+      "model_prob": 0.9739,
+      "edge": 0.0339,
+      "fair": 0.0261,
+      "market_prob": 0.13,
+      "implied_sigma": 0.2207,
       "spot_used": 29308.86,
-      "chain_ts": "2026-08-24 05:47:12",
+      "chain_ts": "2026-08-24 07:08:16",
       "vrp_shrink": 0.92,
       "series": "KXNASDAQ100",
       "model": "cboe-0dte-density",
