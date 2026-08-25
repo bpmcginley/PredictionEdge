@@ -1,25 +1,66 @@
 {
-  "generated": "2026-08-25 03:07:36",
-  "generated_at": 1787627256.4742963,
+  "generated": "2026-08-25 04:02:54",
+  "generated_at": 1787630574.7543516,
   "account_size": 100000.0,
   "tickets": [
+    {
+      "market_id": "0xe3a5c6a4d8057b7d8a14d3091183aab4ee27b232f21c603a9574b81898b46094",
+      "title": "US Open, Qualification ATP: Yunchaokete Bu vs Rio Noguchi",
+      "side_label": "Yunchaokete Bu \u2014 US Open, Qualification ATP: Yunchaokete Bu vs Rio Noguchi",
+      "outcome": "Yunchaokete Bu",
+      "entry_price": 0.725,
+      "whale_price": 0.726,
+      "drift_c": -0.11,
+      "contracts": 859,
+      "cost": 622.77,
+      "max_payout": 859.0,
+      "conviction": 0.623,
+      "hours_to_resolve": 15.5,
+      "n_wallets": 2,
+      "whale_usd": 17645,
+      "minutes_ago": 18,
+      "liquidity": 44455,
+      "url": "https://polymarket.com/event/atp-bu-noguchi-2026-08-25",
+      "end_iso": "2026-09-01T15:00:00Z",
+      "event_iso": "2026-08-25 19:30:00+00",
+      "slug": "atp-bu-noguchi-2026-08-25",
+      "signal_ts": 1787629465.0,
+      "wallet_usd": [
+        [
+          "0xb8e32d575b8d360f90bcc95596e9a0bee444aaf2",
+          10747.97
+        ],
+        [
+          "0x31706006a0ef88b2b8f6d093efbc83b359fbc6a0",
+          6896.93
+        ]
+      ],
+      "why": [
+        "2 profitable wallets on this side",
+        "$17,645 \u2014 but only 16.2% of their book",
+        "latest buy 18 min ago",
+        "still near their entry price",
+        "15h until it resolves"
+      ],
+      "warnings": []
+    },
     {
       "market_id": "0x5c661c21175bc9d17e40368caaf5a835daffd47b70a0e0c4504dde970e6b0d3f",
       "title": "Will Bitcoin dip to $75,000 in August?",
       "side_label": "NO on: Will Bitcoin dip to $75,000 in August?",
       "outcome": "No",
-      "entry_price": 0.75,
+      "entry_price": 0.74,
       "whale_price": 0.75,
-      "drift_c": 0.0,
-      "contracts": 760,
-      "cost": 570.0,
-      "max_payout": 760.0,
-      "conviction": 0.57,
-      "hours_to_resolve": 168.9,
+      "drift_c": -1.0,
+      "contracts": 708,
+      "cost": 523.92,
+      "max_payout": 708.0,
+      "conviction": 0.524,
+      "hours_to_resolve": 168.0,
       "n_wallets": 1,
       "whale_usd": 18000,
-      "minutes_ago": 25,
-      "liquidity": 40693,
+      "minutes_ago": 80,
+      "liquidity": 40899,
       "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
       "end_iso": "2026-09-01T04:00:00Z",
       "event_iso": "",
@@ -34,9 +75,48 @@
       "why": [
         "1 profitable wallet on this side",
         "$18,000 \u2014 but only 5.8% of their book",
-        "latest buy 25 min ago",
+        "latest buy 80 min ago",
+        "price 1.0c cheaper than they paid",
+        "168h until it resolves"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x96abf51b6d57d5055d66fe25596d9f9dc050d4b861ad47a09761452e5cc6875f",
+      "title": "US Open, Qualification ATP: Alex Bolt vs Pablo Llamas Ruiz",
+      "side_label": "Alex Bolt \u2014 US Open, Qualification ATP: Alex Bolt vs Pablo Llamas Ruiz",
+      "outcome": "Alex Bolt",
+      "entry_price": 0.285,
+      "whale_price": 0.28,
+      "drift_c": 0.5,
+      "contracts": 1617,
+      "cost": 460.84,
+      "max_payout": 1617.0,
+      "conviction": 0.461,
+      "hours_to_resolve": 12.5,
+      "n_wallets": 1,
+      "whale_usd": 2814,
+      "minutes_ago": 18,
+      "liquidity": 49907,
+      "url": "https://polymarket.com/event/atp-bolt-ruiz-2026-08-25",
+      "end_iso": "2026-09-01T15:00:00Z",
+      "event_iso": "2026-08-25 16:30:00+00",
+      "slug": "atp-bolt-ruiz-2026-08-25",
+      "signal_ts": 1787629491.0,
+      "wallet_usd": [
+        [
+          "0x31706006a0ef88b2b8f6d093efbc83b359fbc6a0",
+          2814.23
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,814 \u2014 but only 15.0% of their book",
+        "latest buy 18 min ago",
         "still near their entry price",
-        "169h until it resolves"
+        "12h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -44,49 +124,6 @@
     }
   ],
   "probe": [
-    {
-      "market_id": "0x70831611831c0792bfb971d613ec2db2e06d59a234967b45f8302b3671b515cd",
-      "title": "Will Ralph Norman be the new Republican nominee for Senate in South Carolina?",
-      "side_label": "YES on: Will Ralph Norman be the new Republican nominee for Senate in South Carolina?",
-      "outcome": "Yes",
-      "entry_price": 0.38,
-      "whale_price": 0.368,
-      "drift_c": 1.22,
-      "contracts": 1010,
-      "cost": 383.8,
-      "max_payout": 1010.0,
-      "conviction": 0.384,
-      "hours_to_resolve": 20.9,
-      "n_wallets": 1,
-      "whale_usd": 5660,
-      "minutes_ago": 55,
-      "liquidity": 77129,
-      "url": "https://polymarket.com/event/south-carolina-republican-senate-special-primary-winner-20260712135206676",
-      "end_iso": "2026-08-25T23:59:00Z",
-      "event_iso": "",
-      "slug": "will-ralph-norman-be-the-new-republican-nominee-for-senate-in-south-carolina-20260712140628829",
-      "signal_ts": 1787623936.0,
-      "wallet_usd": [
-        [
-          "0x98d04f9eb52d08ef9697f6eb8d7cfe8d46e5f14a",
-          5659.61
-        ]
-      ],
-      "why": [
-        "election market and 100% of this is one wallet \u2014 concentration here can move the price rather than confirm it",
-        "1 profitable wallet on this side",
-        "$5,660, 32% of their own book",
-        "latest buy 55 min ago",
-        "price up 1.2c since they bought",
-        "21h until it resolves",
-        "$77,129 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion",
-        "100% of this signal is a single wallet on an election market \u2014 that is the shape that distorted 2024 pricing"
-      ]
-    },
     {
       "market_id": "0x531e07f1a2b3d9e71e9b6ff01400cc98ddd767d48537153d7a6c1a83857fd885",
       "title": "Will Brighton & Hove Albion FC win on 2026-08-30?",
@@ -99,11 +136,11 @@
       "cost": 379.5,
       "max_payout": 506.0,
       "conviction": 0.38,
-      "hours_to_resolve": 129.9,
+      "hours_to_resolve": 129.0,
       "n_wallets": 1,
       "whale_usd": 2154,
-      "minutes_ago": 409,
-      "liquidity": 33939,
+      "minutes_ago": 465,
+      "liquidity": 33492,
       "url": "https://polymarket.com/event/epl-che-bri-2026-08-30",
       "end_iso": "2026-08-30T13:00:00Z",
       "event_iso": "2026-08-30 13:00:00+00",
@@ -118,49 +155,9 @@
       "why": [
         "1 profitable wallet on this side",
         "$2,154 \u2014 but only 4.9% of their book",
-        "latest buy 409 min ago",
+        "latest buy 465 min ago",
         "price up 1.0c since they bought",
-        "130h until it resolves"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x20e102eac0aa751682b9b40d70883a3efdf7279f24c7f4e0e6b037e455bce061",
-      "title": "Monterrey Open: Diane Parry vs Donna Vekic",
-      "side_label": "Donna Vekic \u2014 Monterrey Open: Diane Parry vs Donna Vekic",
-      "outcome": "Donna Vekic",
-      "entry_price": 0.575,
-      "whale_price": 0.576,
-      "drift_c": -0.12,
-      "contracts": 646,
-      "cost": 371.45,
-      "max_payout": 646.0,
-      "conviction": 0.372,
-      "hours_to_resolve": 0.6,
-      "n_wallets": 1,
-      "whale_usd": 5985,
-      "minutes_ago": 112,
-      "liquidity": 342123,
-      "url": "https://polymarket.com/event/wta-parry-vekic-2026-08-24",
-      "end_iso": "2026-08-31T16:00:00Z",
-      "event_iso": "2026-08-25 03:45:00+00",
-      "slug": "wta-parry-vekic-2026-08-24",
-      "signal_ts": 1787620498.0,
-      "wallet_usd": [
-        [
-          "0xfe787d2da716d60e8acff57fb87eb13cd4d10319",
-          5985.24
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$5,985 \u2014 but only 2.2% of their book",
-        "latest buy 112 min ago",
-        "still near their entry price",
-        "1h until it resolves",
-        "$342,123 liquidity"
+        "129h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -178,11 +175,11 @@
       "cost": 369.95,
       "max_payout": 1057.0,
       "conviction": 0.37,
-      "hours_to_resolve": 524.9,
+      "hours_to_resolve": 524.0,
       "n_wallets": 1,
       "whale_usd": 20160,
-      "minutes_ago": 281,
-      "liquidity": 667694,
+      "minutes_ago": 337,
+      "liquidity": 642300,
       "url": "https://polymarket.com/event/fed-decision-in-september-762",
       "end_iso": "2026-09-16T00:00:00Z",
       "event_iso": "",
@@ -197,54 +194,56 @@
       "why": [
         "1 profitable wallet on this side",
         "$20,160 \u2014 but only 0.4% of their book",
-        "latest buy 281 min ago",
+        "latest buy 337 min ago",
         "price up 1.2c since they bought",
-        "525h until it resolves",
-        "$667,694 liquidity"
+        "524h until it resolves",
+        "$642,300 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     },
     {
-      "market_id": "0x0df392412bb06b1b758809de55310ed5b6cdcc666e65d6a4c22f17b968690456",
-      "title": "Will LASK Linz win on 2026-08-25?",
-      "side_label": "YES on: Will LASK Linz win on 2026-08-25?",
+      "market_id": "0x70831611831c0792bfb971d613ec2db2e06d59a234967b45f8302b3671b515cd",
+      "title": "Will Ralph Norman be the new Republican nominee for Senate in South Carolina?",
+      "side_label": "YES on: Will Ralph Norman be the new Republican nominee for Senate in South Carolina?",
       "outcome": "Yes",
-      "entry_price": 0.51,
-      "whale_price": 0.504,
-      "drift_c": 0.56,
-      "contracts": 686,
-      "cost": 349.86,
-      "max_payout": 686.0,
-      "conviction": 0.35,
-      "hours_to_resolve": 15.9,
+      "entry_price": 0.37,
+      "whale_price": 0.368,
+      "drift_c": 0.22,
+      "contracts": 1000,
+      "cost": 370.0,
+      "max_payout": 1000.0,
+      "conviction": 0.37,
+      "hours_to_resolve": 19.9,
       "n_wallets": 1,
-      "whale_usd": 8224,
-      "minutes_ago": 165,
-      "liquidity": 190292,
-      "url": "https://polymarket.com/event/ucl-lin2-cel-2026-08-25",
-      "end_iso": "2026-08-25T19:00:00Z",
-      "event_iso": "2026-08-25 19:00:00+00",
-      "slug": "ucl-lin2-cel-2026-08-25-lin2",
-      "signal_ts": 1787617360.0,
+      "whale_usd": 5660,
+      "minutes_ago": 111,
+      "liquidity": 109096,
+      "url": "https://polymarket.com/event/south-carolina-republican-senate-special-primary-winner-20260712135206676",
+      "end_iso": "2026-08-25T23:59:00Z",
+      "event_iso": "",
+      "slug": "will-ralph-norman-be-the-new-republican-nominee-for-senate-in-south-carolina-20260712140628829",
+      "signal_ts": 1787623936.0,
       "wallet_usd": [
         [
-          "0x076daa87c4fe1a85402a9b6b8e0a866224388d4c",
-          8224.2
+          "0x98d04f9eb52d08ef9697f6eb8d7cfe8d46e5f14a",
+          5659.61
         ]
       ],
       "why": [
+        "election market and 100% of this is one wallet \u2014 concentration here can move the price rather than confirm it",
         "1 profitable wallet on this side",
-        "$8,224 \u2014 but only 9.0% of their book",
-        "latest buy 165 min ago",
-        "price up 0.6c since they bought",
-        "16h until it resolves",
-        "$190,292 liquidity"
+        "$5,660, 32% of their own book",
+        "latest buy 111 min ago",
+        "still near their entry price",
+        "20h until it resolves",
+        "$109,096 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
+        "only one wallet \u2014 single opinion",
+        "100% of this signal is a single wallet on an election market \u2014 that is the shape that distorted 2024 pricing"
       ]
     },
     {
@@ -255,15 +254,15 @@
       "entry_price": 0.75,
       "whale_price": 0.73,
       "drift_c": 2.0,
-      "contracts": 404,
-      "cost": 303.0,
-      "max_payout": 404.0,
-      "conviction": 0.303,
-      "hours_to_resolve": 39.9,
+      "contracts": 402,
+      "cost": 301.5,
+      "max_payout": 402.0,
+      "conviction": 0.302,
+      "hours_to_resolve": 39.0,
       "n_wallets": 1,
       "whale_usd": 5238,
-      "minutes_ago": 229,
-      "liquidity": 255834,
+      "minutes_ago": 284,
+      "liquidity": 247495,
       "url": "https://polymarket.com/event/lal-rea-rso-2026-08-26",
       "end_iso": "2026-08-26T19:00:00Z",
       "event_iso": "2026-08-26 19:00:00+00",
@@ -278,10 +277,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$5,238 \u2014 but only 2.5% of their book",
-        "latest buy 229 min ago",
+        "latest buy 284 min ago",
         "price up 2.0c since they bought",
-        "40h until it resolves",
-        "$255,834 liquidity"
+        "39h until it resolves",
+        "$247,495 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
@@ -289,19 +288,19 @@
       ]
     }
   ],
-  "considered": 315,
+  "considered": 304,
   "rejected": {
-    "market closed": 214,
+    "market closed": 203,
     "already resolved": 10,
-    "fresh wallet: market too liquid for the pattern": 21,
-    "in-play (event already started)": 12,
-    "wallet not new (no track record either)": 26,
-    "resolves more than 30 days out": 15,
-    "esports (sleeve retired \u2014 see esports_enabled)": 5,
-    "price + fee ran away from the whale's entry": 2,
-    "signal too old for this market's horizon": 2,
+    "fresh wallet: market too liquid for the pattern": 22,
+    "in-play (event already started)": 11,
+    "wallet not new (no track record either)": 28,
+    "resolves more than 30 days out": 13,
+    "esports (sleeve retired \u2014 see esports_enabled)": 4,
+    "price + fee ran away from the whale's entry": 1,
+    "signal too old for this market's horizon": 4,
     "parlay / combo ticket, not a single market": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 6
+    "below the 0.45 buy bar (recorded, not bought)": 4
   },
   "notes": [],
   "consistency": {
@@ -311,13 +310,13 @@
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 123,
       "not a ladder: fewer than two live, quoted legs": 90,
-      "not a ladder: group labels are not thresholds or deadlines": 59,
+      "not a ladder: group labels are not thresholds or deadlines": 58,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "ladder pair too illiquid to fill": 88,
       "bracket has too many legs to place by hand": 1,
-      "ladder inversion smaller than the spread": 1,
+      "bracket underround smaller than the spread": 1,
       "not a ladder: numeric group spans different end dates": 1,
-      "not a ladder: a live leg carries no group label": 4,
+      "not a ladder: a live leg carries no group label": 5,
       "bracket leg too illiquid to fill": 4,
       "bracket overround smaller than the spread": 1,
       "dominance gap smaller than the spread": 2
@@ -343,7 +342,7 @@
             "name": "$10B",
             "bid": 0.17,
             "ask": 0.19,
-            "liquidity": 24539.62,
+            "liquidity": 24555.72,
             "end_iso": "2028-01-01T05:00:00Z",
             "url": "https://polymarket.com/event/base-fdv-above-one-day-after-launch"
           },
@@ -352,7 +351,7 @@
             "name": "$12B",
             "bid": 0.21,
             "ask": 0.22,
-            "liquidity": 22496.2075,
+            "liquidity": 22507.1175,
             "end_iso": "2028-01-01T05:00:00Z",
             "url": "https://polymarket.com/event/base-fdv-above-one-day-after-launch"
           }
@@ -386,9 +385,9 @@
           },
           {
             "label": "0.1%",
-            "market_prob": 0.17,
+            "market_prob": 0.175,
             "model_prob": 0.2005,
-            "gap_c": 3.05,
+            "gap_c": 2.55,
             "suspect": false
           },
           {
@@ -400,9 +399,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.27,
+            "market_prob": 0.275,
             "model_prob": 0.2056,
-            "gap_c": -6.44,
+            "gap_c": -6.94,
             "suspect": false
           },
           {
@@ -438,7 +437,7 @@
         "nowcast_pp": 2.38356235342767,
         "nowcast_as_of": "2026-08-24 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.116pp (x1.38). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.116pp (x1.39). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
         "rows": [
           {
             "label": "\u22642.0%",
@@ -449,23 +448,23 @@
           },
           {
             "label": "2.1%",
-            "market_prob": 0.0095,
+            "market_prob": 0.01,
             "model_prob": 0.0536,
-            "gap_c": 4.41,
+            "gap_c": 4.36,
             "suspect": false
           },
           {
             "label": "2.2%",
-            "market_prob": 0.018,
+            "market_prob": 0.0175,
             "model_prob": 0.1297,
-            "gap_c": 11.17,
+            "gap_c": 11.22,
             "suspect": false
           },
           {
             "label": "2.3%",
-            "market_prob": 0.325,
+            "market_prob": 0.33,
             "model_prob": 0.215,
-            "gap_c": -11.0,
+            "gap_c": -11.5,
             "suspect": false
           },
           {
@@ -484,23 +483,23 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.025,
+            "market_prob": 0.028,
             "model_prob": 0.1012,
-            "gap_c": 7.62,
+            "gap_c": 7.32,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0375,
+            "market_prob": 0.039,
             "model_prob": 0.0369,
-            "gap_c": -0.06,
+            "gap_c": -0.21,
             "suspect": false
           },
           {
             "label": "2.8%",
-            "market_prob": 0.018,
+            "market_prob": 0.0165,
             "model_prob": 0.0092,
-            "gap_c": -0.88,
+            "gap_c": -0.73,
             "suspect": false
           },
           {
@@ -533,9 +532,9 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.0615,
+            "market_prob": 0.081,
             "model_prob": 0.0008,
-            "gap_c": -6.07,
+            "gap_c": -8.02,
             "suspect": false
           },
           {
@@ -568,23 +567,23 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.265,
+            "market_prob": 0.275,
             "model_prob": 0.2352,
-            "gap_c": -2.98,
+            "gap_c": -3.98,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.435,
+            "market_prob": 0.44,
             "model_prob": 0.2328,
-            "gap_c": -20.22,
+            "gap_c": -20.72,
             "suspect": false
           },
           {
             "label": "\u22650.5%",
-            "market_prob": 0.185,
+            "market_prob": 0.13,
             "model_prob": 0.2605,
-            "gap_c": 7.55,
+            "gap_c": 13.05,
             "suspect": false
           }
         ]
@@ -599,7 +598,7 @@
         "nowcast_pp": 3.36362988816106,
         "nowcast_as_of": "2026-08-24 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.118pp (x1.36). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.117pp (x1.37). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
         "rows": [
           {
             "label": "\u22642.9%",
@@ -624,16 +623,16 @@
           },
           {
             "label": "3.2%",
-            "market_prob": 0.0795,
+            "market_prob": 0.0785,
             "model_prob": 0.1479,
-            "gap_c": 6.84,
+            "gap_c": 6.94,
             "suspect": false
           },
           {
             "label": "3.3%",
-            "market_prob": 0.29,
+            "market_prob": 0.295,
             "model_prob": 0.2273,
-            "gap_c": -6.27,
+            "gap_c": -6.77,
             "suspect": false
           },
           {
@@ -652,9 +651,9 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.032,
+            "market_prob": 0.03,
             "model_prob": 0.0853,
-            "gap_c": 5.33,
+            "gap_c": 5.53,
             "suspect": false
           },
           {
