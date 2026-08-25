@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-25 07:27:01",
-  "generated_at": 1787642821.7595208,
+  "generated": "2026-08-25 08:20:30",
+  "generated_at": 1787646030.2329328,
   "account_size": 100000.0,
   "tickets": [
     {
@@ -11,15 +11,15 @@
       "entry_price": 0.725,
       "whale_price": 0.727,
       "drift_c": -0.25,
-      "contracts": 868,
-      "cost": 629.3,
-      "max_payout": 868.0,
-      "conviction": 0.63,
-      "hours_to_resolve": 12.1,
+      "contracts": 806,
+      "cost": 584.35,
+      "max_payout": 806.0,
+      "conviction": 0.585,
+      "hours_to_resolve": 11.2,
       "n_wallets": 2,
       "whale_usd": 27865,
-      "minutes_ago": 15,
-      "liquidity": 47157,
+      "minutes_ago": 69,
+      "liquidity": 47395,
       "url": "https://polymarket.com/event/atp-bu-noguchi-2026-08-25",
       "end_iso": "2026-09-01T15:00:00Z",
       "event_iso": "2026-08-25 19:30:00+00",
@@ -38,50 +38,129 @@
       "why": [
         "2 profitable wallets on this side",
         "$27,865 \u2014 but only 13.5% of their book",
-        "latest buy 15 min ago",
+        "latest buy 69 min ago",
         "still near their entry price",
-        "12h until it resolves"
+        "11h until it resolves"
       ],
       "warnings": []
     },
     {
-      "market_id": "0x7f668805bfee7909997562f60489ddef01e40a3dca43781efeb59ce380779295",
-      "title": "Will Bitcoin reach $85,000 in August?",
-      "side_label": "YES on: Will Bitcoin reach $85,000 in August?",
-      "outcome": "Yes",
-      "entry_price": 0.406,
-      "whale_price": 0.4,
-      "drift_c": 0.6,
-      "contracts": 1147,
-      "cost": 465.68,
-      "max_payout": 1147.0,
-      "conviction": 0.466,
-      "hours_to_resolve": 164.6,
+      "market_id": "0x631e7f35e51e266383c11f4253f0a7560e33cd928e497fd80a4f7243969b7750",
+      "title": "Moscow air traffic suspended by August 31?",
+      "side_label": "NO on: Moscow air traffic suspended by August 31?",
+      "outcome": "No",
+      "entry_price": 0.74,
+      "whale_price": 0.73,
+      "drift_c": 1.0,
+      "contracts": 743,
+      "cost": 549.82,
+      "max_payout": 743.0,
+      "conviction": 0.55,
+      "hours_to_resolve": 159.6,
       "n_wallets": 1,
-      "whale_usd": 3000,
-      "minutes_ago": 113,
-      "liquidity": 72258,
+      "whale_usd": 6757,
+      "minutes_ago": 15,
+      "liquidity": 100,
+      "url": "https://polymarket.com/event/moscow-air-traffic-suspended-byptptpt-20260824",
+      "end_iso": "2026-08-31T23:59:00Z",
+      "event_iso": "",
+      "slug": "moscow-air-traffic-suspended-by-august-31-20260824",
+      "signal_ts": 1787645092.0,
+      "wallet_usd": [
+        [
+          "0x74b8894546677ca451f327adacc67d75367be184",
+          6756.55
+        ]
+      ],
+      "why": [
+        "new wallet with no track record \u2014 pattern signal, not a copy",
+        "$6,757, 100% of their own book",
+        "latest buy 15 min ago",
+        "price up 1.0c since they bought",
+        "160h until it resolves"
+      ],
+      "warnings": [
+        "thin liquidity \u2014 expect slippage",
+        "unproven wallet \u2014 this is a pattern, not a track record"
+      ]
+    },
+    {
+      "market_id": "0x70584525d6c53d32ede871c59037e5ce914140010ed42aa98fad03e9e46c8dcc",
+      "title": "Will Bitcoin reach $87,500 in August?",
+      "side_label": "NO on: Will Bitcoin reach $87,500 in August?",
+      "outcome": "No",
+      "entry_price": 0.83,
+      "whale_price": 0.81,
+      "drift_c": 2.0,
+      "contracts": 591,
+      "cost": 490.53,
+      "max_payout": 591.0,
+      "conviction": 0.491,
+      "hours_to_resolve": 163.7,
+      "n_wallets": 1,
+      "whale_usd": 14580,
+      "minutes_ago": 31,
+      "liquidity": 45197,
       "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
       "end_iso": "2026-09-01T04:00:00Z",
       "event_iso": "",
-      "slug": "will-bitcoin-reach-85k-in-august-2026",
-      "signal_ts": 1787636017.0,
+      "slug": "will-bitcoin-reach-87pt5k-in-august-2026",
+      "signal_ts": 1787644189.0,
       "wallet_usd": [
         [
-          "0x8a16eb406b6ecd9334e6202a159c9dd51288c0d5",
-          3000.0
+          "0xcc500cbcc8b7cf5bd21975ebbea34f21b5644c82",
+          14580.0
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$3,000, 81% of their own book",
-        "latest buy 113 min ago",
-        "price up 0.6c since they bought",
-        "165h until it resolves",
-        "$72,258 liquidity"
+        "$14,580 \u2014 but only 4.7% of their book",
+        "latest buy 31 min ago",
+        "price up 2.0c since they bought",
+        "164h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x810976417d62591525dd0c34d0d8c828e96cbab299ef36e99f32a7bcb4ce2ea0",
+      "title": "US Open, Qualification ATP: Sebastian Ofner vs Kei Nishikori",
+      "side_label": "Kei Nishikori \u2014 US Open, Qualification ATP: Sebastian Ofner vs Kei Nishikori",
+      "outcome": "Kei Nishikori",
+      "entry_price": 0.505,
+      "whale_price": 0.51,
+      "drift_c": -0.5,
+      "contracts": 964,
+      "cost": 486.82,
+      "max_payout": 964.0,
+      "conviction": 0.487,
+      "hours_to_resolve": 6.7,
+      "n_wallets": 1,
+      "whale_usd": 10000,
+      "minutes_ago": 33,
+      "liquidity": 91538,
+      "url": "https://polymarket.com/event/atp-ofner-nishiko-2026-08-25",
+      "end_iso": "2026-09-01T15:00:00Z",
+      "event_iso": "2026-08-25 15:00:00+00",
+      "slug": "atp-ofner-nishiko-2026-08-25",
+      "signal_ts": 1787644014.0,
+      "wallet_usd": [
+        [
+          "0xe5d29f2276769fd3574bbaa846a563b6c8a0776e",
+          10000.0
+        ]
+      ],
+      "why": [
+        "new wallet with no track record \u2014 pattern signal, not a copy",
+        "$10,000, 100% of their own book",
+        "latest buy 33 min ago",
+        "still near their entry price",
+        "7h until it resolves",
+        "$91,538 liquidity"
+      ],
+      "warnings": [
+        "unproven wallet \u2014 this is a pattern, not a track record"
       ]
     },
     {
@@ -96,11 +175,11 @@
       "cost": 457.65,
       "max_payout": 1017.0,
       "conviction": 0.458,
-      "hours_to_resolve": 88.6,
+      "hours_to_resolve": 87.7,
       "n_wallets": 1,
       "whale_usd": 10791,
-      "minutes_ago": 620,
-      "liquidity": 25098,
+      "minutes_ago": 673,
+      "liquidity": 20848,
       "url": "https://polymarket.com/event/nfl-no-dal-2026-08-29",
       "end_iso": "2026-08-29T00:00:00Z",
       "event_iso": "2026-08-29 00:00:00+00",
@@ -115,9 +194,9 @@
       "why": [
         "1 profitable wallet on this side",
         "$10,791, 32% of their own book",
-        "latest buy 620 min ago",
+        "latest buy 673 min ago",
         "price 1.0c cheaper than they paid",
-        "89h until it resolves"
+        "88h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -125,45 +204,6 @@
     }
   ],
   "probe": [
-    {
-      "market_id": "0xdc75bf6ac199eb8bd57bec5ab8f0b1ec14bfb13e0953f7d90654fa995c114736",
-      "title": "Winston-Salem Open: Botic van de Zandschulp vs Adolfo Vallejo",
-      "side_label": "Botic van de Zandschulp \u2014 Winston-Salem Open: Botic van de Zandschulp vs Adolfo Vallejo",
-      "outcome": "Botic van de Zandschulp",
-      "entry_price": 0.585,
-      "whale_price": 0.58,
-      "drift_c": 0.5,
-      "contracts": 723,
-      "cost": 422.95,
-      "max_payout": 723.0,
-      "conviction": 0.423,
-      "hours_to_resolve": 10.6,
-      "n_wallets": 1,
-      "whale_usd": 4343,
-      "minutes_ago": 74,
-      "liquidity": 47315,
-      "url": "https://polymarket.com/event/atp-zandsch-vallejo-2026-08-25",
-      "end_iso": "2026-09-01T14:00:00Z",
-      "event_iso": "2026-08-25 18:00:00+00",
-      "slug": "atp-zandsch-vallejo-2026-08-25",
-      "signal_ts": 1787638384.0,
-      "wallet_usd": [
-        [
-          "0xaa7789219c17e180dcb5933099c90d885f1d15a5",
-          4343.36
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$4,343, 22% of their own book",
-        "latest buy 74 min ago",
-        "still near their entry price",
-        "11h until it resolves"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
     {
       "market_id": "0x876506d8b2bd7a0d3fa4fe18c024eee6e1dd81ee24c26795dadd6cfe4a7b5d0d",
       "title": "Will the Fed increase interest rates by 25 bps after the September 2026 meeting?",
@@ -176,11 +216,11 @@
       "cost": 403.92,
       "max_payout": 1188.0,
       "conviction": 0.404,
-      "hours_to_resolve": 520.6,
+      "hours_to_resolve": 519.7,
       "n_wallets": 1,
       "whale_usd": 20160,
-      "minutes_ago": 541,
-      "liquidity": 593479,
+      "minutes_ago": 594,
+      "liquidity": 462670,
       "url": "https://polymarket.com/event/fed-decision-in-september-762",
       "end_iso": "2026-09-16T00:00:00Z",
       "event_iso": "",
@@ -195,10 +235,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$20,160 \u2014 but only 0.4% of their book",
-        "latest buy 541 min ago",
+        "latest buy 594 min ago",
         "still near their entry price",
-        "521h until it resolves",
-        "$593,479 liquidity"
+        "520h until it resolves",
+        "$462,670 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -216,11 +256,11 @@
       "cost": 342.0,
       "max_payout": 450.0,
       "conviction": 0.342,
-      "hours_to_resolve": 125.6,
+      "hours_to_resolve": 124.7,
       "n_wallets": 1,
       "whale_usd": 2154,
-      "minutes_ago": 669,
-      "liquidity": 34212,
+      "minutes_ago": 722,
+      "liquidity": 32406,
       "url": "https://polymarket.com/event/epl-che-bri-2026-08-30",
       "end_iso": "2026-08-30T13:00:00Z",
       "event_iso": "2026-08-30 13:00:00+00",
@@ -235,29 +275,28 @@
       "why": [
         "1 profitable wallet on this side",
         "$2,154 \u2014 but only 2.0% of their book",
-        "latest buy 669 min ago",
+        "latest buy 722 min ago",
         "price up 2.0c since they bought",
-        "126h until it resolves"
+        "125h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 304,
+  "considered": 309,
   "rejected": {
-    "market closed": 237,
-    "fresh wallet: market too liquid for the pattern": 7,
-    "wallet not new (no track record either)": 21,
-    "resolves more than 30 days out": 17,
-    "esports (sleeve retired \u2014 see esports_enabled)": 5,
+    "market closed": 234,
+    "fresh wallet: market too liquid for the pattern": 8,
+    "esports (sleeve retired \u2014 see esports_enabled)": 7,
+    "wallet not new (no track record either)": 22,
+    "resolves more than 30 days out": 18,
     "price + fee ran away from the whale's entry": 1,
     "already resolved": 1,
-    "signal too old for this market's horizon": 6,
+    "signal too old for this market's horizon": 8,
     "parlay / combo ticket, not a single market": 1,
-    "conviction below threshold": 1,
-    "duplicate event (kept the stronger side)": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 3
+    "duplicate event (kept the stronger side)": 2,
+    "below the 0.45 buy bar (recorded, not bought)": 2
   },
   "notes": [],
   "consistency": {
@@ -265,11 +304,11 @@
     "enabled": true,
     "events_scanned": 345,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 124,
-      "not a ladder: fewer than two live, quoted legs": 92,
+      "bracket has legs we cannot price (fail closed)": 125,
+      "not a ladder: fewer than two live, quoted legs": 91,
       "not a ladder: group labels are not thresholds or deadlines": 58,
       "not a ladder: duplicate deadlines left too few rungs": 5,
-      "ladder pair too illiquid to fill": 89,
+      "ladder pair too illiquid to fill": 93,
       "bracket has too many legs to place by hand": 1,
       "bracket leg too illiquid to fill": 5,
       "ladder inversion smaller than the spread": 2,
@@ -279,42 +318,7 @@
       "dominance gap smaller than the spread": 2
     },
     "notes": [],
-    "violations": [
-      {
-        "family": "ladder",
-        "event_slug": "base-fdv-above-one-day-after-launch",
-        "constraint": "P($12B) must be <= P($10B), but $12B bids 0.210 while $10B offers 0.190",
-        "edge_c": 2.0,
-        "actions": [
-          "BUY YES  $10B  @ 0.190",
-          "BUY NO   $12B  @ 0.790"
-        ],
-        "warnings": [
-          "both legs settle on the same event page - confirm the two rule texts differ only in the threshold"
-        ],
-        "url": "https://polymarket.com/event/base-fdv-above-one-day-after-launch",
-        "legs": [
-          {
-            "question": "Base FDV above $10B one day after launch?",
-            "name": "$10B",
-            "bid": 0.17,
-            "ask": 0.19,
-            "liquidity": 24315.1838,
-            "end_iso": "2028-01-01T05:00:00Z",
-            "url": "https://polymarket.com/event/base-fdv-above-one-day-after-launch"
-          },
-          {
-            "question": "Base FDV above $12B one day after launch?",
-            "name": "$12B",
-            "bid": 0.21,
-            "ask": 0.22,
-            "liquidity": 22447.974,
-            "end_iso": "2028-01-01T05:00:00Z",
-            "url": "https://polymarket.com/event/base-fdv-above-one-day-after-launch"
-          }
-        ]
-      }
-    ]
+    "violations": []
   },
   "macro": {
     "ok": true,
@@ -331,7 +335,7 @@
         "nowcast_pp": 2.38356235342767,
         "nowcast_as_of": "2026-08-24 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.116pp (x1.38). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.115pp (x1.39). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
         "rows": [
           {
             "label": "\u22642.0%",
@@ -349,9 +353,9 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.023,
+            "market_prob": 0.0185,
             "model_prob": 0.1297,
-            "gap_c": 10.67,
+            "gap_c": 11.12,
             "suspect": false
           },
           {
@@ -377,23 +381,23 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.03,
+            "market_prob": 0.0295,
             "model_prob": 0.1012,
-            "gap_c": 7.12,
+            "gap_c": 7.17,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.03,
+            "market_prob": 0.029,
             "model_prob": 0.0369,
-            "gap_c": 0.69,
+            "gap_c": 0.79,
             "suspect": false
           },
           {
             "label": "2.8%",
-            "market_prob": 0.0215,
+            "market_prob": 0.022,
             "model_prob": 0.0092,
-            "gap_c": -1.23,
+            "gap_c": -1.28,
             "suspect": false
           },
           {
@@ -440,9 +444,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.27,
+            "market_prob": 0.275,
             "model_prob": 0.2056,
-            "gap_c": -6.44,
+            "gap_c": -6.94,
             "suspect": false
           },
           {
@@ -531,16 +535,16 @@
           },
           {
             "label": "0.4%",
-            "market_prob": 0.435,
+            "market_prob": 0.43,
             "model_prob": 0.2328,
-            "gap_c": -20.22,
+            "gap_c": -19.72,
             "suspect": false
           },
           {
             "label": "\u22650.5%",
-            "market_prob": 0.14,
+            "market_prob": 0.15,
             "model_prob": 0.2605,
-            "gap_c": 12.05,
+            "gap_c": 11.05,
             "suspect": false
           }
         ]
@@ -555,7 +559,7 @@
         "nowcast_pp": 3.36362988816106,
         "nowcast_as_of": "2026-08-24 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.117pp (x1.37). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.112pp (x1.43). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
         "rows": [
           {
             "label": "\u22642.9%",
@@ -573,23 +577,23 @@
           },
           {
             "label": "3.1%",
-            "market_prob": 0.0105,
+            "market_prob": 0.005,
             "model_prob": 0.0659,
-            "gap_c": 5.54,
+            "gap_c": 6.09,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.077,
+            "market_prob": 0.0695,
             "model_prob": 0.1479,
-            "gap_c": 7.09,
+            "gap_c": 7.84,
             "suspect": false
           },
           {
             "label": "3.3%",
-            "market_prob": 0.295,
+            "market_prob": 0.29,
             "model_prob": 0.2273,
-            "gap_c": -6.77,
+            "gap_c": -6.27,
             "suspect": false
           },
           {
@@ -601,30 +605,30 @@
           },
           {
             "label": "3.5%",
-            "market_prob": 0.195,
+            "market_prob": 0.205,
             "model_prob": 0.1726,
-            "gap_c": -2.24,
+            "gap_c": -3.24,
             "suspect": false
           },
           {
             "label": "3.6%",
-            "market_prob": 0.032,
+            "market_prob": 0.0225,
             "model_prob": 0.0853,
-            "gap_c": 5.33,
+            "gap_c": 6.28,
             "suspect": false
           },
           {
             "label": "3.7%",
-            "market_prob": 0.009,
+            "market_prob": 0.006,
             "model_prob": 0.0289,
-            "gap_c": 1.99,
+            "gap_c": 2.29,
             "suspect": false
           },
           {
             "label": "3.8%",
-            "market_prob": 0.011,
+            "market_prob": 0.0095,
             "model_prob": 0.0067,
-            "gap_c": -0.43,
+            "gap_c": -0.28,
             "suspect": false
           },
           {
@@ -659,13 +663,13 @@
       "title": "Will the S&P 500 be between 7675 and 7699.9999 on Aug 25, 2026 at 4pm EDT?",
       "url": "https://kalshi.com/markets/KXINX-26AUG25H1600",
       "entry_price": 0.57,
-      "model_prob": 0.678,
-      "edge": 0.108,
-      "fair": 0.322,
+      "model_prob": 0.7174,
+      "edge": 0.1474,
+      "fair": 0.2826,
       "market_prob": 0.435,
-      "implied_sigma": 0.1673,
+      "implied_sigma": 0.1433,
       "spot_used": 7652.86,
-      "chain_ts": "2026-08-25 07:26:06",
+      "chain_ts": "2026-08-25 08:20:10",
       "vrp_shrink": 0.92,
       "series": "KXINX",
       "model": "cboe-0dte-density",
