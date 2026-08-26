@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-26 05:07:34",
-  "generated_at": 1787720854.4883409,
+  "generated": "2026-08-26 05:52:17",
+  "generated_at": 1787723537.637508,
   "account_size": 100000.0,
   "tickets": [
     {
@@ -11,15 +11,15 @@
       "entry_price": 0.75,
       "whale_price": 0.75,
       "drift_c": 0.0,
-      "contracts": 725,
-      "cost": 543.75,
-      "max_payout": 725.0,
-      "conviction": 0.544,
-      "hours_to_resolve": 13.9,
+      "contracts": 673,
+      "cost": 504.75,
+      "max_payout": 673.0,
+      "conviction": 0.505,
+      "hours_to_resolve": 13.1,
       "n_wallets": 2,
       "whale_usd": 24339,
-      "minutes_ago": 89,
-      "liquidity": 996844,
+      "minutes_ago": 134,
+      "liquidity": 996689,
       "url": "https://polymarket.com/event/lal-rea-rso-2026-08-26",
       "end_iso": "2026-08-26T19:00:00Z",
       "event_iso": "2026-08-26 19:00:00+00",
@@ -38,10 +38,10 @@
       "why": [
         "2 profitable wallets on this side",
         "$24,339 \u2014 but only 6.2% of their book",
-        "latest buy 89 min ago",
+        "latest buy 134 min ago",
         "still near their entry price",
-        "14h until it resolves",
-        "$996,844 liquidity"
+        "13h until it resolves",
+        "$996,689 liquidity"
       ],
       "warnings": [
         "resolves within 2 days"
@@ -55,14 +55,14 @@
       "entry_price": 0.31,
       "whale_price": 0.31,
       "drift_c": 0.0,
-      "contracts": 1732,
-      "cost": 536.92,
-      "max_payout": 1732.0,
-      "conviction": 0.537,
-      "hours_to_resolve": 426.9,
+      "contracts": 1612,
+      "cost": 499.72,
+      "max_payout": 1612.0,
+      "conviction": 0.5,
+      "hours_to_resolve": 426.1,
       "n_wallets": 1,
       "whale_usd": 9510,
-      "minutes_ago": 80,
+      "minutes_ago": 125,
       "liquidity": 110128,
       "url": "https://polymarket.com/event/2026-mens-us-open-winner-tennis",
       "end_iso": "2026-09-13T00:00:00Z",
@@ -78,9 +78,9 @@
       "why": [
         "1 profitable wallet on this side",
         "$9,510, 100% of their own book",
-        "latest buy 80 min ago",
+        "latest buy 125 min ago",
         "still near their entry price",
-        "427h until it resolves",
+        "426h until it resolves",
         "$110,128 liquidity"
       ],
       "warnings": [
@@ -90,160 +90,40 @@
   ],
   "probe": [
     {
-      "market_id": "0x1f6a5a6e3f71825f9ce5acff049ce730e783a02a2400d5f5371921693429ffdd",
-      "title": "US Open, Qualification WTA: Tamara Zidansek vs Guiomar Maristany",
-      "side_label": "Tamara Zidansek \u2014 US Open, Qualification WTA: Tamara Zidansek vs Guiomar Maristany",
-      "outcome": "Tamara Zidansek",
-      "entry_price": 0.615,
-      "whale_price": 0.656,
-      "drift_c": -4.12,
-      "contracts": 673,
-      "cost": 413.89,
-      "max_payout": 673.0,
-      "conviction": 0.414,
-      "hours_to_resolve": 12.9,
-      "n_wallets": 1,
-      "whale_usd": 9500,
-      "minutes_ago": 131,
-      "liquidity": 2267,
-      "url": "https://polymarket.com/event/wta-zidanse-marista-2026-08-26",
-      "end_iso": "2026-09-02T18:00:00Z",
-      "event_iso": "2026-08-26 18:00:00+00",
-      "slug": "wta-zidanse-marista-2026-08-26",
-      "signal_ts": 1787713015.0,
-      "wallet_usd": [
-        [
-          "0x0cdff1e562faf5ece704ef15f6a9fc4232e7ec9e",
-          9500.0
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$9,500, 33% of their own book",
-        "latest buy 131 min ago",
-        "price 4.1c cheaper than they paid",
-        "13h until it resolves"
-      ],
-      "warnings": [
-        "thin liquidity \u2014 expect slippage",
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0xafe68e1483d40328b5dab00f28a88fd45aae31618d8cacd75f4b086c2bb96a5f",
-      "title": "Spread: Real Madrid CF (-1.5)",
-      "side_label": "Real Madrid CF \u2014 Spread: Real Madrid CF (-1.5)",
-      "outcome": "Real Madrid CF",
-      "entry_price": 0.535,
-      "whale_price": 0.54,
-      "drift_c": -0.5,
-      "contracts": 717,
-      "cost": 383.6,
-      "max_payout": 717.0,
-      "conviction": 0.384,
-      "hours_to_resolve": 13.9,
-      "n_wallets": 1,
-      "whale_usd": 5400,
-      "minutes_ago": 146,
-      "liquidity": 184239,
-      "url": "https://polymarket.com/event/lal-rea-rso-2026-08-26-more-markets",
-      "end_iso": "2026-08-26T19:00:00Z",
-      "event_iso": "2026-08-26 19:00:00+00",
-      "slug": "lal-rea-rso-2026-08-26-spread-home-1pt5",
-      "signal_ts": 1787712058.0,
-      "wallet_usd": [
-        [
-          "0x31706006a0ef88b2b8f6d093efbc83b359fbc6a0",
-          5400.0
-        ]
-      ],
-      "why": [
-        "new wallet with no track record \u2014 pattern signal, not a copy",
-        "$5,400 \u2014 but only 15.7% of their book",
-        "latest buy 146 min ago",
-        "still near their entry price",
-        "14h until it resolves",
-        "$184,239 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "unproven wallet \u2014 this is a pattern, not a track record"
-      ]
-    },
-    {
-      "market_id": "0x1ccbd092403fc55ebf99144b394cd4edddbf7931a953f1ffbe6c340ac711efcb",
-      "title": "US Open, Qualification ATP: Francesco Passaro vs Tom Gentzsch",
-      "side_label": "Francesco Passaro \u2014 US Open, Qualification ATP: Francesco Passaro vs Tom Gentzsch",
-      "outcome": "Francesco Passaro",
-      "entry_price": 0.475,
-      "whale_price": 0.486,
-      "drift_c": -1.1,
-      "contracts": 804,
-      "cost": 381.9,
-      "max_payout": 804.0,
-      "conviction": 0.382,
-      "hours_to_resolve": 12.9,
-      "n_wallets": 1,
-      "whale_usd": 3500,
-      "minutes_ago": 134,
-      "liquidity": 17203,
-      "url": "https://polymarket.com/event/atp-passaro-gentzsc-2026-08-26",
-      "end_iso": "2026-09-02T15:00:00Z",
-      "event_iso": "2026-08-26 18:00:00+00",
-      "slug": "atp-passaro-gentzsc-2026-08-26",
-      "signal_ts": 1787712814.0,
-      "wallet_usd": [
-        [
-          "0x0cdff1e562faf5ece704ef15f6a9fc4232e7ec9e",
-          3500.0
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$3,500 \u2014 but only 12.3% of their book",
-        "latest buy 134 min ago",
-        "price 1.1c cheaper than they paid",
-        "13h until it resolves"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0xa3b36b2d6104d34af4e6c6215fc818e43352e78a748fbfb0b85e3a35f71dec9a",
-      "title": "Will there be no change in Fed interest rates after the September 2026 meeting?",
-      "side_label": "YES on: Will there be no change in Fed interest rates after the September 2026 meeting?",
-      "outcome": "Yes",
+      "market_id": "0x876506d8b2bd7a0d3fa4fe18c024eee6e1dd81ee24c26795dadd6cfe4a7b5d0d",
+      "title": "Will the Fed increase interest rates by 25 bps after the September 2026 meeting?",
+      "side_label": "NO on: Will the Fed increase interest rates by 25 bps after the September 2026 meeting?",
+      "outcome": "No",
       "entry_price": 0.68,
-      "whale_price": 0.66,
-      "drift_c": 2.0,
-      "contracts": 533,
-      "cost": 362.44,
-      "max_payout": 533.0,
-      "conviction": 0.363,
-      "hours_to_resolve": 498.9,
+      "whale_price": 0.67,
+      "drift_c": 1.0,
+      "contracts": 616,
+      "cost": 418.88,
+      "max_payout": 616.0,
+      "conviction": 0.419,
+      "hours_to_resolve": 498.1,
       "n_wallets": 1,
-      "whale_usd": 19800,
-      "minutes_ago": 505,
-      "liquidity": 570044,
+      "whale_usd": 8710,
+      "minutes_ago": 542,
+      "liquidity": 510970,
       "url": "https://polymarket.com/event/fed-decision-in-september-762",
       "end_iso": "2026-09-16T00:00:00Z",
       "event_iso": "",
-      "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-september-2026-meeting-615",
-      "signal_ts": 1787690518.0,
+      "slug": "will-the-fed-increase-interest-rates-by-25-bps-after-the-september-2026-meeting-649",
+      "signal_ts": 1787691027.0,
       "wallet_usd": [
         [
-          "0x614dc8d3542c12103d2c6a3553fd761e391d1546",
-          19800.0
+          "0x58b3380f71bd6c706dd398a5e60bde55fa3a653c",
+          8710.0
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$19,800 \u2014 but only 2.9% of their book",
-        "latest buy 505 min ago",
-        "price up 2.0c since they bought",
-        "499h until it resolves",
-        "$570,044 liquidity"
+        "$8,710, 26% of their own book",
+        "latest buy 542 min ago",
+        "price up 1.0c since they bought",
+        "498h until it resolves",
+        "$510,970 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -261,10 +141,10 @@
       "cost": 348.3,
       "max_payout": 387.0,
       "conviction": 0.349,
-      "hours_to_resolve": 498.9,
+      "hours_to_resolve": 498.1,
       "n_wallets": 1,
       "whale_usd": 5753,
-      "minutes_ago": 455,
+      "minutes_ago": 500,
       "liquidity": 73943,
       "url": "https://polymarket.com/event/us-ceasefire-against-iran-continues-throughptptpt",
       "end_iso": "2026-09-15T23:59:00Z",
@@ -280,9 +160,9 @@
       "why": [
         "1 profitable wallet on this side",
         "$5,753 \u2014 but only 2.6% of their book",
-        "latest buy 455 min ago",
+        "latest buy 500 min ago",
         "price up 2.0c since they bought",
-        "499h until it resolves",
+        "498h until it resolves",
         "$73,943 liquidity"
       ],
       "warnings": [
@@ -293,15 +173,16 @@
   "considered": 334,
   "rejected": {
     "market closed": 254,
-    "fresh wallet: market too liquid for the pattern": 12,
+    "fresh wallet: market too liquid for the pattern": 11,
     "wallet not new (no track record either)": 17,
     "in-play (event already started)": 8,
     "already resolved": 16,
     "resolves more than 30 days out": 9,
     "esports (sleeve retired \u2014 see esports_enabled)": 3,
     "parlay / combo ticket, not a single market": 5,
-    "signal too old for this market's horizon": 3,
-    "below the 0.45 buy bar (recorded, not bought)": 5
+    "signal too old for this market's horizon": 6,
+    "duplicate event (kept the stronger side)": 1,
+    "below the 0.45 buy bar (recorded, not bought)": 2
   },
   "notes": [],
   "consistency": {
@@ -666,12 +547,12 @@
       "outcome": "Yes",
       "title": "Will the S&P 500 be between 7675 and 7699.9999 on Aug 26, 2026 at 4pm EDT?",
       "url": "https://kalshi.com/markets/KXINX-26AUG26H1600",
-      "entry_price": 0.25,
+      "entry_price": 0.3,
       "model_prob": 0.656,
-      "edge": 0.406,
+      "edge": 0.356,
       "fair": 0.656,
-      "market_prob": 0.155,
-      "implied_sigma": 0.1062,
+      "market_prob": 0.19,
+      "implied_sigma": 0.109,
       "spot_used": 7677.28,
       "chain_ts": "2026-08-26 03:51:04",
       "vrp_shrink": 0.92,
@@ -688,12 +569,12 @@
       "outcome": "No",
       "title": "Will the S&P 500 be between 7650 and 7674.9999 on Aug 26, 2026 at 4pm EDT?",
       "url": "https://kalshi.com/markets/KXINX-26AUG26H1600",
-      "entry_price": 0.94,
+      "entry_price": 0.93,
       "model_prob": 1.0,
-      "edge": 0.06,
+      "edge": 0.07,
       "fair": 0.0,
-      "market_prob": 0.275,
-      "implied_sigma": 0.1062,
+      "market_prob": 0.31,
+      "implied_sigma": 0.109,
       "spot_used": 7677.28,
       "chain_ts": "2026-08-26 03:51:04",
       "vrp_shrink": 0.92,
