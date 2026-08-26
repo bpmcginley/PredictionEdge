@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-26 07:01:28",
-  "generated_at": 1787727688.1539814,
+  "generated": "2026-08-26 08:02:15",
+  "generated_at": 1787731335.9725564,
   "account_size": 100000.0,
   "tickets": [
     {
@@ -15,11 +15,11 @@
       "cost": 454.77,
       "max_payout": 1467.0,
       "conviction": 0.455,
-      "hours_to_resolve": 425.0,
+      "hours_to_resolve": 424.0,
       "n_wallets": 1,
       "whale_usd": 9510,
-      "minutes_ago": 194,
-      "liquidity": 110128,
+      "minutes_ago": 255,
+      "liquidity": 111807,
       "url": "https://polymarket.com/event/2026-mens-us-open-winner-tennis",
       "end_iso": "2026-09-13T00:00:00Z",
       "event_iso": "",
@@ -34,10 +34,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$9,510, 100% of their own book",
-        "latest buy 194 min ago",
+        "latest buy 255 min ago",
         "still near their entry price",
-        "425h until it resolves",
-        "$110,128 liquidity"
+        "424h until it resolves",
+        "$111,807 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -57,11 +57,11 @@
       "cost": 418.88,
       "max_payout": 616.0,
       "conviction": 0.419,
-      "hours_to_resolve": 497.0,
+      "hours_to_resolve": 496.0,
       "n_wallets": 1,
       "whale_usd": 8710,
-      "minutes_ago": 611,
-      "liquidity": 510970,
+      "minutes_ago": 672,
+      "liquidity": 423216,
       "url": "https://polymarket.com/event/fed-decision-in-september-762",
       "end_iso": "2026-09-16T00:00:00Z",
       "event_iso": "",
@@ -76,10 +76,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$8,710, 26% of their own book",
-        "latest buy 611 min ago",
+        "latest buy 672 min ago",
         "price up 1.0c since they bought",
-        "497h until it resolves",
-        "$510,970 liquidity"
+        "496h until it resolves",
+        "$423,216 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -97,11 +97,11 @@
       "cost": 348.3,
       "max_payout": 387.0,
       "conviction": 0.349,
-      "hours_to_resolve": 497.0,
+      "hours_to_resolve": 495.9,
       "n_wallets": 1,
       "whale_usd": 5753,
-      "minutes_ago": 569,
-      "liquidity": 73943,
+      "minutes_ago": 629,
+      "liquidity": 82376,
       "url": "https://polymarket.com/event/us-ceasefire-against-iran-continues-throughptptpt",
       "end_iso": "2026-09-15T23:59:00Z",
       "event_iso": "",
@@ -116,27 +116,27 @@
       "why": [
         "1 profitable wallet on this side",
         "$5,753 \u2014 but only 2.6% of their book",
-        "latest buy 569 min ago",
+        "latest buy 629 min ago",
         "price up 2.0c since they bought",
-        "497h until it resolves",
-        "$73,943 liquidity"
+        "496h until it resolves",
+        "$82,376 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 334,
+  "considered": 337,
   "rejected": {
-    "market closed": 258,
-    "fresh wallet: market too liquid for the pattern": 11,
-    "wallet not new (no track record either)": 16,
-    "in-play (event already started)": 7,
-    "already resolved": 14,
+    "market closed": 274,
+    "fresh wallet: market too liquid for the pattern": 9,
+    "wallet not new (no track record either)": 10,
+    "esports (sleeve retired \u2014 see esports_enabled)": 10,
+    "in-play (event already started)": 5,
     "signal too old for this market's horizon": 7,
     "resolves more than 30 days out": 9,
-    "esports (sleeve retired \u2014 see esports_enabled)": 3,
     "parlay / combo ticket, not a single market": 5,
+    "already resolved": 4,
     "duplicate event (kept the stronger side)": 1,
     "below the 0.45 buy bar (recorded, not bought)": 2
   },
@@ -146,16 +146,16 @@
     "enabled": true,
     "events_scanned": 345,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 121,
-      "not a ladder: fewer than two live, quoted legs": 90,
-      "not a ladder: group labels are not thresholds or deadlines": 60,
+      "bracket has legs we cannot price (fail closed)": 122,
+      "not a ladder: fewer than two live, quoted legs": 91,
+      "not a ladder: group labels are not thresholds or deadlines": 58,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "bracket overround smaller than the spread": 3,
-      "ladder pair too illiquid to fill": 92,
+      "ladder pair too illiquid to fill": 212,
       "bracket has too many legs to place by hand": 1,
-      "bracket leg too illiquid to fill": 5,
+      "bracket leg too illiquid to fill": 6,
       "not a ladder: numeric group spans different end dates": 1,
-      "not a ladder: a live leg carries no group label": 3,
+      "not a ladder: a live leg carries no group label": 2,
       "dominance gap smaller than the spread": 2
     },
     "notes": [],
@@ -176,7 +176,7 @@
         "nowcast_pp": 2.38356235342767,
         "nowcast_as_of": "2026-08-25 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.117pp (x1.36). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
         "rows": [
           {
             "label": "\u22642.0%",
@@ -201,9 +201,9 @@
           },
           {
             "label": "2.3%",
-            "market_prob": 0.355,
+            "market_prob": 0.425,
             "model_prob": 0.215,
-            "gap_c": -14.0,
+            "gap_c": -21.0,
             "suspect": false
           },
           {
@@ -215,9 +215,9 @@
           },
           {
             "label": "2.5%",
-            "market_prob": 0.145,
+            "market_prob": 0.15,
             "model_prob": 0.1899,
-            "gap_c": 4.49,
+            "gap_c": 3.99,
             "suspect": false
           },
           {
@@ -260,7 +260,7 @@
         "nowcast_pp": 0.203341742698412,
         "nowcast_as_of": "2026-08-25 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.086pp (x1.86). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.087pp (x1.84). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -271,9 +271,9 @@
           },
           {
             "label": "0.1%",
-            "market_prob": 0.18,
+            "market_prob": 0.205,
             "model_prob": 0.2005,
-            "gap_c": 2.05,
+            "gap_c": -0.45,
             "suspect": false
           },
           {
@@ -285,9 +285,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.28,
+            "market_prob": 0.31,
             "model_prob": 0.2056,
-            "gap_c": -7.44,
+            "gap_c": -10.44,
             "suspect": false
           },
           {
@@ -362,16 +362,16 @@
           },
           {
             "label": "0.2%",
-            "market_prob": 0.075,
+            "market_prob": 0.085,
             "model_prob": 0.1628,
-            "gap_c": 8.78,
+            "gap_c": 7.78,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.3,
+            "market_prob": 0.305,
             "model_prob": 0.2352,
-            "gap_c": -6.48,
+            "gap_c": -6.98,
             "suspect": false
           },
           {
@@ -495,30 +495,7 @@
     "cal_vetoed": 0
   },
   "gas": [],
-  "spxindex": [
-    {
-      "market_id": "KXINX-26AUG26H1600-B7687",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "Yes",
-      "title": "Will the S&P 500 be between 7675 and 7699.9999 on Aug 26, 2026 at 4pm EDT?",
-      "url": "https://kalshi.com/markets/KXINX-26AUG26H1600",
-      "entry_price": 0.3,
-      "model_prob": 0.4641,
-      "edge": 0.1641,
-      "fair": 0.4641,
-      "market_prob": 0.185,
-      "implied_sigma": 0.1106,
-      "spot_used": 7677.28,
-      "chain_ts": "2026-08-26 07:01:05",
-      "vrp_shrink": 0.92,
-      "series": "KXINX",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-08-26T20:00:00+00:00",
-      "event_iso": "2026-08-26T20:00:00+00:00"
-    }
-  ],
+  "spxindex": [],
   "sizing": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
