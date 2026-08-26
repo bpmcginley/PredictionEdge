@@ -1,54 +1,250 @@
 {
-  "generated": "2026-08-26 02:01:04",
-  "generated_at": 1787709664.4062507,
+  "generated": "2026-08-26 03:27:20",
+  "generated_at": 1787714840.9201427,
   "account_size": 100000.0,
   "tickets": [
     {
-      "market_id": "0x244594c21b55f9f07af5a288ff9f41ff77324aa24b6fcc6f8341337c23c62806",
-      "title": "Will Real Madrid CF win on 2026-08-26?",
-      "side_label": "YES on: Will Real Madrid CF win on 2026-08-26?",
-      "outcome": "Yes",
-      "entry_price": 0.75,
-      "whale_price": 0.75,
-      "drift_c": 0.0,
-      "contracts": 664,
-      "cost": 498.0,
-      "max_payout": 664.0,
-      "conviction": 0.498,
-      "hours_to_resolve": 17.0,
-      "n_wallets": 2,
-      "whale_usd": 10552,
-      "minutes_ago": 116,
-      "liquidity": 1050117,
-      "url": "https://polymarket.com/event/lal-rea-rso-2026-08-26",
-      "end_iso": "2026-08-26T19:00:00Z",
-      "event_iso": "2026-08-26 19:00:00+00",
-      "slug": "lal-rea-rso-2026-08-26-rea",
-      "signal_ts": 1787702686.0,
+      "market_id": "0x1f6a5a6e3f71825f9ce5acff049ce730e783a02a2400d5f5371921693429ffdd",
+      "title": "US Open, Qualification WTA: Tamara Zidansek vs Guiomar Maristany",
+      "side_label": "Tamara Zidansek \u2014 US Open, Qualification WTA: Tamara Zidansek vs Guiomar Maristany",
+      "outcome": "Tamara Zidansek",
+      "entry_price": 0.615,
+      "whale_price": 0.656,
+      "drift_c": -4.12,
+      "contracts": 811,
+      "cost": 498.76,
+      "max_payout": 811.0,
+      "conviction": 0.499,
+      "hours_to_resolve": 14.5,
+      "n_wallets": 1,
+      "whale_usd": 9500,
+      "minutes_ago": 30,
+      "liquidity": 12929,
+      "url": "https://polymarket.com/event/wta-zidanse-marista-2026-08-26",
+      "end_iso": "2026-09-02T18:00:00Z",
+      "event_iso": "2026-08-26 18:00:00+00",
+      "slug": "wta-zidanse-marista-2026-08-26",
+      "signal_ts": 1787713015.0,
       "wallet_usd": [
         [
-          "0x032eb1bc893940263ad0b01889f262fc232f2a9e",
-          6793.76
-        ],
-        [
-          "0xe9076a87c5ed90ef16e6fe6529c943baeca0cff6",
-          3757.85
+          "0x0cdff1e562faf5ece704ef15f6a9fc4232e7ec9e",
+          9500.0
         ]
       ],
       "why": [
-        "2 profitable wallets on this side",
-        "$10,552 \u2014 but only 2.8% of their book",
-        "latest buy 116 min ago",
-        "still near their entry price",
-        "17h until it resolves",
-        "$1,050,117 liquidity"
+        "1 profitable wallet on this side",
+        "$9,500, 41% of their own book",
+        "latest buy 30 min ago",
+        "price 4.1c cheaper than they paid",
+        "15h until it resolves"
       ],
       "warnings": [
-        "resolves within 2 days"
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0xa8b94893208c86c3dc74a6ad4f8d8dccc3c17ebbc53182fb50d46bb02769f07d",
+      "title": "US Open, Qualification ATP: Daniel Rincon vs Jordan Lee",
+      "side_label": "Daniel Rincon \u2014 US Open, Qualification ATP: Daniel Rincon vs Jordan Lee",
+      "outcome": "Daniel Rincon",
+      "entry_price": 0.665,
+      "whale_price": 0.698,
+      "drift_c": -3.27,
+      "contracts": 742,
+      "cost": 493.43,
+      "max_payout": 742.0,
+      "conviction": 0.494,
+      "hours_to_resolve": 11.5,
+      "n_wallets": 1,
+      "whale_usd": 9500,
+      "minutes_ago": 32,
+      "liquidity": 16693,
+      "url": "https://polymarket.com/event/atp-rincon-jordanl-2026-08-26",
+      "end_iso": "2026-09-02T15:00:00Z",
+      "event_iso": "2026-08-26 15:00:00+00",
+      "slug": "atp-rincon-jordanl-2026-08-26",
+      "signal_ts": 1787712897.0,
+      "wallet_usd": [
+        [
+          "0x0cdff1e562faf5ece704ef15f6a9fc4232e7ec9e",
+          9500.0
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$9,500, 41% of their own book",
+        "latest buy 32 min ago",
+        "price 3.3c cheaper than they paid",
+        "12h until it resolves"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0xafe68e1483d40328b5dab00f28a88fd45aae31618d8cacd75f4b086c2bb96a5f",
+      "title": "Spread: Real Madrid CF (-1.5)",
+      "side_label": "Real Madrid CF \u2014 Spread: Real Madrid CF (-1.5)",
+      "outcome": "Real Madrid CF",
+      "entry_price": 0.535,
+      "whale_price": 0.54,
+      "drift_c": -0.5,
+      "contracts": 876,
+      "cost": 468.66,
+      "max_payout": 876.0,
+      "conviction": 0.469,
+      "hours_to_resolve": 15.5,
+      "n_wallets": 1,
+      "whale_usd": 5400,
+      "minutes_ago": 46,
+      "liquidity": 192226,
+      "url": "https://polymarket.com/event/lal-rea-rso-2026-08-26-more-markets",
+      "end_iso": "2026-08-26T19:00:00Z",
+      "event_iso": "2026-08-26 19:00:00+00",
+      "slug": "lal-rea-rso-2026-08-26-spread-home-1pt5",
+      "signal_ts": 1787712058.0,
+      "wallet_usd": [
+        [
+          "0x31706006a0ef88b2b8f6d093efbc83b359fbc6a0",
+          5400.0
+        ]
+      ],
+      "why": [
+        "new wallet with no track record \u2014 pattern signal, not a copy",
+        "$5,400 \u2014 but only 15.7% of their book",
+        "latest buy 46 min ago",
+        "still near their entry price",
+        "16h until it resolves",
+        "$192,226 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "unproven wallet \u2014 this is a pattern, not a track record"
+      ]
+    },
+    {
+      "market_id": "0x673369808c906823576b4b10adc544355e887c36ba68ebfd0f2b223565054b64",
+      "title": "US Open, Qualification WTA: Elena Pridankina vs Rebecca Marino",
+      "side_label": "Rebecca Marino \u2014 US Open, Qualification WTA: Elena Pridankina vs Rebecca Marino",
+      "outcome": "Rebecca Marino",
+      "entry_price": 0.465,
+      "whale_price": 0.473,
+      "drift_c": -0.83,
+      "contracts": 1008,
+      "cost": 468.72,
+      "max_payout": 1008.0,
+      "conviction": 0.469,
+      "hours_to_resolve": 11.5,
+      "n_wallets": 1,
+      "whale_usd": 3500,
+      "minutes_ago": 31,
+      "liquidity": 65077,
+      "url": "https://polymarket.com/event/wta-pridank-marino-2026-08-26",
+      "end_iso": "2026-09-02T15:00:00Z",
+      "event_iso": "2026-08-26 15:00:00+00",
+      "slug": "wta-pridank-marino-2026-08-26",
+      "signal_ts": 1787712958.0,
+      "wallet_usd": [
+        [
+          "0x0cdff1e562faf5ece704ef15f6a9fc4232e7ec9e",
+          3500.0
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$3,500 \u2014 but only 15.2% of their book",
+        "latest buy 31 min ago",
+        "price 0.8c cheaper than they paid",
+        "12h until it resolves",
+        "$65,077 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x1ccbd092403fc55ebf99144b394cd4edddbf7931a953f1ffbe6c340ac711efcb",
+      "title": "US Open, Qualification ATP: Francesco Passaro vs Tom Gentzsch",
+      "side_label": "Francesco Passaro \u2014 US Open, Qualification ATP: Francesco Passaro vs Tom Gentzsch",
+      "outcome": "Francesco Passaro",
+      "entry_price": 0.49,
+      "whale_price": 0.486,
+      "drift_c": 0.4,
+      "contracts": 934,
+      "cost": 457.66,
+      "max_payout": 934.0,
+      "conviction": 0.458,
+      "hours_to_resolve": 14.5,
+      "n_wallets": 1,
+      "whale_usd": 3500,
+      "minutes_ago": 34,
+      "liquidity": 29217,
+      "url": "https://polymarket.com/event/atp-passaro-gentzsc-2026-08-26",
+      "end_iso": "2026-09-02T15:00:00Z",
+      "event_iso": "2026-08-26 18:00:00+00",
+      "slug": "atp-passaro-gentzsc-2026-08-26",
+      "signal_ts": 1787712814.0,
+      "wallet_usd": [
+        [
+          "0x0cdff1e562faf5ece704ef15f6a9fc4232e7ec9e",
+          3500.0
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$3,500 \u2014 but only 15.2% of their book",
+        "latest buy 34 min ago",
+        "still near their entry price",
+        "15h until it resolves"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
       ]
     }
   ],
   "probe": [
+    {
+      "market_id": "0x364cce57f51d6691e708a5811e1255ec128a809138a76df89fd141f98c4dc5fb",
+      "title": "Monterrey Open: Nikola Bartunkova vs Anastasia Potapova",
+      "side_label": "Anastasia Potapova \u2014 Monterrey Open: Nikola Bartunkova vs Anastasia Potapova",
+      "outcome": "Anastasia Potapova",
+      "entry_price": 0.495,
+      "whale_price": 0.5,
+      "drift_c": -0.5,
+      "contracts": 830,
+      "cost": 410.85,
+      "max_payout": 830.0,
+      "conviction": 0.411,
+      "hours_to_resolve": 0.0,
+      "n_wallets": 1,
+      "whale_usd": 15000,
+      "minutes_ago": 69,
+      "liquidity": 141316,
+      "url": "https://polymarket.com/event/wta-bartunk-potapov-2026-08-26",
+      "end_iso": "2026-09-02T16:00:00Z",
+      "event_iso": "2026-08-26 03:30:00+00",
+      "slug": "wta-bartunk-potapov-2026-08-26",
+      "signal_ts": 1787710708.0,
+      "wallet_usd": [
+        [
+          "0x58776759ee5c70a915138706a1308add8bc5d894",
+          15000.0
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$15,000, 59% of their own book",
+        "latest buy 69 min ago",
+        "still near their entry price",
+        "0h until it resolves",
+        "$141,316 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion",
+        "no sports track record \u2014 these wallets earned their record elsewhere",
+        "smart money sold $4,940 of this side 44 min ago (1 wallet) \u2014 after the buys above"
+      ]
+    },
     {
       "market_id": "0xa3b36b2d6104d34af4e6c6215fc818e43352e78a748fbfb0b85e3a35f71dec9a",
       "title": "Will there be no change in Fed interest rates after the September 2026 meeting?",
@@ -61,11 +257,11 @@
       "cost": 362.44,
       "max_payout": 533.0,
       "conviction": 0.363,
-      "hours_to_resolve": 502.0,
+      "hours_to_resolve": 500.5,
       "n_wallets": 1,
       "whale_usd": 19800,
-      "minutes_ago": 319,
-      "liquidity": 547583,
+      "minutes_ago": 405,
+      "liquidity": 611681,
       "url": "https://polymarket.com/event/fed-decision-in-september-762",
       "end_iso": "2026-09-16T00:00:00Z",
       "event_iso": "",
@@ -80,29 +276,29 @@
       "why": [
         "1 profitable wallet on this side",
         "$19,800 \u2014 but only 2.9% of their book",
-        "latest buy 319 min ago",
+        "latest buy 405 min ago",
         "price up 2.0c since they bought",
-        "502h until it resolves",
-        "$547,583 liquidity"
+        "501h until it resolves",
+        "$611,681 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 348,
+  "considered": 342,
   "rejected": {
-    "market closed": 185,
-    "fresh wallet: market too liquid for the pattern": 56,
-    "in-play (event already started)": 23,
+    "market closed": 225,
+    "in-play (event already started)": 11,
+    "fresh wallet: market too liquid for the pattern": 28,
+    "wallet not new (no track record either)": 30,
     "already resolved": 22,
-    "wallet not new (no track record either)": 40,
-    "esports (sleeve retired \u2014 see esports_enabled)": 3,
-    "resolves more than 30 days out": 7,
-    "parlay / combo ticket, not a single market": 6,
+    "esports (sleeve retired \u2014 see esports_enabled)": 4,
+    "resolves more than 30 days out": 6,
     "signal too old for this market's horizon": 2,
-    "resolves in under 3h": 2,
-    "below the 0.45 buy bar (recorded, not bought)": 1
+    "parlay / combo ticket, not a single market": 6,
+    "resolves in under 3h": 1,
+    "below the 0.45 buy bar (recorded, not bought)": 2
   },
   "notes": [],
   "consistency": {
@@ -111,15 +307,15 @@
     "events_scanned": 345,
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 121,
-      "not a ladder: fewer than two live, quoted legs": 89,
-      "not a ladder: group labels are not thresholds or deadlines": 60,
+      "not a ladder: fewer than two live, quoted legs": 90,
+      "not a ladder: group labels are not thresholds or deadlines": 59,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "bracket overround smaller than the spread": 3,
-      "ladder pair too illiquid to fill": 85,
+      "ladder pair too illiquid to fill": 84,
       "bracket has too many legs to place by hand": 1,
-      "bracket leg too illiquid to fill": 5,
       "not a ladder: numeric group spans different end dates": 1,
       "not a ladder: a live leg carries no group label": 5,
+      "bracket leg too illiquid to fill": 4,
       "dominance gap smaller than the spread": 2
     },
     "notes": [],
@@ -140,7 +336,7 @@
         "nowcast_pp": 2.38356235342767,
         "nowcast_as_of": "2026-08-25 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.118pp (x1.35). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "",
         "rows": [
           {
             "label": "\u22642.0%",
@@ -158,9 +354,9 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.033,
+            "market_prob": 0.039,
             "model_prob": 0.1297,
-            "gap_c": 9.67,
+            "gap_c": 9.07,
             "suspect": false
           },
           {
@@ -179,9 +375,9 @@
           },
           {
             "label": "2.5%",
-            "market_prob": 0.175,
+            "market_prob": 0.145,
             "model_prob": 0.1899,
-            "gap_c": 1.49,
+            "gap_c": 4.49,
             "suspect": false
           },
           {
@@ -224,7 +420,7 @@
         "nowcast_pp": 0.203341742698412,
         "nowcast_as_of": "2026-08-25 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.086pp (x1.87). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.086pp (x1.85). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -235,9 +431,9 @@
           },
           {
             "label": "0.1%",
-            "market_prob": 0.175,
+            "market_prob": 0.19,
             "model_prob": 0.2005,
-            "gap_c": 2.55,
+            "gap_c": 1.05,
             "suspect": false
           },
           {
@@ -249,9 +445,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.29,
+            "market_prob": 0.285,
             "model_prob": 0.2056,
-            "gap_c": -8.44,
+            "gap_c": -7.94,
             "suspect": false
           },
           {
@@ -298,9 +494,9 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.0415,
+            "market_prob": 0.041,
             "model_prob": 0.0008,
-            "gap_c": -4.07,
+            "gap_c": -4.02,
             "suspect": false
           },
           {
@@ -389,9 +585,9 @@
           },
           {
             "label": "3.2%",
-            "market_prob": 0.079,
+            "market_prob": 0.0795,
             "model_prob": 0.1479,
-            "gap_c": 6.89,
+            "gap_c": 6.84,
             "suspect": false
           },
           {
@@ -410,16 +606,16 @@
           },
           {
             "label": "3.5%",
-            "market_prob": 0.19,
+            "market_prob": 0.185,
             "model_prob": 0.1726,
-            "gap_c": -1.74,
+            "gap_c": -1.24,
             "suspect": false
           },
           {
             "label": "3.6%",
-            "market_prob": 0.032,
+            "market_prob": 0.031,
             "model_prob": 0.0853,
-            "gap_c": 5.33,
+            "gap_c": 5.43,
             "suspect": false
           },
           {
@@ -431,9 +627,9 @@
           },
           {
             "label": "3.8%",
-            "market_prob": 0.0175,
+            "market_prob": 0.015,
             "model_prob": 0.0067,
-            "gap_c": -1.08,
+            "gap_c": -0.83,
             "suspect": false
           },
           {
