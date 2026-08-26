@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-26 04:18:57",
-  "generated_at": 1787717937.7283013,
+  "generated": "2026-08-26 05:07:34",
+  "generated_at": 1787720854.4883409,
   "account_size": 100000.0,
   "tickets": [
     {
@@ -11,15 +11,15 @@
       "entry_price": 0.75,
       "whale_price": 0.75,
       "drift_c": 0.0,
-      "contracts": 780,
-      "cost": 585.0,
-      "max_payout": 780.0,
-      "conviction": 0.585,
-      "hours_to_resolve": 14.7,
+      "contracts": 725,
+      "cost": 543.75,
+      "max_payout": 725.0,
+      "conviction": 0.544,
+      "hours_to_resolve": 13.9,
       "n_wallets": 2,
       "whale_usd": 24339,
-      "minutes_ago": 41,
-      "liquidity": 997875,
+      "minutes_ago": 89,
+      "liquidity": 996844,
       "url": "https://polymarket.com/event/lal-rea-rso-2026-08-26",
       "end_iso": "2026-08-26T19:00:00Z",
       "event_iso": "2026-08-26 19:00:00+00",
@@ -38,10 +38,10 @@
       "why": [
         "2 profitable wallets on this side",
         "$24,339 \u2014 but only 6.2% of their book",
-        "latest buy 41 min ago",
+        "latest buy 89 min ago",
         "still near their entry price",
-        "15h until it resolves",
-        "$997,875 liquidity"
+        "14h until it resolves",
+        "$996,844 liquidity"
       ],
       "warnings": [
         "resolves within 2 days"
@@ -55,14 +55,14 @@
       "entry_price": 0.31,
       "whale_price": 0.31,
       "drift_c": 0.0,
-      "contracts": 1864,
-      "cost": 577.84,
-      "max_payout": 1864.0,
-      "conviction": 0.578,
-      "hours_to_resolve": 427.7,
+      "contracts": 1732,
+      "cost": 536.92,
+      "max_payout": 1732.0,
+      "conviction": 0.537,
+      "hours_to_resolve": 426.9,
       "n_wallets": 1,
       "whale_usd": 9510,
-      "minutes_ago": 32,
+      "minutes_ago": 80,
       "liquidity": 110128,
       "url": "https://polymarket.com/event/2026-mens-us-open-winner-tennis",
       "end_iso": "2026-09-13T00:00:00Z",
@@ -78,15 +78,17 @@
       "why": [
         "1 profitable wallet on this side",
         "$9,510, 100% of their own book",
-        "latest buy 32 min ago",
+        "latest buy 80 min ago",
         "still near their entry price",
-        "428h until it resolves",
+        "427h until it resolves",
         "$110,128 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
-    },
+    }
+  ],
+  "probe": [
     {
       "market_id": "0x1f6a5a6e3f71825f9ce5acff049ce730e783a02a2400d5f5371921693429ffdd",
       "title": "US Open, Qualification WTA: Tamara Zidansek vs Guiomar Maristany",
@@ -95,14 +97,14 @@
       "entry_price": 0.615,
       "whale_price": 0.656,
       "drift_c": -4.12,
-      "contracts": 739,
-      "cost": 454.49,
-      "max_payout": 739.0,
-      "conviction": 0.455,
-      "hours_to_resolve": 13.7,
+      "contracts": 673,
+      "cost": 413.89,
+      "max_payout": 673.0,
+      "conviction": 0.414,
+      "hours_to_resolve": 12.9,
       "n_wallets": 1,
       "whale_usd": 9500,
-      "minutes_ago": 82,
+      "minutes_ago": 131,
       "liquidity": 2267,
       "url": "https://polymarket.com/event/wta-zidanse-marista-2026-08-26",
       "end_iso": "2026-09-02T18:00:00Z",
@@ -118,53 +120,12 @@
       "why": [
         "1 profitable wallet on this side",
         "$9,500, 33% of their own book",
-        "latest buy 82 min ago",
+        "latest buy 131 min ago",
         "price 4.1c cheaper than they paid",
-        "14h until it resolves"
+        "13h until it resolves"
       ],
       "warnings": [
         "thin liquidity \u2014 expect slippage",
-        "only one wallet \u2014 single opinion"
-      ]
-    }
-  ],
-  "probe": [
-    {
-      "market_id": "0xa8b94893208c86c3dc74a6ad4f8d8dccc3c17ebbc53182fb50d46bb02769f07d",
-      "title": "US Open, Qualification ATP: Daniel Rincon vs Jordan Lee",
-      "side_label": "Daniel Rincon \u2014 US Open, Qualification ATP: Daniel Rincon vs Jordan Lee",
-      "outcome": "Daniel Rincon",
-      "entry_price": 0.66,
-      "whale_price": 0.698,
-      "drift_c": -3.77,
-      "contracts": 680,
-      "cost": 448.8,
-      "max_payout": 680.0,
-      "conviction": 0.449,
-      "hours_to_resolve": 10.7,
-      "n_wallets": 1,
-      "whale_usd": 9500,
-      "minutes_ago": 84,
-      "liquidity": 13048,
-      "url": "https://polymarket.com/event/atp-rincon-jordanl-2026-08-26",
-      "end_iso": "2026-09-02T15:00:00Z",
-      "event_iso": "2026-08-26 15:00:00+00",
-      "slug": "atp-rincon-jordanl-2026-08-26",
-      "signal_ts": 1787712897.0,
-      "wallet_usd": [
-        [
-          "0x0cdff1e562faf5ece704ef15f6a9fc4232e7ec9e",
-          9500.0
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$9,500, 33% of their own book",
-        "latest buy 84 min ago",
-        "price 3.8c cheaper than they paid",
-        "11h until it resolves"
-      ],
-      "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     },
@@ -176,15 +137,15 @@
       "entry_price": 0.535,
       "whale_price": 0.54,
       "drift_c": -0.5,
-      "contracts": 794,
-      "cost": 424.79,
-      "max_payout": 794.0,
-      "conviction": 0.425,
-      "hours_to_resolve": 14.7,
+      "contracts": 717,
+      "cost": 383.6,
+      "max_payout": 717.0,
+      "conviction": 0.384,
+      "hours_to_resolve": 13.9,
       "n_wallets": 1,
       "whale_usd": 5400,
-      "minutes_ago": 98,
-      "liquidity": 184840,
+      "minutes_ago": 146,
+      "liquidity": 184239,
       "url": "https://polymarket.com/event/lal-rea-rso-2026-08-26-more-markets",
       "end_iso": "2026-08-26T19:00:00Z",
       "event_iso": "2026-08-26 19:00:00+00",
@@ -199,10 +160,10 @@
       "why": [
         "new wallet with no track record \u2014 pattern signal, not a copy",
         "$5,400 \u2014 but only 15.7% of their book",
-        "latest buy 98 min ago",
+        "latest buy 146 min ago",
         "still near their entry price",
-        "15h until it resolves",
-        "$184,840 liquidity"
+        "14h until it resolves",
+        "$184,239 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
@@ -217,15 +178,15 @@
       "entry_price": 0.475,
       "whale_price": 0.486,
       "drift_c": -1.1,
-      "contracts": 892,
-      "cost": 423.7,
-      "max_payout": 892.0,
-      "conviction": 0.424,
-      "hours_to_resolve": 13.7,
+      "contracts": 804,
+      "cost": 381.9,
+      "max_payout": 804.0,
+      "conviction": 0.382,
+      "hours_to_resolve": 12.9,
       "n_wallets": 1,
       "whale_usd": 3500,
-      "minutes_ago": 85,
-      "liquidity": 17212,
+      "minutes_ago": 134,
+      "liquidity": 17203,
       "url": "https://polymarket.com/event/atp-passaro-gentzsc-2026-08-26",
       "end_iso": "2026-09-02T15:00:00Z",
       "event_iso": "2026-08-26 18:00:00+00",
@@ -240,49 +201,9 @@
       "why": [
         "1 profitable wallet on this side",
         "$3,500 \u2014 but only 12.3% of their book",
-        "latest buy 85 min ago",
+        "latest buy 134 min ago",
         "price 1.1c cheaper than they paid",
-        "14h until it resolves"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x673369808c906823576b4b10adc544355e887c36ba68ebfd0f2b223565054b64",
-      "title": "US Open, Qualification WTA: Elena Pridankina vs Rebecca Marino",
-      "side_label": "Rebecca Marino \u2014 US Open, Qualification WTA: Elena Pridankina vs Rebecca Marino",
-      "outcome": "Rebecca Marino",
-      "entry_price": 0.455,
-      "whale_price": 0.473,
-      "drift_c": -1.83,
-      "contracts": 927,
-      "cost": 421.79,
-      "max_payout": 927.0,
-      "conviction": 0.422,
-      "hours_to_resolve": 10.7,
-      "n_wallets": 1,
-      "whale_usd": 3500,
-      "minutes_ago": 83,
-      "liquidity": 54161,
-      "url": "https://polymarket.com/event/wta-pridank-marino-2026-08-26",
-      "end_iso": "2026-09-02T15:00:00Z",
-      "event_iso": "2026-08-26 15:00:00+00",
-      "slug": "wta-pridank-marino-2026-08-26",
-      "signal_ts": 1787712958.0,
-      "wallet_usd": [
-        [
-          "0x0cdff1e562faf5ece704ef15f6a9fc4232e7ec9e",
-          3500.0
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$3,500 \u2014 but only 12.3% of their book",
-        "latest buy 83 min ago",
-        "price 1.8c cheaper than they paid",
-        "11h until it resolves",
-        "$54,161 liquidity"
+        "13h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -300,11 +221,11 @@
       "cost": 362.44,
       "max_payout": 533.0,
       "conviction": 0.363,
-      "hours_to_resolve": 499.7,
+      "hours_to_resolve": 498.9,
       "n_wallets": 1,
       "whale_usd": 19800,
-      "minutes_ago": 457,
-      "liquidity": 570470,
+      "minutes_ago": 505,
+      "liquidity": 570044,
       "url": "https://polymarket.com/event/fed-decision-in-september-762",
       "end_iso": "2026-09-16T00:00:00Z",
       "event_iso": "",
@@ -319,10 +240,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$19,800 \u2014 but only 2.9% of their book",
-        "latest buy 457 min ago",
+        "latest buy 505 min ago",
         "price up 2.0c since they bought",
-        "500h until it resolves",
-        "$570,470 liquidity"
+        "499h until it resolves",
+        "$570,044 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -340,11 +261,11 @@
       "cost": 348.3,
       "max_payout": 387.0,
       "conviction": 0.349,
-      "hours_to_resolve": 499.7,
+      "hours_to_resolve": 498.9,
       "n_wallets": 1,
       "whale_usd": 5753,
-      "minutes_ago": 406,
-      "liquidity": 74063,
+      "minutes_ago": 455,
+      "liquidity": 73943,
       "url": "https://polymarket.com/event/us-ceasefire-against-iran-continues-throughptptpt",
       "end_iso": "2026-09-15T23:59:00Z",
       "event_iso": "",
@@ -359,10 +280,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$5,753 \u2014 but only 2.6% of their book",
-        "latest buy 406 min ago",
+        "latest buy 455 min ago",
         "price up 2.0c since they bought",
-        "500h until it resolves",
-        "$74,063 liquidity"
+        "499h until it resolves",
+        "$73,943 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
@@ -371,16 +292,16 @@
   ],
   "considered": 334,
   "rejected": {
-    "market closed": 218,
-    "in-play (event already started)": 15,
-    "fresh wallet: market too liquid for the pattern": 14,
-    "wallet not new (no track record either)": 36,
-    "already resolved": 24,
+    "market closed": 254,
+    "fresh wallet: market too liquid for the pattern": 12,
+    "wallet not new (no track record either)": 17,
+    "in-play (event already started)": 8,
+    "already resolved": 16,
     "resolves more than 30 days out": 9,
     "esports (sleeve retired \u2014 see esports_enabled)": 3,
     "parlay / combo ticket, not a single market": 5,
-    "signal too old for this market's horizon": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 6
+    "signal too old for this market's horizon": 3,
+    "below the 0.45 buy bar (recorded, not bought)": 5
   },
   "notes": [],
   "consistency": {
@@ -389,15 +310,15 @@
     "events_scanned": 345,
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 120,
-      "not a ladder: fewer than two live, quoted legs": 90,
-      "not a ladder: group labels are not thresholds or deadlines": 59,
+      "not a ladder: fewer than two live, quoted legs": 91,
+      "not a ladder: group labels are not thresholds or deadlines": 60,
       "not a ladder: duplicate deadlines left too few rungs": 5,
       "bracket overround smaller than the spread": 3,
-      "ladder pair too illiquid to fill": 86,
+      "ladder pair too illiquid to fill": 92,
       "bracket has too many legs to place by hand": 1,
       "bracket leg too illiquid to fill": 5,
       "not a ladder: numeric group spans different end dates": 1,
-      "not a ladder: a live leg carries no group label": 5,
+      "not a ladder: a live leg carries no group label": 3,
       "dominance gap smaller than the spread": 2
     },
     "notes": [],
@@ -749,8 +670,30 @@
       "model_prob": 0.656,
       "edge": 0.406,
       "fair": 0.656,
-      "market_prob": 0.25,
-      "implied_sigma": 0.1034,
+      "market_prob": 0.155,
+      "implied_sigma": 0.1062,
+      "spot_used": 7677.28,
+      "chain_ts": "2026-08-26 03:51:04",
+      "vrp_shrink": 0.92,
+      "series": "KXINX",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-08-26T20:00:00+00:00",
+      "event_iso": "2026-08-26T20:00:00+00:00"
+    },
+    {
+      "market_id": "KXINX-26AUG26H1600-B7662",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "No",
+      "title": "Will the S&P 500 be between 7650 and 7674.9999 on Aug 26, 2026 at 4pm EDT?",
+      "url": "https://kalshi.com/markets/KXINX-26AUG26H1600",
+      "entry_price": 0.94,
+      "model_prob": 1.0,
+      "edge": 0.06,
+      "fair": 0.0,
+      "market_prob": 0.275,
+      "implied_sigma": 0.1062,
       "spot_used": 7677.28,
       "chain_ts": "2026-08-26 03:51:04",
       "vrp_shrink": 0.92,
