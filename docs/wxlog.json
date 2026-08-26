@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-26 11:37:45",
+  "generated": "2026-08-26 12:17:53",
   "rows": {
     "KXHIGHCHI:2026-08-11": {
       "city": "Chicago Midway, IL",
@@ -293,6 +293,8 @@
       "settles_by": "https://forecast.weather.gov/product.php?site=LOT&product=CLI&issuedby=MDW"
     },
     "KXHIGHCHI:2026-08-25": {
+      "bracket_cap": 81,
+      "bracket_floor": 80,
       "city": "Chicago Midway, IL",
       "day": "2026-08-25",
       "event_ticker": "KXHIGHCHI-26AUG25",
@@ -304,9 +306,10 @@
       "last_market_mu_f": 80.53,
       "last_market_sigma_f": 0.65,
       "last_seen_at": 1787723586.1172137,
-      "observed_bracket": null,
-      "observed_f": null,
-      "resolved_at": null,
+      "observed_bracket": "80\u00b0 to 81\u00b0",
+      "observed_f": 81.0,
+      "observed_src": "cli",
+      "resolved_at": 1787746673.598413,
       "series": "KXHIGHCHI",
       "settles_by": "https://forecast.weather.gov/product.php?site=LOT&product=CLI&issuedby=MDW"
     },
@@ -319,9 +322,9 @@
       "first_market_sigma_f": 2.6,
       "first_seen_at": 1787666866.367277,
       "last_forecast_f": 84.0,
-      "last_market_mu_f": 84.8,
-      "last_market_sigma_f": 1.62,
-      "last_seen_at": 1787744264.7580655,
+      "last_market_mu_f": 84.88,
+      "last_market_sigma_f": 1.53,
+      "last_seen_at": 1787746672.7619224,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -646,9 +649,9 @@
       "first_market_sigma_f": 2.81,
       "first_seen_at": 1787666866.367277,
       "last_forecast_f": 87.0,
-      "last_market_mu_f": 87.55,
-      "last_market_sigma_f": 1.94,
-      "last_seen_at": 1787744264.7580655,
+      "last_market_mu_f": 87.56,
+      "last_market_sigma_f": 1.91,
+      "last_seen_at": 1787746672.7619224,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -976,9 +979,9 @@
       "first_market_sigma_f": 2.04,
       "first_seen_at": 1787666866.367277,
       "last_forecast_f": 91.0,
-      "last_market_mu_f": 91.12,
-      "last_market_sigma_f": 1.39,
-      "last_seen_at": 1787744264.7580655,
+      "last_market_mu_f": 91.16,
+      "last_market_sigma_f": 1.31,
+      "last_seen_at": 1787746672.7619224,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -1307,9 +1310,9 @@
       "first_market_sigma_f": 2.18,
       "first_seen_at": 1787666866.367277,
       "last_forecast_f": 79.0,
-      "last_market_mu_f": 81.34,
-      "last_market_sigma_f": 1.48,
-      "last_seen_at": 1787744264.7580655,
+      "last_market_mu_f": 81.21,
+      "last_market_sigma_f": 1.53,
+      "last_seen_at": 1787746672.7619224,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -1319,11 +1322,11 @@
   },
   "summary": {
     "KXHIGHCHI": {
-      "bias_f": -0.18,
+      "bias_f": -0.23,
       "city": "Chicago Midway, IL",
-      "mae_f": 1.61,
-      "n": 14,
-      "sigma_f": 1.88
+      "mae_f": 1.57,
+      "n": 15,
+      "sigma_f": 1.82
     },
     "KXHIGHDEN": {
       "bias_f": -0.36,
