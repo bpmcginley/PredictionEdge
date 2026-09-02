@@ -1,49 +1,89 @@
 {
-  "generated": "2026-09-02 01:27:06",
-  "generated_at": 1788312426.134842,
+  "generated": "2026-09-02 06:22:17",
+  "generated_at": 1788330137.8915644,
   "account_size": 100000.0,
-  "tickets": [],
-  "probe": [
+  "tickets": [
     {
-      "market_id": "0x30174f3f46398e37c96a07b45916e01eab9a8a854ecb624ac73a91a8490fd074",
-      "title": "US announces end of Iranian blockade by September 30, 2026?",
-      "side_label": "NO on: US announces end of Iranian blockade by September 30, 2026?",
+      "market_id": "0x4bcb9ee94aee5f0578ccf4fb1575607183bc8274eb4c853002e0a0cb8a2236d6",
+      "title": "Will Bitcoin dip to $70,000 in September?",
+      "side_label": "NO on: Will Bitcoin dip to $70,000 in September?",
       "outcome": "No",
-      "entry_price": 0.81,
-      "whale_price": 0.81,
+      "entry_price": 0.68,
+      "whale_price": 0.68,
       "drift_c": 0.0,
-      "contracts": 517,
-      "cost": 418.77,
-      "max_payout": 517.0,
-      "conviction": 0.419,
-      "hours_to_resolve": 698.5,
+      "contracts": 747,
+      "cost": 507.96,
+      "max_payout": 747.0,
+      "conviction": 0.508,
+      "hours_to_resolve": 693.6,
       "n_wallets": 1,
-      "whale_usd": 5022,
-      "minutes_ago": 382,
-      "liquidity": 137727,
-      "url": "https://polymarket.com/event/us-announces-end-of-iranian-blockade-byptptpt-20260713152715080",
-      "end_iso": "2026-10-01T03:59:00Z",
+      "whale_usd": 6120,
+      "minutes_ago": 69,
+      "liquidity": 43225,
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-september-2026",
+      "end_iso": "2026-10-01T04:00:00Z",
       "event_iso": "",
-      "slug": "us-announces-end-of-iranian-blockade-by-september-30-2026-20260727171615364-722-649-646-561-213-644-414-831",
-      "signal_ts": 1788289485.0,
+      "slug": "will-bitcoin-dip-to-70k-in-september-2026",
+      "signal_ts": 1788326004.0,
       "wallet_usd": [
         [
-          "0x3dcea221f0cfe43fb050155839ca9a266a952e3d",
-          5022.0
+          "0xcc500cbcc8b7cf5bd21975ebbea34f21b5644c82",
+          6120.0
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$6,120 \u2014 but only 2.3% of their book",
+        "latest buy 69 min ago",
+        "still near their entry price",
+        "694h until it resolves"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0xe87c7fb96399a95b79782fbf3a871fbebad06ad9581fbe2429a362a6d6883a68",
+      "title": "US Open ATP: Brandon Nakashima vs Alex Michelsen",
+      "side_label": "Brandon Nakashima \u2014 US Open ATP: Brandon Nakashima vs Alex Michelsen",
+      "outcome": "Brandon Nakashima",
+      "entry_price": 0.655,
+      "whale_price": 0.66,
+      "drift_c": -0.49,
+      "contracts": 734,
+      "cost": 480.77,
+      "max_payout": 734.0,
+      "conviction": 0.481,
+      "hours_to_resolve": 8.6,
+      "n_wallets": 1,
+      "whale_usd": 19604,
+      "minutes_ago": 71,
+      "liquidity": 68239,
+      "url": "https://polymarket.com/event/atp-nakashi-michels-2026-09-02",
+      "end_iso": "2026-09-09T15:00:00Z",
+      "event_iso": "2026-09-02 15:00:00+00",
+      "slug": "atp-nakashi-michels-2026-09-02",
+      "signal_ts": 1788325885.0,
+      "wallet_usd": [
+        [
+          "0xf255cefbef5749f7436707632360d84f580ddce1",
+          19603.95
         ]
       ],
       "why": [
         "new wallet with no track record \u2014 pattern signal, not a copy",
-        "$5,022 \u2014 but only 4.6% of their book",
-        "latest buy 382 min ago",
+        "$19,604, 100% of their own book",
+        "latest buy 71 min ago",
         "still near their entry price",
-        "699h until it resolves",
-        "$137,727 liquidity"
+        "9h until it resolves",
+        "$68,239 liquidity"
       ],
       "warnings": [
         "unproven wallet \u2014 this is a pattern, not a track record"
       ]
-    },
+    }
+  ],
+  "probe": [
     {
       "market_id": "0x275688b0eee9274fbe2b5d3a7237df383989f7e93e014267350f8ec1e73526e3",
       "title": "Spread: LSU (-10.5)",
@@ -56,11 +96,11 @@
       "cost": 403.92,
       "max_payout": 816.0,
       "conviction": 0.404,
-      "hours_to_resolve": 94.1,
+      "hours_to_resolve": 89.1,
       "n_wallets": 1,
       "whale_usd": 2099,
-      "minutes_ago": 332,
-      "liquidity": 13014,
+      "minutes_ago": 627,
+      "liquidity": 12259,
       "url": "https://polymarket.com/event/cfb-clmsn-lsu-2026-09-05",
       "end_iso": "2026-09-05T23:30:00Z",
       "event_iso": "2026-09-05 23:30:00+00",
@@ -75,12 +115,52 @@
       "why": [
         "1 profitable wallet on this side",
         "$2,099 \u2014 but only 0.5% of their book",
-        "latest buy 332 min ago",
+        "latest buy 627 min ago",
         "price 2.2c cheaper than they paid",
-        "94h until it resolves"
+        "89h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x30174f3f46398e37c96a07b45916e01eab9a8a854ecb624ac73a91a8490fd074",
+      "title": "US announces end of Iranian blockade by September 30, 2026?",
+      "side_label": "NO on: US announces end of Iranian blockade by September 30, 2026?",
+      "outcome": "No",
+      "entry_price": 0.82,
+      "whale_price": 0.81,
+      "drift_c": 1.0,
+      "contracts": 470,
+      "cost": 385.4,
+      "max_payout": 470.0,
+      "conviction": 0.386,
+      "hours_to_resolve": 693.6,
+      "n_wallets": 1,
+      "whale_usd": 5022,
+      "minutes_ago": 677,
+      "liquidity": 117106,
+      "url": "https://polymarket.com/event/us-announces-end-of-iranian-blockade-byptptpt-20260713152715080",
+      "end_iso": "2026-10-01T03:59:00Z",
+      "event_iso": "",
+      "slug": "us-announces-end-of-iranian-blockade-by-september-30-2026-20260727171615364-722-649-646-561-213-644-414-831",
+      "signal_ts": 1788289485.0,
+      "wallet_usd": [
+        [
+          "0x3dcea221f0cfe43fb050155839ca9a266a952e3d",
+          5022.0
+        ]
+      ],
+      "why": [
+        "new wallet with no track record \u2014 pattern signal, not a copy",
+        "$5,022 \u2014 but only 4.6% of their book",
+        "latest buy 677 min ago",
+        "price up 1.0c since they bought",
+        "694h until it resolves",
+        "$117,106 liquidity"
+      ],
+      "warnings": [
+        "unproven wallet \u2014 this is a pattern, not a track record"
       ]
     },
     {
@@ -88,18 +168,18 @@
       "title": "Will the Fed increase interest rates by 25 bps after the September 2026 meeting?",
       "side_label": "YES on: Will the Fed increase interest rates by 25 bps after the September 2026 meeting?",
       "outcome": "Yes",
-      "entry_price": 0.58,
+      "entry_price": 0.6,
       "whale_price": 0.58,
-      "drift_c": 0.0,
-      "contracts": 694,
-      "cost": 402.52,
-      "max_payout": 694.0,
-      "conviction": 0.403,
-      "hours_to_resolve": 334.6,
+      "drift_c": 2.0,
+      "contracts": 560,
+      "cost": 336.0,
+      "max_payout": 560.0,
+      "conviction": 0.336,
+      "hours_to_resolve": 329.6,
       "n_wallets": 1,
       "whale_usd": 5336,
-      "minutes_ago": 272,
-      "liquidity": 474159,
+      "minutes_ago": 567,
+      "liquidity": 426392,
       "url": "https://polymarket.com/event/fed-decision-in-september-762",
       "end_iso": "2026-09-16T00:00:00Z",
       "event_iso": "",
@@ -114,51 +194,48 @@
       "why": [
         "1 profitable wallet on this side",
         "$5,336 \u2014 but only 0.1% of their book",
-        "latest buy 272 min ago",
-        "still near their entry price",
-        "335h until it resolves",
-        "$474,159 liquidity"
+        "latest buy 567 min ago",
+        "price up 2.0c since they bought",
+        "330h until it resolves",
+        "$426,392 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 281,
+  "considered": 274,
   "rejected": {
-    "market closed": 131,
-    "in-play (event already started)": 21,
-    "wallet not new (no track record either)": 82,
-    "already resolved": 6,
-    "fresh wallet: market too liquid for the pattern": 11,
-    "resolves in under 3h": 2,
-    "esports (sleeve retired \u2014 see esports_enabled)": 12,
-    "signal too old for this market's horizon": 4,
+    "market closed": 145,
+    "fresh wallet: market too liquid for the pattern": 15,
+    "already resolved": 12,
+    "in-play (event already started)": 9,
+    "wallet not new (no track record either)": 50,
+    "esports (sleeve retired \u2014 see esports_enabled)": 24,
+    "signal too old for this market's horizon": 5,
     "price + fee ran away from the whale's entry": 4,
     "resolves more than 30 days out": 4,
     "duplicate event (kept the stronger side)": 1,
     "below the 0.45 buy bar (recorded, not bought)": 3
   },
-  "notes": [
-    "Signals came in but none cleared the filters \u2014 that is a normal, and usually correct, outcome."
-  ],
+  "notes": [],
   "consistency": {
     "ok": true,
     "enabled": true,
     "events_scanned": 345,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 118,
-      "not a ladder: fewer than two live, quoted legs": 99,
-      "not a ladder: group labels are not thresholds or deadlines": 48,
+      "bracket has legs we cannot price (fail closed)": 119,
+      "not a ladder: fewer than two live, quoted legs": 101,
+      "not a ladder: group labels are not thresholds or deadlines": 50,
       "not a ladder: duplicate deadlines left too few rungs": 5,
-      "ladder pair too illiquid to fill": 133,
-      "bracket underround smaller than the spread": 1,
+      "ladder pair too illiquid to fill": 140,
+      "bracket underround smaller than the spread": 2,
       "bracket has too many legs to place by hand": 1,
       "ladder inversion smaller than the spread": 2,
       "bracket leg too illiquid to fill": 5,
-      "not a ladder: a live leg carries no group label": 8,
       "not a ladder: numeric group spans different end dates": 2,
       "bracket overround smaller than the spread": 1,
+      "not a ladder: a live leg carries no group label": 3,
       "dominance gap smaller than the spread": 3
     },
     "notes": [],
@@ -179,7 +256,7 @@
         "nowcast_pp": 2.38356235342767,
         "nowcast_as_of": "2026-09-01 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.109pp (x1.47). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.112pp (x1.43). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
         "rows": [
           {
             "label": "\u22642.0%",
@@ -197,16 +274,16 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.0465,
+            "market_prob": 0.0755,
             "model_prob": 0.1297,
-            "gap_c": 8.32,
+            "gap_c": 5.42,
             "suspect": false
           },
           {
             "label": "2.3%",
-            "market_prob": 0.34,
+            "market_prob": 0.32,
             "model_prob": 0.215,
-            "gap_c": -12.5,
+            "gap_c": -10.5,
             "suspect": false
           },
           {
@@ -225,9 +302,9 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.0255,
+            "market_prob": 0.026,
             "model_prob": 0.1012,
-            "gap_c": 7.57,
+            "gap_c": 7.52,
             "suspect": false
           },
           {
@@ -263,7 +340,7 @@
         "nowcast_pp": 0.203341742698412,
         "nowcast_as_of": "2026-09-01 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.118pp (x1.35). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.102pp (x1.56). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -274,17 +351,17 @@
           },
           {
             "label": "0.1%",
-            "market_prob": 0.175,
+            "market_prob": 0.195,
             "model_prob": 0.2005,
-            "gap_c": 2.55,
+            "gap_c": 0.55,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.495,
+            "market_prob": 0.5,
             "model_prob": 0.2453,
-            "gap_c": -24.97,
-            "suspect": false
+            "gap_c": -25.47,
+            "suspect": true
           },
           {
             "label": "0.3%",
@@ -295,23 +372,23 @@
           },
           {
             "label": "0.4%",
-            "market_prob": 0.0405,
+            "market_prob": 0.1225,
             "model_prob": 0.1181,
-            "gap_c": 7.76,
+            "gap_c": -0.44,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.1405,
+            "market_prob": 0.0445,
             "model_prob": 0.0465,
-            "gap_c": -9.4,
+            "gap_c": 0.2,
             "suspect": false
           },
           {
             "label": "0.6%+",
-            "market_prob": 0.023,
+            "market_prob": 0.0235,
             "model_prob": 0.0151,
-            "gap_c": -0.79,
+            "gap_c": -0.84,
             "suspect": false
           }
         ]
@@ -326,7 +403,7 @@
         "nowcast_pp": 3.37583994813757,
         "nowcast_as_of": "2026-09-01 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.117pp (x1.37). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.118pp (x1.36). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
         "rows": [
           {
             "label": "\u22642.9%",
@@ -337,30 +414,30 @@
           },
           {
             "label": "3.0%",
-            "market_prob": 0.011,
+            "market_prob": 0.0105,
             "model_prob": 0.017,
-            "gap_c": 0.6,
+            "gap_c": 0.65,
             "suspect": false
           },
           {
             "label": "3.1%",
-            "market_prob": 0.0125,
+            "market_prob": 0.017,
             "model_prob": 0.0582,
-            "gap_c": 4.57,
+            "gap_c": 4.12,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.073,
+            "market_prob": 0.077,
             "model_prob": 0.1367,
-            "gap_c": 6.37,
+            "gap_c": 5.97,
             "suspect": false
           },
           {
             "label": "3.3%",
-            "market_prob": 0.36,
+            "market_prob": 0.365,
             "model_prob": 0.2201,
-            "gap_c": -13.99,
+            "gap_c": -14.49,
             "suspect": false
           },
           {
@@ -424,7 +501,7 @@
         "nowcast_pp": 0.359180537639179,
         "nowcast_as_of": "2026-09-01 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.093pp (x1.72). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.098pp (x1.63). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
         "rows": [
           {
             "label": "\u2264-0.3%",
@@ -435,9 +512,9 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.006,
+            "market_prob": 0.0105,
             "model_prob": 0.0007,
-            "gap_c": -0.53,
+            "gap_c": -0.98,
             "suspect": false
           },
           {
@@ -449,9 +526,9 @@
           },
           {
             "label": "0.0%",
-            "market_prob": 0.011,
+            "market_prob": 0.01,
             "model_prob": 0.0214,
-            "gap_c": 1.04,
+            "gap_c": 1.14,
             "suspect": false
           },
           {
@@ -470,16 +547,16 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.285,
+            "market_prob": 0.315,
             "model_prob": 0.2296,
-            "gap_c": -5.54,
+            "gap_c": -8.54,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.455,
+            "market_prob": 0.46,
             "model_prob": 0.2377,
-            "gap_c": -21.73,
+            "gap_c": -22.23,
             "suspect": false
           },
           {
@@ -498,7 +575,30 @@
     "cal_vetoed": 0
   },
   "gas": [],
-  "spxindex": [],
+  "spxindex": [
+    {
+      "market_id": "KXINX-26SEP02H1600-B7637",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "Yes",
+      "title": "Will the S&P 500 be between 7625 and 7649.9999 on Sep 2, 2026 at 4pm EDT?",
+      "url": "https://kalshi.com/markets/KXINX-26SEP02H1600",
+      "entry_price": 0.15,
+      "model_prob": 0.258,
+      "edge": 0.108,
+      "fair": 0.258,
+      "market_prob": 0.1,
+      "implied_sigma": 0.1497,
+      "spot_used": 7631.47,
+      "chain_ts": "2026-09-02 03:56:06",
+      "vrp_shrink": 0.92,
+      "series": "KXINX",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-09-02T20:00:00+00:00",
+      "event_iso": "2026-09-02T20:00:00+00:00"
+    }
+  ],
   "sizing": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
