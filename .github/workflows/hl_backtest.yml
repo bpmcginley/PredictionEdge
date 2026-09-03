@@ -42,6 +42,24 @@ jobs:
             --cache docs/hl_backtest/candles --report docs/hl_backtest/report.md
           echo '```' >> docs/hl_backtest/report.md
 
+      # Continuous minute candles for the impulse scan: ~5 Coinbase calls per day, so the
+      # first run pays for the whole year and later runs only fetch new days.
+      - name: Restore continuous-candle cache
+        uses: actions/cache@v4
+        with:
+          path: data/hl_scan
+          key: hl-scan-${{ github.run_id }}
+          restore-keys: hl-scan-
+
+      - name: Unscheduled impulse scan (the cascade-rider trigger), last 365 days
+        run: |
+          { echo; echo "## Unscheduled impulse scan, last 365 days, default filter"; echo; echo '```'; } >> docs/hl_backtest/report.md
+          python scripts/hl_event_backtest.py --scan 365 --verbose --source auto --report docs/hl_backtest/report.md
+          echo '```' >> docs/hl_backtest/report.md
+          { echo; echo "## Same scan, smaller impulses (0.25%..1.0%)"; echo; echo '```'; } >> docs/hl_backtest/report.md
+          python scripts/hl_event_backtest.py --scan 365 --source auto --min-impulse 0.0025 --max-impulse 0.010 --report docs/hl_backtest/report.md
+          echo '```' >> docs/hl_backtest/report.md
+
       - name: Same rules on Hyperliquid perp candles (may be shorter history)
         continue-on-error: true
         run: |

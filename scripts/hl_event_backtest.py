@@ -217,6 +217,59 @@ def window(t0: datetime, source: str, coin: str, p: Params,
     raise RuntimeError("; ".join(errors))
 
 
+def continuous(days: int, source: str, coin: str, cache: Path, end: datetime | None = None,
+               log=print) -> tuple[list[Candle], str]:
+    """1-minute candles for the last `days` days, fetched a UTC day at a time and cached
+    per day (Coinbase serves 300 candles per call, so a day is 5 calls)."""
+    end = end or datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
+    cache.mkdir(parents=True, exist_ok=True)
+    out, used = [], None
+    for k in range(days, 0, -1):
+        day = end - timedelta(days=k)
+        errors = []
+        for src in (AUTO_CHAIN if source == "auto" else (source,)):
+            if used and src != used:
+                continue  # one venue per series; mixing books mixes wick behaviour
+            f = cache / f"{src}_{coin}_{day:%Y%m%d}.json"
+            if f.exists():
+                rows = json.loads(f.read_text())
+                if rows:
+                    out.extend(Candle(*r) for r in rows); used = src
+                    break
+            rows = []
+            try:
+                for h in range(0, 24, 5):   # 5-hour chunks keep Coinbase under its 300 cap
+                    s_ms = int((day + timedelta(hours=h)).timestamp() * 1000)
+                    e_ms = int((day + timedelta(hours=min(h + 5, 24))).timestamp() * 1000) - 1
+                    rows.extend(FETCHERS[src](s_ms, e_ms, coin))
+            except Exception as ex:
+                errors.append(f"{src}: {type(ex).__name__} {str(ex)[:60]}")
+                continue
+            if len(rows) < 1000:
+                errors.append(f"{src}: only {len(rows)} candles")
+                continue
+            rows = sorted({c.t: c for c in rows}.values(), key=lambda c: c.t)
+            f.write_text(json.dumps([[c.t, c.o, c.h, c.l, c.c] for c in rows]))
+            out.extend(rows); used = src
+            break
+        else:
+            log(f"  {day:%Y-%m-%d}: no data ({'; '.join(errors)})")
+    return out, used or "none"
+
+
+def scan_impulses(candles: list[Candle], p: Params) -> list[tuple[int, int]]:
+    """Every minute whose own open->close move passes the impulse filter, with a cooldown
+    of `hold` minutes after each trigger so tickets never overlap. Returns (index, t_ms)."""
+    hits, last = [], -10**9
+    for i in range(30, len(candles) - p.hold - 2):
+        c = candles[i]
+        if i - last <= p.hold:
+            continue
+        if p.min_impulse <= abs(c.c / c.o - 1.0) <= p.max_impulse:
+            hits.append((i, c.t)); last = i
+    return hits
+
+
 # ---------------------------------------------------------------- rules
 
 def run_ticket(candles: list[Candle], t0_ms: int, p: Params, name: str = "", kind: str = "",
@@ -393,6 +446,10 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--max-impulse", type=float, default=0.015)
     ap.add_argument("--fraction", type=float, default=0.015, help="bankroll fraction per ticket")
     ap.add_argument("--grid", action="store_true", help="sweep the impulse filter (overfitting hazard)")
+    ap.add_argument("--scan", type=int, default=0, metavar="DAYS",
+                    help="instead of the calendar, trigger on every qualifying impulse minute "
+                         "in the last DAYS days of continuous candles (the cascade-rider test)")
+    ap.add_argument("--scan-cache", type=Path, default=ROOT / "data" / "hl_scan")
     ap.add_argument("--synthetic", type=int, default=0, metavar="N", help="run on N simulated windows")
     ap.add_argument("--synthetic-edge", type=float, default=0.5, help="p_dir for --synthetic")
     ap.add_argument("--verbose", action="store_true")
@@ -413,7 +470,17 @@ def main(argv: list[str] | None = None) -> int:
         print(f"stop {p.sl:.2%} is not inside the liquidation distance {p.d_liq:.2%}", file=sys.stderr)
         return 2
 
-    if a.synthetic:
+    if a.scan:
+        series, src = continuous(a.scan, a.source, a.coin, a.scan_cache)
+        flat = sum(1 for c in series if c.h == c.l) / len(series) if series else 1.0
+        print(f"SCAN: {len(series)} minutes from {src} over the last {a.scan} days; "
+              f"{flat:.1%} flat candles" + ("  <-- TOO THIN" if flat > 0.10 else ""))
+        triggers = scan_impulses(series, p)
+        windows = [(f"{datetime.fromtimestamp(t / 1000, tz=timezone.utc):%Y-%m-%d %H:%M}", "IMP",
+                    series[i - 30:i + p.hold + 2], t) for i, t in triggers]
+        print(f"{len(windows)} impulse triggers (|1-min move| in {p.min_impulse:.2%}..{p.max_impulse:.2%}, "
+              f"cooldown {p.hold}m)")
+    elif a.synthetic:
         wins = synthetic_windows(a.synthetic, p, p_dir=a.synthetic_edge,
                                  drift_per_min=0.0003 if a.synthetic_edge > 0.5 else 0.0)
         windows = [(f"syn{k}", "SYN", c, t0) for k, (c, t0) in enumerate(wins)]
@@ -452,7 +519,7 @@ def main(argv: list[str] | None = None) -> int:
 
     tickets, baseline = run(p)
     if a.verbose:
-        for t in tickets:
+        for t in (tickets if not a.scan else [t for t in tickets if t.taken][:40]):
             if t.taken:
                 print(f"  {t.event:<18} {t.kind:<5} dir {t.direction:+d} impulse {t.impulse:+.2%} "
                       f"{t.reason:<5} {t.minutes:>3}m  price {t.price_ret:+.2%}  stake {t.stake_ret:+.2f}"
