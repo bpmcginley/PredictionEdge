@@ -1,0 +1,64 @@
+name: Hyperliquid convex ticket backtest
+
+# Runs scripts/hl_event_backtest.py on a runner with exchange access and commits the
+# candle windows plus the report to docs/hl_backtest/. Public, unauthenticated market
+# data only: no secrets, no orders, no account.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["claude/hyperliquid-**"]
+    paths: [scripts/hl_event_backtest.py, scripts/hl_events.csv, .github/workflows/hl_backtest.yml]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hl-backtest-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run the event backtest (Binance spot as the oracle proxy)
+        run: |
+          rm -f docs/hl_backtest/report.md
+          mkdir -p docs/hl_backtest
+          {
+            echo "# EVENT-CONVEX backtest report"
+            echo
+            echo "Generated $(date -u +'%Y-%m-%d %H:%M UTC') by .github/workflows/hl_backtest.yml."
+            echo "Rules and caveats: docs/HYPERLIQUID_CONVEX.md section 9. Dates in scripts/hl_events.csv are unverified unless verify=1."
+            echo
+            echo '```'
+          } > docs/hl_backtest/report.md
+          python scripts/hl_event_backtest.py --verbose --grid \
+            --cache docs/hl_backtest/candles_binance --report docs/hl_backtest/report.md
+          echo '```' >> docs/hl_backtest/report.md
+
+      - name: Same rules on Hyperliquid perp candles (may be shorter history)
+        continue-on-error: true
+        run: |
+          { echo; echo "## Hyperliquid perp candles"; echo; echo '```'; } >> docs/hl_backtest/report.md
+          python scripts/hl_event_backtest.py --verbose --source hyperliquid \
+            --cache docs/hl_backtest/candles_hyperliquid --report docs/hl_backtest/report.md
+          echo '```' >> docs/hl_backtest/report.md
+
+      - name: Commit the data and the report
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/hl_backtest
+          if git diff --staged --quiet; then echo "nothing to commit"; exit 0; fi
+          git commit -m "hl-backtest: run $(date -u +'%Y-%m-%d %H:%M UTC') [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase --autostash && git push && exit 0
+            echo "push attempt $i failed; retrying"; sleep 5
+          done
+          exit 1

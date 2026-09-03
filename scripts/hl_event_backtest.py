@@ -94,6 +94,7 @@ class Ticket:
     minutes: int = 0
     price_ret: float = 0.0     # signed, fraction of entry
     stake_ret: float = 0.0     # return on the isolated margin, after fees
+    activity: float = 0.0      # release-minute range / median pre-window range (date sanity)
 
 
 # ---------------------------------------------------------------- events
@@ -181,8 +182,11 @@ def run_ticket(candles: list[Candle], t0_ms: int, p: Params, name: str = "", kin
     i0 = idx[t0_ms]
     c0 = candles[i0]
     impulse = c0.c / c0.o - 1.0
+    pre_ranges = sorted((c.h - c.l) / c.o for c in candles[max(0, i0 - 30):i0]) or [0.0]
+    med_pre = pre_ranges[len(pre_ranges) // 2]
+    activity = ((c0.h - c0.l) / c0.o) / med_pre if med_pre > 0 else float("inf")
     if force_dir is None and not (p.min_impulse <= abs(impulse) <= p.max_impulse):
-        return Ticket(name, kind, False, "no-impulse", impulse=impulse)
+        return Ticket(name, kind, False, "no-impulse", impulse=impulse, activity=activity)
     d = force_dir if force_dir is not None else (1 if impulse > 0 else -1)
     entry = candles[i0 + 1].o * (1 + d * p.slip)
     stop = entry * (1 - d * p.sl)
@@ -218,7 +222,7 @@ def run_ticket(candles: list[Candle], t0_ms: int, p: Params, name: str = "", kin
         exit_px = last.c * (1 - d * p.slip)
     price_ret = d * (exit_px / entry - 1.0)
     stake_ret = -1.0 if reason == "liq" else p.leverage * price_ret - 2 * p.taker * p.leverage
-    return Ticket(name, kind, True, reason, d, impulse, entry, exit_px, held, price_ret, stake_ret)
+    return Ticket(name, kind, True, reason, d, impulse, entry, exit_px, held, price_ret, stake_ret, activity)
 
 
 # ---------------------------------------------------------------- stats
@@ -344,7 +348,16 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--synthetic", type=int, default=0, metavar="N", help="run on N simulated windows")
     ap.add_argument("--synthetic-edge", type=float, default=0.5, help="p_dir for --synthetic")
     ap.add_argument("--verbose", action="store_true")
+    ap.add_argument("--cache", type=Path, default=CACHE_DIR, help="candle cache directory")
+    ap.add_argument("--report", type=Path, default=None, help="also append the output to this file")
     a = ap.parse_args(argv)
+    if a.report:
+        class _Tee:
+            def __init__(self, *fs): self.fs = fs
+            def write(self, x): [f.write(x) for f in self.fs]
+            def flush(self): [f.flush() for f in self.fs]
+        a.report.parent.mkdir(parents=True, exist_ok=True)
+        sys.stdout = _Tee(sys.__stdout__, a.report.open("a"))
 
     p = Params(leverage=a.leverage, sl=a.sl, trail=a.trail, trail_arm=a.trail_arm, hold=a.hold,
                min_impulse=a.min_impulse, max_impulse=a.max_impulse)
@@ -362,7 +375,7 @@ def main(argv: list[str] | None = None) -> int:
         windows = []
         for t0, kind, note in events:
             try:
-                candles = window(t0, a.source, a.coin, p)
+                candles = window(t0, a.source, a.coin, p, a.cache)
             except Exception as e:  # network / API
                 print(f"  skip {kind} {t0:%Y-%m-%d %H:%M}Z: {e}", file=sys.stderr)
                 continue
@@ -384,9 +397,16 @@ def main(argv: list[str] | None = None) -> int:
         for t in tickets:
             if t.taken:
                 print(f"  {t.event:<18} {t.kind:<5} dir {t.direction:+d} impulse {t.impulse:+.2%} "
-                      f"{t.reason:<5} {t.minutes:>3}m  price {t.price_ret:+.2%}  stake {t.stake_ret:+.2f}")
+                      f"{t.reason:<5} {t.minutes:>3}m  price {t.price_ret:+.2%}  stake {t.stake_ret:+.2f}"
+                      f"  activity x{t.activity:.1f}")
             else:
-                print(f"  {t.event:<18} {t.kind:<5} skipped ({t.reason}, impulse {t.impulse:+.2%})")
+                print(f"  {t.event:<18} {t.kind:<5} skipped ({t.reason}, impulse {t.impulse:+.2%}, "
+                      f"activity x{t.activity:.1f})")
+        quiet = [t for t in tickets if t.reason != "no-candle" and t.activity < 2.0]
+        if quiet:
+            print(f"  DATE CHECK: {len(quiet)} release minutes were no busier than the prior half hour "
+                  f"(activity < 2x); their dates/times may be wrong: "
+                  + ", ".join(t.event for t in quiet))
     print_summary(summarize(tickets, baseline, a.fraction), p, a.fraction)
 
     if a.grid:
