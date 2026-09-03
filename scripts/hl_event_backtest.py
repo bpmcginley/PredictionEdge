@@ -184,7 +184,9 @@ FETCHERS = {
 }
 # Binance.com refuses US IPs (GitHub runners included); the chain falls through to
 # venues that serve them. All are spot USD(T) quotes, i.e. proxies for the oracle.
-AUTO_CHAIN = ("binance", "binanceus", "coinbase", "bitstamp")
+# Binance US is last: it is so thin that half its minute candles have no range at all,
+# which makes every stop and trail decision on them meaningless.
+AUTO_CHAIN = ("binance", "coinbase", "bitstamp", "binanceus")
 
 
 def window(t0: datetime, source: str, coin: str, p: Params,
@@ -428,6 +430,11 @@ def main(argv: list[str] | None = None) -> int:
             srcs[src] = srcs.get(src, 0) + 1
             windows.append((f"{kind} {t0:%Y-%m-%d}", kind, candles, int(t0.timestamp() * 1000)))
         print(f"Loaded {len(windows)}/{len(events)} event windows ({a.coin}); sources: {srcs}")
+        allc = [c for _, _, cs, _ in windows for c in cs]
+        if allc:
+            flat = sum(1 for c in allc if c.h == c.l) / len(allc)
+            print(f"Data quality: {len(allc)} candles, {flat:.1%} flat (high == low)"
+                  + ("  <-- TOO THIN, stops/trails are unreliable" if flat > 0.10 else ""))
         for line in failures[:5]:
             print("  failed:", line)
         if len(failures) > 5:
