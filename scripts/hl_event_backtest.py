@@ -418,15 +418,20 @@ def main(argv: list[str] | None = None) -> int:
         print(f"SYNTHETIC run: {a.synthetic} windows, p_dir={a.synthetic_edge}. Validates the harness only.")
     else:
         events = load_events(a.events, set(a.kinds.split(",")))
-        windows = []
+        windows, failures, srcs = [], [], {}
         for t0, kind, note in events:
             try:
-                candles = window(t0, a.source, a.coin, p, a.cache)
-            except Exception as e:  # network / API
-                print(f"  skip {kind} {t0:%Y-%m-%d %H:%M}Z: {e}", file=sys.stderr)
+                candles, src = window(t0, a.source, a.coin, p, a.cache)
+            except Exception as e:  # network / API / geo-block
+                failures.append(f"{kind} {t0:%Y-%m-%d %H:%M}Z: {e}")
                 continue
+            srcs[src] = srcs.get(src, 0) + 1
             windows.append((f"{kind} {t0:%Y-%m-%d}", kind, candles, int(t0.timestamp() * 1000)))
-        print(f"Loaded {len(windows)}/{len(events)} event windows from {a.source} ({a.coin}).")
+        print(f"Loaded {len(windows)}/{len(events)} event windows ({a.coin}); sources: {srcs}")
+        for line in failures[:5]:
+            print("  failed:", line)
+        if len(failures) > 5:
+            print(f"  ... and {len(failures) - 5} more failures")
 
     def run(params: Params) -> tuple[list[Ticket], list[Ticket]]:
         tickets, baseline = [], []
