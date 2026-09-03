@@ -274,3 +274,32 @@ liquidation cascade; VanEck Mid-August 2026 Bitcoin ChainCheck (realized vol).
 Kalshi crypto contracts: Kalshi 15-minute crypto category page; The Lines / SailGP
 15-minute market guides; "Do prediction markets forecast cryptocurrency volatility?
 Evidence from Kalshi macro contracts" (arXiv 2604.01431).
+
+## 9. What the EV is, and how to measure it (added 2026-09-03)
+
+The EV cannot be derived; it is whatever the direction call turns out to be worth on
+real prints, net of the cost drag. Conditional on the direction call (20x, 1.5% stop,
+1% trail, 60-min hold, synthetic 90% local vol, `hl_event_backtest.py --synthetic`):
+
+| P(direction right) | Hit rate | EV per ticket on stake | 90% CI | Per ticket at 1.5% of bankroll |
+|---|---|---|---|---|
+| 0.50 (no edge) | 44% | −2.5% | [−4.2%, −0.8%] | −0.04% |
+| 0.60 | 56% | +7.9% | [+4.6%, +11.3%] | +0.12% |
+| 0.70 | 66% | +14.3% | [+11.1%, +17.6%] | +0.22% |
+
+With roughly 30 qualifying prints a year that is −1% to +7% of the sub-account per
+year at 1.5% tickets, before the cascade trigger adds frequency. The tails are
+where the lottery-style upside lives; the mean is modest. Anyone quoting a bigger
+number for this strategy is quoting an assumption, not a measurement.
+
+To measure it, run on a machine that can reach an exchange API:
+
+    python scripts/hl_event_backtest.py --verbose     # ~80 CPI/FOMC/NFP prints since 2024
+    python scripts/hl_event_backtest.py --grid        # how fragile the impulse filter is
+
+It prints the hit rate, the EV per ticket with a bootstrap CI, a random-direction
+baseline on the same windows (the pure cost drag), and the 5th-percentile outcome
+over 40 tickets at the chosen fraction. Decision rule: proceed to testnet paper
+trading only if the CI's lower bound is above zero **and** the grid does not flip
+sign between adjacent cells. Check every date in `scripts/hl_events.csv` against the
+BLS and Fed calendars first; the shutdown-affected late-2025 rows are best-effort.
