@@ -1,6 +1,6 @@
 # EVENT-CONVEX backtest report
 
-Generated 2026-09-03 13:09 UTC by .github/workflows/hl_backtest.yml.
+Generated 2026-09-03 13:20 UTC by .github/workflows/hl_backtest.yml.
 Rules and caveats: docs/HYPERLIQUID_CONVEX.md section 9. Dates in scripts/hl_events.csv are unverified unless verify=1.
 
 ```
@@ -155,7 +155,7 @@ Hit rate 42.3%   avg win +0.14x   avg loss 0.14x   Kelly -0.14
 EV per ticket on stake: -0.020   median -0.033   90% bootstrap CI [-0.035, -0.005]
 Random-direction baseline (same windows, coin-flip direction): -0.026
 At 1.5% of bankroll per ticket: -0.030% of bankroll per ticket; over 40 tickets the 5th-pct outcome is -3.9% and the 95th-pct max drawdown is 4.3%
-Verdict: edge not distinguishable from zero; n=388 tickets
+Verdict: NEGATIVE at 90%: the ticket loses money; n=388 tickets
 ```
 
 ## Same scan, smaller impulses (0.25%..1.0%)
@@ -170,7 +170,7 @@ Hit rate 40.5%   avg win +0.12x   avg loss 0.12x   Kelly -0.19
 EV per ticket on stake: -0.023   median -0.031   90% bootstrap CI [-0.030, -0.015]
 Random-direction baseline (same windows, coin-flip direction): -0.026
 At 1.5% of bankroll per ticket: -0.034% of bankroll per ticket; over 40 tickets the 5th-pct outcome is -3.7% and the 95th-pct max drawdown is 4.0%
-Verdict: edge not distinguishable from zero; n=1220 tickets
+Verdict: NEGATIVE at 90%: the ticket loses money; n=1220 tickets
 ```
 
 ## Hyperliquid perp candles
