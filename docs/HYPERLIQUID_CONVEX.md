@@ -303,3 +303,30 @@ over 40 tickets at the chosen fraction. Decision rule: proceed to testnet paper
 trading only if the CI's lower bound is above zero **and** the grid does not flip
 sign between adjacent cells. Check every date in `scripts/hl_events.csv` against the
 BLS and Fed calendars first; the shutdown-affected late-2025 rows are best-effort.
+
+## 10. Measured results (2026-09-03, `docs/hl_backtest/report.md`)
+
+Data: Coinbase BTC-USD 1-minute candles (0% flat candles; Binance.com and Hyperliquid
+are unreachable from a US runner, Binance US is too thin to use). Rules exactly as in
+section 3a: 20x, 1.5% stop, 1% trail armed at +1.5%, 60-minute hold, base taker fee,
+2 bp slippage per side, conservative intra-candle ordering.
+
+| Test | Tickets | Hit rate | EV per ticket on stake | 90% CI | Coin-flip baseline |
+|---|---|---|---|---|---|
+| Scheduled prints (CPI/FOMC/NFP, Jan 2024 to Jun 2026) | 29 | 44.8% | +1.0% | −4.2% to +6.4% | −2.7% |
+| Unscheduled impulses, last 365 days, 0.4% to 1.5% | 388 | 42.3% | −2.0% | −3.5% to −0.5% | −2.6% |
+| Unscheduled impulses, last 365 days, 0.25% to 1.0% | 1,220 | 40.5% | −2.3% | −3.0% to −1.5% | −2.6% |
+
+**Conclusion.** The direction call (follow the sign of the impulse minute) is worth
+about half a point over a coin flip on 1,600 unscheduled tickets and about 3.7 points
+on 29 scheduled ones. Neither covers the cost drag, and the unscheduled result is
+negative at the 90% level with a sample large enough to trust. Only 32 of 388 tickets
+ever ran far enough to arm the trailing stop: the hour after a one-minute impulse in
+BTC is close to a random walk. Fading the impulse is worse still (the against-impulse
+half of the baseline averages about −3.2%).
+
+The EVENT-CONVEX and CASCADE-RIDER triggers, as specified, are **rejected**. Before any
+variant is retested, the only things worth changing are the ones that add information
+the impulse minute does not contain: the size of the macro surprise itself (consensus
+vs print), liquidation-flagged flow from Hyperliquid's own feed, and funding at the
+cap. A different stop or trail setting on the same trigger is curve-fitting noise.

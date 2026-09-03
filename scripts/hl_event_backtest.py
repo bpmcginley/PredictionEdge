@@ -391,8 +391,10 @@ def print_summary(s: dict, p: Params, fraction: float) -> None:
     print(f"At {fraction:.1%} of bankroll per ticket: {s['bankroll_per_ticket']:+.3%} of bankroll per ticket; "
           f"over 40 tickets the 5th-pct outcome is {s['p5_terminal_40']:+.1%} "
           f"and the 95th-pct max drawdown is {s['p95_maxdd_40']:.1%}")
-    ci_lo = s["ci90"][0]
-    verdict = ("edge not distinguishable from zero" if ci_lo <= 0 else "positive at 90%")
+    ci_lo, ci_hi = s["ci90"]
+    verdict = ("positive at 90%" if ci_lo > 0 else
+               "NEGATIVE at 90%: the ticket loses money" if ci_hi < 0 else
+               "edge not distinguishable from zero")
     print(f"Verdict: {verdict}; n={s['taken']} tickets"
           + (" (too few to conclude; keep collecting)" if s["taken"] < 30 else ""))
 
