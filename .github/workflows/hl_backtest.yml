@@ -26,7 +26,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Run the event backtest (Binance spot as the oracle proxy)
+      - name: Run the event backtest (spot candles as the oracle proxy)
         run: |
           rm -f docs/hl_backtest/report.md
           mkdir -p docs/hl_backtest
@@ -38,8 +38,8 @@ jobs:
             echo
             echo '```'
           } > docs/hl_backtest/report.md
-          python scripts/hl_event_backtest.py --verbose --grid \
-            --cache docs/hl_backtest/candles_binance --report docs/hl_backtest/report.md
+          python scripts/hl_event_backtest.py --verbose --grid --source auto \
+            --cache docs/hl_backtest/candles --report docs/hl_backtest/report.md
           echo '```' >> docs/hl_backtest/report.md
 
       - name: Same rules on Hyperliquid perp candles (may be shorter history)

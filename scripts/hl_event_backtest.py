@@ -143,6 +143,31 @@ def fetch_binance(start_ms: int, end_ms: int, symbol: str = "BTCUSDT") -> list[C
     return [Candle(int(r[0]), float(r[1]), float(r[2]), float(r[3]), float(r[4])) for r in rows]
 
 
+def fetch_binance_us(start_ms: int, end_ms: int, symbol: str = "BTCUSDT") -> list[Candle]:
+    url = (f"https://api.binance.us/api/v3/klines?symbol={symbol}&interval=1m"
+           f"&startTime={start_ms}&endTime={end_ms}&limit=1000")
+    rows = _get(url)
+    return [Candle(int(r[0]), float(r[1]), float(r[2]), float(r[3]), float(r[4])) for r in rows]
+
+
+def fetch_coinbase(start_ms: int, end_ms: int, product: str = "BTC-USD") -> list[Candle]:
+    """Coinbase Exchange: [time_s, low, high, open, close, volume], newest first, max 300."""
+    iso = lambda ms: datetime.fromtimestamp(ms / 1000, tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    url = (f"https://api.exchange.coinbase.com/products/{product}/candles"
+           f"?granularity=60&start={iso(start_ms)}&end={iso(end_ms)}")
+    rows = _get(url)
+    out = [Candle(int(r[0]) * 1000, float(r[3]), float(r[2]), float(r[1]), float(r[4])) for r in rows]
+    return sorted(out, key=lambda c: c.t)
+
+
+def fetch_bitstamp(start_ms: int, end_ms: int, pair: str = "btcusd") -> list[Candle]:
+    url = (f"https://www.bitstamp.net/api/v2/ohlc/{pair}/?step=60&limit=1000"
+           f"&start={start_ms // 1000}&end={end_ms // 1000}")
+    rows = _get(url)["data"]["ohlc"]
+    return [Candle(int(r["timestamp"]) * 1000, float(r["open"]), float(r["high"]),
+                   float(r["low"]), float(r["close"])) for r in rows]
+
+
 def fetch_hyperliquid(start_ms: int, end_ms: int, coin: str = "BTC") -> list[Candle]:
     rows = _get("https://api.hyperliquid.xyz/info",
                 {"type": "candleSnapshot",
@@ -150,24 +175,44 @@ def fetch_hyperliquid(start_ms: int, end_ms: int, coin: str = "BTC") -> list[Can
     return [Candle(int(r["t"]), float(r["o"]), float(r["h"]), float(r["l"]), float(r["c"])) for r in rows]
 
 
-def window(t0: datetime, source: str, coin: str, p: Params, cache: Path = CACHE_DIR) -> list[Candle]:
+FETCHERS = {
+    "binance": lambda s, e, coin: fetch_binance(s, e, f"{coin}USDT"),
+    "binanceus": lambda s, e, coin: fetch_binance_us(s, e, f"{coin}USDT"),
+    "coinbase": lambda s, e, coin: fetch_coinbase(s, e, f"{coin}-USD"),
+    "bitstamp": lambda s, e, coin: fetch_bitstamp(s, e, f"{coin.lower()}usd"),
+    "hyperliquid": lambda s, e, coin: fetch_hyperliquid(s, e, coin),
+}
+# Binance.com refuses US IPs (GitHub runners included); the chain falls through to
+# venues that serve them. All are spot USD(T) quotes, i.e. proxies for the oracle.
+AUTO_CHAIN = ("binance", "binanceus", "coinbase", "bitstamp")
+
+
+def window(t0: datetime, source: str, coin: str, p: Params,
+           cache: Path = CACHE_DIR) -> tuple[list[Candle], str]:
+    """Candles for one event window and the source they came from. Empty responses are
+    treated as failures and never cached, so a re-run retries them."""
     start = t0 - timedelta(minutes=p.pre)
     end = t0 + timedelta(minutes=p.hold + 2)
     cache.mkdir(parents=True, exist_ok=True)
-    f = cache / f"{source}_{coin}_{t0.strftime('%Y%m%dT%H%M')}.json"
-    if f.exists():
-        rows = json.loads(f.read_text())
-    else:
-        s, e = int(start.timestamp() * 1000), int(end.timestamp() * 1000)
-        if source == "binance":
-            candles = fetch_binance(s, e, f"{coin}USDT")
-        elif source == "hyperliquid":
-            candles = fetch_hyperliquid(s, e, coin)
-        else:
-            raise ValueError(source)
-        rows = [[c.t, c.o, c.h, c.l, c.c] for c in candles]
-        f.write_text(json.dumps(rows))
-    return [Candle(*r) for r in rows]
+    s, e = int(start.timestamp() * 1000), int(end.timestamp() * 1000)
+    errors = []
+    for src in (AUTO_CHAIN if source == "auto" else (source,)):
+        f = cache / f"{src}_{coin}_{t0.strftime('%Y%m%dT%H%M')}.json"
+        if f.exists():
+            rows = json.loads(f.read_text())
+            if rows:
+                return [Candle(*r) for r in rows], src
+        try:
+            candles = FETCHERS[src](s, e, coin)
+        except Exception as ex:
+            errors.append(f"{src}: {type(ex).__name__} {str(ex)[:80]}")
+            continue
+        if not candles:
+            errors.append(f"{src}: empty response")
+            continue
+        f.write_text(json.dumps([[c.t, c.o, c.h, c.l, c.c] for c in candles]))
+        return candles, src
+    raise RuntimeError("; ".join(errors))
 
 
 # ---------------------------------------------------------------- rules
@@ -334,7 +379,8 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--events", type=Path, default=EVENTS_CSV)
     ap.add_argument("--kinds", default="CPI,FOMC,NFP")
-    ap.add_argument("--source", choices=("binance", "hyperliquid"), default="binance")
+    ap.add_argument("--source", choices=("auto", *FETCHERS), default="auto",
+                    help="auto tries " + " > ".join(AUTO_CHAIN))
     ap.add_argument("--coin", default="BTC")
     ap.add_argument("--leverage", type=float, default=20)
     ap.add_argument("--sl", type=float, default=0.015)
