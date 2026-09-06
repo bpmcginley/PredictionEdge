@@ -1,147 +1,432 @@
 {
-  "generated": "2026-09-06 12:50:27",
-  "generated_at": 1788699027.1236894,
+  "generated": "2026-09-06 16:08:39",
+  "generated_at": 1788710919.252794,
   "account_size": 100000.0,
   "tickets": [
     {
-      "market_id": "0xb79e8f949a8e2f8d0d116cfac79389b714016a882bb9d3534c09d94844b991cb",
-      "title": "Boston Red Sox vs. Baltimore Orioles: O/U 7.5",
-      "side_label": "Under \u2014 Boston Red Sox vs. Baltimore Orioles: O/U 7.5",
-      "outcome": "Under",
-      "entry_price": 0.525,
-      "whale_price": 0.518,
-      "drift_c": 0.74,
-      "contracts": 1038,
-      "cost": 544.95,
-      "max_payout": 1038.0,
-      "conviction": 0.545,
-      "hours_to_resolve": 4.7,
-      "n_wallets": 1,
-      "whale_usd": 65995,
-      "minutes_ago": 36,
-      "liquidity": 161322,
-      "url": "https://polymarket.com/event/mlb-bos-bal-2026-09-06",
-      "end_iso": "2026-09-06T17:35:00Z",
-      "event_iso": "2026-09-06 17:35:00+00",
-      "slug": "mlb-bos-bal-2026-09-06-total-7pt5",
-      "signal_ts": 1788696829.0,
+      "market_id": "0x1a4ef4ed1ad048c9a953cc4739ddd807a8d379716e753f5c79260a355151dac0",
+      "title": "Milwaukee Brewers vs. Cincinnati Reds",
+      "side_label": "Milwaukee Brewers \u2014 Milwaukee Brewers vs. Cincinnati Reds",
+      "outcome": "Milwaukee Brewers",
+      "entry_price": 0.575,
+      "whale_price": 0.594,
+      "drift_c": -1.89,
+      "contracts": 951,
+      "cost": 546.82,
+      "max_payout": 951.0,
+      "conviction": 0.547,
+      "hours_to_resolve": 0.0,
+      "n_wallets": 2,
+      "whale_usd": 48028,
+      "minutes_ago": 106,
+      "liquidity": 563091,
+      "url": "https://polymarket.com/event/mlb-mil-cin-2026-09-06",
+      "end_iso": "2026-09-13T16:10:00Z",
+      "event_iso": "2026-09-06 16:10:00+00",
+      "slug": "mlb-mil-cin-2026-09-06",
+      "signal_ts": 1788704577.0,
       "wallet_usd": [
         [
+          "0xdb859a551fcf56e49416160911476bea7307152f",
+          38623.66
+        ],
+        [
           "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1",
-          65994.87
+          9404.11
+        ]
+      ],
+      "why": [
+        "2 profitable wallets on this side",
+        "$48,028 \u2014 but only 9.5% of their book",
+        "latest buy 106 min ago",
+        "price 1.9c cheaper than they paid",
+        "0h until it resolves",
+        "$563,091 liquidity"
+      ],
+      "warnings": []
+    },
+    {
+      "market_id": "0x9c48744ce6e8914d36e21f1e2f87cf98cb2ee4a5d20c7c00ab2db38dfb37f5b4",
+      "title": "US Open WTA: Marta Kostyuk vs Linda Noskova",
+      "side_label": "Marta Kostyuk \u2014 US Open WTA: Marta Kostyuk vs Linda Noskova",
+      "outcome": "Marta Kostyuk",
+      "entry_price": 0.575,
+      "whale_price": 0.582,
+      "drift_c": -0.74,
+      "contracts": 916,
+      "cost": 526.7,
+      "max_payout": 916.0,
+      "conviction": 0.527,
+      "hours_to_resolve": 0.6,
+      "n_wallets": 1,
+      "whale_usd": 34946,
+      "minutes_ago": 34,
+      "liquidity": 116084,
+      "url": "https://polymarket.com/event/wta-kostyuk-noskova-2026-09-06",
+      "end_iso": "2026-09-13T15:00:00Z",
+      "event_iso": "2026-09-06 16:45:00+00",
+      "slug": "wta-kostyuk-noskova-2026-09-06",
+      "signal_ts": 1788708885.0,
+      "wallet_usd": [
+        [
+          "0x397062018dfb77e855608fe23223592bc82c44ce",
+          34945.98
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$65,995, 97% of their own book",
-        "latest buy 36 min ago",
-        "price up 0.7c since they bought",
-        "5h until it resolves",
-        "$161,322 liquidity"
+        "$34,946, 31% of their own book",
+        "latest buy 34 min ago",
+        "price 0.7c cheaper than they paid",
+        "1h until it resolves",
+        "$116,084 liquidity"
       ],
       "warnings": [
-        "resolves within 2 days",
         "only one wallet \u2014 single opinion"
       ]
     },
     {
-      "market_id": "0xd6bffa375fefeed511a5f9600acfdd8f00a5f818a79b288d60cbb27f896af9ff",
-      "title": "Israel military action against Lebanon on September 29?",
-      "side_label": "YES on: Israel military action against Lebanon on September 29?",
-      "outcome": "Yes",
-      "entry_price": 0.75,
-      "whale_price": 0.84,
-      "drift_c": -9.0,
-      "contracts": 621,
-      "cost": 465.75,
-      "max_payout": 621.0,
-      "conviction": 0.466,
-      "hours_to_resolve": 563.1,
+      "market_id": "0x3599129ed0727e6f2f5e461a1a48712d3eee96b48c4262c9f2fbe81beb4d0fba",
+      "title": "US Open ATP: Alex Michelsen vs Tomas Etcheverry",
+      "side_label": "Alex Michelsen \u2014 US Open ATP: Alex Michelsen vs Tomas Etcheverry",
+      "outcome": "Alex Michelsen",
+      "entry_price": 0.725,
+      "whale_price": 0.73,
+      "drift_c": -0.5,
+      "contracts": 680,
+      "cost": 493.0,
+      "max_payout": 680.0,
+      "conviction": 0.493,
+      "hours_to_resolve": 2.4,
       "n_wallets": 1,
-      "whale_usd": 13834,
-      "minutes_ago": 288,
-      "liquidity": 99,
-      "url": "https://polymarket.com/event/israel-military-action-against-lebanon-onptptpt-20260903",
-      "end_iso": "2026-09-29T23:59:00Z",
-      "event_iso": "",
-      "slug": "israel-military-action-against-lebanon-on-september-29-20260903",
-      "signal_ts": 1788681748.0,
+      "whale_usd": 8083,
+      "minutes_ago": 13,
+      "liquidity": 216726,
+      "url": "https://polymarket.com/event/atp-michels-etcheve-2026-09-06",
+      "end_iso": "2026-09-13T15:00:00Z",
+      "event_iso": "2026-09-06 18:30:00+00",
+      "slug": "atp-michels-etcheve-2026-09-06",
+      "signal_ts": 1788710134.0,
       "wallet_usd": [
         [
-          "0xf085803b3da3680ed900b14bbe2ec40b72759491",
-          13833.52
+          "0x86eb13b20d774810b92a3be064718fec5a926566",
+          8083.08
         ]
       ],
       "why": [
         "new wallet with no track record \u2014 pattern signal, not a copy",
-        "$13,834, 100% of their own book",
-        "latest buy 288 min ago",
-        "price 9.0c cheaper than they paid",
-        "563h until it resolves"
+        "$8,083, 100% of their own book",
+        "latest buy 13 min ago",
+        "still near their entry price",
+        "2h until it resolves",
+        "$216,726 liquidity"
       ],
       "warnings": [
-        "thin liquidity \u2014 expect slippage",
         "unproven wallet \u2014 this is a pattern, not a track record"
+      ]
+    },
+    {
+      "market_id": "0x8d95b1c9e10f64d640b70d653c2dc738f3d3533171b765ba029e5407b3b87480",
+      "title": "Detroit Tigers vs. Cleveland Guardians",
+      "side_label": "Cleveland Guardians \u2014 Detroit Tigers vs. Cleveland Guardians",
+      "outcome": "Cleveland Guardians",
+      "entry_price": 0.605,
+      "whale_price": 0.61,
+      "drift_c": -0.5,
+      "contracts": 800,
+      "cost": 484.0,
+      "max_payout": 800.0,
+      "conviction": 0.484,
+      "hours_to_resolve": 1.5,
+      "n_wallets": 1,
+      "whale_usd": 6100,
+      "minutes_ago": 14,
+      "liquidity": 508696,
+      "url": "https://polymarket.com/event/mlb-det-cle-2026-09-06",
+      "end_iso": "2026-09-13T17:40:00Z",
+      "event_iso": "2026-09-06 17:40:00+00",
+      "slug": "mlb-det-cle-2026-09-06",
+      "signal_ts": 1788710070.0,
+      "wallet_usd": [
+        [
+          "0x684baa57c338c2549aec0aa3f034f695d72a8409",
+          6100.0
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$6,100, 24% of their own book",
+        "latest buy 14 min ago",
+        "still near their entry price",
+        "2h until it resolves",
+        "$508,696 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x3845fd90b9cc4faf89f9b273043824d9958bc5bdc320b23119d10bdf6f940245",
+      "title": "Chicago Cubs vs. Miami Marlins",
+      "side_label": "Miami Marlins \u2014 Chicago Cubs vs. Miami Marlins",
+      "outcome": "Miami Marlins",
+      "entry_price": 0.435,
+      "whale_price": 0.43,
+      "drift_c": 0.5,
+      "contracts": 1039,
+      "cost": 451.96,
+      "max_payout": 1039.0,
+      "conviction": 0.452,
+      "hours_to_resolve": 1.5,
+      "n_wallets": 1,
+      "whale_usd": 16190,
+      "minutes_ago": 65,
+      "liquidity": 499856,
+      "url": "https://polymarket.com/event/mlb-chc-mia-2026-09-06",
+      "end_iso": "2026-09-13T17:40:00Z",
+      "event_iso": "2026-09-06 17:40:00+00",
+      "slug": "mlb-chc-mia-2026-09-06",
+      "signal_ts": 1788706999.0,
+      "wallet_usd": [
+        [
+          "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1",
+          16190.31
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$16,190, 24% of their own book",
+        "latest buy 65 min ago",
+        "still near their entry price",
+        "2h until it resolves",
+        "$499,856 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
       ]
     }
   ],
   "probe": [
     {
-      "market_id": "0x4156e57b69504cde330ccff6866189788d892ab1d1b44a90f7fe88e21a985023",
-      "title": "Bitcoin Up or Down on September 6?",
-      "side_label": "Up \u2014 Bitcoin Up or Down on September 6?",
-      "outcome": "Up",
-      "entry_price": 0.685,
-      "whale_price": 0.69,
-      "drift_c": -0.5,
-      "contracts": 525,
-      "cost": 359.62,
-      "max_payout": 525.0,
-      "conviction": 0.36,
-      "hours_to_resolve": 3.2,
+      "market_id": "0xa395ef9b55acc480316b301df11d2890b97e00872f4d2ba03b9cd5c707654e8e",
+      "title": "Los Angeles Angels vs. Pittsburgh Pirates",
+      "side_label": "Los Angeles Angels \u2014 Los Angeles Angels vs. Pittsburgh Pirates",
+      "outcome": "Los Angeles Angels",
+      "entry_price": 0.375,
+      "whale_price": 0.37,
+      "drift_c": 0.5,
+      "contracts": 1120,
+      "cost": 420.0,
+      "max_payout": 1120.0,
+      "conviction": 0.42,
+      "hours_to_resolve": 1.4,
       "n_wallets": 1,
-      "whale_usd": 2049,
-      "minutes_ago": 116,
-      "liquidity": 23003,
-      "url": "https://polymarket.com/event/bitcoin-up-or-down-on-september-6-2026",
-      "end_iso": "2026-09-06T16:00:00Z",
-      "event_iso": "",
-      "slug": "bitcoin-up-or-down-on-september-6-2026",
-      "signal_ts": 1788692026.0,
+      "whale_usd": 4898,
+      "minutes_ago": 38,
+      "liquidity": 349465,
+      "url": "https://polymarket.com/event/mlb-laa-pit-2026-09-06",
+      "end_iso": "2026-09-13T17:35:00Z",
+      "event_iso": "2026-09-06 17:35:00+00",
+      "slug": "mlb-laa-pit-2026-09-06",
+      "signal_ts": 1788708658.0,
       "wallet_usd": [
         [
-          "0x06dc51826bc524d9a83770e7de9dd7e005b04524",
-          2048.61
+          "0xfe787d2da716d60e8acff57fb87eb13cd4d10319",
+          4897.57
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$2,049 \u2014 but only 0.2% of their book",
-        "latest buy 116 min ago",
+        "$4,898 \u2014 but only 3.2% of their book",
+        "latest buy 38 min ago",
         "still near their entry price",
-        "3h until it resolves"
+        "1h until it resolves",
+        "$349,465 liquidity"
       ],
       "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0xa1887b19ca2ba2be2e37619df8b13f8fa6774371d9a91cf645e2d96ad0b4dfa0",
+      "title": "Israel military action against Lebanon on September 27?",
+      "side_label": "NO on: Israel military action against Lebanon on September 27?",
+      "outcome": "No",
+      "entry_price": 0.89,
+      "whale_price": 0.88,
+      "drift_c": 1.0,
+      "contracts": 458,
+      "cost": 407.62,
+      "max_payout": 458.0,
+      "conviction": 0.408,
+      "hours_to_resolve": 511.8,
+      "n_wallets": 1,
+      "whale_usd": 5402,
+      "minutes_ago": 218,
+      "liquidity": 106,
+      "url": "https://polymarket.com/event/israel-military-action-against-lebanon-onptptpt-20260903",
+      "end_iso": "2026-09-27T23:59:00Z",
+      "event_iso": "",
+      "slug": "israel-military-action-against-lebanon-on-september-27-20260903",
+      "signal_ts": 1788697851.0,
+      "wallet_usd": [
+        [
+          "0x5741fc30955361cc15055cb0ba4987182a199c5c",
+          5402.32
+        ]
+      ],
+      "why": [
+        "new wallet with no track record \u2014 pattern signal, not a copy",
+        "$5,402, 56% of their own book",
+        "latest buy 218 min ago",
+        "price up 1.0c since they bought",
+        "512h until it resolves"
+      ],
+      "warnings": [
+        "thin liquidity \u2014 expect slippage",
+        "unproven wallet \u2014 this is a pattern, not a track record"
+      ]
+    },
+    {
+      "market_id": "0x40bce14f28d814b55194fd255772b5ab53291bb77445ce33fc7a1f556e9f60b5",
+      "title": "Will AfD win 38-41 seats in the 2026 Sachsen-Anhalt parliamentary elections?",
+      "side_label": "YES on: Will AfD win 38-41 seats in the 2026 Sachsen-Anhalt parliamentary elections?",
+      "outcome": "Yes",
+      "entry_price": 0.61,
+      "whale_price": 0.74,
+      "drift_c": -13.03,
+      "contracts": 667,
+      "cost": 406.87,
+      "max_payout": 667.0,
+      "conviction": 0.407,
+      "hours_to_resolve": 7.8,
+      "n_wallets": 1,
+      "whale_usd": 4395,
+      "minutes_ago": 13,
+      "liquidity": 3204,
+      "url": "https://polymarket.com/event/sachsen-anhalt-parliamentary-elections-afd-of-seats-20260722230807017",
+      "end_iso": "2026-09-06T23:59:00Z",
+      "event_iso": "",
+      "slug": "will-afd-win-38-41-seats-in-the-2026-sachsen-anhalt-parliamentary-elections-20260722230807020",
+      "signal_ts": 1788710139.0,
+      "wallet_usd": [
+        [
+          "0x23d81ba9371e576015c1e562db09c689f56b0288",
+          4395.19
+        ]
+      ],
+      "why": [
+        "election market and 100% of this is one wallet \u2014 concentration here can move the price rather than confirm it",
+        "1 profitable wallet on this side",
+        "$4,395 \u2014 but only 0.7% of their book",
+        "latest buy 13 min ago",
+        "price 13.0c cheaper than they paid",
+        "8h until it resolves"
+      ],
+      "warnings": [
+        "thin liquidity \u2014 expect slippage",
         "resolves within 2 days",
+        "only one wallet \u2014 single opinion",
+        "100% of this signal is a single wallet on an election market \u2014 that is the shape that distorted 2024 pricing"
+      ]
+    },
+    {
+      "market_id": "0xc4d9910f44f0480a5f3d818cb65e5ad0151bcde9336fea4c009674fa3b93418a",
+      "title": "Will AfD win at least 45% of all valid second votes?",
+      "side_label": "NO on: Will AfD win at least 45% of all valid second votes?",
+      "outcome": "No",
+      "entry_price": 0.78,
+      "whale_price": 0.84,
+      "drift_c": -6.0,
+      "contracts": 510,
+      "cost": 397.8,
+      "max_payout": 510.0,
+      "conviction": 0.398,
+      "hours_to_resolve": 7.8,
+      "n_wallets": 1,
+      "whale_usd": 2241,
+      "minutes_ago": 20,
+      "liquidity": 6395,
+      "url": "https://polymarket.com/event/sachsen-anhalt-parliamentary-election-afd-vote-share",
+      "end_iso": "2026-09-06T23:59:00Z",
+      "event_iso": "",
+      "slug": "will-afd-win-at-least-45-of-all-valid-second-votes-sachsen-anhalt",
+      "signal_ts": 1788709710.0,
+      "wallet_usd": [
+        [
+          "0x6db983ff1cbc85249e64e6ccd101aaa613ba4ab5",
+          2241.39
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,241 \u2014 but only 0.5% of their book",
+        "latest buy 20 min ago",
+        "price 6.0c cheaper than they paid",
+        "8h until it resolves"
+      ],
+      "warnings": [
+        "thin liquidity \u2014 expect slippage",
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion",
+        "no politics track record \u2014 these wallets earned their record elsewhere"
+      ]
+    },
+    {
+      "market_id": "0x9c49a169f2a83d408fd70970c7fcb214afed99be97a837ab8dea870e3db2a01e",
+      "title": "Washington Nationals vs. Los Angeles Dodgers",
+      "side_label": "Washington Nationals \u2014 Washington Nationals vs. Los Angeles Dodgers",
+      "outcome": "Washington Nationals",
+      "entry_price": 0.355,
+      "whale_price": 0.35,
+      "drift_c": 0.5,
+      "contracts": 1036,
+      "cost": 367.78,
+      "max_payout": 1036.0,
+      "conviction": 0.368,
+      "hours_to_resolve": 10.0,
+      "n_wallets": 1,
+      "whale_usd": 4495,
+      "minutes_ago": 113,
+      "liquidity": 314015,
+      "url": "https://polymarket.com/event/mlb-wsh-lad-2026-09-06",
+      "end_iso": "2026-09-14T02:10:00Z",
+      "event_iso": "2026-09-07 02:10:00+00",
+      "slug": "mlb-wsh-lad-2026-09-06",
+      "signal_ts": 1788704142.0,
+      "wallet_usd": [
+        [
+          "0xfe787d2da716d60e8acff57fb87eb13cd4d10319",
+          4495.46
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$4,495 \u2014 but only 2.9% of their book",
+        "latest buy 113 min ago",
+        "still near their entry price",
+        "10h until it resolves",
+        "$314,015 liquidity"
+      ],
+      "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 287,
+  "considered": 305,
   "rejected": {
-    "resolves in under 3h": 20,
-    "market closed": 82,
-    "in-play (event already started)": 3,
-    "esports (sleeve retired \u2014 see esports_enabled)": 101,
-    "fresh wallet: market too liquid for the pattern": 32,
-    "wallet not new (no track record either)": 25,
-    "parlay / combo ticket, not a single market": 2,
-    "already resolved": 11,
-    "price outside tradeable band": 1,
-    "signal too old for this market's horizon": 3,
-    "resolves more than 30 days out": 3,
-    "duplicate event (kept the stronger side)": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 1
+    "market closed": 73,
+    "esports (sleeve retired \u2014 see esports_enabled)": 66,
+    "already resolved": 41,
+    "resolves in under 3h": 10,
+    "fresh wallet: market too liquid for the pattern": 27,
+    "wallet not new (no track record either)": 60,
+    "in-play (event already started)": 4,
+    "signal too old for this market's horizon": 8,
+    "price outside tradeable band": 3,
+    "price + fee ran away from the whale's entry": 2,
+    "resolves more than 30 days out": 1,
+    "below the 0.45 buy bar (recorded, not bought)": 5
   },
   "notes": [],
   "consistency": {
@@ -149,16 +434,18 @@
     "enabled": true,
     "events_scanned": 345,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 115,
-      "not a ladder: fewer than two live, quoted legs": 99,
-      "not a ladder: group labels are not thresholds or deadlines": 58,
+      "bracket has legs we cannot price (fail closed)": 118,
+      "not a ladder: fewer than two live, quoted legs": 96,
+      "not a ladder: group labels are not thresholds or deadlines": 57,
       "not a ladder: duplicate deadlines left too few rungs": 6,
-      "ladder pair too illiquid to fill": 74,
+      "ladder pair too illiquid to fill": 72,
       "bracket has too many legs to place by hand": 1,
       "ladder inversion smaller than the spread": 1,
-      "bracket leg too illiquid to fill": 5,
+      "bracket leg too illiquid to fill": 4,
       "not a ladder: numeric group spans different end dates": 1,
+      "bracket underround smaller than the spread": 1,
       "bracket overround smaller than the spread": 1,
+      "not a ladder: a live leg carries no group label": 3,
       "dominance gap smaller than the spread": 2
     },
     "notes": [],
@@ -179,7 +466,7 @@
         "nowcast_pp": 2.38356235342767,
         "nowcast_as_of": "2026-09-04 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.108pp (x1.48). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.111pp (x1.45). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
         "rows": [
           {
             "label": "\u22642.0%",
@@ -197,16 +484,16 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.044,
+            "market_prob": 0.0585,
             "model_prob": 0.1297,
-            "gap_c": 8.57,
+            "gap_c": 7.12,
             "suspect": false
           },
           {
             "label": "2.3%",
-            "market_prob": 0.305,
+            "market_prob": 0.285,
             "model_prob": 0.215,
-            "gap_c": -9.0,
+            "gap_c": -7.0,
             "suspect": false
           },
           {
@@ -218,9 +505,9 @@
           },
           {
             "label": "2.5%",
-            "market_prob": 0.155,
+            "market_prob": 0.165,
             "model_prob": 0.1899,
-            "gap_c": 3.49,
+            "gap_c": 2.49,
             "suspect": false
           },
           {
@@ -232,9 +519,9 @@
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0195,
+            "market_prob": 0.021,
             "model_prob": 0.0369,
-            "gap_c": 1.74,
+            "gap_c": 1.59,
             "suspect": false
           },
           {
@@ -263,13 +550,13 @@
         "nowcast_pp": 0.203341742698412,
         "nowcast_as_of": "2026-09-04 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.082pp (x1.96). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.079pp (x2.04). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
-            "market_prob": 0.05,
+            "market_prob": 0.045,
             "model_prob": 0.1689,
-            "gap_c": 11.89,
+            "gap_c": 12.39,
             "suspect": false
           },
           {
@@ -288,30 +575,30 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.3,
+            "market_prob": 0.29,
             "model_prob": 0.2056,
-            "gap_c": -9.44,
+            "gap_c": -8.44,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.0455,
+            "market_prob": 0.035,
             "model_prob": 0.1181,
-            "gap_c": 7.26,
+            "gap_c": 8.31,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.0165,
+            "market_prob": 0.0125,
             "model_prob": 0.0465,
-            "gap_c": 3.0,
+            "gap_c": 3.4,
             "suspect": false
           },
           {
             "label": "0.6%+",
-            "market_prob": 0.0065,
+            "market_prob": 0.0025,
             "model_prob": 0.0151,
-            "gap_c": 0.86,
+            "gap_c": 1.26,
             "suspect": false
           }
         ]
@@ -386,9 +673,9 @@
           },
           {
             "label": "\u22650.5%",
-            "market_prob": 0.135,
+            "market_prob": 0.14,
             "model_prob": 0.2851,
-            "gap_c": 15.01,
+            "gap_c": 14.51,
             "suspect": false
           }
         ]
@@ -403,7 +690,7 @@
         "nowcast_pp": 3.37583994813757,
         "nowcast_as_of": "2026-09-04 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.113pp (x1.42). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.115pp (x1.40). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
         "rows": [
           {
             "label": "\u22642.9%",
@@ -414,23 +701,23 @@
           },
           {
             "label": "3.0%",
-            "market_prob": 0.0055,
+            "market_prob": 0.0085,
             "model_prob": 0.017,
-            "gap_c": 1.15,
+            "gap_c": 0.85,
             "suspect": false
           },
           {
             "label": "3.1%",
-            "market_prob": 0.0205,
+            "market_prob": 0.0215,
             "model_prob": 0.0582,
-            "gap_c": 3.77,
+            "gap_c": 3.67,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.0915,
+            "market_prob": 0.095,
             "model_prob": 0.1367,
-            "gap_c": 4.52,
+            "gap_c": 4.17,
             "suspect": false
           },
           {
