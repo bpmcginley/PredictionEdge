@@ -1,46 +1,134 @@
 {
-  "generated": "2026-09-08 06:00:02",
-  "generated_at": 1788847202.774973,
+  "generated": "2026-09-08 11:09:58",
+  "generated_at": 1788865798.3677192,
   "account_size": 100000.0,
   "tickets": [
     {
-      "market_id": "0x2e1e684b3312b9f06072575f01fb77237e0b94bdcfcc477a553e8685cea91b82",
-      "title": "US Open ATP: Frances Tiafoe vs Alex Michelsen",
-      "side_label": "Frances Tiafoe \u2014 US Open ATP: Frances Tiafoe vs Alex Michelsen",
-      "outcome": "Frances Tiafoe",
-      "entry_price": 0.585,
-      "whale_price": 0.59,
-      "drift_c": -0.5,
-      "contracts": 849,
-      "cost": 496.66,
-      "max_payout": 849.0,
-      "conviction": 0.497,
-      "hours_to_resolve": 11.0,
-      "n_wallets": 1,
-      "whale_usd": 8166,
-      "minutes_ago": 23,
-      "liquidity": 239214,
-      "url": "https://polymarket.com/event/atp-tiafoe-michels-2026-09-08",
-      "end_iso": "2026-09-15T15:30:00Z",
-      "event_iso": "2026-09-08 17:00:00+00",
-      "slug": "atp-tiafoe-michels-2026-09-08",
-      "signal_ts": 1788845832.0,
+      "market_id": "0x419a7251943ebb0c94d4fc116f34f6e0c6f7d89ba3f1476e0dbdb1a73ca42aa7",
+      "title": "Will AEK win on 2026-09-08?",
+      "side_label": "YES on: Will AEK win on 2026-09-08?",
+      "outcome": "Yes",
+      "entry_price": 0.56,
+      "whale_price": 0.55,
+      "drift_c": 1.0,
+      "contracts": 933,
+      "cost": 522.48,
+      "max_payout": 933.0,
+      "conviction": 0.523,
+      "hours_to_resolve": 5.6,
+      "n_wallets": 2,
+      "whale_usd": 7863,
+      "minutes_ago": 62,
+      "liquidity": 282131,
+      "url": "https://polymarket.com/event/ucl-aek1-lin2-2026-09-08",
+      "end_iso": "2026-09-08T16:45:00Z",
+      "event_iso": "2026-09-08 16:45:00+00",
+      "slug": "ucl-aek1-lin2-2026-09-08-aek1",
+      "signal_ts": 1788862083.0,
       "wallet_usd": [
         [
-          "0x86eb13b20d774810b92a3be064718fec5a926566",
-          8165.79
+          "0x31706006a0ef88b2b8f6d093efbc83b359fbc6a0",
+          5825.24
+        ],
+        [
+          "0x821dab0565ebf5b327f51db06223fdcfe01acf16",
+          2037.75
         ]
       ],
       "why": [
-        "new wallet with no track record \u2014 pattern signal, not a copy",
-        "$8,166, 60% of their own book",
-        "latest buy 23 min ago",
-        "still near their entry price",
-        "11h until it resolves",
-        "$239,214 liquidity"
+        "2 profitable wallets on this side",
+        "$7,863, 22% of their own book",
+        "latest buy 62 min ago",
+        "price up 1.0c since they bought",
+        "6h until it resolves",
+        "$282,131 liquidity"
       ],
       "warnings": [
-        "unproven wallet \u2014 this is a pattern, not a track record"
+        "resolves within 2 days"
+      ]
+    },
+    {
+      "market_id": "0xc4cc6d2ddca13b7194a7737e331aa8109575cdc38d02bd6be31a5a47d1b34520",
+      "title": "Will Bitcoin reach $82,500 in September?",
+      "side_label": "YES on: Will Bitcoin reach $82,500 in September?",
+      "outcome": "Yes",
+      "entry_price": 0.59,
+      "whale_price": 0.57,
+      "drift_c": 2.0,
+      "contracts": 883,
+      "cost": 520.97,
+      "max_payout": 883.0,
+      "conviction": 0.521,
+      "hours_to_resolve": 544.8,
+      "n_wallets": 2,
+      "whale_usd": 9627,
+      "minutes_ago": 88,
+      "liquidity": 80599,
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-september-2026",
+      "end_iso": "2026-10-01T04:00:00Z",
+      "event_iso": "",
+      "slug": "will-bitcoin-reach-82pt5k-in-september-2026",
+      "signal_ts": 1788860496.0,
+      "wallet_usd": [
+        [
+          "0x06dc51826bc524d9a83770e7de9dd7e005b04524",
+          6206.73
+        ],
+        [
+          "0xcc500cbcc8b7cf5bd21975ebbea34f21b5644c82",
+          3420.0
+        ]
+      ],
+      "why": [
+        "2 profitable wallets on this side",
+        "$9,627 \u2014 but only 0.8% of their book",
+        "latest buy 88 min ago",
+        "price up 2.0c since they bought",
+        "545h until it resolves",
+        "$80,599 liquidity"
+      ],
+      "warnings": []
+    },
+    {
+      "market_id": "0x502a94e5c525766d5ee7f16c6568131ba1b2cbadb69c703af05a6ef00336ed64",
+      "title": "Will United Russia (ER) gain the most seats in the next Russian parliamentary election?",
+      "side_label": "YES on: Will United Russia (ER) gain the most seats in the next Russian parliamentary election?",
+      "outcome": "Yes",
+      "entry_price": 0.71,
+      "whale_price": 0.695,
+      "drift_c": 1.53,
+      "contracts": 715,
+      "cost": 507.65,
+      "max_payout": 715.0,
+      "conviction": 0.508,
+      "hours_to_resolve": 516.8,
+      "n_wallets": 1,
+      "whale_usd": 33241,
+      "minutes_ago": 4,
+      "liquidity": 390261,
+      "url": "https://polymarket.com/event/which-party-will-gain-most-seats-in-russian-parliamentary-election",
+      "end_iso": "2026-09-30T00:00:00Z",
+      "event_iso": "",
+      "slug": "will-united-russia-er-gain-the-most-seats-in-the-next-russian-parliamentary-election",
+      "signal_ts": 1788865572.0,
+      "wallet_usd": [
+        [
+          "0xf2f6af4f27ec2dcf4072095ab804016e14cd5817",
+          33240.52
+        ]
+      ],
+      "why": [
+        "election market and 100% of this is one wallet \u2014 concentration here can move the price rather than confirm it",
+        "1 profitable wallet on this side",
+        "$33,241 \u2014 but only 7.4% of their book",
+        "latest buy 4 min ago",
+        "price up 1.5c since they bought",
+        "517h until it resolves",
+        "$390,261 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion",
+        "100% of this signal is a single wallet on an election market \u2014 that is the shape that distorted 2024 pricing"
       ]
     },
     {
@@ -55,11 +143,11 @@
       "cost": 478.73,
       "max_payout": 977.0,
       "conviction": 0.479,
-      "hours_to_resolve": 186.0,
+      "hours_to_resolve": 180.8,
       "n_wallets": 1,
       "whale_usd": 20000,
-      "minutes_ago": 183,
-      "liquidity": 771308,
+      "minutes_ago": 493,
+      "liquidity": 507780,
       "url": "https://polymarket.com/event/fed-decision-in-september-762",
       "end_iso": "2026-09-16T00:00:00Z",
       "event_iso": "",
@@ -73,35 +161,320 @@
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$20,000 of smart money behind it",
-        "latest buy 183 min ago",
+        "$20,000, 63% of their own book",
+        "latest buy 493 min ago",
         "still near their entry price",
-        "186h until it resolves",
-        "$771,308 liquidity"
+        "181h until it resolves",
+        "$507,780 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0xc30d9204c92c424f1c7f79f0fd91ed8be3c407b4cc737a45576b6cf5f9ad3f56",
+      "title": "Will FC Internazionale Milano win on 2026-09-08?",
+      "side_label": "YES on: Will FC Internazionale Milano win on 2026-09-08?",
+      "outcome": "Yes",
+      "entry_price": 0.19,
+      "whale_price": 0.184,
+      "drift_c": 0.57,
+      "contracts": 1900,
+      "cost": 361.0,
+      "max_payout": 1900.0,
+      "conviction": 0.463,
+      "hours_to_resolve": 7.8,
+      "n_wallets": 1,
+      "whale_usd": 9773,
+      "minutes_ago": 41,
+      "liquidity": 589526,
+      "url": "https://polymarket.com/event/ucl-rma-int-2026-09-08",
+      "end_iso": "2026-09-08T19:00:00Z",
+      "event_iso": "2026-09-08 19:00:00+00",
+      "slug": "ucl-rma-int-2026-09-08-int",
+      "signal_ts": 1788863310.0,
+      "wallet_usd": [
+        [
+          "0xa2a78bb796f56b1b174b29eff72af4f0c558627b",
+          9772.7
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$9,773, 97% of their own book",
+        "latest buy 41 min ago",
+        "price up 0.6c since they bought",
+        "8h until it resolves",
+        "$589,526 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion",
+        "size capped by the per-market contract limit"
       ]
     }
   ],
   "probe": [
     {
+      "market_id": "0x948a46875bae03fdb2fb45adf2aac075ba85f1e4af15743b1656f0c154a4e637",
+      "title": "Will Bitcoin dip to $78,000 on September 8?",
+      "side_label": "NO on: Will Bitcoin dip to $78,000 on September 8?",
+      "outcome": "No",
+      "entry_price": 0.29,
+      "whale_price": 0.51,
+      "drift_c": -22.0,
+      "contracts": 1406,
+      "cost": 407.74,
+      "max_payout": 1406.0,
+      "conviction": 0.408,
+      "hours_to_resolve": 16.8,
+      "n_wallets": 1,
+      "whale_usd": 2560,
+      "minutes_ago": 86,
+      "liquidity": 17310,
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-on-september-8-2026",
+      "end_iso": "2026-09-09T04:00:00Z",
+      "event_iso": "",
+      "slug": "will-bitcoin-dip-to-78k-on-september-8-2026",
+      "signal_ts": 1788860640.0,
+      "wallet_usd": [
+        [
+          "0xcc500cbcc8b7cf5bd21975ebbea34f21b5644c82",
+          2560.2
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,560 \u2014 but only 1.0% of their book",
+        "latest buy 86 min ago",
+        "price 22.0c cheaper than they paid",
+        "17h until it resolves"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x90f9c8c24f8ba4a45a0adb05e9229f4d16fdeed262d076e59c67acadef2ec742",
+      "title": "Will BV Borussia 09 Dortmund win on 2026-09-08?",
+      "side_label": "NO on: Will BV Borussia 09 Dortmund win on 2026-09-08?",
+      "outcome": "No",
+      "entry_price": 0.47,
+      "whale_price": 0.47,
+      "drift_c": 0.0,
+      "contracts": 848,
+      "cost": 398.56,
+      "max_payout": 848.0,
+      "conviction": 0.399,
+      "hours_to_resolve": 7.8,
+      "n_wallets": 1,
+      "whale_usd": 2208,
+      "minutes_ago": 81,
+      "liquidity": 458351,
+      "url": "https://polymarket.com/event/ucl-bvb-vil-2026-09-08",
+      "end_iso": "2026-09-08T19:00:00Z",
+      "event_iso": "2026-09-08 19:00:00+00",
+      "slug": "ucl-bvb-vil-2026-09-08-bvb",
+      "signal_ts": 1788860959.0,
+      "wallet_usd": [
+        [
+          "0x821dab0565ebf5b327f51db06223fdcfe01acf16",
+          2207.96
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,208 \u2014 but only 0.8% of their book",
+        "latest buy 81 min ago",
+        "still near their entry price",
+        "8h until it resolves",
+        "$458,351 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x625a39dc30fecfe72105efb9b2e9d90d6e29aa22a709e2ad99a8376bd276d859",
+      "title": "Will the price of Bitcoin be above $78,000 on September 8?",
+      "side_label": "YES on: Will the price of Bitcoin be above $78,000 on September 8?",
+      "outcome": "Yes",
+      "entry_price": 0.72,
+      "whale_price": 0.84,
+      "drift_c": -12.0,
+      "contracts": 551,
+      "cost": 396.72,
+      "max_payout": 551.0,
+      "conviction": 0.397,
+      "hours_to_resolve": 4.8,
+      "n_wallets": 1,
+      "whale_usd": 2546,
+      "minutes_ago": 86,
+      "liquidity": 36766,
+      "url": "https://polymarket.com/event/bitcoin-above-on-september-8-2026",
+      "end_iso": "2026-09-08T16:00:00Z",
+      "event_iso": "",
+      "slug": "bitcoin-above-78k-on-september-8-2026",
+      "signal_ts": 1788860635.0,
+      "wallet_usd": [
+        [
+          "0x55be7aa03ecfbe37aa5460db791205f7ac9ddca3",
+          2546.14
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,546 \u2014 but only 3.3% of their book",
+        "latest buy 86 min ago",
+        "price 12.0c cheaper than they paid",
+        "5h until it resolves"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x3dfa59b86395e68e3da94c9ca36246592c1434c0b3352aea159d31de7647856d",
+      "title": "Will Club Brugge KV win on 2026-09-08?",
+      "side_label": "NO on: Will Club Brugge KV win on 2026-09-08?",
+      "outcome": "No",
+      "entry_price": 0.63,
+      "whale_price": 0.62,
+      "drift_c": 1.0,
+      "contracts": 623,
+      "cost": 392.49,
+      "max_payout": 623.0,
+      "conviction": 0.393,
+      "hours_to_resolve": 5.6,
+      "n_wallets": 1,
+      "whale_usd": 2534,
+      "minutes_ago": 69,
+      "liquidity": 549140,
+      "url": "https://polymarket.com/event/ucl-bru-ast-2026-09-08",
+      "end_iso": "2026-09-08T16:45:00Z",
+      "event_iso": "2026-09-08 16:45:00+00",
+      "slug": "ucl-bru-ast-2026-09-08-bru",
+      "signal_ts": 1788861646.0,
+      "wallet_usd": [
+        [
+          "0x29b15e8557b2cb5b5ba1ec8b5cbba479ee26f737",
+          2533.65
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,534 \u2014 but only 16.9% of their book",
+        "latest buy 69 min ago",
+        "price up 1.0c since they bought",
+        "6h until it resolves",
+        "$549,140 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0xc5b4a0f8fd1f3f67ab23d5a5586a1c485934be2bb6d83a0d9531fea5b6656fb7",
+      "title": "Ethereum Up or Down on September 8?",
+      "side_label": "Up \u2014 Ethereum Up or Down on September 8?",
+      "outcome": "Up",
+      "entry_price": 0.575,
+      "whale_price": 0.66,
+      "drift_c": -8.5,
+      "contracts": 657,
+      "cost": 377.77,
+      "max_payout": 657.0,
+      "conviction": 0.378,
+      "hours_to_resolve": 4.8,
+      "n_wallets": 1,
+      "whale_usd": 2099,
+      "minutes_ago": 97,
+      "liquidity": 21102,
+      "url": "https://polymarket.com/event/ethereum-up-or-down-on-september-8-2026",
+      "end_iso": "2026-09-08T16:00:00Z",
+      "event_iso": "",
+      "slug": "ethereum-up-or-down-on-september-8-2026",
+      "signal_ts": 1788859941.0,
+      "wallet_usd": [
+        [
+          "0x06dc51826bc524d9a83770e7de9dd7e005b04524",
+          2099.06
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,099 \u2014 but only 0.2% of their book",
+        "latest buy 97 min ago",
+        "price 8.5c cheaper than they paid",
+        "5h until it resolves"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0xf3787297e8e731a3f7c55870dc822e6f5e48716028428ccb2f234b2f1367a4e8",
+      "title": "Will Arsenal FC win on 2026-09-09?",
+      "side_label": "YES on: Will Arsenal FC win on 2026-09-09?",
+      "outcome": "Yes",
+      "entry_price": 0.56,
+      "whale_price": 0.56,
+      "drift_c": 0.0,
+      "contracts": 655,
+      "cost": 366.8,
+      "max_payout": 655.0,
+      "conviction": 0.367,
+      "hours_to_resolve": 31.8,
+      "n_wallets": 1,
+      "whale_usd": 6048,
+      "minutes_ago": 176,
+      "liquidity": 186628,
+      "url": "https://polymarket.com/event/ucl-nap-ars-2026-09-09",
+      "end_iso": "2026-09-09T19:00:00Z",
+      "event_iso": "2026-09-09 19:00:00+00",
+      "slug": "ucl-nap-ars-2026-09-09-ars",
+      "signal_ts": 1788855205.0,
+      "wallet_usd": [
+        [
+          "0x6e9f61710b1703bb7e0ef7ebe1323c443a1d0eae",
+          6048.0
+        ]
+      ],
+      "why": [
+        "new wallet with no track record \u2014 pattern signal, not a copy",
+        "$6,048 \u2014 but only 4.2% of their book",
+        "latest buy 176 min ago",
+        "still near their entry price",
+        "32h until it resolves",
+        "$186,628 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "unproven wallet \u2014 this is a pattern, not a track record"
+      ]
+    },
+    {
       "market_id": "0x1a01bf78f56a507fcb666d564d8c8b91b0750679163ed6e96746102c9b7d285d",
       "title": "Will Fl\u00e1vio Bolsonaro win the 2026 Brazilian presidential election?",
       "side_label": "YES on: Will Fl\u00e1vio Bolsonaro win the 2026 Brazilian presidential election?",
       "outcome": "Yes",
-      "entry_price": 0.422,
+      "entry_price": 0.427,
       "whale_price": 0.419,
-      "drift_c": 0.3,
-      "contracts": 985,
-      "cost": 415.67,
-      "max_payout": 985.0,
-      "conviction": 0.416,
-      "hours_to_resolve": 618.0,
+      "drift_c": 0.8,
+      "contracts": 768,
+      "cost": 327.94,
+      "max_payout": 768.0,
+      "conviction": 0.328,
+      "hours_to_resolve": 612.8,
       "n_wallets": 1,
       "whale_usd": 2315,
-      "minutes_ago": 94,
-      "liquidity": 215805,
+      "minutes_ago": 404,
+      "liquidity": 220807,
       "url": "https://polymarket.com/event/brazil-presidential-election",
       "end_iso": "2026-10-04T00:00:00Z",
       "event_iso": "",
@@ -117,110 +490,30 @@
         "election market and 100% of this is one wallet \u2014 concentration here can move the price rather than confirm it",
         "1 profitable wallet on this side",
         "$2,315 \u2014 but only 0.6% of their book",
-        "latest buy 94 min ago",
-        "still near their entry price",
-        "618h until it resolves",
-        "$215,805 liquidity"
+        "latest buy 404 min ago",
+        "price up 0.8c since they bought",
+        "613h until it resolves",
+        "$220,807 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion",
         "100% of this signal is a single wallet on an election market \u2014 that is the shape that distorted 2024 pricing"
       ]
-    },
-    {
-      "market_id": "0x9583192c420c90070797370f7a4da74dbbd089982c62ae27cdc02d3c27ca59b9",
-      "title": "Club Brugge KV vs. Aston Villa FC: O/U 2.5",
-      "side_label": "Over \u2014 Club Brugge KV vs. Aston Villa FC: O/U 2.5",
-      "outcome": "Over",
-      "entry_price": 0.565,
-      "whale_price": 0.55,
-      "drift_c": 1.5,
-      "contracts": 663,
-      "cost": 374.59,
-      "max_payout": 663.0,
-      "conviction": 0.375,
-      "hours_to_resolve": 10.8,
-      "n_wallets": 1,
-      "whale_usd": 2693,
-      "minutes_ago": 54,
-      "liquidity": 85503,
-      "url": "https://polymarket.com/event/ucl-bru-ast-2026-09-08-more-markets",
-      "end_iso": "2026-09-08T16:45:00Z",
-      "event_iso": "2026-09-08 16:45:00+00",
-      "slug": "ucl-bru-ast-2026-09-08-total-2pt5",
-      "signal_ts": 1788843981.0,
-      "wallet_usd": [
-        [
-          "0x821dab0565ebf5b327f51db06223fdcfe01acf16",
-          2692.82
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$2,693 \u2014 but only 0.4% of their book",
-        "latest buy 54 min ago",
-        "price up 1.5c since they bought",
-        "11h until it resolves",
-        "$85,503 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x1e93e33beecbd9ae3dbe35a7c263b5d1a6d81084f6eed57e16b7fba56821ea1b",
-      "title": "US Open ATP: Ben Shelton vs Carlos Alcaraz",
-      "side_label": "Ben Shelton \u2014 US Open ATP: Ben Shelton vs Carlos Alcaraz",
-      "outcome": "Ben Shelton",
-      "entry_price": 0.225,
-      "whale_price": 0.22,
-      "drift_c": 0.5,
-      "contracts": 1520,
-      "cost": 342.0,
-      "max_payout": 1520.0,
-      "conviction": 0.342,
-      "hours_to_resolve": 18.5,
-      "n_wallets": 1,
-      "whale_usd": 3154,
-      "minutes_ago": 149,
-      "liquidity": 228761,
-      "url": "https://polymarket.com/event/atp-shelton-alcaraz-2026-09-08",
-      "end_iso": "2026-09-15T15:30:00Z",
-      "event_iso": "2026-09-09 00:30:00+00",
-      "slug": "atp-shelton-alcaraz-2026-09-08",
-      "signal_ts": 1788838246.0,
-      "wallet_usd": [
-        [
-          "0x5b6331e7ff0831a3fe2ed12004747db1a9c911a4",
-          3153.99
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$3,154 \u2014 but only 1.2% of their book",
-        "latest buy 149 min ago",
-        "still near their entry price",
-        "19h until it resolves",
-        "$228,761 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
     }
   ],
-  "considered": 235,
+  "considered": 251,
   "rejected": {
-    "market closed": 158,
-    "fresh wallet: market too liquid for the pattern": 8,
-    "esports (sleeve retired \u2014 see esports_enabled)": 31,
-    "wallet not new (no track record either)": 20,
-    "parlay / combo ticket, not a single market": 1,
-    "in-play (event already started)": 2,
-    "resolves more than 30 days out": 8,
-    "price outside tradeable band": 1,
-    "resolves in under 3h": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 3
+    "market closed": 107,
+    "esports (sleeve retired \u2014 see esports_enabled)": 63,
+    "fresh wallet: market too liquid for the pattern": 17,
+    "wallet not new (no track record either)": 28,
+    "in-play (event already started)": 7,
+    "already resolved": 1,
+    "signal too old for this market's horizon": 6,
+    "resolves more than 30 days out": 6,
+    "price + fee ran away from the whale's entry": 1,
+    "duplicate event (kept the stronger side)": 3,
+    "below the 0.45 buy bar (recorded, not bought)": 7
   },
   "notes": [],
   "consistency": {
@@ -228,16 +521,17 @@
     "enabled": true,
     "events_scanned": 345,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 115,
-      "not a ladder: fewer than two live, quoted legs": 101,
-      "not a ladder: group labels are not thresholds or deadlines": 56,
+      "bracket has legs we cannot price (fail closed)": 116,
+      "not a ladder: fewer than two live, quoted legs": 98,
+      "not a ladder: group labels are not thresholds or deadlines": 57,
       "not a ladder: duplicate deadlines left too few rungs": 6,
-      "ladder pair too illiquid to fill": 111,
+      "ladder pair too illiquid to fill": 108,
       "bracket has too many legs to place by hand": 1,
-      "ladder inversion smaller than the spread": 3,
-      "not a ladder: numeric group spans different end dates": 1,
+      "ladder inversion smaller than the spread": 2,
+      "not a ladder: numeric group spans different end dates": 2,
       "bracket overround smaller than the spread": 1,
-      "bracket leg too illiquid to fill": 5,
+      "bracket leg too illiquid to fill": 4,
+      "dominance leg missing on the prerequisite event": 1,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
@@ -249,6 +543,69 @@
     "notes": [],
     "cpi": [
       {
+        "slug": "core-cpi-mom-august-2026-1786474662954",
+        "title": "Core CPI MoM - August 2026",
+        "series": "core_cpi",
+        "basis": "mom",
+        "ref_month": "2026-8",
+        "url": "https://polymarket.com/event/core-cpi-mom-august-2026-1786474662954",
+        "nowcast_pp": 0.203341742698412,
+        "nowcast_as_of": "2026-09-04 00:00",
+        "sigma": 0.16,
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.069pp (x2.33). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "rows": [
+          {
+            "label": "\u22640.0%",
+            "market_prob": 0.0165,
+            "model_prob": 0.1689,
+            "gap_c": 15.24,
+            "suspect": false
+          },
+          {
+            "label": "0.1%",
+            "market_prob": 0.085,
+            "model_prob": 0.2005,
+            "gap_c": 11.55,
+            "suspect": false
+          },
+          {
+            "label": "0.2%",
+            "market_prob": 0.56,
+            "model_prob": 0.2453,
+            "gap_c": -31.47,
+            "suspect": true
+          },
+          {
+            "label": "0.3%",
+            "market_prob": 0.36,
+            "model_prob": 0.2056,
+            "gap_c": -15.44,
+            "suspect": false
+          },
+          {
+            "label": "0.4%",
+            "market_prob": 0.0365,
+            "model_prob": 0.1181,
+            "gap_c": 8.16,
+            "suspect": false
+          },
+          {
+            "label": "0.5%",
+            "market_prob": 0.0025,
+            "model_prob": 0.0465,
+            "gap_c": 4.4,
+            "suspect": false
+          },
+          {
+            "label": "0.6%+",
+            "market_prob": 0.003,
+            "model_prob": 0.0151,
+            "gap_c": 1.21,
+            "suspect": false
+          }
+        ]
+      },
+      {
         "slug": "core-cpi-yoy-august-2026-1786474662954",
         "title": "Core CPI YoY - August 2026",
         "series": "core_cpi",
@@ -258,7 +615,7 @@
         "nowcast_pp": 2.38356235342767,
         "nowcast_as_of": "2026-09-04 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.112pp (x1.43). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "",
         "rows": [
           {
             "label": "\u22642.0%",
@@ -276,30 +633,30 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.07,
+            "market_prob": 0.135,
             "model_prob": 0.1297,
-            "gap_c": 5.97,
+            "gap_c": -0.53,
             "suspect": false
           },
           {
             "label": "2.3%",
-            "market_prob": 0.3,
+            "market_prob": 0.23,
             "model_prob": 0.215,
-            "gap_c": -8.5,
+            "gap_c": -1.5,
             "suspect": false
           },
           {
             "label": "2.4%",
-            "market_prob": 0.465,
+            "market_prob": 0.455,
             "model_prob": 0.2441,
-            "gap_c": -22.09,
+            "gap_c": -21.09,
             "suspect": false
           },
           {
             "label": "2.5%",
-            "market_prob": 0.125,
+            "market_prob": 0.13,
             "model_prob": 0.1899,
-            "gap_c": 6.49,
+            "gap_c": 5.99,
             "suspect": false
           },
           {
@@ -311,9 +668,9 @@
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0235,
+            "market_prob": 0.022,
             "model_prob": 0.0369,
-            "gap_c": 1.34,
+            "gap_c": 1.49,
             "suspect": false
           },
           {
@@ -333,69 +690,6 @@
         ]
       },
       {
-        "slug": "core-cpi-mom-august-2026-1786474662954",
-        "title": "Core CPI MoM - August 2026",
-        "series": "core_cpi",
-        "basis": "mom",
-        "ref_month": "2026-8",
-        "url": "https://polymarket.com/event/core-cpi-mom-august-2026-1786474662954",
-        "nowcast_pp": 0.203341742698412,
-        "nowcast_as_of": "2026-09-04 00:00",
-        "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.072pp (x2.24). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
-        "rows": [
-          {
-            "label": "\u22640.0%",
-            "market_prob": 0.037,
-            "model_prob": 0.1689,
-            "gap_c": 13.19,
-            "suspect": false
-          },
-          {
-            "label": "0.1%",
-            "market_prob": 0.115,
-            "model_prob": 0.2005,
-            "gap_c": 8.55,
-            "suspect": false
-          },
-          {
-            "label": "0.2%",
-            "market_prob": 0.545,
-            "model_prob": 0.2453,
-            "gap_c": -29.97,
-            "suspect": true
-          },
-          {
-            "label": "0.3%",
-            "market_prob": 0.315,
-            "model_prob": 0.2056,
-            "gap_c": -10.94,
-            "suspect": false
-          },
-          {
-            "label": "0.4%",
-            "market_prob": 0.03,
-            "model_prob": 0.1181,
-            "gap_c": 8.81,
-            "suspect": false
-          },
-          {
-            "label": "0.5%",
-            "market_prob": 0.0045,
-            "model_prob": 0.0465,
-            "gap_c": 4.2,
-            "suspect": false
-          },
-          {
-            "label": "0.6%+",
-            "market_prob": 0.009,
-            "model_prob": 0.0151,
-            "gap_c": 0.61,
-            "suspect": false
-          }
-        ]
-      },
-      {
         "slug": "august-inflation-us-annual-1786474662954",
         "title": "August Inflation US - Annual",
         "series": "cpi",
@@ -405,7 +699,7 @@
         "nowcast_pp": 3.37583994813757,
         "nowcast_as_of": "2026-09-04 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.104pp (x1.54). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.116pp (x1.38). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
         "rows": [
           {
             "label": "\u22642.9%",
@@ -416,23 +710,23 @@
           },
           {
             "label": "3.0%",
-            "market_prob": 0.0125,
+            "market_prob": 0.013,
             "model_prob": 0.017,
-            "gap_c": 0.45,
+            "gap_c": 0.4,
             "suspect": false
           },
           {
             "label": "3.1%",
-            "market_prob": 0.007,
+            "market_prob": 0.0055,
             "model_prob": 0.0582,
-            "gap_c": 5.12,
+            "gap_c": 5.27,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.0735,
+            "market_prob": 0.074,
             "model_prob": 0.1367,
-            "gap_c": 6.32,
+            "gap_c": 6.27,
             "suspect": false
           },
           {
@@ -444,51 +738,51 @@
           },
           {
             "label": "3.4%",
-            "market_prob": 0.455,
+            "market_prob": 0.45,
             "model_prob": 0.2426,
-            "gap_c": -21.24,
+            "gap_c": -20.74,
             "suspect": false
           },
           {
             "label": "3.5%",
-            "market_prob": 0.155,
+            "market_prob": 0.145,
             "model_prob": 0.1833,
-            "gap_c": 2.83,
+            "gap_c": 3.83,
             "suspect": false
           },
           {
             "label": "3.6%",
-            "market_prob": 0.018,
+            "market_prob": 0.0305,
             "model_prob": 0.0949,
-            "gap_c": 7.69,
+            "gap_c": 6.44,
             "suspect": false
           },
           {
             "label": "3.7%",
-            "market_prob": 0.0055,
+            "market_prob": 0.0105,
             "model_prob": 0.0336,
-            "gap_c": 2.81,
+            "gap_c": 2.31,
             "suspect": false
           },
           {
             "label": "3.8%",
-            "market_prob": 0.0035,
+            "market_prob": 0.0055,
             "model_prob": 0.0082,
-            "gap_c": 0.47,
+            "gap_c": 0.27,
             "suspect": false
           },
           {
             "label": "3.9%",
-            "market_prob": 0.0005,
+            "market_prob": 0.0065,
             "model_prob": 0.0014,
-            "gap_c": 0.09,
+            "gap_c": -0.51,
             "suspect": false
           },
           {
             "label": "\u22654.0%",
-            "market_prob": 0.003,
+            "market_prob": 0.0065,
             "model_prob": 0.0002,
-            "gap_c": -0.28,
+            "gap_c": -0.63,
             "suspect": false
           }
         ]
@@ -503,7 +797,7 @@
         "nowcast_pp": 0.359180537639179,
         "nowcast_as_of": "2026-09-04 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.084pp (x1.91). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.085pp (x1.89). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
         "rows": [
           {
             "label": "\u2264-0.3%",
@@ -535,16 +829,16 @@
           },
           {
             "label": "0.1%",
-            "market_prob": 0.013,
+            "market_prob": 0.014,
             "model_prob": 0.0689,
-            "gap_c": 5.59,
+            "gap_c": 5.49,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.035,
+            "market_prob": 0.046,
             "model_prob": 0.152,
-            "gap_c": 11.7,
+            "gap_c": 10.6,
             "suspect": false
           },
           {
@@ -563,9 +857,9 @@
           },
           {
             "label": "\u22650.5%",
-            "market_prob": 0.135,
+            "market_prob": 0.13,
             "model_prob": 0.2851,
-            "gap_c": 15.01,
+            "gap_c": 15.51,
             "suspect": false
           }
         ]
@@ -586,13 +880,13 @@
       "title": "Will the S&P 500 be between 7700 and 7724.9999 on Sep 8, 2026 at 4pm EDT?",
       "url": "https://kalshi.com/markets/KXINX-26SEP08H1600",
       "entry_price": 0.25,
-      "model_prob": 0.3021,
-      "edge": 0.0521,
-      "fair": 0.3021,
-      "market_prob": 0.17,
-      "implied_sigma": 0.1098,
+      "model_prob": 0.3014,
+      "edge": 0.0514,
+      "fair": 0.3014,
+      "market_prob": 0.175,
+      "implied_sigma": 0.1539,
       "spot_used": 7718.6,
-      "chain_ts": "2026-09-08 03:55:38",
+      "chain_ts": "2026-09-08 11:09:15",
       "vrp_shrink": 0.92,
       "series": "KXINX",
       "model": "cboe-0dte-density",
