@@ -1,151 +1,108 @@
 {
-  "generated": "2026-09-17 23:01:04",
-  "generated_at": 1789686064.486209,
+  "generated": "2026-09-18 01:18:37",
+  "generated_at": 1789694317.1192315,
   "account_size": 100000.0,
   "tickets": [
     {
-      "market_id": "0x87dcc11f32f7395b16059fbbcbbf0aeb9e383a609e4289125e234e204d9a8bd8",
-      "title": "Minnesota Twins vs. Los Angeles Angels",
-      "side_label": "Los Angeles Angels \u2014 Minnesota Twins vs. Los Angeles Angels",
-      "outcome": "Los Angeles Angels",
-      "entry_price": 0.505,
-      "whale_price": 0.505,
-      "drift_c": 0.01,
-      "contracts": 1324,
-      "cost": 668.62,
-      "max_payout": 1324.0,
-      "conviction": 0.669,
-      "hours_to_resolve": 2.6,
-      "n_wallets": 2,
-      "whale_usd": 72852,
-      "minutes_ago": 42,
-      "liquidity": 433638,
-      "url": "https://polymarket.com/event/mlb-min-laa-2026-09-17",
-      "end_iso": "2026-09-25T01:38:00Z",
-      "event_iso": "2026-09-18 01:38:00+00",
-      "slug": "mlb-min-laa-2026-09-17",
-      "signal_ts": 1789683523.0,
+      "market_id": "0x3be6a50ef2fae0f4e3b8f69e3f45666d8932779a1ba754ba74e1ff4bcddcb359",
+      "title": "Will FC Barcelona win on 2026-09-19?",
+      "side_label": "YES on: Will FC Barcelona win on 2026-09-19?",
+      "outcome": "Yes",
+      "entry_price": 0.83,
+      "whale_price": 0.83,
+      "drift_c": -0.0,
+      "contracts": 619,
+      "cost": 513.77,
+      "max_payout": 619.0,
+      "conviction": 0.514,
+      "hours_to_resolve": 41.7,
+      "n_wallets": 1,
+      "whale_usd": 4646,
+      "minutes_ago": 2,
+      "liquidity": 207570,
+      "url": "https://polymarket.com/event/lal-sev-bar-2026-09-19",
+      "end_iso": "2026-09-19T19:00:00Z",
+      "event_iso": "2026-09-19 19:00:00+00",
+      "slug": "lal-sev-bar-2026-09-19-bar",
+      "signal_ts": 1789694194.0,
       "wallet_usd": [
-        [
-          "0x5e9458202b5817a72cf81105ec8a30e6f3705ba1",
-          62852.16
-        ],
-        [
-          "0x16bb9951a36fce71e2ef57890b786145e0ba8492",
-          10000.0
-        ]
-      ],
-      "why": [
-        "2 profitable wallets on this side",
-        "$72,852, 68% of their own book",
-        "latest buy 42 min ago",
-        "still near their entry price",
-        "3h until it resolves",
-        "$433,638 liquidity"
-      ],
-      "warnings": []
-    },
-    {
-      "market_id": "0xaab58cad3348a57761c0417f6751487e2d4815edcb8ae7fd00e1f8dff8a091c6",
-      "title": "Boston Red Sox vs. Texas Rangers",
-      "side_label": "Boston Red Sox \u2014 Boston Red Sox vs. Texas Rangers",
-      "outcome": "Boston Red Sox",
-      "entry_price": 0.523,
-      "whale_price": 0.524,
-      "drift_c": -0.05,
-      "contracts": 1111,
-      "cost": 581.61,
-      "max_payout": 1111.0,
-      "conviction": 0.582,
-      "hours_to_resolve": 1.1,
-      "n_wallets": 2,
-      "whale_usd": 29836,
-      "minutes_ago": 43,
-      "liquidity": 619572,
-      "url": "https://polymarket.com/event/mlb-bos-tex-2026-09-17",
-      "end_iso": "2026-09-25T00:05:00Z",
-      "event_iso": "2026-09-18 00:05:00+00",
-      "slug": "mlb-bos-tex-2026-09-17",
-      "signal_ts": 1789683465.0,
-      "wallet_usd": [
-        [
-          "0x1610db79f753a80207e1d66716be9e91e627ae49",
-          25412.68
-        ],
         [
           "0xdc41c39b95453c943174f369926018f6963bdd7e",
-          4423.61
+          4646.34
         ]
       ],
       "why": [
-        "2 profitable wallets on this side",
-        "$29,836 \u2014 but only 9.5% of their book",
-        "latest buy 43 min ago",
+        "1 profitable wallet on this side",
+        "$4,646 \u2014 but only 0.8% of their book",
+        "latest buy 2 min ago",
         "still near their entry price",
-        "1h until it resolves",
-        "$619,572 liquidity"
+        "42h until it resolves",
+        "$207,570 liquidity"
       ],
-      "warnings": []
-    },
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    }
+  ],
+  "probe": [
     {
-      "market_id": "0xebb137cc297595b66b04af7fecd79078fe4eaf1920d9fd26125dabec544a8134",
-      "title": "Kansas City Royals vs. Houston Astros",
-      "side_label": "Kansas City Royals \u2014 Kansas City Royals vs. Houston Astros",
-      "outcome": "Kansas City Royals",
-      "entry_price": 0.421,
-      "whale_price": 0.418,
-      "drift_c": 0.32,
-      "contracts": 1274,
-      "cost": 536.99,
-      "max_payout": 1274.0,
-      "conviction": 0.537,
-      "hours_to_resolve": 0.2,
-      "n_wallets": 2,
-      "whale_usd": 10953,
-      "minutes_ago": 28,
-      "liquidity": 425272,
-      "url": "https://polymarket.com/event/mlb-kc-hou-2026-09-17",
-      "end_iso": "2026-09-24T23:15:00Z",
-      "event_iso": "2026-09-17 23:15:00+00",
-      "slug": "mlb-kc-hou-2026-09-17",
-      "signal_ts": 1789684396.0,
+      "market_id": "0x50f7f58662d106e3d7790b4f8b29b3dd8e8f03d7c4b73d7b97c129bfc31ab8bb",
+      "title": "NO vs. BAL: O/U 46.5",
+      "side_label": "Under \u2014 NO vs. BAL: O/U 46.5",
+      "outcome": "Under",
+      "entry_price": 0.525,
+      "whale_price": 0.52,
+      "drift_c": 0.5,
+      "contracts": 777,
+      "cost": 407.93,
+      "max_payout": 777.0,
+      "conviction": 0.408,
+      "hours_to_resolve": 63.7,
+      "n_wallets": 1,
+      "whale_usd": 8865,
+      "minutes_ago": 321,
+      "liquidity": 162797,
+      "url": "https://polymarket.com/event/nfl-no-bal-2026-09-20",
+      "end_iso": "2026-09-20T17:00:00Z",
+      "event_iso": "2026-09-20 17:00:00+00",
+      "slug": "nfl-no-bal-2026-09-20-total-46pt5",
+      "signal_ts": 1789675066.0,
       "wallet_usd": [
         [
-          "0x1610db79f753a80207e1d66716be9e91e627ae49",
-          7650.89
-        ],
-        [
-          "0xdc41c39b95453c943174f369926018f6963bdd7e",
-          3302.18
+          "0xa080dadd87036ad01dbf5e9c254b0c3dbdba234f",
+          8865.13
         ]
       ],
       "why": [
-        "2 profitable wallets on this side",
-        "$10,953 \u2014 but only 2.5% of their book",
-        "latest buy 28 min ago",
+        "1 profitable wallet on this side",
+        "$8,865 \u2014 but only 9.7% of their book",
+        "latest buy 321 min ago",
         "still near their entry price",
-        "0h until it resolves",
-        "$425,272 liquidity"
+        "64h until it resolves",
+        "$162,797 liquidity"
       ],
-      "warnings": []
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
     },
     {
       "market_id": "0x1a01bf78f56a507fcb666d564d8c8b91b0750679163ed6e96746102c9b7d285d",
       "title": "Will Fl\u00e1vio Bolsonaro win the 2026 Brazilian presidential election?",
       "side_label": "NO on: Will Fl\u00e1vio Bolsonaro win the 2026 Brazilian presidential election?",
       "outcome": "No",
-      "entry_price": 0.458,
+      "entry_price": 0.456,
       "whale_price": 0.46,
-      "drift_c": -0.21,
-      "contracts": 1015,
-      "cost": 464.87,
-      "max_payout": 1015.0,
-      "conviction": 0.465,
-      "hours_to_resolve": 385.0,
+      "drift_c": -0.41,
+      "contracts": 857,
+      "cost": 390.79,
+      "max_payout": 857.0,
+      "conviction": 0.391,
+      "hours_to_resolve": 382.7,
       "n_wallets": 1,
       "whale_usd": 5508,
-      "minutes_ago": 92,
-      "liquidity": 306390,
+      "minutes_ago": 229,
+      "liquidity": 327255,
       "url": "https://polymarket.com/event/brazil-presidential-election",
       "end_iso": "2026-10-04T00:00:00Z",
       "event_iso": "",
@@ -161,136 +118,14 @@
         "election market and 100% of this is one wallet \u2014 concentration here can move the price rather than confirm it",
         "1 profitable wallet on this side",
         "$5,508, 100% of their own book",
-        "latest buy 92 min ago",
+        "latest buy 229 min ago",
         "still near their entry price",
-        "385h until it resolves",
-        "$306,390 liquidity"
+        "383h until it resolves",
+        "$327,255 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion",
         "100% of this signal is a single wallet on an election market \u2014 that is the shape that distorted 2024 pricing"
-      ]
-    }
-  ],
-  "probe": [
-    {
-      "market_id": "0x06375ff8ab2f9c0c2fc3436b4620c8db7bebe19d7f85ecfec5aaa03f2d689cca",
-      "title": "Detroit Tigers vs. Chicago White Sox",
-      "side_label": "Detroit Tigers \u2014 Detroit Tigers vs. Chicago White Sox",
-      "outcome": "Detroit Tigers",
-      "entry_price": 0.485,
-      "whale_price": 0.49,
-      "drift_c": -0.5,
-      "contracts": 872,
-      "cost": 422.92,
-      "max_payout": 872.0,
-      "conviction": 0.423,
-      "hours_to_resolve": 0.7,
-      "n_wallets": 1,
-      "whale_usd": 7350,
-      "minutes_ago": 59,
-      "liquidity": 499057,
-      "url": "https://polymarket.com/event/mlb-det-cws-2026-09-17",
-      "end_iso": "2026-09-24T23:40:00Z",
-      "event_iso": "2026-09-17 23:40:00+00",
-      "slug": "mlb-det-cws-2026-09-17",
-      "signal_ts": 1789682541.0,
-      "wallet_usd": [
-        [
-          "0x16bb9951a36fce71e2ef57890b786145e0ba8492",
-          7350.0
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$7,350 \u2014 but only 3.7% of their book",
-        "latest buy 59 min ago",
-        "still near their entry price",
-        "1h until it resolves",
-        "$499,057 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x50f7f58662d106e3d7790b4f8b29b3dd8e8f03d7c4b73d7b97c129bfc31ab8bb",
-      "title": "NO vs. BAL: O/U 46.5",
-      "side_label": "Under \u2014 NO vs. BAL: O/U 46.5",
-      "outcome": "Under",
-      "entry_price": 0.525,
-      "whale_price": 0.52,
-      "drift_c": 0.5,
-      "contracts": 784,
-      "cost": 411.6,
-      "max_payout": 784.0,
-      "conviction": 0.412,
-      "hours_to_resolve": 66.0,
-      "n_wallets": 1,
-      "whale_usd": 8865,
-      "minutes_ago": 183,
-      "liquidity": 104240,
-      "url": "https://polymarket.com/event/nfl-no-bal-2026-09-20",
-      "end_iso": "2026-09-20T17:00:00Z",
-      "event_iso": "2026-09-20 17:00:00+00",
-      "slug": "nfl-no-bal-2026-09-20-total-46pt5",
-      "signal_ts": 1789675066.0,
-      "wallet_usd": [
-        [
-          "0xa080dadd87036ad01dbf5e9c254b0c3dbdba234f",
-          8865.13
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$8,865 \u2014 but only 9.7% of their book",
-        "latest buy 183 min ago",
-        "still near their entry price",
-        "66h until it resolves",
-        "$104,240 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x9278efc8d5ff06b4c45f205bfd5a9aacbbede6aaa734d63fcecdace137913b52",
-      "title": "Philadelphia Phillies vs. New York Mets",
-      "side_label": "Philadelphia Phillies \u2014 Philadelphia Phillies vs. New York Mets",
-      "outcome": "Philadelphia Phillies",
-      "entry_price": 0.465,
-      "whale_price": 0.47,
-      "drift_c": -0.5,
-      "contracts": 879,
-      "cost": 408.74,
-      "max_payout": 879.0,
-      "conviction": 0.409,
-      "hours_to_resolve": 0.2,
-      "n_wallets": 1,
-      "whale_usd": 22045,
-      "minutes_ago": 118,
-      "liquidity": 524127,
-      "url": "https://polymarket.com/event/mlb-phi-nym-2026-09-17",
-      "end_iso": "2026-09-24T23:15:00Z",
-      "event_iso": "2026-09-17 23:15:00+00",
-      "slug": "mlb-phi-nym-2026-09-17",
-      "signal_ts": 1789678968.0,
-      "wallet_usd": [
-        [
-          "0x1610db79f753a80207e1d66716be9e91e627ae49",
-          22044.72
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$22,045 \u2014 but only 9.5% of their book",
-        "latest buy 118 min ago",
-        "still near their entry price",
-        "0h until it resolves",
-        "$524,127 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
       ]
     },
     {
@@ -301,15 +136,15 @@
       "entry_price": 0.555,
       "whale_price": 0.54,
       "drift_c": 1.5,
-      "contracts": 679,
-      "cost": 376.85,
-      "max_payout": 679.0,
-      "conviction": 0.377,
-      "hours_to_resolve": 19.7,
+      "contracts": 500,
+      "cost": 277.5,
+      "max_payout": 500.0,
+      "conviction": 0.278,
+      "hours_to_resolve": 17.4,
       "n_wallets": 1,
       "whale_usd": 2981,
-      "minutes_ago": 65,
-      "liquidity": 140300,
+      "minutes_ago": 203,
+      "liquidity": 115423,
       "url": "https://polymarket.com/event/sea-mon-sas-2026-09-18-more-markets",
       "end_iso": "2026-09-18T18:45:00Z",
       "event_iso": "2026-09-18 18:45:00+00",
@@ -324,10 +159,10 @@
       "why": [
         "1 profitable wallet on this side",
         "$2,981 \u2014 but only 0.3% of their book",
-        "latest buy 65 min ago",
+        "latest buy 203 min ago",
         "price up 1.5c since they bought",
-        "20h until it resolves",
-        "$140,300 liquidity"
+        "17h until it resolves",
+        "$115,423 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
@@ -335,20 +170,21 @@
       ]
     }
   ],
-  "considered": 294,
+  "considered": 295,
   "rejected": {
-    "fresh wallet: market too liquid for the pattern": 53,
-    "resolves in under 3h": 11,
-    "market closed": 166,
-    "in-play (event already started)": 3,
-    "resolves more than 30 days out": 8,
-    "already resolved": 7,
-    "wallet not new (no track record either)": 23,
-    "signal too old for this market's horizon": 3,
-    "price + fee ran away from the whale's entry": 3,
-    "esports (sleeve retired \u2014 see esports_enabled)": 7,
-    "duplicate event (kept the stronger side)": 2,
-    "below the 0.45 buy bar (recorded, not bought)": 4
+    "already resolved": 34,
+    "wallet not new (no track record either)": 62,
+    "fresh wallet: market too liquid for the pattern": 28,
+    "market closed": 130,
+    "signal too old for this market's horizon": 2,
+    "resolves more than 30 days out": 6,
+    "in-play (event already started)": 12,
+    "price + fee ran away from the whale's entry": 4,
+    "resolves in under 3h": 2,
+    "esports (sleeve retired \u2014 see esports_enabled)": 9,
+    "fresh wallet: market depth unknown": 1,
+    "duplicate event (kept the stronger side)": 1,
+    "below the 0.45 buy bar (recorded, not bought)": 3
   },
   "notes": [],
   "consistency": {
@@ -360,13 +196,13 @@
       "not a ladder: fewer than two live, quoted legs": 81,
       "not a ladder: group labels are not thresholds or deadlines": 57,
       "not a ladder: duplicate deadlines left too few rungs": 8,
-      "ladder pair too illiquid to fill": 114,
       "not a ladder: a live leg carries no group label": 2,
+      "ladder pair too illiquid to fill": 114,
       "bracket has too many legs to place by hand": 1,
-      "ladder inversion smaller than the spread": 5,
+      "bracket overround smaller than the spread": 1,
+      "ladder inversion smaller than the spread": 2,
       "not a ladder: numeric group spans different end dates": 2,
       "bracket leg too illiquid to fill": 3,
-      "bracket overround smaller than the spread": 2,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
@@ -391,7 +227,7 @@
             "name": "Bitcoin",
             "bid": 0.18,
             "ask": 0.19,
-            "liquidity": 24982.8673,
+            "liquidity": 24982.9386,
             "end_iso": "2027-01-01T04:59:00Z",
             "url": "https://polymarket.com/event/bitcoin-vs-gold-vs-sp-500-in-2026"
           },
@@ -400,7 +236,7 @@
             "name": "Gold",
             "bid": 0.22,
             "ask": 0.24,
-            "liquidity": 12887.6813,
+            "liquidity": 12889.6813,
             "end_iso": "2027-01-01T04:59:00Z",
             "url": "https://polymarket.com/event/bitcoin-vs-gold-vs-sp-500-in-2026"
           },
@@ -423,6 +259,90 @@
     "notes": [],
     "cpi": [
       {
+        "slug": "core-cpi-yoy-september-2026",
+        "title": "Core CPI YoY - September 2026",
+        "series": "core_cpi",
+        "basis": "yoy",
+        "ref_month": "2026-9",
+        "url": "https://polymarket.com/event/core-cpi-yoy-september-2026",
+        "nowcast_pp": 2.39023925044117,
+        "nowcast_as_of": "2026-09-17 00:00",
+        "sigma": 0.16,
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.090pp (x1.77). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "rows": [
+          {
+            "label": "\u22642.0%",
+            "market_prob": 0.0025,
+            "model_prob": 0.0167,
+            "gap_c": 1.42,
+            "suspect": false
+          },
+          {
+            "label": "2.1%",
+            "market_prob": 0.0015,
+            "model_prob": 0.0499,
+            "gap_c": 4.84,
+            "suspect": false
+          },
+          {
+            "label": "2.2%",
+            "market_prob": 0.0025,
+            "model_prob": 0.1238,
+            "gap_c": 12.13,
+            "suspect": false
+          },
+          {
+            "label": "2.3%",
+            "market_prob": 0.155,
+            "model_prob": 0.2103,
+            "gap_c": 5.53,
+            "suspect": false
+          },
+          {
+            "label": "2.4%",
+            "market_prob": 0.47,
+            "model_prob": 0.2449,
+            "gap_c": -22.51,
+            "suspect": false
+          },
+          {
+            "label": "2.5%",
+            "market_prob": 0.27,
+            "model_prob": 0.1954,
+            "gap_c": -7.46,
+            "suspect": false
+          },
+          {
+            "label": "2.6%",
+            "market_prob": 0.105,
+            "model_prob": 0.1068,
+            "gap_c": 0.18,
+            "suspect": false
+          },
+          {
+            "label": "2.7%",
+            "market_prob": 0.0025,
+            "model_prob": 0.04,
+            "gap_c": 3.75,
+            "suspect": false
+          },
+          {
+            "label": "2.8%",
+            "market_prob": 0.0025,
+            "model_prob": 0.0102,
+            "gap_c": 0.77,
+            "suspect": false
+          },
+          {
+            "label": "\u22652.9%",
+            "market_prob": 0.0155,
+            "model_prob": 0.002,
+            "gap_c": -1.35,
+            "suspect": false
+          }
+        ]
+      },
+      {
         "slug": "core-cpi-mom-september-2026",
         "title": "Core CPI MoM - September 2026",
         "series": "core_cpi",
@@ -432,13 +352,13 @@
         "nowcast_pp": 0.201681228472037,
         "nowcast_as_of": "2026-09-17 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.084pp (x1.91). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.082pp (x1.95). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
-            "market_prob": 0.031,
+            "market_prob": 0.0145,
             "model_prob": 0.1716,
-            "gap_c": 14.06,
+            "gap_c": 15.71,
             "suspect": false
           },
           {
@@ -457,16 +377,16 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.285,
+            "market_prob": 0.32,
             "model_prob": 0.2044,
-            "gap_c": -8.06,
+            "gap_c": -11.56,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.095,
+            "market_prob": 0.085,
             "model_prob": 0.1166,
-            "gap_c": 2.16,
+            "gap_c": 3.16,
             "suspect": false
           },
           {
@@ -478,93 +398,9 @@
           },
           {
             "label": "0.6%+",
-            "market_prob": 0.0305,
-            "model_prob": 0.0147,
-            "gap_c": -1.58,
-            "suspect": false
-          }
-        ]
-      },
-      {
-        "slug": "core-cpi-yoy-september-2026",
-        "title": "Core CPI YoY - September 2026",
-        "series": "core_cpi",
-        "basis": "yoy",
-        "ref_month": "2026-9",
-        "url": "https://polymarket.com/event/core-cpi-yoy-september-2026",
-        "nowcast_pp": 2.39023925044117,
-        "nowcast_as_of": "2026-09-17 00:00",
-        "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.100pp (x1.60). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
-        "rows": [
-          {
-            "label": "\u22642.0%",
-            "market_prob": 0.0105,
-            "model_prob": 0.0167,
-            "gap_c": 0.62,
-            "suspect": false
-          },
-          {
-            "label": "2.1%",
-            "market_prob": 0.0015,
-            "model_prob": 0.0499,
-            "gap_c": 4.84,
-            "suspect": false
-          },
-          {
-            "label": "2.2%",
-            "market_prob": 0.0105,
-            "model_prob": 0.1238,
-            "gap_c": 11.33,
-            "suspect": false
-          },
-          {
-            "label": "2.3%",
-            "market_prob": 0.145,
-            "model_prob": 0.2103,
-            "gap_c": 6.53,
-            "suspect": false
-          },
-          {
-            "label": "2.4%",
-            "market_prob": 0.455,
-            "model_prob": 0.2449,
-            "gap_c": -21.01,
-            "suspect": false
-          },
-          {
-            "label": "2.5%",
-            "market_prob": 0.285,
-            "model_prob": 0.1954,
-            "gap_c": -8.96,
-            "suspect": false
-          },
-          {
-            "label": "2.6%",
-            "market_prob": 0.115,
-            "model_prob": 0.1068,
-            "gap_c": -0.82,
-            "suspect": false
-          },
-          {
-            "label": "2.7%",
-            "market_prob": 0.0105,
-            "model_prob": 0.04,
-            "gap_c": 2.95,
-            "suspect": false
-          },
-          {
-            "label": "2.8%",
-            "market_prob": 0.0105,
-            "model_prob": 0.0102,
-            "gap_c": -0.03,
-            "suspect": false
-          },
-          {
-            "label": "\u22652.9%",
             "market_prob": 0.0155,
-            "model_prob": 0.002,
-            "gap_c": -1.35,
+            "model_prob": 0.0147,
+            "gap_c": -0.08,
             "suspect": false
           }
         ]
@@ -579,13 +415,13 @@
         "nowcast_pp": 0.434980660787975,
         "nowcast_as_of": "2026-09-17 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.115pp (x1.39). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.103pp (x1.56). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
-            "market_prob": 0.0135,
+            "market_prob": 0.006,
             "model_prob": 0.0081,
-            "gap_c": -0.54,
+            "gap_c": 0.21,
             "suspect": false
           },
           {
@@ -597,9 +433,9 @@
           },
           {
             "label": "0.2%",
-            "market_prob": 0.0255,
+            "market_prob": 0.006,
             "model_prob": 0.0864,
-            "gap_c": 6.09,
+            "gap_c": 8.04,
             "suspect": false
           },
           {
@@ -611,37 +447,37 @@
           },
           {
             "label": "0.4%",
-            "market_prob": 0.09,
+            "market_prob": 0.11,
             "model_prob": 0.2397,
-            "gap_c": 14.97,
+            "gap_c": 12.97,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.285,
+            "market_prob": 0.33,
             "model_prob": 0.2265,
-            "gap_c": -5.85,
+            "gap_c": -10.35,
             "suspect": false
           },
           {
             "label": "0.6%",
-            "market_prob": 0.31,
+            "market_prob": 0.305,
             "model_prob": 0.1466,
-            "gap_c": -16.34,
+            "gap_c": -15.84,
             "suspect": false
           },
           {
             "label": "0.7%",
-            "market_prob": 0.21,
+            "market_prob": 0.18,
             "model_prob": 0.065,
-            "gap_c": -14.5,
+            "gap_c": -11.5,
             "suspect": false
           },
           {
             "label": "\u22650.8%",
-            "market_prob": 0.13,
+            "market_prob": 0.1,
             "model_prob": 0.0245,
-            "gap_c": -10.55,
+            "gap_c": -7.55,
             "suspect": false
           }
         ]
@@ -656,7 +492,7 @@
         "nowcast_pp": 3.50197907808085,
         "nowcast_as_of": "2026-09-17 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.112pp (x1.43). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.111pp (x1.44). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
         "rows": [
           {
             "label": "\u22642.9%",
@@ -688,23 +524,23 @@
           },
           {
             "label": "3.3%",
-            "market_prob": 0.0025,
+            "market_prob": 0.0015,
             "model_prob": 0.1134,
-            "gap_c": 11.09,
+            "gap_c": 11.19,
             "suspect": false
           },
           {
             "label": "3.4%",
-            "market_prob": 0.048,
+            "market_prob": 0.043,
             "model_prob": 0.2016,
-            "gap_c": 15.36,
+            "gap_c": 15.86,
             "suspect": false
           },
           {
             "label": "3.5%",
-            "market_prob": 0.19,
+            "market_prob": 0.185,
             "model_prob": 0.2453,
-            "gap_c": 5.53,
+            "gap_c": 6.03,
             "suspect": false
           },
           {
