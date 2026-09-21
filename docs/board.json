@@ -1,20 +1,23 @@
 {
-  "generated": "2026-09-20 22:21:43",
-  "generated_at": 1789942903.2106655,
+  "generated": "2026-09-21 00:27:05",
+  "generated_at": 1789950425.7096245,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [],
-  "considered": 334,
+  "considered": 333,
   "rejected": {
-    "already resolved": 73,
-    "fresh wallet: market too liquid for the pattern": 80,
-    "wallet not new (no track record either)": 84,
-    "market closed": 66,
-    "in-play (event already started)": 7,
-    "esports (sleeve retired \u2014 see esports_enabled)": 11,
-    "resolves in under 3h": 9,
+    "wallet not new (no track record either)": 79,
+    "already resolved": 66,
+    "market closed": 149,
+    "fresh wallet: market too liquid for the pattern": 22,
+    "in-play (event already started)": 4,
+    "resolves in under 3h": 4,
     "parlay / combo ticket, not a single market": 3,
-    "resolves more than 30 days out": 1
+    "esports (sleeve retired \u2014 see esports_enabled)": 1,
+    "resolves more than 30 days out": 1,
+    "fresh wallet: age unavailable": 1,
+    "sports market with no event start time": 1,
+    "no resolution or start time": 2
   },
   "notes": [
     "Signals came in but none cleared the filters \u2014 that is a normal, and usually correct, outcome."
@@ -25,16 +28,17 @@
     "events_scanned": 343,
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 117,
-      "not a ladder: fewer than two live, quoted legs": 80,
-      "not a ladder: group labels are not thresholds or deadlines": 64,
+      "not a ladder: fewer than two live, quoted legs": 83,
+      "not a ladder: group labels are not thresholds or deadlines": 65,
       "not a ladder: duplicate deadlines left too few rungs": 8,
-      "ladder pair too illiquid to fill": 107,
+      "ladder pair too illiquid to fill": 111,
       "bracket has too many legs to place by hand": 1,
       "ladder inversion smaller than the spread": 5,
-      "not a ladder: a live leg carries no group label": 7,
+      "not a ladder: a live leg carries no group label": 2,
       "not a ladder: numeric group spans different end dates": 1,
       "bracket leg too illiquid to fill": 3,
       "bracket overround smaller than the spread": 1,
+      "bracket underround smaller than the spread": 1,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
@@ -55,13 +59,13 @@
         "nowcast_pp": 2.39023925044117,
         "nowcast_as_of": "2026-09-18 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.109pp (x1.47). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.110pp (x1.46). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
         "rows": [
           {
             "label": "\u22642.0%",
-            "market_prob": 0.0035,
+            "market_prob": 0.0025,
             "model_prob": 0.0167,
-            "gap_c": 1.32,
+            "gap_c": 1.42,
             "suspect": false
           },
           {
@@ -80,16 +84,16 @@
           },
           {
             "label": "2.3%",
-            "market_prob": 0.15,
+            "market_prob": 0.145,
             "model_prob": 0.2103,
-            "gap_c": 6.03,
+            "gap_c": 6.53,
             "suspect": false
           },
           {
             "label": "2.4%",
-            "market_prob": 0.405,
+            "market_prob": 0.395,
             "model_prob": 0.2449,
-            "gap_c": -16.01,
+            "gap_c": -15.01,
             "suspect": false
           },
           {
@@ -101,9 +105,9 @@
           },
           {
             "label": "2.6%",
-            "market_prob": 0.145,
+            "market_prob": 0.165,
             "model_prob": 0.1068,
-            "gap_c": -3.82,
+            "gap_c": -5.82,
             "suspect": false
           },
           {
@@ -150,30 +154,30 @@
           },
           {
             "label": "0.1%",
-            "market_prob": 0.125,
+            "market_prob": 0.11,
             "model_prob": 0.2018,
-            "gap_c": 7.68,
+            "gap_c": 9.18,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.495,
+            "market_prob": 0.48,
             "model_prob": 0.2453,
-            "gap_c": -24.97,
+            "gap_c": -23.47,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.36,
+            "market_prob": 0.355,
             "model_prob": 0.2044,
-            "gap_c": -15.56,
+            "gap_c": -15.06,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.045,
+            "market_prob": 0.05,
             "model_prob": 0.1166,
-            "gap_c": 7.16,
+            "gap_c": 6.66,
             "suspect": false
           },
           {
@@ -202,7 +206,7 @@
         "nowcast_pp": 3.50197907808085,
         "nowcast_as_of": "2026-09-18 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.114pp (x1.40). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.112pp (x1.42). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
         "rows": [
           {
             "label": "\u22642.9%",
@@ -213,9 +217,9 @@
           },
           {
             "label": "3.0%",
-            "market_prob": 0.0025,
+            "market_prob": 0.0015,
             "model_prob": 0.0021,
-            "gap_c": -0.04,
+            "gap_c": 0.06,
             "suspect": false
           },
           {
@@ -241,16 +245,16 @@
           },
           {
             "label": "3.4%",
-            "market_prob": 0.017,
+            "market_prob": 0.0165,
             "model_prob": 0.2016,
-            "gap_c": 18.46,
+            "gap_c": 18.51,
             "suspect": false
           },
           {
             "label": "3.5%",
-            "market_prob": 0.22,
+            "market_prob": 0.235,
             "model_prob": 0.2453,
-            "gap_c": 2.53,
+            "gap_c": 1.03,
             "suspect": false
           },
           {
@@ -269,9 +273,9 @@
           },
           {
             "label": "3.8%",
-            "market_prob": 0.0805,
+            "market_prob": 0.0755,
             "model_prob": 0.0457,
-            "gap_c": -3.48,
+            "gap_c": -2.98,
             "suspect": false
           },
           {
@@ -311,9 +315,9 @@
           },
           {
             "label": "0.1%",
-            "market_prob": 0.006,
+            "market_prob": 0.0065,
             "model_prob": 0.0294,
-            "gap_c": 2.34,
+            "gap_c": 2.29,
             "suspect": false
           },
           {
@@ -332,16 +336,16 @@
           },
           {
             "label": "0.4%",
-            "market_prob": 0.07,
+            "market_prob": 0.075,
             "model_prob": 0.2397,
-            "gap_c": 16.97,
+            "gap_c": 16.47,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.24,
+            "market_prob": 0.26,
             "model_prob": 0.2265,
-            "gap_c": -1.35,
+            "gap_c": -3.35,
             "suspect": false
           },
           {
@@ -353,9 +357,9 @@
           },
           {
             "label": "0.7%",
-            "market_prob": 0.205,
+            "market_prob": 0.21,
             "model_prob": 0.065,
-            "gap_c": -14.0,
+            "gap_c": -14.5,
             "suspect": false
           },
           {
