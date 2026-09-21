@@ -1,23 +1,65 @@
 {
-  "generated": "2026-09-21 00:27:05",
-  "generated_at": 1789950425.7096245,
+  "generated": "2026-09-21 05:22:01",
+  "generated_at": 1789968121.9036605,
   "account_size": 100000.0,
   "tickets": [],
-  "probe": [],
-  "considered": 333,
+  "probe": [
+    {
+      "market_id": "0x8e76426c8457d3846d8104d418d1eda627046c8725ce9753eebb81c54730e792",
+      "title": "Will Pam Alexis win the next Abbotsford-Mission by-election?",
+      "side_label": "YES on: Will Pam Alexis win the next Abbotsford-Mission by-election?",
+      "outcome": "Yes",
+      "entry_price": 0.47,
+      "whale_price": 0.502,
+      "drift_c": -3.23,
+      "contracts": 759,
+      "cost": 356.73,
+      "max_payout": 759.0,
+      "conviction": 0.357,
+      "hours_to_resolve": 138.6,
+      "n_wallets": 1,
+      "whale_usd": 4899,
+      "minutes_ago": 209,
+      "liquidity": 10658,
+      "url": "https://polymarket.com/event/abbotsford-mission-by-election-winner",
+      "end_iso": "2026-09-26T23:59:00Z",
+      "event_iso": "",
+      "slug": "will-pam-alexis-win-the-next-abbotsford-mission-by-election",
+      "signal_ts": 1789955587.0,
+      "wallet_usd": [
+        [
+          "0xb1ca909e848cc24ec4e220ce1c453bc290c51705",
+          4899.47
+        ]
+      ],
+      "why": [
+        "election market and 100% of this is one wallet \u2014 concentration here can move the price rather than confirm it",
+        "1 profitable wallet on this side",
+        "$4,899 \u2014 but only 0.6% of their book",
+        "latest buy 209 min ago",
+        "price 3.2c cheaper than they paid",
+        "139h until it resolves"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion",
+        "100% of this signal is a single wallet on an election market \u2014 that is the shape that distorted 2024 pricing"
+      ]
+    }
+  ],
+  "considered": 264,
   "rejected": {
-    "wallet not new (no track record either)": 79,
-    "already resolved": 66,
-    "market closed": 149,
-    "fresh wallet: market too liquid for the pattern": 22,
+    "market closed": 190,
+    "already resolved": 15,
+    "wallet not new (no track record either)": 22,
+    "fresh wallet: market too liquid for the pattern": 21,
     "in-play (event already started)": 4,
-    "resolves in under 3h": 4,
-    "parlay / combo ticket, not a single market": 3,
-    "esports (sleeve retired \u2014 see esports_enabled)": 1,
-    "resolves more than 30 days out": 1,
-    "fresh wallet: age unavailable": 1,
+    "parlay / combo ticket, not a single market": 2,
+    "esports (sleeve retired \u2014 see esports_enabled)": 3,
+    "signal too old for this market's horizon": 2,
     "sports market with no event start time": 1,
-    "no resolution or start time": 2
+    "resolves more than 30 days out": 1,
+    "no resolution or start time": 2,
+    "below the 0.45 buy bar (recorded, not bought)": 1
   },
   "notes": [
     "Signals came in but none cleared the filters \u2014 that is a normal, and usually correct, outcome."
@@ -25,20 +67,17 @@
   "consistency": {
     "ok": true,
     "enabled": true,
-    "events_scanned": 343,
+    "events_scanned": 342,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 117,
-      "not a ladder: fewer than two live, quoted legs": 83,
-      "not a ladder: group labels are not thresholds or deadlines": 65,
+      "bracket has legs we cannot price (fail closed)": 119,
+      "not a ladder: fewer than two live, quoted legs": 87,
+      "not a ladder: group labels are not thresholds or deadlines": 58,
       "not a ladder: duplicate deadlines left too few rungs": 8,
       "ladder pair too illiquid to fill": 111,
       "bracket has too many legs to place by hand": 1,
       "ladder inversion smaller than the spread": 5,
-      "not a ladder: a live leg carries no group label": 2,
-      "not a ladder: numeric group spans different end dates": 1,
+      "not a ladder: numeric group spans different end dates": 2,
       "bracket leg too illiquid to fill": 3,
-      "bracket overround smaller than the spread": 1,
-      "bracket underround smaller than the spread": 1,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
@@ -50,6 +89,69 @@
     "notes": [],
     "cpi": [
       {
+        "slug": "core-cpi-mom-september-2026",
+        "title": "Core CPI MoM - September 2026",
+        "series": "core_cpi",
+        "basis": "mom",
+        "ref_month": "2026-9",
+        "url": "https://polymarket.com/event/core-cpi-mom-september-2026",
+        "nowcast_pp": 0.201681228472037,
+        "nowcast_as_of": "2026-09-18 00:00",
+        "sigma": 0.16,
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.074pp (x2.16). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "rows": [
+          {
+            "label": "\u22640.0%",
+            "market_prob": 0.0055,
+            "model_prob": 0.1716,
+            "gap_c": 16.61,
+            "suspect": false
+          },
+          {
+            "label": "0.1%",
+            "market_prob": 0.095,
+            "model_prob": 0.2018,
+            "gap_c": 10.68,
+            "suspect": false
+          },
+          {
+            "label": "0.2%",
+            "market_prob": 0.485,
+            "model_prob": 0.2453,
+            "gap_c": -23.97,
+            "suspect": false
+          },
+          {
+            "label": "0.3%",
+            "market_prob": 0.385,
+            "model_prob": 0.2044,
+            "gap_c": -18.06,
+            "suspect": false
+          },
+          {
+            "label": "0.4%",
+            "market_prob": 0.045,
+            "model_prob": 0.1166,
+            "gap_c": 7.16,
+            "suspect": false
+          },
+          {
+            "label": "0.5%",
+            "market_prob": 0.0055,
+            "model_prob": 0.0456,
+            "gap_c": 4.01,
+            "suspect": false
+          },
+          {
+            "label": "0.6%+",
+            "market_prob": 0.006,
+            "model_prob": 0.0147,
+            "gap_c": 0.87,
+            "suspect": false
+          }
+        ]
+      },
+      {
         "slug": "core-cpi-yoy-september-2026",
         "title": "Core CPI YoY - September 2026",
         "series": "core_cpi",
@@ -59,13 +161,13 @@
         "nowcast_pp": 2.39023925044117,
         "nowcast_as_of": "2026-09-18 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.110pp (x1.46). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.108pp (x1.49). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
         "rows": [
           {
             "label": "\u22642.0%",
-            "market_prob": 0.0025,
+            "market_prob": 0.0035,
             "model_prob": 0.0167,
-            "gap_c": 1.42,
+            "gap_c": 1.32,
             "suspect": false
           },
           {
@@ -84,9 +186,9 @@
           },
           {
             "label": "2.3%",
-            "market_prob": 0.145,
+            "market_prob": 0.155,
             "model_prob": 0.2103,
-            "gap_c": 6.53,
+            "gap_c": 5.53,
             "suspect": false
           },
           {
@@ -112,9 +214,9 @@
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0435,
+            "market_prob": 0.0305,
             "model_prob": 0.04,
-            "gap_c": -0.35,
+            "gap_c": 0.95,
             "suspect": false
           },
           {
@@ -126,72 +228,9 @@
           },
           {
             "label": "\u22652.9%",
-            "market_prob": 0.0195,
+            "market_prob": 0.019,
             "model_prob": 0.002,
-            "gap_c": -1.75,
-            "suspect": false
-          }
-        ]
-      },
-      {
-        "slug": "core-cpi-mom-september-2026",
-        "title": "Core CPI MoM - September 2026",
-        "series": "core_cpi",
-        "basis": "mom",
-        "ref_month": "2026-9",
-        "url": "https://polymarket.com/event/core-cpi-mom-september-2026",
-        "nowcast_pp": 0.201681228472037,
-        "nowcast_as_of": "2026-09-18 00:00",
-        "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.076pp (x2.09). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
-        "rows": [
-          {
-            "label": "\u22640.0%",
-            "market_prob": 0.0055,
-            "model_prob": 0.1716,
-            "gap_c": 16.61,
-            "suspect": false
-          },
-          {
-            "label": "0.1%",
-            "market_prob": 0.11,
-            "model_prob": 0.2018,
-            "gap_c": 9.18,
-            "suspect": false
-          },
-          {
-            "label": "0.2%",
-            "market_prob": 0.48,
-            "model_prob": 0.2453,
-            "gap_c": -23.47,
-            "suspect": false
-          },
-          {
-            "label": "0.3%",
-            "market_prob": 0.355,
-            "model_prob": 0.2044,
-            "gap_c": -15.06,
-            "suspect": false
-          },
-          {
-            "label": "0.4%",
-            "market_prob": 0.05,
-            "model_prob": 0.1166,
-            "gap_c": 6.66,
-            "suspect": false
-          },
-          {
-            "label": "0.5%",
-            "market_prob": 0.0055,
-            "model_prob": 0.0456,
-            "gap_c": 4.01,
-            "suspect": false
-          },
-          {
-            "label": "0.6%+",
-            "market_prob": 0.006,
-            "model_prob": 0.0147,
-            "gap_c": 0.87,
+            "gap_c": -1.7,
             "suspect": false
           }
         ]
@@ -206,7 +245,7 @@
         "nowcast_pp": 3.50197907808085,
         "nowcast_as_of": "2026-09-18 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.112pp (x1.42). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.114pp (x1.40). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
         "rows": [
           {
             "label": "\u22642.9%",
@@ -217,65 +256,65 @@
           },
           {
             "label": "3.0%",
-            "market_prob": 0.0015,
+            "market_prob": 0.0025,
             "model_prob": 0.0021,
-            "gap_c": 0.06,
+            "gap_c": -0.04,
             "suspect": false
           },
           {
             "label": "3.1%",
-            "market_prob": 0.006,
+            "market_prob": 0.0055,
             "model_prob": 0.0115,
-            "gap_c": 0.55,
+            "gap_c": 0.6,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.006,
+            "market_prob": 0.0055,
             "model_prob": 0.0437,
-            "gap_c": 3.77,
+            "gap_c": 3.82,
             "suspect": false
           },
           {
             "label": "3.3%",
-            "market_prob": 0.006,
+            "market_prob": 0.0055,
             "model_prob": 0.1134,
-            "gap_c": 10.74,
+            "gap_c": 10.79,
             "suspect": false
           },
           {
             "label": "3.4%",
-            "market_prob": 0.0165,
+            "market_prob": 0.031,
             "model_prob": 0.2016,
-            "gap_c": 18.51,
+            "gap_c": 17.06,
             "suspect": false
           },
           {
             "label": "3.5%",
-            "market_prob": 0.235,
+            "market_prob": 0.225,
             "model_prob": 0.2453,
-            "gap_c": 1.03,
+            "gap_c": 2.03,
             "suspect": false
           },
           {
             "label": "3.6%",
-            "market_prob": 0.435,
+            "market_prob": 0.425,
             "model_prob": 0.2046,
-            "gap_c": -23.04,
+            "gap_c": -22.04,
             "suspect": false
           },
           {
             "label": "3.7%",
-            "market_prob": 0.27,
+            "market_prob": 0.265,
             "model_prob": 0.1169,
-            "gap_c": -15.31,
+            "gap_c": -14.81,
             "suspect": false
           },
           {
             "label": "3.8%",
-            "market_prob": 0.0755,
+            "market_prob": 0.064,
             "model_prob": 0.0457,
-            "gap_c": -2.98,
+            "gap_c": -1.83,
             "suspect": false
           },
           {
@@ -287,9 +326,9 @@
           },
           {
             "label": "\u22654.0%",
-            "market_prob": 0.0165,
+            "market_prob": 0.019,
             "model_prob": 0.0026,
-            "gap_c": -1.39,
+            "gap_c": -1.64,
             "suspect": false
           }
         ]
@@ -304,7 +343,7 @@
         "nowcast_pp": 0.434980660787975,
         "nowcast_as_of": "2026-09-18 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.114pp (x1.41). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.113pp (x1.41). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -315,9 +354,9 @@
           },
           {
             "label": "0.1%",
-            "market_prob": 0.0065,
+            "market_prob": 0.006,
             "model_prob": 0.0294,
-            "gap_c": 2.29,
+            "gap_c": 2.34,
             "suspect": false
           },
           {
@@ -336,16 +375,16 @@
           },
           {
             "label": "0.4%",
-            "market_prob": 0.075,
+            "market_prob": 0.07,
             "model_prob": 0.2397,
-            "gap_c": 16.47,
+            "gap_c": 16.97,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.26,
+            "market_prob": 0.255,
             "model_prob": 0.2265,
-            "gap_c": -3.35,
+            "gap_c": -2.85,
             "suspect": false
           },
           {
