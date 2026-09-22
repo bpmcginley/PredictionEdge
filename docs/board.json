@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-22 00:09:52",
-  "generated_at": 1790035792.9028494,
+  "generated": "2026-09-22 05:04:02",
+  "generated_at": 1790053442.9677062,
   "account_size": 100000.0,
   "tickets": [
     {
@@ -9,26 +9,30 @@
       "side_label": "NO on: Will Luiz In\u00e1cio Lula da Silva win the 2026 Brazilian presidential election?",
       "outcome": "No",
       "entry_price": 0.62,
-      "whale_price": 0.615,
-      "drift_c": 0.53,
-      "contracts": 791,
-      "cost": 490.42,
-      "max_payout": 791.0,
-      "conviction": 0.491,
-      "hours_to_resolve": 287.8,
-      "n_wallets": 2,
-      "whale_usd": 7083,
-      "minutes_ago": 296,
-      "liquidity": 339270,
+      "whale_price": 0.616,
+      "drift_c": 0.37,
+      "contracts": 1000,
+      "cost": 620.0,
+      "max_payout": 1000.0,
+      "conviction": 0.62,
+      "hours_to_resolve": 282.9,
+      "n_wallets": 3,
+      "whale_usd": 13501,
+      "minutes_ago": 158,
+      "liquidity": 388322,
       "url": "https://polymarket.com/event/brazil-presidential-election",
       "end_iso": "2026-10-04T00:00:00Z",
       "event_iso": "",
       "slug": "will-luiz-incio-lula-da-silva-win-the-2026-brazilian-presidential-election",
-      "signal_ts": 1790018031.0,
+      "signal_ts": 1790043975.0,
       "wallet_usd": [
         [
           "0x7f9e2d1df78614564a70becc7fa14aa9a6623a0e",
-          3697.0
+          5108.76
+        ],
+        [
+          "0x2974bd0059e48f215c391882976e0f1b4c8c9c23",
+          5006.33
         ],
         [
           "0xeb490d0534bb68b4c2ce139b219a728cd2c3693e",
@@ -36,54 +40,14 @@
         ]
       ],
       "why": [
-        "2 profitable wallets on this side",
-        "$7,083 \u2014 but only 0.7% of their book",
-        "latest buy 296 min ago",
-        "price up 0.5c since they bought",
-        "288h until it resolves",
-        "$339,270 liquidity"
+        "3 profitable wallets on this side",
+        "$13,501 \u2014 but only 0.9% of their book",
+        "latest buy 158 min ago",
+        "still near their entry price",
+        "283h until it resolves",
+        "$388,322 liquidity"
       ],
       "warnings": []
-    },
-    {
-      "market_id": "0xbeb1d04b222dc8208cb95182ba74eb736243d8b116166ff10c9b54326160e7ac",
-      "title": "Will Bitcoin reach $92,500 in September?",
-      "side_label": "NO on: Will Bitcoin reach $92,500 in September?",
-      "outcome": "No",
-      "entry_price": 0.739,
-      "whale_price": 0.719,
-      "drift_c": 2.0,
-      "contracts": 656,
-      "cost": 484.78,
-      "max_payout": 656.0,
-      "conviction": 0.485,
-      "hours_to_resolve": 219.8,
-      "n_wallets": 1,
-      "whale_usd": 2529,
-      "minutes_ago": 6,
-      "liquidity": 60089,
-      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-september-2026",
-      "end_iso": "2026-10-01T04:00:00Z",
-      "event_iso": "",
-      "slug": "will-bitcoin-reach-92pt5k-in-september-2026",
-      "signal_ts": 1790035440.0,
-      "wallet_usd": [
-        [
-          "0xcc500cbcc8b7cf5bd21975ebbea34f21b5644c82",
-          2529.38
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$2,529 \u2014 but only 0.9% of their book",
-        "latest buy 6 min ago",
-        "price up 2.0c since they bought",
-        "220h until it resolves",
-        "$60,089 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
     }
   ],
   "probe": [
@@ -95,15 +59,15 @@
       "entry_price": 0.455,
       "whale_price": 0.46,
       "drift_c": -0.5,
-      "contracts": 969,
-      "cost": 440.9,
-      "max_payout": 969.0,
-      "conviction": 0.441,
-      "hours_to_resolve": 136.8,
+      "contracts": 956,
+      "cost": 434.98,
+      "max_payout": 956.0,
+      "conviction": 0.435,
+      "hours_to_resolve": 131.9,
       "n_wallets": 1,
       "whale_usd": 4000,
-      "minutes_ago": 174,
-      "liquidity": 48952,
+      "minutes_ago": 468,
+      "liquidity": 54514,
       "url": "https://polymarket.com/event/nfl-ne-jax-2026-09-27",
       "end_iso": "2026-09-27T17:00:00Z",
       "event_iso": "2026-09-27 17:00:00+00",
@@ -118,112 +82,148 @@
       "why": [
         "1 profitable wallet on this side",
         "$4,000, 20% of their own book",
-        "latest buy 174 min ago",
+        "latest buy 468 min ago",
         "still near their entry price",
-        "137h until it resolves"
+        "132h until it resolves",
+        "$54,514 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     },
     {
-      "market_id": "0x2460507343e85fc9b0b84e4c8417ae7e16a28081fcee6c4473236d6e73ccc235",
-      "title": "Will Bitcoin reach $88,000 September 21-27?",
-      "side_label": "NO on: Will Bitcoin reach $88,000 September 21-27?",
-      "outcome": "No",
-      "entry_price": 0.32,
-      "whale_price": 0.39,
-      "drift_c": -7.0,
-      "contracts": 1268,
-      "cost": 405.76,
-      "max_payout": 1268.0,
-      "conviction": 0.406,
-      "hours_to_resolve": 147.8,
+      "market_id": "0xff94b7e25f8377d7ad40bbfd172744bec6235b8ffbcaa1f276ec5465191b2216",
+      "title": "Will Bitcoin reach $87,500 in September?",
+      "side_label": "YES on: Will Bitcoin reach $87,500 in September?",
+      "outcome": "Yes",
+      "entry_price": 0.67,
+      "whale_price": 0.847,
+      "drift_c": -17.72,
+      "contracts": 640,
+      "cost": 428.8,
+      "max_payout": 640.0,
+      "conviction": 0.429,
+      "hours_to_resolve": 214.9,
       "n_wallets": 1,
-      "whale_usd": 2340,
-      "minutes_ago": 451,
-      "liquidity": 29194,
-      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-september-21-27-2026",
-      "end_iso": "2026-09-28T04:00:00Z",
+      "whale_usd": 11998,
+      "minutes_ago": 517,
+      "liquidity": 63109,
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-september-2026",
+      "end_iso": "2026-10-01T04:00:00Z",
       "event_iso": "",
-      "slug": "will-bitcoin-reach-88k-september-21-27-2026",
-      "signal_ts": 1790008727.0,
+      "slug": "will-bitcoin-reach-87pt5k-in-september-2026",
+      "signal_ts": 1790022394.0,
       "wallet_usd": [
         [
           "0xcc500cbcc8b7cf5bd21975ebbea34f21b5644c82",
-          2340.0
+          11997.52
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$2,340 \u2014 but only 0.9% of their book",
-        "latest buy 451 min ago",
-        "price 7.0c cheaper than they paid",
-        "148h until it resolves"
+        "$11,998 \u2014 but only 4.5% of their book",
+        "latest buy 517 min ago",
+        "price 17.7c cheaper than they paid",
+        "215h until it resolves",
+        "$63,109 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     },
     {
-      "market_id": "0xbe43d4dcb4e963aeb5d247294fe842e887422a68b004fc50d23c0046f264c405",
-      "title": "Will Renan Santos win 8% or more of the valid vote in the first round of the 2026 Brazilian presidential election?",
-      "side_label": "NO on: Will Renan Santos win 8% or more of the valid vote in the first round of the 2026 Brazilian presidential election?",
-      "outcome": "No",
-      "entry_price": 0.9,
-      "whale_price": 0.9,
-      "drift_c": 0.0,
-      "contracts": 394,
-      "cost": 354.6,
-      "max_payout": 394.0,
-      "conviction": 0.355,
-      "hours_to_resolve": 314.8,
+      "market_id": "0xed537832cbf6774d5b54da06732b53ce6866d82941e593ca71292f8e247babc5",
+      "title": "Chiefs vs. Dolphins",
+      "side_label": "Chiefs \u2014 Chiefs vs. Dolphins",
+      "outcome": "Chiefs",
+      "entry_price": 0.865,
+      "whale_price": 0.87,
+      "drift_c": -0.5,
+      "contracts": 476,
+      "cost": 411.74,
+      "max_payout": 476.0,
+      "conviction": 0.412,
+      "hours_to_resolve": 131.9,
       "n_wallets": 1,
-      "whale_usd": 2488,
-      "minutes_ago": 537,
-      "liquidity": 33095,
-      "url": "https://polymarket.com/event/brazil-presidential-election-first-round-renan-santos-vote-share",
-      "end_iso": "2026-10-05T02:59:00Z",
-      "event_iso": "",
-      "slug": "brazil-first-round-vote-share-renan-santos-8-plus",
-      "signal_ts": 1790003544.0,
+      "whale_usd": 2411,
+      "minutes_ago": 275,
+      "liquidity": 39381,
+      "url": "https://polymarket.com/event/nfl-kc-mia-2026-09-27",
+      "end_iso": "2026-09-27T17:00:00Z",
+      "event_iso": "2026-09-27 17:00:00+00",
+      "slug": "nfl-kc-mia-2026-09-27",
+      "signal_ts": 1790036941.0,
       "wallet_usd": [
         [
-          "0xeb490d0534bb68b4c2ce139b219a728cd2c3693e",
-          2487.69
+          "0xdc41c39b95453c943174f369926018f6963bdd7e",
+          2410.77
         ]
       ],
       "why": [
-        "election market and 100% of this is one wallet \u2014 concentration here can move the price rather than confirm it",
         "1 profitable wallet on this side",
-        "$2,488 \u2014 but only 0.6% of their book",
-        "latest buy 537 min ago",
+        "$2,411 \u2014 but only 4.0% of their book",
+        "latest buy 275 min ago",
         "still near their entry price",
-        "315h until it resolves"
+        "132h until it resolves"
       ],
       "warnings": [
-        "only one wallet \u2014 single opinion",
-        "100% of this signal is a single wallet on an election market \u2014 that is the shape that distorted 2024 pricing"
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0xed0a3d999ef6b84f0a818610fac2a4cb162e6ccefe1c08470a00be4da6e29ffe",
+      "title": "Will Bitcoin dip to $80,000 September 21-27?",
+      "side_label": "NO on: Will Bitcoin dip to $80,000 September 21-27?",
+      "outcome": "No",
+      "entry_price": 0.83,
+      "whale_price": 0.82,
+      "drift_c": 1.0,
+      "contracts": 448,
+      "cost": 371.84,
+      "max_payout": 448.0,
+      "conviction": 0.372,
+      "hours_to_resolve": 142.9,
+      "n_wallets": 1,
+      "whale_usd": 2280,
+      "minutes_ago": 734,
+      "liquidity": 34162,
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-september-21-27-2026",
+      "end_iso": "2026-09-28T04:00:00Z",
+      "event_iso": "",
+      "slug": "will-bitcoin-dip-to-80k-september-21-27-2026",
+      "signal_ts": 1790009412.0,
+      "wallet_usd": [
+        [
+          "0xcc500cbcc8b7cf5bd21975ebbea34f21b5644c82",
+          2280.42
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,280 \u2014 but only 0.9% of their book",
+        "latest buy 734 min ago",
+        "price up 1.0c since they bought",
+        "143h until it resolves"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 305,
+  "considered": 304,
   "rejected": {
-    "resolves in under 3h": 16,
-    "fresh wallet: market too liquid for the pattern": 71,
-    "resolves more than 30 days out": 13,
-    "in-play (event already started)": 4,
-    "wallet not new (no track record either)": 55,
-    "market closed": 114,
+    "market closed": 143,
+    "already resolved": 28,
+    "resolves more than 30 days out": 17,
+    "fresh wallet: market too liquid for the pattern": 37,
+    "wallet not new (no track record either)": 48,
     "esports (sleeve retired \u2014 see esports_enabled)": 8,
+    "in-play (event already started)": 5,
+    "signal too old for this market's horizon": 7,
     "no resolution or start time": 3,
-    "parlay / combo ticket, not a single market": 1,
-    "fresh wallet: age unavailable": 1,
-    "already resolved": 6,
-    "price + fee ran away from the whale's entry": 2,
-    "signal too old for this market's horizon": 3,
-    "duplicate event (kept the stronger side)": 3,
-    "below the 0.45 buy bar (recorded, not bought)": 3
+    "price + fee ran away from the whale's entry": 1,
+    "duplicate event (kept the stronger side)": 2,
+    "below the 0.45 buy bar (recorded, not bought)": 4
   },
   "notes": [],
   "consistency": {
@@ -231,15 +231,14 @@
     "enabled": true,
     "events_scanned": 341,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 118,
+      "bracket has legs we cannot price (fail closed)": 119,
       "not a ladder: fewer than two live, quoted legs": 82,
-      "not a ladder: group labels are not thresholds or deadlines": 59,
+      "not a ladder: group labels are not thresholds or deadlines": 60,
       "not a ladder: duplicate deadlines left too few rungs": 8,
       "bracket overround smaller than the spread": 1,
-      "ladder pair too illiquid to fill": 116,
-      "not a ladder: a live leg carries no group label": 3,
-      "bracket has too many legs to place by hand": 1,
-      "ladder inversion smaller than the spread": 6,
+      "ladder pair too illiquid to fill": 97,
+      "bracket has too many legs to place by hand": 2,
+      "ladder inversion smaller than the spread": 7,
       "not a ladder: numeric group spans different end dates": 2,
       "bracket leg too illiquid to fill": 3
     },
@@ -261,7 +260,7 @@
         "nowcast_pp": 2.39023925044117,
         "nowcast_as_of": "2026-09-21 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.092pp (x1.74). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.090pp (x1.79). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
         "rows": [
           {
             "label": "\u22642.0%",
@@ -279,37 +278,37 @@
           },
           {
             "label": "2.2%",
-            "market_prob": 0.0045,
+            "market_prob": 0.0005,
             "model_prob": 0.1238,
-            "gap_c": 11.93,
+            "gap_c": 12.33,
             "suspect": false
           },
           {
             "label": "2.3%",
-            "market_prob": 0.16,
+            "market_prob": 0.165,
             "model_prob": 0.2103,
-            "gap_c": 5.03,
+            "gap_c": 4.53,
             "suspect": false
           },
           {
             "label": "2.4%",
-            "market_prob": 0.425,
+            "market_prob": 0.435,
             "model_prob": 0.2449,
-            "gap_c": -18.01,
+            "gap_c": -19.01,
             "suspect": false
           },
           {
             "label": "2.5%",
-            "market_prob": 0.335,
+            "market_prob": 0.33,
             "model_prob": 0.1954,
-            "gap_c": -13.96,
+            "gap_c": -13.46,
             "suspect": false
           },
           {
             "label": "2.6%",
-            "market_prob": 0.115,
+            "market_prob": 0.11,
             "model_prob": 0.1068,
-            "gap_c": -0.82,
+            "gap_c": -0.32,
             "suspect": false
           },
           {
@@ -321,9 +320,9 @@
           },
           {
             "label": "2.8%",
-            "market_prob": 0.002,
+            "market_prob": 0.0005,
             "model_prob": 0.0102,
-            "gap_c": 0.82,
+            "gap_c": 0.97,
             "suspect": false
           },
           {
@@ -345,20 +344,20 @@
         "nowcast_pp": 0.201681228472037,
         "nowcast_as_of": "2026-09-21 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.071pp (x2.25). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.071pp (x2.24). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
-            "market_prob": 0.0025,
+            "market_prob": 0.0045,
             "model_prob": 0.1716,
-            "gap_c": 16.91,
+            "gap_c": 16.71,
             "suspect": false
           },
           {
             "label": "0.1%",
-            "market_prob": 0.1,
+            "market_prob": 0.105,
             "model_prob": 0.2018,
-            "gap_c": 10.18,
+            "gap_c": 9.68,
             "suspect": false
           },
           {
@@ -408,7 +407,7 @@
         "nowcast_pp": 3.50197907808085,
         "nowcast_as_of": "2026-09-21 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.106pp (x1.51). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.106pp (x1.52). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
         "rows": [
           {
             "label": "\u22642.9%",
@@ -447,9 +446,9 @@
           },
           {
             "label": "3.4%",
-            "market_prob": 0.058,
+            "market_prob": 0.0585,
             "model_prob": 0.2016,
-            "gap_c": 14.36,
+            "gap_c": 14.31,
             "suspect": false
           },
           {
@@ -468,16 +467,16 @@
           },
           {
             "label": "3.7%",
-            "market_prob": 0.25,
+            "market_prob": 0.255,
             "model_prob": 0.1169,
-            "gap_c": -13.31,
+            "gap_c": -13.81,
             "suspect": false
           },
           {
             "label": "3.8%",
-            "market_prob": 0.0585,
+            "market_prob": 0.056,
             "model_prob": 0.0457,
-            "gap_c": -1.28,
+            "gap_c": -1.03,
             "suspect": false
           },
           {
@@ -489,9 +488,9 @@
           },
           {
             "label": "\u22654.0%",
-            "market_prob": 0.0075,
+            "market_prob": 0.0085,
             "model_prob": 0.0026,
-            "gap_c": -0.49,
+            "gap_c": -0.59,
             "suspect": false
           }
         ]
@@ -506,7 +505,7 @@
         "nowcast_pp": 0.434980660787975,
         "nowcast_as_of": "2026-09-21 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.106pp (x1.51). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.105pp (x1.52). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -524,9 +523,9 @@
           },
           {
             "label": "0.2%",
-            "market_prob": 0.0055,
+            "market_prob": 0.005,
             "model_prob": 0.0864,
-            "gap_c": 8.09,
+            "gap_c": 8.14,
             "suspect": false
           },
           {
@@ -552,23 +551,23 @@
           },
           {
             "label": "0.6%",
-            "market_prob": 0.395,
+            "market_prob": 0.4,
             "model_prob": 0.1466,
-            "gap_c": -24.84,
-            "suspect": false
+            "gap_c": -25.34,
+            "suspect": true
           },
           {
             "label": "0.7%",
-            "market_prob": 0.17,
+            "market_prob": 0.165,
             "model_prob": 0.065,
-            "gap_c": -10.5,
+            "gap_c": -10.0,
             "suspect": false
           },
           {
             "label": "\u22650.8%",
-            "market_prob": 0.037,
+            "market_prob": 0.027,
             "model_prob": 0.0245,
-            "gap_c": -1.25,
+            "gap_c": -0.25,
             "suspect": false
           }
         ]
@@ -580,7 +579,52 @@
     "cal_vetoed": 0
   },
   "gas": [],
-  "spxindex": [],
+  "spxindex": [
+    {
+      "market_id": "KXNASDAQ100-26SEP22H1600-B30550",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "Yes",
+      "title": "Will the Nasdaq-100 be between 30500 and 30599.9900 at the end of Sep 22, 2026 at 4pm EDT?",
+      "url": "https://kalshi.com/markets/KXNASDAQ100-26SEP22H1600",
+      "entry_price": 0.2,
+      "model_prob": 0.3348,
+      "edge": 0.1348,
+      "fair": 0.3348,
+      "market_prob": 0.2,
+      "implied_sigma": 0.1861,
+      "spot_used": 30482.35,
+      "chain_ts": "2026-09-22 05:02:20",
+      "vrp_shrink": 0.92,
+      "series": "KXNASDAQ100",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-09-22T20:00:00+00:00",
+      "event_iso": "2026-09-22T20:00:00+00:00"
+    },
+    {
+      "market_id": "KXINX-26SEP22H1600-B7762",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "Yes",
+      "title": "Will the S&P 500 be between 7750 and 7774.9999 on Sep 22, 2026 at 4pm EDT?",
+      "url": "https://kalshi.com/markets/KXINX-26SEP22H1600",
+      "entry_price": 0.25,
+      "model_prob": 0.3185,
+      "edge": 0.0685,
+      "fair": 0.3185,
+      "market_prob": 0.225,
+      "implied_sigma": 0.1147,
+      "spot_used": 7764.7,
+      "chain_ts": "2026-09-22 03:59:37",
+      "vrp_shrink": 0.92,
+      "series": "KXINX",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-09-22T20:00:00+00:00",
+      "event_iso": "2026-09-22T20:00:00+00:00"
+    }
+  ],
   "sizing": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
