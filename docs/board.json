@@ -1,228 +1,513 @@
 {
-  "generated": "2026-09-24 06:02:32",
-  "generated_at": 1790229752.9861712,
+  "generated": "2026-09-24 11:52:41",
+  "generated_at": 1790250761.4052577,
   "account_size": 100000.0,
   "tickets": [
     {
-      "market_id": "0x80c7ab790a5ab37e11c79a5a658d729ac29e6e17aa2d3fc859e4a78c0d896369",
-      "title": "Will Norway win on 2026-09-24?",
-      "side_label": "NO on: Will Norway win on 2026-09-24?",
-      "outcome": "No",
-      "entry_price": 0.43,
-      "whale_price": 0.43,
-      "drift_c": 0.0,
-      "contracts": 1116,
-      "cost": 479.88,
-      "max_payout": 1116.0,
-      "conviction": 0.48,
-      "hours_to_resolve": 12.7,
+      "market_id": "0xe2033349e8343193938b216a1f176ae5fdb1de011fe07374a819456d52aa1992",
+      "title": "Spread: Bengals (-3.5)",
+      "side_label": "Steelers \u2014 Spread: Bengals (-3.5)",
+      "outcome": "Steelers",
+      "entry_price": 0.525,
+      "whale_price": 0.52,
+      "drift_c": 0.5,
+      "contracts": 1133,
+      "cost": 594.83,
+      "max_payout": 1133.0,
+      "conviction": 0.595,
+      "hours_to_resolve": 77.1,
       "n_wallets": 1,
-      "whale_usd": 5329,
-      "minutes_ago": 34,
-      "liquidity": 220889,
-      "url": "https://polymarket.com/event/unl-nor-den-2026-09-24",
-      "end_iso": "2026-09-24T18:45:00Z",
-      "event_iso": "2026-09-24 18:45:00+00",
-      "slug": "unl-nor-den-2026-09-24-nor",
-      "signal_ts": 1790227715.0,
+      "whale_usd": 21478,
+      "minutes_ago": 25,
+      "liquidity": 121089,
+      "url": "https://polymarket.com/event/nfl-cin-pit-2026-09-27",
+      "end_iso": "2026-09-27T17:00:00Z",
+      "event_iso": "2026-09-27 17:00:00+00",
+      "slug": "nfl-cin-pit-2026-09-27-spread-away-3pt5",
+      "signal_ts": 1790249273.0,
       "wallet_usd": [
         [
-          "0x516c5e7b36410d10b8f713a4f93e42c8c9843d58",
-          5329.08
+          "0x4078b5854150adb625c72e846b8588ff1ac93922",
+          21477.63
         ]
       ],
       "why": [
         "new wallet with no track record \u2014 pattern signal, not a copy",
-        "$5,329, 100% of their own book",
-        "latest buy 34 min ago",
+        "$21,478, 30% of their own book",
+        "latest buy 25 min ago",
         "still near their entry price",
-        "13h until it resolves",
-        "$220,889 liquidity"
+        "77h until it resolves",
+        "$121,089 liquidity"
       ],
       "warnings": [
+        "unproven wallet \u2014 this is a pattern, not a track record"
+      ]
+    },
+    {
+      "market_id": "0xb865736cce51dfb32d4e97796dfc9be85972159f0cf03c255844c21456b3e17a",
+      "title": "Spread: Packers (-4.5)",
+      "side_label": "Packers \u2014 Spread: Packers (-4.5)",
+      "outcome": "Packers",
+      "entry_price": 0.515,
+      "whale_price": 0.51,
+      "drift_c": 0.5,
+      "contracts": 1147,
+      "cost": 590.71,
+      "max_payout": 1147.0,
+      "conviction": 0.591,
+      "hours_to_resolve": 12.4,
+      "n_wallets": 2,
+      "whale_usd": 38932,
+      "minutes_ago": 84,
+      "liquidity": 413606,
+      "url": "https://polymarket.com/event/nfl-atl-gb-2026-09-25",
+      "end_iso": "2026-09-25T00:15:00Z",
+      "event_iso": "2026-09-25 00:15:00+00",
+      "slug": "nfl-atl-gb-2026-09-25-spread-home-4pt5",
+      "signal_ts": 1790245724.0,
+      "wallet_usd": [
+        [
+          "0x924379a79c64b77ad5816ad362122a5f6228658e",
+          29261.41
+        ],
+        [
+          "0xdc41c39b95453c943174f369926018f6963bdd7e",
+          9670.62
+        ]
+      ],
+      "why": [
+        "2 profitable wallets on this side",
+        "$38,932, 32% of their own book",
+        "latest buy 84 min ago",
+        "still near their entry price",
+        "12h until it resolves",
+        "$413,606 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days"
+      ]
+    },
+    {
+      "market_id": "0x4e0c84b11fd7c5cafab53a460a74e7f045e55cf38fba8441dfada8f7fe371996",
+      "title": "Spread: Vikings (-1.5)",
+      "side_label": "Buccaneers \u2014 Spread: Vikings (-1.5)",
+      "outcome": "Buccaneers",
+      "entry_price": 0.525,
+      "whale_price": 0.52,
+      "drift_c": 0.5,
+      "contracts": 1085,
+      "cost": 569.62,
+      "max_payout": 1085.0,
+      "conviction": 0.57,
+      "hours_to_resolve": 80.2,
+      "n_wallets": 1,
+      "whale_usd": 12728,
+      "minutes_ago": 27,
+      "liquidity": 137456,
+      "url": "https://polymarket.com/event/nfl-min-tb-2026-09-27",
+      "end_iso": "2026-09-27T20:05:00Z",
+      "event_iso": "2026-09-27 20:05:00+00",
+      "slug": "nfl-min-tb-2026-09-27-spread-away-1pt5",
+      "signal_ts": 1790249126.0,
+      "wallet_usd": [
+        [
+          "0x4078b5854150adb625c72e846b8588ff1ac93922",
+          12728.47
+        ]
+      ],
+      "why": [
+        "new wallet with no track record \u2014 pattern signal, not a copy",
+        "$12,728 \u2014 but only 17.6% of their book",
+        "latest buy 27 min ago",
+        "still near their entry price",
+        "80h until it resolves",
+        "$137,456 liquidity"
+      ],
+      "warnings": [
+        "unproven wallet \u2014 this is a pattern, not a track record"
+      ]
+    },
+    {
+      "market_id": "0xdff427fce82c22dca74075108b8d6dbe6c97395225b60e20f10ab782e221727c",
+      "title": "Spread: Chiefs (-10.5)",
+      "side_label": "Dolphins \u2014 Spread: Chiefs (-10.5)",
+      "outcome": "Dolphins",
+      "entry_price": 0.495,
+      "whale_price": 0.494,
+      "drift_c": 0.1,
+      "contracts": 1145,
+      "cost": 566.77,
+      "max_payout": 1145.0,
+      "conviction": 0.567,
+      "hours_to_resolve": 77.1,
+      "n_wallets": 1,
+      "whale_usd": 6146,
+      "minutes_ago": 9,
+      "liquidity": 111902,
+      "url": "https://polymarket.com/event/nfl-kc-mia-2026-09-27",
+      "end_iso": "2026-09-27T17:00:00Z",
+      "event_iso": "2026-09-27 17:00:00+00",
+      "slug": "nfl-kc-mia-2026-09-27-spread-away-10pt5",
+      "signal_ts": 1790250182.0,
+      "wallet_usd": [
+        [
+          "0x4078b5854150adb625c72e846b8588ff1ac93922",
+          6145.64
+        ]
+      ],
+      "why": [
+        "new wallet with no track record \u2014 pattern signal, not a copy",
+        "$6,146 \u2014 but only 8.5% of their book",
+        "latest buy 9 min ago",
+        "still near their entry price",
+        "77h until it resolves",
+        "$111,902 liquidity"
+      ],
+      "warnings": [
+        "unproven wallet \u2014 this is a pattern, not a track record"
+      ]
+    },
+    {
+      "market_id": "0x5626d610b13ebdcd4f7081e679ac54b6c8d8a4fd4fb9b3c1d35a564d5b25e695",
+      "title": "Shipping targeted in Hormuz on September 25, 2026?",
+      "side_label": "NO on: Shipping targeted in Hormuz on September 25, 2026?",
+      "outcome": "No",
+      "entry_price": 0.67,
+      "whale_price": 0.72,
+      "drift_c": -5.0,
+      "contracts": 794,
+      "cost": 531.98,
+      "max_payout": 794.0,
+      "conviction": 0.532,
+      "hours_to_resolve": 32.1,
+      "n_wallets": 1,
+      "whale_usd": 7560,
+      "minutes_ago": 13,
+      "liquidity": 142,
+      "url": "https://polymarket.com/event/shipping-successfully-targeted-in-hormuz-onptptpt",
+      "end_iso": "2026-09-25T19:59:00Z",
+      "event_iso": "",
+      "slug": "shipping-targeted-in-hormuz-on-september-25-2026-20260917",
+      "signal_ts": 1790249949.0,
+      "wallet_usd": [
+        [
+          "0x7a10132084bef295d08dd27d8fbdcf0b606e4b1a",
+          7560.28
+        ]
+      ],
+      "why": [
+        "new wallet with no track record \u2014 pattern signal, not a copy",
+        "$7,560, 100% of their own book",
+        "latest buy 13 min ago",
+        "price 5.0c cheaper than they paid",
+        "32h until it resolves"
+      ],
+      "warnings": [
+        "thin liquidity \u2014 expect slippage",
         "resolves within 2 days",
         "unproven wallet \u2014 this is a pattern, not a track record"
       ]
     },
     {
-      "market_id": "0x68d0f233e0c1b280ae869734140f5df73d59239356e75bd39667e11ba8d1bd59",
-      "title": "Spread: Packers (-7.5)",
-      "side_label": "Packers \u2014 Spread: Packers (-7.5)",
-      "outcome": "Packers",
-      "entry_price": 0.385,
-      "whale_price": 0.39,
-      "drift_c": -0.49,
-      "contracts": 1225,
-      "cost": 471.62,
-      "max_payout": 1225.0,
-      "conviction": 0.472,
-      "hours_to_resolve": 18.2,
-      "n_wallets": 1,
-      "whale_usd": 2438,
-      "minutes_ago": 13,
-      "liquidity": 86140,
-      "url": "https://polymarket.com/event/nfl-atl-gb-2026-09-25",
-      "end_iso": "2026-09-25T00:15:00Z",
-      "event_iso": "2026-09-25 00:15:00+00",
-      "slug": "nfl-atl-gb-2026-09-25-spread-home-7pt5",
-      "signal_ts": 1790228943.0,
+      "market_id": "0xff94b7e25f8377d7ad40bbfd172744bec6235b8ffbcaa1f276ec5465191b2216",
+      "title": "Will Bitcoin reach $87,500 in September?",
+      "side_label": "YES on: Will Bitcoin reach $87,500 in September?",
+      "outcome": "Yes",
+      "entry_price": 0.28,
+      "whale_price": 0.4,
+      "drift_c": -12.0,
+      "contracts": 1849,
+      "cost": 517.72,
+      "max_payout": 1849.0,
+      "conviction": 0.518,
+      "hours_to_resolve": 160.1,
+      "n_wallets": 2,
+      "whale_usd": 11200,
+      "minutes_ago": 259,
+      "liquidity": 57761,
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-september-2026",
+      "end_iso": "2026-10-01T04:00:00Z",
+      "event_iso": "",
+      "slug": "will-bitcoin-reach-87pt5k-in-september-2026",
+      "signal_ts": 1790235216.0,
       "wallet_usd": [
         [
-          "0xdc41c39b95453c943174f369926018f6963bdd7e",
-          2437.83
+          "0xcc500cbcc8b7cf5bd21975ebbea34f21b5644c82",
+          7200.0
+        ],
+        [
+          "0xf705fa045201391d9632b7f3cde06a5e24453ca7",
+          4000.0
         ]
       ],
       "why": [
-        "1 profitable wallet on this side",
-        "$2,438 \u2014 but only 1.8% of their book",
-        "latest buy 13 min ago",
+        "2 profitable wallets on this side",
+        "$11,200 \u2014 but only 1.8% of their book",
+        "latest buy 259 min ago",
+        "price 12.0c cheaper than they paid",
+        "160h until it resolves",
+        "$57,761 liquidity"
+      ],
+      "warnings": []
+    },
+    {
+      "market_id": "0xf44ade6df83c8d227bfa92d193f9ea6c820d5377ace87b0f01b836ad3d6c7bb2",
+      "title": "Spread: Bills (-7.5)",
+      "side_label": "Chargers \u2014 Spread: Bills (-7.5)",
+      "outcome": "Chargers",
+      "entry_price": 0.525,
+      "whale_price": 0.53,
+      "drift_c": -0.5,
+      "contracts": 931,
+      "cost": 488.78,
+      "max_payout": 931.0,
+      "conviction": 0.489,
+      "hours_to_resolve": 77.1,
+      "n_wallets": 1,
+      "whale_usd": 11108,
+      "minutes_ago": 135,
+      "liquidity": 128075,
+      "url": "https://polymarket.com/event/nfl-lac-buf-2026-09-27",
+      "end_iso": "2026-09-27T17:00:00Z",
+      "event_iso": "2026-09-27 17:00:00+00",
+      "slug": "nfl-lac-buf-2026-09-27-spread-home-7pt5",
+      "signal_ts": 1790242650.0,
+      "wallet_usd": [
+        [
+          "0x4078b5854150adb625c72e846b8588ff1ac93922",
+          11107.99
+        ]
+      ],
+      "why": [
+        "new wallet with no track record \u2014 pattern signal, not a copy",
+        "$11,108 \u2014 but only 15.4% of their book",
+        "latest buy 135 min ago",
         "still near their entry price",
-        "18h until it resolves",
-        "$86,140 liquidity"
+        "77h until it resolves",
+        "$128,075 liquidity"
       ],
       "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
+        "unproven wallet \u2014 this is a pattern, not a track record"
       ]
     }
   ],
   "probe": [
     {
-      "market_id": "0xfd027f6aa820eea2b56cec365d681d87c6884335f1a064436d1ffae5c04269fe",
-      "title": "Will Bitcoin reach $85,000 in September?",
-      "side_label": "YES on: Will Bitcoin reach $85,000 in September?",
-      "outcome": "Yes",
-      "entry_price": 0.79,
-      "whale_price": 0.81,
-      "drift_c": -2.0,
-      "contracts": 515,
-      "cost": 406.85,
-      "max_payout": 515.0,
-      "conviction": 0.407,
-      "hours_to_resolve": 166.0,
+      "market_id": "0x64a5ce26cf37db3c70c641d6cb68dda4f34d185f5faa2aaf0f0cb78105ce085f",
+      "title": "Arizona Diamondbacks vs. Colorado Rockies",
+      "side_label": "Colorado Rockies \u2014 Arizona Diamondbacks vs. Colorado Rockies",
+      "outcome": "Colorado Rockies",
+      "entry_price": 0.365,
+      "whale_price": 0.37,
+      "drift_c": -0.5,
+      "contracts": 1230,
+      "cost": 448.95,
+      "max_payout": 1230.0,
+      "conviction": 0.449,
+      "hours_to_resolve": 7.3,
       "n_wallets": 1,
-      "whale_usd": 3778,
-      "minutes_ago": 537,
-      "liquidity": 38466,
-      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-september-2026",
-      "end_iso": "2026-10-01T04:00:00Z",
-      "event_iso": "",
-      "slug": "will-bitcoin-reach-85k-in-september-2026-from-september-23",
-      "signal_ts": 1790197510.0,
+      "whale_usd": 3243,
+      "minutes_ago": 25,
+      "liquidity": 186779,
+      "url": "https://polymarket.com/event/mlb-ari-col-2026-09-24",
+      "end_iso": "2026-10-01T19:10:00Z",
+      "event_iso": "2026-09-24 19:10:00+00",
+      "slug": "mlb-ari-col-2026-09-24",
+      "signal_ts": 1790249252.0,
       "wallet_usd": [
         [
-          "0xa19cbababc312f9df185e49d7004c249ed1ade6b",
-          3777.61
+          "0x2117ae94a97d69b78cbc81b6680a62deb1955c26",
+          3242.68
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$3,778 \u2014 but only 0.8% of their book",
-        "latest buy 537 min ago",
-        "price 2.0c cheaper than they paid",
-        "166h until it resolves"
+        "$3,243 \u2014 but only 1.9% of their book",
+        "latest buy 25 min ago",
+        "still near their entry price",
+        "7h until it resolves",
+        "$186,779 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     },
     {
-      "market_id": "0x1a01bf78f56a507fcb666d564d8c8b91b0750679163ed6e96746102c9b7d285d",
-      "title": "Will Fl\u00e1vio Bolsonaro win the 2026 Brazilian presidential election?",
-      "side_label": "YES on: Will Fl\u00e1vio Bolsonaro win the 2026 Brazilian presidential election?",
-      "outcome": "Yes",
-      "entry_price": 0.572,
-      "whale_price": 0.584,
-      "drift_c": -1.15,
-      "contracts": 624,
-      "cost": 356.93,
-      "max_payout": 624.0,
-      "conviction": 0.357,
-      "hours_to_resolve": 234.0,
+      "market_id": "0x346f6161d01ff8c1fc7de23546038e49e415b00679ecedc83f7f2a597cc7c902",
+      "title": "Will the price of Bitcoin be above $84,000 on September 26?",
+      "side_label": "NO on: Will the price of Bitcoin be above $84,000 on September 26?",
+      "outcome": "No",
+      "entry_price": 0.59,
+      "whale_price": 0.62,
+      "drift_c": -3.0,
+      "contracts": 727,
+      "cost": 428.93,
+      "max_payout": 727.0,
+      "conviction": 0.429,
+      "hours_to_resolve": 52.1,
       "n_wallets": 1,
-      "whale_usd": 5391,
-      "minutes_ago": 576,
-      "liquidity": 379025,
-      "url": "https://polymarket.com/event/brazil-presidential-election",
-      "end_iso": "2026-10-04T00:00:00Z",
+      "whale_usd": 4402,
+      "minutes_ago": 139,
+      "liquidity": 49646,
+      "url": "https://polymarket.com/event/bitcoin-above-on-september-26-2026",
+      "end_iso": "2026-09-26T16:00:00Z",
       "event_iso": "",
-      "slug": "will-flvio-bolsonaro-win-the-2026-brazilian-presidential-election",
-      "signal_ts": 1790195192.0,
+      "slug": "bitcoin-above-84k-on-september-26-2026",
+      "signal_ts": 1790242400.0,
       "wallet_usd": [
         [
-          "0x88c4919de76e526d55a32c1f8afb439dd1f1129a",
-          5390.83
+          "0x71a70f24538d885d1b45f9cea158a2cdf2e56fcf",
+          4402.0
         ]
       ],
       "why": [
-        "election market and 100% of this is one wallet \u2014 concentration here can move the price rather than confirm it",
         "1 profitable wallet on this side",
-        "$5,391 \u2014 but only 0.6% of their book",
-        "latest buy 576 min ago",
-        "price 1.1c cheaper than they paid",
-        "234h until it resolves",
-        "$379,025 liquidity"
+        "$4,402 \u2014 but only 7.6% of their book",
+        "latest buy 139 min ago",
+        "price 3.0c cheaper than they paid",
+        "52h until it resolves"
       ],
       "warnings": [
-        "only one wallet \u2014 single opinion",
-        "100% of this signal is a single wallet on an election market \u2014 that is the shape that distorted 2024 pricing"
+        "only one wallet \u2014 single opinion"
       ]
     },
     {
-      "market_id": "0xfe4e3285d5617e1a928271f4e21cb920a4e49727b968ed6155e43992165b1add",
-      "title": "Netherlands vs. Germany: Both Teams to Score",
-      "side_label": "YES on: Netherlands vs. Germany: Both Teams to Score",
-      "outcome": "Yes",
-      "entry_price": 0.7,
-      "whale_price": 0.69,
-      "drift_c": 1.0,
-      "contracts": 485,
-      "cost": 339.5,
-      "max_payout": 485.0,
-      "conviction": 0.34,
-      "hours_to_resolve": 12.7,
+      "market_id": "0x49d82e761d9f918fda89843b95d648ebcb364772c2a1c658240e4323faf59d6b",
+      "title": "Netherlands vs. Germany: Germany O/U 1.5",
+      "side_label": "Under \u2014 Netherlands vs. Germany: Germany O/U 1.5",
+      "outcome": "Under",
+      "entry_price": 0.475,
+      "whale_price": 0.47,
+      "drift_c": 0.5,
+      "contracts": 844,
+      "cost": 400.9,
+      "max_payout": 844.0,
+      "conviction": 0.401,
+      "hours_to_resolve": 6.9,
       "n_wallets": 1,
-      "whale_usd": 4106,
-      "minutes_ago": 63,
-      "liquidity": 38459,
+      "whale_usd": 2054,
+      "minutes_ago": 57,
+      "liquidity": 44985,
       "url": "https://polymarket.com/event/unl-nld-ger-2026-09-24-more-markets",
       "end_iso": "2026-09-24T18:45:00Z",
       "event_iso": "2026-09-24 18:45:00+00",
-      "slug": "unl-nld-ger-2026-09-24-btts",
-      "signal_ts": 1790225978.0,
+      "slug": "unl-nld-ger-2026-09-24-team-total-away-1pt5",
+      "signal_ts": 1790247332.0,
       "wallet_usd": [
         [
-          "0x032eb1bc893940263ad0b01889f262fc232f2a9e",
-          4105.5
+          "0x2a69660046d7acc4ab204d7cc5ba78b0776cd2f7",
+          2053.9
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$4,106 \u2014 but only 1.0% of their book",
-        "latest buy 63 min ago",
-        "price up 1.0c since they bought",
-        "13h until it resolves"
+        "$2,054 \u2014 but only 1.1% of their book",
+        "latest buy 57 min ago",
+        "still near their entry price",
+        "7h until it resolves"
       ],
       "warnings": [
         "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0xeb3478a53a06cb221676e497c8c19f54329afe38eed2c1a92c4dd35812054c00",
+      "title": "Will Netherlands win on 2026-09-24?",
+      "side_label": "NO on: Will Netherlands win on 2026-09-24?",
+      "outcome": "No",
+      "entry_price": 0.64,
+      "whale_price": 0.625,
+      "drift_c": 1.46,
+      "contracts": 582,
+      "cost": 372.48,
+      "max_payout": 582.0,
+      "conviction": 0.373,
+      "hours_to_resolve": 6.9,
+      "n_wallets": 1,
+      "whale_usd": 5359,
+      "minutes_ago": 57,
+      "liquidity": 289072,
+      "url": "https://polymarket.com/event/unl-nld-ger-2026-09-24",
+      "end_iso": "2026-09-24T18:45:00Z",
+      "event_iso": "2026-09-24 18:45:00+00",
+      "slug": "unl-nld-ger-2026-09-24-nld",
+      "signal_ts": 1790247332.0,
+      "wallet_usd": [
+        [
+          "0x821dab0565ebf5b327f51db06223fdcfe01acf16",
+          5358.69
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$5,359 \u2014 but only 1.1% of their book",
+        "latest buy 57 min ago",
+        "price up 1.5c since they bought",
+        "7h until it resolves",
+        "$289,072 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x690fafd3b7bb8b4919ccf0f219b0014b65334411a1076162e76353e76d7f9bec",
+      "title": "US x Iran ceasefire continues through September 30?",
+      "side_label": "NO on: US x Iran ceasefire continues through September 30?",
+      "outcome": "No",
+      "entry_price": 0.16,
+      "whale_price": 0.137,
+      "drift_c": 2.26,
+      "contracts": 1900,
+      "cost": 304.0,
+      "max_payout": 1900.0,
+      "conviction": 0.361,
+      "hours_to_resolve": 156.1,
+      "n_wallets": 1,
+      "whale_usd": 16233,
+      "minutes_ago": 210,
+      "liquidity": 124035,
+      "url": "https://polymarket.com/event/us-iran-ceasefire-continues-throughptptpt",
+      "end_iso": "2026-09-30T23:59:00Z",
+      "event_iso": "",
+      "slug": "us-x-iran-ceasefire-continues-through-september-30-20260917",
+      "signal_ts": 1790238171.0,
+      "wallet_usd": [
+        [
+          "0xc851cd9bee7d262afd78674f861f9f576a12cd2a",
+          16232.63
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$16,233 \u2014 but only 5.2% of their book",
+        "latest buy 210 min ago",
+        "price up 2.3c since they bought",
+        "156h until it resolves",
+        "$124,035 liquidity"
+      ],
+      "warnings": [
         "only one wallet \u2014 single opinion",
-        "no sports track record \u2014 these wallets earned their record elsewhere"
+        "size capped by the per-market contract limit"
       ]
     }
   ],
-  "considered": 298,
+  "considered": 289,
   "rejected": {
-    "market closed": 207,
-    "fresh wallet: market too liquid for the pattern": 13,
-    "wallet not new (no track record either)": 27,
-    "in-play (event already started)": 14,
-    "signal too old for this market's horizon": 11,
-    "esports (sleeve retired \u2014 see esports_enabled)": 7,
-    "parlay / combo ticket, not a single market": 1,
-    "resolves more than 30 days out": 11,
-    "could not price this outcome": 1,
-    "duplicate event (kept the stronger side)": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 3
+    "esports (sleeve retired \u2014 see esports_enabled)": 31,
+    "market closed": 134,
+    "wallet not new (no track record either)": 46,
+    "signal too old for this market's horizon": 17,
+    "in-play (event already started)": 7,
+    "fresh wallet: market too liquid for the pattern": 15,
+    "resolves more than 30 days out": 13,
+    "price + fee ran away from the whale's entry": 3,
+    "parlay / combo ticket, not a single market": 2,
+    "already resolved": 6,
+    "duplicate event (kept the stronger side)": 3,
+    "below the 0.45 buy bar (recorded, not bought)": 5
   },
   "notes": [],
   "consistency": {
@@ -230,21 +515,85 @@
     "enabled": true,
     "events_scanned": 340,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 119,
-      "not a ladder: fewer than two live, quoted legs": 78,
-      "not a ladder: group labels are not thresholds or deadlines": 60,
+      "bracket has legs we cannot price (fail closed)": 120,
+      "not a ladder: fewer than two live, quoted legs": 76,
+      "not a ladder: group labels are not thresholds or deadlines": 61,
       "not a ladder: duplicate deadlines left too few rungs": 8,
-      "ladder pair too illiquid to fill": 123,
+      "bracket overround smaller than the spread": 3,
+      "ladder pair too illiquid to fill": 128,
       "bracket has too many legs to place by hand": 2,
-      "ladder inversion smaller than the spread": 3,
+      "ladder inversion smaller than the spread": 6,
       "not a ladder: numeric group spans different end dates": 2,
-      "bracket overround smaller than the spread": 1,
-      "bracket leg too illiquid to fill": 3,
-      "not a ladder: a live leg carries no group label": 2,
-      "bracket underround smaller than the spread": 1
+      "not a ladder: a live leg carries no group label": 1,
+      "bracket leg too illiquid to fill": 2
     },
     "notes": [],
-    "violations": []
+    "violations": [
+      {
+        "family": "bracket",
+        "event_slug": "maduro-prison-time-527",
+        "constraint": "5 mutually exclusive outcomes offer at 0.9520 total, but exactly one of them pays 1.00",
+        "edge_c": 4.8,
+        "actions": [
+          "BUY YES  No prison time  @ 0.700",
+          "BUY YES  <20  @ 0.072",
+          "BUY YES  20\u201340  @ 0.008",
+          "BUY YES  40\u201360  @ 0.012",
+          "BUY YES  60+  @ 0.160"
+        ],
+        "warnings": [
+          "requires filling all 5 legs - confirm the event page lists exactly 5 outcomes before trusting the sum"
+        ],
+        "url": "https://polymarket.com/event/maduro-prison-time-527",
+        "legs": [
+          {
+            "question": "Will Nicol\u00e1s Maduro be sentenced to no prison time?",
+            "name": "No prison time",
+            "bid": 0.64,
+            "ask": 0.7,
+            "liquidity": 8431.7714,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/maduro-prison-time-527"
+          },
+          {
+            "question": "Will Nicol\u00e1s Maduro be sentenced to less than 20 years in prison?",
+            "name": "<20",
+            "bid": 0.064,
+            "ask": 0.072,
+            "liquidity": 22989.13393,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/maduro-prison-time-527"
+          },
+          {
+            "question": "Will Nicol\u00e1s Maduro be sentenced to between 20 and 40 years in prison?",
+            "name": "20\u201340",
+            "bid": 0.006,
+            "ask": 0.008,
+            "liquidity": 12045.30888,
+            "end_iso": "2027-12-31T00:00:00Z",
+            "url": "https://polymarket.com/event/maduro-prison-time-527"
+          },
+          {
+            "question": "Will Nicol\u00e1s Maduro be sentenced to between 40 and 60 years in prison?",
+            "name": "40\u201360",
+            "bid": 0.003,
+            "ask": 0.012,
+            "liquidity": 13356.16757,
+            "end_iso": "2027-12-31T00:00:00Z",
+            "url": "https://polymarket.com/event/maduro-prison-time-527"
+          },
+          {
+            "question": "Will Nicol\u00e1s Maduro be sentenced to at least 60 years in prison?",
+            "name": "60+",
+            "bid": 0.15,
+            "ask": 0.16,
+            "liquidity": 14149.1648,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/maduro-prison-time-527"
+          }
+        ]
+      }
+    ]
   },
   "macro": {
     "ok": true,
@@ -261,7 +610,7 @@
         "nowcast_pp": 2.39023925044117,
         "nowcast_as_of": "2026-09-23 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.087pp (x1.83). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.086pp (x1.86). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
         "rows": [
           {
             "label": "\u22642.0%",
@@ -286,30 +635,30 @@
           },
           {
             "label": "2.3%",
-            "market_prob": 0.14,
+            "market_prob": 0.185,
             "model_prob": 0.2103,
-            "gap_c": 7.03,
+            "gap_c": 2.53,
             "suspect": false
           },
           {
             "label": "2.4%",
-            "market_prob": 0.455,
+            "market_prob": 0.45,
             "model_prob": 0.2449,
-            "gap_c": -21.01,
+            "gap_c": -20.51,
             "suspect": false
           },
           {
             "label": "2.5%",
-            "market_prob": 0.33,
+            "market_prob": 0.34,
             "model_prob": 0.1954,
-            "gap_c": -13.46,
+            "gap_c": -14.46,
             "suspect": false
           },
           {
             "label": "2.6%",
-            "market_prob": 0.12,
+            "market_prob": 0.08,
             "model_prob": 0.1068,
-            "gap_c": -1.32,
+            "gap_c": 2.68,
             "suspect": false
           },
           {
@@ -363,9 +712,9 @@
           },
           {
             "label": "0.2%",
-            "market_prob": 0.475,
+            "market_prob": 0.49,
             "model_prob": 0.2453,
-            "gap_c": -22.97,
+            "gap_c": -24.47,
             "suspect": false
           },
           {
@@ -377,16 +726,16 @@
           },
           {
             "label": "0.4%",
-            "market_prob": 0.0535,
+            "market_prob": 0.053,
             "model_prob": 0.1166,
-            "gap_c": 6.31,
+            "gap_c": 6.36,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.003,
+            "market_prob": 0.004,
             "model_prob": 0.0456,
-            "gap_c": 4.26,
+            "gap_c": 4.16,
             "suspect": false
           },
           {
@@ -394,6 +743,83 @@
             "market_prob": 0.0055,
             "model_prob": 0.0147,
             "gap_c": 0.92,
+            "suspect": false
+          }
+        ]
+      },
+      {
+        "slug": "september-inflation-us-monthly",
+        "title": "September Inflation US - Monthly",
+        "series": "cpi",
+        "basis": "mom",
+        "ref_month": "2026-9",
+        "url": "https://polymarket.com/event/september-inflation-us-monthly",
+        "nowcast_pp": 0.499733447951985,
+        "nowcast_as_of": "2026-09-23 00:00",
+        "sigma": 0.16,
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.093pp (x1.72). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
+        "rows": [
+          {
+            "label": "\u22640.0%",
+            "market_prob": 0.0315,
+            "model_prob": 0.0025,
+            "gap_c": -2.9,
+            "suspect": false
+          },
+          {
+            "label": "0.1%",
+            "market_prob": 0.0025,
+            "model_prob": 0.0119,
+            "gap_c": 0.94,
+            "suspect": false
+          },
+          {
+            "label": "0.2%",
+            "market_prob": 0.002,
+            "model_prob": 0.0449,
+            "gap_c": 4.29,
+            "suspect": false
+          },
+          {
+            "label": "0.3%",
+            "market_prob": 0.0145,
+            "model_prob": 0.1154,
+            "gap_c": 10.09,
+            "suspect": false
+          },
+          {
+            "label": "0.4%",
+            "market_prob": 0.08,
+            "model_prob": 0.2033,
+            "gap_c": 12.33,
+            "suspect": false
+          },
+          {
+            "label": "0.5%",
+            "market_prob": 0.355,
+            "model_prob": 0.2453,
+            "gap_c": -10.97,
+            "suspect": false
+          },
+          {
+            "label": "0.6%",
+            "market_prob": 0.4,
+            "model_prob": 0.2029,
+            "gap_c": -19.71,
+            "suspect": false
+          },
+          {
+            "label": "0.7%",
+            "market_prob": 0.155,
+            "model_prob": 0.1149,
+            "gap_c": -4.01,
+            "suspect": false
+          },
+          {
+            "label": "\u22650.8%",
+            "market_prob": 0.035,
+            "model_prob": 0.0589,
+            "gap_c": 2.39,
             "suspect": false
           }
         ]
@@ -408,7 +834,7 @@
         "nowcast_pp": 3.56876137070461,
         "nowcast_as_of": "2026-09-23 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.116pp (x1.38). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.117pp (x1.37). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
         "rows": [
           {
             "label": "\u22642.9%",
@@ -419,23 +845,23 @@
           },
           {
             "label": "3.0%",
-            "market_prob": 0.0045,
+            "market_prob": 0.0025,
             "model_prob": 0.0005,
-            "gap_c": -0.4,
+            "gap_c": -0.2,
             "suspect": false
           },
           {
             "label": "3.1%",
-            "market_prob": 0.002,
+            "market_prob": 0.0025,
             "model_prob": 0.0038,
-            "gap_c": 0.18,
+            "gap_c": 0.13,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.002,
+            "market_prob": 0.0025,
             "model_prob": 0.0187,
-            "gap_c": 1.67,
+            "gap_c": 1.62,
             "suspect": false
           },
           {
@@ -447,9 +873,9 @@
           },
           {
             "label": "3.4%",
-            "market_prob": 0.0415,
+            "market_prob": 0.039,
             "model_prob": 0.1432,
-            "gap_c": 10.17,
+            "gap_c": 10.42,
             "suspect": false
           },
           {
@@ -468,107 +894,30 @@
           },
           {
             "label": "3.7%",
-            "market_prob": 0.26,
+            "market_prob": 0.275,
             "model_prob": 0.1772,
-            "gap_c": -8.28,
+            "gap_c": -9.78,
             "suspect": false
           },
           {
             "label": "3.8%",
-            "market_prob": 0.0485,
+            "market_prob": 0.046,
             "model_prob": 0.0893,
-            "gap_c": 4.08,
+            "gap_c": 4.33,
             "suspect": false
           },
           {
             "label": "3.9%",
-            "market_prob": 0.022,
+            "market_prob": 0.0365,
             "model_prob": 0.0308,
-            "gap_c": 0.88,
+            "gap_c": -0.57,
             "suspect": false
           },
           {
             "label": "\u22654.0%",
-            "market_prob": 0.031,
+            "market_prob": 0.023,
             "model_prob": 0.0086,
-            "gap_c": -2.24,
-            "suspect": false
-          }
-        ]
-      },
-      {
-        "slug": "september-inflation-us-monthly",
-        "title": "September Inflation US - Monthly",
-        "series": "cpi",
-        "basis": "mom",
-        "ref_month": "2026-9",
-        "url": "https://polymarket.com/event/september-inflation-us-monthly",
-        "nowcast_pp": 0.499733447951985,
-        "nowcast_as_of": "2026-09-23 00:00",
-        "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.102pp (x1.56). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
-        "rows": [
-          {
-            "label": "\u22640.0%",
-            "market_prob": 0.005,
-            "model_prob": 0.0025,
-            "gap_c": -0.25,
-            "suspect": false
-          },
-          {
-            "label": "0.1%",
-            "market_prob": 0.003,
-            "model_prob": 0.0119,
-            "gap_c": 0.89,
-            "suspect": false
-          },
-          {
-            "label": "0.2%",
-            "market_prob": 0.005,
-            "model_prob": 0.0449,
-            "gap_c": 3.99,
-            "suspect": false
-          },
-          {
-            "label": "0.3%",
-            "market_prob": 0.0355,
-            "model_prob": 0.1154,
-            "gap_c": 7.99,
-            "suspect": false
-          },
-          {
-            "label": "0.4%",
-            "market_prob": 0.085,
-            "model_prob": 0.2033,
-            "gap_c": 11.83,
-            "suspect": false
-          },
-          {
-            "label": "0.5%",
-            "market_prob": 0.36,
-            "model_prob": 0.2453,
-            "gap_c": -11.47,
-            "suspect": false
-          },
-          {
-            "label": "0.6%",
-            "market_prob": 0.375,
-            "model_prob": 0.2029,
-            "gap_c": -17.21,
-            "suspect": false
-          },
-          {
-            "label": "0.7%",
-            "market_prob": 0.155,
-            "model_prob": 0.1149,
-            "gap_c": -4.01,
-            "suspect": false
-          },
-          {
-            "label": "\u22650.8%",
-            "market_prob": 0.034,
-            "model_prob": 0.0589,
-            "gap_c": 2.49,
+            "gap_c": -1.44,
             "suspect": false
           }
         ]
@@ -588,12 +937,12 @@
       "outcome": "No",
       "title": "Will the S&P 500 be between 7650 and 7674.9999 on Sep 24, 2026 at 4pm EDT?",
       "url": "https://kalshi.com/markets/KXINX-26SEP24H1600",
-      "entry_price": 0.83,
+      "entry_price": 0.81,
       "model_prob": 0.9802,
-      "edge": 0.1502,
+      "edge": 0.1702,
       "fair": 0.0198,
-      "market_prob": 0.195,
-      "implied_sigma": 0.1848,
+      "market_prob": 0.21,
+      "implied_sigma": 0.2422,
       "spot_used": 7764.64,
       "chain_ts": "2026-09-23 03:56:05",
       "vrp_shrink": 0.92,
@@ -615,51 +964,7 @@
       "edge": 0.1245,
       "fair": 0.0355,
       "market_prob": 0.18,
-      "implied_sigma": 0.1848,
-      "spot_used": 7764.64,
-      "chain_ts": "2026-09-23 03:56:05",
-      "vrp_shrink": 0.92,
-      "series": "KXINX",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-09-24T20:00:00+00:00",
-      "event_iso": "2026-09-24T20:00:00+00:00"
-    },
-    {
-      "market_id": "KXINX-26SEP24H1600-B7787",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "Yes",
-      "title": "Will the S&P 500 be between 7775 and 7799.9999 on Sep 24, 2026 at 4pm EDT?",
-      "url": "https://kalshi.com/markets/KXINX-26SEP24H1600",
-      "entry_price": 0.13,
-      "model_prob": 0.2088,
-      "edge": 0.0788,
-      "fair": 0.2088,
-      "market_prob": 0.13,
-      "implied_sigma": 0.1848,
-      "spot_used": 7764.64,
-      "chain_ts": "2026-09-23 03:56:05",
-      "vrp_shrink": 0.92,
-      "series": "KXINX",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-09-24T20:00:00+00:00",
-      "event_iso": "2026-09-24T20:00:00+00:00"
-    },
-    {
-      "market_id": "KXINX-26SEP24H1600-B7712",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "No",
-      "title": "Will the S&P 500 be between 7700 and 7724.9999 on Sep 24, 2026 at 4pm EDT?",
-      "url": "https://kalshi.com/markets/KXINX-26SEP24H1600",
-      "entry_price": 0.85,
-      "model_prob": 0.9247,
-      "edge": 0.0747,
-      "fair": 0.0753,
-      "market_prob": 0.17,
-      "implied_sigma": 0.1848,
+      "implied_sigma": 0.2422,
       "spot_used": 7764.64,
       "chain_ts": "2026-09-23 03:56:05",
       "vrp_shrink": 0.92,
@@ -676,34 +981,12 @@
       "outcome": "No",
       "title": "Will the S&P 500 be between 7625 and 7649.9999 on Sep 24, 2026 at 4pm EDT?",
       "url": "https://kalshi.com/markets/KXINX-26SEP24H1600",
-      "entry_price": 0.92,
+      "entry_price": 0.9,
       "model_prob": 0.9897,
-      "edge": 0.0697,
+      "edge": 0.0897,
       "fair": 0.0103,
-      "market_prob": 0.105,
-      "implied_sigma": 0.1848,
-      "spot_used": 7764.64,
-      "chain_ts": "2026-09-23 03:56:05",
-      "vrp_shrink": 0.92,
-      "series": "KXINX",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-09-24T20:00:00+00:00",
-      "event_iso": "2026-09-24T20:00:00+00:00"
-    },
-    {
-      "market_id": "KXINX-26SEP24H1600-B7762",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "Yes",
-      "title": "Will the S&P 500 be between 7750 and 7774.9999 on Sep 24, 2026 at 4pm EDT?",
-      "url": "https://kalshi.com/markets/KXINX-26SEP24H1600",
-      "entry_price": 0.17,
-      "model_prob": 0.2188,
-      "edge": 0.0488,
-      "fair": 0.2188,
-      "market_prob": 0.17,
-      "implied_sigma": 0.1848,
+      "market_prob": 0.115,
+      "implied_sigma": 0.2422,
       "spot_used": 7764.64,
       "chain_ts": "2026-09-23 03:56:05",
       "vrp_shrink": 0.92,
