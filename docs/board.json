@@ -1,84 +1,129 @@
 {
-  "generated": "2026-09-27 21:27:41",
-  "generated_at": 1790544461.9591744,
+  "generated": "2026-09-27 23:55:14",
+  "generated_at": 1790553314.4941463,
   "account_size": 100000.0,
   "tickets": [
     {
-      "market_id": "0x3bee6f1cee38fb2c8b0d812cbdade0ca9541c9ace52098b74a4fa3ea2a76e69b",
-      "title": "Chengdu Open: Nikoloz Basilashvili vs Alejandro Davidovich Fokina",
-      "side_label": "Alejandro Davidovich Fokina \u2014 Chengdu Open: Nikoloz Basilashvili vs Alejandro Davidovich Fokina",
-      "outcome": "Alejandro Davidovich Fokina",
-      "entry_price": 0.685,
-      "whale_price": 0.68,
+      "market_id": "0xd552a5135b5927972a646c1d93d72e972089985d285e222f34be5a9f78591799",
+      "title": "Spread: Eagles (-4.5)",
+      "side_label": "Bears \u2014 Spread: Eagles (-4.5)",
+      "outcome": "Bears",
+      "entry_price": 0.535,
+      "whale_price": 0.53,
       "drift_c": 0.5,
-      "contracts": 659,
-      "cost": 451.42,
-      "max_payout": 659.0,
-      "conviction": 0.452,
-      "hours_to_resolve": 11.5,
-      "n_wallets": 1,
-      "whale_usd": 3548,
-      "minutes_ago": 3,
-      "liquidity": 28428,
-      "url": "https://polymarket.com/event/atp-basilas-fokina-2026-09-28",
-      "end_iso": "2026-10-05T09:00:00Z",
-      "event_iso": "2026-09-28 09:00:00+00",
-      "slug": "atp-basilas-fokina-2026-09-28",
-      "signal_ts": 1790544258.0,
+      "contracts": 1104,
+      "cost": 590.64,
+      "max_payout": 1104.0,
+      "conviction": 0.591,
+      "hours_to_resolve": 24.3,
+      "n_wallets": 2,
+      "whale_usd": 18751,
+      "minutes_ago": 6,
+      "liquidity": 178237,
+      "url": "https://polymarket.com/event/nfl-phi-chi-2026-09-29",
+      "end_iso": "2026-09-29T00:15:00Z",
+      "event_iso": "2026-09-29 00:15:00+00",
+      "slug": "nfl-phi-chi-2026-09-29-spread-away-4pt5",
+      "signal_ts": 1790552954.0,
       "wallet_usd": [
         [
-          "0x924379a79c64b77ad5816ad362122a5f6228658e",
-          3547.72
+          "0x5268527977f700f9bf9b6d5cd843859e4e70135d",
+          13792.0
+        ],
+        [
+          "0x27f738fe203827445690339104aae35b20bc44b0",
+          4959.21
         ]
       ],
       "why": [
-        "1 profitable wallet on this side",
-        "$3,548 \u2014 but only 0.6% of their book",
-        "latest buy 3 min ago",
+        "2 profitable wallets on this side",
+        "$18,751 \u2014 but only 2.8% of their book",
+        "latest buy 6 min ago",
         "still near their entry price",
-        "12h until it resolves"
+        "24h until it resolves",
+        "$178,237 liquidity"
       ],
       "warnings": [
-        "only one wallet \u2014 single opinion"
+        "resolves within 2 days"
       ]
     }
   ],
   "probe": [
     {
-      "market_id": "0x0f9601588797b122840aa7170cf1e936f6026061c66ae04dc8ed2f151ce1f070",
-      "title": "Spread: Eagles (-3.5)",
-      "side_label": "Bears \u2014 Spread: Eagles (-3.5)",
-      "outcome": "Bears",
-      "entry_price": 0.495,
-      "whale_price": 0.49,
-      "drift_c": 0.5,
-      "contracts": 680,
-      "cost": 336.6,
-      "max_payout": 680.0,
-      "conviction": 0.337,
-      "hours_to_resolve": 26.8,
+      "market_id": "0x688193d8aabca71f23d51398a224eddd3b56175dc72614c5c860acc796587be8",
+      "title": "Hangzhou Open: Daniil Medvedev vs Roman Safiullin",
+      "side_label": "Daniil Medvedev \u2014 Hangzhou Open: Daniil Medvedev vs Roman Safiullin",
+      "outcome": "Daniil Medvedev",
+      "entry_price": 0.675,
+      "whale_price": 0.69,
+      "drift_c": -1.5,
+      "contracts": 632,
+      "cost": 426.6,
+      "max_payout": 632.0,
+      "conviction": 0.427,
+      "hours_to_resolve": 11.6,
       "n_wallets": 1,
-      "whale_usd": 7350,
-      "minutes_ago": 188,
-      "liquidity": 195881,
-      "url": "https://polymarket.com/event/nfl-phi-chi-2026-09-29",
-      "end_iso": "2026-09-29T00:15:00Z",
-      "event_iso": "2026-09-29 00:15:00+00",
-      "slug": "nfl-phi-chi-2026-09-29-spread-away-3pt5",
-      "signal_ts": 1790533187.0,
+      "whale_usd": 5000,
+      "minutes_ago": 94,
+      "liquidity": 61836,
+      "url": "https://polymarket.com/event/atp-medvede-safiull-2026-09-28",
+      "end_iso": "2026-10-05T11:30:00Z",
+      "event_iso": "2026-09-28 11:30:00+00",
+      "slug": "atp-medvede-safiull-2026-09-28",
+      "signal_ts": 1790547654.0,
       "wallet_usd": [
         [
-          "0x684baa57c338c2549aec0aa3f034f695d72a8409",
-          7350.0
+          "0xf255cefbef5749f7436707632360d84f580ddce1",
+          5000.0
+        ]
+      ],
+      "why": [
+        "new wallet with no track record \u2014 pattern signal, not a copy",
+        "$5,000, 100% of their own book",
+        "latest buy 94 min ago",
+        "price 1.5c cheaper than they paid",
+        "12h until it resolves",
+        "$61,836 liquidity"
+      ],
+      "warnings": [
+        "unproven wallet \u2014 this is a pattern, not a track record"
+      ]
+    },
+    {
+      "market_id": "0xce42d2dce2a3a9a8dd60c4cee37cdc83fffec4ed215228785a18ae9d35bac340",
+      "title": "Will Spain win on 2026-09-29?",
+      "side_label": "YES on: Will Spain win on 2026-09-29?",
+      "outcome": "Yes",
+      "entry_price": 0.82,
+      "whale_price": 0.824,
+      "drift_c": -0.41,
+      "contracts": 507,
+      "cost": 415.74,
+      "max_payout": 507.0,
+      "conviction": 0.416,
+      "hours_to_resolve": 42.8,
+      "n_wallets": 1,
+      "whale_usd": 9674,
+      "minutes_ago": 143,
+      "liquidity": 128010,
+      "url": "https://polymarket.com/event/unl-esp-hrv-2026-09-29",
+      "end_iso": "2026-09-29T18:45:00Z",
+      "event_iso": "2026-09-29 18:45:00+00",
+      "slug": "unl-esp-hrv-2026-09-29-esp",
+      "signal_ts": 1790544731.0,
+      "wallet_usd": [
+        [
+          "0x5b6331e7ff0831a3fe2ed12004747db1a9c911a4",
+          9673.71
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$7,350 \u2014 but only 2.4% of their book",
-        "latest buy 188 min ago",
+        "$9,674 \u2014 but only 4.3% of their book",
+        "latest buy 143 min ago",
         "still near their entry price",
-        "27h until it resolves",
-        "$195,881 liquidity"
+        "43h until it resolves",
+        "$128,010 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
@@ -86,145 +131,47 @@
       ]
     }
   ],
-  "considered": 410,
+  "considered": 329,
   "rejected": {
-    "already resolved": 146,
-    "market closed": 98,
-    "resolves in under 3h": 9,
-    "wallet not new (no track record either)": 45,
-    "fresh wallet: market too liquid for the pattern": 63,
-    "in-play (event already started)": 13,
-    "esports (sleeve retired \u2014 see esports_enabled)": 23,
-    "resolves more than 30 days out": 9,
-    "parlay / combo ticket, not a single market": 1,
+    "resolves in under 3h": 14,
+    "market closed": 93,
+    "already resolved": 110,
+    "fresh wallet: market too liquid for the pattern": 69,
+    "wallet not new (no track record either)": 22,
+    "esports (sleeve retired \u2014 see esports_enabled)": 11,
     "no resolution or start time": 1,
-    "below the 0.45 buy bar (recorded, not bought)": 1
+    "resolves more than 30 days out": 4,
+    "signal too old for this market's horizon": 1,
+    "in-play (event already started)": 1,
+    "below the 0.45 buy bar (recorded, not bought)": 2
   },
   "notes": [],
   "consistency": {
     "ok": true,
     "enabled": true,
-    "events_scanned": 348,
+    "events_scanned": 345,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 114,
-      "not a ladder: fewer than two live, quoted legs": 84,
-      "not a ladder: group labels are not thresholds or deadlines": 71,
+      "bracket has legs we cannot price (fail closed)": 112,
+      "not a ladder: fewer than two live, quoted legs": 93,
+      "not a ladder: group labels are not thresholds or deadlines": 59,
       "not a ladder: duplicate deadlines left too few rungs": 8,
-      "ladder pair too illiquid to fill": 110,
+      "ladder pair too illiquid to fill": 94,
+      "not a ladder: a live leg carries no group label": 6,
       "bracket has too many legs to place by hand": 2,
-      "not a ladder: a live leg carries no group label": 7,
-      "ladder inversion smaller than the spread": 3,
       "bracket underround smaller than the spread": 1,
+      "ladder inversion smaller than the spread": 3,
       "not a ladder: numeric group spans different end dates": 1,
       "bracket overround smaller than the spread": 1,
       "bracket leg too illiquid to fill": 3
     },
     "notes": [],
-    "violations": [
-      {
-        "family": "ladder",
-        "event_slug": "base-fdv-above-one-day-after-launch",
-        "constraint": "P($10B) must be <= P($8B), but $10B bids 0.160 while $8B offers 0.140",
-        "edge_c": 2.0,
-        "actions": [
-          "BUY YES  $8B  @ 0.140",
-          "BUY NO   $10B  @ 0.840"
-        ],
-        "warnings": [
-          "both legs settle on the same event page - confirm the two rule texts differ only in the threshold"
-        ],
-        "url": "https://polymarket.com/event/base-fdv-above-one-day-after-launch",
-        "legs": [
-          {
-            "question": "Base FDV above $8B one day after launch?",
-            "name": "$8B",
-            "bid": 0.12,
-            "ask": 0.14,
-            "liquidity": 13724.5214,
-            "end_iso": "2028-01-01T05:00:00Z",
-            "url": "https://polymarket.com/event/base-fdv-above-one-day-after-launch"
-          },
-          {
-            "question": "Base FDV above $10B one day after launch?",
-            "name": "$10B",
-            "bid": 0.16,
-            "ask": 0.17,
-            "liquidity": 10068.7686,
-            "end_iso": "2028-01-01T05:00:00Z",
-            "url": "https://polymarket.com/event/base-fdv-above-one-day-after-launch"
-          }
-        ]
-      }
-    ]
+    "violations": []
   },
   "macro": {
     "ok": true,
     "enabled": true,
     "notes": [],
     "cpi": [
-      {
-        "slug": "core-cpi-mom-september-2026",
-        "title": "Core CPI MoM - September 2026",
-        "series": "core_cpi",
-        "basis": "mom",
-        "ref_month": "2026-9",
-        "url": "https://polymarket.com/event/core-cpi-mom-september-2026",
-        "nowcast_pp": 0.201681228472037,
-        "nowcast_as_of": "2026-09-25 00:00",
-        "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.078pp (x2.04). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
-        "rows": [
-          {
-            "label": "\u22640.0%",
-            "market_prob": 0.021,
-            "model_prob": 0.1716,
-            "gap_c": 15.06,
-            "suspect": false
-          },
-          {
-            "label": "0.1%",
-            "market_prob": 0.13,
-            "model_prob": 0.2018,
-            "gap_c": 7.18,
-            "suspect": false
-          },
-          {
-            "label": "0.2%",
-            "market_prob": 0.48,
-            "model_prob": 0.2453,
-            "gap_c": -23.47,
-            "suspect": false
-          },
-          {
-            "label": "0.3%",
-            "market_prob": 0.33,
-            "model_prob": 0.2044,
-            "gap_c": -12.56,
-            "suspect": false
-          },
-          {
-            "label": "0.4%",
-            "market_prob": 0.0535,
-            "model_prob": 0.1166,
-            "gap_c": 6.31,
-            "suspect": false
-          },
-          {
-            "label": "0.5%",
-            "market_prob": 0.0045,
-            "model_prob": 0.0456,
-            "gap_c": 4.11,
-            "suspect": false
-          },
-          {
-            "label": "0.6%+",
-            "market_prob": 0.003,
-            "model_prob": 0.0147,
-            "gap_c": 1.17,
-            "suspect": false
-          }
-        ]
-      },
       {
         "slug": "core-cpi-yoy-september-2026",
         "title": "Core CPI YoY - September 2026",
@@ -235,7 +182,7 @@
         "nowcast_pp": 2.39023925044117,
         "nowcast_as_of": "2026-09-25 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.082pp (x1.95). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.083pp (x1.94). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
         "rows": [
           {
             "label": "\u22642.0%",
@@ -274,16 +221,16 @@
           },
           {
             "label": "2.5%",
-            "market_prob": 0.35,
+            "market_prob": 0.345,
             "model_prob": 0.1954,
-            "gap_c": -15.46,
+            "gap_c": -14.96,
             "suspect": false
           },
           {
             "label": "2.6%",
-            "market_prob": 0.065,
+            "market_prob": 0.07,
             "model_prob": 0.1068,
-            "gap_c": 4.18,
+            "gap_c": 3.68,
             "suspect": false
           },
           {
@@ -302,9 +249,72 @@
           },
           {
             "label": "\u22652.9%",
-            "market_prob": 0.0045,
+            "market_prob": 0.0035,
             "model_prob": 0.002,
-            "gap_c": -0.25,
+            "gap_c": -0.15,
+            "suspect": false
+          }
+        ]
+      },
+      {
+        "slug": "core-cpi-mom-september-2026",
+        "title": "Core CPI MoM - September 2026",
+        "series": "core_cpi",
+        "basis": "mom",
+        "ref_month": "2026-9",
+        "url": "https://polymarket.com/event/core-cpi-mom-september-2026",
+        "nowcast_pp": 0.201681228472037,
+        "nowcast_as_of": "2026-09-25 00:00",
+        "sigma": 0.16,
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.078pp (x2.05). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "rows": [
+          {
+            "label": "\u22640.0%",
+            "market_prob": 0.0235,
+            "model_prob": 0.1716,
+            "gap_c": 14.81,
+            "suspect": false
+          },
+          {
+            "label": "0.1%",
+            "market_prob": 0.13,
+            "model_prob": 0.2018,
+            "gap_c": 7.18,
+            "suspect": false
+          },
+          {
+            "label": "0.2%",
+            "market_prob": 0.48,
+            "model_prob": 0.2453,
+            "gap_c": -23.47,
+            "suspect": false
+          },
+          {
+            "label": "0.3%",
+            "market_prob": 0.345,
+            "model_prob": 0.2044,
+            "gap_c": -14.06,
+            "suspect": false
+          },
+          {
+            "label": "0.4%",
+            "market_prob": 0.054,
+            "model_prob": 0.1166,
+            "gap_c": 6.26,
+            "suspect": false
+          },
+          {
+            "label": "0.5%",
+            "market_prob": 0.0045,
+            "model_prob": 0.0456,
+            "gap_c": 4.11,
+            "suspect": false
+          },
+          {
+            "label": "0.6%+",
+            "market_prob": 0.003,
+            "model_prob": 0.0147,
+            "gap_c": 1.17,
             "suspect": false
           }
         ]
@@ -319,20 +329,20 @@
         "nowcast_pp": 0.499733447951985,
         "nowcast_as_of": "2026-09-25 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.104pp (x1.54). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.102pp (x1.57). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
-            "market_prob": 0.0225,
+            "market_prob": 0.028,
             "model_prob": 0.0025,
-            "gap_c": -2.0,
+            "gap_c": -2.55,
             "suspect": false
           },
           {
             "label": "0.1%",
-            "market_prob": 0.0045,
+            "market_prob": 0.0025,
             "model_prob": 0.0119,
-            "gap_c": 0.74,
+            "gap_c": 0.94,
             "suspect": false
           },
           {
@@ -344,9 +354,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.046,
+            "market_prob": 0.0445,
             "model_prob": 0.1154,
-            "gap_c": 6.94,
+            "gap_c": 7.09,
             "suspect": false
           },
           {
@@ -379,9 +389,9 @@
           },
           {
             "label": "\u22650.8%",
-            "market_prob": 0.0295,
+            "market_prob": 0.0275,
             "model_prob": 0.0589,
-            "gap_c": 2.94,
+            "gap_c": 3.14,
             "suspect": false
           }
         ]
@@ -477,9 +487,9 @@
           },
           {
             "label": "\u22654.0%",
-            "market_prob": 0.0185,
+            "market_prob": 0.019,
             "model_prob": 0.0086,
-            "gap_c": -0.99,
+            "gap_c": -1.04,
             "suspect": false
           }
         ]
