@@ -1,25 +1,281 @@
 {
-  "generated": "2026-10-14 07:27:25",
-  "generated_at": 1791962845.4341693,
+  "generated": "2026-10-14 13:02:20",
+  "generated_at": 1791982940.5453086,
   "account_size": 100000.0,
   "tickets": [
+    {
+      "market_id": "0x12aa13b3da17ceae1b0a59b5d5b77121e91bb79b4bb0b52bf6543ed3f8d0953b",
+      "title": "Will the Fed increase interest rates by 25 bps after the October 2026 meeting?",
+      "side_label": "NO on: Will the Fed increase interest rates by 25 bps after the October 2026 meeting?",
+      "outcome": "No",
+      "entry_price": 0.52,
+      "whale_price": 0.819,
+      "drift_c": -29.92,
+      "contracts": 1519,
+      "cost": 789.88,
+      "max_payout": 1519.0,
+      "conviction": 0.79,
+      "hours_to_resolve": 350.9,
+      "n_wallets": 3,
+      "whale_usd": 20744,
+      "minutes_ago": 49,
+      "liquidity": 115498,
+      "url": "https://polymarket.com/event/fed-decision-in-october-20260617190323537",
+      "end_iso": "2026-10-29T03:59:00Z",
+      "event_iso": "",
+      "slug": "will-the-fed-increase-interest-rates-by-25-bps-after-the-october-2026-meeting-20260617190324032",
+      "signal_ts": 1791979998.0,
+      "wallet_usd": [
+        [
+          "0x12d6cccfc7470a3f4bafc53599a4779cbf2cf2a8",
+          11843.28
+        ],
+        [
+          "0xeed8c2be411025120fb511ea2332dd0a1f6135f0",
+          6440.38
+        ],
+        [
+          "0xd218e474776403a330142299f7796e8ba32eb5c9",
+          2460.0
+        ]
+      ],
+      "why": [
+        "3 profitable wallets on this side",
+        "$20,744, 26% of their own book",
+        "latest buy 49 min ago",
+        "price 29.9c cheaper than they paid",
+        "351h until it resolves",
+        "$115,498 liquidity"
+      ],
+      "warnings": []
+    },
+    {
+      "market_id": "0x16c63b7cc37f012b9f59ee164ec03877914c701d06d48291ae8d6fc08a088b0d",
+      "title": "2026 Balance of Power: D Senate, D House",
+      "side_label": "YES on: 2026 Balance of Power: D Senate, D House",
+      "outcome": "Yes",
+      "entry_price": 0.63,
+      "whale_price": 0.63,
+      "drift_c": 0.0,
+      "contracts": 855,
+      "cost": 538.65,
+      "max_payout": 855.0,
+      "conviction": 0.539,
+      "hours_to_resolve": 495.9,
+      "n_wallets": 1,
+      "whale_usd": 2487,
+      "minutes_ago": 47,
+      "liquidity": 3274387,
+      "url": "https://polymarket.com/event/balance-of-power-2026-midterms",
+      "end_iso": "2026-11-04T04:59:00Z",
+      "event_iso": "",
+      "slug": "2026-balance-of-power-d-senate-d-house-949",
+      "signal_ts": 1791980094.0,
+      "wallet_usd": [
+        [
+          "0xeed8c2be411025120fb511ea2332dd0a1f6135f0",
+          2486.61
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,487, 29% of their own book",
+        "latest buy 47 min ago",
+        "still near their entry price",
+        "496h until it resolves",
+        "$3,274,387 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x7139013ddc03f1f59b21972837dd19f5e36577732978f7c45bea49719f3a749e",
+      "title": "Spread: Aston Villa FC (-1.5)",
+      "side_label": "Fenerbah\u00e7e SK \u2014 Spread: Aston Villa FC (-1.5)",
+      "outcome": "Fenerbah\u00e7e SK",
+      "entry_price": 0.665,
+      "whale_price": 0.665,
+      "drift_c": -0.03,
+      "contracts": 768,
+      "cost": 510.72,
+      "max_payout": 768.0,
+      "conviction": 0.511,
+      "hours_to_resolve": 6.0,
+      "n_wallets": 2,
+      "whale_usd": 5499,
+      "minutes_ago": 64,
+      "liquidity": 241541,
+      "url": "https://polymarket.com/event/ucl-ast-fen-2026-10-14-more-markets",
+      "end_iso": "2026-10-14T19:00:00Z",
+      "event_iso": "2026-10-14 19:00:00+00",
+      "slug": "ucl-ast-fen-2026-10-14-spread-home-1pt5",
+      "signal_ts": 1791979085.0,
+      "wallet_usd": [
+        [
+          "0x821dab0565ebf5b327f51db06223fdcfe01acf16",
+          2943.57
+        ],
+        [
+          "0x2a69660046d7acc4ab204d7cc5ba78b0776cd2f7",
+          2555.52
+        ]
+      ],
+      "why": [
+        "2 profitable wallets on this side",
+        "$5,499 \u2014 but only 0.4% of their book",
+        "latest buy 64 min ago",
+        "still near their entry price",
+        "6h until it resolves",
+        "$241,541 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days"
+      ]
+    }
+  ],
+  "probe": [
+    {
+      "market_id": "0x3d897fc9bc10e731f8bce8eb7d57f5d036648ba9a862a01c6b1e6d431314e329",
+      "title": "Will Liverpool FC win on 2026-10-14?",
+      "side_label": "NO on: Will Liverpool FC win on 2026-10-14?",
+      "outcome": "No",
+      "entry_price": 0.3,
+      "whale_price": 0.29,
+      "drift_c": 1.0,
+      "contracts": 1480,
+      "cost": 444.0,
+      "max_payout": 1480.0,
+      "conviction": 0.444,
+      "hours_to_resolve": 3.7,
+      "n_wallets": 1,
+      "whale_usd": 15700,
+      "minutes_ago": 57,
+      "liquidity": 609880,
+      "url": "https://polymarket.com/event/ucl-lin2-liv-2026-10-14",
+      "end_iso": "2026-10-14T16:45:00Z",
+      "event_iso": "2026-10-14 16:45:00+00",
+      "slug": "ucl-lin2-liv-2026-10-14-liv",
+      "signal_ts": 1791979503.0,
+      "wallet_usd": [
+        [
+          "0x2759769cd371bee44ec5bfc5e72c7f1f092b2b38",
+          15699.87
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$15,700, 100% of their own book",
+        "latest buy 57 min ago",
+        "price up 1.0c since they bought",
+        "4h until it resolves",
+        "$609,880 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x157628525df44a135c898ef65c8f53eaad56d2c7cc67f9f28608f7f54b06e3c4",
+      "title": "Will Columbus Crew win on 2026-10-14?",
+      "side_label": "NO on: Will Columbus Crew win on 2026-10-14?",
+      "outcome": "No",
+      "entry_price": 0.52,
+      "whale_price": 0.52,
+      "drift_c": 0.0,
+      "contracts": 830,
+      "cost": 431.6,
+      "max_payout": 830.0,
+      "conviction": 0.432,
+      "hours_to_resolve": 10.5,
+      "n_wallets": 1,
+      "whale_usd": 2122,
+      "minutes_ago": 44,
+      "liquidity": 121860,
+      "url": "https://polymarket.com/event/mls-clb-clt-2026-10-14",
+      "end_iso": "2026-10-14T23:30:00Z",
+      "event_iso": "2026-10-14 23:30:00+00",
+      "slug": "mls-clb-clt-2026-10-14-clb",
+      "signal_ts": 1791980267.0,
+      "wallet_usd": [
+        [
+          "0x076daa87c4fe1a85402a9b6b8e0a866224388d4c",
+          2122.32
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,122 \u2014 but only 0.7% of their book",
+        "latest buy 44 min ago",
+        "still near their entry price",
+        "10h until it resolves",
+        "$121,860 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
+      ]
+    },
+    {
+      "market_id": "0x1295040186326703b63b9c7d719f8c5bb88ee6fa9672e3924f90ef74ee7b0459",
+      "title": "Will Olivia Chow win the 2026 Toronto mayoral election?",
+      "side_label": "YES on: Will Olivia Chow win the 2026 Toronto mayoral election?",
+      "outcome": "Yes",
+      "entry_price": 0.76,
+      "whale_price": 0.756,
+      "drift_c": 0.43,
+      "contracts": 560,
+      "cost": 425.6,
+      "max_payout": 560.0,
+      "conviction": 0.426,
+      "hours_to_resolve": 302.9,
+      "n_wallets": 1,
+      "whale_usd": 9176,
+      "minutes_ago": 136,
+      "liquidity": 62790,
+      "url": "https://polymarket.com/event/toronto-mayoral-election-winner-545",
+      "end_iso": "2026-10-27T03:59:00Z",
+      "event_iso": "",
+      "slug": "will-olivia-chow-win-the-2026-toronto-mayoral-election-465",
+      "signal_ts": 1791974776.0,
+      "wallet_usd": [
+        [
+          "0x87827feafc2198fa88be0510997b794bc79075e4",
+          9175.75
+        ]
+      ],
+      "why": [
+        "election market and 100% of this is one wallet \u2014 concentration here can move the price rather than confirm it",
+        "new wallet with no track record \u2014 pattern signal, not a copy",
+        "$9,176, 69% of their own book",
+        "latest buy 136 min ago",
+        "still near their entry price",
+        "303h until it resolves",
+        "$62,790 liquidity"
+      ],
+      "warnings": [
+        "unproven wallet \u2014 this is a pattern, not a track record",
+        "100% of this signal is a single wallet on an election market \u2014 that is the shape that distorted 2024 pricing"
+      ]
+    },
     {
       "market_id": "0x3738ad9665480991affe3ba286cd035516e17d1f8b7703e05088ec19c70c21a4",
       "title": "US x Iran ceasefire continues through October 31?",
       "side_label": "YES on: US x Iran ceasefire continues through October 31?",
       "outcome": "Yes",
-      "entry_price": 0.82,
+      "entry_price": 0.81,
       "whale_price": 0.81,
-      "drift_c": 1.0,
-      "contracts": 682,
-      "cost": 559.24,
-      "max_payout": 682.0,
-      "conviction": 0.56,
-      "hours_to_resolve": 424.5,
-      "n_wallets": 2,
-      "whale_usd": 13285,
-      "minutes_ago": 98,
-      "liquidity": 571657,
+      "drift_c": 0.0,
+      "contracts": 522,
+      "cost": 422.82,
+      "max_payout": 522.0,
+      "conviction": 0.423,
+      "hours_to_resolve": 418.9,
+      "n_wallets": 1,
+      "whale_usd": 10285,
+      "minutes_ago": 432,
+      "liquidity": 509516,
       "url": "https://polymarket.com/event/us-iran-ceasefire-continues-throughptptpt",
       "end_iso": "2026-10-31T23:59:00Z",
       "event_iso": "",
@@ -29,63 +285,58 @@
         [
           "0x12d6cccfc7470a3f4bafc53599a4779cbf2cf2a8",
           10285.27
-        ],
-        [
-          "0x60a92c8620846d81f5ea17b0564e0d4b7c545a71",
-          3000.0
         ]
       ],
       "why": [
-        "2 profitable wallets on this side",
-        "$13,285 \u2014 but only 2.9% of their book",
-        "latest buy 98 min ago",
-        "price up 1.0c since they bought",
-        "425h until it resolves",
-        "$571,657 liquidity"
+        "1 profitable wallet on this side",
+        "$10,285 \u2014 but only 3.3% of their book",
+        "latest buy 432 min ago",
+        "still near their entry price",
+        "419h until it resolves",
+        "$509,516 liquidity"
       ],
-      "warnings": []
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
     },
     {
-      "market_id": "0xc3d5708780de5528998aeb53ca90e7ade64804f9f2386392a681435d5c42b44d",
-      "title": "Israel x Iran ceasefire continues through October 31?",
-      "side_label": "YES on: Israel x Iran ceasefire continues through October 31?",
-      "outcome": "Yes",
-      "entry_price": 0.87,
-      "whale_price": 0.857,
-      "drift_c": 1.33,
-      "contracts": 622,
-      "cost": 541.14,
-      "max_payout": 622.0,
-      "conviction": 0.542,
-      "hours_to_resolve": 421.0,
-      "n_wallets": 2,
-      "whale_usd": 76246,
-      "minutes_ago": 375,
-      "liquidity": 81719,
-      "url": "https://polymarket.com/event/israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963",
-      "end_iso": "2026-10-31T20:29:00Z",
-      "event_iso": "",
-      "slug": "israel-x-iran-ceasefire-continues-through-october-31",
-      "signal_ts": 1791940318.0,
+      "market_id": "0xeb8fdb331b038784b8677b123a7dbbb047f4b4f15bb94eabc88a9a2d1860e372",
+      "title": "Chargers vs. Chiefs: O/U 40.5",
+      "side_label": "Over \u2014 Chargers vs. Chiefs: O/U 40.5",
+      "outcome": "Over",
+      "entry_price": 0.545,
+      "whale_price": 0.55,
+      "drift_c": -0.5,
+      "contracts": 763,
+      "cost": 415.84,
+      "max_payout": 763.0,
+      "conviction": 0.416,
+      "hours_to_resolve": 103.4,
+      "n_wallets": 1,
+      "whale_usd": 5095,
+      "minutes_ago": 218,
+      "liquidity": 42449,
+      "url": "https://polymarket.com/event/nfl-lac-kc-2026-10-18",
+      "end_iso": "2026-10-18T20:25:00Z",
+      "event_iso": "2026-10-18 20:25:00+00",
+      "slug": "nfl-lac-kc-2026-10-18-total-40pt5",
+      "signal_ts": 1791969844.0,
       "wallet_usd": [
         [
-          "0x88c4919de76e526d55a32c1f8afb439dd1f1129a",
-          72145.0
-        ],
-        [
-          "0x2974bd0059e48f215c391882976e0f1b4c8c9c23",
-          4101.0
+          "0x5268527977f700f9bf9b6d5cd843859e4e70135d",
+          5095.0
         ]
       ],
       "why": [
-        "2 profitable wallets on this side",
-        "$76,246 \u2014 but only 6.3% of their book",
-        "latest buy 375 min ago",
-        "price up 1.3c since they bought",
-        "421h until it resolves",
-        "$81,719 liquidity"
+        "1 profitable wallet on this side",
+        "$5,095 \u2014 but only 3.3% of their book",
+        "latest buy 218 min ago",
+        "still near their entry price",
+        "103h until it resolves"
       ],
-      "warnings": []
+      "warnings": [
+        "only one wallet \u2014 single opinion"
+      ]
     },
     {
       "market_id": "0x4e4f77e7dbf4cab666e9a1943674d7ae66348e862df03ea6f44b11eb95731928",
@@ -98,12 +349,12 @@
       "contracts": 1900,
       "cost": 190.0,
       "max_payout": 1900.0,
-      "conviction": 0.507,
-      "hours_to_resolve": 501.5,
+      "conviction": 0.415,
+      "hours_to_resolve": 495.9,
       "n_wallets": 1,
       "whale_usd": 5835,
-      "minutes_ago": 70,
-      "liquidity": 2547259,
+      "minutes_ago": 405,
+      "liquidity": 2627867,
       "url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
       "end_iso": "2026-11-04T04:59:00Z",
       "event_iso": "",
@@ -118,14 +369,55 @@
       "why": [
         "1 profitable wallet on this side",
         "$5,835 \u2014 but only 2.5% of their book",
-        "latest buy 70 min ago",
+        "latest buy 405 min ago",
         "still near their entry price",
-        "502h until it resolves",
-        "$2,547,259 liquidity"
+        "496h until it resolves",
+        "$2,627,867 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion",
         "size capped by the per-market contract limit"
+      ]
+    },
+    {
+      "market_id": "0xf8674253eadb9655d9f0e8c451f5279aabcee808deafa101813d31b0ed107fb1",
+      "title": "Will Aston Villa FC win on 2026-10-14?",
+      "side_label": "NO on: Will Aston Villa FC win on 2026-10-14?",
+      "outcome": "No",
+      "entry_price": 0.43,
+      "whale_price": 0.43,
+      "drift_c": 0.0,
+      "contracts": 958,
+      "cost": 411.94,
+      "max_payout": 958.0,
+      "conviction": 0.412,
+      "hours_to_resolve": 6.0,
+      "n_wallets": 1,
+      "whale_usd": 7662,
+      "minutes_ago": 69,
+      "liquidity": 512464,
+      "url": "https://polymarket.com/event/ucl-ast-fen-2026-10-14",
+      "end_iso": "2026-10-14T19:00:00Z",
+      "event_iso": "2026-10-14 19:00:00+00",
+      "slug": "ucl-ast-fen-2026-10-14-ast",
+      "signal_ts": 1791978784.0,
+      "wallet_usd": [
+        [
+          "0x821dab0565ebf5b327f51db06223fdcfe01acf16",
+          7662.22
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$7,662 \u2014 but only 1.1% of their book",
+        "latest buy 69 min ago",
+        "still near their entry price",
+        "6h until it resolves",
+        "$512,464 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days",
+        "only one wallet \u2014 single opinion"
       ]
     },
     {
@@ -136,15 +428,15 @@
       "entry_price": 0.88,
       "whale_price": 0.87,
       "drift_c": 1.0,
-      "contracts": 520,
-      "cost": 457.6,
-      "max_payout": 520.0,
-      "conviction": 0.458,
-      "hours_to_resolve": 428.5,
+      "contracts": 437,
+      "cost": 384.56,
+      "max_payout": 437.0,
+      "conviction": 0.385,
+      "hours_to_resolve": 422.9,
       "n_wallets": 1,
       "whale_usd": 5591,
-      "minutes_ago": 93,
-      "liquidity": 141728,
+      "minutes_ago": 428,
+      "liquidity": 159103,
       "url": "https://polymarket.com/event/us-announces-end-of-iranian-blockade-byptptpt-20260713152715080",
       "end_iso": "2026-11-01T03:59:00Z",
       "event_iso": "",
@@ -159,210 +451,50 @@
       "why": [
         "1 profitable wallet on this side",
         "$5,591 \u2014 but only 3.8% of their book",
-        "latest buy 93 min ago",
+        "latest buy 428 min ago",
         "price up 1.0c since they bought",
-        "429h until it resolves",
-        "$141,728 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    }
-  ],
-  "probe": [
-    {
-      "market_id": "0xc4eda995347f6a59c3d44c2158374071e78debdc9d5a7c60bf15bc4ec3adbb35",
-      "title": "Spread: James Madison (-12.5)",
-      "side_label": "James Madison \u2014 Spread: James Madison (-12.5)",
-      "outcome": "James Madison",
-      "entry_price": 0.515,
-      "whale_price": 0.517,
-      "drift_c": -0.19,
-      "contracts": 864,
-      "cost": 444.96,
-      "max_payout": 864.0,
-      "conviction": 0.445,
-      "hours_to_resolve": 80.5,
-      "n_wallets": 1,
-      "whale_usd": 6410,
-      "minutes_ago": 642,
-      "liquidity": 19306,
-      "url": "https://polymarket.com/event/cfb-gast-jmad-2026-10-17",
-      "end_iso": "2026-10-17T16:00:00Z",
-      "event_iso": "2026-10-17 16:00:00+00",
-      "slug": "cfb-gast-jmad-2026-10-17-spread-home-12pt5",
-      "signal_ts": 1791924288.0,
-      "wallet_usd": [
-        [
-          "0xe18ecc345e00ee7c4f2d1f676f3dd2acb112f826",
-          6409.63
-        ]
-      ],
-      "why": [
-        "new wallet with no track record \u2014 pattern signal, not a copy",
-        "$6,410, 100% of their own book",
-        "latest buy 642 min ago",
-        "still near their entry price",
-        "81h until it resolves"
-      ],
-      "warnings": [
-        "unproven wallet \u2014 this is a pattern, not a track record"
-      ]
-    },
-    {
-      "market_id": "0x707c103c88cbf1fc12db3fa893818a9911be320c736c1292258f479e7a478ac0",
-      "title": "Wuhan Tennis Open: Jelena Ostapenko vs Jessica Pegula",
-      "side_label": "Jelena Ostapenko \u2014 Wuhan Tennis Open: Jelena Ostapenko vs Jessica Pegula",
-      "outcome": "Jelena Ostapenko",
-      "entry_price": 0.275,
-      "whale_price": 0.286,
-      "drift_c": -1.06,
-      "contracts": 1614,
-      "cost": 443.85,
-      "max_payout": 1614.0,
-      "conviction": 0.444,
-      "hours_to_resolve": 0.3,
-      "n_wallets": 1,
-      "whale_usd": 6205,
-      "minutes_ago": 61,
-      "liquidity": 87058,
-      "url": "https://polymarket.com/event/wta-ostapen-pegula-2026-10-13",
-      "end_iso": "2026-10-21T02:00:00Z",
-      "event_iso": "2026-10-14 07:45:00+00",
-      "slug": "wta-ostapen-pegula-2026-10-13",
-      "signal_ts": 1791959189.0,
-      "wallet_usd": [
-        [
-          "0xe7870d0e1bfc65a23e3d66caf00ca1b9129e5034",
-          6204.93
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$6,205, 24% of their own book",
-        "latest buy 61 min ago",
-        "price 1.1c cheaper than they paid",
-        "0h until it resolves",
-        "$87,058 liquidity"
+        "423h until it resolves",
+        "$159,103 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     },
     {
-      "market_id": "0xbe5f55a5152143bed7433401f6e85ff197034252e75259d34c6d477249a15663",
-      "title": "Fukuoka SoftBank Hawks vs. Nippon Ham Fighters",
-      "side_label": "Fukuoka SoftBank Hawks \u2014 Fukuoka SoftBank Hawks vs. Nippon Ham Fighters",
-      "outcome": "Fukuoka SoftBank Hawks",
-      "entry_price": 0.735,
-      "whale_price": 0.74,
-      "drift_c": -0.5,
-      "contracts": 600,
-      "cost": 441.0,
-      "max_payout": 600.0,
-      "conviction": 0.441,
-      "hours_to_resolve": 1.5,
-      "n_wallets": 1,
-      "whale_usd": 2223,
-      "minutes_ago": 22,
-      "liquidity": 51340,
-      "url": "https://polymarket.com/event/npb-fuk-nip-2026-10-14",
-      "end_iso": "2026-10-21T09:00:00Z",
-      "event_iso": "2026-10-14 09:00:00+00",
-      "slug": "npb-fuk-nip-2026-10-14",
-      "signal_ts": 1791961544.0,
-      "wallet_usd": [
-        [
-          "0x5268527977f700f9bf9b6d5cd843859e4e70135d",
-          2223.0
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$2,223 \u2014 but only 1.3% of their book",
-        "latest buy 22 min ago",
-        "still near their entry price",
-        "2h until it resolves",
-        "$51,340 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x23858cc44dce48e23f754240a0a71595f38f5c66d9a0eaf612eb5a737ad1e66d",
-      "title": "Will Google have the best AI model at the end of October 2026?",
-      "side_label": "NO on: Will Google have the best AI model at the end of October 2026?",
+      "market_id": "0x33f191d9679491cf02169be2bcd522447731a6b499073f81a29fa78e2c3fd85a",
+      "title": "Will D.C. United SC win on 2026-10-14?",
+      "side_label": "NO on: Will D.C. United SC win on 2026-10-14?",
       "outcome": "No",
-      "entry_price": 0.301,
-      "whale_price": 0.308,
-      "drift_c": -0.72,
-      "contracts": 1461,
-      "cost": 439.76,
-      "max_payout": 1461.0,
-      "conviction": 0.44,
-      "hours_to_resolve": 416.5,
+      "entry_price": 0.57,
+      "whale_price": 0.55,
+      "drift_c": 2.0,
+      "contracts": 666,
+      "cost": 379.62,
+      "max_payout": 666.0,
+      "conviction": 0.38,
+      "hours_to_resolve": 10.5,
       "n_wallets": 1,
-      "whale_usd": 5000,
-      "minutes_ago": 645,
-      "liquidity": 49944,
-      "url": "https://polymarket.com/event/which-company-has-the-best-ai-model-end-of-october",
-      "end_iso": "2026-10-31T16:00:00Z",
-      "event_iso": "",
-      "slug": "will-google-have-the-best-ai-model-at-the-end-of-october-2026-20260811194841120",
-      "signal_ts": 1791924109.0,
+      "whale_usd": 2039,
+      "minutes_ago": 28,
+      "liquidity": 137971,
+      "url": "https://polymarket.com/event/mls-dcu-nyr-2026-10-14",
+      "end_iso": "2026-10-14T23:30:00Z",
+      "event_iso": "2026-10-14 23:30:00+00",
+      "slug": "mls-dcu-nyr-2026-10-14-dcu",
+      "signal_ts": 1791981270.0,
       "wallet_usd": [
         [
-          "0x8221726ef2ef304b2e637b017b5bf74618f6e118",
-          5000.0
-        ]
-      ],
-      "why": [
-        "new wallet with no track record \u2014 pattern signal, not a copy",
-        "$5,000, 99% of their own book",
-        "latest buy 645 min ago",
-        "price 0.7c cheaper than they paid",
-        "417h until it resolves"
-      ],
-      "warnings": [
-        "unproven wallet \u2014 this is a pattern, not a track record"
-      ]
-    },
-    {
-      "market_id": "0xdbb65f0eeb0f8e7dd490e14a8edb6c0017f983f81d348a588b03868fa21bd9ef",
-      "title": "Will BV Borussia 09 Dortmund win on 2026-10-14?",
-      "side_label": "YES on: Will BV Borussia 09 Dortmund win on 2026-10-14?",
-      "outcome": "Yes",
-      "entry_price": 0.43,
-      "whale_price": 0.43,
-      "drift_c": 0.0,
-      "contracts": 976,
-      "cost": 419.68,
-      "max_payout": 976.0,
-      "conviction": 0.42,
-      "hours_to_resolve": 11.5,
-      "n_wallets": 1,
-      "whale_usd": 2026,
-      "minutes_ago": 62,
-      "liquidity": 327922,
-      "url": "https://polymarket.com/event/ucl-bog-bvb-2026-10-14",
-      "end_iso": "2026-10-14T19:00:00Z",
-      "event_iso": "2026-10-14 19:00:00+00",
-      "slug": "ucl-bog-bvb-2026-10-14-bvb",
-      "signal_ts": 1791959141.0,
-      "wallet_usd": [
-        [
-          "0x2a69660046d7acc4ab204d7cc5ba78b0776cd2f7",
-          2026.16
+          "0x076daa87c4fe1a85402a9b6b8e0a866224388d4c",
+          2039.31
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$2,026 \u2014 but only 1.0% of their book",
-        "latest buy 62 min ago",
-        "still near their entry price",
-        "12h until it resolves",
-        "$327,922 liquidity"
+        "$2,039 \u2014 but only 0.7% of their book",
+        "latest buy 28 min ago",
+        "price up 2.0c since they bought",
+        "10h until it resolves",
+        "$137,971 liquidity"
       ],
       "warnings": [
         "resolves within 2 days",
@@ -370,244 +502,182 @@
       ]
     },
     {
-      "market_id": "0x7139013ddc03f1f59b21972837dd19f5e36577732978f7c45bea49719f3a749e",
-      "title": "Spread: Aston Villa FC (-1.5)",
-      "side_label": "Fenerbah\u00e7e SK \u2014 Spread: Aston Villa FC (-1.5)",
-      "outcome": "Fenerbah\u00e7e SK",
-      "entry_price": 0.675,
-      "whale_price": 0.66,
-      "drift_c": 1.5,
-      "contracts": 611,
-      "cost": 412.43,
-      "max_payout": 611.0,
-      "conviction": 0.413,
-      "hours_to_resolve": 11.5,
-      "n_wallets": 1,
-      "whale_usd": 2556,
-      "minutes_ago": 12,
-      "liquidity": 125392,
-      "url": "https://polymarket.com/event/ucl-ast-fen-2026-10-14-more-markets",
-      "end_iso": "2026-10-14T19:00:00Z",
-      "event_iso": "2026-10-14 19:00:00+00",
-      "slug": "ucl-ast-fen-2026-10-14-spread-home-1pt5",
-      "signal_ts": 1791962135.0,
-      "wallet_usd": [
-        [
-          "0x2a69660046d7acc4ab204d7cc5ba78b0776cd2f7",
-          2555.52
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$2,556 \u2014 but only 1.2% of their book",
-        "latest buy 12 min ago",
-        "price up 1.5c since they bought",
-        "12h until it resolves",
-        "$125,392 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days",
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x86208891b063874eab32e69b6ffa54a442a2809c0ffab8688ece4a7a4a2540cb",
-      "title": "Wuhan Tennis Open: Katie Volynets vs Hanyu Guo",
-      "side_label": "Katie Volynets \u2014 Wuhan Tennis Open: Katie Volynets vs Hanyu Guo",
-      "outcome": "Katie Volynets",
-      "entry_price": 0.785,
-      "whale_price": 0.78,
-      "drift_c": 0.5,
-      "contracts": 514,
-      "cost": 403.49,
-      "max_payout": 514.0,
-      "conviction": 0.404,
-      "hours_to_resolve": 0.3,
-      "n_wallets": 1,
-      "whale_usd": 5112,
-      "minutes_ago": 50,
-      "liquidity": 54986,
-      "url": "https://polymarket.com/event/wta-volynet-guo-2026-10-13",
-      "end_iso": "2026-10-21T02:00:00Z",
-      "event_iso": "2026-10-14 07:45:00+00",
-      "slug": "wta-volynet-guo-2026-10-13",
-      "signal_ts": 1791959810.0,
-      "wallet_usd": [
-        [
-          "0x2c335066fe58fe9237c3d3dc7b275c2a034a0563",
-          5111.76
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$5,112 \u2014 but only 1.8% of their book",
-        "latest buy 50 min ago",
-        "still near their entry price",
-        "0h until it resolves",
-        "$54,986 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x613613192c69d90cee89758c260a019368fc1f4a596b4d300c39b6235d2b643f",
-      "title": "US-Iran ceasefire continues through the midterms?",
-      "side_label": "YES on: US-Iran ceasefire continues through the midterms?",
+      "market_id": "0xc3d5708780de5528998aeb53ca90e7ade64804f9f2386392a681435d5c42b44d",
+      "title": "Israel x Iran ceasefire continues through October 31?",
+      "side_label": "YES on: Israel x Iran ceasefire continues through October 31?",
       "outcome": "Yes",
-      "entry_price": 0.78,
-      "whale_price": 0.77,
+      "entry_price": 0.87,
+      "whale_price": 0.86,
       "drift_c": 1.0,
-      "contracts": 501,
-      "cost": 390.78,
-      "max_payout": 501.0,
-      "conviction": 0.391,
-      "hours_to_resolve": 501.5,
+      "contracts": 432,
+      "cost": 375.84,
+      "max_payout": 432.0,
+      "conviction": 0.376,
+      "hours_to_resolve": 415.4,
       "n_wallets": 1,
-      "whale_usd": 11083,
-      "minutes_ago": 634,
-      "liquidity": 412413,
-      "url": "https://polymarket.com/event/us-iran-ceasefire-continues-through-the-midterms",
-      "end_iso": "2026-11-04T04:59:00Z",
+      "whale_usd": 3965,
+      "minutes_ago": 256,
+      "liquidity": 85698,
+      "url": "https://polymarket.com/event/israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963",
+      "end_iso": "2026-10-31T20:29:00Z",
       "event_iso": "",
-      "slug": "us-iran-ceasefire-continues-through-the-midterms",
-      "signal_ts": 1791924816.0,
+      "slug": "israel-x-iran-ceasefire-continues-through-october-31",
+      "signal_ts": 1791967546.0,
       "wallet_usd": [
         [
           "0x12d6cccfc7470a3f4bafc53599a4779cbf2cf2a8",
-          11082.73
+          3964.91
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$11,083 \u2014 but only 3.4% of their book",
-        "latest buy 634 min ago",
+        "$3,965 \u2014 but only 1.3% of their book",
+        "latest buy 256 min ago",
         "price up 1.0c since they bought",
-        "502h until it resolves",
-        "$412,413 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x666c7561884f8d1ed6b3b7fe89a98e6895017244c5399bfb200b804844110b20",
-      "title": "US x Yemen ceasefire continues through October 31?",
-      "side_label": "YES on: US x Yemen ceasefire continues through October 31?",
-      "outcome": "Yes",
-      "entry_price": 0.88,
-      "whale_price": 0.87,
-      "drift_c": 1.0,
-      "contracts": 423,
-      "cost": 372.24,
-      "max_payout": 423.0,
-      "conviction": 0.373,
-      "hours_to_resolve": 424.5,
-      "n_wallets": 1,
-      "whale_usd": 3641,
-      "minutes_ago": 456,
-      "liquidity": 66906,
-      "url": "https://polymarket.com/event/us-yemen-ceasefire-continues-throughptptpt",
-      "end_iso": "2026-10-31T23:59:00Z",
-      "event_iso": "",
-      "slug": "us-x-yemen-ceasefire-continues-through-october-31-20260920",
-      "signal_ts": 1791935488.0,
-      "wallet_usd": [
-        [
-          "0x2974bd0059e48f215c391882976e0f1b4c8c9c23",
-          3641.0
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$3,641 \u2014 but only 0.7% of their book",
-        "latest buy 456 min ago",
-        "price up 1.0c since they bought",
-        "425h until it resolves",
-        "$66,906 liquidity"
-      ],
-      "warnings": [
-        "only one wallet \u2014 single opinion"
-      ]
-    },
-    {
-      "market_id": "0x12aa13b3da17ceae1b0a59b5d5b77121e91bb79b4bb0b52bf6543ed3f8d0953b",
-      "title": "Will the Fed increase interest rates by 25 bps after the October 2026 meeting?",
-      "side_label": "NO on: Will the Fed increase interest rates by 25 bps after the October 2026 meeting?",
-      "outcome": "No",
-      "entry_price": 0.82,
-      "whale_price": 0.81,
-      "drift_c": 1.0,
-      "contracts": 453,
-      "cost": 371.46,
-      "max_payout": 453.0,
-      "conviction": 0.372,
-      "hours_to_resolve": 356.5,
-      "n_wallets": 1,
-      "whale_usd": 2599,
-      "minutes_ago": 630,
-      "liquidity": 495329,
-      "url": "https://polymarket.com/event/fed-decision-in-october-20260617190323537",
-      "end_iso": "2026-10-29T03:59:00Z",
-      "event_iso": "",
-      "slug": "will-the-fed-increase-interest-rates-by-25-bps-after-the-october-2026-meeting-20260617190324032",
-      "signal_ts": 1791925060.0,
-      "wallet_usd": [
-        [
-          "0x12d6cccfc7470a3f4bafc53599a4779cbf2cf2a8",
-          2599.07
-        ]
-      ],
-      "why": [
-        "1 profitable wallet on this side",
-        "$2,599 \u2014 but only 0.8% of their book",
-        "latest buy 630 min ago",
-        "price up 1.0c since they bought",
-        "357h until it resolves",
-        "$495,329 liquidity"
+        "415h until it resolves",
+        "$85,698 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     }
   ],
-  "considered": 294,
+  "considered": 271,
   "rejected": {
-    "signal too old for this market's horizon": 8,
-    "market closed": 177,
-    "fresh wallet: market too liquid for the pattern": 21,
-    "esports (sleeve retired \u2014 see esports_enabled)": 26,
-    "wallet not new (no track record either)": 27,
-    "in-play (event already started)": 9,
-    "parlay / combo ticket, not a single market": 1,
+    "market closed": 74,
+    "signal too old for this market's horizon": 12,
+    "fresh wallet: market too liquid for the pattern": 19,
+    "wallet not new (no track record either)": 37,
+    "esports (sleeve retired \u2014 see esports_enabled)": 82,
+    "in-play (event already started)": 14,
     "price + fee ran away from the whale's entry": 2,
-    "resolves more than 30 days out": 6,
-    "sports market with no event start time": 1,
-    "resolves in under 3h": 1,
-    "already resolved": 1,
+    "already resolved": 5,
+    "parlay / combo ticket, not a single market": 2,
+    "resolves more than 30 days out": 4,
+    "resolves in under 3h": 3,
+    "price outside tradeable band": 1,
+    "duplicate event (kept the stronger side)": 3,
     "below the 0.45 buy bar (recorded, not bought)": 10
   },
   "notes": [],
   "consistency": {
     "ok": true,
     "enabled": true,
-    "events_scanned": 340,
+    "events_scanned": 343,
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 106,
-      "not a ladder: fewer than two live, quoted legs": 91,
-      "not a ladder: group labels are not thresholds or deadlines": 51,
+      "not a ladder: fewer than two live, quoted legs": 90,
+      "not a ladder: group labels are not thresholds or deadlines": 52,
       "not a ladder: duplicate deadlines left too few rungs": 9,
-      "ladder pair too illiquid to fill": 94,
-      "ladder inversion smaller than the spread": 10,
+      "ladder pair too illiquid to fill": 109,
+      "ladder inversion smaller than the spread": 11,
+      "bracket overround smaller than the spread": 2,
       "bracket underround smaller than the spread": 1,
       "not a ladder: numeric group spans different end dates": 2,
-      "bracket overround smaller than the spread": 1,
-      "bracket leg too illiquid to fill": 5,
+      "bracket leg too illiquid to fill": 4,
       "bracket has too many legs to place by hand": 1,
-      "not a ladder: a live leg carries no group label": 2
+      "not a ladder: a live leg carries no group label": 4
     },
     "notes": [],
     "violations": [
+      {
+        "family": "bracket",
+        "event_slug": "maduro-prison-time-527",
+        "constraint": "5 mutually exclusive outcomes offer at 0.9750 total, but exactly one of them pays 1.00",
+        "edge_c": 2.5,
+        "actions": [
+          "BUY YES  No prison time  @ 0.560",
+          "BUY YES  <20  @ 0.049",
+          "BUY YES  20\u201340  @ 0.068",
+          "BUY YES  40\u201360  @ 0.028",
+          "BUY YES  60+  @ 0.270"
+        ],
+        "warnings": [
+          "requires filling all 5 legs - confirm the event page lists exactly 5 outcomes before trusting the sum"
+        ],
+        "url": "https://polymarket.com/event/maduro-prison-time-527",
+        "legs": [
+          {
+            "question": "Will Nicol\u00e1s Maduro be sentenced to no prison time?",
+            "name": "No prison time",
+            "bid": 0.55,
+            "ask": 0.56,
+            "liquidity": 26094.996,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/maduro-prison-time-527"
+          },
+          {
+            "question": "Will Nicol\u00e1s Maduro be sentenced to less than 20 years in prison?",
+            "name": "<20",
+            "bid": 0.028,
+            "ask": 0.049,
+            "liquidity": 14663.9587,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/maduro-prison-time-527"
+          },
+          {
+            "question": "Will Nicol\u00e1s Maduro be sentenced to between 20 and 40 years in prison?",
+            "name": "20\u201340",
+            "bid": 0.012,
+            "ask": 0.068,
+            "liquidity": 11103.65111,
+            "end_iso": "2027-12-31T00:00:00Z",
+            "url": "https://polymarket.com/event/maduro-prison-time-527"
+          },
+          {
+            "question": "Will Nicol\u00e1s Maduro be sentenced to between 40 and 60 years in prison?",
+            "name": "40\u201360",
+            "bid": 0.008,
+            "ask": 0.028,
+            "liquidity": 11990.39737,
+            "end_iso": "2027-12-31T00:00:00Z",
+            "url": "https://polymarket.com/event/maduro-prison-time-527"
+          },
+          {
+            "question": "Will Nicol\u00e1s Maduro be sentenced to at least 60 years in prison?",
+            "name": "60+",
+            "bid": 0.24,
+            "ask": 0.27,
+            "liquidity": 15399.9612,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/maduro-prison-time-527"
+          }
+        ]
+      },
+      {
+        "family": "ladder",
+        "event_slug": "abstract-fdv-above-one-day-after-launch",
+        "constraint": "P($2B) must be <= P($400M), but $2B bids 0.025 while $400M offers 0.002",
+        "edge_c": 2.3,
+        "actions": [
+          "BUY YES  $400M  @ 0.002",
+          "BUY NO   $2B  @ 0.975"
+        ],
+        "warnings": [
+          "both legs settle on the same event page - confirm the two rule texts differ only in the threshold"
+        ],
+        "url": "https://polymarket.com/event/abstract-fdv-above-one-day-after-launch",
+        "legs": [
+          {
+            "question": "Abstract FDV above $400M one day after launch?",
+            "name": "$400M",
+            "bid": 0.001,
+            "ask": 0.002,
+            "liquidity": 35182.43071,
+            "end_iso": "2028-01-01T05:00:00Z",
+            "url": "https://polymarket.com/event/abstract-fdv-above-one-day-after-launch"
+          },
+          {
+            "question": "Abstract FDV above $2B one day after launch?",
+            "name": "$2B",
+            "bid": 0.025,
+            "ask": 0.029,
+            "liquidity": 24149.27341,
+            "end_iso": "2028-01-01T05:00:00Z",
+            "url": "https://polymarket.com/event/abstract-fdv-above-one-day-after-launch"
+          }
+        ]
+      },
       {
         "family": "bracket",
         "event_slug": "bitcoin-vs-gold-vs-sp-500-in-2026",
@@ -626,9 +696,9 @@
           {
             "question": "Will Bitcoin have the best performance in 2026?",
             "name": "Bitcoin",
-            "bid": 0.12,
+            "bid": 0.13,
             "ask": 0.2,
-            "liquidity": 33989.0718,
+            "liquidity": 32393.3945,
             "end_iso": "2027-01-01T04:59:00Z",
             "url": "https://polymarket.com/event/bitcoin-vs-gold-vs-sp-500-in-2026"
           },
@@ -637,7 +707,7 @@
             "name": "Gold",
             "bid": 0.08,
             "ask": 0.09,
-            "liquidity": 51866.4982,
+            "liquidity": 51324.5293,
             "end_iso": "2027-01-01T04:59:00Z",
             "url": "https://polymarket.com/event/bitcoin-vs-gold-vs-sp-500-in-2026"
           },
@@ -646,9 +716,43 @@
             "name": "S&P 500",
             "bid": 0.68,
             "ask": 0.69,
-            "liquidity": 17815.745,
+            "liquidity": 16367.0036,
             "end_iso": "2027-01-01T04:59:00Z",
             "url": "https://polymarket.com/event/bitcoin-vs-gold-vs-sp-500-in-2026"
+          }
+        ]
+      },
+      {
+        "family": "ladder",
+        "event_slug": "abstract-fdv-above-one-day-after-launch",
+        "constraint": "P($1B) must be <= P($400M), but $1B bids 0.022 while $400M offers 0.002",
+        "edge_c": 2.0,
+        "actions": [
+          "BUY YES  $400M  @ 0.002",
+          "BUY NO   $1B  @ 0.978"
+        ],
+        "warnings": [
+          "both legs settle on the same event page - confirm the two rule texts differ only in the threshold"
+        ],
+        "url": "https://polymarket.com/event/abstract-fdv-above-one-day-after-launch",
+        "legs": [
+          {
+            "question": "Abstract FDV above $400M one day after launch?",
+            "name": "$400M",
+            "bid": 0.001,
+            "ask": 0.002,
+            "liquidity": 35182.43071,
+            "end_iso": "2028-01-01T05:00:00Z",
+            "url": "https://polymarket.com/event/abstract-fdv-above-one-day-after-launch"
+          },
+          {
+            "question": "Abstract FDV above $1B one day after launch?",
+            "name": "$1B",
+            "bid": 0.022,
+            "ask": 0.035,
+            "liquidity": 26630.39826,
+            "end_iso": "2028-01-01T05:00:00Z",
+            "url": "https://polymarket.com/event/abstract-fdv-above-one-day-after-launch"
           }
         ]
       }
@@ -669,55 +773,55 @@
         "nowcast_pp": 0.201681228472037,
         "nowcast_as_of": "2026-10-13 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.072pp (x2.21). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.007pp (x22.64). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
-            "market_prob": 0.02,
+            "market_prob": 0.0005,
             "model_prob": 0.1716,
-            "gap_c": 15.16,
+            "gap_c": 17.11,
             "suspect": false
           },
           {
             "label": "0.1%",
-            "market_prob": 0.115,
+            "market_prob": 0.0005,
             "model_prob": 0.2018,
-            "gap_c": 8.68,
+            "gap_c": 20.13,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.525,
+            "market_prob": 0.0005,
             "model_prob": 0.2453,
-            "gap_c": -27.97,
-            "suspect": true
-          },
-          {
-            "label": "0.3%",
-            "market_prob": 0.3,
-            "model_prob": 0.2044,
-            "gap_c": -9.56,
+            "gap_c": 24.48,
             "suspect": false
           },
           {
+            "label": "0.3%",
+            "market_prob": 0.9995,
+            "model_prob": 0.2044,
+            "gap_c": -79.51,
+            "suspect": true
+          },
+          {
             "label": "0.4%",
-            "market_prob": 0.0295,
+            "market_prob": 0.0005,
             "model_prob": 0.1166,
-            "gap_c": 8.71,
+            "gap_c": 11.61,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.005,
+            "market_prob": 0.0005,
             "model_prob": 0.0456,
-            "gap_c": 4.06,
+            "gap_c": 4.51,
             "suspect": false
           },
           {
             "label": "0.6%+",
-            "market_prob": 0.003,
+            "market_prob": 0.0005,
             "model_prob": 0.0147,
-            "gap_c": 1.17,
+            "gap_c": 1.42,
             "suspect": false
           }
         ]
@@ -732,62 +836,62 @@
         "nowcast_pp": 2.39023925044117,
         "nowcast_as_of": "2026-10-13 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.088pp (x1.82). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.017pp (x9.26). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
         "rows": [
           {
             "label": "\u22642.0%",
-            "market_prob": 0.0025,
+            "market_prob": 0.0005,
             "model_prob": 0.0167,
-            "gap_c": 1.42,
+            "gap_c": 1.62,
             "suspect": false
           },
           {
             "label": "2.1%",
-            "market_prob": 0.014,
+            "market_prob": 0.0005,
             "model_prob": 0.0499,
-            "gap_c": 3.59,
+            "gap_c": 4.94,
             "suspect": false
           },
           {
             "label": "2.2%",
-            "market_prob": 0.0015,
+            "market_prob": 0.0005,
             "model_prob": 0.1238,
-            "gap_c": 12.23,
+            "gap_c": 12.33,
             "suspect": false
           },
           {
             "label": "2.3%",
-            "market_prob": 0.08,
+            "market_prob": 0.0005,
             "model_prob": 0.2103,
-            "gap_c": 13.03,
+            "gap_c": 20.98,
             "suspect": false
           },
           {
             "label": "2.4%",
-            "market_prob": 0.455,
+            "market_prob": 0.0005,
             "model_prob": 0.2449,
-            "gap_c": -21.01,
+            "gap_c": 24.44,
             "suspect": false
           },
           {
             "label": "2.5%",
-            "market_prob": 0.345,
+            "market_prob": 0.0005,
             "model_prob": 0.1954,
-            "gap_c": -14.96,
+            "gap_c": 19.49,
             "suspect": false
           },
           {
             "label": "2.6%",
-            "market_prob": 0.08,
+            "market_prob": 0.9995,
             "model_prob": 0.1068,
-            "gap_c": 2.68,
-            "suspect": false
+            "gap_c": -89.27,
+            "suspect": true
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0025,
+            "market_prob": 0.0005,
             "model_prob": 0.04,
-            "gap_c": 3.75,
+            "gap_c": 3.95,
             "suspect": false
           },
           {
@@ -816,90 +920,90 @@
         "nowcast_pp": 3.60066057218129,
         "nowcast_as_of": "2026-10-13 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.091pp (x1.76). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.027pp (x5.96). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
         "rows": [
           {
             "label": "\u22642.9%",
-            "market_prob": 0.0015,
+            "market_prob": 0.0005,
             "model_prob": 0.0,
-            "gap_c": -0.15,
+            "gap_c": -0.05,
             "suspect": false
           },
           {
             "label": "3.0%",
-            "market_prob": 0.0015,
+            "market_prob": 0.0005,
             "model_prob": 0.0003,
-            "gap_c": -0.12,
+            "gap_c": -0.02,
             "suspect": false
           },
           {
             "label": "3.1%",
-            "market_prob": 0.0015,
+            "market_prob": 0.0005,
             "model_prob": 0.0021,
-            "gap_c": 0.06,
+            "gap_c": 0.16,
             "suspect": false
           },
           {
             "label": "3.2%",
-            "market_prob": 0.0025,
+            "market_prob": 0.0005,
             "model_prob": 0.0118,
-            "gap_c": 0.93,
+            "gap_c": 1.13,
             "suspect": false
           },
           {
             "label": "3.3%",
-            "market_prob": 0.0025,
+            "market_prob": 0.0005,
             "model_prob": 0.0444,
-            "gap_c": 4.19,
+            "gap_c": 4.39,
             "suspect": false
           },
           {
             "label": "3.4%",
-            "market_prob": 0.0105,
+            "market_prob": 0.0005,
             "model_prob": 0.1146,
-            "gap_c": 10.41,
+            "gap_c": 11.41,
             "suspect": false
           },
           {
             "label": "3.5%",
-            "market_prob": 0.072,
+            "market_prob": 0.0005,
             "model_prob": 0.2026,
-            "gap_c": 13.06,
+            "gap_c": 20.21,
             "suspect": false
           },
           {
             "label": "3.6%",
-            "market_prob": 0.425,
+            "market_prob": 0.0005,
             "model_prob": 0.2453,
-            "gap_c": -17.97,
+            "gap_c": 24.48,
             "suspect": false
           },
           {
             "label": "3.7%",
-            "market_prob": 0.42,
+            "market_prob": 0.9995,
             "model_prob": 0.2036,
-            "gap_c": -21.64,
-            "suspect": false
+            "gap_c": -79.59,
+            "suspect": true
           },
           {
             "label": "3.8%",
-            "market_prob": 0.0755,
+            "market_prob": 0.0005,
             "model_prob": 0.1157,
-            "gap_c": 4.02,
+            "gap_c": 11.52,
             "suspect": false
           },
           {
             "label": "3.9%",
-            "market_prob": 0.0065,
+            "market_prob": 0.0005,
             "model_prob": 0.0451,
-            "gap_c": 3.86,
+            "gap_c": 4.46,
             "suspect": false
           },
           {
             "label": "\u22654.0%",
-            "market_prob": 0.001,
+            "market_prob": 0.0005,
             "model_prob": 0.0145,
-            "gap_c": 1.35,
+            "gap_c": 1.4,
             "suspect": false
           }
         ]
@@ -914,69 +1018,69 @@
         "nowcast_pp": 0.530663236714369,
         "nowcast_as_of": "2026-10-13 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.088pp (x1.81). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.017pp (x9.58). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
-            "market_prob": 0.004,
+            "market_prob": 0.0005,
             "model_prob": 0.0013,
-            "gap_c": -0.27,
+            "gap_c": 0.08,
             "suspect": false
           },
           {
             "label": "0.1%",
-            "market_prob": 0.0055,
+            "market_prob": 0.0005,
             "model_prob": 0.0073,
-            "gap_c": 0.18,
+            "gap_c": 0.68,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.0035,
+            "market_prob": 0.0005,
             "model_prob": 0.031,
-            "gap_c": 2.75,
+            "gap_c": 3.05,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.0035,
+            "market_prob": 0.0005,
             "model_prob": 0.0897,
-            "gap_c": 8.62,
+            "gap_c": 8.92,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.0665,
+            "market_prob": 0.0005,
             "model_prob": 0.1777,
-            "gap_c": 11.12,
+            "gap_c": 17.72,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.285,
+            "market_prob": 0.0005,
             "model_prob": 0.241,
-            "gap_c": -4.4,
+            "gap_c": 24.05,
             "suspect": false
           },
           {
             "label": "0.6%",
-            "market_prob": 0.51,
+            "market_prob": 0.9995,
             "model_prob": 0.224,
-            "gap_c": -28.6,
+            "gap_c": -77.55,
             "suspect": true
           },
           {
             "label": "0.7%",
-            "market_prob": 0.12,
+            "market_prob": 0.0005,
             "model_prob": 0.1427,
-            "gap_c": 2.27,
+            "gap_c": 14.22,
             "suspect": false
           },
           {
             "label": "\u22650.8%",
-            "market_prob": 0.0205,
+            "market_prob": 0.0005,
             "model_prob": 0.0852,
-            "gap_c": 6.47,
+            "gap_c": 8.47,
             "suspect": false
           }
         ]
@@ -990,22 +1094,88 @@
   "gas": [],
   "spxindex": [
     {
-      "market_id": "KXINX-26OCT14H1600-B7837",
+      "market_id": "KXNASDAQ100-26OCT14H1600-B30350",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "No",
+      "title": "Will the Nasdaq-100 be between 30300 and 30399.9900 at the end of Oct 14, 2026 at 4pm EDT?",
+      "url": "https://kalshi.com/markets/KXNASDAQ100-26OCT14H1600",
+      "entry_price": 0.85,
+      "model_prob": 0.9201,
+      "edge": 0.0701,
+      "fair": 0.0799,
+      "market_prob": 0.175,
+      "implied_sigma": 0.3592,
+      "spot_used": 30569.48,
+      "chain_ts": "2026-10-14 13:02:03",
+      "vrp_shrink": 0.92,
+      "series": "KXNASDAQ100",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-10-14T20:00:00+00:00",
+      "event_iso": "2026-10-14T20:00:00+00:00"
+    },
+    {
+      "market_id": "KXNASDAQ100-26OCT14H1600-B30750",
       "venue": "kalshi",
       "source": "spxindex",
       "outcome": "Yes",
-      "title": "Will the S&P 500 be between 7825 and 7849.9999 on Oct 14, 2026 at 4pm EDT?",
-      "url": "https://kalshi.com/markets/KXINX-26OCT14H1600",
-      "entry_price": 0.2,
-      "model_prob": 0.2418,
-      "edge": 0.0418,
-      "fair": 0.2418,
-      "market_prob": 0.15,
-      "implied_sigma": 0.1075,
-      "spot_used": 7805.45,
-      "chain_ts": "2026-10-14 07:27:05",
+      "title": "Will the Nasdaq-100 be between 30700 and 30799.9900 at the end of Oct 14, 2026 at 4pm EDT?",
+      "url": "https://kalshi.com/markets/KXNASDAQ100-26OCT14H1600",
+      "entry_price": 0.07,
+      "model_prob": 0.1259,
+      "edge": 0.0559,
+      "fair": 0.1259,
+      "market_prob": 0.05,
+      "implied_sigma": 0.3592,
+      "spot_used": 30569.48,
+      "chain_ts": "2026-10-14 13:02:03",
       "vrp_shrink": 0.92,
-      "series": "KXINX",
+      "series": "KXNASDAQ100",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-10-14T20:00:00+00:00",
+      "event_iso": "2026-10-14T20:00:00+00:00"
+    },
+    {
+      "market_id": "KXNASDAQ100-26OCT14H1600-B30250",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "No",
+      "title": "Will the Nasdaq-100 be between 30200 and 30299.9900 at the end of Oct 14, 2026 at 4pm EDT?",
+      "url": "https://kalshi.com/markets/KXNASDAQ100-26OCT14H1600",
+      "entry_price": 0.89,
+      "model_prob": 0.9255,
+      "edge": 0.0355,
+      "fair": 0.0745,
+      "market_prob": 0.135,
+      "implied_sigma": 0.3592,
+      "spot_used": 30569.48,
+      "chain_ts": "2026-10-14 13:02:03",
+      "vrp_shrink": 0.92,
+      "series": "KXNASDAQ100",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-10-14T20:00:00+00:00",
+      "event_iso": "2026-10-14T20:00:00+00:00"
+    },
+    {
+      "market_id": "KXNASDAQ100-26OCT14H1600-B30450",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "No",
+      "title": "Will the Nasdaq-100 be between 30400 and 30499.9900 at the end of Oct 14, 2026 at 4pm EDT?",
+      "url": "https://kalshi.com/markets/KXNASDAQ100-26OCT14H1600",
+      "entry_price": 0.86,
+      "model_prob": 0.8944,
+      "edge": 0.0344,
+      "fair": 0.1056,
+      "market_prob": 0.165,
+      "implied_sigma": 0.3592,
+      "spot_used": 30569.48,
+      "chain_ts": "2026-10-14 13:02:03",
+      "vrp_shrink": 0.92,
+      "series": "KXNASDAQ100",
       "model": "cboe-0dte-density",
       "validated": false,
       "end_iso": "2026-10-14T20:00:00+00:00",
