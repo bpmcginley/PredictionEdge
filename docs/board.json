@@ -1,56 +1,276 @@
 {
-  "generated": "2026-10-29 13:36:38",
-  "generated_at": 1793280998.543395,
+  "generated": "2026-10-29 19:16:38",
+  "generated_at": 1793301398.5319676,
   "account_size": 100000.0,
   "tickets": [
     {
-      "market_id": "0x92c9c48af78d045a419a6e08b1affb483ff5732cfc89902d84103f0c0ff01811",
-      "title": "Grizzlies vs. Trail Blazers",
-      "side_label": "Trail Blazers \u2014 Grizzlies vs. Trail Blazers",
-      "outcome": "Trail Blazers",
-      "entry_price": 0.715,
-      "whale_price": 0.717,
-      "drift_c": -0.22,
-      "contracts": 941,
-      "cost": 672.81,
-      "max_payout": 941.0,
-      "conviction": 0.673,
-      "hours_to_resolve": 12.4,
+      "market_id": "0x1abf5d4eb068039715afc598c7ee7ec56c6986988930beed6d22d804fef19a48",
+      "title": "Cavaliers vs. Hawks: O/U 237.5",
+      "side_label": "Under \u2014 Cavaliers vs. Hawks: O/U 237.5",
+      "outcome": "Under",
+      "entry_price": 0.505,
+      "whale_price": 0.505,
+      "drift_c": 0.03,
+      "contracts": 1392,
+      "cost": 702.96,
+      "max_payout": 1392.0,
+      "conviction": 0.703,
+      "hours_to_resolve": 4.7,
       "n_wallets": 3,
-      "whale_usd": 30284,
-      "minutes_ago": 59,
-      "liquidity": 171318,
-      "url": "https://polymarket.com/event/nba-mem-por-2026-10-29",
-      "end_iso": "2026-10-30T02:00:00Z",
-      "event_iso": "2026-10-30 02:00:00+00",
-      "slug": "nba-mem-por-2026-10-29",
-      "signal_ts": 1793277430.0,
+      "whale_usd": 44530,
+      "minutes_ago": 85,
+      "liquidity": 83206,
+      "url": "https://polymarket.com/event/nba-cle-atl-2026-10-29",
+      "end_iso": "2026-10-30T00:00:00Z",
+      "event_iso": "2026-10-30 00:00:00+00",
+      "slug": "nba-cle-atl-2026-10-29-total-237pt5",
+      "signal_ts": 1793296309.0,
       "wallet_usd": [
         [
-          "0xdc41c39b95453c943174f369926018f6963bdd7e",
-          21920.4
-        ],
-        [
-          "0x27f738fe203827445690339104aae35b20bc44b0",
-          5881.64
+          "0x0d6a1ada6d7ff785ab4b7263d9ce8e2baa85aa98",
+          35500.98
         ],
         [
           "0x5268527977f700f9bf9b6d5cd843859e4e70135d",
-          2482.0
+          4561.07
+        ],
+        [
+          "0xdc41c39b95453c943174f369926018f6963bdd7e",
+          4468.11
         ]
       ],
       "why": [
         "3 profitable wallets on this side",
-        "$30,284 \u2014 but only 6.4% of their book",
-        "latest buy 59 min ago",
+        "$44,530, 26% of their own book",
+        "latest buy 85 min ago",
         "still near their entry price",
-        "12h until it resolves",
-        "$171,318 liquidity"
+        "5h until it resolves",
+        "$83,206 liquidity"
       ],
       "warnings": [
         "resolves within 2 days"
       ]
     },
+    {
+      "market_id": "0x3fd189cac9280dfc49a07115581e8d4c9e0b7e1c1e8580a44e9ff3d74e39cf2d",
+      "title": "Will the Republicans win the Michigan Senate race in 2026?",
+      "side_label": "NO on: Will the Republicans win the Michigan Senate race in 2026?",
+      "outcome": "No",
+      "entry_price": 0.73,
+      "whale_price": 0.73,
+      "drift_c": 0.0,
+      "contracts": 889,
+      "cost": 648.97,
+      "max_payout": 889.0,
+      "conviction": 0.649,
+      "hours_to_resolve": 129.7,
+      "n_wallets": 3,
+      "whale_usd": 45968,
+      "minutes_ago": 101,
+      "liquidity": 437204,
+      "url": "https://polymarket.com/event/michigan-senate-election-winner",
+      "end_iso": "2026-11-04T04:59:00Z",
+      "event_iso": "",
+      "slug": "will-the-republicans-win-the-michigan-senate-race-in-2026",
+      "signal_ts": 1793295323.0,
+      "wallet_usd": [
+        [
+          "0x448861155279dbf833d041b963e3ac854599e319",
+          36500.0
+        ],
+        [
+          "0x629bc4a1e53e1d475beb7ea3d388791e96dd995a",
+          7300.0
+        ],
+        [
+          "0x1387d145aaf01f6e33b66525dda6e1f51f6955f8",
+          2168.25
+        ]
+      ],
+      "why": [
+        "election market and 79% of this is one wallet \u2014 concentration here can move the price rather than confirm it",
+        "3 profitable wallets on this side",
+        "$45,968 \u2014 but only 12.2% of their book",
+        "latest buy 101 min ago",
+        "still near their entry price",
+        "130h until it resolves",
+        "$437,204 liquidity"
+      ],
+      "warnings": [
+        "79% of this signal is a single wallet on an election market \u2014 that is the shape that distorted 2024 pricing"
+      ]
+    },
+    {
+      "market_id": "0xc734669e3773a6311c6abefbfabb4a019c85abd68368602db246b3ddaf704fe8",
+      "title": "Spread: Trail Blazers (-7.5)",
+      "side_label": "Grizzlies \u2014 Spread: Trail Blazers (-7.5)",
+      "outcome": "Grizzlies",
+      "entry_price": 0.485,
+      "whale_price": 0.49,
+      "drift_c": -0.5,
+      "contracts": 1181,
+      "cost": 572.78,
+      "max_payout": 1181.0,
+      "conviction": 0.573,
+      "hours_to_resolve": 6.7,
+      "n_wallets": 2,
+      "whale_usd": 14220,
+      "minutes_ago": 7,
+      "liquidity": 185134,
+      "url": "https://polymarket.com/event/nba-mem-por-2026-10-29",
+      "end_iso": "2026-10-30T02:00:00Z",
+      "event_iso": "2026-10-30 02:00:00+00",
+      "slug": "nba-mem-por-2026-10-29-spread-home-7pt5",
+      "signal_ts": 1793300958.0,
+      "wallet_usd": [
+        [
+          "0xdc41c39b95453c943174f369926018f6963bdd7e",
+          9735.32
+        ],
+        [
+          "0x5268527977f700f9bf9b6d5cd843859e4e70135d",
+          4485.0
+        ]
+      ],
+      "why": [
+        "2 profitable wallets on this side",
+        "$14,220 \u2014 but only 1.7% of their book",
+        "latest buy 7 min ago",
+        "still near their entry price",
+        "7h until it resolves",
+        "$185,134 liquidity"
+      ],
+      "warnings": [
+        "resolves within 2 days"
+      ]
+    },
+    {
+      "market_id": "0x91b521f7a58c841ac14542d2dfeff1244ee8e94b9f299599eedfc2fa1a77b4bb",
+      "title": "Spread: Cowboys (-6.5)",
+      "side_label": "Cowboys \u2014 Spread: Cowboys (-6.5)",
+      "outcome": "Cowboys",
+      "entry_price": 0.54,
+      "whale_price": 0.54,
+      "drift_c": 0.0,
+      "contracts": 887,
+      "cost": 478.98,
+      "max_payout": 887.0,
+      "conviction": 0.479,
+      "hours_to_resolve": 70.7,
+      "n_wallets": 1,
+      "whale_usd": 20887,
+      "minutes_ago": 184,
+      "liquidity": 77441,
+      "url": "https://polymarket.com/event/nfl-ari-dal-2026-11-01",
+      "end_iso": "2026-11-01T18:00:00Z",
+      "event_iso": "2026-11-01 18:00:00+00",
+      "slug": "nfl-ari-dal-2026-11-01-spread-home-6pt5",
+      "signal_ts": 1793290375.0,
+      "wallet_usd": [
+        [
+          "0x958bdb8aa30b8e5bd1fe4ee071f309c84e97f826",
+          20886.97
+        ]
+      ],
+      "why": [
+        "new wallet with no track record \u2014 pattern signal, not a copy",
+        "$20,887, 24% of their own book",
+        "latest buy 184 min ago",
+        "still near their entry price",
+        "71h until it resolves",
+        "$77,441 liquidity"
+      ],
+      "warnings": [
+        "unproven wallet \u2014 this is a pattern, not a track record"
+      ]
+    },
+    {
+      "market_id": "0x94521176f57d2ce81dde01e0b7699ca4279423042d37ed53908f0c8bfefe7e14",
+      "title": "Will the Republicans win the Texas Senate race in 2026?",
+      "side_label": "NO on: Will the Republicans win the Texas Senate race in 2026?",
+      "outcome": "No",
+      "entry_price": 0.71,
+      "whale_price": 0.7,
+      "drift_c": 1.0,
+      "contracts": 635,
+      "cost": 450.85,
+      "max_payout": 635.0,
+      "conviction": 0.451,
+      "hours_to_resolve": 129.7,
+      "n_wallets": 1,
+      "whale_usd": 39299,
+      "minutes_ago": 123,
+      "liquidity": 699747,
+      "url": "https://polymarket.com/event/texas-senate-election-winner",
+      "end_iso": "2026-11-04T04:59:00Z",
+      "event_iso": "",
+      "slug": "will-the-republicans-win-the-texas-senate-race-in-2026",
+      "signal_ts": 1793294033.0,
+      "wallet_usd": [
+        [
+          "0x4c8cdcdd4c92bf44e74a642254f7414de14de36f",
+          39299.47
+        ]
+      ],
+      "why": [
+        "election market and 100% of this is one wallet \u2014 concentration here can move the price rather than confirm it",
+        "1 profitable wallet on this side",
+        "$39,299 \u2014 but only 12.1% of their book",
+        "latest buy 123 min ago",
+        "price up 1.0c since they bought",
+        "130h until it resolves",
+        "$699,747 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion",
+        "100% of this signal is a single wallet on an election market \u2014 that is the shape that distorted 2024 pricing",
+        "smart money sold $35,334 of this side 103 min ago (1 wallet) \u2014 after the buys above"
+      ]
+    },
+    {
+      "market_id": "0x12b727031b38130d945b3e164386874360d9a32fdd7e3d00ed2adb13857e089b",
+      "title": "Will the Democrats win the Texas governor race in 2026?",
+      "side_label": "NO on: Will the Democrats win the Texas governor race in 2026?",
+      "outcome": "No",
+      "entry_price": 0.65,
+      "whale_price": 0.637,
+      "drift_c": 1.29,
+      "contracts": 693,
+      "cost": 450.45,
+      "max_payout": 693.0,
+      "conviction": 0.451,
+      "hours_to_resolve": 129.7,
+      "n_wallets": 2,
+      "whale_usd": 6303,
+      "minutes_ago": 254,
+      "liquidity": 158669,
+      "url": "https://polymarket.com/event/texas-governor-winner-2026",
+      "end_iso": "2026-11-04T04:59:00Z",
+      "event_iso": "",
+      "slug": "will-the-democrats-win-the-texas-governor-race-in-2026",
+      "signal_ts": 1793286122.0,
+      "wallet_usd": [
+        [
+          "0x511f9c771449162349795d17becf8b37031acbe1",
+          3200.0
+        ],
+        [
+          "0x4868c31e81040e002b41984842b84bae8923a1c1",
+          3102.91
+        ]
+      ],
+      "why": [
+        "2 profitable wallets on this side",
+        "$6,303, 67% of their own book",
+        "latest buy 254 min ago",
+        "price up 1.3c since they bought",
+        "130h until it resolves",
+        "$158,669 liquidity"
+      ],
+      "warnings": []
+    }
+  ],
+  "probe": [
     {
       "market_id": "0x16c63b7cc37f012b9f59ee164ec03877914c701d06d48291ae8d6fc08a088b0d",
       "title": "2026 Balance of Power: D Senate, D House",
@@ -59,204 +279,116 @@
       "entry_price": 0.67,
       "whale_price": 0.67,
       "drift_c": 0.0,
-      "contracts": 791,
-      "cost": 529.97,
-      "max_payout": 791.0,
-      "conviction": 0.53,
-      "hours_to_resolve": 135.4,
-      "n_wallets": 2,
-      "whale_usd": 37152,
-      "minutes_ago": 235,
-      "liquidity": 4604546,
+      "contracts": 620,
+      "cost": 415.4,
+      "max_payout": 620.0,
+      "conviction": 0.416,
+      "hours_to_resolve": 129.7,
+      "n_wallets": 1,
+      "whale_usd": 5399,
+      "minutes_ago": 112,
+      "liquidity": 6178619,
       "url": "https://polymarket.com/event/balance-of-power-2026-midterms",
       "end_iso": "2026-11-04T04:59:00Z",
       "event_iso": "",
       "slug": "2026-balance-of-power-d-senate-d-house-949",
-      "signal_ts": 1793266894.0,
+      "signal_ts": 1793294653.0,
       "wallet_usd": [
-        [
-          "0x448861155279dbf833d041b963e3ac854599e319",
-          33500.0
-        ],
         [
           "0xdc41c39b95453c943174f369926018f6963bdd7e",
-          3652.17
+          5398.86
         ]
       ],
       "why": [
-        "2 profitable wallets on this side",
-        "$37,152 \u2014 but only 11.1% of their book",
-        "latest buy 235 min ago",
-        "still near their entry price",
-        "135h until it resolves",
-        "$4,604,546 liquidity"
-      ],
-      "warnings": []
-    },
-    {
-      "market_id": "0x7588538456737566d4ba3821ce5da504a97ba1215e5d002e84a810143eac40df",
-      "title": "Kings vs. Pelicans",
-      "side_label": "Pelicans \u2014 Kings vs. Pelicans",
-      "outcome": "Pelicans",
-      "entry_price": 0.675,
-      "whale_price": 0.67,
-      "drift_c": 0.5,
-      "contracts": 765,
-      "cost": 516.38,
-      "max_payout": 765.0,
-      "conviction": 0.517,
-      "hours_to_resolve": 10.4,
-      "n_wallets": 2,
-      "whale_usd": 6263,
-      "minutes_ago": 60,
-      "liquidity": 185184,
-      "url": "https://polymarket.com/event/nba-sac-nop-2026-10-29",
-      "end_iso": "2026-10-30T00:00:00Z",
-      "event_iso": "2026-10-30 00:00:00+00",
-      "slug": "nba-sac-nop-2026-10-29",
-      "signal_ts": 1793277398.0,
-      "wallet_usd": [
-        [
-          "0xa38a455bbdd4b68486548b7e19da99903f4f821d",
-          3752.91
-        ],
-        [
-          "0x5268527977f700f9bf9b6d5cd843859e4e70135d",
-          2510.0
-        ]
-      ],
-      "why": [
-        "2 profitable wallets on this side",
-        "$6,263 \u2014 but only 3.8% of their book",
-        "latest buy 60 min ago",
-        "still near their entry price",
-        "10h until it resolves",
-        "$185,184 liquidity"
-      ],
-      "warnings": [
-        "resolves within 2 days"
-      ]
-    },
-    {
-      "market_id": "0xd089b15b362819c14e5c809cf2478d551a802c8eccd0ff23141fab6b637c182e",
-      "title": "Will Brentford FC win on 2026-10-31?",
-      "side_label": "NO on: Will Brentford FC win on 2026-10-31?",
-      "outcome": "No",
-      "entry_price": 0.55,
-      "whale_price": 0.539,
-      "drift_c": 1.14,
-      "contracts": 927,
-      "cost": 509.85,
-      "max_payout": 927.0,
-      "conviction": 0.51,
-      "hours_to_resolve": 49.4,
-      "n_wallets": 1,
-      "whale_usd": 8196,
-      "minutes_ago": 25,
-      "liquidity": 69709,
-      "url": "https://polymarket.com/event/epl-bre-not-2026-10-31",
-      "end_iso": "2026-10-31T15:00:00Z",
-      "event_iso": "2026-10-31 15:00:00+00",
-      "slug": "epl-bre-not-2026-10-31-bre",
-      "signal_ts": 1793279462.0,
-      "wallet_usd": [
-        [
-          "0x90c76042ccc84ee8bcbffe6f4ddc6e4cb7e02934",
-          8195.51
-        ]
-      ],
-      "why": [
-        "new wallet with no track record \u2014 pattern signal, not a copy",
-        "$8,196 of smart money behind it",
-        "latest buy 25 min ago",
-        "price up 1.1c since they bought",
-        "49h until it resolves",
-        "$69,709 liquidity"
-      ],
-      "warnings": [
-        "unproven wallet \u2014 this is a pattern, not a track record"
-      ]
-    },
-    {
-      "market_id": "0xb63fbd776203cada01a13bb21b3c52c500bcf904bdfc71627022db1f891f95c5",
-      "title": "Will the Republicans win the Nevada governor race in 2026?",
-      "side_label": "NO on: Will the Republicans win the Nevada governor race in 2026?",
-      "outcome": "No",
-      "entry_price": 0.81,
-      "whale_price": 0.81,
-      "drift_c": 0.0,
-      "contracts": 596,
-      "cost": 482.76,
-      "max_payout": 596.0,
-      "conviction": 0.483,
-      "hours_to_resolve": 135.4,
-      "n_wallets": 1,
-      "whale_usd": 2581,
-      "minutes_ago": 27,
-      "liquidity": 385187,
-      "url": "https://polymarket.com/event/nevada-governor-winner-2026",
-      "end_iso": "2026-11-04T04:59:00Z",
-      "event_iso": "",
-      "slug": "will-the-republicans-win-the-nevada-governor-race-in-2026",
-      "signal_ts": 1793279392.0,
-      "wallet_usd": [
-        [
-          "0xc301c1e034e71e1a6ce9684f029c4674a00466aa",
-          2580.65
-        ]
-      ],
-      "why": [
-        "election market and 100% of this is one wallet \u2014 concentration here can move the price rather than confirm it",
         "1 profitable wallet on this side",
-        "$2,581 \u2014 but only 0.6% of their book",
-        "latest buy 27 min ago",
+        "$5,399 \u2014 but only 1.1% of their book",
+        "latest buy 112 min ago",
         "still near their entry price",
-        "135h until it resolves",
-        "$385,187 liquidity"
+        "130h until it resolves",
+        "$6,178,619 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion",
-        "100% of this signal is a single wallet on an election market \u2014 that is the shape that distorted 2024 pricing"
+        "no politics track record \u2014 these wallets earned their record elsewhere"
       ]
-    }
-  ],
-  "probe": [
+    },
     {
-      "market_id": "0x3fd189cac9280dfc49a07115581e8d4c9e0b7e1c1e8580a44e9ff3d74e39cf2d",
-      "title": "Will the Republicans win the Michigan Senate race in 2026?",
-      "side_label": "NO on: Will the Republicans win the Michigan Senate race in 2026?",
-      "outcome": "No",
-      "entry_price": 0.73,
-      "whale_price": 0.72,
-      "drift_c": 1.0,
-      "contracts": 587,
-      "cost": 428.51,
-      "max_payout": 587.0,
-      "conviction": 0.429,
-      "hours_to_resolve": 135.4,
+      "market_id": "0x307a1ed89d60b61002dd5bbf00e1408c5ed2ab3fcdb056191ca7ef9bc34d38f3",
+      "title": "Will the Democratic Party control the Senate after the 2026 Midterm elections?",
+      "side_label": "YES on: Will the Democratic Party control the Senate after the 2026 Midterm elections?",
+      "outcome": "Yes",
+      "entry_price": 0.68,
+      "whale_price": 0.68,
+      "drift_c": 0.0,
+      "contracts": 585,
+      "cost": 397.8,
+      "max_payout": 585.0,
+      "conviction": 0.398,
+      "hours_to_resolve": 129.7,
       "n_wallets": 1,
-      "whale_usd": 46968,
-      "minutes_ago": 239,
-      "liquidity": 670166,
-      "url": "https://polymarket.com/event/michigan-senate-election-winner",
+      "whale_usd": 5440,
+      "minutes_ago": 134,
+      "liquidity": 4924538,
+      "url": "https://polymarket.com/event/which-party-will-win-the-senate-in-2026",
       "end_iso": "2026-11-04T04:59:00Z",
       "event_iso": "",
-      "slug": "will-the-republicans-win-the-michigan-senate-race-in-2026",
-      "signal_ts": 1793266615.0,
+      "slug": "will-the-democratic-party-control-the-senate-after-the-2026-midterm-elections",
+      "signal_ts": 1793293327.0,
+      "wallet_usd": [
+        [
+          "0xdc41c39b95453c943174f369926018f6963bdd7e",
+          5440.0
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$5,440 \u2014 but only 1.1% of their book",
+        "latest buy 134 min ago",
+        "still near their entry price",
+        "130h until it resolves",
+        "$4,924,538 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion",
+        "no politics track record \u2014 these wallets earned their record elsewhere"
+      ]
+    },
+    {
+      "market_id": "0x4de72138204727d2821bff847d8158819ab5b591db1b5b263676126cbb3a0430",
+      "title": "Will the Democrats win the South Carolina Senate race in 2026?",
+      "side_label": "NO on: Will the Democrats win the South Carolina Senate race in 2026?",
+      "outcome": "No",
+      "entry_price": 0.73,
+      "whale_price": 0.73,
+      "drift_c": -0.0,
+      "contracts": 542,
+      "cost": 395.66,
+      "max_payout": 542.0,
+      "conviction": 0.396,
+      "hours_to_resolve": 129.7,
+      "n_wallets": 1,
+      "whale_usd": 2089,
+      "minutes_ago": 131,
+      "liquidity": 313014,
+      "url": "https://polymarket.com/event/south-carolina-senate-election-winner",
+      "end_iso": "2026-11-04T04:59:00Z",
+      "event_iso": "",
+      "slug": "will-the-democrats-win-the-south-carolina-senate-race-in-2026",
+      "signal_ts": 1793293556.0,
       "wallet_usd": [
         [
           "0x448861155279dbf833d041b963e3ac854599e319",
-          46968.48
+          2089.25
         ]
       ],
       "why": [
         "election market and 100% of this is one wallet \u2014 concentration here can move the price rather than confirm it",
         "1 profitable wallet on this side",
-        "$46,968 \u2014 but only 17.1% of their book",
-        "latest buy 239 min ago",
-        "price up 1.0c since they bought",
-        "135h until it resolves",
-        "$670,166 liquidity"
+        "$2,089 \u2014 but only 0.8% of their book",
+        "latest buy 131 min ago",
+        "still near their entry price",
+        "130h until it resolves",
+        "$313,014 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion",
@@ -264,41 +396,41 @@
       ]
     },
     {
-      "market_id": "0x94521176f57d2ce81dde01e0b7699ca4279423042d37ed53908f0c8bfefe7e14",
-      "title": "Will the Republicans win the Texas Senate race in 2026?",
-      "side_label": "NO on: Will the Republicans win the Texas Senate race in 2026?",
+      "market_id": "0x771873c365f87bffd990644e4b688aebc1be7f18396d2eab64b996ff66e88669",
+      "title": "Will the Republicans win the Ohio Senate race in 2026?",
+      "side_label": "NO on: Will the Republicans win the Ohio Senate race in 2026?",
       "outcome": "No",
       "entry_price": 0.7,
       "whale_price": 0.69,
       "drift_c": 1.0,
-      "contracts": 591,
-      "cost": 413.7,
-      "max_payout": 591.0,
-      "conviction": 0.414,
-      "hours_to_resolve": 135.4,
+      "contracts": 565,
+      "cost": 395.5,
+      "max_payout": 565.0,
+      "conviction": 0.396,
+      "hours_to_resolve": 129.7,
       "n_wallets": 1,
-      "whale_usd": 7348,
-      "minutes_ago": 51,
-      "liquidity": 877311,
-      "url": "https://polymarket.com/event/texas-senate-election-winner",
+      "whale_usd": 2049,
+      "minutes_ago": 85,
+      "liquidity": 201130,
+      "url": "https://polymarket.com/event/ohio-senate-election-winner",
       "end_iso": "2026-11-04T04:59:00Z",
       "event_iso": "",
-      "slug": "will-the-republicans-win-the-texas-senate-race-in-2026",
-      "signal_ts": 1793277908.0,
+      "slug": "will-the-republicans-win-the-ohio-senate-race-in-2026",
+      "signal_ts": 1793296285.0,
       "wallet_usd": [
         [
-          "0xdc41c39b95453c943174f369926018f6963bdd7e",
-          7347.81
+          "0x1387d145aaf01f6e33b66525dda6e1f51f6955f8",
+          2049.44
         ]
       ],
       "why": [
         "election market and 100% of this is one wallet \u2014 concentration here can move the price rather than confirm it",
         "1 profitable wallet on this side",
-        "$7,348 \u2014 but only 1.9% of their book",
-        "latest buy 51 min ago",
+        "$2,049, 23% of their own book",
+        "latest buy 85 min ago",
         "price up 1.0c since they bought",
-        "135h until it resolves",
-        "$877,311 liquidity"
+        "130h until it resolves",
+        "$201,130 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion",
@@ -307,99 +439,226 @@
       ]
     },
     {
-      "market_id": "0x9f7993cc0936607f3cee5e5da62f024c03525a399e622d5761f7cdac700927b2",
-      "title": "Will Bitcoin reach $82,000 October 26-November 1?",
-      "side_label": "YES on: Will Bitcoin reach $82,000 October 26-November 1?",
-      "outcome": "Yes",
-      "entry_price": 0.36,
-      "whale_price": 0.36,
-      "drift_c": 0.0,
-      "contracts": 1119,
-      "cost": 402.84,
-      "max_payout": 1119.0,
-      "conviction": 0.403,
-      "hours_to_resolve": 87.4,
+      "market_id": "0x1935cb85b0a9e970433afe2b1681f4745b8a1b3d3e517e2bd580b5765b78759b",
+      "title": "Spread: Bengals (-10.5)",
+      "side_label": "Bengals \u2014 Spread: Bengals (-10.5)",
+      "outcome": "Bengals",
+      "entry_price": 0.525,
+      "whale_price": 0.52,
+      "drift_c": 0.5,
+      "contracts": 737,
+      "cost": 386.93,
+      "max_payout": 737.0,
+      "conviction": 0.387,
+      "hours_to_resolve": 70.7,
       "n_wallets": 1,
-      "whale_usd": 2881,
-      "minutes_ago": 274,
-      "liquidity": 44256,
-      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-october-26-november-1-2026",
-      "end_iso": "2026-11-02T05:00:00Z",
-      "event_iso": "",
-      "slug": "will-bitcoin-reach-82k-october-26-november-1-2026",
-      "signal_ts": 1793264537.0,
+      "whale_usd": 2170,
+      "minutes_ago": 267,
+      "liquidity": 74230,
+      "url": "https://polymarket.com/event/nfl-ten-cin-2026-11-01",
+      "end_iso": "2026-11-01T18:00:00Z",
+      "event_iso": "2026-11-01 18:00:00+00",
+      "slug": "nfl-ten-cin-2026-11-01-spread-home-10pt5",
+      "signal_ts": 1793285356.0,
       "wallet_usd": [
         [
-          "0xf705fa045201391d9632b7f3cde06a5e24453ca7",
-          2881.46
+          "0x684baa57c338c2549aec0aa3f034f695d72a8409",
+          2170.35
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$2,881 \u2014 but only 0.2% of their book",
-        "latest buy 274 min ago",
+        "$2,170 \u2014 but only 0.8% of their book",
+        "latest buy 267 min ago",
         "still near their entry price",
-        "87h until it resolves"
+        "71h until it resolves",
+        "$74,230 liquidity"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
     },
     {
-      "market_id": "0x707eae716c506da294e9994a625b08e1d602de24e4cce0968cbd0915cfdb17af",
-      "title": "Will Ethereum reach $2,400 in October?",
-      "side_label": "NO on: Will Ethereum reach $2,400 in October?",
-      "outcome": "No",
-      "entry_price": 0.72,
-      "whale_price": 0.74,
-      "drift_c": -2.0,
-      "contracts": 548,
-      "cost": 394.56,
-      "max_payout": 548.0,
-      "conviction": 0.395,
-      "hours_to_resolve": 62.4,
+      "market_id": "0x25d2041a4ee26dd34d19026429f994d1e3d2194ecd4ebb783bc00a304565a456",
+      "title": "Guangzhou Open: Xinran Sun vs Claire Liu",
+      "side_label": "Claire Liu \u2014 Guangzhou Open: Xinran Sun vs Claire Liu",
+      "outcome": "Claire Liu",
+      "entry_price": 0.615,
+      "whale_price": 0.61,
+      "drift_c": 0.5,
+      "contracts": 603,
+      "cost": 370.84,
+      "max_payout": 603.0,
+      "conviction": 0.371,
+      "hours_to_resolve": 12.7,
       "n_wallets": 1,
-      "whale_usd": 6744,
-      "minutes_ago": 249,
-      "liquidity": 31389,
-      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-october-2026",
-      "end_iso": "2026-11-01T04:00:00Z",
-      "event_iso": "",
-      "slug": "will-ethereum-reach-2400-in-october-2026-from-october-24",
-      "signal_ts": 1793266066.0,
+      "whale_usd": 4905,
+      "minutes_ago": 118,
+      "liquidity": 19283,
+      "url": "https://polymarket.com/event/wta-su-liu-2026-10-29",
+      "end_iso": "2026-11-06T02:00:00Z",
+      "event_iso": "2026-10-30 08:00:00+00",
+      "slug": "wta-su-liu-2026-10-29",
+      "signal_ts": 1793294332.0,
       "wallet_usd": [
         [
-          "0xa19cbababc312f9df185e49d7004c249ed1ade6b",
-          6744.36
+          "0x0d6a1ada6d7ff785ab4b7263d9ce8e2baa85aa98",
+          4905.09
         ]
       ],
       "why": [
         "1 profitable wallet on this side",
-        "$6,744 \u2014 but only 0.7% of their book",
-        "latest buy 249 min ago",
-        "price 2.0c cheaper than they paid",
-        "62h until it resolves"
+        "$4,905 \u2014 but only 4.5% of their book",
+        "latest buy 118 min ago",
+        "still near their entry price",
+        "13h until it resolves"
       ],
       "warnings": [
         "only one wallet \u2014 single opinion"
       ]
+    },
+    {
+      "market_id": "0xd5d9fc47718bd553592d126b1fa5e87183d27f3936975b0c04cc0f2dec1f1bb4",
+      "title": "Will the Democratic Party control the House after the 2026 Midterm elections?",
+      "side_label": "NO on: Will the Democratic Party control the House after the 2026 Midterm elections?",
+      "outcome": "No",
+      "entry_price": 0.08,
+      "whale_price": 0.07,
+      "drift_c": 1.0,
+      "contracts": 1900,
+      "cost": 152.0,
+      "max_payout": 1900.0,
+      "conviction": 0.369,
+      "hours_to_resolve": 129.7,
+      "n_wallets": 1,
+      "whale_usd": 3425,
+      "minutes_ago": 249,
+      "liquidity": 6664100,
+      "url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
+      "end_iso": "2026-11-04T04:59:00Z",
+      "event_iso": "",
+      "slug": "will-the-democratic-party-control-the-house-after-the-2026-midterm-elections",
+      "signal_ts": 1793286431.0,
+      "wallet_usd": [
+        [
+          "0xfea31bc088000ff909be1dfd8d0e3f2c7ef2d227",
+          3424.96
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$3,425 \u2014 but only 0.1% of their book",
+        "latest buy 249 min ago",
+        "price up 1.0c since they bought",
+        "130h until it resolves",
+        "$6,664,100 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion",
+        "size capped by the per-market contract limit"
+      ]
+    },
+    {
+      "market_id": "0xe64ec54460a1f1b250c9785968e6ebecfb0fd542a34300a161f64460c7a811df",
+      "title": "Will the Republican Party win the NC-11 House seat?",
+      "side_label": "NO on: Will the Republican Party win the NC-11 House seat?",
+      "outcome": "No",
+      "entry_price": 0.86,
+      "whale_price": 0.833,
+      "drift_c": 2.7,
+      "contracts": 355,
+      "cost": 305.3,
+      "max_payout": 355.0,
+      "conviction": 0.306,
+      "hours_to_resolve": 129.7,
+      "n_wallets": 1,
+      "whale_usd": 2474,
+      "minutes_ago": 158,
+      "liquidity": 60988,
+      "url": "https://polymarket.com/event/nc-11-house-election-winner",
+      "end_iso": "2026-11-04T04:59:00Z",
+      "event_iso": "",
+      "slug": "will-the-republican-party-win-the-nc-11-house-seat",
+      "signal_ts": 1793291905.0,
+      "wallet_usd": [
+        [
+          "0x1387d145aaf01f6e33b66525dda6e1f51f6955f8",
+          2474.27
+        ]
+      ],
+      "why": [
+        "1 profitable wallet on this side",
+        "$2,474, 28% of their own book",
+        "latest buy 158 min ago",
+        "price up 2.7c since they bought",
+        "130h until it resolves",
+        "$60,988 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion",
+        "no politics track record \u2014 these wallets earned their record elsewhere"
+      ]
+    },
+    {
+      "market_id": "0xd50c016598c499fceea10a1a714e48d9b4953487fe215daeaf916068fae722f1",
+      "title": "Will the Democrats win the Iowa Senate race in 2026?",
+      "side_label": "YES on: Will the Democrats win the Iowa Senate race in 2026?",
+      "outcome": "Yes",
+      "entry_price": 0.48,
+      "whale_price": 0.46,
+      "drift_c": 2.0,
+      "contracts": 545,
+      "cost": 261.6,
+      "max_payout": 545.0,
+      "conviction": 0.262,
+      "hours_to_resolve": 129.7,
+      "n_wallets": 1,
+      "whale_usd": 2238,
+      "minutes_ago": 250,
+      "liquidity": 290526,
+      "url": "https://polymarket.com/event/iowa-senate-election-winner",
+      "end_iso": "2026-11-04T04:59:00Z",
+      "event_iso": "",
+      "slug": "will-the-democrats-win-the-iowa-senate-race-in-2026",
+      "signal_ts": 1793286382.0,
+      "wallet_usd": [
+        [
+          "0x032eb1bc893940263ad0b01889f262fc232f2a9e",
+          2238.5
+        ]
+      ],
+      "why": [
+        "election market and 100% of this is one wallet \u2014 concentration here can move the price rather than confirm it",
+        "1 profitable wallet on this side",
+        "$2,238 \u2014 but only 0.4% of their book",
+        "latest buy 250 min ago",
+        "price up 2.0c since they bought",
+        "130h until it resolves",
+        "$290,526 liquidity"
+      ],
+      "warnings": [
+        "only one wallet \u2014 single opinion",
+        "no politics track record \u2014 these wallets earned their record elsewhere",
+        "100% of this signal is a single wallet on an election market \u2014 that is the shape that distorted 2024 pricing"
+      ]
     }
   ],
-  "considered": 271,
+  "considered": 209,
   "rejected": {
-    "market closed": 115,
-    "fresh wallet: market too liquid for the pattern": 34,
-    "esports (sleeve retired \u2014 see esports_enabled)": 44,
-    "wallet not new (no track record either)": 28,
-    "in-play (event already started)": 5,
-    "parlay / combo ticket, not a single market": 6,
-    "signal too old for this market's horizon": 14,
-    "resolves more than 30 days out": 5,
-    "price + fee ran away from the whale's entry": 3,
-    "resolves in under 3h": 1,
-    "already resolved": 1,
-    "duplicate event (kept the stronger side)": 6,
-    "below the 0.45 buy bar (recorded, not bought)": 4
+    "market closed": 80,
+    "esports (sleeve retired \u2014 see esports_enabled)": 7,
+    "already resolved": 13,
+    "wallet not new (no track record either)": 31,
+    "fresh wallet: market too liquid for the pattern": 19,
+    "signal too old for this market's horizon": 17,
+    "in-play (event already started)": 7,
+    "price outside tradeable band": 2,
+    "resolves in under 3h": 6,
+    "resolves more than 30 days out": 2,
+    "parlay / combo ticket, not a single market": 1,
+    "price + fee ran away from the whale's entry": 2,
+    "duplicate event (kept the stronger side)": 7,
+    "below the 0.45 buy bar (recorded, not bought)": 9
   },
   "notes": [],
   "consistency": {
@@ -407,84 +666,20 @@
     "enabled": true,
     "events_scanned": 340,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 104,
+      "bracket has legs we cannot price (fail closed)": 107,
       "not a ladder: duplicate deadlines left too few rungs": 9,
-      "not a ladder: group labels are not thresholds or deadlines": 58,
-      "not a ladder: fewer than two live, quoted legs": 80,
-      "ladder pair too illiquid to fill": 239,
-      "ladder inversion smaller than the spread": 9,
+      "not a ladder: group labels are not thresholds or deadlines": 57,
+      "not a ladder: fewer than two live, quoted legs": 79,
+      "ladder pair too illiquid to fill": 420,
+      "ladder inversion smaller than the spread": 8,
+      "bracket underround smaller than the spread": 1,
       "bracket has too many legs to place by hand": 1,
       "not a ladder: numeric group spans different end dates": 1,
-      "bracket leg too illiquid to fill": 5,
+      "bracket leg too illiquid to fill": 7,
       "not a ladder: a live leg carries no group label": 1
     },
     "notes": [],
-    "violations": [
-      {
-        "family": "bracket",
-        "event_slug": "maduro-prison-time-527",
-        "constraint": "5 mutually exclusive outcomes offer at 0.9780 total, but exactly one of them pays 1.00",
-        "edge_c": 2.2,
-        "actions": [
-          "BUY YES  No prison time  @ 0.520",
-          "BUY YES  <20  @ 0.103",
-          "BUY YES  20\u201340  @ 0.059",
-          "BUY YES  40\u201360  @ 0.076",
-          "BUY YES  60+  @ 0.220"
-        ],
-        "warnings": [
-          "requires filling all 5 legs - confirm the event page lists exactly 5 outcomes before trusting the sum"
-        ],
-        "url": "https://polymarket.com/event/maduro-prison-time-527",
-        "legs": [
-          {
-            "question": "Will Nicol\u00e1s Maduro be sentenced to no prison time?",
-            "name": "No prison time",
-            "bid": 0.51,
-            "ask": 0.52,
-            "liquidity": 62427.4883,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/maduro-prison-time-527"
-          },
-          {
-            "question": "Will Nicol\u00e1s Maduro be sentenced to less than 20 years in prison?",
-            "name": "<20",
-            "bid": 0.071,
-            "ask": 0.103,
-            "liquidity": 34264.97109,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/maduro-prison-time-527"
-          },
-          {
-            "question": "Will Nicol\u00e1s Maduro be sentenced to between 20 and 40 years in prison?",
-            "name": "20\u201340",
-            "bid": 0.022,
-            "ask": 0.059,
-            "liquidity": 22106.88116,
-            "end_iso": "2027-12-31T00:00:00Z",
-            "url": "https://polymarket.com/event/maduro-prison-time-527"
-          },
-          {
-            "question": "Will Nicol\u00e1s Maduro be sentenced to between 40 and 60 years in prison?",
-            "name": "40\u201360",
-            "bid": 0.022,
-            "ask": 0.076,
-            "liquidity": 27478.77241,
-            "end_iso": "2027-12-31T00:00:00Z",
-            "url": "https://polymarket.com/event/maduro-prison-time-527"
-          },
-          {
-            "question": "Will Nicol\u00e1s Maduro be sentenced to at least 60 years in prison?",
-            "name": "60+",
-            "bid": 0.2,
-            "ask": 0.22,
-            "liquidity": 22960.7638,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/maduro-prison-time-527"
-          }
-        ]
-      }
-    ]
+    "violations": []
   },
   "macro": {
     "ok": true,
@@ -499,43 +694,43 @@
         "ref_month": "2026-10",
         "url": "https://polymarket.com/event/core-cpi-mom-october-2026",
         "nowcast_pp": 0.211437433436468,
-        "nowcast_as_of": "2026-10-28 00:00",
+        "nowcast_as_of": "2026-10-29 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.102pp (x1.58). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.103pp (x1.56). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
-            "market_prob": 0.0675,
+            "market_prob": 0.137,
             "model_prob": 0.1565,
-            "gap_c": 8.9,
+            "gap_c": 1.95,
             "suspect": false
           },
           {
             "label": "0.1%",
-            "market_prob": 0.185,
+            "market_prob": 0.19,
             "model_prob": 0.194,
-            "gap_c": 0.9,
+            "gap_c": 0.4,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.285,
+            "market_prob": 0.325,
             "model_prob": 0.2447,
-            "gap_c": -4.03,
+            "gap_c": -8.03,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.34,
+            "market_prob": 0.37,
             "model_prob": 0.2115,
-            "gap_c": -12.85,
+            "gap_c": -15.85,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.125,
+            "market_prob": 0.195,
             "model_prob": 0.1253,
-            "gap_c": 0.03,
+            "gap_c": -6.97,
             "suspect": false
           },
           {
@@ -547,9 +742,9 @@
           },
           {
             "label": "0.6%+",
-            "market_prob": 0.008,
+            "market_prob": 0.0065,
             "model_prob": 0.0172,
-            "gap_c": 0.92,
+            "gap_c": 1.07,
             "suspect": false
           }
         ]
@@ -562,22 +757,22 @@
         "ref_month": "2026-10",
         "url": "https://polymarket.com/event/core-cpi-yoy-october-2026",
         "nowcast_pp": 2.48284216554884,
-        "nowcast_as_of": "2026-10-28 00:00",
+        "nowcast_as_of": "2026-10-29 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.097pp (x1.65). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.096pp (x1.67). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
         "rows": [
           {
             "label": "\u22642.2%",
-            "market_prob": 0.0175,
+            "market_prob": 0.0165,
             "model_prob": 0.0728,
-            "gap_c": 5.53,
+            "gap_c": 5.63,
             "suspect": false
           },
           {
             "label": "2.3%",
-            "market_prob": 0.009,
+            "market_prob": 0.011,
             "model_prob": 0.1304,
-            "gap_c": 12.14,
+            "gap_c": 11.94,
             "suspect": false
           },
           {
@@ -589,16 +784,16 @@
           },
           {
             "label": "2.5%",
-            "market_prob": 0.0795,
+            "market_prob": 0.075,
             "model_prob": 0.244,
-            "gap_c": 16.45,
+            "gap_c": 16.9,
             "suspect": false
           },
           {
             "label": "2.6%",
-            "market_prob": 0.72,
+            "market_prob": 0.78,
             "model_prob": 0.1893,
-            "gap_c": -53.07,
+            "gap_c": -59.07,
             "suspect": true
           },
           {
@@ -610,9 +805,9 @@
           },
           {
             "label": "2.8%",
-            "market_prob": 0.0045,
+            "market_prob": 0.006,
             "model_prob": 0.0366,
-            "gap_c": 3.21,
+            "gap_c": 3.06,
             "suspect": false
           },
           {
@@ -624,16 +819,16 @@
           },
           {
             "label": "3.0%",
-            "market_prob": 0.0245,
+            "market_prob": 0.0255,
             "model_prob": 0.0016,
-            "gap_c": -2.29,
+            "gap_c": -2.39,
             "suspect": false
           },
           {
             "label": "\u22653.1%",
-            "market_prob": 0.0045,
+            "market_prob": 0.0065,
             "model_prob": 0.0002,
-            "gap_c": -0.43,
+            "gap_c": -0.63,
             "suspect": false
           }
         ]
@@ -646,7 +841,7 @@
         "ref_month": "2026-10",
         "url": "https://polymarket.com/event/october-inflation-us-annual",
         "nowcast_pp": 3.74183045049836,
-        "nowcast_as_of": "2026-10-28 00:00",
+        "nowcast_as_of": "2026-10-29 00:00",
         "sigma": 0.16,
         "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.092pp (x1.74). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
         "rows": [
@@ -659,30 +854,30 @@
           },
           {
             "label": "3.3%",
-            "market_prob": 0.0025,
+            "market_prob": 0.005,
             "model_prob": 0.0061,
-            "gap_c": 0.36,
+            "gap_c": 0.11,
             "suspect": false
           },
           {
             "label": "3.4%",
-            "market_prob": 0.004,
+            "market_prob": 0.005,
             "model_prob": 0.0269,
-            "gap_c": 2.29,
+            "gap_c": 2.19,
             "suspect": false
           },
           {
             "label": "3.5%",
-            "market_prob": 0.012,
+            "market_prob": 0.013,
             "model_prob": 0.0812,
-            "gap_c": 6.92,
+            "gap_c": 6.82,
             "suspect": false
           },
           {
             "label": "3.6%",
-            "market_prob": 0.012,
+            "market_prob": 0.0105,
             "model_prob": 0.1677,
-            "gap_c": 15.57,
+            "gap_c": 15.72,
             "suspect": false
           },
           {
@@ -701,37 +896,37 @@
           },
           {
             "label": "3.9%",
-            "market_prob": 0.0195,
+            "market_prob": 0.0245,
             "model_prob": 0.1529,
-            "gap_c": 13.34,
+            "gap_c": 12.84,
             "suspect": false
           },
           {
             "label": "4.0%",
-            "market_prob": 0.0275,
+            "market_prob": 0.028,
             "model_prob": 0.0696,
-            "gap_c": 4.21,
+            "gap_c": 4.16,
             "suspect": false
           },
           {
             "label": "4.1%",
-            "market_prob": 0.0115,
+            "market_prob": 0.0085,
             "model_prob": 0.0217,
-            "gap_c": 1.02,
+            "gap_c": 1.32,
             "suspect": false
           },
           {
             "label": "4.2%",
-            "market_prob": 0.009,
+            "market_prob": 0.0075,
             "model_prob": 0.0046,
-            "gap_c": -0.44,
+            "gap_c": -0.29,
             "suspect": false
           },
           {
             "label": "\u22654.3%",
-            "market_prob": 0.0025,
+            "market_prob": 0.0095,
             "model_prob": 0.0007,
-            "gap_c": -0.18,
+            "gap_c": -0.88,
             "suspect": false
           }
         ]
@@ -744,50 +939,50 @@
         "ref_month": "2026-10",
         "url": "https://polymarket.com/event/october-inflation-us-monthly",
         "nowcast_pp": 0.242106165709167,
-        "nowcast_as_of": "2026-10-28 00:00",
+        "nowcast_as_of": "2026-10-29 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.095pp (x1.68). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.107pp (x1.49). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
         "rows": [
           {
             "label": "\u22640.1%",
-            "market_prob": 0.09,
+            "market_prob": 0.095,
             "model_prob": 0.2824,
-            "gap_c": 19.24,
+            "gap_c": 18.74,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.315,
+            "market_prob": 0.27,
             "model_prob": 0.2373,
-            "gap_c": -7.77,
+            "gap_c": -3.27,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.445,
+            "market_prob": 0.435,
             "model_prob": 0.2303,
-            "gap_c": -21.47,
+            "gap_c": -20.47,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.09,
+            "market_prob": 0.155,
             "model_prob": 0.1531,
-            "gap_c": 6.31,
+            "gap_c": -0.19,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.052,
+            "market_prob": 0.0565,
             "model_prob": 0.0698,
-            "gap_c": 1.78,
+            "gap_c": 1.33,
             "suspect": false
           },
           {
             "label": "0.6%",
-            "market_prob": 0.0045,
+            "market_prob": 0.027,
             "model_prob": 0.0218,
-            "gap_c": 1.73,
+            "gap_c": -0.52,
             "suspect": false
           },
           {
@@ -799,9 +994,9 @@
           },
           {
             "label": "0.8%",
-            "market_prob": 0.004,
+            "market_prob": 0.0055,
             "model_prob": 0.0007,
-            "gap_c": -0.33,
+            "gap_c": -0.48,
             "suspect": false
           },
           {
@@ -820,96 +1015,7 @@
     "cal_vetoed": 0
   },
   "gas": [],
-  "spxindex": [
-    {
-      "market_id": "KXINX-26OCT29H1600-B7762",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "Yes",
-      "title": "Will the S&P 500 be between 7750 and 7774.9999 on Oct 29, 2026 at 4pm EDT?",
-      "url": "https://kalshi.com/markets/KXINX-26OCT29H1600",
-      "entry_price": 0.12,
-      "model_prob": 0.1808,
-      "edge": 0.0608,
-      "fair": 0.1808,
-      "market_prob": 0.11,
-      "implied_sigma": 0.1627,
-      "spot_used": 7743.98,
-      "chain_ts": "2026-10-29 13:36:21",
-      "vrp_shrink": 0.92,
-      "series": "KXINX",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-10-29T20:00:00+00:00",
-      "event_iso": "2026-10-29T20:00:00+00:00"
-    },
-    {
-      "market_id": "KXINX-26OCT29H1600-B7737",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "Yes",
-      "title": "Will the S&P 500 be between 7725 and 7749.9999 on Oct 29, 2026 at 4pm EDT?",
-      "url": "https://kalshi.com/markets/KXINX-26OCT29H1600",
-      "entry_price": 0.21,
-      "model_prob": 0.2572,
-      "edge": 0.0472,
-      "fair": 0.2572,
-      "market_prob": 0.185,
-      "implied_sigma": 0.1627,
-      "spot_used": 7743.98,
-      "chain_ts": "2026-10-29 13:36:21",
-      "vrp_shrink": 0.92,
-      "series": "KXINX",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-10-29T20:00:00+00:00",
-      "event_iso": "2026-10-29T20:00:00+00:00"
-    },
-    {
-      "market_id": "KXINX-26OCT29H1600-B7662",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "No",
-      "title": "Will the S&P 500 be between 7650 and 7674.9999 on Oct 29, 2026 at 4pm EDT?",
-      "url": "https://kalshi.com/markets/KXINX-26OCT29H1600",
-      "entry_price": 0.89,
-      "model_prob": 0.9372,
-      "edge": 0.0472,
-      "fair": 0.0628,
-      "market_prob": 0.135,
-      "implied_sigma": 0.1627,
-      "spot_used": 7743.98,
-      "chain_ts": "2026-10-29 13:36:21",
-      "vrp_shrink": 0.92,
-      "series": "KXINX",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-10-29T20:00:00+00:00",
-      "event_iso": "2026-10-29T20:00:00+00:00"
-    },
-    {
-      "market_id": "KXINX-26OCT29H1600-B7687",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "No",
-      "title": "Will the S&P 500 be between 7675 and 7699.9999 on Oct 29, 2026 at 4pm EDT?",
-      "url": "https://kalshi.com/markets/KXINX-26OCT29H1600",
-      "entry_price": 0.82,
-      "model_prob": 0.8634,
-      "edge": 0.0434,
-      "fair": 0.1366,
-      "market_prob": 0.205,
-      "implied_sigma": 0.1627,
-      "spot_used": 7743.98,
-      "chain_ts": "2026-10-29 13:36:21",
-      "vrp_shrink": 0.92,
-      "series": "KXINX",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-10-29T20:00:00+00:00",
-      "event_iso": "2026-10-29T20:00:00+00:00"
-    }
-  ],
+  "spxindex": [],
   "sizing": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
