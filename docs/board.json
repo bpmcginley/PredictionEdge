@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-04 09:55:36",
-  "generated_at": 1793786136.276098,
+  "generated": "2026-11-04 17:55:07",
+  "generated_at": 1793814907.9276493,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [],
@@ -14,15 +14,17 @@
     "enabled": true,
     "events_scanned": 344,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 103,
+      "bracket has legs we cannot price (fail closed)": 96,
       "not a ladder: duplicate deadlines left too few rungs": 10,
-      "not a ladder: fewer than two live, quoted legs": 96,
-      "not a ladder: group labels are not thresholds or deadlines": 47,
-      "ladder pair too illiquid to fill": 228,
-      "ladder inversion smaller than the spread": 6,
+      "not a ladder: fewer than two live, quoted legs": 98,
+      "not a ladder: group labels are not thresholds or deadlines": 51,
+      "bracket overround smaller than the spread": 1,
+      "ladder pair too illiquid to fill": 294,
       "bracket has too many legs to place by hand": 1,
       "not a ladder: numeric group spans different end dates": 2,
-      "bracket leg too illiquid to fill": 4
+      "bracket leg too illiquid to fill": 4,
+      "bracket underround smaller than the spread": 1,
+      "ladder inversion smaller than the spread": 8
     },
     "notes": [],
     "violations": []
@@ -40,9 +42,9 @@
         "ref_month": "2026-10",
         "url": "https://polymarket.com/event/core-cpi-yoy-october-2026",
         "nowcast_pp": 2.48284216554884,
-        "nowcast_as_of": "2026-11-03 00:00",
+        "nowcast_as_of": "2026-11-04 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.058pp (x2.77). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.056pp (x2.87). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
         "rows": [
           {
             "label": "\u22642.2%",
@@ -67,30 +69,30 @@
           },
           {
             "label": "2.5%",
-            "market_prob": 0.0345,
+            "market_prob": 0.02,
             "model_prob": 0.244,
-            "gap_c": 20.95,
+            "gap_c": 22.4,
             "suspect": false
           },
           {
             "label": "2.6%",
-            "market_prob": 0.89,
+            "market_prob": 0.92,
             "model_prob": 0.1893,
-            "gap_c": -70.07,
+            "gap_c": -73.07,
             "suspect": true
           },
           {
             "label": "2.7%",
-            "market_prob": 0.071,
+            "market_prob": 0.063,
             "model_prob": 0.1006,
-            "gap_c": 2.96,
+            "gap_c": 3.76,
             "suspect": false
           },
           {
             "label": "2.8%",
-            "market_prob": 0.0035,
+            "market_prob": 0.004,
             "model_prob": 0.0366,
-            "gap_c": 3.31,
+            "gap_c": 3.26,
             "suspect": false
           },
           {
@@ -124,15 +126,15 @@
         "ref_month": "2026-10",
         "url": "https://polymarket.com/event/core-cpi-mom-october-2026",
         "nowcast_pp": 0.211437433436468,
-        "nowcast_as_of": "2026-11-03 00:00",
+        "nowcast_as_of": "2026-11-04 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.080pp (x2.00). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.079pp (x2.03). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
-            "market_prob": 0.0345,
+            "market_prob": 0.035,
             "model_prob": 0.1565,
-            "gap_c": 12.2,
+            "gap_c": 12.15,
             "suspect": false
           },
           {
@@ -144,37 +146,37 @@
           },
           {
             "label": "0.2%",
-            "market_prob": 0.44,
+            "market_prob": 0.445,
             "model_prob": 0.2447,
-            "gap_c": -19.53,
+            "gap_c": -20.03,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.36,
+            "market_prob": 0.365,
             "model_prob": 0.2115,
-            "gap_c": -14.85,
+            "gap_c": -15.35,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.09,
+            "market_prob": 0.085,
             "model_prob": 0.1253,
-            "gap_c": 3.53,
+            "gap_c": 4.03,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.0145,
+            "market_prob": 0.0135,
             "model_prob": 0.0508,
-            "gap_c": 3.63,
+            "gap_c": 3.73,
             "suspect": false
           },
           {
             "label": "0.6%+",
-            "market_prob": 0.006,
+            "market_prob": 0.0065,
             "model_prob": 0.0172,
-            "gap_c": 1.12,
+            "gap_c": 1.07,
             "suspect": false
           }
         ]
@@ -187,9 +189,9 @@
         "ref_month": "2026-10",
         "url": "https://polymarket.com/event/october-inflation-us-annual",
         "nowcast_pp": 3.74183045049836,
-        "nowcast_as_of": "2026-11-03 00:00",
+        "nowcast_as_of": "2026-11-04 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.075pp (x2.13). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.062pp (x2.56). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
         "rows": [
           {
             "label": "\u22643.2%",
@@ -207,72 +209,72 @@
           },
           {
             "label": "3.4%",
-            "market_prob": 0.004,
+            "market_prob": 0.003,
             "model_prob": 0.0269,
-            "gap_c": 2.29,
+            "gap_c": 2.39,
             "suspect": false
           },
           {
             "label": "3.5%",
-            "market_prob": 0.0085,
+            "market_prob": 0.0075,
             "model_prob": 0.0812,
-            "gap_c": 7.27,
+            "gap_c": 7.37,
             "suspect": false
           },
           {
             "label": "3.6%",
-            "market_prob": 0.0145,
+            "market_prob": 0.0135,
             "model_prob": 0.1677,
-            "gap_c": 15.32,
+            "gap_c": 15.42,
             "suspect": false
           },
           {
             "label": "3.7%",
-            "market_prob": 0.9,
+            "market_prob": 0.895,
             "model_prob": 0.2374,
-            "gap_c": -66.26,
+            "gap_c": -65.76,
             "suspect": true
           },
           {
             "label": "3.8%",
-            "market_prob": 0.0575,
+            "market_prob": 0.0485,
             "model_prob": 0.2301,
-            "gap_c": 17.26,
+            "gap_c": 18.16,
             "suspect": false
           },
           {
             "label": "3.9%",
-            "market_prob": 0.027,
+            "market_prob": 0.0105,
             "model_prob": 0.1529,
-            "gap_c": 12.59,
+            "gap_c": 14.24,
             "suspect": false
           },
           {
             "label": "4.0%",
-            "market_prob": 0.0185,
+            "market_prob": 0.012,
             "model_prob": 0.0696,
-            "gap_c": 5.11,
+            "gap_c": 5.76,
             "suspect": false
           },
           {
             "label": "4.1%",
-            "market_prob": 0.005,
+            "market_prob": 0.0025,
             "model_prob": 0.0217,
-            "gap_c": 1.67,
+            "gap_c": 1.92,
             "suspect": false
           },
           {
             "label": "4.2%",
-            "market_prob": 0.0035,
+            "market_prob": 0.0025,
             "model_prob": 0.0046,
-            "gap_c": 0.11,
+            "gap_c": 0.21,
             "suspect": false
           },
           {
             "label": "\u22654.3%",
-            "market_prob": 0.0035,
+            "market_prob": 0.002,
             "model_prob": 0.0007,
-            "gap_c": -0.28,
+            "gap_c": -0.13,
             "suspect": false
           }
         ]
@@ -285,43 +287,43 @@
         "ref_month": "2026-10",
         "url": "https://polymarket.com/event/october-inflation-us-monthly",
         "nowcast_pp": 0.242106165709167,
-        "nowcast_as_of": "2026-11-03 00:00",
+        "nowcast_as_of": "2026-11-04 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.101pp (x1.58). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.105pp (x1.53). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
         "rows": [
           {
             "label": "\u22640.1%",
-            "market_prob": 0.075,
+            "market_prob": 0.105,
             "model_prob": 0.2824,
-            "gap_c": 20.74,
+            "gap_c": 17.74,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.32,
+            "market_prob": 0.335,
             "model_prob": 0.2373,
-            "gap_c": -8.27,
+            "gap_c": -9.77,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.455,
+            "market_prob": 0.395,
             "model_prob": 0.2303,
-            "gap_c": -22.47,
+            "gap_c": -16.47,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.105,
+            "market_prob": 0.095,
             "model_prob": 0.1531,
-            "gap_c": 4.81,
+            "gap_c": 5.81,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.0805,
+            "market_prob": 0.081,
             "model_prob": 0.0698,
-            "gap_c": -1.07,
+            "gap_c": -1.12,
             "suspect": false
           },
           {
@@ -361,7 +363,30 @@
     "cal_vetoed": 0
   },
   "gas": [],
-  "spxindex": [],
+  "spxindex": [
+    {
+      "market_id": "KXINX-26NOV04H1600-B7687",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "Yes",
+      "title": "Will the S&P 500 be between 7675 and 7699.9999 on Nov 4, 2026 at 4pm EST?",
+      "url": "https://kalshi.com/markets/KXINX-26NOV04H1600",
+      "entry_price": 0.24,
+      "model_prob": 0.2837,
+      "edge": 0.0437,
+      "fair": 0.2837,
+      "market_prob": 0.215,
+      "implied_sigma": 0.186,
+      "spot_used": 7703.8,
+      "chain_ts": "2026-11-04 17:54:29",
+      "vrp_shrink": 0.92,
+      "series": "KXINX",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-11-04T21:00:00+00:00",
+      "event_iso": "2026-11-04T21:00:00+00:00"
+    }
+  ],
   "sizing": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
