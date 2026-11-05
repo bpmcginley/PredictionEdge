@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-05 12:08:03",
-  "generated_at": 1793880483.836303,
+  "generated": "2026-11-05 20:00:09",
+  "generated_at": 1793908809.9126809,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [],
@@ -12,22 +12,122 @@
   "consistency": {
     "ok": true,
     "enabled": true,
-    "events_scanned": 343,
+    "events_scanned": 344,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 93,
+      "bracket has legs we cannot price (fail closed)": 95,
       "not a ladder: duplicate deadlines left too few rungs": 10,
-      "not a ladder: fewer than two live, quoted legs": 99,
-      "not a ladder: group labels are not thresholds or deadlines": 52,
-      "ladder pair too illiquid to fill": 203,
+      "not a ladder: fewer than two live, quoted legs": 97,
+      "not a ladder: group labels are not thresholds or deadlines": 50,
+      "ladder pair too illiquid to fill": 170,
+      "bracket overround smaller than the spread": 1,
       "bracket has too many legs to place by hand": 1,
       "not a ladder: numeric group spans different end dates": 2,
+      "not a ladder: a live leg carries no group label": 4,
       "bracket leg too illiquid to fill": 4,
-      "not a ladder: a live leg carries no group label": 1,
-      "ladder inversion smaller than the spread": 6,
+      "ladder inversion smaller than the spread": 5,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
-    "violations": []
+    "violations": [
+      {
+        "family": "bracket",
+        "event_slug": "fed-decision-in-january-20260729233815502",
+        "constraint": "5 mutually exclusive outcomes offer at 0.9760 total, but exactly one of them pays 1.00",
+        "edge_c": 2.4,
+        "actions": [
+          "BUY YES  50+ bps decrease  @ 0.006",
+          "BUY YES  25 bps decrease  @ 0.034",
+          "BUY YES  No change  @ 0.750",
+          "BUY YES  25 bps increase  @ 0.180",
+          "BUY YES  50+ bps increase  @ 0.006"
+        ],
+        "warnings": [
+          "requires filling all 5 legs - confirm the event page lists exactly 5 outcomes before trusting the sum"
+        ],
+        "url": "https://polymarket.com/event/fed-decision-in-january-20260729233815502",
+        "legs": [
+          {
+            "question": "Will the Fed decrease interest rates by 50+ bps after the January 2027 meeting?",
+            "name": "50+ bps decrease",
+            "bid": 0.005,
+            "ask": 0.006,
+            "liquidity": 97487.62037,
+            "end_iso": "2027-01-28T04:59:00Z",
+            "url": "https://polymarket.com/event/fed-decision-in-january-20260729233815502"
+          },
+          {
+            "question": "Will the Fed decrease interest rates by 25 bps after the January 2027 meeting?",
+            "name": "25 bps decrease",
+            "bid": 0.022,
+            "ask": 0.034,
+            "liquidity": 86519.13018,
+            "end_iso": "2027-01-28T04:59:00Z",
+            "url": "https://polymarket.com/event/fed-decision-in-january-20260729233815502"
+          },
+          {
+            "question": "Will there be no change in Fed interest rates after the January 2027 meeting?",
+            "name": "No change",
+            "bid": 0.74,
+            "ask": 0.75,
+            "liquidity": 86839.4033,
+            "end_iso": "2027-01-28T04:59:00Z",
+            "url": "https://polymarket.com/event/fed-decision-in-january-20260729233815502"
+          },
+          {
+            "question": "Will the Fed increase interest rates by 25 bps after the January 2027 meeting?",
+            "name": "25 bps increase",
+            "bid": 0.17,
+            "ask": 0.18,
+            "liquidity": 75055.8984,
+            "end_iso": "2027-01-28T04:59:00Z",
+            "url": "https://polymarket.com/event/fed-decision-in-january-20260729233815502"
+          },
+          {
+            "question": "Will the Fed increase interest rates by 50+ bps after the January 2027 meeting?",
+            "name": "50+ bps increase",
+            "bid": 0.005,
+            "ask": 0.006,
+            "liquidity": 93628.86865,
+            "end_iso": "2027-01-28T04:59:00Z",
+            "url": "https://polymarket.com/event/fed-decision-in-january-20260729233815502"
+          }
+        ]
+      },
+      {
+        "family": "ladder",
+        "event_slug": "base-fdv-above-one-day-after-launch",
+        "constraint": "P($2B) must be <= P($500M), but $2B bids 0.410 while $500M offers 0.390",
+        "edge_c": 2.0,
+        "actions": [
+          "BUY YES  $500M  @ 0.390",
+          "BUY NO   $2B  @ 0.590"
+        ],
+        "warnings": [
+          "both legs settle on the same event page - confirm the two rule texts differ only in the threshold"
+        ],
+        "url": "https://polymarket.com/event/base-fdv-above-one-day-after-launch",
+        "legs": [
+          {
+            "question": "Base FDV above $500M one day after launch?",
+            "name": "$500M",
+            "bid": 0.37,
+            "ask": 0.39,
+            "liquidity": 20528.9951,
+            "end_iso": "2028-01-01T05:00:00Z",
+            "url": "https://polymarket.com/event/base-fdv-above-one-day-after-launch"
+          },
+          {
+            "question": "Base FDV above $2B one day after launch?",
+            "name": "$2B",
+            "bid": 0.41,
+            "ask": 0.42,
+            "liquidity": 15139.4491,
+            "end_iso": "2028-01-01T05:00:00Z",
+            "url": "https://polymarket.com/event/base-fdv-above-one-day-after-launch"
+          }
+        ]
+      }
+    ]
   },
   "macro": {
     "ok": true,
@@ -42,9 +142,9 @@
         "ref_month": "2026-10",
         "url": "https://polymarket.com/event/core-cpi-yoy-october-2026",
         "nowcast_pp": 2.48284216554884,
-        "nowcast_as_of": "2026-11-04 00:00",
+        "nowcast_as_of": "2026-11-05 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.058pp (x2.78). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.065pp (x2.48). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
         "rows": [
           {
             "label": "\u22642.2%",
@@ -69,30 +169,30 @@
           },
           {
             "label": "2.5%",
-            "market_prob": 0.0285,
+            "market_prob": 0.043,
             "model_prob": 0.244,
-            "gap_c": 21.55,
+            "gap_c": 20.1,
             "suspect": false
           },
           {
             "label": "2.6%",
-            "market_prob": 0.89,
+            "market_prob": 0.72,
             "model_prob": 0.1893,
-            "gap_c": -70.07,
+            "gap_c": -53.07,
             "suspect": true
           },
           {
             "label": "2.7%",
-            "market_prob": 0.071,
+            "market_prob": 0.081,
             "model_prob": 0.1006,
-            "gap_c": 2.96,
+            "gap_c": 1.96,
             "suspect": false
           },
           {
             "label": "2.8%",
-            "market_prob": 0.0035,
+            "market_prob": 0.004,
             "model_prob": 0.0366,
-            "gap_c": 3.31,
+            "gap_c": 3.26,
             "suspect": false
           },
           {
@@ -126,57 +226,57 @@
         "ref_month": "2026-10",
         "url": "https://polymarket.com/event/core-cpi-mom-october-2026",
         "nowcast_pp": 0.211437433436468,
-        "nowcast_as_of": "2026-11-04 00:00",
+        "nowcast_as_of": "2026-11-05 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.083pp (x1.93). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.092pp (x1.75). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
-            "market_prob": 0.0315,
+            "market_prob": 0.0325,
             "model_prob": 0.1565,
-            "gap_c": 12.5,
+            "gap_c": 12.4,
             "suspect": false
           },
           {
             "label": "0.1%",
-            "market_prob": 0.145,
+            "market_prob": 0.185,
             "model_prob": 0.194,
-            "gap_c": 4.9,
+            "gap_c": 0.9,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.43,
+            "market_prob": 0.35,
             "model_prob": 0.2447,
-            "gap_c": -18.53,
+            "gap_c": -10.53,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.365,
+            "market_prob": 0.36,
             "model_prob": 0.2115,
-            "gap_c": -15.35,
+            "gap_c": -14.85,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.045,
+            "market_prob": 0.075,
             "model_prob": 0.1253,
-            "gap_c": 8.03,
+            "gap_c": 5.03,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.0135,
+            "market_prob": 0.0125,
             "model_prob": 0.0508,
-            "gap_c": 3.73,
+            "gap_c": 3.83,
             "suspect": false
           },
           {
             "label": "0.6%+",
-            "market_prob": 0.006,
+            "market_prob": 0.0055,
             "model_prob": 0.0172,
-            "gap_c": 1.12,
+            "gap_c": 1.17,
             "suspect": false
           }
         ]
@@ -189,9 +289,9 @@
         "ref_month": "2026-10",
         "url": "https://polymarket.com/event/october-inflation-us-annual",
         "nowcast_pp": 3.74183045049836,
-        "nowcast_as_of": "2026-11-04 00:00",
+        "nowcast_as_of": "2026-11-05 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.063pp (x2.53). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.063pp (x2.55). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
         "rows": [
           {
             "label": "\u22643.2%",
@@ -223,23 +323,23 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.0135,
+            "market_prob": 0.013,
             "model_prob": 0.1677,
-            "gap_c": 15.42,
+            "gap_c": 15.47,
             "suspect": false
           },
           {
             "label": "3.7%",
-            "market_prob": 0.885,
+            "market_prob": 0.89,
             "model_prob": 0.2374,
-            "gap_c": -64.76,
+            "gap_c": -65.26,
             "suspect": true
           },
           {
             "label": "3.8%",
-            "market_prob": 0.086,
+            "market_prob": 0.079,
             "model_prob": 0.2301,
-            "gap_c": 14.41,
+            "gap_c": 15.11,
             "suspect": false
           },
           {
@@ -272,9 +372,9 @@
           },
           {
             "label": "\u22654.3%",
-            "market_prob": 0.0025,
+            "market_prob": 0.002,
             "model_prob": 0.0007,
-            "gap_c": -0.18,
+            "gap_c": -0.13,
             "suspect": false
           }
         ]
@@ -287,9 +387,9 @@
         "ref_month": "2026-10",
         "url": "https://polymarket.com/event/october-inflation-us-monthly",
         "nowcast_pp": 0.242106165709167,
-        "nowcast_as_of": "2026-11-04 00:00",
+        "nowcast_as_of": "2026-11-05 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.101pp (x1.59). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.100pp (x1.59). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
         "rows": [
           {
             "label": "\u22640.1%",
@@ -300,16 +400,16 @@
           },
           {
             "label": "0.2%",
-            "market_prob": 0.345,
+            "market_prob": 0.335,
             "model_prob": 0.2373,
-            "gap_c": -10.77,
+            "gap_c": -9.77,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.415,
+            "market_prob": 0.43,
             "model_prob": 0.2303,
-            "gap_c": -18.47,
+            "gap_c": -19.97,
             "suspect": false
           },
           {
@@ -321,9 +421,9 @@
           },
           {
             "label": "0.5%",
-            "market_prob": 0.063,
+            "market_prob": 0.066,
             "model_prob": 0.0698,
-            "gap_c": 0.68,
+            "gap_c": 0.38,
             "suspect": false
           },
           {
@@ -363,52 +463,7 @@
     "cal_vetoed": 0
   },
   "gas": [],
-  "spxindex": [
-    {
-      "market_id": "KXINX-26NOV05H1600-B7712",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "Yes",
-      "title": "Will the S&P 500 be between 7700 and 7724.9999 on Nov 5, 2026 at 4pm EST?",
-      "url": "https://kalshi.com/markets/KXINX-26NOV05H1600",
-      "entry_price": 0.2,
-      "model_prob": 0.25,
-      "edge": 0.05,
-      "fair": 0.25,
-      "market_prob": 0.155,
-      "implied_sigma": 0.238,
-      "spot_used": 7688.62,
-      "chain_ts": "2026-11-05 12:07:15",
-      "vrp_shrink": 0.92,
-      "series": "KXINX",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-11-05T21:00:00+00:00",
-      "event_iso": "2026-11-05T21:00:00+00:00"
-    },
-    {
-      "market_id": "KXINX-26NOV05H1600-B7662",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "No",
-      "title": "Will the S&P 500 be between 7650 and 7674.9999 on Nov 5, 2026 at 4pm EST?",
-      "url": "https://kalshi.com/markets/KXINX-26NOV05H1600",
-      "entry_price": 0.85,
-      "model_prob": 0.8904,
-      "edge": 0.0404,
-      "fair": 0.1096,
-      "market_prob": 0.175,
-      "implied_sigma": 0.238,
-      "spot_used": 7688.62,
-      "chain_ts": "2026-11-05 12:07:15",
-      "vrp_shrink": 0.92,
-      "series": "KXINX",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-11-05T21:00:00+00:00",
-      "event_iso": "2026-11-05T21:00:00+00:00"
-    }
-  ],
+  "spxindex": [],
   "sizing": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
