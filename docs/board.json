@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-06 00:56:40",
-  "generated_at": 1793926600.9802911,
+  "generated": "2026-11-06 07:51:42",
+  "generated_at": 1793951502.2669382,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [],
@@ -12,58 +12,22 @@
   "consistency": {
     "ok": true,
     "enabled": true,
-    "events_scanned": 343,
+    "events_scanned": 342,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 90,
+      "bracket has legs we cannot price (fail closed)": 91,
       "not a ladder: duplicate deadlines left too few rungs": 11,
-      "not a ladder: fewer than two live, quoted legs": 98,
-      "not a ladder: group labels are not thresholds or deadlines": 51,
-      "ladder pair too illiquid to fill": 192,
-      "not a ladder: a live leg carries no group label": 5,
+      "not a ladder: fewer than two live, quoted legs": 100,
+      "not a ladder: group labels are not thresholds or deadlines": 53,
+      "ladder pair too illiquid to fill": 175,
       "bracket has too many legs to place by hand": 1,
       "not a ladder: numeric group spans different end dates": 2,
-      "bracket underround smaller than the spread": 1,
+      "bracket underround smaller than the spread": 2,
       "bracket leg too illiquid to fill": 4,
-      "ladder inversion smaller than the spread": 6,
+      "ladder inversion smaller than the spread": 10,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
-    "violations": [
-      {
-        "family": "ladder",
-        "event_slug": "base-fdv-above-one-day-after-launch",
-        "constraint": "P($2B) must be <= P($500M), but $2B bids 0.410 while $500M offers 0.390",
-        "edge_c": 2.0,
-        "actions": [
-          "BUY YES  $500M  @ 0.390",
-          "BUY NO   $2B  @ 0.590"
-        ],
-        "warnings": [
-          "both legs settle on the same event page - confirm the two rule texts differ only in the threshold"
-        ],
-        "url": "https://polymarket.com/event/base-fdv-above-one-day-after-launch",
-        "legs": [
-          {
-            "question": "Base FDV above $500M one day after launch?",
-            "name": "$500M",
-            "bid": 0.37,
-            "ask": 0.39,
-            "liquidity": 20459.2321,
-            "end_iso": "2028-01-01T05:00:00Z",
-            "url": "https://polymarket.com/event/base-fdv-above-one-day-after-launch"
-          },
-          {
-            "question": "Base FDV above $2B one day after launch?",
-            "name": "$2B",
-            "bid": 0.41,
-            "ask": 0.42,
-            "liquidity": 20625.2212,
-            "end_iso": "2028-01-01T05:00:00Z",
-            "url": "https://polymarket.com/event/base-fdv-above-one-day-after-launch"
-          }
-        ]
-      }
-    ]
+    "violations": []
   },
   "macro": {
     "ok": true,
@@ -80,7 +44,7 @@
         "nowcast_pp": 2.48284216554884,
         "nowcast_as_of": "2026-11-05 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.057pp (x2.81). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.059pp (x2.73). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
         "rows": [
           {
             "label": "\u22642.2%",
@@ -105,23 +69,23 @@
           },
           {
             "label": "2.5%",
-            "market_prob": 0.024,
+            "market_prob": 0.039,
             "model_prob": 0.244,
-            "gap_c": 22.0,
+            "gap_c": 20.5,
             "suspect": false
           },
           {
             "label": "2.6%",
-            "market_prob": 0.9,
+            "market_prob": 0.88,
             "model_prob": 0.1893,
-            "gap_c": -71.07,
+            "gap_c": -69.07,
             "suspect": true
           },
           {
             "label": "2.7%",
-            "market_prob": 0.066,
+            "market_prob": 0.0695,
             "model_prob": 0.1006,
-            "gap_c": 3.46,
+            "gap_c": 3.11,
             "suspect": false
           },
           {
@@ -164,27 +128,27 @@
         "nowcast_pp": 0.211437433436468,
         "nowcast_as_of": "2026-11-05 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.090pp (x1.78). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.092pp (x1.74). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
-            "market_prob": 0.0335,
+            "market_prob": 0.023,
             "model_prob": 0.1565,
-            "gap_c": 12.3,
+            "gap_c": 13.35,
             "suspect": false
           },
           {
             "label": "0.1%",
-            "market_prob": 0.185,
+            "market_prob": 0.165,
             "model_prob": 0.194,
-            "gap_c": 0.9,
+            "gap_c": 2.9,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.34,
+            "market_prob": 0.335,
             "model_prob": 0.2447,
-            "gap_c": -9.53,
+            "gap_c": -9.03,
             "suspect": false
           },
           {
@@ -196,9 +160,9 @@
           },
           {
             "label": "0.4%",
-            "market_prob": 0.055,
+            "market_prob": 0.085,
             "model_prob": 0.1253,
-            "gap_c": 7.03,
+            "gap_c": 4.03,
             "suspect": false
           },
           {
@@ -227,7 +191,7 @@
         "nowcast_pp": 3.74183045049836,
         "nowcast_as_of": "2026-11-05 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.063pp (x2.54). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.062pp (x2.56). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
         "rows": [
           {
             "label": "\u22643.2%",
@@ -259,23 +223,23 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.0125,
+            "market_prob": 0.023,
             "model_prob": 0.1677,
-            "gap_c": 15.52,
+            "gap_c": 14.47,
             "suspect": false
           },
           {
             "label": "3.7%",
-            "market_prob": 0.86,
+            "market_prob": 0.855,
             "model_prob": 0.2374,
-            "gap_c": -62.26,
+            "gap_c": -61.76,
             "suspect": true
           },
           {
             "label": "3.8%",
-            "market_prob": 0.0935,
+            "market_prob": 0.097,
             "model_prob": 0.2301,
-            "gap_c": 13.66,
+            "gap_c": 13.31,
             "suspect": false
           },
           {
@@ -287,16 +251,16 @@
           },
           {
             "label": "4.0%",
-            "market_prob": 0.011,
+            "market_prob": 0.0095,
             "model_prob": 0.0696,
-            "gap_c": 5.86,
+            "gap_c": 6.01,
             "suspect": false
           },
           {
             "label": "4.1%",
-            "market_prob": 0.0025,
+            "market_prob": 0.002,
             "model_prob": 0.0217,
-            "gap_c": 1.92,
+            "gap_c": 1.97,
             "suspect": false
           },
           {
@@ -308,9 +272,9 @@
           },
           {
             "label": "\u22654.3%",
-            "market_prob": 0.002,
+            "market_prob": 0.0015,
             "model_prob": 0.0007,
-            "gap_c": -0.13,
+            "gap_c": -0.08,
             "suspect": false
           }
         ]
@@ -325,7 +289,7 @@
         "nowcast_pp": 0.242106165709167,
         "nowcast_as_of": "2026-11-05 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.095pp (x1.68). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.095pp (x1.69). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
         "rows": [
           {
             "label": "\u22640.1%",
@@ -336,16 +300,16 @@
           },
           {
             "label": "0.2%",
-            "market_prob": 0.31,
+            "market_prob": 0.32,
             "model_prob": 0.2373,
-            "gap_c": -7.27,
+            "gap_c": -8.27,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.43,
+            "market_prob": 0.415,
             "model_prob": 0.2303,
-            "gap_c": -19.97,
+            "gap_c": -18.47,
             "suspect": false
           },
           {
@@ -357,9 +321,9 @@
           },
           {
             "label": "0.5%",
-            "market_prob": 0.037,
+            "market_prob": 0.0325,
             "model_prob": 0.0698,
-            "gap_c": 3.28,
+            "gap_c": 3.73,
             "suspect": false
           },
           {
@@ -399,7 +363,30 @@
     "cal_vetoed": 0
   },
   "gas": [],
-  "spxindex": [],
+  "spxindex": [
+    {
+      "market_id": "KXINX-26NOV06H1600-T7350",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "Yes",
+      "title": "Will the S&P 500 be below 7350 on Nov 6, 2026 at 4pm EST?",
+      "url": "https://kalshi.com/markets/KXINX-26NOV06H1600",
+      "entry_price": 0.51,
+      "model_prob": 0.8069,
+      "edge": 0.2969,
+      "fair": 0.8069,
+      "market_prob": 0.335,
+      "implied_sigma": 0.3927,
+      "spot_used": 7353.73,
+      "chain_ts": "2026-11-06 06:57:51",
+      "vrp_shrink": 0.92,
+      "series": "KXINX",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-11-06T21:00:00+00:00",
+      "event_iso": "2026-11-06T21:00:00+00:00"
+    }
+  ],
   "sizing": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
