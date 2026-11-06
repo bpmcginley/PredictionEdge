@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-06 15:51:15",
-  "generated_at": 1793980275.8918202,
+  "generated": "2026-11-06 21:25:52",
+  "generated_at": 1794000352.6283848,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [],
@@ -12,19 +12,19 @@
   "consistency": {
     "ok": true,
     "enabled": true,
-    "events_scanned": 341,
+    "events_scanned": 340,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 91,
+      "bracket has legs we cannot price (fail closed)": 89,
       "not a ladder: duplicate deadlines left too few rungs": 11,
       "not a ladder: fewer than two live, quoted legs": 99,
-      "not a ladder: group labels are not thresholds or deadlines": 52,
-      "ladder pair too illiquid to fill": 172,
-      "bracket has too many legs to place by hand": 1,
-      "not a ladder: numeric group spans different end dates": 2,
+      "not a ladder: group labels are not thresholds or deadlines": 53,
       "bracket underround smaller than the spread": 1,
+      "ladder pair too illiquid to fill": 193,
+      "bracket has too many legs to place by hand": 1,
+      "not a ladder: a live leg carries no group label": 1,
+      "not a ladder: numeric group spans different end dates": 2,
       "bracket leg too illiquid to fill": 4,
       "ladder inversion smaller than the spread": 9,
-      "not a ladder: a live leg carries no group label": 1,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
@@ -36,6 +36,69 @@
     "notes": [],
     "cpi": [
       {
+        "slug": "core-cpi-mom-october-2026",
+        "title": "Core CPI MoM - October 2026",
+        "series": "core_cpi",
+        "basis": "mom",
+        "ref_month": "2026-10",
+        "url": "https://polymarket.com/event/core-cpi-mom-october-2026",
+        "nowcast_pp": 0.211437433436468,
+        "nowcast_as_of": "2026-11-06 00:00",
+        "sigma": 0.16,
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.085pp (x1.88). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "rows": [
+          {
+            "label": "\u22640.0%",
+            "market_prob": 0.023,
+            "model_prob": 0.1565,
+            "gap_c": 13.35,
+            "suspect": false
+          },
+          {
+            "label": "0.1%",
+            "market_prob": 0.135,
+            "model_prob": 0.194,
+            "gap_c": 5.9,
+            "suspect": false
+          },
+          {
+            "label": "0.2%",
+            "market_prob": 0.425,
+            "model_prob": 0.2447,
+            "gap_c": -18.03,
+            "suspect": false
+          },
+          {
+            "label": "0.3%",
+            "market_prob": 0.37,
+            "model_prob": 0.2115,
+            "gap_c": -15.85,
+            "suspect": false
+          },
+          {
+            "label": "0.4%",
+            "market_prob": 0.085,
+            "model_prob": 0.1253,
+            "gap_c": 4.03,
+            "suspect": false
+          },
+          {
+            "label": "0.5%",
+            "market_prob": 0.008,
+            "model_prob": 0.0508,
+            "gap_c": 4.28,
+            "suspect": false
+          },
+          {
+            "label": "0.6%+",
+            "market_prob": 0.0055,
+            "model_prob": 0.0172,
+            "gap_c": 1.17,
+            "suspect": false
+          }
+        ]
+      },
+      {
         "slug": "core-cpi-yoy-october-2026",
         "title": "Core CPI YoY - October 2026",
         "series": "core_cpi",
@@ -45,20 +108,20 @@
         "nowcast_pp": 2.48284216554884,
         "nowcast_as_of": "2026-11-06 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.058pp (x2.74). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.053pp (x3.00). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
         "rows": [
           {
             "label": "\u22642.2%",
-            "market_prob": 0.006,
+            "market_prob": 0.004,
             "model_prob": 0.0728,
-            "gap_c": 6.68,
+            "gap_c": 6.88,
             "suspect": false
           },
           {
             "label": "2.3%",
-            "market_prob": 0.003,
+            "market_prob": 0.0025,
             "model_prob": 0.1304,
-            "gap_c": 12.74,
+            "gap_c": 12.79,
             "suspect": false
           },
           {
@@ -84,100 +147,37 @@
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0675,
+            "market_prob": 0.07,
             "model_prob": 0.1006,
-            "gap_c": 3.31,
+            "gap_c": 3.06,
             "suspect": false
           },
           {
             "label": "2.8%",
-            "market_prob": 0.0035,
+            "market_prob": 0.0015,
             "model_prob": 0.0366,
-            "gap_c": 3.31,
+            "gap_c": 3.51,
             "suspect": false
           },
           {
             "label": "2.9%",
-            "market_prob": 0.005,
+            "market_prob": 0.003,
             "model_prob": 0.0091,
-            "gap_c": 0.41,
+            "gap_c": 0.61,
             "suspect": false
           },
           {
             "label": "3.0%",
-            "market_prob": 0.005,
+            "market_prob": 0.003,
             "model_prob": 0.0016,
-            "gap_c": -0.34,
+            "gap_c": -0.14,
             "suspect": false
           },
           {
             "label": "\u22653.1%",
-            "market_prob": 0.004,
+            "market_prob": 0.0025,
             "model_prob": 0.0002,
-            "gap_c": -0.38,
-            "suspect": false
-          }
-        ]
-      },
-      {
-        "slug": "core-cpi-mom-october-2026",
-        "title": "Core CPI MoM - October 2026",
-        "series": "core_cpi",
-        "basis": "mom",
-        "ref_month": "2026-10",
-        "url": "https://polymarket.com/event/core-cpi-mom-october-2026",
-        "nowcast_pp": 0.211437433436468,
-        "nowcast_as_of": "2026-11-06 00:00",
-        "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.088pp (x1.82). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
-        "rows": [
-          {
-            "label": "\u22640.0%",
-            "market_prob": 0.023,
-            "model_prob": 0.1565,
-            "gap_c": 13.35,
-            "suspect": false
-          },
-          {
-            "label": "0.1%",
-            "market_prob": 0.15,
-            "model_prob": 0.194,
-            "gap_c": 4.4,
-            "suspect": false
-          },
-          {
-            "label": "0.2%",
-            "market_prob": 0.355,
-            "model_prob": 0.2447,
-            "gap_c": -11.03,
-            "suspect": false
-          },
-          {
-            "label": "0.3%",
-            "market_prob": 0.38,
-            "model_prob": 0.2115,
-            "gap_c": -16.85,
-            "suspect": false
-          },
-          {
-            "label": "0.4%",
-            "market_prob": 0.07,
-            "model_prob": 0.1253,
-            "gap_c": 5.53,
-            "suspect": false
-          },
-          {
-            "label": "0.5%",
-            "market_prob": 0.0125,
-            "model_prob": 0.0508,
-            "gap_c": 3.83,
-            "suspect": false
-          },
-          {
-            "label": "0.6%+",
-            "market_prob": 0.005,
-            "model_prob": 0.0172,
-            "gap_c": 1.22,
+            "gap_c": -0.23,
             "suspect": false
           }
         ]
@@ -192,7 +192,7 @@
         "nowcast_pp": 3.74183045049836,
         "nowcast_as_of": "2026-11-06 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.061pp (x2.63). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.056pp (x2.86). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
         "rows": [
           {
             "label": "\u22643.2%",
@@ -217,9 +217,9 @@
           },
           {
             "label": "3.5%",
-            "market_prob": 0.007,
+            "market_prob": 0.005,
             "model_prob": 0.0812,
-            "gap_c": 7.42,
+            "gap_c": 7.62,
             "suspect": false
           },
           {
@@ -238,37 +238,37 @@
           },
           {
             "label": "3.8%",
-            "market_prob": 0.0795,
+            "market_prob": 0.08,
             "model_prob": 0.2301,
-            "gap_c": 15.06,
+            "gap_c": 15.01,
             "suspect": false
           },
           {
             "label": "3.9%",
-            "market_prob": 0.009,
+            "market_prob": 0.0085,
             "model_prob": 0.1529,
-            "gap_c": 14.39,
+            "gap_c": 14.44,
             "suspect": false
           },
           {
             "label": "4.0%",
-            "market_prob": 0.0095,
+            "market_prob": 0.0075,
             "model_prob": 0.0696,
-            "gap_c": 6.01,
+            "gap_c": 6.21,
             "suspect": false
           },
           {
             "label": "4.1%",
-            "market_prob": 0.002,
+            "market_prob": 0.0015,
             "model_prob": 0.0217,
-            "gap_c": 1.97,
+            "gap_c": 2.02,
             "suspect": false
           },
           {
             "label": "4.2%",
-            "market_prob": 0.0025,
+            "market_prob": 0.0015,
             "model_prob": 0.0046,
-            "gap_c": 0.21,
+            "gap_c": 0.31,
             "suspect": false
           },
           {
@@ -290,7 +290,7 @@
         "nowcast_pp": 0.242106165709167,
         "nowcast_as_of": "2026-11-06 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.095pp (x1.68). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.086pp (x1.86). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
         "rows": [
           {
             "label": "\u22640.1%",
@@ -301,9 +301,9 @@
           },
           {
             "label": "0.2%",
-            "market_prob": 0.315,
+            "market_prob": 0.34,
             "model_prob": 0.2373,
-            "gap_c": -7.77,
+            "gap_c": -10.27,
             "suspect": false
           },
           {
@@ -329,30 +329,30 @@
           },
           {
             "label": "0.6%",
-            "market_prob": 0.006,
+            "market_prob": 0.0045,
             "model_prob": 0.0218,
-            "gap_c": 1.58,
+            "gap_c": 1.73,
             "suspect": false
           },
           {
             "label": "0.7%",
-            "market_prob": 0.005,
+            "market_prob": 0.002,
             "model_prob": 0.0046,
-            "gap_c": -0.04,
+            "gap_c": 0.26,
             "suspect": false
           },
           {
             "label": "0.8%",
-            "market_prob": 0.005,
+            "market_prob": 0.002,
             "model_prob": 0.0007,
-            "gap_c": -0.43,
+            "gap_c": -0.13,
             "suspect": false
           },
           {
             "label": "\u22650.9%",
-            "market_prob": 0.0025,
+            "market_prob": 0.0015,
             "model_prob": 0.0001,
-            "gap_c": -0.24,
+            "gap_c": -0.14,
             "suspect": false
           }
         ]
@@ -364,96 +364,7 @@
     "cal_vetoed": 0
   },
   "gas": [],
-  "spxindex": [
-    {
-      "market_id": "KXINX-26NOV06H1600-T7350",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "Yes",
-      "title": "Will the S&P 500 be below 7350 on Nov 6, 2026 at 4pm EST?",
-      "url": "https://kalshi.com/markets/KXINX-26NOV06H1600",
-      "entry_price": 0.14,
-      "model_prob": 0.2235,
-      "edge": 0.0835,
-      "fair": 0.2235,
-      "market_prob": 0.115,
-      "implied_sigma": 0.3929,
-      "spot_used": 7395.64,
-      "chain_ts": "2026-11-06 15:50:23",
-      "vrp_shrink": 0.92,
-      "series": "KXINX",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-11-06T21:00:00+00:00",
-      "event_iso": "2026-11-06T21:00:00+00:00"
-    },
-    {
-      "market_id": "KXINX-26NOV06H1600-B7387",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "Yes",
-      "title": "Will the S&P 500 be between 7375 and 7399.9999 on Nov 6, 2026 at 4pm EST?",
-      "url": "https://kalshi.com/markets/KXINX-26NOV06H1600",
-      "entry_price": 0.14,
-      "model_prob": 0.2051,
-      "edge": 0.0651,
-      "fair": 0.2051,
-      "market_prob": 0.12,
-      "implied_sigma": 0.3929,
-      "spot_used": 7395.64,
-      "chain_ts": "2026-11-06 15:50:23",
-      "vrp_shrink": 0.92,
-      "series": "KXINX",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-11-06T21:00:00+00:00",
-      "event_iso": "2026-11-06T21:00:00+00:00"
-    },
-    {
-      "market_id": "KXINX-26NOV06H1600-B7412",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "No",
-      "title": "Will the S&P 500 be between 7400 and 7424.9999 on Nov 6, 2026 at 4pm EST?",
-      "url": "https://kalshi.com/markets/KXINX-26NOV06H1600",
-      "entry_price": 0.87,
-      "model_prob": 0.9151,
-      "edge": 0.0451,
-      "fair": 0.0849,
-      "market_prob": 0.155,
-      "implied_sigma": 0.3929,
-      "spot_used": 7395.64,
-      "chain_ts": "2026-11-06 15:50:23",
-      "vrp_shrink": 0.92,
-      "series": "KXINX",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-11-06T21:00:00+00:00",
-      "event_iso": "2026-11-06T21:00:00+00:00"
-    },
-    {
-      "market_id": "KXINX-26NOV06H1600-B7487",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "No",
-      "title": "Will the S&P 500 be between 7475 and 7499.9999 on Nov 6, 2026 at 4pm EST?",
-      "url": "https://kalshi.com/markets/KXINX-26NOV06H1600",
-      "entry_price": 0.9,
-      "model_prob": 0.9367,
-      "edge": 0.0367,
-      "fair": 0.0633,
-      "market_prob": 0.125,
-      "implied_sigma": 0.3929,
-      "spot_used": 7395.64,
-      "chain_ts": "2026-11-06 15:50:23",
-      "vrp_shrink": 0.92,
-      "series": "KXINX",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-11-06T21:00:00+00:00",
-      "event_iso": "2026-11-06T21:00:00+00:00"
-    }
-  ],
+  "spxindex": [],
   "sizing": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
