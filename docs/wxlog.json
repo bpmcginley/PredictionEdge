@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-07 07:15:19",
+  "generated": "2026-11-07 14:10:30",
   "rows": {
     "KXHIGHCHI:2026-08-11": {
       "city": "Chicago Midway, IL",
@@ -1826,6 +1826,8 @@
       "settles_by": "https://forecast.weather.gov/product.php?site=LOT&product=CLI&issuedby=MDW"
     },
     "KXHIGHCHI:2026-11-06": {
+      "bracket_cap": 49,
+      "bracket_floor": 48,
       "city": "Chicago Midway, IL",
       "day": "2026-11-06",
       "event_ticker": "KXHIGHCHI-26NOV06",
@@ -1837,9 +1839,10 @@
       "last_market_mu_f": 48.59,
       "last_market_sigma_f": 0.81,
       "last_seen_at": 1794013602.8675203,
-      "observed_bracket": null,
-      "observed_f": null,
-      "resolved_at": null,
+      "observed_bracket": "48\u00b0 to 49\u00b0",
+      "observed_f": 48.0,
+      "observed_src": "cli",
+      "resolved_at": 1794060629.3218749,
       "series": "KXHIGHCHI",
       "settles_by": "https://forecast.weather.gov/product.php?site=LOT&product=CLI&issuedby=MDW"
     },
@@ -1851,10 +1854,10 @@
       "first_market_mu_f": 51.07,
       "first_market_sigma_f": 1.78,
       "first_seen_at": 1793980286.918947,
-      "last_forecast_f": 48.0,
-      "last_market_mu_f": 51.22,
-      "last_market_sigma_f": 1.31,
-      "last_seen_at": 1794035718.08795,
+      "last_forecast_f": 51.0,
+      "last_market_mu_f": 51.04,
+      "last_market_sigma_f": 1.32,
+      "last_seen_at": 1794060628.5082455,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -3686,6 +3689,8 @@
       "settles_by": "https://forecast.weather.gov/product.php?site=BOU&product=CLI&issuedby=DEN"
     },
     "KXHIGHDEN:2026-11-06": {
+      "bracket_cap": 61,
+      "bracket_floor": 60,
       "city": "Denver, CO",
       "day": "2026-11-06",
       "event_ticker": "KXHIGHDEN-26NOV06",
@@ -3697,9 +3702,10 @@
       "last_market_mu_f": 60.41,
       "last_market_sigma_f": 0.81,
       "last_seen_at": 1794035718.08795,
-      "observed_bracket": null,
-      "observed_f": null,
-      "resolved_at": null,
+      "observed_bracket": "60\u00b0 to 61\u00b0",
+      "observed_f": 60.0,
+      "observed_src": "cli",
+      "resolved_at": 1794060629.3218749,
       "series": "KXHIGHDEN",
       "settles_by": "https://forecast.weather.gov/product.php?site=BOU&product=CLI&issuedby=DEN"
     },
@@ -3711,10 +3717,10 @@
       "first_market_mu_f": 63.53,
       "first_market_sigma_f": 1.82,
       "first_seen_at": 1793980286.918947,
-      "last_forecast_f": 63.0,
-      "last_market_mu_f": 63.78,
-      "last_market_sigma_f": 1.55,
-      "last_seen_at": 1794035718.08795,
+      "last_forecast_f": 59.0,
+      "last_market_mu_f": 63.94,
+      "last_market_sigma_f": 1.46,
+      "last_seen_at": 1794060628.5082455,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -5546,6 +5552,8 @@
       "settles_by": "https://forecast.weather.gov/product.php?site=MFL&product=CLI&issuedby=MIA"
     },
     "KXHIGHMIA:2026-11-06": {
+      "bracket_cap": 87,
+      "bracket_floor": 86,
       "city": "Miami International Airport",
       "day": "2026-11-06",
       "event_ticker": "KXHIGHMIA-26NOV06",
@@ -5557,9 +5565,10 @@
       "last_market_mu_f": 86.47,
       "last_market_sigma_f": 0.65,
       "last_seen_at": 1794013602.8675203,
-      "observed_bracket": null,
-      "observed_f": null,
-      "resolved_at": null,
+      "observed_bracket": "86\u00b0 to 87\u00b0",
+      "observed_f": 86.0,
+      "observed_src": "cli",
+      "resolved_at": 1794060629.3218749,
       "series": "KXHIGHMIA",
       "settles_by": "https://forecast.weather.gov/product.php?site=MFL&product=CLI&issuedby=MIA"
     },
@@ -5571,10 +5580,10 @@
       "first_market_mu_f": 87.36,
       "first_market_sigma_f": 1.55,
       "first_seen_at": 1793980286.918947,
-      "last_forecast_f": 85.0,
-      "last_market_mu_f": 87.24,
-      "last_market_sigma_f": 1.36,
-      "last_seen_at": 1794035718.08795,
+      "last_forecast_f": 86.0,
+      "last_market_mu_f": 87.32,
+      "last_market_sigma_f": 1.11,
+      "last_seen_at": 1794060628.5082455,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -7407,6 +7416,8 @@
       "settles_by": "https://forecast.weather.gov/product.php?site=OKX&product=CLI&issuedby=NYC"
     },
     "KXHIGHNY:2026-11-06": {
+      "bracket_cap": 70,
+      "bracket_floor": 69,
       "city": "Central Park, New York",
       "day": "2026-11-06",
       "event_ticker": "KXHIGHNY-26NOV06",
@@ -7418,9 +7429,10 @@
       "last_market_mu_f": 69.53,
       "last_market_sigma_f": 0.65,
       "last_seen_at": 1794013602.8675203,
-      "observed_bracket": null,
-      "observed_f": null,
-      "resolved_at": null,
+      "observed_bracket": "69\u00b0 to 70\u00b0",
+      "observed_f": 70.0,
+      "observed_src": "cli",
+      "resolved_at": 1794060629.3218749,
       "series": "KXHIGHNY",
       "settles_by": "https://forecast.weather.gov/product.php?site=OKX&product=CLI&issuedby=NYC"
     },
@@ -7433,9 +7445,9 @@
       "first_market_sigma_f": 2.16,
       "first_seen_at": 1793980286.918947,
       "last_forecast_f": 63.0,
-      "last_market_mu_f": 60.69,
-      "last_market_sigma_f": 2.0,
-      "last_seen_at": 1794035718.08795,
+      "last_market_mu_f": 60.89,
+      "last_market_sigma_f": 1.6,
+      "last_seen_at": 1794060628.5082455,
       "observed_bracket": null,
       "observed_f": null,
       "resolved_at": null,
@@ -7447,30 +7459,30 @@
     "KXHIGHCHI": {
       "bias_f": -0.8,
       "city": "Chicago Midway, IL",
-      "mae_f": 2.02,
-      "n": 87,
-      "sigma_f": 2.39
+      "mae_f": 2.0,
+      "n": 88,
+      "sigma_f": 2.38
     },
     "KXHIGHDEN": {
-      "bias_f": 0.07,
+      "bias_f": 0.03,
       "city": "Denver, CO",
-      "mae_f": 1.89,
-      "n": 87,
+      "mae_f": 1.9,
+      "n": 88,
       "sigma_f": 2.48
     },
     "KXHIGHMIA": {
-      "bias_f": -0.71,
+      "bias_f": -0.72,
       "city": "Miami International Airport",
       "mae_f": 1.49,
-      "n": 87,
-      "sigma_f": 1.71
+      "n": 88,
+      "sigma_f": 1.7
     },
     "KXHIGHNY": {
-      "bias_f": 0.86,
+      "bias_f": 0.82,
       "city": "Central Park, New York",
-      "mae_f": 1.74,
-      "n": 87,
-      "sigma_f": 2.23
+      "mae_f": 1.75,
+      "n": 88,
+      "sigma_f": 2.26
     }
   }
 }
