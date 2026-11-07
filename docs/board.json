@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-07 14:10:18",
-  "generated_at": 1794060618.625363,
+  "generated": "2026-11-07 18:49:33",
+  "generated_at": 1794077373.8515449,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [],
@@ -14,16 +14,17 @@
     "enabled": true,
     "events_scanned": 342,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 88,
+      "bracket has legs we cannot price (fail closed)": 90,
       "not a ladder: duplicate deadlines left too few rungs": 11,
-      "not a ladder: fewer than two live, quoted legs": 100,
+      "not a ladder: fewer than two live, quoted legs": 98,
       "not a ladder: group labels are not thresholds or deadlines": 53,
-      "ladder pair too illiquid to fill": 175,
+      "ladder pair too illiquid to fill": 147,
       "bracket has too many legs to place by hand": 1,
       "not a ladder: numeric group spans different end dates": 2,
       "bracket underround smaller than the spread": 1,
       "bracket leg too illiquid to fill": 4,
       "ladder inversion smaller than the spread": 9,
+      "not a ladder: a live leg carries no group label": 2,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
@@ -35,69 +36,6 @@
     "notes": [],
     "cpi": [
       {
-        "slug": "core-cpi-mom-october-2026",
-        "title": "Core CPI MoM - October 2026",
-        "series": "core_cpi",
-        "basis": "mom",
-        "ref_month": "2026-10",
-        "url": "https://polymarket.com/event/core-cpi-mom-october-2026",
-        "nowcast_pp": 0.211437433436468,
-        "nowcast_as_of": "2026-11-06 00:00",
-        "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.082pp (x1.96). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
-        "rows": [
-          {
-            "label": "\u22640.0%",
-            "market_prob": 0.011,
-            "model_prob": 0.1565,
-            "gap_c": 14.55,
-            "suspect": false
-          },
-          {
-            "label": "0.1%",
-            "market_prob": 0.135,
-            "model_prob": 0.194,
-            "gap_c": 5.9,
-            "suspect": false
-          },
-          {
-            "label": "0.2%",
-            "market_prob": 0.505,
-            "model_prob": 0.2447,
-            "gap_c": -26.03,
-            "suspect": true
-          },
-          {
-            "label": "0.3%",
-            "market_prob": 0.26,
-            "model_prob": 0.2115,
-            "gap_c": -4.85,
-            "suspect": false
-          },
-          {
-            "label": "0.4%",
-            "market_prob": 0.08,
-            "model_prob": 0.1253,
-            "gap_c": 4.53,
-            "suspect": false
-          },
-          {
-            "label": "0.5%",
-            "market_prob": 0.0035,
-            "model_prob": 0.0508,
-            "gap_c": 4.73,
-            "suspect": false
-          },
-          {
-            "label": "0.6%+",
-            "market_prob": 0.0025,
-            "model_prob": 0.0172,
-            "gap_c": 1.47,
-            "suspect": false
-          }
-        ]
-      },
-      {
         "slug": "core-cpi-yoy-october-2026",
         "title": "Core CPI YoY - October 2026",
         "series": "core_cpi",
@@ -107,7 +45,7 @@
         "nowcast_pp": 2.48284216554884,
         "nowcast_as_of": "2026-11-06 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.049pp (x3.26). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.049pp (x3.28). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
         "rows": [
           {
             "label": "\u22642.2%",
@@ -125,30 +63,30 @@
           },
           {
             "label": "2.4%",
-            "market_prob": 0.0105,
+            "market_prob": 0.008,
             "model_prob": 0.2155,
-            "gap_c": 20.5,
+            "gap_c": 20.75,
             "suspect": false
           },
           {
             "label": "2.5%",
-            "market_prob": 0.043,
+            "market_prob": 0.0445,
             "model_prob": 0.244,
-            "gap_c": 20.1,
+            "gap_c": 19.95,
             "suspect": false
           },
           {
             "label": "2.6%",
-            "market_prob": 0.88,
+            "market_prob": 0.865,
             "model_prob": 0.1893,
-            "gap_c": -69.07,
+            "gap_c": -67.57,
             "suspect": true
           },
           {
             "label": "2.7%",
-            "market_prob": 0.0695,
+            "market_prob": 0.073,
             "model_prob": 0.1006,
-            "gap_c": 3.11,
+            "gap_c": 2.76,
             "suspect": false
           },
           {
@@ -182,6 +120,69 @@
         ]
       },
       {
+        "slug": "core-cpi-mom-october-2026",
+        "title": "Core CPI MoM - October 2026",
+        "series": "core_cpi",
+        "basis": "mom",
+        "ref_month": "2026-10",
+        "url": "https://polymarket.com/event/core-cpi-mom-october-2026",
+        "nowcast_pp": 0.211437433436468,
+        "nowcast_as_of": "2026-11-06 00:00",
+        "sigma": 0.16,
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.075pp (x2.13). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "rows": [
+          {
+            "label": "\u22640.0%",
+            "market_prob": 0.01,
+            "model_prob": 0.1565,
+            "gap_c": 14.65,
+            "suspect": false
+          },
+          {
+            "label": "0.1%",
+            "market_prob": 0.09,
+            "model_prob": 0.194,
+            "gap_c": 10.4,
+            "suspect": false
+          },
+          {
+            "label": "0.2%",
+            "market_prob": 0.5,
+            "model_prob": 0.2447,
+            "gap_c": -25.53,
+            "suspect": true
+          },
+          {
+            "label": "0.3%",
+            "market_prob": 0.305,
+            "model_prob": 0.2115,
+            "gap_c": -9.35,
+            "suspect": false
+          },
+          {
+            "label": "0.4%",
+            "market_prob": 0.05,
+            "model_prob": 0.1253,
+            "gap_c": 7.53,
+            "suspect": false
+          },
+          {
+            "label": "0.5%",
+            "market_prob": 0.007,
+            "model_prob": 0.0508,
+            "gap_c": 4.38,
+            "suspect": false
+          },
+          {
+            "label": "0.6%+",
+            "market_prob": 0.002,
+            "model_prob": 0.0172,
+            "gap_c": 1.52,
+            "suspect": false
+          }
+        ]
+      },
+      {
         "slug": "october-inflation-us-annual",
         "title": "October Inflation US - Annual",
         "series": "cpi",
@@ -191,7 +192,7 @@
         "nowcast_pp": 3.74183045049836,
         "nowcast_as_of": "2026-11-06 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.056pp (x2.85). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.056pp (x2.84). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
         "rows": [
           {
             "label": "\u22643.2%",
@@ -223,23 +224,23 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.0325,
+            "market_prob": 0.04,
             "model_prob": 0.1677,
-            "gap_c": 13.52,
+            "gap_c": 12.77,
             "suspect": false
           },
           {
             "label": "3.7%",
-            "market_prob": 0.885,
+            "market_prob": 0.88,
             "model_prob": 0.2374,
-            "gap_c": -64.76,
+            "gap_c": -64.26,
             "suspect": true
           },
           {
             "label": "3.8%",
-            "market_prob": 0.0635,
+            "market_prob": 0.0465,
             "model_prob": 0.2301,
-            "gap_c": 16.66,
+            "gap_c": 18.36,
             "suspect": false
           },
           {
@@ -251,9 +252,9 @@
           },
           {
             "label": "4.0%",
-            "market_prob": 0.007,
+            "market_prob": 0.0075,
             "model_prob": 0.0696,
-            "gap_c": 6.26,
+            "gap_c": 6.21,
             "suspect": false
           },
           {
@@ -289,13 +290,13 @@
         "nowcast_pp": 0.242106165709167,
         "nowcast_as_of": "2026-11-06 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.087pp (x1.84). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.088pp (x1.82). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
         "rows": [
           {
             "label": "\u22640.1%",
-            "market_prob": 0.075,
+            "market_prob": 0.07,
             "model_prob": 0.2824,
-            "gap_c": 20.74,
+            "gap_c": 21.24,
             "suspect": false
           },
           {
@@ -307,23 +308,23 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.425,
+            "market_prob": 0.42,
             "model_prob": 0.2303,
-            "gap_c": -19.47,
+            "gap_c": -18.97,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.09,
+            "market_prob": 0.085,
             "model_prob": 0.1531,
-            "gap_c": 6.31,
+            "gap_c": 6.81,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.0395,
+            "market_prob": 0.043,
             "model_prob": 0.0698,
-            "gap_c": 3.03,
+            "gap_c": 2.68,
             "suspect": false
           },
           {
