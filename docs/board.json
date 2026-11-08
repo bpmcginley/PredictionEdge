@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-08 01:52:30",
-  "generated_at": 1794102750.554504,
+  "generated": "2026-11-08 08:51:56",
+  "generated_at": 1794127916.1187034,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [],
@@ -12,19 +12,18 @@
   "consistency": {
     "ok": true,
     "enabled": true,
-    "events_scanned": 344,
+    "events_scanned": 343,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 89,
+      "bracket has legs we cannot price (fail closed)": 90,
       "not a ladder: duplicate deadlines left too few rungs": 11,
-      "not a ladder: fewer than two live, quoted legs": 97,
-      "not a ladder: group labels are not thresholds or deadlines": 51,
-      "ladder pair too illiquid to fill": 154,
-      "bracket has too many legs to place by hand": 1,
+      "not a ladder: fewer than two live, quoted legs": 104,
+      "not a ladder: group labels are not thresholds or deadlines": 52,
+      "ladder pair too illiquid to fill": 167,
+      "bracket overround smaller than the spread": 2,
+      "ladder inversion smaller than the spread": 6,
       "not a ladder: numeric group spans different end dates": 2,
-      "not a ladder: a live leg carries no group label": 9,
       "bracket underround smaller than the spread": 2,
       "bracket leg too illiquid to fill": 4,
-      "ladder inversion smaller than the spread": 9,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
@@ -45,7 +44,7 @@
         "nowcast_pp": 2.48284216554884,
         "nowcast_as_of": "2026-11-06 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.048pp (x3.35). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.045pp (x3.53). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
         "rows": [
           {
             "label": "\u22642.2%",
@@ -56,44 +55,44 @@
           },
           {
             "label": "2.3%",
-            "market_prob": 0.0025,
+            "market_prob": 0.002,
             "model_prob": 0.1304,
-            "gap_c": 12.79,
+            "gap_c": 12.84,
             "suspect": false
           },
           {
             "label": "2.4%",
-            "market_prob": 0.005,
+            "market_prob": 0.0035,
             "model_prob": 0.2155,
-            "gap_c": 21.05,
+            "gap_c": 21.2,
             "suspect": false
           },
           {
             "label": "2.5%",
-            "market_prob": 0.039,
+            "market_prob": 0.025,
             "model_prob": 0.244,
-            "gap_c": 20.5,
+            "gap_c": 21.9,
             "suspect": false
           },
           {
             "label": "2.6%",
-            "market_prob": 0.85,
+            "market_prob": 0.88,
             "model_prob": 0.1893,
-            "gap_c": -66.07,
+            "gap_c": -69.07,
             "suspect": true
           },
           {
             "label": "2.7%",
-            "market_prob": 0.076,
+            "market_prob": 0.09,
             "model_prob": 0.1006,
-            "gap_c": 2.46,
+            "gap_c": 1.06,
             "suspect": false
           },
           {
             "label": "2.8%",
-            "market_prob": 0.003,
+            "market_prob": 0.0025,
             "model_prob": 0.0366,
-            "gap_c": 3.36,
+            "gap_c": 3.41,
             "suspect": false
           },
           {
@@ -129,48 +128,48 @@
         "nowcast_pp": 0.211437433436468,
         "nowcast_as_of": "2026-11-06 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.079pp (x2.01). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.081pp (x1.97). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
-            "market_prob": 0.0075,
+            "market_prob": 0.0045,
             "model_prob": 0.1565,
-            "gap_c": 14.9,
+            "gap_c": 15.2,
             "suspect": false
           },
           {
             "label": "0.1%",
-            "market_prob": 0.06,
+            "market_prob": 0.09,
             "model_prob": 0.194,
-            "gap_c": 13.4,
+            "gap_c": 10.4,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.48,
+            "market_prob": 0.47,
             "model_prob": 0.2447,
-            "gap_c": -23.53,
+            "gap_c": -22.53,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.325,
+            "market_prob": 0.335,
             "model_prob": 0.2115,
-            "gap_c": -11.35,
+            "gap_c": -12.35,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.105,
+            "market_prob": 0.095,
             "model_prob": 0.1253,
-            "gap_c": 2.03,
+            "gap_c": 3.03,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.007,
+            "market_prob": 0.0065,
             "model_prob": 0.0508,
-            "gap_c": 4.38,
+            "gap_c": 4.43,
             "suspect": false
           },
           {
@@ -192,7 +191,7 @@
         "nowcast_pp": 3.74183045049836,
         "nowcast_as_of": "2026-11-06 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.056pp (x2.84). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.055pp (x2.92). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
         "rows": [
           {
             "label": "\u22643.2%",
@@ -217,37 +216,37 @@
           },
           {
             "label": "3.5%",
-            "market_prob": 0.003,
+            "market_prob": 0.0025,
             "model_prob": 0.0812,
-            "gap_c": 7.82,
+            "gap_c": 7.87,
             "suspect": false
           },
           {
             "label": "3.6%",
-            "market_prob": 0.04,
+            "market_prob": 0.038,
             "model_prob": 0.1677,
-            "gap_c": 12.77,
+            "gap_c": 12.97,
             "suspect": false
           },
           {
             "label": "3.7%",
-            "market_prob": 0.88,
+            "market_prob": 0.89,
             "model_prob": 0.2374,
-            "gap_c": -64.26,
+            "gap_c": -65.26,
             "suspect": true
           },
           {
             "label": "3.8%",
-            "market_prob": 0.048,
+            "market_prob": 0.043,
             "model_prob": 0.2301,
-            "gap_c": 18.21,
+            "gap_c": 18.71,
             "suspect": false
           },
           {
             "label": "3.9%",
-            "market_prob": 0.0135,
+            "market_prob": 0.011,
             "model_prob": 0.1529,
-            "gap_c": 13.94,
+            "gap_c": 14.19,
             "suspect": false
           },
           {
@@ -290,7 +289,7 @@
         "nowcast_pp": 0.242106165709167,
         "nowcast_as_of": "2026-11-06 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.083pp (x1.93). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.082pp (x1.96). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
         "rows": [
           {
             "label": "\u22640.1%",
@@ -301,9 +300,9 @@
           },
           {
             "label": "0.2%",
-            "market_prob": 0.365,
+            "market_prob": 0.385,
             "model_prob": 0.2373,
-            "gap_c": -12.77,
+            "gap_c": -14.77,
             "suspect": false
           },
           {
@@ -322,16 +321,16 @@
           },
           {
             "label": "0.5%",
-            "market_prob": 0.026,
+            "market_prob": 0.0235,
             "model_prob": 0.0698,
-            "gap_c": 4.38,
+            "gap_c": 4.63,
             "suspect": false
           },
           {
             "label": "0.6%",
-            "market_prob": 0.006,
+            "market_prob": 0.0055,
             "model_prob": 0.0218,
-            "gap_c": 1.58,
+            "gap_c": 1.63,
             "suspect": false
           },
           {
