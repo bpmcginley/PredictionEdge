@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-08 20:22:08",
-  "generated_at": 1794169328.1067083,
+  "generated": "2026-11-08 23:56:43",
+  "generated_at": 1794182203.6699657,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [],
@@ -12,22 +12,200 @@
   "consistency": {
     "ok": true,
     "enabled": true,
-    "events_scanned": 346,
+    "events_scanned": 342,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 90,
+      "bracket has legs we cannot price (fail closed)": 91,
       "not a ladder: duplicate deadlines left too few rungs": 11,
       "not a ladder: fewer than two live, quoted legs": 96,
-      "not a ladder: group labels are not thresholds or deadlines": 52,
-      "ladder pair too illiquid to fill": 152,
-      "not a ladder: a live leg carries no group label": 12,
-      "bracket overround smaller than the spread": 1,
-      "ladder inversion smaller than the spread": 7,
+      "not a ladder: group labels are not thresholds or deadlines": 53,
+      "ladder pair too illiquid to fill": 172,
+      "not a ladder: a live leg carries no group label": 7,
+      "ladder inversion smaller than the spread": 3,
       "not a ladder: numeric group spans different end dates": 2,
       "bracket leg too illiquid to fill": 4,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
-    "violations": []
+    "violations": [
+      {
+        "family": "bracket",
+        "event_slug": "maduro-prison-time-527",
+        "constraint": "5 mutually exclusive outcomes offer at 0.9640 total, but exactly one of them pays 1.00",
+        "edge_c": 3.6,
+        "actions": [
+          "BUY YES  No prison time  @ 0.600",
+          "BUY YES  <20  @ 0.051",
+          "BUY YES  20\u201340  @ 0.039",
+          "BUY YES  40\u201360  @ 0.044",
+          "BUY YES  60+  @ 0.230"
+        ],
+        "warnings": [
+          "requires filling all 5 legs - confirm the event page lists exactly 5 outcomes before trusting the sum"
+        ],
+        "url": "https://polymarket.com/event/maduro-prison-time-527",
+        "legs": [
+          {
+            "question": "Will Nicol\u00e1s Maduro be sentenced to no prison time?",
+            "name": "No prison time",
+            "bid": 0.57,
+            "ask": 0.6,
+            "liquidity": 40016.8866,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/maduro-prison-time-527"
+          },
+          {
+            "question": "Will Nicol\u00e1s Maduro be sentenced to less than 20 years in prison?",
+            "name": "<20",
+            "bid": 0.038,
+            "ask": 0.051,
+            "liquidity": 30794.15166,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/maduro-prison-time-527"
+          },
+          {
+            "question": "Will Nicol\u00e1s Maduro be sentenced to between 20 and 40 years in prison?",
+            "name": "20\u201340",
+            "bid": 0.008,
+            "ask": 0.039,
+            "liquidity": 22326.28585,
+            "end_iso": "2027-12-31T00:00:00Z",
+            "url": "https://polymarket.com/event/maduro-prison-time-527"
+          },
+          {
+            "question": "Will Nicol\u00e1s Maduro be sentenced to between 40 and 60 years in prison?",
+            "name": "40\u201360",
+            "bid": 0.008,
+            "ask": 0.044,
+            "liquidity": 21677.59738,
+            "end_iso": "2027-12-31T00:00:00Z",
+            "url": "https://polymarket.com/event/maduro-prison-time-527"
+          },
+          {
+            "question": "Will Nicol\u00e1s Maduro be sentenced to at least 60 years in prison?",
+            "name": "60+",
+            "bid": 0.21,
+            "ask": 0.23,
+            "liquidity": 19508.8566,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/maduro-prison-time-527"
+          }
+        ]
+      },
+      {
+        "family": "bracket",
+        "event_slug": "anthropic-ipo-closing-market-cap-higher-strikes",
+        "constraint": "10 mutually exclusive outcomes bid 1.0200 total, but exactly one of them pays 1.00",
+        "edge_c": 2.0,
+        "actions": [
+          "BUY NO   <$1.25T  @ 0.851",
+          "BUY NO   $1.25\u2013$1.5T  @ 0.689",
+          "BUY NO   $1.5\u2013$1.75T  @ 0.677",
+          "BUY NO   $1.75\u2013$2.0T  @ 0.850",
+          "BUY NO   $2.0\u2013$2.25T  @ 0.942",
+          "BUY NO   $2.25\u2013$2.5T  @ 0.986",
+          "BUY NO   $2.5\u2013$2.75T  @ 0.996",
+          "BUY NO   $2.75\u2013$3.0T  @ 0.995",
+          "BUY NO   $3.0T+  @ 0.998",
+          "BUY NO   No IPO by December 31, 2027  @ 0.996"
+        ],
+        "warnings": [
+          "requires filling all 10 legs - confirm the event page lists exactly 10 outcomes before trusting the sum"
+        ],
+        "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes",
+        "legs": [
+          {
+            "question": "Will Anthropic's market cap be less than $1.25T at market close on IPO day?",
+            "name": "<$1.25T",
+            "bid": 0.149,
+            "ask": 0.158,
+            "liquidity": 19411.20154,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
+          },
+          {
+            "question": "Will Anthropic's market cap be between $1.25T and $1.5T at market close on IPO day?",
+            "name": "$1.25\u2013$1.5T",
+            "bid": 0.311,
+            "ask": 0.312,
+            "liquidity": 16126.54032,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
+          },
+          {
+            "question": "Will Anthropic's market cap be between $1.5T and $1.75T at market close on IPO day?",
+            "name": "$1.5\u2013$1.75T",
+            "bid": 0.323,
+            "ask": 0.33,
+            "liquidity": 15551.89856,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
+          },
+          {
+            "question": "Will Anthropic's market cap be between $1.75T and $2.0T at market close on IPO day?",
+            "name": "$1.75\u2013$2.0T",
+            "bid": 0.15,
+            "ask": 0.16,
+            "liquidity": 43376.9141,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
+          },
+          {
+            "question": "Will Anthropic's market cap be between $2.0T and $2.25T at market close on IPO day?",
+            "name": "$2.0\u2013$2.25T",
+            "bid": 0.058,
+            "ask": 0.064,
+            "liquidity": 134059.43588,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
+          },
+          {
+            "question": "Will Anthropic's market cap be between $2.25T and $2.5T at market close on IPO day?",
+            "name": "$2.25\u2013$2.5T",
+            "bid": 0.014,
+            "ask": 0.022,
+            "liquidity": 25733.03622,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
+          },
+          {
+            "question": "Will Anthropic's market cap be between $2.5T and $2.75T at market close on IPO day?",
+            "name": "$2.5\u2013$2.75T",
+            "bid": 0.004,
+            "ask": 0.008,
+            "liquidity": 23597.68104,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
+          },
+          {
+            "question": "Will Anthropic's market cap be between $2.75T and $3.0T at market close on IPO day?",
+            "name": "$2.75\u2013$3.0T",
+            "bid": 0.005,
+            "ask": 0.006,
+            "liquidity": 34029.71337,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
+          },
+          {
+            "question": "Will Anthropic's market cap be $3.0T or greater at market close on IPO day?",
+            "name": "$3.0T+",
+            "bid": 0.002,
+            "ask": 0.003,
+            "liquidity": 33325.49432,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
+          },
+          {
+            "question": "Will Anthropic not IPO by December 31, 2027?",
+            "name": "No IPO by December 31, 2027",
+            "bid": 0.004,
+            "ask": 0.007,
+            "liquidity": 38628.03221,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
+          }
+        ]
+      }
+    ]
   },
   "macro": {
     "ok": true,
@@ -44,7 +222,7 @@
         "nowcast_pp": 2.48284216554884,
         "nowcast_as_of": "2026-11-06 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.045pp (x3.59). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.043pp (x3.75). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
         "rows": [
           {
             "label": "\u22642.2%",
@@ -69,9 +247,9 @@
           },
           {
             "label": "2.5%",
-            "market_prob": 0.105,
+            "market_prob": 0.0805,
             "model_prob": 0.244,
-            "gap_c": 13.9,
+            "gap_c": 16.35,
             "suspect": false
           },
           {
@@ -128,7 +306,7 @@
         "nowcast_pp": 0.211437433436468,
         "nowcast_as_of": "2026-11-06 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.076pp (x2.10). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.075pp (x2.12). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.0%",
@@ -153,16 +331,16 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.34,
+            "market_prob": 0.33,
             "model_prob": 0.2115,
-            "gap_c": -12.85,
+            "gap_c": -11.85,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.08,
+            "market_prob": 0.07,
             "model_prob": 0.1253,
-            "gap_c": 4.53,
+            "gap_c": 5.53,
             "suspect": false
           },
           {
@@ -191,20 +369,20 @@
         "nowcast_pp": 0.242106165709167,
         "nowcast_as_of": "2026-11-06 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.081pp (x1.98). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.078pp (x2.04). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
         "rows": [
           {
             "label": "\u22640.1%",
-            "market_prob": 0.065,
+            "market_prob": 0.055,
             "model_prob": 0.2824,
-            "gap_c": 21.74,
+            "gap_c": 22.74,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.4,
+            "market_prob": 0.385,
             "model_prob": 0.2373,
-            "gap_c": -16.27,
+            "gap_c": -14.77,
             "suspect": false
           },
           {
@@ -223,9 +401,9 @@
           },
           {
             "label": "0.5%",
-            "market_prob": 0.0235,
+            "market_prob": 0.015,
             "model_prob": 0.0698,
-            "gap_c": 4.63,
+            "gap_c": 5.48,
             "suspect": false
           },
           {
@@ -300,30 +478,30 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.0395,
+            "market_prob": 0.041,
             "model_prob": 0.1677,
-            "gap_c": 12.82,
+            "gap_c": 12.67,
             "suspect": false
           },
           {
             "label": "3.7%",
-            "market_prob": 0.885,
+            "market_prob": 0.88,
             "model_prob": 0.2374,
-            "gap_c": -64.76,
+            "gap_c": -64.26,
             "suspect": true
           },
           {
             "label": "3.8%",
-            "market_prob": 0.0425,
+            "market_prob": 0.0325,
             "model_prob": 0.2301,
-            "gap_c": 18.76,
+            "gap_c": 19.76,
             "suspect": false
           },
           {
             "label": "3.9%",
-            "market_prob": 0.01,
+            "market_prob": 0.011,
             "model_prob": 0.1529,
-            "gap_c": 14.29,
+            "gap_c": 14.19,
             "suspect": false
           },
           {
