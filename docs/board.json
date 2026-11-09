@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-09 06:00:15",
-  "generated_at": 1794204015.8998628,
+  "generated": "2026-11-09 16:29:05",
+  "generated_at": 1794241745.8975308,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [],
@@ -14,16 +14,18 @@
     "enabled": true,
     "events_scanned": 341,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 90,
+      "bracket has legs we cannot price (fail closed)": 91,
       "not a ladder: duplicate deadlines left too few rungs": 10,
-      "not a ladder: fewer than two live, quoted legs": 99,
+      "not a ladder: fewer than two live, quoted legs": 98,
       "not a ladder: group labels are not thresholds or deadlines": 51,
-      "ladder pair too illiquid to fill": 169,
-      "ladder inversion smaller than the spread": 3,
+      "ladder pair too illiquid to fill": 227,
+      "bracket overround smaller than the spread": 1,
+      "ladder inversion smaller than the spread": 4,
       "bracket has too many legs to place by hand": 1,
       "not a ladder: numeric group spans different end dates": 2,
       "bracket leg too illiquid to fill": 4,
       "not a ladder: a live leg carries no group label": 1,
+      "bracket underround smaller than the spread": 1,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
@@ -50,7 +52,7 @@
             "name": "No prison time",
             "bid": 0.57,
             "ask": 0.59,
-            "liquidity": 39639.9646,
+            "liquidity": 33296.4383,
             "end_iso": "2028-01-01T04:59:00Z",
             "url": "https://polymarket.com/event/maduro-prison-time-527"
           },
@@ -59,16 +61,16 @@
             "name": "<20",
             "bid": 0.038,
             "ask": 0.051,
-            "liquidity": 31074.07097,
+            "liquidity": 30570.98311,
             "end_iso": "2028-01-01T04:59:00Z",
             "url": "https://polymarket.com/event/maduro-prison-time-527"
           },
           {
             "question": "Will Nicol\u00e1s Maduro be sentenced to between 20 and 40 years in prison?",
             "name": "20\u201340",
-            "bid": 0.008,
+            "bid": 0.009,
             "ask": 0.039,
-            "liquidity": 21386.1376,
+            "liquidity": 19813.50798,
             "end_iso": "2027-12-31T00:00:00Z",
             "url": "https://polymarket.com/event/maduro-prison-time-527"
           },
@@ -77,7 +79,7 @@
             "name": "40\u201360",
             "bid": 0.011,
             "ask": 0.044,
-            "liquidity": 22446.69556,
+            "liquidity": 21885.13158,
             "end_iso": "2027-12-31T00:00:00Z",
             "url": "https://polymarket.com/event/maduro-prison-time-527"
           },
@@ -86,123 +88,9 @@
             "name": "60+",
             "bid": 0.21,
             "ask": 0.23,
-            "liquidity": 17740.1511,
+            "liquidity": 17757.1011,
             "end_iso": "2028-01-01T04:59:00Z",
             "url": "https://polymarket.com/event/maduro-prison-time-527"
-          }
-        ]
-      },
-      {
-        "family": "bracket",
-        "event_slug": "anthropic-ipo-closing-market-cap-higher-strikes",
-        "constraint": "10 mutually exclusive outcomes bid 1.0230 total, but exactly one of them pays 1.00",
-        "edge_c": 2.3,
-        "actions": [
-          "BUY NO   <$1.25T  @ 0.837",
-          "BUY NO   $1.25\u2013$1.5T  @ 0.700",
-          "BUY NO   $1.5\u2013$1.75T  @ 0.681",
-          "BUY NO   $1.75\u2013$2.0T  @ 0.850",
-          "BUY NO   $2.0\u2013$2.25T  @ 0.941",
-          "BUY NO   $2.25\u2013$2.5T  @ 0.987",
-          "BUY NO   $2.5\u2013$2.75T  @ 0.995",
-          "BUY NO   $2.75\u2013$3.0T  @ 0.995",
-          "BUY NO   $3.0T+  @ 0.998",
-          "BUY NO   No IPO by December 31, 2027  @ 0.993"
-        ],
-        "warnings": [
-          "requires filling all 10 legs - confirm the event page lists exactly 10 outcomes before trusting the sum"
-        ],
-        "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes",
-        "legs": [
-          {
-            "question": "Will Anthropic's market cap be less than $1.25T at market close on IPO day?",
-            "name": "<$1.25T",
-            "bid": 0.163,
-            "ask": 0.165,
-            "liquidity": 41286.44372,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
-          },
-          {
-            "question": "Will Anthropic's market cap be between $1.25T and $1.5T at market close on IPO day?",
-            "name": "$1.25\u2013$1.5T",
-            "bid": 0.3,
-            "ask": 0.301,
-            "liquidity": 34343.41001,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
-          },
-          {
-            "question": "Will Anthropic's market cap be between $1.5T and $1.75T at market close on IPO day?",
-            "name": "$1.5\u2013$1.75T",
-            "bid": 0.319,
-            "ask": 0.32,
-            "liquidity": 28879.06262,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
-          },
-          {
-            "question": "Will Anthropic's market cap be between $1.75T and $2.0T at market close on IPO day?",
-            "name": "$1.75\u2013$2.0T",
-            "bid": 0.15,
-            "ask": 0.16,
-            "liquidity": 56720.7398,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
-          },
-          {
-            "question": "Will Anthropic's market cap be between $2.0T and $2.25T at market close on IPO day?",
-            "name": "$2.0\u2013$2.25T",
-            "bid": 0.059,
-            "ask": 0.064,
-            "liquidity": 131150.78511,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
-          },
-          {
-            "question": "Will Anthropic's market cap be between $2.25T and $2.5T at market close on IPO day?",
-            "name": "$2.25\u2013$2.5T",
-            "bid": 0.013,
-            "ask": 0.017,
-            "liquidity": 44912.69014,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
-          },
-          {
-            "question": "Will Anthropic's market cap be between $2.5T and $2.75T at market close on IPO day?",
-            "name": "$2.5\u2013$2.75T",
-            "bid": 0.005,
-            "ask": 0.007,
-            "liquidity": 39041.62722,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
-          },
-          {
-            "question": "Will Anthropic's market cap be between $2.75T and $3.0T at market close on IPO day?",
-            "name": "$2.75\u2013$3.0T",
-            "bid": 0.005,
-            "ask": 0.006,
-            "liquidity": 47966.98152,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
-          },
-          {
-            "question": "Will Anthropic's market cap be $3.0T or greater at market close on IPO day?",
-            "name": "$3.0T+",
-            "bid": 0.002,
-            "ask": 0.003,
-            "liquidity": 52592.19735,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
-          },
-          {
-            "question": "Will Anthropic not IPO by December 31, 2027?",
-            "name": "No IPO by December 31, 2027",
-            "bid": 0.007,
-            "ask": 0.015,
-            "liquidity": 56025.00705,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
           }
         ]
       }
@@ -214,6 +102,69 @@
     "notes": [],
     "cpi": [
       {
+        "slug": "core-cpi-mom-october-2026",
+        "title": "Core CPI MoM - October 2026",
+        "series": "core_cpi",
+        "basis": "mom",
+        "ref_month": "2026-10",
+        "url": "https://polymarket.com/event/core-cpi-mom-october-2026",
+        "nowcast_pp": 0.211437433436468,
+        "nowcast_as_of": "2026-11-09 00:00",
+        "sigma": 0.16,
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.079pp (x2.02). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "rows": [
+          {
+            "label": "\u22640.0%",
+            "market_prob": 0.013,
+            "model_prob": 0.1565,
+            "gap_c": 14.35,
+            "suspect": false
+          },
+          {
+            "label": "0.1%",
+            "market_prob": 0.135,
+            "model_prob": 0.194,
+            "gap_c": 5.9,
+            "suspect": false
+          },
+          {
+            "label": "0.2%",
+            "market_prob": 0.54,
+            "model_prob": 0.2447,
+            "gap_c": -29.53,
+            "suspect": true
+          },
+          {
+            "label": "0.3%",
+            "market_prob": 0.275,
+            "model_prob": 0.2115,
+            "gap_c": -6.35,
+            "suspect": false
+          },
+          {
+            "label": "0.4%",
+            "market_prob": 0.063,
+            "model_prob": 0.1253,
+            "gap_c": 6.23,
+            "suspect": false
+          },
+          {
+            "label": "0.5%",
+            "market_prob": 0.006,
+            "model_prob": 0.0508,
+            "gap_c": 4.48,
+            "suspect": false
+          },
+          {
+            "label": "0.6%+",
+            "market_prob": 0.002,
+            "model_prob": 0.0172,
+            "gap_c": 1.52,
+            "suspect": false
+          }
+        ]
+      },
+      {
         "slug": "core-cpi-yoy-october-2026",
         "title": "Core CPI YoY - October 2026",
         "series": "core_cpi",
@@ -221,9 +172,9 @@
         "ref_month": "2026-10",
         "url": "https://polymarket.com/event/core-cpi-yoy-october-2026",
         "nowcast_pp": 2.48284216554884,
-        "nowcast_as_of": "2026-11-06 00:00",
+        "nowcast_as_of": "2026-11-09 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.039pp (x4.08). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.044pp (x3.62). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
         "rows": [
           {
             "label": "\u22642.2%",
@@ -248,30 +199,30 @@
           },
           {
             "label": "2.5%",
-            "market_prob": 0.0875,
+            "market_prob": 0.0705,
             "model_prob": 0.244,
-            "gap_c": 15.65,
+            "gap_c": 17.35,
             "suspect": false
           },
           {
             "label": "2.6%",
-            "market_prob": 0.88,
+            "market_prob": 0.905,
             "model_prob": 0.1893,
-            "gap_c": -69.07,
+            "gap_c": -71.57,
             "suspect": true
           },
           {
             "label": "2.7%",
-            "market_prob": 0.008,
+            "market_prob": 0.0345,
             "model_prob": 0.1006,
-            "gap_c": 9.26,
+            "gap_c": 6.61,
             "suspect": false
           },
           {
             "label": "2.8%",
-            "market_prob": 0.002,
+            "market_prob": 0.0105,
             "model_prob": 0.0366,
-            "gap_c": 3.46,
+            "gap_c": 2.61,
             "suspect": false
           },
           {
@@ -298,69 +249,6 @@
         ]
       },
       {
-        "slug": "core-cpi-mom-october-2026",
-        "title": "Core CPI MoM - October 2026",
-        "series": "core_cpi",
-        "basis": "mom",
-        "ref_month": "2026-10",
-        "url": "https://polymarket.com/event/core-cpi-mom-october-2026",
-        "nowcast_pp": 0.211437433436468,
-        "nowcast_as_of": "2026-11-06 00:00",
-        "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.076pp (x2.10). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
-        "rows": [
-          {
-            "label": "\u22640.0%",
-            "market_prob": 0.013,
-            "model_prob": 0.1565,
-            "gap_c": 14.35,
-            "suspect": false
-          },
-          {
-            "label": "0.1%",
-            "market_prob": 0.08,
-            "model_prob": 0.194,
-            "gap_c": 11.4,
-            "suspect": false
-          },
-          {
-            "label": "0.2%",
-            "market_prob": 0.485,
-            "model_prob": 0.2447,
-            "gap_c": -24.03,
-            "suspect": false
-          },
-          {
-            "label": "0.3%",
-            "market_prob": 0.325,
-            "model_prob": 0.2115,
-            "gap_c": -11.35,
-            "suspect": false
-          },
-          {
-            "label": "0.4%",
-            "market_prob": 0.065,
-            "model_prob": 0.1253,
-            "gap_c": 6.03,
-            "suspect": false
-          },
-          {
-            "label": "0.5%",
-            "market_prob": 0.006,
-            "model_prob": 0.0508,
-            "gap_c": 4.48,
-            "suspect": false
-          },
-          {
-            "label": "0.6%+",
-            "market_prob": 0.002,
-            "model_prob": 0.0172,
-            "gap_c": 1.52,
-            "suspect": false
-          }
-        ]
-      },
-      {
         "slug": "october-inflation-us-annual",
         "title": "October Inflation US - Annual",
         "series": "cpi",
@@ -368,9 +256,9 @@
         "ref_month": "2026-10",
         "url": "https://polymarket.com/event/october-inflation-us-annual",
         "nowcast_pp": 3.74183045049836,
-        "nowcast_as_of": "2026-11-06 00:00",
+        "nowcast_as_of": "2026-11-09 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.046pp (x3.50). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.050pp (x3.20). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
         "rows": [
           {
             "label": "\u22643.2%",
@@ -381,58 +269,58 @@
           },
           {
             "label": "3.3%",
-            "market_prob": 0.0015,
+            "market_prob": 0.002,
             "model_prob": 0.0061,
-            "gap_c": 0.46,
+            "gap_c": 0.41,
             "suspect": false
           },
           {
             "label": "3.4%",
-            "market_prob": 0.0015,
+            "market_prob": 0.002,
             "model_prob": 0.0269,
-            "gap_c": 2.54,
+            "gap_c": 2.49,
             "suspect": false
           },
           {
             "label": "3.5%",
-            "market_prob": 0.0005,
+            "market_prob": 0.0015,
             "model_prob": 0.0812,
-            "gap_c": 8.07,
+            "gap_c": 7.97,
             "suspect": false
           },
           {
             "label": "3.6%",
-            "market_prob": 0.0205,
+            "market_prob": 0.0295,
             "model_prob": 0.1677,
-            "gap_c": 14.72,
+            "gap_c": 13.82,
             "suspect": false
           },
           {
             "label": "3.7%",
-            "market_prob": 0.9,
+            "market_prob": 0.925,
             "model_prob": 0.2374,
-            "gap_c": -66.26,
+            "gap_c": -68.76,
             "suspect": true
           },
           {
             "label": "3.8%",
-            "market_prob": 0.008,
+            "market_prob": 0.042,
             "model_prob": 0.2301,
-            "gap_c": 22.21,
+            "gap_c": 18.81,
             "suspect": false
           },
           {
             "label": "3.9%",
-            "market_prob": 0.007,
+            "market_prob": 0.009,
             "model_prob": 0.1529,
-            "gap_c": 14.59,
+            "gap_c": 14.39,
             "suspect": false
           },
           {
             "label": "4.0%",
-            "market_prob": 0.0045,
+            "market_prob": 0.0035,
             "model_prob": 0.0696,
-            "gap_c": 6.51,
+            "gap_c": 6.61,
             "suspect": false
           },
           {
@@ -466,9 +354,9 @@
         "ref_month": "2026-10",
         "url": "https://polymarket.com/event/october-inflation-us-monthly",
         "nowcast_pp": 0.242106165709167,
-        "nowcast_as_of": "2026-11-06 00:00",
+        "nowcast_as_of": "2026-11-09 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.076pp (x2.10). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.076pp (x2.09). The per-bracket gaps below are mostly this one effect, not 9 separate edges.",
         "rows": [
           {
             "label": "\u22640.1%",
@@ -500,9 +388,9 @@
           },
           {
             "label": "0.5%",
-            "market_prob": 0.015,
+            "market_prob": 0.016,
             "model_prob": 0.0698,
-            "gap_c": 5.48,
+            "gap_c": 5.38,
             "suspect": false
           },
           {
@@ -542,7 +430,118 @@
     "cal_vetoed": 0
   },
   "gas": [],
-  "spxindex": [],
+  "spxindex": [
+    {
+      "market_id": "KXINX-26NOV09H1600-B7512",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "No",
+      "title": "Will the S&P 500 be between 7500 and 7524.9999 on Nov 9, 2026 at 4pm EST?",
+      "url": "https://kalshi.com/markets/KXINX-26NOV09H1600",
+      "entry_price": 0.71,
+      "model_prob": 0.8091,
+      "edge": 0.0991,
+      "fair": 0.1909,
+      "market_prob": 0.295,
+      "implied_sigma": 0.1902,
+      "spot_used": 7524.67,
+      "chain_ts": "2026-11-09 16:28:27",
+      "vrp_shrink": 0.92,
+      "series": "KXINX",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-11-09T21:00:00+00:00",
+      "event_iso": "2026-11-09T21:00:00+00:00"
+    },
+    {
+      "market_id": "KXINX-26NOV09H1600-B7537",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "Yes",
+      "title": "Will the S&P 500 be between 7525 and 7549.9999 on Nov 9, 2026 at 4pm EST?",
+      "url": "https://kalshi.com/markets/KXINX-26NOV09H1600",
+      "entry_price": 0.33,
+      "model_prob": 0.4061,
+      "edge": 0.0761,
+      "fair": 0.4061,
+      "market_prob": 0.31,
+      "implied_sigma": 0.1902,
+      "spot_used": 7524.67,
+      "chain_ts": "2026-11-09 16:28:27",
+      "vrp_shrink": 0.92,
+      "series": "KXINX",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-11-09T21:00:00+00:00",
+      "event_iso": "2026-11-09T21:00:00+00:00"
+    },
+    {
+      "market_id": "KXNASDAQ100-26NOV09H1600-B27950",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "Yes",
+      "title": "Will the Nasdaq-100 be between 27900 and 27999.9900 at the end of Nov 9, 2026 at 4pm EST?",
+      "url": "https://kalshi.com/markets/KXNASDAQ100-26NOV09H1600",
+      "entry_price": 0.15,
+      "model_prob": 0.2032,
+      "edge": 0.0532,
+      "fair": 0.2032,
+      "market_prob": 0.135,
+      "implied_sigma": 0.2898,
+      "spot_used": 27813.2,
+      "chain_ts": "2026-11-09 16:28:11",
+      "vrp_shrink": 0.92,
+      "series": "KXNASDAQ100",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-11-09T21:00:00+00:00",
+      "event_iso": "2026-11-09T21:00:00+00:00"
+    },
+    {
+      "market_id": "KXNASDAQ100-26NOV09H1600-B27650",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "No",
+      "title": "Will the Nasdaq-100 be between 27600 and 27699.9900 at the end of Nov 9, 2026 at 4pm EST?",
+      "url": "https://kalshi.com/markets/KXNASDAQ100-26NOV09H1600",
+      "entry_price": 0.86,
+      "model_prob": 0.8981,
+      "edge": 0.0381,
+      "fair": 0.1019,
+      "market_prob": 0.165,
+      "implied_sigma": 0.2898,
+      "spot_used": 27813.2,
+      "chain_ts": "2026-11-09 16:28:11",
+      "vrp_shrink": 0.92,
+      "series": "KXNASDAQ100",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-11-09T21:00:00+00:00",
+      "event_iso": "2026-11-09T21:00:00+00:00"
+    },
+    {
+      "market_id": "KXNASDAQ100-26NOV09H1600-T27999.9900",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "Yes",
+      "title": "Will the Nasdaq-100 be above 27999.9900 at the end of Nov 9, 2026 at 4pm EST?",
+      "url": "https://kalshi.com/markets/KXNASDAQ100-26NOV09H1600",
+      "entry_price": 0.1,
+      "model_prob": 0.1369,
+      "edge": 0.0369,
+      "fair": 0.1369,
+      "market_prob": 0.075,
+      "implied_sigma": 0.2898,
+      "spot_used": 27813.2,
+      "chain_ts": "2026-11-09 16:28:11",
+      "vrp_shrink": 0.92,
+      "series": "KXNASDAQ100",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-11-09T21:00:00+00:00",
+      "event_iso": "2026-11-09T21:00:00+00:00"
+    }
+  ],
   "sizing": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
