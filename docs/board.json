@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-11 09:12:07",
-  "generated_at": 1794388327.5040524,
+  "generated": "2026-11-11 17:14:49",
+  "generated_at": 1794417289.0736516,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [],
@@ -16,17 +16,114 @@
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 90,
       "not a ladder: duplicate deadlines left too few rungs": 10,
-      "not a ladder: fewer than two live, quoted legs": 100,
-      "not a ladder: group labels are not thresholds or deadlines": 55,
-      "ladder pair too illiquid to fill": 175,
-      "ladder inversion smaller than the spread": 1,
+      "not a ladder: fewer than two live, quoted legs": 99,
+      "not a ladder: group labels are not thresholds or deadlines": 56,
+      "ladder pair too illiquid to fill": 166,
+      "bracket overround smaller than the spread": 2,
       "bracket has too many legs to place by hand": 1,
       "not a ladder: numeric group spans different end dates": 2,
-      "bracket leg too illiquid to fill": 4,
+      "bracket leg too illiquid to fill": 3,
+      "not a ladder: a live leg carries no group label": 1,
+      "ladder inversion smaller than the spread": 2,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
-    "violations": []
+    "violations": [
+      {
+        "family": "bracket",
+        "event_slug": "what-will-openais-ipo-valuation-be",
+        "constraint": "8 mutually exclusive outcomes offer at 0.9630 total, but exactly one of them pays 1.00",
+        "edge_c": 3.7,
+        "actions": [
+          "BUY YES  <$1T  @ 0.218",
+          "BUY YES  $1.0T\u2013$1.25T  @ 0.121",
+          "BUY YES  $1.25T\u2013$1.5T  @ 0.199",
+          "BUY YES  $1.5T\u2013$1.75T  @ 0.201",
+          "BUY YES  $1.75T\u2013$2.0T  @ 0.090",
+          "BUY YES  $2.0T\u2013$2.25T  @ 0.050",
+          "BUY YES  $2.25T\u2013$2.5T  @ 0.041",
+          "BUY YES  $2.5T+  @ 0.043"
+        ],
+        "warnings": [
+          "requires filling all 8 legs - confirm the event page lists exactly 8 outcomes before trusting the sum"
+        ],
+        "url": "https://polymarket.com/event/what-will-openais-ipo-valuation-be",
+        "legs": [
+          {
+            "question": "Will OpenAI's IPO valuation be less than $1T?",
+            "name": "<$1T",
+            "bid": 0.201,
+            "ask": 0.218,
+            "liquidity": 7906.85754,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/what-will-openais-ipo-valuation-be"
+          },
+          {
+            "question": "Will OpenAI's IPO valuation be between $1.0T and $1.25T?",
+            "name": "$1.0T\u2013$1.25T",
+            "bid": 0.112,
+            "ask": 0.121,
+            "liquidity": 9681.7327,
+            "end_iso": "2027-07-01T00:00:00Z",
+            "url": "https://polymarket.com/event/what-will-openais-ipo-valuation-be"
+          },
+          {
+            "question": "Will OpenAI's IPO valuation be between $1.25T and $1.5T?",
+            "name": "$1.25T\u2013$1.5T",
+            "bid": 0.183,
+            "ask": 0.199,
+            "liquidity": 5793.13044,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/what-will-openais-ipo-valuation-be"
+          },
+          {
+            "question": "Will OpenAI's IPO valuation be between $1.5T and $1.75T?",
+            "name": "$1.5T\u2013$1.75T",
+            "bid": 0.177,
+            "ask": 0.201,
+            "liquidity": 7264.77386,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/what-will-openais-ipo-valuation-be"
+          },
+          {
+            "question": "Will OpenAI's IPO valuation be between $1.75T and $2.0T?",
+            "name": "$1.75T\u2013$2.0T",
+            "bid": 0.07,
+            "ask": 0.09,
+            "liquidity": 19088.1643,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/what-will-openais-ipo-valuation-be"
+          },
+          {
+            "question": "Will OpenAI's IPO valuation be between $2.0T and $2.25T?",
+            "name": "$2.0T\u2013$2.25T",
+            "bid": 0.018,
+            "ask": 0.05,
+            "liquidity": 5566.93496,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/what-will-openais-ipo-valuation-be"
+          },
+          {
+            "question": "Will OpenAI's IPO valuation be between $2.25T and $2.5T?",
+            "name": "$2.25T\u2013$2.5T",
+            "bid": 0.026,
+            "ask": 0.041,
+            "liquidity": 8789.61468,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/what-will-openais-ipo-valuation-be"
+          },
+          {
+            "question": "Will OpenAI's IPO valuation be at least $2.5T?",
+            "name": "$2.5T+",
+            "bid": 0.016,
+            "ask": 0.043,
+            "liquidity": 5499.28257,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/what-will-openais-ipo-valuation-be"
+          }
+        ]
+      }
+    ]
   },
   "macro": {
     "ok": true,
