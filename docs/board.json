@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-10 21:45:18",
-  "generated_at": 1794347118.4051511,
+  "generated": "2026-11-11 01:49:23",
+  "generated_at": 1794361763.8113515,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [],
@@ -14,100 +14,80 @@
     "enabled": true,
     "events_scanned": 343,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 89,
+      "bracket has legs we cannot price (fail closed)": 88,
       "not a ladder: duplicate deadlines left too few rungs": 10,
-      "not a ladder: fewer than two live, quoted legs": 100,
+      "not a ladder: fewer than two live, quoted legs": 98,
       "not a ladder: group labels are not thresholds or deadlines": 54,
-      "ladder pair too illiquid to fill": 172,
+      "ladder pair too illiquid to fill": 115,
+      "not a ladder: a live leg carries no group label": 9,
       "not a ladder: numeric group spans different end dates": 2,
-      "not a ladder: a live leg carries no group label": 4,
-      "bracket leg too illiquid to fill": 4,
-      "ladder inversion smaller than the spread": 3,
+      "bracket leg too illiquid to fill": 5,
+      "ladder inversion smaller than the spread": 7,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
     "violations": [
       {
         "family": "bracket",
-        "event_slug": "openai-ipo-closing-market-cap-554",
-        "constraint": "7 mutually exclusive outcomes offer at 0.9630 total, but exactly one of them pays 1.00",
-        "edge_c": 3.7,
+        "event_slug": "fed-decision-in-january-20260729233815502",
+        "constraint": "5 mutually exclusive outcomes bid 1.0200 total, but exactly one of them pays 1.00",
+        "edge_c": 2.0,
         "actions": [
-          "BUY YES  <500B  @ 0.021",
-          "BUY YES  500\u2013750B  @ 0.035",
-          "BUY YES  750B\u20131T  @ 0.060",
-          "BUY YES  1T\u20131.25T  @ 0.113",
-          "BUY YES  1.25T\u20131.5T  @ 0.170",
-          "BUY YES  1.5T+  @ 0.301",
-          "BUY YES  No IPO by December 31, 2027  @ 0.263"
+          "BUY NO   50+ bps decrease  @ 0.996",
+          "BUY NO   25 bps decrease  @ 0.995",
+          "BUY NO   No change  @ 0.490",
+          "BUY NO   25 bps increase  @ 0.510",
+          "BUY NO   50+ bps increase  @ 0.989"
         ],
         "warnings": [
-          "requires filling all 7 legs - confirm the event page lists exactly 7 outcomes before trusting the sum"
+          "requires filling all 5 legs - confirm the event page lists exactly 5 outcomes before trusting the sum"
         ],
-        "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554",
+        "url": "https://polymarket.com/event/fed-decision-in-january-20260729233815502",
         "legs": [
           {
-            "question": "Will OpenAI\u2019s market cap be less than $500B at market close on IPO day by December 31, 2027?",
-            "name": "<500B",
-            "bid": 0.014,
-            "ask": 0.021,
-            "liquidity": 8903.34094,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
+            "question": "Will the Fed decrease interest rates by 50+ bps after the January 2027 meeting?",
+            "name": "50+ bps decrease",
+            "bid": 0.004,
+            "ask": 0.005,
+            "liquidity": 173282.50186,
+            "end_iso": "2027-01-28T04:59:00Z",
+            "url": "https://polymarket.com/event/fed-decision-in-january-20260729233815502"
           },
           {
-            "question": "Will OpenAI\u2019s market cap be between $500B and $750B at market close on IPO day by December 31, 2027?",
-            "name": "500\u2013750B",
-            "bid": 0.018,
-            "ask": 0.035,
-            "liquidity": 10170.08014,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
+            "question": "Will the Fed decrease interest rates by 25 bps after the January 2027 meeting?",
+            "name": "25 bps decrease",
+            "bid": 0.005,
+            "ask": 0.006,
+            "liquidity": 150032.42619,
+            "end_iso": "2027-01-28T04:59:00Z",
+            "url": "https://polymarket.com/event/fed-decision-in-january-20260729233815502"
           },
           {
-            "question": "Will OpenAI\u2019s market cap be between $750B and $1T at market close on IPO day by December 31, 2027?",
-            "name": "750B\u20131T",
-            "bid": 0.05,
-            "ask": 0.06,
-            "liquidity": 31813.77804,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
+            "question": "Will there be no change in Fed interest rates after the January 2027 meeting?",
+            "name": "No change",
+            "bid": 0.51,
+            "ask": 0.52,
+            "liquidity": 155340.3644,
+            "end_iso": "2027-01-28T04:59:00Z",
+            "url": "https://polymarket.com/event/fed-decision-in-january-20260729233815502"
           },
           {
-            "question": "Will OpenAI\u2019s market cap be between $1T and $1.25T at market close on IPO day by December 31, 2027?",
-            "name": "1T\u20131.25T",
-            "bid": 0.112,
-            "ask": 0.113,
-            "liquidity": 21823.31112,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
+            "question": "Will the Fed increase interest rates by 25 bps after the January 2027 meeting?",
+            "name": "25 bps increase",
+            "bid": 0.49,
+            "ask": 0.5,
+            "liquidity": 101647.9353,
+            "end_iso": "2027-01-28T04:59:00Z",
+            "url": "https://polymarket.com/event/fed-decision-in-january-20260729233815502"
           },
           {
-            "question": "Will OpenAI\u2019s market cap be between $1.25T and $1.5T at market close on IPO day by December 31, 2027?",
-            "name": "1.25T\u20131.5T",
-            "bid": 0.15,
-            "ask": 0.17,
-            "liquidity": 8266.1563,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
-          },
-          {
-            "question": "Will OpenAI\u2019s market cap be $1.5T or greater at market close on IPO day by December 31, 2027?",
-            "name": "1.5T+",
-            "bid": 0.281,
-            "ask": 0.301,
-            "liquidity": 9104.25282,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
-          },
-          {
-            "question": "Will OpenAI not IPO by December 31, 2027?",
-            "name": "No IPO by December 31, 2027",
-            "bid": 0.246,
-            "ask": 0.263,
-            "liquidity": 7011.36475,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
+            "question": "Will the Fed increase interest rates by 50+ bps after the January 2027 meeting?",
+            "name": "50+ bps increase",
+            "bid": 0.011,
+            "ask": 0.013,
+            "liquidity": 96997.84805,
+            "end_iso": "2027-01-28T04:59:00Z",
+            "url": "https://polymarket.com/event/fed-decision-in-january-20260729233815502"
           }
         ]
       }
