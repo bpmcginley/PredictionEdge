@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-11 01:49:23",
-  "generated_at": 1794361763.8113515,
+  "generated": "2026-11-11 09:12:07",
+  "generated_at": 1794388327.5040524,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [],
@@ -14,84 +14,19 @@
     "enabled": true,
     "events_scanned": 343,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 88,
+      "bracket has legs we cannot price (fail closed)": 90,
       "not a ladder: duplicate deadlines left too few rungs": 10,
-      "not a ladder: fewer than two live, quoted legs": 98,
-      "not a ladder: group labels are not thresholds or deadlines": 54,
-      "ladder pair too illiquid to fill": 115,
-      "not a ladder: a live leg carries no group label": 9,
+      "not a ladder: fewer than two live, quoted legs": 100,
+      "not a ladder: group labels are not thresholds or deadlines": 55,
+      "ladder pair too illiquid to fill": 175,
+      "ladder inversion smaller than the spread": 1,
+      "bracket has too many legs to place by hand": 1,
       "not a ladder: numeric group spans different end dates": 2,
-      "bracket leg too illiquid to fill": 5,
-      "ladder inversion smaller than the spread": 7,
+      "bracket leg too illiquid to fill": 4,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
-    "violations": [
-      {
-        "family": "bracket",
-        "event_slug": "fed-decision-in-january-20260729233815502",
-        "constraint": "5 mutually exclusive outcomes bid 1.0200 total, but exactly one of them pays 1.00",
-        "edge_c": 2.0,
-        "actions": [
-          "BUY NO   50+ bps decrease  @ 0.996",
-          "BUY NO   25 bps decrease  @ 0.995",
-          "BUY NO   No change  @ 0.490",
-          "BUY NO   25 bps increase  @ 0.510",
-          "BUY NO   50+ bps increase  @ 0.989"
-        ],
-        "warnings": [
-          "requires filling all 5 legs - confirm the event page lists exactly 5 outcomes before trusting the sum"
-        ],
-        "url": "https://polymarket.com/event/fed-decision-in-january-20260729233815502",
-        "legs": [
-          {
-            "question": "Will the Fed decrease interest rates by 50+ bps after the January 2027 meeting?",
-            "name": "50+ bps decrease",
-            "bid": 0.004,
-            "ask": 0.005,
-            "liquidity": 173282.50186,
-            "end_iso": "2027-01-28T04:59:00Z",
-            "url": "https://polymarket.com/event/fed-decision-in-january-20260729233815502"
-          },
-          {
-            "question": "Will the Fed decrease interest rates by 25 bps after the January 2027 meeting?",
-            "name": "25 bps decrease",
-            "bid": 0.005,
-            "ask": 0.006,
-            "liquidity": 150032.42619,
-            "end_iso": "2027-01-28T04:59:00Z",
-            "url": "https://polymarket.com/event/fed-decision-in-january-20260729233815502"
-          },
-          {
-            "question": "Will there be no change in Fed interest rates after the January 2027 meeting?",
-            "name": "No change",
-            "bid": 0.51,
-            "ask": 0.52,
-            "liquidity": 155340.3644,
-            "end_iso": "2027-01-28T04:59:00Z",
-            "url": "https://polymarket.com/event/fed-decision-in-january-20260729233815502"
-          },
-          {
-            "question": "Will the Fed increase interest rates by 25 bps after the January 2027 meeting?",
-            "name": "25 bps increase",
-            "bid": 0.49,
-            "ask": 0.5,
-            "liquidity": 101647.9353,
-            "end_iso": "2027-01-28T04:59:00Z",
-            "url": "https://polymarket.com/event/fed-decision-in-january-20260729233815502"
-          },
-          {
-            "question": "Will the Fed increase interest rates by 50+ bps after the January 2027 meeting?",
-            "name": "50+ bps increase",
-            "bid": 0.011,
-            "ask": 0.013,
-            "liquidity": 96997.84805,
-            "end_iso": "2027-01-28T04:59:00Z",
-            "url": "https://polymarket.com/event/fed-decision-in-january-20260729233815502"
-          }
-        ]
-      }
-    ]
+    "violations": []
   },
   "macro": {
     "ok": true,
