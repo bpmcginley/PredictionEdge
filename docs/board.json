@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-11 23:30:52",
-  "generated_at": 1794439852.954977,
+  "generated": "2026-11-12 04:21:12",
+  "generated_at": 1794457272.0787516,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [],
@@ -12,118 +12,22 @@
   "consistency": {
     "ok": true,
     "enabled": true,
-    "events_scanned": 343,
+    "events_scanned": 344,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 88,
+      "bracket has legs we cannot price (fail closed)": 87,
       "not a ladder: duplicate deadlines left too few rungs": 10,
       "not a ladder: fewer than two live, quoted legs": 100,
-      "not a ladder: group labels are not thresholds or deadlines": 55,
-      "ladder pair too illiquid to fill": 115,
-      "bracket overround smaller than the spread": 1,
-      "bracket has too many legs to place by hand": 1,
+      "not a ladder: group labels are not thresholds or deadlines": 60,
+      "ladder pair too illiquid to fill": 182,
+      "ladder inversion smaller than the spread": 1,
+      "not a ladder: a live leg carries no group label": 3,
       "not a ladder: numeric group spans different end dates": 2,
-      "not a ladder: a live leg carries no group label": 5,
-      "bracket leg too illiquid to fill": 3,
+      "bracket leg too illiquid to fill": 5,
       "bracket underround smaller than the spread": 1,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
-    "violations": [
-      {
-        "family": "bracket",
-        "event_slug": "what-will-openais-ipo-valuation-be",
-        "constraint": "8 mutually exclusive outcomes offer at 0.9720 total, but exactly one of them pays 1.00",
-        "edge_c": 2.8,
-        "actions": [
-          "BUY YES  <$1T  @ 0.239",
-          "BUY YES  $1.0T\u2013$1.25T  @ 0.121",
-          "BUY YES  $1.25T\u2013$1.5T  @ 0.199",
-          "BUY YES  $1.5T\u2013$1.75T  @ 0.190",
-          "BUY YES  $1.75T\u2013$2.0T  @ 0.090",
-          "BUY YES  $2.0T\u2013$2.25T  @ 0.050",
-          "BUY YES  $2.25T\u2013$2.5T  @ 0.043",
-          "BUY YES  $2.5T+  @ 0.040"
-        ],
-        "warnings": [
-          "requires filling all 8 legs - confirm the event page lists exactly 8 outcomes before trusting the sum"
-        ],
-        "url": "https://polymarket.com/event/what-will-openais-ipo-valuation-be",
-        "legs": [
-          {
-            "question": "Will OpenAI's IPO valuation be less than $1T?",
-            "name": "<$1T",
-            "bid": 0.228,
-            "ask": 0.239,
-            "liquidity": 7668.5913,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/what-will-openais-ipo-valuation-be"
-          },
-          {
-            "question": "Will OpenAI's IPO valuation be between $1.0T and $1.25T?",
-            "name": "$1.0T\u2013$1.25T",
-            "bid": 0.113,
-            "ask": 0.121,
-            "liquidity": 10687.7345,
-            "end_iso": "2027-07-01T00:00:00Z",
-            "url": "https://polymarket.com/event/what-will-openais-ipo-valuation-be"
-          },
-          {
-            "question": "Will OpenAI's IPO valuation be between $1.25T and $1.5T?",
-            "name": "$1.25T\u2013$1.5T",
-            "bid": 0.173,
-            "ask": 0.199,
-            "liquidity": 7678.42731,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/what-will-openais-ipo-valuation-be"
-          },
-          {
-            "question": "Will OpenAI's IPO valuation be between $1.5T and $1.75T?",
-            "name": "$1.5T\u2013$1.75T",
-            "bid": 0.178,
-            "ask": 0.19,
-            "liquidity": 7103.25821,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/what-will-openais-ipo-valuation-be"
-          },
-          {
-            "question": "Will OpenAI's IPO valuation be between $1.75T and $2.0T?",
-            "name": "$1.75T\u2013$2.0T",
-            "bid": 0.07,
-            "ask": 0.09,
-            "liquidity": 15304.8335,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/what-will-openais-ipo-valuation-be"
-          },
-          {
-            "question": "Will OpenAI's IPO valuation be between $2.0T and $2.25T?",
-            "name": "$2.0T\u2013$2.25T",
-            "bid": 0.018,
-            "ask": 0.05,
-            "liquidity": 6181.7055,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/what-will-openais-ipo-valuation-be"
-          },
-          {
-            "question": "Will OpenAI's IPO valuation be between $2.25T and $2.5T?",
-            "name": "$2.25T\u2013$2.5T",
-            "bid": 0.025,
-            "ask": 0.043,
-            "liquidity": 8515.4479,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/what-will-openais-ipo-valuation-be"
-          },
-          {
-            "question": "Will OpenAI's IPO valuation be at least $2.5T?",
-            "name": "$2.5T+",
-            "bid": 0.016,
-            "ask": 0.04,
-            "liquidity": 5835.11665,
-            "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/what-will-openais-ipo-valuation-be"
-          }
-        ]
-      }
-    ]
+    "violations": []
   },
   "macro": {
     "ok": true,
@@ -144,58 +48,58 @@
         "rows": [
           {
             "label": "\u22642.3%",
-            "market_prob": 0.2015,
+            "market_prob": 0.043,
             "model_prob": 0.0005,
-            "gap_c": -20.1,
+            "gap_c": -4.25,
             "suspect": false
           },
           {
             "label": "2.4%",
-            "market_prob": 0.115,
+            "market_prob": 0.006,
             "model_prob": 0.0035,
-            "gap_c": -11.15,
+            "gap_c": -0.25,
             "suspect": false
           },
           {
             "label": "2.5%",
-            "market_prob": 0.1635,
+            "market_prob": 0.006,
             "model_prob": 0.0176,
-            "gap_c": -14.59,
+            "gap_c": 1.16,
             "suspect": false
           },
           {
             "label": "2.6%",
-            "market_prob": 0.23,
+            "market_prob": 0.12,
             "model_prob": 0.0598,
-            "gap_c": -17.02,
+            "gap_c": -6.02,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.155,
+            "market_prob": 0.125,
             "model_prob": 0.1391,
-            "gap_c": -1.59,
+            "gap_c": 1.41,
             "suspect": false
           },
           {
             "label": "2.8%",
-            "market_prob": 0.1,
+            "market_prob": 0.2,
             "model_prob": 0.2217,
-            "gap_c": 12.17,
+            "gap_c": 2.17,
             "suspect": false
           },
           {
             "label": "2.9%",
-            "market_prob": 0.295,
+            "market_prob": 0.315,
             "model_prob": 0.242,
-            "gap_c": -5.3,
+            "gap_c": -7.3,
             "suspect": false
           },
           {
             "label": "3.0%",
-            "market_prob": 0.195,
+            "market_prob": 0.215,
             "model_prob": 0.1811,
-            "gap_c": -1.39,
+            "gap_c": -3.39,
             "suspect": false
           },
           {
@@ -207,9 +111,9 @@
           },
           {
             "label": "\u22653.2%",
-            "market_prob": 0.212,
+            "market_prob": 0.0415,
             "model_prob": 0.0418,
-            "gap_c": -17.02,
+            "gap_c": 0.03,
             "suspect": false
           }
         ]
@@ -224,55 +128,55 @@
         "nowcast_pp": 0.21114452794251,
         "nowcast_as_of": "2026-11-10 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.103pp (x1.55). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.1%",
-            "market_prob": 0.18,
+            "market_prob": 0.175,
             "model_prob": 0.3512,
-            "gap_c": 17.12,
+            "gap_c": 17.62,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.34,
+            "market_prob": 0.335,
             "model_prob": 0.2448,
-            "gap_c": -9.52,
+            "gap_c": -9.02,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.295,
+            "market_prob": 0.32,
             "model_prob": 0.2113,
-            "gap_c": -8.37,
+            "gap_c": -10.87,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.145,
+            "market_prob": 0.15,
             "model_prob": 0.125,
-            "gap_c": -2.0,
+            "gap_c": -2.5,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.111,
+            "market_prob": 0.04,
             "model_prob": 0.0506,
-            "gap_c": -6.04,
+            "gap_c": 1.06,
             "suspect": false
           },
           {
             "label": "0.6%",
-            "market_prob": 0.116,
+            "market_prob": 0.0325,
             "model_prob": 0.014,
-            "gap_c": -10.2,
+            "gap_c": -1.85,
             "suspect": false
           },
           {
             "label": "0.7%+",
-            "market_prob": 0.0455,
+            "market_prob": 0.034,
             "model_prob": 0.003,
-            "gap_c": -4.25,
+            "gap_c": -3.1,
             "suspect": false
           }
         ]
