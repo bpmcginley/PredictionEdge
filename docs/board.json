@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-13 17:07:19",
-  "generated_at": 1794589639.191894,
+  "generated": "2026-11-13 22:41:02",
+  "generated_at": 1794609662.8997734,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [],
@@ -16,15 +16,15 @@
     "rejected": {
       "bracket has legs we cannot price (fail closed)": 85,
       "not a ladder: duplicate deadlines left too few rungs": 10,
-      "not a ladder: fewer than two live, quoted legs": 101,
-      "not a ladder: group labels are not thresholds or deadlines": 56,
-      "ladder pair too illiquid to fill": 180,
-      "bracket overround smaller than the spread": 1,
+      "not a ladder: fewer than two live, quoted legs": 100,
+      "not a ladder: group labels are not thresholds or deadlines": 58,
+      "ladder pair too illiquid to fill": 117,
       "ladder inversion smaller than the spread": 3,
+      "bracket overround smaller than the spread": 1,
       "bracket has too many legs to place by hand": 1,
       "not a ladder: numeric group spans different end dates": 2,
       "bracket leg too illiquid to fill": 3,
-      "bracket underround smaller than the spread": 2,
+      "bracket underround smaller than the spread": 1,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
@@ -32,15 +32,15 @@
       {
         "family": "bracket",
         "event_slug": "openai-ipo-closing-market-cap-554",
-        "constraint": "7 mutually exclusive outcomes offer at 0.9790 total, but exactly one of them pays 1.00",
-        "edge_c": 2.1,
+        "constraint": "7 mutually exclusive outcomes offer at 0.9800 total, but exactly one of them pays 1.00",
+        "edge_c": 2.0,
         "actions": [
           "BUY YES  <500B  @ 0.022",
           "BUY YES  500\u2013750B  @ 0.035",
           "BUY YES  750B\u20131T  @ 0.046",
           "BUY YES  1T\u20131.25T  @ 0.146",
           "BUY YES  1.25T\u20131.5T  @ 0.170",
-          "BUY YES  1.5T+  @ 0.294",
+          "BUY YES  1.5T+  @ 0.295",
           "BUY YES  No IPO by December 31, 2027  @ 0.266"
         ],
         "warnings": [
@@ -53,7 +53,7 @@
             "name": "<500B",
             "bid": 0.01,
             "ask": 0.022,
-            "liquidity": 13475.66971,
+            "liquidity": 17046.1823,
             "end_iso": "2028-01-01T04:59:00Z",
             "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
           },
@@ -62,7 +62,7 @@
             "name": "500\u2013750B",
             "bid": 0.019,
             "ask": 0.035,
-            "liquidity": 12612.25669,
+            "liquidity": 16556.34871,
             "end_iso": "2028-01-01T04:59:00Z",
             "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
           },
@@ -71,7 +71,7 @@
             "name": "750B\u20131T",
             "bid": 0.036,
             "ask": 0.046,
-            "liquidity": 31531.21666,
+            "liquidity": 40276.01762,
             "end_iso": "2028-01-01T04:59:00Z",
             "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
           },
@@ -80,7 +80,7 @@
             "name": "1T\u20131.25T",
             "bid": 0.145,
             "ask": 0.146,
-            "liquidity": 22204.88418,
+            "liquidity": 29385.71064,
             "end_iso": "2028-01-01T04:59:00Z",
             "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
           },
@@ -89,25 +89,25 @@
             "name": "1.25T\u20131.5T",
             "bid": 0.16,
             "ask": 0.17,
-            "liquidity": 14998.4678,
+            "liquidity": 20397.3812,
             "end_iso": "2028-01-01T04:59:00Z",
             "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
           },
           {
             "question": "Will OpenAI\u2019s market cap be $1.5T or greater at market close on IPO day by December 31, 2027?",
             "name": "1.5T+",
-            "bid": 0.285,
-            "ask": 0.294,
-            "liquidity": 9482.72855,
+            "bid": 0.287,
+            "ask": 0.295,
+            "liquidity": 14332.88939,
             "end_iso": "2028-01-01T04:59:00Z",
             "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
           },
           {
             "question": "Will OpenAI not IPO by December 31, 2027?",
             "name": "No IPO by December 31, 2027",
-            "bid": 0.214,
+            "bid": 0.216,
             "ask": 0.266,
-            "liquidity": 11483.9372,
+            "liquidity": 13615.97297,
             "end_iso": "2028-01-01T04:59:00Z",
             "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
           }
@@ -134,65 +134,65 @@
         "rows": [
           {
             "label": "\u22642.3%",
-            "market_prob": 0.0105,
+            "market_prob": 0.0085,
             "model_prob": 0.0005,
-            "gap_c": -1.0,
+            "gap_c": -0.8,
             "suspect": false
           },
           {
             "label": "2.4%",
-            "market_prob": 0.006,
+            "market_prob": 0.0065,
             "model_prob": 0.0035,
-            "gap_c": -0.25,
+            "gap_c": -0.3,
             "suspect": false
           },
           {
             "label": "2.5%",
-            "market_prob": 0.006,
+            "market_prob": 0.0065,
             "model_prob": 0.0176,
-            "gap_c": 1.16,
+            "gap_c": 1.11,
             "suspect": false
           },
           {
             "label": "2.6%",
-            "market_prob": 0.06,
+            "market_prob": 0.065,
             "model_prob": 0.0598,
-            "gap_c": -0.02,
+            "gap_c": -0.52,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.06,
+            "market_prob": 0.065,
             "model_prob": 0.1391,
-            "gap_c": 7.91,
+            "gap_c": 7.41,
             "suspect": false
           },
           {
             "label": "2.8%",
-            "market_prob": 0.205,
+            "market_prob": 0.185,
             "model_prob": 0.2217,
-            "gap_c": 1.67,
+            "gap_c": 3.67,
             "suspect": false
           },
           {
             "label": "2.9%",
-            "market_prob": 0.34,
+            "market_prob": 0.345,
             "model_prob": 0.242,
-            "gap_c": -9.8,
+            "gap_c": -10.3,
             "suspect": false
           },
           {
             "label": "3.0%",
-            "market_prob": 0.34,
+            "market_prob": 0.345,
             "model_prob": 0.1811,
-            "gap_c": -15.89,
+            "gap_c": -16.39,
             "suspect": false
           },
           {
             "label": "3.1%",
-            "market_prob": 0.065,
+            "market_prob": 0.075,
             "model_prob": 0.0928,
-            "gap_c": 2.78,
+            "gap_c": 1.78,
             "suspect": false
           },
           {
@@ -214,13 +214,13 @@
         "nowcast_pp": 0.21114452794251,
         "nowcast_as_of": "2026-11-13 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.096pp (x1.67). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.099pp (x1.62). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.1%",
-            "market_prob": 0.12,
+            "market_prob": 0.11,
             "model_prob": 0.3512,
-            "gap_c": 23.12,
+            "gap_c": 24.12,
             "suspect": false
           },
           {
@@ -253,16 +253,16 @@
           },
           {
             "label": "0.6%",
-            "market_prob": 0.028,
+            "market_prob": 0.0345,
             "model_prob": 0.014,
-            "gap_c": -1.4,
+            "gap_c": -2.05,
             "suspect": false
           },
           {
             "label": "0.7%+",
-            "market_prob": 0.0155,
+            "market_prob": 0.014,
             "model_prob": 0.003,
-            "gap_c": -1.25,
+            "gap_c": -1.1,
             "suspect": false
           }
         ]
@@ -281,37 +281,37 @@
         "rows": [
           {
             "label": "\u2264-0.3%",
-            "market_prob": 0.0325,
+            "market_prob": 0.028,
             "model_prob": 0.0081,
-            "gap_c": -2.44,
+            "gap_c": -1.99,
             "suspect": false
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.125,
+            "market_prob": 0.065,
             "model_prob": 0.0294,
-            "gap_c": -9.56,
+            "gap_c": -3.56,
             "suspect": false
           },
           {
             "label": "-0.1%",
-            "market_prob": 0.215,
+            "market_prob": 0.22,
             "model_prob": 0.0863,
-            "gap_c": -12.87,
+            "gap_c": -13.37,
             "suspect": false
           },
           {
             "label": "0.0%",
-            "market_prob": 0.33,
+            "market_prob": 0.38,
             "model_prob": 0.1738,
-            "gap_c": -15.62,
+            "gap_c": -20.62,
             "suspect": false
           },
           {
             "label": "0.1%",
-            "market_prob": 0.25,
+            "market_prob": 0.26,
             "model_prob": 0.2397,
-            "gap_c": -1.03,
+            "gap_c": -2.03,
             "suspect": false
           },
           {
@@ -323,16 +323,16 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.032,
+            "market_prob": 0.0295,
             "model_prob": 0.1467,
-            "gap_c": 11.47,
+            "gap_c": 11.72,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.034,
+            "market_prob": 0.033,
             "model_prob": 0.0651,
-            "gap_c": 3.11,
+            "gap_c": 3.21,
             "suspect": false
           },
           {
@@ -344,9 +344,9 @@
           },
           {
             "label": "\u22650.6%",
-            "market_prob": 0.03,
+            "market_prob": 0.0185,
             "model_prob": 0.0048,
-            "gap_c": -2.52,
+            "gap_c": -1.37,
             "suspect": false
           }
         ]
@@ -365,86 +365,86 @@
         "rows": [
           {
             "label": "\u22643.3%",
-            "market_prob": 0.0345,
+            "market_prob": 0.076,
             "model_prob": 0.0001,
-            "gap_c": -3.44,
+            "gap_c": -7.59,
             "suspect": false
           },
           {
             "label": "3.4%",
-            "market_prob": 0.0445,
+            "market_prob": 0.0795,
             "model_prob": 0.0011,
-            "gap_c": -4.34,
+            "gap_c": -7.84,
             "suspect": false
           },
           {
             "label": "3.5%",
-            "market_prob": 0.039,
+            "market_prob": 0.045,
             "model_prob": 0.0068,
-            "gap_c": -3.22,
+            "gap_c": -3.82,
             "suspect": false
           },
           {
             "label": "3.6%",
-            "market_prob": 0.13,
+            "market_prob": 0.105,
             "model_prob": 0.0292,
-            "gap_c": -10.08,
+            "gap_c": -7.58,
             "suspect": false
           },
           {
             "label": "3.7%",
-            "market_prob": 0.28,
+            "market_prob": 0.27,
             "model_prob": 0.086,
-            "gap_c": -19.4,
+            "gap_c": -18.4,
             "suspect": false
           },
           {
             "label": "3.8%",
-            "market_prob": 0.325,
+            "market_prob": 0.345,
             "model_prob": 0.1735,
-            "gap_c": -15.15,
+            "gap_c": -17.15,
             "suspect": false
           },
           {
             "label": "3.9%",
-            "market_prob": 0.215,
+            "market_prob": 0.185,
             "model_prob": 0.2396,
-            "gap_c": 2.46,
+            "gap_c": 5.46,
             "suspect": false
           },
           {
             "label": "4.0%",
-            "market_prob": 0.03,
+            "market_prob": 0.055,
             "model_prob": 0.2267,
-            "gap_c": 19.67,
+            "gap_c": 17.17,
             "suspect": false
           },
           {
             "label": "4.1%",
-            "market_prob": 0.05,
+            "market_prob": 0.033,
             "model_prob": 0.147,
-            "gap_c": 9.7,
+            "gap_c": 11.4,
             "suspect": false
           },
           {
             "label": "4.2%",
-            "market_prob": 0.035,
+            "market_prob": 0.038,
             "model_prob": 0.0653,
-            "gap_c": 3.03,
+            "gap_c": 2.73,
             "suspect": false
           },
           {
             "label": "4.3%",
-            "market_prob": 0.0455,
+            "market_prob": 0.033,
             "model_prob": 0.0199,
-            "gap_c": -2.56,
+            "gap_c": -1.31,
             "suspect": false
           },
           {
             "label": "\u22654.4%",
-            "market_prob": 0.014,
+            "market_prob": 0.0205,
             "model_prob": 0.0048,
-            "gap_c": -0.92,
+            "gap_c": -1.57,
             "suspect": false
           }
         ]
@@ -456,162 +456,7 @@
     "cal_vetoed": 0
   },
   "gas": [],
-  "spxindex": [
-    {
-      "market_id": "KXNASDAQ100-26NOV13H1600-T27999.9900",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "No",
-      "title": "Will the Nasdaq-100 be above 27999.9900 at the end of Nov 13, 2026 at 4pm EST?",
-      "url": "https://kalshi.com/markets/KXNASDAQ100-26NOV13H1600",
-      "entry_price": 0.83,
-      "model_prob": 0.9377,
-      "edge": 0.1077,
-      "fair": 0.0623,
-      "market_prob": 0.195,
-      "implied_sigma": 0.3752,
-      "spot_used": 27686.56,
-      "chain_ts": "2026-11-13 17:07:12",
-      "vrp_shrink": 0.92,
-      "series": "KXNASDAQ100",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-11-13T21:00:00+00:00",
-      "event_iso": "2026-11-13T21:00:00+00:00"
-    },
-    {
-      "market_id": "KXINX-26NOV13H1600-B7562",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "No",
-      "title": "Will the S&P 500 be between 7550 and 7574.9999 on Nov 13, 2026 at 4pm EST?",
-      "url": "https://kalshi.com/markets/KXINX-26NOV13H1600",
-      "entry_price": 0.81,
-      "model_prob": 0.8793,
-      "edge": 0.0693,
-      "fair": 0.1207,
-      "market_prob": 0.215,
-      "implied_sigma": 0.2514,
-      "spot_used": 7512.38,
-      "chain_ts": "2026-11-13 17:06:28",
-      "vrp_shrink": 0.92,
-      "series": "KXINX",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-11-13T21:00:00+00:00",
-      "event_iso": "2026-11-13T21:00:00+00:00"
-    },
-    {
-      "market_id": "KXNASDAQ100-26NOV13H1600-B27950",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "No",
-      "title": "Will the Nasdaq-100 be between 27900 and 27999.9900 at the end of Nov 13, 2026 at 4pm EST?",
-      "url": "https://kalshi.com/markets/KXNASDAQ100-26NOV13H1600",
-      "entry_price": 0.86,
-      "model_prob": 0.9091,
-      "edge": 0.0491,
-      "fair": 0.0909,
-      "market_prob": 0.165,
-      "implied_sigma": 0.3752,
-      "spot_used": 27686.56,
-      "chain_ts": "2026-11-13 17:07:12",
-      "vrp_shrink": 0.92,
-      "series": "KXNASDAQ100",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-11-13T21:00:00+00:00",
-      "event_iso": "2026-11-13T21:00:00+00:00"
-    },
-    {
-      "market_id": "KXINX-26NOV13H1600-B7512",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "Yes",
-      "title": "Will the S&P 500 be between 7500 and 7524.9999 on Nov 13, 2026 at 4pm EST?",
-      "url": "https://kalshi.com/markets/KXINX-26NOV13H1600",
-      "entry_price": 0.22,
-      "model_prob": 0.2636,
-      "edge": 0.0436,
-      "fair": 0.2636,
-      "market_prob": 0.195,
-      "implied_sigma": 0.2514,
-      "spot_used": 7512.38,
-      "chain_ts": "2026-11-13 17:06:28",
-      "vrp_shrink": 0.92,
-      "series": "KXINX",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-11-13T21:00:00+00:00",
-      "event_iso": "2026-11-13T21:00:00+00:00"
-    },
-    {
-      "market_id": "KXINX-26NOV13H1600-B7487",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "Yes",
-      "title": "Will the S&P 500 be between 7475 and 7499.9999 on Nov 13, 2026 at 4pm EST?",
-      "url": "https://kalshi.com/markets/KXINX-26NOV13H1600",
-      "entry_price": 0.14,
-      "model_prob": 0.1789,
-      "edge": 0.0389,
-      "fair": 0.1789,
-      "market_prob": 0.115,
-      "implied_sigma": 0.2514,
-      "spot_used": 7512.38,
-      "chain_ts": "2026-11-13 17:06:28",
-      "vrp_shrink": 0.92,
-      "series": "KXINX",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-11-13T21:00:00+00:00",
-      "event_iso": "2026-11-13T21:00:00+00:00"
-    },
-    {
-      "market_id": "KXINX-26NOV13H1600-B7587",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "No",
-      "title": "Will the S&P 500 be between 7575 and 7599.9999 on Nov 13, 2026 at 4pm EST?",
-      "url": "https://kalshi.com/markets/KXINX-26NOV13H1600",
-      "entry_price": 0.93,
-      "model_prob": 0.9681,
-      "edge": 0.0381,
-      "fair": 0.0319,
-      "market_prob": 0.095,
-      "implied_sigma": 0.2514,
-      "spot_used": 7512.38,
-      "chain_ts": "2026-11-13 17:06:28",
-      "vrp_shrink": 0.92,
-      "series": "KXINX",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-11-13T21:00:00+00:00",
-      "event_iso": "2026-11-13T21:00:00+00:00"
-    },
-    {
-      "market_id": "KXNASDAQ100-26NOV13H1600-B27550",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "Yes",
-      "title": "Will the Nasdaq-100 be between 27500 and 27599.9900 at the end of Nov 13, 2026 at 4pm EST?",
-      "url": "https://kalshi.com/markets/KXNASDAQ100-26NOV13H1600",
-      "entry_price": 0.1,
-      "model_prob": 0.1375,
-      "edge": 0.0375,
-      "fair": 0.1375,
-      "market_prob": 0.075,
-      "implied_sigma": 0.3752,
-      "spot_used": 27686.56,
-      "chain_ts": "2026-11-13 17:07:12",
-      "vrp_shrink": 0.92,
-      "series": "KXNASDAQ100",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-11-13T21:00:00+00:00",
-      "event_iso": "2026-11-13T21:00:00+00:00"
-    }
-  ],
+  "spxindex": [],
   "sizing": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
