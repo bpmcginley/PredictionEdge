@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-13 01:44:59",
-  "generated_at": 1794534299.590427,
+  "generated": "2026-11-13 08:49:02",
+  "generated_at": 1794559742.1831195,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [],
@@ -12,17 +12,18 @@
   "consistency": {
     "ok": true,
     "enabled": true,
-    "events_scanned": 342,
+    "events_scanned": 341,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 87,
+      "bracket has legs we cannot price (fail closed)": 84,
       "not a ladder: duplicate deadlines left too few rungs": 10,
-      "not a ladder: fewer than two live, quoted legs": 99,
-      "not a ladder: group labels are not thresholds or deadlines": 55,
-      "ladder pair too illiquid to fill": 94,
-      "not a ladder: a live leg carries no group label": 7,
+      "not a ladder: fewer than two live, quoted legs": 101,
+      "not a ladder: group labels are not thresholds or deadlines": 58,
+      "bracket overround smaller than the spread": 1,
+      "ladder pair too illiquid to fill": 97,
+      "ladder inversion smaller than the spread": 2,
+      "bracket has too many legs to place by hand": 1,
       "not a ladder: numeric group spans different end dates": 2,
-      "bracket leg too illiquid to fill": 4,
-      "ladder inversion smaller than the spread": 1,
+      "bracket leg too illiquid to fill": 3,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
@@ -47,9 +48,9 @@
         "rows": [
           {
             "label": "\u22642.3%",
-            "market_prob": 0.014,
+            "market_prob": 0.011,
             "model_prob": 0.0005,
-            "gap_c": -1.35,
+            "gap_c": -1.05,
             "suspect": false
           },
           {
@@ -61,16 +62,16 @@
           },
           {
             "label": "2.5%",
-            "market_prob": 0.006,
+            "market_prob": 0.0065,
             "model_prob": 0.0176,
-            "gap_c": 1.16,
+            "gap_c": 1.11,
             "suspect": false
           },
           {
             "label": "2.6%",
-            "market_prob": 0.04,
+            "market_prob": 0.045,
             "model_prob": 0.0598,
-            "gap_c": 1.98,
+            "gap_c": 1.48,
             "suspect": false
           },
           {
@@ -82,23 +83,23 @@
           },
           {
             "label": "2.8%",
-            "market_prob": 0.245,
+            "market_prob": 0.215,
             "model_prob": 0.2217,
-            "gap_c": -2.33,
+            "gap_c": 0.67,
             "suspect": false
           },
           {
             "label": "2.9%",
-            "market_prob": 0.335,
+            "market_prob": 0.31,
             "model_prob": 0.242,
-            "gap_c": -9.3,
+            "gap_c": -6.8,
             "suspect": false
           },
           {
             "label": "3.0%",
-            "market_prob": 0.235,
+            "market_prob": 0.31,
             "model_prob": 0.1811,
-            "gap_c": -5.39,
+            "gap_c": -12.89,
             "suspect": false
           },
           {
@@ -127,34 +128,34 @@
         "nowcast_pp": 0.21114452794251,
         "nowcast_as_of": "2026-11-12 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.109pp (x1.47). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.106pp (x1.51). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.1%",
-            "market_prob": 0.135,
+            "market_prob": 0.105,
             "model_prob": 0.3512,
-            "gap_c": 21.62,
+            "gap_c": 24.62,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.41,
+            "market_prob": 0.425,
             "model_prob": 0.2448,
-            "gap_c": -16.52,
+            "gap_c": -18.02,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.315,
+            "market_prob": 0.33,
             "model_prob": 0.2113,
-            "gap_c": -10.37,
+            "gap_c": -11.87,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.13,
+            "market_prob": 0.145,
             "model_prob": 0.125,
-            "gap_c": -0.5,
+            "gap_c": -2.0,
             "suspect": false
           },
           {
@@ -166,16 +167,16 @@
           },
           {
             "label": "0.6%",
-            "market_prob": 0.049,
+            "market_prob": 0.0435,
             "model_prob": 0.014,
-            "gap_c": -3.5,
+            "gap_c": -2.95,
             "suspect": false
           },
           {
             "label": "0.7%+",
-            "market_prob": 0.037,
+            "market_prob": 0.0315,
             "model_prob": 0.003,
-            "gap_c": -3.4,
+            "gap_c": -2.85,
             "suspect": false
           }
         ]
@@ -194,73 +195,171 @@
         "rows": [
           {
             "label": "\u2264-0.3%",
-            "market_prob": 0.225,
+            "market_prob": 0.284,
             "model_prob": 0.0081,
-            "gap_c": -21.69,
-            "suspect": false
+            "gap_c": -27.59,
+            "suspect": true
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.075,
+            "market_prob": 0.14,
             "model_prob": 0.0294,
-            "gap_c": -4.56,
+            "gap_c": -11.06,
             "suspect": false
           },
           {
             "label": "-0.1%",
-            "market_prob": 0.29,
+            "market_prob": 0.345,
             "model_prob": 0.0863,
-            "gap_c": -20.37,
-            "suspect": false
-          },
-          {
-            "label": "0.0%",
-            "market_prob": 0.64,
-            "model_prob": 0.1738,
-            "gap_c": -46.62,
+            "gap_c": -25.87,
             "suspect": true
           },
           {
+            "label": "0.0%",
+            "market_prob": 0.35,
+            "model_prob": 0.1738,
+            "gap_c": -17.62,
+            "suspect": false
+          },
+          {
             "label": "0.1%",
-            "market_prob": 0.41,
+            "market_prob": 0.325,
             "model_prob": 0.2397,
-            "gap_c": -17.03,
+            "gap_c": -8.53,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.26,
+            "market_prob": 0.325,
             "model_prob": 0.2265,
-            "gap_c": -3.35,
+            "gap_c": -9.85,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.255,
+            "market_prob": 0.27,
             "model_prob": 0.1467,
-            "gap_c": -10.83,
+            "gap_c": -12.33,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.2275,
+            "market_prob": 0.2985,
             "model_prob": 0.0651,
-            "gap_c": -16.24,
+            "gap_c": -23.34,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.3895,
+            "market_prob": 0.268,
             "model_prob": 0.0198,
-            "gap_c": -36.97,
-            "suspect": true
+            "gap_c": -24.82,
+            "suspect": false
           },
           {
             "label": "\u22650.6%",
-            "market_prob": 0.399,
+            "market_prob": 0.278,
             "model_prob": 0.0048,
-            "gap_c": -39.42,
+            "gap_c": -27.32,
             "suspect": true
+          }
+        ]
+      },
+      {
+        "slug": "november-inflation-us-annual",
+        "title": "November Inflation US - Annual",
+        "series": "cpi",
+        "basis": "yoy",
+        "ref_month": "2026-11",
+        "url": "https://polymarket.com/event/november-inflation-us-annual",
+        "nowcast_pp": 3.93543014449254,
+        "nowcast_as_of": "2026-11-12 00:00",
+        "sigma": 0.16,
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.263pp (x0.61). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
+        "rows": [
+          {
+            "label": "\u22643.3%",
+            "market_prob": 0.157,
+            "model_prob": 0.0001,
+            "gap_c": -15.69,
+            "suspect": false
+          },
+          {
+            "label": "3.4%",
+            "market_prob": 0.167,
+            "model_prob": 0.0011,
+            "gap_c": -16.59,
+            "suspect": false
+          },
+          {
+            "label": "3.5%",
+            "market_prob": 0.15,
+            "model_prob": 0.0068,
+            "gap_c": -14.32,
+            "suspect": false
+          },
+          {
+            "label": "3.6%",
+            "market_prob": 0.12,
+            "model_prob": 0.0292,
+            "gap_c": -9.08,
+            "suspect": false
+          },
+          {
+            "label": "3.7%",
+            "market_prob": 0.26,
+            "model_prob": 0.086,
+            "gap_c": -17.4,
+            "suspect": false
+          },
+          {
+            "label": "3.8%",
+            "market_prob": 0.235,
+            "model_prob": 0.1735,
+            "gap_c": -6.15,
+            "suspect": false
+          },
+          {
+            "label": "3.9%",
+            "market_prob": 0.385,
+            "model_prob": 0.2396,
+            "gap_c": -14.54,
+            "suspect": false
+          },
+          {
+            "label": "4.0%",
+            "market_prob": 0.11,
+            "model_prob": 0.2267,
+            "gap_c": 11.67,
+            "suspect": false
+          },
+          {
+            "label": "4.1%",
+            "market_prob": 0.164,
+            "model_prob": 0.147,
+            "gap_c": -1.7,
+            "suspect": false
+          },
+          {
+            "label": "4.2%",
+            "market_prob": 0.172,
+            "model_prob": 0.0653,
+            "gap_c": -10.67,
+            "suspect": false
+          },
+          {
+            "label": "4.3%",
+            "market_prob": 0.157,
+            "model_prob": 0.0199,
+            "gap_c": -13.71,
+            "suspect": false
+          },
+          {
+            "label": "\u22654.4%",
+            "market_prob": 0.0395,
+            "model_prob": 0.0048,
+            "gap_c": -3.47,
+            "suspect": false
           }
         ]
       }
