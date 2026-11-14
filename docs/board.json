@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-14 16:08:44",
-  "generated_at": 1794672524.583848,
+  "generated": "2026-11-14 20:45:23",
+  "generated_at": 1794689123.0662508,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [],
@@ -12,18 +12,20 @@
   "consistency": {
     "ok": true,
     "enabled": true,
-    "events_scanned": 341,
+    "events_scanned": 342,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 85,
+      "bracket has legs we cannot price (fail closed)": 83,
       "not a ladder: duplicate deadlines left too few rungs": 10,
-      "not a ladder: fewer than two live, quoted legs": 100,
+      "not a ladder: fewer than two live, quoted legs": 101,
       "not a ladder: group labels are not thresholds or deadlines": 57,
-      "bracket overround smaller than the spread": 3,
-      "ladder pair too illiquid to fill": 132,
+      "ladder pair too illiquid to fill": 111,
       "ladder inversion smaller than the spread": 1,
+      "bracket overround smaller than the spread": 1,
       "bracket has too many legs to place by hand": 1,
       "not a ladder: numeric group spans different end dates": 2,
+      "not a ladder: a live leg carries no group label": 3,
       "bracket leg too illiquid to fill": 4,
+      "bracket underround smaller than the spread": 1,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
@@ -55,23 +57,23 @@
           },
           {
             "label": "2.4%",
-            "market_prob": 0.006,
+            "market_prob": 0.0055,
             "model_prob": 0.0035,
-            "gap_c": -0.25,
+            "gap_c": -0.2,
             "suspect": false
           },
           {
             "label": "2.5%",
-            "market_prob": 0.006,
+            "market_prob": 0.0055,
             "model_prob": 0.0176,
-            "gap_c": 1.16,
+            "gap_c": 1.21,
             "suspect": false
           },
           {
             "label": "2.6%",
-            "market_prob": 0.045,
+            "market_prob": 0.065,
             "model_prob": 0.0598,
-            "gap_c": 1.48,
+            "gap_c": -0.52,
             "suspect": false
           },
           {
@@ -90,9 +92,9 @@
           },
           {
             "label": "2.9%",
-            "market_prob": 0.355,
+            "market_prob": 0.36,
             "model_prob": 0.242,
-            "gap_c": -11.3,
+            "gap_c": -11.8,
             "suspect": false
           },
           {
@@ -104,16 +106,16 @@
           },
           {
             "label": "3.1%",
-            "market_prob": 0.05,
+            "market_prob": 0.07,
             "model_prob": 0.0928,
-            "gap_c": 4.28,
+            "gap_c": 2.28,
             "suspect": false
           },
           {
             "label": "\u22653.2%",
-            "market_prob": 0.006,
+            "market_prob": 0.0055,
             "model_prob": 0.0418,
-            "gap_c": 3.58,
+            "gap_c": 3.63,
             "suspect": false
           }
         ]
@@ -128,7 +130,7 @@
         "nowcast_pp": 0.21114452794251,
         "nowcast_as_of": "2026-11-13 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.092pp (x1.74). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.094pp (x1.69). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.1%",
@@ -139,30 +141,30 @@
           },
           {
             "label": "0.2%",
-            "market_prob": 0.415,
+            "market_prob": 0.42,
             "model_prob": 0.2448,
-            "gap_c": -17.02,
+            "gap_c": -17.52,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.345,
+            "market_prob": 0.355,
             "model_prob": 0.2113,
-            "gap_c": -13.37,
+            "gap_c": -14.37,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.14,
+            "market_prob": 0.11,
             "model_prob": 0.125,
-            "gap_c": -1.5,
+            "gap_c": 1.5,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.023,
+            "market_prob": 0.041,
             "model_prob": 0.0506,
-            "gap_c": 2.76,
+            "gap_c": 0.96,
             "suspect": false
           },
           {
@@ -195,30 +197,30 @@
         "rows": [
           {
             "label": "\u2264-0.3%",
-            "market_prob": 0.0155,
+            "market_prob": 0.012,
             "model_prob": 0.0081,
-            "gap_c": -0.74,
+            "gap_c": -0.39,
             "suspect": false
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.065,
+            "market_prob": 0.06,
             "model_prob": 0.0294,
-            "gap_c": -3.56,
+            "gap_c": -3.06,
             "suspect": false
           },
           {
             "label": "-0.1%",
-            "market_prob": 0.215,
+            "market_prob": 0.255,
             "model_prob": 0.0863,
-            "gap_c": -12.87,
+            "gap_c": -16.87,
             "suspect": false
           },
           {
             "label": "0.0%",
-            "market_prob": 0.385,
+            "market_prob": 0.395,
             "model_prob": 0.1738,
-            "gap_c": -21.12,
+            "gap_c": -22.12,
             "suspect": false
           },
           {
@@ -230,37 +232,37 @@
           },
           {
             "label": "0.2%",
-            "market_prob": 0.095,
+            "market_prob": 0.09,
             "model_prob": 0.2265,
-            "gap_c": 13.15,
+            "gap_c": 13.65,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.0335,
+            "market_prob": 0.039,
             "model_prob": 0.1467,
-            "gap_c": 11.32,
+            "gap_c": 10.77,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.0455,
+            "market_prob": 0.03,
             "model_prob": 0.0651,
-            "gap_c": 1.96,
+            "gap_c": 3.51,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.045,
+            "market_prob": 0.03,
             "model_prob": 0.0198,
-            "gap_c": -2.52,
+            "gap_c": -1.02,
             "suspect": false
           },
           {
             "label": "\u22650.6%",
-            "market_prob": 0.0445,
+            "market_prob": 0.0115,
             "model_prob": 0.0048,
-            "gap_c": -3.97,
+            "gap_c": -0.67,
             "suspect": false
           }
         ]
@@ -279,23 +281,23 @@
         "rows": [
           {
             "label": "\u22643.3%",
-            "market_prob": 0.0695,
+            "market_prob": 0.083,
             "model_prob": 0.0001,
-            "gap_c": -6.94,
+            "gap_c": -8.29,
             "suspect": false
           },
           {
             "label": "3.4%",
-            "market_prob": 0.046,
+            "market_prob": 0.0485,
             "model_prob": 0.0011,
-            "gap_c": -4.49,
+            "gap_c": -4.74,
             "suspect": false
           },
           {
             "label": "3.5%",
-            "market_prob": 0.0485,
+            "market_prob": 0.0465,
             "model_prob": 0.0068,
-            "gap_c": -4.17,
+            "gap_c": -3.97,
             "suspect": false
           },
           {
@@ -314,44 +316,44 @@
           },
           {
             "label": "3.8%",
-            "market_prob": 0.35,
+            "market_prob": 0.33,
             "model_prob": 0.1735,
-            "gap_c": -17.65,
+            "gap_c": -15.65,
             "suspect": false
           },
           {
             "label": "3.9%",
-            "market_prob": 0.19,
+            "market_prob": 0.185,
             "model_prob": 0.2396,
-            "gap_c": 4.96,
+            "gap_c": 5.46,
             "suspect": false
           },
           {
             "label": "4.0%",
-            "market_prob": 0.05,
+            "market_prob": 0.0525,
             "model_prob": 0.2267,
-            "gap_c": 17.67,
+            "gap_c": 17.42,
             "suspect": false
           },
           {
             "label": "4.1%",
-            "market_prob": 0.0335,
+            "market_prob": 0.0315,
             "model_prob": 0.147,
-            "gap_c": 11.35,
+            "gap_c": 11.55,
             "suspect": false
           },
           {
             "label": "4.2%",
-            "market_prob": 0.025,
+            "market_prob": 0.0255,
             "model_prob": 0.0653,
-            "gap_c": 4.03,
+            "gap_c": 3.98,
             "suspect": false
           },
           {
             "label": "4.3%",
-            "market_prob": 0.0225,
+            "market_prob": 0.025,
             "model_prob": 0.0199,
-            "gap_c": -0.26,
+            "gap_c": -0.51,
             "suspect": false
           },
           {
