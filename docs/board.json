@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-16 07:09:49",
-  "generated_at": 1794812989.0036826,
+  "generated": "2026-11-16 17:05:33",
+  "generated_at": 1794848733.6626565,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [],
@@ -12,22 +12,108 @@
   "consistency": {
     "ok": true,
     "enabled": true,
-    "events_scanned": 340,
+    "events_scanned": 341,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 86,
+      "bracket has legs we cannot price (fail closed)": 88,
       "not a ladder: duplicate deadlines left too few rungs": 10,
-      "not a ladder: fewer than two live, quoted legs": 98,
-      "not a ladder: group labels are not thresholds or deadlines": 55,
-      "ladder pair too illiquid to fill": 123,
-      "bracket overround smaller than the spread": 1,
+      "not a ladder: fewer than two live, quoted legs": 96,
+      "not a ladder: group labels are not thresholds or deadlines": 56,
+      "bracket overround smaller than the spread": 2,
+      "ladder pair too illiquid to fill": 161,
+      "bracket underround smaller than the spread": 1,
       "not a ladder: numeric group spans different end dates": 2,
       "bracket leg too illiquid to fill": 4,
-      "not a ladder: a live leg carries no group label": 1,
-      "ladder inversion smaller than the spread": 1,
+      "ladder inversion smaller than the spread": 2,
+      "not a ladder: a live leg carries no group label": 2,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
-    "violations": []
+    "violations": [
+      {
+        "family": "bracket",
+        "event_slug": "openai-ipo-closing-market-cap-554",
+        "constraint": "7 mutually exclusive outcomes offer at 0.9710 total, but exactly one of them pays 1.00",
+        "edge_c": 2.9,
+        "actions": [
+          "BUY YES  <500B  @ 0.024",
+          "BUY YES  500\u2013750B  @ 0.033",
+          "BUY YES  750B\u20131T  @ 0.037",
+          "BUY YES  1T\u20131.25T  @ 0.171",
+          "BUY YES  1.25T\u20131.5T  @ 0.180",
+          "BUY YES  1.5T+  @ 0.268",
+          "BUY YES  No IPO by December 31, 2027  @ 0.258"
+        ],
+        "warnings": [
+          "requires filling all 7 legs - confirm the event page lists exactly 7 outcomes before trusting the sum"
+        ],
+        "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554",
+        "legs": [
+          {
+            "question": "Will OpenAI\u2019s market cap be less than $500B at market close on IPO day by December 31, 2027?",
+            "name": "<500B",
+            "bid": 0.012,
+            "ask": 0.024,
+            "liquidity": 9983.09816,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
+          },
+          {
+            "question": "Will OpenAI\u2019s market cap be between $500B and $750B at market close on IPO day by December 31, 2027?",
+            "name": "500\u2013750B",
+            "bid": 0.017,
+            "ask": 0.033,
+            "liquidity": 9321.8538,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
+          },
+          {
+            "question": "Will OpenAI\u2019s market cap be between $750B and $1T at market close on IPO day by December 31, 2027?",
+            "name": "750B\u20131T",
+            "bid": 0.03,
+            "ask": 0.037,
+            "liquidity": 32561.12991,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
+          },
+          {
+            "question": "Will OpenAI\u2019s market cap be between $1T and $1.25T at market close on IPO day by December 31, 2027?",
+            "name": "1T\u20131.25T",
+            "bid": 0.154,
+            "ask": 0.171,
+            "liquidity": 15039.95014,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
+          },
+          {
+            "question": "Will OpenAI\u2019s market cap be between $1.25T and $1.5T at market close on IPO day by December 31, 2027?",
+            "name": "1.25T\u20131.5T",
+            "bid": 0.17,
+            "ask": 0.18,
+            "liquidity": 11498.8341,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
+          },
+          {
+            "question": "Will OpenAI\u2019s market cap be $1.5T or greater at market close on IPO day by December 31, 2027?",
+            "name": "1.5T+",
+            "bid": 0.264,
+            "ask": 0.268,
+            "liquidity": 10005.26829,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
+          },
+          {
+            "question": "Will OpenAI not IPO by December 31, 2027?",
+            "name": "No IPO by December 31, 2027",
+            "bid": 0.22,
+            "ask": 0.258,
+            "liquidity": 9070.45181,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
+          }
+        ]
+      }
+    ]
   },
   "macro": {
     "ok": true,
@@ -42,71 +128,71 @@
         "ref_month": "2026-11",
         "url": "https://polymarket.com/event/core-cpi-yoy-november-2026",
         "nowcast_pp": 2.87325045473827,
-        "nowcast_as_of": "2026-11-13 00:00",
+        "nowcast_as_of": "2026-11-16 00:00",
         "sigma": 0.16,
         "model_sigma_note": "",
         "rows": [
           {
             "label": "\u22642.3%",
-            "market_prob": 0.0085,
+            "market_prob": 0.006,
             "model_prob": 0.0005,
-            "gap_c": -0.8,
+            "gap_c": -0.55,
             "suspect": false
           },
           {
             "label": "2.4%",
-            "market_prob": 0.027,
+            "market_prob": 0.031,
             "model_prob": 0.0035,
-            "gap_c": -2.35,
+            "gap_c": -2.75,
             "suspect": false
           },
           {
             "label": "2.5%",
-            "market_prob": 0.0555,
+            "market_prob": 0.0325,
             "model_prob": 0.0176,
-            "gap_c": -3.79,
+            "gap_c": -1.49,
             "suspect": false
           },
           {
             "label": "2.6%",
-            "market_prob": 0.055,
+            "market_prob": 0.04,
             "model_prob": 0.0598,
-            "gap_c": 0.48,
+            "gap_c": 1.98,
             "suspect": false
           },
           {
             "label": "2.7%",
-            "market_prob": 0.065,
+            "market_prob": 0.04,
             "model_prob": 0.1391,
-            "gap_c": 7.41,
+            "gap_c": 9.91,
             "suspect": false
           },
           {
             "label": "2.8%",
-            "market_prob": 0.195,
+            "market_prob": 0.17,
             "model_prob": 0.2217,
-            "gap_c": 2.67,
+            "gap_c": 5.17,
             "suspect": false
           },
           {
             "label": "2.9%",
-            "market_prob": 0.22,
+            "market_prob": 0.29,
             "model_prob": 0.242,
-            "gap_c": 2.2,
+            "gap_c": -4.8,
             "suspect": false
           },
           {
             "label": "3.0%",
-            "market_prob": 0.32,
+            "market_prob": 0.305,
             "model_prob": 0.1811,
-            "gap_c": -13.89,
+            "gap_c": -12.39,
             "suspect": false
           },
           {
             "label": "3.1%",
-            "market_prob": 0.2,
+            "market_prob": 0.19,
             "model_prob": 0.0928,
-            "gap_c": -10.72,
+            "gap_c": -9.72,
             "suspect": false
           },
           {
@@ -126,50 +212,50 @@
         "ref_month": "2026-11",
         "url": "https://polymarket.com/event/core-cpi-mom-november-2026",
         "nowcast_pp": 0.21114452794251,
-        "nowcast_as_of": "2026-11-13 00:00",
+        "nowcast_as_of": "2026-11-16 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.095pp (x1.69). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.106pp (x1.51). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.1%",
-            "market_prob": 0.115,
+            "market_prob": 0.125,
             "model_prob": 0.3512,
-            "gap_c": 23.62,
+            "gap_c": 22.62,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.42,
+            "market_prob": 0.435,
             "model_prob": 0.2448,
-            "gap_c": -17.52,
+            "gap_c": -19.02,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.33,
+            "market_prob": 0.34,
             "model_prob": 0.2113,
-            "gap_c": -11.87,
+            "gap_c": -12.87,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.115,
+            "market_prob": 0.11,
             "model_prob": 0.125,
-            "gap_c": 1.0,
+            "gap_c": 1.5,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.035,
+            "market_prob": 0.036,
             "model_prob": 0.0506,
-            "gap_c": 1.56,
+            "gap_c": 1.46,
             "suspect": false
           },
           {
             "label": "0.6%",
-            "market_prob": 0.0205,
+            "market_prob": 0.045,
             "model_prob": 0.014,
-            "gap_c": -0.65,
+            "gap_c": -3.1,
             "suspect": false
           },
           {
@@ -189,7 +275,7 @@
         "ref_month": "2026-11",
         "url": "https://polymarket.com/event/november-inflation-us-monthly",
         "nowcast_pp": 0.13506088225743,
-        "nowcast_as_of": "2026-11-13 00:00",
+        "nowcast_as_of": "2026-11-16 00:00",
         "sigma": 0.16,
         "model_sigma_note": "",
         "rows": [
@@ -202,37 +288,37 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.115,
+            "market_prob": 0.125,
             "model_prob": 0.0294,
-            "gap_c": -8.56,
+            "gap_c": -9.56,
             "suspect": false
           },
           {
             "label": "-0.1%",
-            "market_prob": 0.27,
+            "market_prob": 0.31,
             "model_prob": 0.0863,
-            "gap_c": -18.37,
+            "gap_c": -22.37,
             "suspect": false
           },
           {
             "label": "0.0%",
-            "market_prob": 0.375,
+            "market_prob": 0.355,
             "model_prob": 0.1738,
-            "gap_c": -20.12,
+            "gap_c": -18.12,
             "suspect": false
           },
           {
             "label": "0.1%",
-            "market_prob": 0.24,
+            "market_prob": 0.18,
             "model_prob": 0.2397,
-            "gap_c": -0.03,
+            "gap_c": 5.97,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.045,
+            "market_prob": 0.0425,
             "model_prob": 0.2265,
-            "gap_c": 18.15,
+            "gap_c": 18.4,
             "suspect": false
           },
           {
@@ -244,16 +330,16 @@
           },
           {
             "label": "0.4%",
-            "market_prob": 0.0115,
+            "market_prob": 0.027,
             "model_prob": 0.0651,
-            "gap_c": 5.36,
+            "gap_c": 3.81,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.0115,
+            "market_prob": 0.027,
             "model_prob": 0.0198,
-            "gap_c": 0.83,
+            "gap_c": -0.72,
             "suspect": false
           },
           {
@@ -273,7 +359,7 @@
         "ref_month": "2026-11",
         "url": "https://polymarket.com/event/november-inflation-us-annual",
         "nowcast_pp": 3.93543014449254,
-        "nowcast_as_of": "2026-11-13 00:00",
+        "nowcast_as_of": "2026-11-16 00:00",
         "sigma": 0.16,
         "model_sigma_note": "",
         "rows": [
@@ -286,9 +372,9 @@
           },
           {
             "label": "3.4%",
-            "market_prob": 0.029,
+            "market_prob": 0.034,
             "model_prob": 0.0011,
-            "gap_c": -2.79,
+            "gap_c": -3.29,
             "suspect": false
           },
           {
@@ -307,30 +393,30 @@
           },
           {
             "label": "3.7%",
-            "market_prob": 0.345,
+            "market_prob": 0.35,
             "model_prob": 0.086,
-            "gap_c": -25.9,
+            "gap_c": -26.4,
             "suspect": true
           },
           {
             "label": "3.8%",
-            "market_prob": 0.405,
+            "market_prob": 0.395,
             "model_prob": 0.1735,
-            "gap_c": -23.15,
+            "gap_c": -22.15,
             "suspect": false
           },
           {
             "label": "3.9%",
-            "market_prob": 0.12,
+            "market_prob": 0.11,
             "model_prob": 0.2396,
-            "gap_c": 11.96,
+            "gap_c": 12.96,
             "suspect": false
           },
           {
             "label": "4.0%",
-            "market_prob": 0.038,
+            "market_prob": 0.049,
             "model_prob": 0.2267,
-            "gap_c": 18.87,
+            "gap_c": 17.77,
             "suspect": false
           },
           {
@@ -372,22 +458,44 @@
   "gas": [],
   "spxindex": [
     {
-      "market_id": "KXINX-26NOV16H1600-B7562",
+      "market_id": "KXINX-26NOV16H1600-B7462",
       "venue": "kalshi",
       "source": "spxindex",
       "outcome": "Yes",
-      "title": "Will the S&P 500 be between 7550 and 7574.9999 on Nov 16, 2026 at 4pm EST?",
+      "title": "Will the S&P 500 be between 7450 and 7474.9999 on Nov 16, 2026 at 4pm EST?",
       "url": "https://kalshi.com/markets/KXINX-26NOV16H1600",
-      "entry_price": 0.08,
-      "model_prob": 0.1516,
-      "edge": 0.0716,
-      "fair": 0.1516,
-      "market_prob": 0.05,
-      "implied_sigma": 0.2569,
-      "spot_used": 7561.67,
-      "chain_ts": "2026-11-16 04:42:28",
+      "entry_price": 0.29,
+      "model_prob": 0.3628,
+      "edge": 0.0728,
+      "fair": 0.3628,
+      "market_prob": 0.275,
+      "implied_sigma": 0.2129,
+      "spot_used": 7471.06,
+      "chain_ts": "2026-11-16 17:05:27",
       "vrp_shrink": 0.92,
       "series": "KXINX",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-11-16T21:00:00+00:00",
+      "event_iso": "2026-11-16T21:00:00+00:00"
+    },
+    {
+      "market_id": "KXNASDAQ100-26NOV16H1600-B27550",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "Yes",
+      "title": "Will the Nasdaq-100 be between 27500 and 27599.9900 at the end of Nov 16, 2026 at 4pm EST?",
+      "url": "https://kalshi.com/markets/KXNASDAQ100-26NOV16H1600",
+      "entry_price": 0.2,
+      "model_prob": 0.2469,
+      "edge": 0.0469,
+      "fair": 0.2469,
+      "market_prob": 0.18,
+      "implied_sigma": 0.3271,
+      "spot_used": 27437.38,
+      "chain_ts": "2026-11-16 17:05:11",
+      "vrp_shrink": 0.92,
+      "series": "KXNASDAQ100",
       "model": "cboe-0dte-density",
       "validated": false,
       "end_iso": "2026-11-16T21:00:00+00:00",
