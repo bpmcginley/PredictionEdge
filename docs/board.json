@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-16 00:16:12",
-  "generated_at": 1794788172.6445518,
+  "generated": "2026-11-16 07:09:49",
+  "generated_at": 1794812989.0036826,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [],
@@ -12,19 +12,18 @@
   "consistency": {
     "ok": true,
     "enabled": true,
-    "events_scanned": 342,
+    "events_scanned": 340,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 84,
+      "bracket has legs we cannot price (fail closed)": 86,
       "not a ladder: duplicate deadlines left too few rungs": 10,
-      "not a ladder: fewer than two live, quoted legs": 97,
-      "not a ladder: group labels are not thresholds or deadlines": 58,
-      "ladder pair too illiquid to fill": 119,
-      "not a ladder: a live leg carries no group label": 7,
-      "bracket overround smaller than the spread": 3,
-      "ladder inversion smaller than the spread": 5,
+      "not a ladder: fewer than two live, quoted legs": 98,
+      "not a ladder: group labels are not thresholds or deadlines": 55,
+      "ladder pair too illiquid to fill": 123,
+      "bracket overround smaller than the spread": 1,
       "not a ladder: numeric group spans different end dates": 2,
       "bracket leg too illiquid to fill": 4,
-      "bracket underround smaller than the spread": 1,
+      "not a ladder: a live leg carries no group label": 1,
+      "ladder inversion smaller than the spread": 1,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
@@ -56,16 +55,16 @@
           },
           {
             "label": "2.4%",
-            "market_prob": 0.0055,
+            "market_prob": 0.027,
             "model_prob": 0.0035,
-            "gap_c": -0.2,
+            "gap_c": -2.35,
             "suspect": false
           },
           {
             "label": "2.5%",
-            "market_prob": 0.0055,
+            "market_prob": 0.0555,
             "model_prob": 0.0176,
-            "gap_c": 1.21,
+            "gap_c": -3.79,
             "suspect": false
           },
           {
@@ -84,30 +83,30 @@
           },
           {
             "label": "2.8%",
-            "market_prob": 0.185,
+            "market_prob": 0.195,
             "model_prob": 0.2217,
-            "gap_c": 3.67,
+            "gap_c": 2.67,
             "suspect": false
           },
           {
             "label": "2.9%",
-            "market_prob": 0.325,
+            "market_prob": 0.22,
             "model_prob": 0.242,
-            "gap_c": -8.3,
+            "gap_c": 2.2,
             "suspect": false
           },
           {
             "label": "3.0%",
-            "market_prob": 0.305,
+            "market_prob": 0.32,
             "model_prob": 0.1811,
-            "gap_c": -12.39,
+            "gap_c": -13.89,
             "suspect": false
           },
           {
             "label": "3.1%",
-            "market_prob": 0.095,
+            "market_prob": 0.2,
             "model_prob": 0.0928,
-            "gap_c": -0.22,
+            "gap_c": -10.72,
             "suspect": false
           },
           {
@@ -154,23 +153,23 @@
           },
           {
             "label": "0.4%",
-            "market_prob": 0.125,
+            "market_prob": 0.115,
             "model_prob": 0.125,
-            "gap_c": 0.0,
+            "gap_c": 1.0,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.034,
+            "market_prob": 0.035,
             "model_prob": 0.0506,
-            "gap_c": 1.66,
+            "gap_c": 1.56,
             "suspect": false
           },
           {
             "label": "0.6%",
-            "market_prob": 0.02,
+            "market_prob": 0.0205,
             "model_prob": 0.014,
-            "gap_c": -0.6,
+            "gap_c": -0.65,
             "suspect": false
           },
           {
@@ -192,7 +191,7 @@
         "nowcast_pp": 0.13506088225743,
         "nowcast_as_of": "2026-11-13 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.117pp (x1.37). The per-bracket gaps below are mostly this one effect, not 10 separate edges.",
+        "model_sigma_note": "",
         "rows": [
           {
             "label": "\u2264-0.3%",
@@ -203,30 +202,30 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.055,
+            "market_prob": 0.115,
             "model_prob": 0.0294,
-            "gap_c": -2.56,
+            "gap_c": -8.56,
             "suspect": false
           },
           {
             "label": "-0.1%",
-            "market_prob": 0.255,
+            "market_prob": 0.27,
             "model_prob": 0.0863,
-            "gap_c": -16.87,
+            "gap_c": -18.37,
             "suspect": false
           },
           {
             "label": "0.0%",
-            "market_prob": 0.445,
+            "market_prob": 0.375,
             "model_prob": 0.1738,
-            "gap_c": -27.12,
-            "suspect": true
+            "gap_c": -20.12,
+            "suspect": false
           },
           {
             "label": "0.1%",
-            "market_prob": 0.235,
+            "market_prob": 0.24,
             "model_prob": 0.2397,
-            "gap_c": 0.47,
+            "gap_c": -0.03,
             "suspect": false
           },
           {
@@ -238,9 +237,9 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.0115,
+            "market_prob": 0.011,
             "model_prob": 0.1467,
-            "gap_c": 13.52,
+            "gap_c": 13.57,
             "suspect": false
           },
           {
@@ -280,38 +279,38 @@
         "rows": [
           {
             "label": "\u22643.3%",
-            "market_prob": 0.015,
+            "market_prob": 0.0115,
             "model_prob": 0.0001,
-            "gap_c": -1.49,
+            "gap_c": -1.14,
             "suspect": false
           },
           {
             "label": "3.4%",
-            "market_prob": 0.0375,
+            "market_prob": 0.029,
             "model_prob": 0.0011,
-            "gap_c": -3.64,
+            "gap_c": -2.79,
             "suspect": false
           },
           {
             "label": "3.5%",
-            "market_prob": 0.006,
+            "market_prob": 0.0055,
             "model_prob": 0.0068,
-            "gap_c": 0.08,
+            "gap_c": 0.13,
             "suspect": false
           },
           {
             "label": "3.6%",
-            "market_prob": 0.11,
+            "market_prob": 0.125,
             "model_prob": 0.0292,
-            "gap_c": -8.08,
+            "gap_c": -9.58,
             "suspect": false
           },
           {
             "label": "3.7%",
-            "market_prob": 0.305,
+            "market_prob": 0.345,
             "model_prob": 0.086,
-            "gap_c": -21.9,
-            "suspect": false
+            "gap_c": -25.9,
+            "suspect": true
           },
           {
             "label": "3.8%",
@@ -322,37 +321,37 @@
           },
           {
             "label": "3.9%",
-            "market_prob": 0.155,
+            "market_prob": 0.12,
             "model_prob": 0.2396,
-            "gap_c": 8.46,
+            "gap_c": 11.96,
             "suspect": false
           },
           {
             "label": "4.0%",
-            "market_prob": 0.04,
+            "market_prob": 0.038,
             "model_prob": 0.2267,
-            "gap_c": 18.67,
+            "gap_c": 18.87,
             "suspect": false
           },
           {
             "label": "4.1%",
-            "market_prob": 0.0115,
+            "market_prob": 0.011,
             "model_prob": 0.147,
-            "gap_c": 13.55,
+            "gap_c": 13.6,
             "suspect": false
           },
           {
             "label": "4.2%",
-            "market_prob": 0.011,
+            "market_prob": 0.006,
             "model_prob": 0.0653,
-            "gap_c": 5.43,
+            "gap_c": 5.93,
             "suspect": false
           },
           {
             "label": "4.3%",
-            "market_prob": 0.0105,
+            "market_prob": 0.006,
             "model_prob": 0.0199,
-            "gap_c": 0.94,
+            "gap_c": 1.39,
             "suspect": false
           },
           {
@@ -371,7 +370,30 @@
     "cal_vetoed": 0
   },
   "gas": [],
-  "spxindex": [],
+  "spxindex": [
+    {
+      "market_id": "KXINX-26NOV16H1600-B7562",
+      "venue": "kalshi",
+      "source": "spxindex",
+      "outcome": "Yes",
+      "title": "Will the S&P 500 be between 7550 and 7574.9999 on Nov 16, 2026 at 4pm EST?",
+      "url": "https://kalshi.com/markets/KXINX-26NOV16H1600",
+      "entry_price": 0.08,
+      "model_prob": 0.1516,
+      "edge": 0.0716,
+      "fair": 0.1516,
+      "market_prob": 0.05,
+      "implied_sigma": 0.2569,
+      "spot_used": 7561.67,
+      "chain_ts": "2026-11-16 04:42:28",
+      "vrp_shrink": 0.92,
+      "series": "KXINX",
+      "model": "cboe-0dte-density",
+      "validated": false,
+      "end_iso": "2026-11-16T21:00:00+00:00",
+      "event_iso": "2026-11-16T21:00:00+00:00"
+    }
+  ],
   "sizing": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
