@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-16 17:05:33",
-  "generated_at": 1794848733.6626565,
+  "generated": "2026-11-17 00:50:10",
+  "generated_at": 1794876610.5774822,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [],
@@ -12,104 +12,132 @@
   "consistency": {
     "ok": true,
     "enabled": true,
-    "events_scanned": 341,
+    "events_scanned": 342,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 88,
+      "bracket has legs we cannot price (fail closed)": 86,
       "not a ladder: duplicate deadlines left too few rungs": 10,
-      "not a ladder: fewer than two live, quoted legs": 96,
-      "not a ladder: group labels are not thresholds or deadlines": 56,
-      "bracket overround smaller than the spread": 2,
-      "ladder pair too illiquid to fill": 161,
-      "bracket underround smaller than the spread": 1,
+      "not a ladder: fewer than two live, quoted legs": 94,
+      "not a ladder: group labels are not thresholds or deadlines": 55,
+      "ladder pair too illiquid to fill": 139,
+      "not a ladder: a live leg carries no group label": 8,
       "not a ladder: numeric group spans different end dates": 2,
       "bracket leg too illiquid to fill": 4,
-      "ladder inversion smaller than the spread": 2,
-      "not a ladder: a live leg carries no group label": 2,
+      "bracket underround smaller than the spread": 2,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
     "violations": [
       {
         "family": "bracket",
-        "event_slug": "openai-ipo-closing-market-cap-554",
-        "constraint": "7 mutually exclusive outcomes offer at 0.9710 total, but exactly one of them pays 1.00",
-        "edge_c": 2.9,
+        "event_slug": "anthropic-ipo-closing-market-cap-higher-strikes",
+        "constraint": "10 mutually exclusive outcomes bid 1.0200 total, but exactly one of them pays 1.00",
+        "edge_c": 2.0,
         "actions": [
-          "BUY YES  <500B  @ 0.024",
-          "BUY YES  500\u2013750B  @ 0.033",
-          "BUY YES  750B\u20131T  @ 0.037",
-          "BUY YES  1T\u20131.25T  @ 0.171",
-          "BUY YES  1.25T\u20131.5T  @ 0.180",
-          "BUY YES  1.5T+  @ 0.268",
-          "BUY YES  No IPO by December 31, 2027  @ 0.258"
+          "BUY NO   <$1.25T  @ 0.629",
+          "BUY NO   $1.25\u2013$1.5T  @ 0.600",
+          "BUY NO   $1.5\u2013$1.75T  @ 0.842",
+          "BUY NO   $1.75\u2013$2.0T  @ 0.940",
+          "BUY NO   $2.0\u2013$2.25T  @ 0.980",
+          "BUY NO   $2.25\u2013$2.5T  @ 0.996",
+          "BUY NO   $2.5\u2013$2.75T  @ 0.998",
+          "BUY NO   $2.75\u2013$3.0T  @ 0.998",
+          "BUY NO   $3.0T+  @ 0.998",
+          "BUY NO   No IPO by December 31, 2027  @ 0.999"
         ],
         "warnings": [
-          "requires filling all 7 legs - confirm the event page lists exactly 7 outcomes before trusting the sum"
+          "requires filling all 10 legs - confirm the event page lists exactly 10 outcomes before trusting the sum"
         ],
-        "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554",
+        "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes",
         "legs": [
           {
-            "question": "Will OpenAI\u2019s market cap be less than $500B at market close on IPO day by December 31, 2027?",
-            "name": "<500B",
-            "bid": 0.012,
-            "ask": 0.024,
-            "liquidity": 9983.09816,
+            "question": "Will Anthropic's market cap be less than $1.25T at market close on IPO day?",
+            "name": "<$1.25T",
+            "bid": 0.371,
+            "ask": 0.372,
+            "liquidity": 106175.01785,
             "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
+            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
           },
           {
-            "question": "Will OpenAI\u2019s market cap be between $500B and $750B at market close on IPO day by December 31, 2027?",
-            "name": "500\u2013750B",
-            "bid": 0.017,
-            "ask": 0.033,
-            "liquidity": 9321.8538,
+            "question": "Will Anthropic's market cap be between $1.25T and $1.5T at market close on IPO day?",
+            "name": "$1.25\u2013$1.5T",
+            "bid": 0.4,
+            "ask": 0.401,
+            "liquidity": 72168.16253,
             "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
+            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
           },
           {
-            "question": "Will OpenAI\u2019s market cap be between $750B and $1T at market close on IPO day by December 31, 2027?",
-            "name": "750B\u20131T",
-            "bid": 0.03,
-            "ask": 0.037,
-            "liquidity": 32561.12991,
+            "question": "Will Anthropic's market cap be between $1.5T and $1.75T at market close on IPO day?",
+            "name": "$1.5\u2013$1.75T",
+            "bid": 0.158,
+            "ask": 0.159,
+            "liquidity": 198793.44722,
             "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
+            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
           },
           {
-            "question": "Will OpenAI\u2019s market cap be between $1T and $1.25T at market close on IPO day by December 31, 2027?",
-            "name": "1T\u20131.25T",
-            "bid": 0.154,
-            "ask": 0.171,
-            "liquidity": 15039.95014,
+            "question": "Will Anthropic's market cap be between $1.75T and $2.0T at market close on IPO day?",
+            "name": "$1.75\u2013$2.0T",
+            "bid": 0.06,
+            "ask": 0.061,
+            "liquidity": 160186.48219,
             "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
+            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
           },
           {
-            "question": "Will OpenAI\u2019s market cap be between $1.25T and $1.5T at market close on IPO day by December 31, 2027?",
-            "name": "1.25T\u20131.5T",
-            "bid": 0.17,
-            "ask": 0.18,
-            "liquidity": 11498.8341,
+            "question": "Will Anthropic's market cap be between $2.0T and $2.25T at market close on IPO day?",
+            "name": "$2.0\u2013$2.25T",
+            "bid": 0.02,
+            "ask": 0.021,
+            "liquidity": 146778.73873,
             "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
+            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
           },
           {
-            "question": "Will OpenAI\u2019s market cap be $1.5T or greater at market close on IPO day by December 31, 2027?",
-            "name": "1.5T+",
-            "bid": 0.264,
-            "ask": 0.268,
-            "liquidity": 10005.26829,
+            "question": "Will Anthropic's market cap be between $2.25T and $2.5T at market close on IPO day?",
+            "name": "$2.25\u2013$2.5T",
+            "bid": 0.004,
+            "ask": 0.005,
+            "liquidity": 145443.72634,
             "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
+            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
           },
           {
-            "question": "Will OpenAI not IPO by December 31, 2027?",
+            "question": "Will Anthropic's market cap be between $2.5T and $2.75T at market close on IPO day?",
+            "name": "$2.5\u2013$2.75T",
+            "bid": 0.002,
+            "ask": 0.003,
+            "liquidity": 99534.04284,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
+          },
+          {
+            "question": "Will Anthropic's market cap be between $2.75T and $3.0T at market close on IPO day?",
+            "name": "$2.75\u2013$3.0T",
+            "bid": 0.002,
+            "ask": 0.003,
+            "liquidity": 100125.25953,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
+          },
+          {
+            "question": "Will Anthropic's market cap be $3.0T or greater at market close on IPO day?",
+            "name": "$3.0T+",
+            "bid": 0.002,
+            "ask": 0.003,
+            "liquidity": 94156.15195,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
+          },
+          {
+            "question": "Will Anthropic not IPO by December 31, 2027?",
             "name": "No IPO by December 31, 2027",
-            "bid": 0.22,
-            "ask": 0.258,
-            "liquidity": 9070.45181,
+            "bid": 0.001,
+            "ask": 0.002,
+            "liquidity": 99682.1159,
             "end_iso": "2028-01-01T04:59:00Z",
-            "url": "https://polymarket.com/event/openai-ipo-closing-market-cap-554"
+            "url": "https://polymarket.com/event/anthropic-ipo-closing-market-cap-higher-strikes"
           }
         ]
       }
@@ -134,23 +162,23 @@
         "rows": [
           {
             "label": "\u22642.3%",
-            "market_prob": 0.006,
+            "market_prob": 0.0065,
             "model_prob": 0.0005,
-            "gap_c": -0.55,
+            "gap_c": -0.6,
             "suspect": false
           },
           {
             "label": "2.4%",
-            "market_prob": 0.031,
+            "market_prob": 0.0365,
             "model_prob": 0.0035,
-            "gap_c": -2.75,
+            "gap_c": -3.3,
             "suspect": false
           },
           {
             "label": "2.5%",
-            "market_prob": 0.0325,
+            "market_prob": 0.05,
             "model_prob": 0.0176,
-            "gap_c": -1.49,
+            "gap_c": -3.24,
             "suspect": false
           },
           {
@@ -162,44 +190,44 @@
           },
           {
             "label": "2.7%",
-            "market_prob": 0.04,
+            "market_prob": 0.055,
             "model_prob": 0.1391,
-            "gap_c": 9.91,
+            "gap_c": 8.41,
             "suspect": false
           },
           {
             "label": "2.8%",
-            "market_prob": 0.17,
+            "market_prob": 0.16,
             "model_prob": 0.2217,
-            "gap_c": 5.17,
+            "gap_c": 6.17,
             "suspect": false
           },
           {
             "label": "2.9%",
-            "market_prob": 0.29,
+            "market_prob": 0.315,
             "model_prob": 0.242,
-            "gap_c": -4.8,
+            "gap_c": -7.3,
             "suspect": false
           },
           {
             "label": "3.0%",
-            "market_prob": 0.305,
+            "market_prob": 0.31,
             "model_prob": 0.1811,
-            "gap_c": -12.39,
+            "gap_c": -12.89,
             "suspect": false
           },
           {
             "label": "3.1%",
-            "market_prob": 0.19,
+            "market_prob": 0.135,
             "model_prob": 0.0928,
-            "gap_c": -9.72,
+            "gap_c": -4.22,
             "suspect": false
           },
           {
             "label": "\u22653.2%",
-            "market_prob": 0.0055,
+            "market_prob": 0.006,
             "model_prob": 0.0418,
-            "gap_c": 3.63,
+            "gap_c": 3.58,
             "suspect": false
           }
         ]
@@ -214,13 +242,13 @@
         "nowcast_pp": 0.21114452794251,
         "nowcast_as_of": "2026-11-16 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.106pp (x1.51). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.107pp (x1.50). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.1%",
-            "market_prob": 0.125,
+            "market_prob": 0.115,
             "model_prob": 0.3512,
-            "gap_c": 22.62,
+            "gap_c": 23.62,
             "suspect": false
           },
           {
@@ -232,30 +260,30 @@
           },
           {
             "label": "0.3%",
-            "market_prob": 0.34,
+            "market_prob": 0.33,
             "model_prob": 0.2113,
-            "gap_c": -12.87,
+            "gap_c": -11.87,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.11,
+            "market_prob": 0.105,
             "model_prob": 0.125,
-            "gap_c": 1.5,
+            "gap_c": 2.0,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.036,
+            "market_prob": 0.0415,
             "model_prob": 0.0506,
-            "gap_c": 1.46,
+            "gap_c": 0.91,
             "suspect": false
           },
           {
             "label": "0.6%",
-            "market_prob": 0.045,
+            "market_prob": 0.044,
             "model_prob": 0.014,
-            "gap_c": -3.1,
+            "gap_c": -3.0,
             "suspect": false
           },
           {
@@ -281,23 +309,23 @@
         "rows": [
           {
             "label": "\u2264-0.3%",
-            "market_prob": 0.0115,
+            "market_prob": 0.012,
             "model_prob": 0.0081,
-            "gap_c": -0.34,
+            "gap_c": -0.39,
             "suspect": false
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.125,
+            "market_prob": 0.14,
             "model_prob": 0.0294,
-            "gap_c": -9.56,
+            "gap_c": -11.06,
             "suspect": false
           },
           {
             "label": "-0.1%",
-            "market_prob": 0.31,
+            "market_prob": 0.315,
             "model_prob": 0.0863,
-            "gap_c": -22.37,
+            "gap_c": -22.87,
             "suspect": false
           },
           {
@@ -309,30 +337,30 @@
           },
           {
             "label": "0.1%",
-            "market_prob": 0.18,
+            "market_prob": 0.17,
             "model_prob": 0.2397,
-            "gap_c": 5.97,
+            "gap_c": 6.97,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.0425,
+            "market_prob": 0.0415,
             "model_prob": 0.2265,
-            "gap_c": 18.4,
+            "gap_c": 18.5,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.011,
+            "market_prob": 0.0115,
             "model_prob": 0.1467,
-            "gap_c": 13.57,
+            "gap_c": 13.52,
             "suspect": false
           },
           {
             "label": "0.4%",
-            "market_prob": 0.027,
+            "market_prob": 0.0265,
             "model_prob": 0.0651,
-            "gap_c": 3.81,
+            "gap_c": 3.86,
             "suspect": false
           },
           {
@@ -344,9 +372,9 @@
           },
           {
             "label": "\u22650.6%",
-            "market_prob": 0.011,
+            "market_prob": 0.0115,
             "model_prob": 0.0048,
-            "gap_c": -0.62,
+            "gap_c": -0.67,
             "suspect": false
           }
         ]
@@ -365,79 +393,79 @@
         "rows": [
           {
             "label": "\u22643.3%",
-            "market_prob": 0.0115,
+            "market_prob": 0.0055,
             "model_prob": 0.0001,
-            "gap_c": -1.14,
+            "gap_c": -0.54,
             "suspect": false
           },
           {
             "label": "3.4%",
-            "market_prob": 0.034,
+            "market_prob": 0.006,
             "model_prob": 0.0011,
-            "gap_c": -3.29,
+            "gap_c": -0.49,
             "suspect": false
           },
           {
             "label": "3.5%",
-            "market_prob": 0.0055,
+            "market_prob": 0.015,
             "model_prob": 0.0068,
-            "gap_c": 0.13,
+            "gap_c": -0.82,
             "suspect": false
           },
           {
             "label": "3.6%",
-            "market_prob": 0.125,
+            "market_prob": 0.16,
             "model_prob": 0.0292,
-            "gap_c": -9.58,
+            "gap_c": -13.08,
             "suspect": false
           },
           {
             "label": "3.7%",
-            "market_prob": 0.35,
+            "market_prob": 0.395,
             "model_prob": 0.086,
-            "gap_c": -26.4,
+            "gap_c": -30.9,
             "suspect": true
           },
           {
             "label": "3.8%",
-            "market_prob": 0.395,
+            "market_prob": 0.36,
             "model_prob": 0.1735,
-            "gap_c": -22.15,
+            "gap_c": -18.65,
             "suspect": false
           },
           {
             "label": "3.9%",
-            "market_prob": 0.11,
+            "market_prob": 0.08,
             "model_prob": 0.2396,
-            "gap_c": 12.96,
+            "gap_c": 15.96,
             "suspect": false
           },
           {
             "label": "4.0%",
-            "market_prob": 0.049,
+            "market_prob": 0.027,
             "model_prob": 0.2267,
-            "gap_c": 17.77,
+            "gap_c": 19.97,
             "suspect": false
           },
           {
             "label": "4.1%",
-            "market_prob": 0.011,
+            "market_prob": 0.016,
             "model_prob": 0.147,
-            "gap_c": 13.6,
+            "gap_c": 13.1,
             "suspect": false
           },
           {
             "label": "4.2%",
-            "market_prob": 0.006,
+            "market_prob": 0.0055,
             "model_prob": 0.0653,
-            "gap_c": 5.93,
+            "gap_c": 5.98,
             "suspect": false
           },
           {
             "label": "4.3%",
-            "market_prob": 0.006,
+            "market_prob": 0.0055,
             "model_prob": 0.0199,
-            "gap_c": 1.39,
+            "gap_c": 1.44,
             "suspect": false
           },
           {
@@ -456,52 +484,7 @@
     "cal_vetoed": 0
   },
   "gas": [],
-  "spxindex": [
-    {
-      "market_id": "KXINX-26NOV16H1600-B7462",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "Yes",
-      "title": "Will the S&P 500 be between 7450 and 7474.9999 on Nov 16, 2026 at 4pm EST?",
-      "url": "https://kalshi.com/markets/KXINX-26NOV16H1600",
-      "entry_price": 0.29,
-      "model_prob": 0.3628,
-      "edge": 0.0728,
-      "fair": 0.3628,
-      "market_prob": 0.275,
-      "implied_sigma": 0.2129,
-      "spot_used": 7471.06,
-      "chain_ts": "2026-11-16 17:05:27",
-      "vrp_shrink": 0.92,
-      "series": "KXINX",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-11-16T21:00:00+00:00",
-      "event_iso": "2026-11-16T21:00:00+00:00"
-    },
-    {
-      "market_id": "KXNASDAQ100-26NOV16H1600-B27550",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "Yes",
-      "title": "Will the Nasdaq-100 be between 27500 and 27599.9900 at the end of Nov 16, 2026 at 4pm EST?",
-      "url": "https://kalshi.com/markets/KXNASDAQ100-26NOV16H1600",
-      "entry_price": 0.2,
-      "model_prob": 0.2469,
-      "edge": 0.0469,
-      "fair": 0.2469,
-      "market_prob": 0.18,
-      "implied_sigma": 0.3271,
-      "spot_used": 27437.38,
-      "chain_ts": "2026-11-16 17:05:11",
-      "vrp_shrink": 0.92,
-      "series": "KXNASDAQ100",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-11-16T21:00:00+00:00",
-      "event_iso": "2026-11-16T21:00:00+00:00"
-    }
-  ],
+  "spxindex": [],
   "sizing": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
