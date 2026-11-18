@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-17 18:27:44",
-  "generated_at": 1794940064.7632456,
+  "generated": "2026-11-18 01:14:10",
+  "generated_at": 1794964450.4791667,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [],
@@ -12,21 +12,58 @@
   "consistency": {
     "ok": true,
     "enabled": true,
-    "events_scanned": 343,
+    "events_scanned": 342,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 87,
+      "bracket has legs we cannot price (fail closed)": 86,
       "not a ladder: duplicate deadlines left too few rungs": 10,
-      "not a ladder: fewer than two live, quoted legs": 96,
-      "not a ladder: group labels are not thresholds or deadlines": 59,
-      "ladder pair too illiquid to fill": 201,
+      "not a ladder: fewer than two live, quoted legs": 94,
+      "not a ladder: group labels are not thresholds or deadlines": 58,
+      "bracket overround smaller than the spread": 1,
+      "ladder pair too illiquid to fill": 138,
+      "ladder inversion smaller than the spread": 3,
       "bracket has too many legs to place by hand": 1,
+      "not a ladder: a live leg carries no group label": 5,
       "not a ladder: numeric group spans different end dates": 2,
       "bracket leg too illiquid to fill": 4,
-      "not a ladder: a live leg carries no group label": 2,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
-    "violations": []
+    "violations": [
+      {
+        "family": "ladder",
+        "event_slug": "base-fdv-above-one-day-after-launch",
+        "constraint": "P($10B) must be <= P($8B), but $10B bids 0.170 while $8B offers 0.150",
+        "edge_c": 2.0,
+        "actions": [
+          "BUY YES  $8B  @ 0.150",
+          "BUY NO   $10B  @ 0.830"
+        ],
+        "warnings": [
+          "both legs settle on the same event page - confirm the two rule texts differ only in the threshold"
+        ],
+        "url": "https://polymarket.com/event/base-fdv-above-one-day-after-launch",
+        "legs": [
+          {
+            "question": "Base FDV above $8B one day after launch?",
+            "name": "$8B",
+            "bid": 0.14,
+            "ask": 0.15,
+            "liquidity": 15978.9721,
+            "end_iso": "2028-01-01T05:00:00Z",
+            "url": "https://polymarket.com/event/base-fdv-above-one-day-after-launch"
+          },
+          {
+            "question": "Base FDV above $10B one day after launch?",
+            "name": "$10B",
+            "bid": 0.17,
+            "ask": 0.18,
+            "liquidity": 19796.0603,
+            "end_iso": "2028-01-01T05:00:00Z",
+            "url": "https://polymarket.com/event/base-fdv-above-one-day-after-launch"
+          }
+        ]
+      }
+    ]
   },
   "macro": {
     "ok": true,
@@ -43,27 +80,27 @@
         "nowcast_pp": 0.21114452794251,
         "nowcast_as_of": "2026-11-17 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.109pp (x1.47). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.106pp (x1.51). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.1%",
-            "market_prob": 0.115,
+            "market_prob": 0.14,
             "model_prob": 0.3512,
-            "gap_c": 23.62,
+            "gap_c": 21.12,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.425,
+            "market_prob": 0.43,
             "model_prob": 0.2448,
-            "gap_c": -18.02,
+            "gap_c": -18.52,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.34,
+            "market_prob": 0.335,
             "model_prob": 0.2113,
-            "gap_c": -12.87,
+            "gap_c": -12.37,
             "suspect": false
           },
           {
@@ -75,16 +112,16 @@
           },
           {
             "label": "0.5%",
-            "market_prob": 0.0385,
+            "market_prob": 0.035,
             "model_prob": 0.0506,
-            "gap_c": 1.21,
+            "gap_c": 1.56,
             "suspect": false
           },
           {
             "label": "0.6%",
-            "market_prob": 0.0505,
+            "market_prob": 0.045,
             "model_prob": 0.014,
-            "gap_c": -3.65,
+            "gap_c": -3.1,
             "suspect": false
           },
           {
@@ -110,23 +147,23 @@
         "rows": [
           {
             "label": "\u22642.3%",
-            "market_prob": 0.0115,
+            "market_prob": 0.0065,
             "model_prob": 0.0005,
-            "gap_c": -1.1,
+            "gap_c": -0.6,
             "suspect": false
           },
           {
             "label": "2.4%",
-            "market_prob": 0.039,
+            "market_prob": 0.0335,
             "model_prob": 0.0035,
-            "gap_c": -3.55,
+            "gap_c": -3.0,
             "suspect": false
           },
           {
             "label": "2.5%",
-            "market_prob": 0.0385,
+            "market_prob": 0.047,
             "model_prob": 0.0176,
-            "gap_c": -2.09,
+            "gap_c": -2.94,
             "suspect": false
           },
           {
@@ -145,16 +182,16 @@
           },
           {
             "label": "2.8%",
-            "market_prob": 0.18,
+            "market_prob": 0.185,
             "model_prob": 0.2217,
-            "gap_c": 4.17,
+            "gap_c": 3.67,
             "suspect": false
           },
           {
             "label": "2.9%",
-            "market_prob": 0.335,
+            "market_prob": 0.315,
             "model_prob": 0.242,
-            "gap_c": -9.3,
+            "gap_c": -7.3,
             "suspect": false
           },
           {
@@ -166,16 +203,16 @@
           },
           {
             "label": "3.1%",
-            "market_prob": 0.135,
+            "market_prob": 0.13,
             "model_prob": 0.0928,
-            "gap_c": -4.22,
+            "gap_c": -3.72,
             "suspect": false
           },
           {
             "label": "\u22653.2%",
-            "market_prob": 0.006,
+            "market_prob": 0.0105,
             "model_prob": 0.0418,
-            "gap_c": 3.58,
+            "gap_c": 3.13,
             "suspect": false
           }
         ]
@@ -201,30 +238,30 @@
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.14,
+            "market_prob": 0.125,
             "model_prob": 0.0648,
-            "gap_c": -7.52,
+            "gap_c": -6.02,
             "suspect": false
           },
           {
             "label": "-0.1%",
-            "market_prob": 0.32,
+            "market_prob": 0.345,
             "model_prob": 0.1464,
-            "gap_c": -17.36,
+            "gap_c": -19.86,
             "suspect": false
           },
           {
             "label": "0.0%",
-            "market_prob": 0.375,
+            "market_prob": 0.385,
             "model_prob": 0.2263,
-            "gap_c": -14.87,
+            "gap_c": -15.87,
             "suspect": false
           },
           {
             "label": "0.1%",
-            "market_prob": 0.13,
+            "market_prob": 0.135,
             "model_prob": 0.2398,
-            "gap_c": 10.98,
+            "gap_c": 10.48,
             "suspect": false
           },
           {
@@ -243,9 +280,9 @@
           },
           {
             "label": "0.4%",
-            "market_prob": 0.0265,
+            "market_prob": 0.026,
             "model_prob": 0.0295,
-            "gap_c": 0.3,
+            "gap_c": 0.35,
             "suspect": false
           },
           {
@@ -274,20 +311,20 @@
         "nowcast_pp": 3.86276969192536,
         "nowcast_as_of": "2026-11-17 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.109pp (x1.47). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.106pp (x1.51). The per-bracket gaps below are mostly this one effect, not 12 separate edges.",
         "rows": [
           {
             "label": "\u22643.3%",
-            "market_prob": 0.0045,
+            "market_prob": 0.002,
             "model_prob": 0.0007,
-            "gap_c": -0.38,
+            "gap_c": -0.13,
             "suspect": false
           },
           {
             "label": "3.4%",
-            "market_prob": 0.0055,
+            "market_prob": 0.004,
             "model_prob": 0.0043,
-            "gap_c": -0.12,
+            "gap_c": 0.03,
             "suspect": false
           },
           {
@@ -299,9 +336,9 @@
           },
           {
             "label": "3.6%",
-            "market_prob": 0.18,
+            "market_prob": 0.175,
             "model_prob": 0.0665,
-            "gap_c": -11.35,
+            "gap_c": -10.85,
             "suspect": false
           },
           {
@@ -313,16 +350,16 @@
           },
           {
             "label": "3.8%",
-            "market_prob": 0.345,
+            "market_prob": 0.35,
             "model_prob": 0.2277,
-            "gap_c": -11.73,
+            "gap_c": -12.23,
             "suspect": false
           },
           {
             "label": "3.9%",
-            "market_prob": 0.05,
+            "market_prob": 0.06,
             "model_prob": 0.239,
-            "gap_c": 18.9,
+            "gap_c": 17.9,
             "suspect": false
           },
           {
@@ -334,9 +371,9 @@
           },
           {
             "label": "4.1%",
-            "market_prob": 0.0045,
+            "market_prob": 0.0035,
             "model_prob": 0.0847,
-            "gap_c": 8.02,
+            "gap_c": 8.12,
             "suspect": false
           },
           {
@@ -348,16 +385,16 @@
           },
           {
             "label": "4.3%",
-            "market_prob": 0.0035,
+            "market_prob": 0.002,
             "model_prob": 0.0066,
-            "gap_c": 0.31,
+            "gap_c": 0.46,
             "suspect": false
           },
           {
             "label": "\u22654.4%",
-            "market_prob": 0.0035,
+            "market_prob": 0.0015,
             "model_prob": 0.0012,
-            "gap_c": -0.23,
+            "gap_c": -0.03,
             "suspect": false
           }
         ]
@@ -369,96 +406,7 @@
     "cal_vetoed": 0
   },
   "gas": [],
-  "spxindex": [
-    {
-      "market_id": "KXNASDAQ100-26NOV17H1600-B26850",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "Yes",
-      "title": "Will the Nasdaq-100 be between 26800 and 26899.9900 at the end of Nov 17, 2026 at 4pm EST?",
-      "url": "https://kalshi.com/markets/KXNASDAQ100-26NOV17H1600",
-      "entry_price": 0.18,
-      "model_prob": 0.3693,
-      "edge": 0.1893,
-      "fair": 0.3693,
-      "market_prob": 0.16,
-      "implied_sigma": 0.3996,
-      "spot_used": 26888.83,
-      "chain_ts": "2026-11-17 18:27:23",
-      "vrp_shrink": 0.92,
-      "series": "KXNASDAQ100",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-11-17T21:00:00+00:00",
-      "event_iso": "2026-11-17T21:00:00+00:00"
-    },
-    {
-      "market_id": "KXINX-26NOV17H1600-B7387",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "No",
-      "title": "Will the S&P 500 be between 7375 and 7399.9999 on Nov 17, 2026 at 4pm EST?",
-      "url": "https://kalshi.com/markets/KXINX-26NOV17H1600",
-      "entry_price": 0.85,
-      "model_prob": 0.9177,
-      "edge": 0.0677,
-      "fair": 0.0823,
-      "market_prob": 0.17,
-      "implied_sigma": 0.2946,
-      "spot_used": 7332.28,
-      "chain_ts": "2026-11-17 18:27:31",
-      "vrp_shrink": 0.92,
-      "series": "KXINX",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-11-17T21:00:00+00:00",
-      "event_iso": "2026-11-17T21:00:00+00:00"
-    },
-    {
-      "market_id": "KXINX-26NOV17H1600-B7312",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "Yes",
-      "title": "Will the S&P 500 be between 7300 and 7324.9999 on Nov 17, 2026 at 4pm EST?",
-      "url": "https://kalshi.com/markets/KXINX-26NOV17H1600",
-      "entry_price": 0.18,
-      "model_prob": 0.2394,
-      "edge": 0.0594,
-      "fair": 0.2394,
-      "market_prob": 0.155,
-      "implied_sigma": 0.2946,
-      "spot_used": 7332.28,
-      "chain_ts": "2026-11-17 18:27:31",
-      "vrp_shrink": 0.92,
-      "series": "KXINX",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-11-17T21:00:00+00:00",
-      "event_iso": "2026-11-17T21:00:00+00:00"
-    },
-    {
-      "market_id": "KXINX-26NOV17H1600-B7412",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "No",
-      "title": "Will the S&P 500 be between 7400 and 7424.9999 on Nov 17, 2026 at 4pm EST?",
-      "url": "https://kalshi.com/markets/KXINX-26NOV17H1600",
-      "entry_price": 0.94,
-      "model_prob": 0.9762,
-      "edge": 0.0362,
-      "fair": 0.0238,
-      "market_prob": 0.07,
-      "implied_sigma": 0.2946,
-      "spot_used": 7332.28,
-      "chain_ts": "2026-11-17 18:27:31",
-      "vrp_shrink": 0.92,
-      "series": "KXINX",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-11-17T21:00:00+00:00",
-      "event_iso": "2026-11-17T21:00:00+00:00"
-    }
-  ],
+  "spxindex": [],
   "sizing": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
