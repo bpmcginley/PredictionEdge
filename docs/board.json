@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-19 13:57:13",
-  "generated_at": 1795096633.4619122,
+  "generated": "2026-11-19 22:05:13",
+  "generated_at": 1795125913.3437138,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [],
@@ -14,16 +14,15 @@
     "enabled": true,
     "events_scanned": 343,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 87,
+      "bracket has legs we cannot price (fail closed)": 86,
       "not a ladder: duplicate deadlines left too few rungs": 10,
       "not a ladder: fewer than two live, quoted legs": 97,
       "not a ladder: group labels are not thresholds or deadlines": 61,
-      "ladder pair too illiquid to fill": 142,
+      "ladder pair too illiquid to fill": 141,
       "ladder inversion smaller than the spread": 5,
-      "bracket overround smaller than the spread": 1,
       "not a ladder: numeric group spans different end dates": 2,
       "bracket leg too illiquid to fill": 4,
-      "not a ladder: a live leg carries no group label": 1,
+      "not a ladder: a live leg carries no group label": 3,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
@@ -31,14 +30,14 @@
       {
         "family": "bracket",
         "event_slug": "maduro-prison-time-527",
-        "constraint": "5 mutually exclusive outcomes offer at 0.9780 total, but exactly one of them pays 1.00",
-        "edge_c": 2.2,
+        "constraint": "5 mutually exclusive outcomes offer at 0.9680 total, but exactly one of them pays 1.00",
+        "edge_c": 3.2,
         "actions": [
-          "BUY YES  No prison time  @ 0.670",
+          "BUY YES  No prison time  @ 0.650",
           "BUY YES  <20  @ 0.065",
           "BUY YES  20\u201340  @ 0.018",
           "BUY YES  40\u201360  @ 0.035",
-          "BUY YES  60+  @ 0.190"
+          "BUY YES  60+  @ 0.200"
         ],
         "warnings": [
           "requires filling all 5 legs - confirm the event page lists exactly 5 outcomes before trusting the sum"
@@ -48,18 +47,18 @@
           {
             "question": "Will Nicol\u00e1s Maduro be sentenced to no prison time?",
             "name": "No prison time",
-            "bid": 0.65,
-            "ask": 0.67,
-            "liquidity": 36052.4334,
+            "bid": 0.64,
+            "ask": 0.65,
+            "liquidity": 43783.4435,
             "end_iso": "2028-01-01T04:59:00Z",
             "url": "https://polymarket.com/event/maduro-prison-time-527"
           },
           {
             "question": "Will Nicol\u00e1s Maduro be sentenced to less than 20 years in prison?",
             "name": "<20",
-            "bid": 0.03,
+            "bid": 0.029,
             "ask": 0.065,
-            "liquidity": 31162.57937,
+            "liquidity": 32180.68312,
             "end_iso": "2028-01-01T04:59:00Z",
             "url": "https://polymarket.com/event/maduro-prison-time-527"
           },
@@ -68,7 +67,7 @@
             "name": "20\u201340",
             "bid": 0.006,
             "ask": 0.018,
-            "liquidity": 28719.71057,
+            "liquidity": 32042.63712,
             "end_iso": "2027-12-31T00:00:00Z",
             "url": "https://polymarket.com/event/maduro-prison-time-527"
           },
@@ -77,16 +76,16 @@
             "name": "40\u201360",
             "bid": 0.01,
             "ask": 0.035,
-            "liquidity": 32061.59486,
+            "liquidity": 31264.17103,
             "end_iso": "2027-12-31T00:00:00Z",
             "url": "https://polymarket.com/event/maduro-prison-time-527"
           },
           {
             "question": "Will Nicol\u00e1s Maduro be sentenced to at least 60 years in prison?",
             "name": "60+",
-            "bid": 0.17,
-            "ask": 0.19,
-            "liquidity": 18241.5999,
+            "bid": 0.18,
+            "ask": 0.2,
+            "liquidity": 22114.5724,
             "end_iso": "2028-01-01T04:59:00Z",
             "url": "https://polymarket.com/event/maduro-prison-time-527"
           }
@@ -107,29 +106,29 @@
         "ref_month": "2026-11",
         "url": "https://polymarket.com/event/core-cpi-mom-november-2026",
         "nowcast_pp": 0.21114452794251,
-        "nowcast_as_of": "2026-11-18 00:00",
+        "nowcast_as_of": "2026-11-19 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.095pp (x1.68). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.097pp (x1.65). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.1%",
-            "market_prob": 0.16,
+            "market_prob": 0.155,
             "model_prob": 0.3512,
-            "gap_c": 19.12,
+            "gap_c": 19.62,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.415,
+            "market_prob": 0.425,
             "model_prob": 0.2448,
-            "gap_c": -17.02,
+            "gap_c": -18.02,
             "suspect": false
           },
           {
             "label": "0.3%",
-            "market_prob": 0.33,
+            "market_prob": 0.32,
             "model_prob": 0.2113,
-            "gap_c": -11.87,
+            "gap_c": -10.87,
             "suspect": false
           },
           {
@@ -141,16 +140,16 @@
           },
           {
             "label": "0.5%",
-            "market_prob": 0.0295,
+            "market_prob": 0.03,
             "model_prob": 0.0506,
-            "gap_c": 2.11,
+            "gap_c": 2.06,
             "suspect": false
           },
           {
             "label": "0.6%",
-            "market_prob": 0.024,
+            "market_prob": 0.027,
             "model_prob": 0.014,
-            "gap_c": -1.0,
+            "gap_c": -1.3,
             "suspect": false
           },
           {
@@ -170,7 +169,7 @@
         "ref_month": "2026-11",
         "url": "https://polymarket.com/event/core-cpi-yoy-november-2026",
         "nowcast_pp": 2.87325045473827,
-        "nowcast_as_of": "2026-11-18 00:00",
+        "nowcast_as_of": "2026-11-19 00:00",
         "sigma": 0.16,
         "model_sigma_note": "",
         "rows": [
@@ -183,23 +182,23 @@
           },
           {
             "label": "2.4%",
-            "market_prob": 0.03,
+            "market_prob": 0.0265,
             "model_prob": 0.0035,
-            "gap_c": -2.65,
+            "gap_c": -2.3,
             "suspect": false
           },
           {
             "label": "2.5%",
-            "market_prob": 0.0305,
+            "market_prob": 0.0115,
             "model_prob": 0.0176,
-            "gap_c": -1.29,
+            "gap_c": 0.61,
             "suspect": false
           },
           {
             "label": "2.6%",
-            "market_prob": 0.0325,
+            "market_prob": 0.032,
             "model_prob": 0.0598,
-            "gap_c": 2.73,
+            "gap_c": 2.78,
             "suspect": false
           },
           {
@@ -211,30 +210,30 @@
           },
           {
             "label": "2.8%",
-            "market_prob": 0.185,
+            "market_prob": 0.16,
             "model_prob": 0.2217,
-            "gap_c": 3.67,
+            "gap_c": 6.17,
             "suspect": false
           },
           {
             "label": "2.9%",
-            "market_prob": 0.365,
+            "market_prob": 0.38,
             "model_prob": 0.242,
-            "gap_c": -12.3,
+            "gap_c": -13.8,
             "suspect": false
           },
           {
             "label": "3.0%",
-            "market_prob": 0.28,
+            "market_prob": 0.25,
             "model_prob": 0.1811,
-            "gap_c": -9.89,
+            "gap_c": -6.89,
             "suspect": false
           },
           {
             "label": "3.1%",
-            "market_prob": 0.034,
+            "market_prob": 0.0345,
             "model_prob": 0.0928,
-            "gap_c": 5.88,
+            "gap_c": 5.83,
             "suspect": false
           },
           {
@@ -254,36 +253,36 @@
         "ref_month": "2026-11",
         "url": "https://polymarket.com/event/november-inflation-us-monthly",
         "nowcast_pp": 0.0652828566316712,
-        "nowcast_as_of": "2026-11-18 00:00",
+        "nowcast_as_of": "2026-11-19 00:00",
         "sigma": 0.16,
         "model_sigma_note": "",
         "rows": [
           {
             "label": "\u2264-0.3%",
-            "market_prob": 0.057,
+            "market_prob": 0.045,
             "model_prob": 0.0244,
-            "gap_c": -3.26,
+            "gap_c": -2.06,
             "suspect": false
           },
           {
             "label": "-0.2%",
-            "market_prob": 0.16,
+            "market_prob": 0.12,
             "model_prob": 0.0648,
-            "gap_c": -9.52,
+            "gap_c": -5.52,
             "suspect": false
           },
           {
             "label": "-0.1%",
-            "market_prob": 0.36,
+            "market_prob": 0.365,
             "model_prob": 0.1464,
-            "gap_c": -21.36,
+            "gap_c": -21.86,
             "suspect": false
           },
           {
             "label": "0.0%",
-            "market_prob": 0.31,
+            "market_prob": 0.295,
             "model_prob": 0.2263,
-            "gap_c": -8.37,
+            "gap_c": -6.87,
             "suspect": false
           },
           {
@@ -295,9 +294,9 @@
           },
           {
             "label": "0.2%",
-            "market_prob": 0.0465,
+            "market_prob": 0.034,
             "model_prob": 0.1741,
-            "gap_c": 12.76,
+            "gap_c": 14.01,
             "suspect": false
           },
           {
@@ -309,9 +308,9 @@
           },
           {
             "label": "0.4%",
-            "market_prob": 0.0265,
+            "market_prob": 0.026,
             "model_prob": 0.0295,
-            "gap_c": 0.3,
+            "gap_c": 0.35,
             "suspect": false
           },
           {
@@ -338,7 +337,7 @@
         "ref_month": "2026-11",
         "url": "https://polymarket.com/event/november-inflation-us-annual",
         "nowcast_pp": 3.86276969192536,
-        "nowcast_as_of": "2026-11-18 00:00",
+        "nowcast_as_of": "2026-11-19 00:00",
         "sigma": 0.16,
         "model_sigma_note": "",
         "rows": [
@@ -351,51 +350,51 @@
           },
           {
             "label": "3.4%",
-            "market_prob": 0.019,
+            "market_prob": 0.02,
             "model_prob": 0.0043,
-            "gap_c": -1.47,
+            "gap_c": -1.57,
             "suspect": false
           },
           {
             "label": "3.5%",
-            "market_prob": 0.0645,
+            "market_prob": 0.065,
             "model_prob": 0.0204,
-            "gap_c": -4.41,
+            "gap_c": -4.46,
             "suspect": false
           },
           {
             "label": "3.6%",
-            "market_prob": 0.185,
+            "market_prob": 0.19,
             "model_prob": 0.0665,
-            "gap_c": -11.85,
+            "gap_c": -12.35,
             "suspect": false
           },
           {
             "label": "3.7%",
-            "market_prob": 0.44,
+            "market_prob": 0.435,
             "model_prob": 0.1487,
-            "gap_c": -29.13,
+            "gap_c": -28.63,
             "suspect": true
           },
           {
             "label": "3.8%",
-            "market_prob": 0.235,
+            "market_prob": 0.24,
             "model_prob": 0.2277,
-            "gap_c": -0.73,
+            "gap_c": -1.23,
             "suspect": false
           },
           {
             "label": "3.9%",
-            "market_prob": 0.105,
+            "market_prob": 0.08,
             "model_prob": 0.239,
-            "gap_c": 13.4,
+            "gap_c": 15.9,
             "suspect": false
           },
           {
             "label": "4.0%",
-            "market_prob": 0.014,
+            "market_prob": 0.0115,
             "model_prob": 0.1718,
-            "gap_c": 15.78,
+            "gap_c": 16.03,
             "suspect": false
           },
           {
@@ -435,52 +434,7 @@
     "cal_vetoed": 0
   },
   "gas": [],
-  "spxindex": [
-    {
-      "market_id": "KXNASDAQ100-26NOV19H1600-B27350",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "Yes",
-      "title": "Will the Nasdaq-100 be between 27300 and 27399.9900 at the end of Nov 19, 2026 at 4pm EST?",
-      "url": "https://kalshi.com/markets/KXNASDAQ100-26NOV19H1600",
-      "entry_price": 0.1,
-      "model_prob": 0.1804,
-      "edge": 0.0804,
-      "fair": 0.1804,
-      "market_prob": 0.075,
-      "implied_sigma": 0.7464,
-      "spot_used": 27116.26,
-      "chain_ts": "2026-11-19 11:05:19",
-      "vrp_shrink": 0.92,
-      "series": "KXNASDAQ100",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-11-19T21:00:00+00:00",
-      "event_iso": "2026-11-19T21:00:00+00:00"
-    },
-    {
-      "market_id": "KXNASDAQ100-26NOV19H1600-B27550",
-      "venue": "kalshi",
-      "source": "spxindex",
-      "outcome": "No",
-      "title": "Will the Nasdaq-100 be between 27500 and 27599.9900 at the end of Nov 19, 2026 at 4pm EST?",
-      "url": "https://kalshi.com/markets/KXNASDAQ100-26NOV19H1600",
-      "entry_price": 0.94,
-      "model_prob": 0.9758,
-      "edge": 0.0358,
-      "fair": 0.0242,
-      "market_prob": 0.08,
-      "implied_sigma": 0.7464,
-      "spot_used": 27116.26,
-      "chain_ts": "2026-11-19 11:05:19",
-      "vrp_shrink": 0.92,
-      "series": "KXNASDAQ100",
-      "model": "cboe-0dte-density",
-      "validated": false,
-      "end_iso": "2026-11-19T21:00:00+00:00",
-      "event_iso": "2026-11-19T21:00:00+00:00"
-    }
-  ],
+  "spxindex": [],
   "sizing": {
     "min_contract_price": 0.01,
     "contracts_per_market_per_1k": 19,
