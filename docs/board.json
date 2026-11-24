@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-24 01:15:03",
-  "generated_at": 1795482903.115168,
+  "generated": "2026-11-24 11:07:42",
+  "generated_at": 1795518462.1555543,
   "account_size": 100000.0,
   "tickets": [],
   "probe": [],
@@ -12,23 +12,86 @@
   "consistency": {
     "ok": true,
     "enabled": true,
-    "events_scanned": 344,
+    "events_scanned": 341,
     "rejected": {
-      "bracket has legs we cannot price (fail closed)": 80,
+      "bracket has legs we cannot price (fail closed)": 81,
       "not a ladder: duplicate deadlines left too few rungs": 11,
-      "not a ladder: fewer than two live, quoted legs": 96,
-      "not a ladder: group labels are not thresholds or deadlines": 62,
-      "ladder pair too illiquid to fill": 126,
-      "not a ladder: a live leg carries no group label": 7,
-      "ladder inversion smaller than the spread": 8,
+      "not a ladder: fewer than two live, quoted legs": 99,
+      "not a ladder: group labels are not thresholds or deadlines": 60,
+      "ladder pair too illiquid to fill": 105,
+      "ladder inversion smaller than the spread": 5,
       "not a ladder: numeric group spans different end dates": 2,
       "bracket leg too illiquid to fill": 5,
-      "bracket overround smaller than the spread": 1,
       "bracket underround smaller than the spread": 1,
       "dominance gap smaller than the spread": 1
     },
     "notes": [],
-    "violations": []
+    "violations": [
+      {
+        "family": "bracket",
+        "event_slug": "maduro-prison-time-527",
+        "constraint": "5 mutually exclusive outcomes offer at 0.9470 total, but exactly one of them pays 1.00",
+        "edge_c": 5.3,
+        "actions": [
+          "BUY YES  No prison time  @ 0.610",
+          "BUY YES  <20  @ 0.114",
+          "BUY YES  20\u201340  @ 0.015",
+          "BUY YES  40\u201360  @ 0.058",
+          "BUY YES  60+  @ 0.150"
+        ],
+        "warnings": [
+          "requires filling all 5 legs - confirm the event page lists exactly 5 outcomes before trusting the sum"
+        ],
+        "url": "https://polymarket.com/event/maduro-prison-time-527",
+        "legs": [
+          {
+            "question": "Will Nicol\u00e1s Maduro be sentenced to no prison time?",
+            "name": "No prison time",
+            "bid": 0.6,
+            "ask": 0.61,
+            "liquidity": 35557.1554,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/maduro-prison-time-527"
+          },
+          {
+            "question": "Will Nicol\u00e1s Maduro be sentenced to less than 20 years in prison?",
+            "name": "<20",
+            "bid": 0.094,
+            "ask": 0.114,
+            "liquidity": 32919.34377,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/maduro-prison-time-527"
+          },
+          {
+            "question": "Will Nicol\u00e1s Maduro be sentenced to between 20 and 40 years in prison?",
+            "name": "20\u201340",
+            "bid": 0.008,
+            "ask": 0.015,
+            "liquidity": 27260.89808,
+            "end_iso": "2027-12-31T00:00:00Z",
+            "url": "https://polymarket.com/event/maduro-prison-time-527"
+          },
+          {
+            "question": "Will Nicol\u00e1s Maduro be sentenced to between 40 and 60 years in prison?",
+            "name": "40\u201360",
+            "bid": 0.018,
+            "ask": 0.058,
+            "liquidity": 17418.71817,
+            "end_iso": "2027-12-31T00:00:00Z",
+            "url": "https://polymarket.com/event/maduro-prison-time-527"
+          },
+          {
+            "question": "Will Nicol\u00e1s Maduro be sentenced to at least 60 years in prison?",
+            "name": "60+",
+            "bid": 0.12,
+            "ask": 0.15,
+            "liquidity": 17865.6206,
+            "end_iso": "2028-01-01T04:59:00Z",
+            "url": "https://polymarket.com/event/maduro-prison-time-527"
+          }
+        ]
+      }
+    ]
   },
   "macro": {
     "ok": true,
@@ -49,30 +112,30 @@
         "rows": [
           {
             "label": "\u22642.3%",
-            "market_prob": 0.0045,
+            "market_prob": 0.004,
             "model_prob": 0.0005,
-            "gap_c": -0.4,
+            "gap_c": -0.35,
             "suspect": false
           },
           {
             "label": "2.4%",
-            "market_prob": 0.0095,
+            "market_prob": 0.0065,
             "model_prob": 0.0035,
-            "gap_c": -0.6,
+            "gap_c": -0.3,
             "suspect": false
           },
           {
             "label": "2.5%",
-            "market_prob": 0.011,
+            "market_prob": 0.012,
             "model_prob": 0.0176,
-            "gap_c": 0.66,
+            "gap_c": 0.56,
             "suspect": false
           },
           {
             "label": "2.6%",
-            "market_prob": 0.025,
+            "market_prob": 0.056,
             "model_prob": 0.0598,
-            "gap_c": 3.48,
+            "gap_c": 0.38,
             "suspect": false
           },
           {
@@ -84,16 +147,16 @@
           },
           {
             "label": "2.8%",
-            "market_prob": 0.2,
+            "market_prob": 0.19,
             "model_prob": 0.2217,
-            "gap_c": 2.17,
+            "gap_c": 3.17,
             "suspect": false
           },
           {
             "label": "2.9%",
-            "market_prob": 0.4,
+            "market_prob": 0.385,
             "model_prob": 0.242,
-            "gap_c": -15.8,
+            "gap_c": -14.3,
             "suspect": false
           },
           {
@@ -105,16 +168,16 @@
           },
           {
             "label": "3.1%",
-            "market_prob": 0.056,
+            "market_prob": 0.0555,
             "model_prob": 0.0928,
-            "gap_c": 3.68,
+            "gap_c": 3.73,
             "suspect": false
           },
           {
             "label": "\u22653.2%",
-            "market_prob": 0.003,
+            "market_prob": 0.0025,
             "model_prob": 0.0418,
-            "gap_c": 3.88,
+            "gap_c": 3.93,
             "suspect": false
           }
         ]
@@ -129,7 +192,7 @@
         "nowcast_pp": 0.21114452794251,
         "nowcast_as_of": "2026-11-23 00:00",
         "sigma": 0.16,
-        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.099pp (x1.61). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
+        "model_sigma_note": "VARIANCE DISAGREEMENT: model sigma 0.160pp vs market-implied 0.098pp (x1.63). The per-bracket gaps below are mostly this one effect, not 7 separate edges.",
         "rows": [
           {
             "label": "\u22640.1%",
@@ -161,9 +224,9 @@
           },
           {
             "label": "0.5%",
-            "market_prob": 0.038,
+            "market_prob": 0.0345,
             "model_prob": 0.0506,
-            "gap_c": 1.26,
+            "gap_c": 1.61,
             "suspect": false
           },
           {
@@ -196,9 +259,9 @@
         "rows": [
           {
             "label": "\u2264-0.3%",
-            "market_prob": 0.0655,
+            "market_prob": 0.0675,
             "model_prob": 0.0244,
-            "gap_c": -4.11,
+            "gap_c": -4.31,
             "suspect": false
           },
           {
@@ -217,23 +280,23 @@
           },
           {
             "label": "0.0%",
-            "market_prob": 0.22,
+            "market_prob": 0.205,
             "model_prob": 0.2263,
-            "gap_c": 0.63,
+            "gap_c": 2.13,
             "suspect": false
           },
           {
             "label": "0.1%",
-            "market_prob": 0.0305,
+            "market_prob": 0.033,
             "model_prob": 0.2398,
-            "gap_c": 20.93,
+            "gap_c": 20.68,
             "suspect": false
           },
           {
             "label": "0.2%",
-            "market_prob": 0.0165,
+            "market_prob": 0.02,
             "model_prob": 0.1741,
-            "gap_c": 15.76,
+            "gap_c": 15.41,
             "suspect": false
           },
           {
@@ -245,16 +308,16 @@
           },
           {
             "label": "0.4%",
-            "market_prob": 0.018,
+            "market_prob": 0.015,
             "model_prob": 0.0295,
-            "gap_c": 1.15,
+            "gap_c": 1.45,
             "suspect": false
           },
           {
             "label": "0.5%",
-            "market_prob": 0.0155,
+            "market_prob": 0.0145,
             "model_prob": 0.0069,
-            "gap_c": -0.86,
+            "gap_c": -0.76,
             "suspect": false
           },
           {
@@ -280,9 +343,9 @@
         "rows": [
           {
             "label": "\u22643.3%",
-            "market_prob": 0.002,
+            "market_prob": 0.0025,
             "model_prob": 0.0007,
-            "gap_c": -0.13,
+            "gap_c": -0.18,
             "suspect": false
           },
           {
@@ -294,9 +357,9 @@
           },
           {
             "label": "3.5%",
-            "market_prob": 0.0535,
+            "market_prob": 0.049,
             "model_prob": 0.0204,
-            "gap_c": -3.31,
+            "gap_c": -2.86,
             "suspect": false
           },
           {
@@ -308,30 +371,30 @@
           },
           {
             "label": "3.7%",
-            "market_prob": 0.43,
+            "market_prob": 0.415,
             "model_prob": 0.1487,
-            "gap_c": -28.13,
+            "gap_c": -26.63,
             "suspect": true
           },
           {
             "label": "3.8%",
-            "market_prob": 0.215,
+            "market_prob": 0.195,
             "model_prob": 0.2277,
-            "gap_c": 1.27,
+            "gap_c": 3.27,
             "suspect": false
           },
           {
             "label": "3.9%",
-            "market_prob": 0.0415,
+            "market_prob": 0.0345,
             "model_prob": 0.239,
-            "gap_c": 19.75,
+            "gap_c": 20.45,
             "suspect": false
           },
           {
             "label": "4.0%",
-            "market_prob": 0.01,
+            "market_prob": 0.012,
             "model_prob": 0.1718,
-            "gap_c": 16.18,
+            "gap_c": 15.98,
             "suspect": false
           },
           {
